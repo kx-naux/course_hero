@@ -13,7 +13,7 @@
 
             </div>
             <div class="nav-option-div">
-
+                
             </div>
             <div class="nav-function-div">
                 <c:choose>
@@ -23,6 +23,8 @@
                     </c:when>
                     <c:otherwise>
                         <!-- Not Logged in -->
+                        <input type="button" value="Log In" />
+                        <input type="button" value="Sign Up" />
                     </c:otherwise>
                 </c:choose>
             </div>
