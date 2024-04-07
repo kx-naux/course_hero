@@ -60,15 +60,21 @@
             </div>
             <!--Nav button-->
             <div class="nav-function-div">
-                <p class="nav-icon"><i class="ri-search-line"></i></p>
-                    <c:choose>
-                        <c:when test="${not empty sessionScope.username}">
+                <a href="http://localhost:8080/CourseHero/search">
+                    <p class="nav-icon"><i class="ri-search-line"></i></p>
+                </a>
+                <c:choose>
+                    <c:when test="${not empty sessionScope.username}">
                         <!-- Logged in -->
-                        <p hidden>Welcome, ${sessionScope.username}!</p>
-                        <p class="nav-icon"><i class="ri-heart-line"></i></P>
-                        <p class="nav-icon"><i class="ri-shopping-cart-line"></i></P>
-                        </c:when>
-                        <c:otherwise>
+                        <a href="http://localhost:8080/CourseHero/wishlist">
+                            <p class="nav-icon"><i class="ri-heart-line"></i></P>
+                        </a>
+                        <a href="http://localhost:8080/CourseHero/cart">
+                            <p class="nav-icon"><i class="ri-shopping-cart-line"></i></P>
+                        </a>
+                        <p hidden>${sessionScope.username}!</p>
+                    </c:when>
+                    <c:otherwise>
                         <!-- Not Logged in -->
                         <a href="http://localhost:8080/CourseHero/login">
                             <input class="nav-btn nav-login-btn" type="button" value="Log In" />
