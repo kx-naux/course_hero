@@ -31,6 +31,7 @@ body {
     width: 100%;
     box-shadow: 0 2px 4px rgba(0,0,0,.08), 0 4px 12px rgba(0,0,0,.08);
     z-index: 101;
+    user-select: none;
 }
 
 .nav-logo-div {
@@ -60,11 +61,17 @@ body {
 }
 
 .nav-option {
+    position: relative;
     align-content: center;
     height: 100%;
     padding: 0 24px;
     color: #a0a0a0;
     cursor: pointer;
+    transition: 0.2s all ease-in-out;
+}
+
+.nav-option a {
+    color: #a0a0a0;
 }
 
 .nav-option:hover {
@@ -80,21 +87,63 @@ body {
     background-color: #192561;
 }
 
+.nav-option-dropdown {
+    width: 150px;
+    display: none;
+    position: absolute;
+    top: 72px;
+    background-color: #fff;
+    color: #a0a0a0;
+    box-shadow: 0 2px 4px rgba(0,0,0,.08), 0 4px 12px rgba(0,0,0,.08);
+    transition: 0.2s all ease-in-out;
+}
+
+.nav-option-dropdown a {
+    color: #a0a0a0;
+}
+
+a:has(.nav-option):hover + .nav-option-dropdown,
+.nav-option-dropdown:hover {
+    display: block;
+}
+
+.nav-option-dropdown ul {
+    display: block;
+    z-index: 102;
+}
+
+.nav-option-dropdown ul li{
+    padding: 10px 12px;
+}
+
+.nav-option-dropdown ul li:hover {
+    background-color: #f4f4f4;
+}
+
+.nav-option-dropdown ul li:active {
+    background-color: #f0f0f0;
+}
+
+.nav-option-dropdown ul li:hover a{
+    color: #636363;
+}
+
 .nav-function-div {
     padding:8px 0;
     flex: 1 2 300px;
     justify-content: right;
     display: flex;
     flex-direction: row;
-    gap: 12px
+    gap: 16px
 }
 
 .nav-icon {
     align-self: center;
     font-size: 24px;
     font-weight: 700;
-    color: #4a4a4a;
+    color: #8c8c8c;
     cursor: pointer;
+    padding: 0 6px;
 }
 .nav-icon:hover {
     color: #3748a3;
