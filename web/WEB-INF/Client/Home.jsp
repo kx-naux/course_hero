@@ -7,6 +7,7 @@
         <title>Course Hero | Home</title>
         <link rel="icon" type="image/ico" href="./ico/Logo.ico">
         <link type="text/css" href="./css/style.css" rel="stylesheet" >
+        <link type="text/css" href="./css/home.css" rel="stylesheet" >
         <link type="text/css" href="./css/sectionProduct.css" rel="stylesheet" >
         <link type="text/css" href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
         <script src="./js/nav.js"></script>
@@ -60,9 +61,14 @@
             </div>
             <!--Nav button-->
             <div class="nav-function-div">
+                <!--Search course-->
                 <a href="http://localhost:8080/CourseHero/search">
                     <p class="nav-icon"><i class="ri-search-line"></i></p>
                 </a>
+                <div>
+
+                </div>
+                <!--JSP conditional rendering-->
                 <c:choose>
                     <c:when test="${not empty sessionScope.username}">
                         <!-- Logged in -->
@@ -102,7 +108,20 @@
 
         <!-- Information section -->
         <section class="section home-information-section">
-
+            <div class="home-info-div">
+                <div class="home-info-div-col">
+                    <p class="info-icon"><i class="ri-vidicon-fill"></i></i></p>
+                    <p class="info-desc">Learn in-demand skill with over 210,000 video courses</p>
+                </div>
+                <div class="home-info-div-col">
+                    <p class="info-icon"><i class="ri-bard-fill"></i></p>
+                    <p class="info-desc">Choose course taught by real-world experts</p>
+                </div>
+                <div class="home-info-div-col">
+                    <p class="info-icon"><i class="ri-pass-valid-fill"></i></p>
+                    <p class="info-desc">Learn at your own pace, with life time access</p>
+                </div>
+            </div>
         </section>
 
         <!-- Feedback from customer -->
