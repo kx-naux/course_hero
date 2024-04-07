@@ -7,6 +7,7 @@
         <title>Course Hero | Home</title>
         <link rel="icon" type="image/png" href="./img/Logo.png">
         <link type="text/css" href="./css/style.css" rel="stylesheet" >
+        <link type="text/css" href="./css/sectionProduct.css" rel="stylesheet" >
         <link type="text/css" href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
     </head>
     <body>
@@ -18,16 +19,48 @@
             </div>
             <!--Nav options-->
             <div class="nav-option-div">
-                
+                <ul>
+                    <li>
+                        <a>
+                            <div class="nav-option selected">
+                                <p>Home</p>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a>
+                            <div class="nav-option">
+                                <p>About Us <i class="ri-arrow-down-s-line"></i></p>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a>
+                            <div class="nav-option">
+                                <p>Courses <i class="ri-arrow-down-s-line"></i></p>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a>
+                            <div class="nav-option">
+                                <p>Learning</p>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
             </div>
             <!--Nav button-->
             <div class="nav-function-div">
-                <c:choose>
-                    <c:when test="${not empty sessionScope.username}">
+                <p class="nav-icon"><i class="ri-search-line"></i></P>
+                    <c:choose>
+                        <c:when test="${not empty sessionScope.username}">
                         <!-- Logged in -->
-                        <p>Welcome, ${sessionScope.username}!</p>
-                    </c:when>
-                    <c:otherwise>
+                        <p hidden>Welcome, ${sessionScope.username}!</p>
+                        <p class="nav-icon"><i class="ri-heart-line"></i></P>
+                        <p class="nav-icon"><i class="ri-shopping-cart-line"></i></P>
+                        </c:when>
+                        <c:otherwise>
                         <!-- Not Logged in -->
                         <input class="nav-btn nav-login-btn" type="button" value="Log In" onclick="" />
                         <input class="nav-btn nav-sign-up-btn" type="button" value="Sign Up" onclick="" />
@@ -42,7 +75,7 @@
         </section>
 
         <!-- Hottest Product -->
-        
+
 
         <!-- Unit Collaboration -->
         <section class="section unit-collaboration-section">
