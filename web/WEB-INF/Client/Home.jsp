@@ -8,9 +8,9 @@
         <link rel="icon" type="image/ico" href="./ico/Logo.ico">
         <link type="text/css" href="./css/style.css" rel="stylesheet" >
         <link type="text/css" href="./css/home.css" rel="stylesheet" >
-        <link type="text/css" href="./css/sectionProduct.css" rel="stylesheet" >
+        <link type="text/css" href="./css/components/section_product.css" rel="stylesheet" >
         <link type="text/css" href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
-        <script src="./js/nav.js"></script>
+        <script src="./js/nav.js"></script>        
     </head>
     <body>
         <!-- Navigation Bar -->
@@ -95,7 +95,12 @@
 
         <!-- Image Carousel -->
         <section class="section image-carousel-section">
-
+            <div class="carousel-container">
+                
+            </div>
+            
+            <!--JS file for carousel-->
+            <script src="./js/home/carousel.js"></script>
         </section>
 
         <!-- Hottest Product -->
