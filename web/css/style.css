@@ -1,0 +1,142 @@
+/* Import google font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* General Style */
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    background-color: #fff;
+}
+
+/* Navigation Bar */
+.nav-bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 4%;
+    width: 100%;
+    box-shadow: 0 2px 4px rgba(0,0,0,.08), 0 4px 12px rgba(0,0,0,.08);
+    z-index: 101;
+}
+
+.nav-logo-div {
+    padding:8px 0;
+    flex: 1 2 300px;
+    justify-content: left;
+    display: flex;
+    flex-direction: row;
+}
+
+.nav-logo {
+    width: 50px;
+    height: 50px;
+}
+
+.nav-option-div {
+    flex: 3 1 500px;
+    height: 100%;
+}
+
+.nav-option-div ul {
+    list-style: none;
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+
+.nav-option {
+    align-content: center;
+    height: 100%;
+    padding: 0 24px;
+    color: #a0a0a0;
+    cursor: pointer;
+}
+
+.nav-option:hover {
+    color: #636363;
+    background-color: #f0f0f0;
+}
+
+.nav-option.selected {
+    color: #192561;
+}
+
+.nav-option.selected span {
+    background-color: #192561;
+}
+
+.nav-function-div {
+    padding:8px 0;
+    flex: 1 2 300px;
+    justify-content: right;
+    display: flex;
+    flex-direction: row;
+    gap: 12px
+}
+
+.nav-icon {
+    align-self: center;
+    font-size: 24px;
+    font-weight: 700;
+    color: #4a4a4a;
+    cursor: pointer;
+}
+.nav-icon:hover {
+    color: #3748a3;
+}
+
+.nav-btn {
+    padding: 10px 30px;
+    font-weight: 700;
+    border-radius: 2px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.nav-login-btn {
+    background-color: #fff;
+    border: 1px solid #111;
+}
+
+.nav-login-btn:hover {
+    background-color: #ededed;
+}
+
+.nav-login-btn:active {
+    background-color: #c4c4c4;
+}
+
+.nav-sign-up-btn {
+    color: #fff;
+    background-color: #3748a3;
+}
+
+.nav-sign-up-btn:hover {
+    background-color: #2d3d91;
+}
+
+.nav-sign-up-btn:active {
+    background-color: #192561;
+}
+
+/* defined style */
+.section div{
+    margin-left: auto;
+    margin-right: auto;
+    width: 1064px;
+}
