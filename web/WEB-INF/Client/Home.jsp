@@ -11,13 +11,16 @@
     </head>
     <body>
         <!-- Navigation Bar -->
-        <nav>
+        <nav class="nav-bar">
+            <!-- Logo -->
             <div class="nav-logo-div">
-
+                <img class="nav-logo" src="./img/Logo.png" alt="Course Hero" />
             </div>
+            <!--Nav options-->
             <div class="nav-option-div">
-
+                
             </div>
+            <!--Nav button-->
             <div class="nav-function-div">
                 <c:choose>
                     <c:when test="${not empty sessionScope.username}">
@@ -26,15 +29,15 @@
                     </c:when>
                     <c:otherwise>
                         <!-- Not Logged in -->
-                        <input class="" type="button" value="Log In" />
-                        <input type="button" value="Sign Up"  />
+                        <input class="nav-btn nav-login-btn" type="button" value="Log In" onclick="" />
+                        <input class="nav-btn nav-sign-up-btn" type="button" value="Sign Up" onclick="" />
                     </c:otherwise>
                 </c:choose>
             </div>
         </nav>
 
         <!-- Image Carousel -->
-        <section class="image-carousel-section">
+        <section class="section image-carousel-section">
 
         </section>
 
@@ -42,32 +45,32 @@
         
 
         <!-- Unit Collaboration -->
-        <section class="unit-collaboration-section">
+        <section class="section unit-collaboration-section">
 
         </section>
 
         <!-- Information section -->
-        <section class="home-information-section">
+        <section class="section home-information-section">
 
         </section>
 
         <!-- Feedback from customer -->
-        <section class="feedback-section">
+        <section class="section feedback-section">
 
         </section>
 
         <!-- Category section -->
-        <section class="category-section">
+        <section class="section category-section">
 
         </section>
 
         <!-- FAQ section -->
-        <section class="faq-section">
+        <section class="section faq-section">
 
         </section>
 
         <!-- Footer section -->
-        <section class="footer-section">
+        <section class="section footer-section">
 
         </section>
     </body>
