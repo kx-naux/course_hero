@@ -5,44 +5,52 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Course Hero | Home</title>
-        <link rel="icon" type="image/png" href="./img/Logo.png">
+        <link rel="icon" type="image/ico" href="./ico/Logo.ico">
         <link type="text/css" href="./css/style.css" rel="stylesheet" >
         <link type="text/css" href="./css/sectionProduct.css" rel="stylesheet" >
         <link type="text/css" href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
+        <script src="./js/nav.js"></script>
     </head>
     <body>
         <!-- Navigation Bar -->
         <nav class="nav-bar">
             <!-- Logo -->
             <div class="nav-logo-div">
-                <img class="nav-logo" src="./img/Logo.png" alt="Course Hero" />
+                <a href="http://localhost:8080/CourseHero/home"><img class="nav-logo" src="./img/Logo.png" alt="Course Hero" /></a>
             </div>
             <!--Nav options-->
             <div class="nav-option-div">
                 <ul>
                     <li>
-                        <a>
+                        <a href="http://localhost:8080/CourseHero/home">
                             <div class="nav-option selected">
                                 <p>Home</p>
                             </div>
                         </a>
                     </li>
                     <li>
-                        <a>
+                        <a href="http://localhost:8080/CourseHero/about-us">
                             <div class="nav-option">
                                 <p>About Us <i class="ri-arrow-down-s-line"></i></p>
                             </div>
                         </a>
+                        <div class="nav-option-dropdown">
+                            <ul>
+                                <li><a href="#">Our Team</a></li>
+                                <li><a href="#">Our Office</a></li>
+                                <li><a href="#">Contact Us</a></li>
+                            </ul>
+                        </div>
                     </li>
                     <li>
-                        <a>
+                        <a href="http://localhost:8080/CourseHero/products">
                             <div class="nav-option">
-                                <p>Courses <i class="ri-arrow-down-s-line"></i></p>
+                                <p>Courses</p>
                             </div>
                         </a>
                     </li>
                     <li>
-                        <a>
+                        <a href="http://localhost:8080/CourseHero/learning">
                             <div class="nav-option">
                                 <p>Learning</p>
                             </div>
@@ -52,7 +60,7 @@
             </div>
             <!--Nav button-->
             <div class="nav-function-div">
-                <p class="nav-icon"><i class="ri-search-line"></i></P>
+                <p class="nav-icon"><i class="ri-search-line"></i></p>
                     <c:choose>
                         <c:when test="${not empty sessionScope.username}">
                         <!-- Logged in -->
@@ -62,8 +70,12 @@
                         </c:when>
                         <c:otherwise>
                         <!-- Not Logged in -->
-                        <input class="nav-btn nav-login-btn" type="button" value="Log In" onclick="" />
-                        <input class="nav-btn nav-sign-up-btn" type="button" value="Sign Up" onclick="" />
+                        <a href="http://localhost:8080/CourseHero/login">
+                            <input class="nav-btn nav-login-btn" type="button" value="Log In" />
+                        </a>
+                        <a href="http://localhost:8080/CourseHero/sign-up">
+                            <input class="nav-btn nav-sign-up-btn" type="button" value="Sign Up" />
+                        </a>
                     </c:otherwise>
                 </c:choose>
             </div>
