@@ -210,6 +210,16 @@ a:has(.nav-option):hover + .nav-option-dropdown,
 }
 
 /* defined style */
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-col {
+    display: flex;
+    flex-direction: column;
+}
+
 .section div{
     margin-left: auto;
     margin-right: auto;
