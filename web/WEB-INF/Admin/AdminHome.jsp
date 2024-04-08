@@ -16,7 +16,7 @@
             <aside>
                 <div class="top">
                     <div class="logo">
-                        <img src = "MainLogo.png">
+                        <img src = "./img/Logo.png">
                     </div>
                     <div class="close" id="close-btn">
                         <i class="ri-close-line"></i>
