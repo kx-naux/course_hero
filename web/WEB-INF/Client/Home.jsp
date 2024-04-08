@@ -95,12 +95,7 @@
 
         <!-- Image Carousel -->
         <section class="section image-carousel-section">
-            <div class="carousel-container">
-                
-            </div>
-            
-            <!--JS file for carousel-->
-            <script src="./js/home/carousel.js"></script>
+
         </section>
 
         <!-- Hottest Product -->
@@ -108,45 +103,72 @@
 
         <!-- Unit Collaboration -->
         <section class="section unit-collaboration-section">
-
-        </section>
-
-        <!-- Information section -->
-        <section class="section home-information-section">
-            <div class="home-info-div">
-                <div class="home-info-div-col">
-                    <p class="info-icon"><i class="ri-vidicon-fill"></i></i></p>
-                    <p class="info-desc">Learn in-demand skill with over 210,000 video courses</p>
+            <div class="unit-collborate-div">
+                <p>We collaborate with <span>325+ leading universities and companies</span></p>
+                <div class="logos logos-row-1">
+                    <div class="logos-slide logos-slide-row-1">
+                        <img src="./img/home/collaborate/companies/amazon.svg" alt="Amazon" />
+                        <img src="./img/home/collaborate/companies/apple.svg" alt="Apple" />
+                        <img src="./img/home/collaborate/companies/cisco.svg" alt="Cisco" />
+                        <img src="./img/home/collaborate/companies/google.svg" alt="Google" />
+                        <img src="./img/home/collaborate/companies/ibm.svg" alt="IBM" />
+                        <img src="./img/home/collaborate/companies/meta.svg" alt="Meta" />
+                        <img src="./img/home/collaborate/companies/microsoft.svg" alt="Microsoft" />
+                        <img src="./img/home/collaborate/companies/tiktok.svg" alt="Tik Tok" />
+                    </div>
                 </div>
-                <div class="home-info-div-col">
-                    <p class="info-icon"><i class="ri-bard-fill"></i></p>
-                    <p class="info-desc">Choose course taught by real-world experts</p>
-                </div>
-                <div class="home-info-div-col">
-                    <p class="info-icon"><i class="ri-pass-valid-fill"></i></p>
-                    <p class="info-desc">Learn at your own pace, with life time access</p>
+                <div class="logos logos-row-2">
+                    <div class="logos-slide logos-slide-row-2">
+                        <img src="./img/home/collaborate/universities/Cambridge.svg" alt="University of Cambridge" />
+                        <img src="./img/home/collaborate/universities/Harvard.svg" alt="Harvard University" />
+                        <img src="./img/home/collaborate/universities/MIT.svg" alt="Massachusetts Institute of Technology" />
+                        <img src="./img/home/collaborate/universities/Oxford.svg" alt="University of Oxford" />
+                        <img src="./img/home/collaborate/universities/Peking.svg" alt="Peking University" />
+                        <img src="./img/home/collaborate/universities/Princeton.svg" alt="Princeton University" />
+                        <img src="./img/home/collaborate/universities/Stanford.svg" alt="Stanford University" />
+                        <img src="./img/home/collaborate/universities/tarumt.png" alt="TARUMT" />
+                    </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Feedback from customer -->
-        <section class="section feedback-section">
+    <!-- Information section -->
+    <section class="section home-information-section">
+        <div class="home-info-div">
+            <div class="home-info-div-col">
+                <p class="info-icon"><i class="ri-vidicon-fill"></i></i></p>
+                <p class="info-desc">Learn in-demand skill with over 210,000 video courses</p>
+            </div>
+            <div class="home-info-div-col">
+                <p class="info-icon"><i class="ri-bard-fill"></i></p>
+                <p class="info-desc">Choose course taught by real-world experts</p>
+            </div>
+            <div class="home-info-div-col">
+                <p class="info-icon"><i class="ri-pass-valid-fill"></i></p>
+                <p class="info-desc">Learn at your own pace, with life time access</p>
+            </div>
+        </div>
+    </section>
 
-        </section>
+    <!-- Feedback from customer -->
+    <section class="section feedback-section">
 
-        <!-- Category section -->
-        <section class="section category-section">
+    </section>
 
-        </section>
+    <!-- Category section -->
+    <section class="section category-section">
 
-        <!-- FAQ section -->
-        <section class="section faq-section">
+    </section>
 
-        </section>
+    <!-- FAQ section -->
+    <section class="section faq-section">
 
-        <!-- Footer section -->
-        <section class="section footer-section">
+    </section>
 
-        </section>
-    </body>
+    <!-- Footer section -->
+    <section class="section footer-section">
+
+    </section>
+</body>
 </html>

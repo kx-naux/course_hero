@@ -1,5 +1,78 @@
 /*image carousel*/
 
+/*Unit Collaboration*/
+.unit-collaboration-section {
+    padding: 24px 20px;
+    background-color: #f0f0f0;
+}
+
+.unit-collborate-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.unit-collborate-div p {
+    text-align: center;
+    font-size: 20px;
+    color: #373737;
+    margin: 0 0 30px;
+}
+
+.unit-collborate-div p span {
+    font-weight: 600;
+    color: #1f3080;
+}
+
+@keyframes slide {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.logos {
+  overflow: hidden;
+  padding: 60px 0;
+  white-space: nowrap;
+  position: relative;
+}
+
+.logos:before,
+.logos:after {
+  position: absolute;
+  top: 0;
+  width: 200px;
+  height: 100%;
+  content: "";
+  z-index: 2;
+}
+
+.logos:before {
+  left: 0;
+  background: linear-gradient(to left, rgba(255, 255, 255, 0), #f0f0f0);
+}
+
+.logos:after {
+  right: 0;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0), #f0f0f0);
+}
+
+.logos:hover > .logos-slide {
+  animation-play-state: paused;
+}
+
+.logos-slide {
+  display: inline-block;
+    animation: 35s slide infinite linear;
+}
+
+.logos-slide img {
+  height: 50px;
+  margin: 0 40px;
+}
 
 /*Infomation section*/
 .home-information-section {
@@ -26,6 +99,7 @@
     border-radius: 8px;
     align-items: center;
     gap: 18px;
+    cursor: default;
 }
 
 .home-info-div-col .info-icon {
