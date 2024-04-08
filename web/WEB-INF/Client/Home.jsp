@@ -78,7 +78,7 @@
                         <a href="http://localhost:8080/CourseHero/cart">
                             <p class="nav-icon"><i class="ri-shopping-cart-line"></i></P>
                         </a>
-                        <p hidden>${sessionScope.username}!</p>
+                        <input hidden type="text" id="hidden_username" value="${sessionScope.username}"/>
                     </c:when>
                     <c:otherwise>
                         <!-- Not Logged in -->
@@ -94,51 +94,84 @@
         </nav>
 
         <!-- Image Carousel -->
-        <section class="section image-carousel-section">
+        <section class="section slideshow-section flex-col">
+            <div class="slideshow-frame">
+                <div id="first_slide" class="pic-show fade">
+                    <div class="idx-show"></div>
+                    <img class="img-slide" src="./img/home/carousel/img_carousel_1.jpg">
+                </div>
 
+                <div class="pic-show fade">
+                    <div class="idx-show"></div>
+                    <img class="img-slide" src="./img/home/carousel/img_carousel_2.jpg">
+                </div>
+
+                <div class="pic-show fade">
+                    <div class="idx-show"></div>
+                    <img class="img-slide" src="./img/home/carousel/img_carousel_3.jpg">
+                </div>
+
+                <div class="pic-show fade">
+                    <div class="idx-show"></div>
+                    <img class="img-slide" src="./img/home/carousel/img_carousel_4.jpg">
+                </div>
+
+                <a class="prev" onclick="manual(-1)">&#10094;</a>
+                <a class="next" onclick="manual(1)">&#10095;</a>
+            </div>
+
+            <div id="dot-below">
+                <span class="dot active-dot" onclick="show(1)" title="1"></span>
+                <span class="dot" onclick="show(2)" title="2"></span>
+                <span class="dot" onclick="show(3)" title="3"></span>
+                <span class="dot" onclick="show(4)" title="4"></span>
+            </div>
+            <script src="./js/home/carousel.js"></script>
         </section>
 
         <!-- Hottest Product -->
         <section class="section hottest-course-section">
             <div class="course-section-div">
                 <div class="course-section-title">
-                    <h1>Hottest COurses in 2024</h1>
+                    <h1>Hottest Courses in 2024</h1>
                     <a href="#"><p>View More</p></a>
                 </div>
                 <div class="courses">
 
                     <div class="course-product">
-                        <div class="course-product-card" courseID="">
-                            <div class="product-card-top">
-                                <img src="" alt="">
-                            </div>
-                            <div class="product-card-bottom flex-col">
-                                <h1 class="course-title">The Ultimate Excel Programming Course</h1>
-                                <p class="author">Woo Yu Beng</p>
-                                <div class="course-review flex-row">
-                                    <p class="rating-digit"></p>
-                                    <div class="rating-star flex-row">
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-half-fill"></i>
-                                        <i class="ri-star-line"></i>
+                        <a>
+                            <div class="course-product-card" courseID="">
+                                <div class="product-card-top">
+                                    <img src="./img/course/beginner_excel.jpg" alt="">
+                                </div>
+                                <div class="product-card-bottom flex-col">
+                                    <h1 class="course-title">The Ultimate Excel Programming Course</h1>
+                                    <p class="author">Woo Yu Beng</p>
+                                    <div class="course-review flex-row">
+                                        <p class="rating-digit">3.5</p>
+                                        <div class="rating-star flex-row">
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-half-fill"></i>
+                                            <i class="ri-star-line"></i>
+                                        </div>
+                                        <p class="rating-number-field">(<span class="raing-number">2303</span>)</p>
                                     </div>
-                                    <p class="rating-number"></p>
-                                </div>
-                                <div class="course-tag-field flex-row">
-                                    <p class="course-tag tag-orange">Hot Sell</p>
-                                </div>
-                                <div class="course-price-field">
-                                    <p>RM <span class="course-price">449</span></p>
+                                    <div class="course-tag-field flex-row">
+                                        <p class="course-tag tag-orange">Hot Sell</p>
+                                    </div>
+                                    <div class="course-price-field">
+                                        <p>RM <span class="course-price">449</span></p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                         <div class="course-product-desc">
                             <h1 class="course-title">The Ultimate Excel Programming Course</h1>
                             <p class="course-category">Microsoft Excel</p>
                             <p class="course-update">Updated on <span class="course-update-date">8/4/2024</span></p>
-                            <div class="course-labelflex-row">
+                            <div class="course-label flex-row">
                                 <p>9.5 Hours</p>
                                 <p>All Level</p>
                             </div>
@@ -167,16 +200,16 @@
                     <div class="logos-slide logos-slide-row-1">
                         <img src="./img/home/collaborate/companies/amazon.svg" alt="Amazon" />
                         <img src="./img/home/collaborate/companies/apple.svg" alt="Apple" />
+                        <img src="./img/home/collaborate/companies/mooiko.png" alt="Mooiko" />
+                        <img src="./img/home/collaborate/companies/mysoftware.png" alt="MySoftware" />
+                        <img src="./img/home/collaborate/companies/penta.png" alt="Pentamaster" />       
+                        <img src="./img/home/collaborate/companies/sip.png" alt="SIP Technology" />
                         <img src="./img/home/collaborate/companies/cisco.svg" alt="Cisco" />
                         <img src="./img/home/collaborate/companies/google.svg" alt="Google" />
                         <img src="./img/home/collaborate/companies/ibm.svg" alt="IBM" />
                         <img src="./img/home/collaborate/companies/meta.svg" alt="Meta" />
                         <img src="./img/home/collaborate/companies/microsoft.svg" alt="Microsoft" />
                         <img src="./img/home/collaborate/companies/tiktok.svg" alt="Tik Tok" />
-                        <img src="./img/home/collaborate/companies/mooiko.png" alt="Mooiko" />
-                        <img src="./img/home/collaborate/companies/mysoftware.png" alt="MySoftware" />
-                        <img src="./img/home/collaborate/companies/penta.png" alt="Pentamaster" />       
-                        <img src="./img/home/collaborate/companies/sip.png" alt="SIP Technology" />
                         <img src="./img/home/collaborate/companies/riot.svg" alt="Riot Games" />
                     </div>
                 </div>
@@ -195,12 +228,13 @@
                 </div>
             </div>
         </div>
+        <!--JS for the miving logo-->
         <script>
-            var copy1 = document.querySelector(".logos-slide-row-1").cloneNode(true);
-            document.querySelector(".logos-row-1").appendChild(copy1);
+                    var copy1 = document.querySelector(".logos-slide-row-1").cloneNode(true);
+                    document.querySelector(".logos-row-1").appendChild(copy1);
 
-            var copy2 = document.querySelector(".logos-slide-row-2").cloneNode(true);
-            document.querySelector(".logos-row-2").appendChild(copy2);
+                    var copy2 = document.querySelector(".logos-slide-row-2").cloneNode(true);
+                    document.querySelector(".logos-row-2").appendChild(copy2);
         </script>
     </section>
 

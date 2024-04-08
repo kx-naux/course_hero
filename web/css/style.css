@@ -1,6 +1,33 @@
 /* Import google font */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
+/* ------------ROOT VARIABLES----------------------- */
+:root{
+    --color-primary: #7380ec;
+    --color-secondary: #FFFFFF;
+
+    --color-danger: #ff7782;
+    --color-success: #41f1b6;
+    --color-warning: #ffbb55;
+
+    --color-white: #fff;
+    --color-black: #000;
+    --color-info-dark: #7d8ada;
+    --color-info-light: #dce1eb;
+    --color-dark: #363949;
+    --color-light: rgba(132, 139, 200, 0.18);
+    --color-primary-variant: #111e88;
+    --color-dark-variant:#677483;
+    --color-background: #f6f6f9;
+
+    --card-border-radius: 2rem;
+    --border-radius-1: 0.4rem;
+    --border-radius-2: 0.8rem;
+    --border-radius-3: 1.2rem;
+
+    --box-shadow: 0 2px 4px rgba(0,0,0,.08), 0 4px 12px rgba(0,0,0,.08);
+}
+
 /* General Style */
 * {
     margin: 0;
@@ -23,33 +50,62 @@ body {
 
 /* Navigation Bar */
 .nav-bar {
+    background-color: #fff;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 0 4%;
+    padding: 0 1.5%;
     width: 100%;
-    box-shadow: 0 2px 4px rgba(0,0,0,.08), 0 4px 12px rgba(0,0,0,.08);
     z-index: 101;
     user-select: none;
+    transition: 0.3s all ease-in-out;
+}
+
+.nav-bar.nav-scroll {
+    position: sticky;
+    top: 0;
+    padding: 0 4%;
+    box-shadow: 0 2px 4px rgba(0,0,0,.08), 0 4px 12px rgba(0,0,0,.08);
 }
 
 .nav-logo-div {
-    padding:8px 0;
+    padding:14px 0;
     flex: 1 2 300px;
     justify-content: left;
     display: flex;
     flex-direction: row;
+    transition: 0.3s all ease-in-out;
+}
+
+.nav-bar.nav-scroll .nav-logo-div {
+    padding: 0;
+}
+
+.nav-logo-div  a{
+    display: flex;
+    align-items: center;
 }
 
 .nav-logo {
     width: 40px;
     height: 40px;
+    transition: 0.3s all ease-in-out;
+}
+
+.nav-bar.nav-scroll .nav-logo {
+    width: 30px;
+    height: 30px;
 }
 
 .nav-option-div {
     flex: 3 1 500px;
-    height: 62px;
+    height: 68px;
+    transition: 0.3s all ease-in-out;
+}
+
+.nav-bar.nav-scroll .nav-option-div {
+    height: 52px;
 }
 
 .nav-option-div ul {
@@ -67,7 +123,12 @@ body {
     padding: 0 24px;
     color: #a0a0a0;
     cursor: pointer;
-    transition: 0.1s all ease-in-out;
+    transition: 0.3s all ease-in-out;
+    font-size: 16px;
+}
+
+.nav-bar.nav-scroll .nav-option {
+    font-size: 14px;
 }
 
 .nav-option::after {
@@ -120,6 +181,10 @@ body {
     transition: 0.2s all ease-in-out;
 }
 
+.nav-bar.nav-scroll .nav-option-dropdown {
+    top: 42px;
+}
+
 .nav-option-dropdown a {
     color: #a0a0a0;
 }
@@ -151,12 +216,18 @@ a:has(.nav-option):hover + .nav-option-dropdown,
 }
 
 .nav-function-div {
-    padding:8px 0;
+    padding:14px 0;
     flex: 1 2 300px;
     justify-content: right;
     display: flex;
     flex-direction: row;
-    gap: 16px
+    gap: 16px;
+    transition: 0.3s all ease-in-out;
+}
+
+.nav-bar.nav-scroll .nav-function-div {
+    gap: 12px;
+    padding: 0;
 }
 
 .nav-function-div a{
@@ -171,6 +242,11 @@ a:has(.nav-option):hover + .nav-option-dropdown,
     cursor: pointer;
     padding: 0 6px;
 }
+
+.nav-bar.nav-scroll .nav-icon {
+    font-size: 20px;
+}
+
 .nav-icon:hover {
     color: #3748a3;
 }
@@ -181,6 +257,13 @@ a:has(.nav-option):hover + .nav-option-dropdown,
     border-radius: 2px;
     font-size: 14px;
     cursor: pointer;
+    transition: 0.3s all ease-in-out;
+}
+
+.nav-bar.nav-scroll .nav-btn {
+    padding: 6px 20px;
+    font-size: 12px;
+    font-weight: 500;
 }
 
 .nav-login-btn {
@@ -223,5 +306,5 @@ a:has(.nav-option):hover + .nav-option-dropdown,
 .section div{
     margin-left: auto;
     margin-right: auto;
-    max-width: 1064px;
+    max-width: 1240px;
 }

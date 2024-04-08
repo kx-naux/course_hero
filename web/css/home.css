@@ -1,4 +1,122 @@
 /*image carousel*/
+.slideshow-section {
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.slideshow-section::after {
+    clear: both;
+    content: "";
+    display: table;
+}
+
+.slideshow-frame {
+    display: block;
+    position: relative;
+}
+
+.pic-show {
+    display: none;
+    text-align: center;
+}
+
+#first_slide {
+    display: block;
+}
+
+
+.img-slide {
+    width: 100%;
+}
+
+.prev,
+.next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -1.289vw;
+    padding: 0.837vw 1vw;
+    color: rgb(250, 250, 250);
+    text-shadow: 0.039vw 0.039vw 0.8vw rgba(23, 79, 143, 0.8);
+    font-weight: bold;
+    font-size: 1.784vw;
+    transition: 0.6s ease;
+    border-radius: 0 0.176vw 0.176vw 0;
+    user-select: none;
+}
+
+.prev {
+    left: 0;
+}
+
+.next {
+    right: 0;
+    border-radius: 0.176vw 0 0 0.176vw;
+}
+
+.prev:hover,
+.next:hover {
+    background-color: rgba(128, 128, 128, 0.7);
+    text-shadow: 0.039vw 0.039vw 0.8vw rgba(255, 255, 255, 0.5);
+}
+
+.idx-show {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    padding: 5px 10px;
+    margin: 0 auto;
+    color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 1.172vw;
+    font-size: 0.720vw;
+    font-weight: bold;
+}
+
+#dot-below {    
+    width: 100%;
+    user-select: none;
+    margin: auto;
+    margin-top: -30px;   
+    z-index: 5;
+    display: flex;
+    justify-content: center;
+}
+
+.dot {
+    cursor: pointer;
+    height: 0.779vw;
+    width: 0.779vw;
+    margin: 0 0.117vw;
+    background-color: rgb(175, 192, 218);
+    box-shadow: 0.039vw 0.039vw 0.8vw rgba(50, 50, 50, 0.52);
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.active-dot {
+    background-color: rgb(94, 131, 186);
+    width: 1.6vw;
+    border-radius: 0.85vw;
+    transition: 0.2s ease-in;
+}
+
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@keyframes fade {
+    from {
+        opacity: .65
+    }
+
+    to {
+        opacity: 1
+    }
+}
 
 /*Unit Collaboration*/
 .unit-collaboration-section {
@@ -62,12 +180,12 @@
 
 .logos:before {
     left: 0;
-    background: linear-gradient(to left, rgba(255, 255, 255, 0),#f4f4f4);
+    background: linear-gradient(to left, rgba(255, 255, 255, 0),#f6f6f6);
 }
 
 .logos:after {
     right: 0;
-    background: linear-gradient(to right, rgba(255, 255, 255, 0), #f4f4f4);
+    background: linear-gradient(to right, rgba(255, 255, 255, 0), #f6f6f6);
 }
 
 .logos:hover > .logos-slide {
@@ -77,13 +195,13 @@
 .logos-slide-row-1 {
     display: inline-block;
     max-width: none !important;
-    animation: 40s slide1 infinite linear;
+    animation: 55s slide1 infinite linear;
 }
 
 .logos-slide-row-2 {
     display: inline-block;
     max-width: none !important;
-    animation: 40s slide2 infinite linear;
+    animation: 45s slide2 infinite linear;
 }
 
 .logos-slide img {
