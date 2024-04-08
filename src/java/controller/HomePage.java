@@ -1,13 +1,17 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package controller;
 
-/**
- *
- * @author PC
- */
-public class HomePage {
-    
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.*;
+import java.io.IOException;
+
+@WebServlet(name = "Home Page", urlPatterns = {"/home"})
+public class HomePage extends HttpServlet {
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {  
+        // Forward the request to home.jsp
+        request.getRequestDispatcher("/WEB-INF/Client/Home.jsp").forward(request, response);
+    }
 }

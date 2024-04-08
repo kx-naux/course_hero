@@ -5,28 +5,200 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Course Hero | Home</title>
+        <link rel="icon" type="image/ico" href="./ico/Logo.ico">
+        <link type="text/css" href="./css/style.css" rel="stylesheet" >
+        <link type="text/css" href="./css/home.css" rel="stylesheet" >
+        <link type="text/css" href="./css/components/section_product.css" rel="stylesheet" >
+        <link type="text/css" href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
+        <script src="./js/nav.js"></script>        
     </head>
     <body>
         <!-- Navigation Bar -->
-        <nav>
+        <nav class="nav-bar">
+            <!-- Logo -->
             <div class="nav-logo-div">
-                
+                <a href="http://localhost:8080/CourseHero/home"><img class="nav-logo" src="./img/Logo.png" alt="Course Hero" /></a>
             </div>
+            <!--Nav options-->
             <div class="nav-option-div">
-
+                <ul>
+                    <li>
+                        <a href="http://localhost:8080/CourseHero/home">
+                            <div class="nav-option selected">
+                                <p>Home</p>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://localhost:8080/CourseHero/about-us">
+                            <div class="nav-option">
+                                <p>About Us <i class="ri-arrow-down-s-line"></i></p>
+                            </div>
+                        </a>
+                        <div class="nav-option-dropdown">
+                            <ul>
+                                <li><a href="#">Our Team</a></li>
+                                <li><a href="#">Our Office</a></li>
+                                <li><a href="#">Contact Us</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="http://localhost:8080/CourseHero/products">
+                            <div class="nav-option">
+                                <p>Courses</p>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://localhost:8080/CourseHero/learning">
+                            <div class="nav-option">
+                                <p>Learning</p>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
             </div>
+            <!--Nav button-->
             <div class="nav-function-div">
+                <!--Search course-->
+                <a href="http://localhost:8080/CourseHero/search">
+                    <p class="nav-icon"><i class="ri-search-line"></i></p>
+                </a>
+                <div>
+
+                </div>
+                <!--JSP conditional rendering-->
                 <c:choose>
                     <c:when test="${not empty sessionScope.username}">
                         <!-- Logged in -->
-                        <p>Welcome, ${sessionScope.username}!</p>
+                        <a href="http://localhost:8080/CourseHero/wishlist">
+                            <p class="nav-icon"><i class="ri-heart-line"></i></P>
+                        </a>
+                        <a href="http://localhost:8080/CourseHero/cart">
+                            <p class="nav-icon"><i class="ri-shopping-cart-line"></i></P>
+                        </a>
+                        <p hidden>${sessionScope.username}!</p>
                     </c:when>
                     <c:otherwise>
                         <!-- Not Logged in -->
+                        <a href="http://localhost:8080/CourseHero/login">
+                            <input class="nav-btn nav-login-btn" type="button" value="Log In" />
+                        </a>
+                        <a href="http://localhost:8080/CourseHero/sign-up">
+                            <input class="nav-btn nav-sign-up-btn" type="button" value="Sign Up" />
+                        </a>
                     </c:otherwise>
                 </c:choose>
             </div>
         </nav>
 
-    </body>
+        <!-- Image Carousel -->
+        <section class="section image-carousel-section">
+
+        </section>
+
+        <!-- Hottest Product -->
+        <section class="section hottest-course-section">
+            <div class="course-section-div">
+                <div class="course-section-title">
+                    <h1>Hottest COurses in 2024</h1>
+                    <a href="#"><p>View More</p></a>
+                </div>
+                <div class="courses">
+                    <div class="course-product-card">
+                        
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Unit Collaboration -->
+        <section class="section unit-collaboration-section">
+            <div class="unit-collborate-div">
+                <p>We collaborate with <span>325+ leading companies and universities</span></p>
+                <div class="logos logos-row-1">
+                    <div class="logos-slide logos-slide-row-1">
+                        <img src="./img/home/collaborate/companies/amazon.svg" alt="Amazon" />
+                        <img src="./img/home/collaborate/companies/apple.svg" alt="Apple" />
+                        <img src="./img/home/collaborate/companies/cisco.svg" alt="Cisco" />
+                        <img src="./img/home/collaborate/companies/google.svg" alt="Google" />
+                        <img src="./img/home/collaborate/companies/ibm.svg" alt="IBM" />
+                        <img src="./img/home/collaborate/companies/meta.svg" alt="Meta" />
+                        <img src="./img/home/collaborate/companies/microsoft.svg" alt="Microsoft" />
+                        <img src="./img/home/collaborate/companies/tiktok.svg" alt="Tik Tok" />
+                        <!--copy of logos-->
+                        <img src="./img/home/collaborate/companies/amazon.svg" alt="Amazon" />
+                        <img src="./img/home/collaborate/companies/apple.svg" alt="Apple" />
+                        <img src="./img/home/collaborate/companies/cisco.svg" alt="Cisco" />
+                        <img src="./img/home/collaborate/companies/google.svg" alt="Google" />
+                        <img src="./img/home/collaborate/companies/ibm.svg" alt="IBM" />
+                        <img src="./img/home/collaborate/companies/meta.svg" alt="Meta" />
+                        <img src="./img/home/collaborate/companies/microsoft.svg" alt="Microsoft" />
+                        <img src="./img/home/collaborate/companies/tiktok.svg" alt="Tik Tok" />
+                    </div>
+                </div>
+                <div class="logos logos-row-2">
+                    <div class="logos-slide logos-slide-row-2">
+                        <img src="./img/home/collaborate/universities/Cambridge.svg" alt="University of Cambridge" />
+                        <img src="./img/home/collaborate/universities/Harvard.svg" alt="Harvard University" />
+                        <img src="./img/home/collaborate/universities/MIT.svg" alt="Massachusetts Institute of Technology" />
+                        <img src="./img/home/collaborate/universities/Oxford.svg" alt="University of Oxford" />
+                        <img src="./img/home/collaborate/universities/Peking.svg" alt="Peking University" />
+                        <img src="./img/home/collaborate/universities/Princeton.svg" alt="Princeton University" />
+                        <img src="./img/home/collaborate/universities/tarumt.png" alt="TARUMT" />
+                        <img src="./img/home/collaborate/universities/Stanford.svg" alt="Stanford University" />
+                        <!--copy of logos-->
+                        <img src="./img/home/collaborate/universities/Cambridge.svg" alt="University of Cambridge" />
+                        <img src="./img/home/collaborate/universities/Harvard.svg" alt="Harvard University" />
+                        <img src="./img/home/collaborate/universities/MIT.svg" alt="Massachusetts Institute of Technology" />
+                        <img src="./img/home/collaborate/universities/Oxford.svg" alt="University of Oxford" />
+                        <img src="./img/home/collaborate/universities/Peking.svg" alt="Peking University" />
+                        <img src="./img/home/collaborate/universities/Princeton.svg" alt="Princeton University" />
+                        <img src="./img/home/collaborate/universities/tarumt.png" alt="TARUMT" />
+                        <img src="./img/home/collaborate/universities/Stanford.svg" alt="Stanford University" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Information section -->
+    <section class="section home-information-section">
+        <div class="home-info-div">
+            <div class="home-info-div-col">
+                <p class="info-icon"><i class="ri-vidicon-fill"></i></i></p>
+                <p class="info-desc">Learn in-demand skill with over 210,000 video courses</p>
+            </div>
+            <div class="home-info-div-col">
+                <p class="info-icon"><i class="ri-bard-fill"></i></p>
+                <p class="info-desc">Choose course taught by real-world experts</p>
+            </div>
+            <div class="home-info-div-col">
+                <p class="info-icon"><i class="ri-pass-valid-fill"></i></p>
+                <p class="info-desc">Learn at your own pace, with life time access</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feedback from customer -->
+    <section class="section feedback-section">
+
+    </section>
+
+    <!-- Category section -->
+    <section class="section category-section">
+
+    </section>
+
+    <!-- FAQ section -->
+    <section class="section faq-section">
+
+    </section>
+
+    <!-- Footer section -->
+    <section class="section footer-section">
+
+    </section>
+</body>
 </html>
