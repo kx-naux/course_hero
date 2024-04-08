@@ -60,7 +60,7 @@
 .prev:hover,
 .next:hover {
     background-color: var(--color-black-transparent-03);
-    text-shadow: 1px 1px 13px var(--color-black-transparent-05);
+    text-shadow: 1px 1px 13px var(--color-white-transparent-05);
 }
 
 .idx-show {
@@ -88,20 +88,20 @@
 
 .dot {
     cursor: pointer;
-    height: 0.779vw;
-    width: 0.779vw;
-    margin: 0 0.117vw;
-    background-color: rgb(175, 192, 218);
-    box-shadow: 0.039vw 0.039vw 0.8vw rgba(50, 50, 50, 0.52);
+    height: 8px;
+    width: 8px;
+    margin: 0 2px;
+    background-color: var(--color-white-transparent-05);
+    box-shadow: 1px 1px 8px var(--color-grey-transparent-05);
     border-radius: 50%;
     display: inline-block;
     transition: background-color 0.6s ease;
 }
 
 .active-dot {
-    background-color: rgb(94, 131, 186);
-    width: 1.6vw;
-    border-radius: 0.85vw;
+    background-color: var(--color-light-grey-2);
+    width: 16px;
+    border-radius: 14px;
     transition: 0.2s ease-in;
 }
 
@@ -123,7 +123,7 @@
 /*Unit Collaboration*/
 .unit-collaboration-section {
     padding: 24px 20px;
-    background-color: #f6f6f6;
+    background-color: var(--color-light-grey-1);
 }
 
 .unit-collborate-div {
@@ -182,12 +182,12 @@
 
 .logos:before {
     left: 0;
-    background: linear-gradient(to left, rgba(255, 255, 255, 0),#f6f6f6);
+    background: linear-gradient(to left, rgba(255, 255, 255, 0),var(--color-light-grey-1));
 }
 
 .logos:after {
     right: 0;
-    background: linear-gradient(to right, rgba(255, 255, 255, 0), #f6f6f6);
+    background: linear-gradient(to right, rgba(255, 255, 255, 0), var(--color-light-grey-1));
 }
 
 .logos:hover > .logos-slide {
@@ -214,7 +214,7 @@
 /*Infomation section*/
 .home-information-section {
     padding: 24px 20px;
-    border: 1px solid #a0a0a0;
+    border: 1px solid var(--color-text-light-1);
     border-left: none;
     border-right: none;
 }
@@ -234,7 +234,7 @@
     flex: 1 1 300px;
     margin: 0;
     padding: 16px 20px;
-    background-color: #ebf8ff;
+    background-color: var( --color-sky-blue);
     border-radius: 8px;
     align-items: center;
     gap: 18px;

@@ -8,11 +8,12 @@
     --color-text-light-3: #373737;
 
     --color-white: #fff;
-    --color-black-transparent-05: rgba(255,255,255,0.5);
+    --color-white-transparent-05: rgba(255,255,255,0.5);
     --color-light-grey-1: #f5f5f5;
     --color-light-grey-2: #e8e8e8;
     --color-light-grey-3: #c4c4c4;
     --color-grey: #bababa;
+    --color-grey-transparent-05: rgba(50,50,50,0.5);
     --color-light-black: #111;
     --color-black: #000;
     --color-black-transparent-02: rgba(0,0,0,0.2);
