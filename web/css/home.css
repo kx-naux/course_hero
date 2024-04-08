@@ -1,3 +1,5 @@
+@import url('./root.css');
+
 /*image carousel*/
 .slideshow-section {
     justify-content: center;
@@ -35,14 +37,14 @@
     position: absolute;
     top: 50%;
     width: auto;
-    margin-top: -1.289vw;
-    padding: 0.837vw 1vw;
-    color: rgb(250, 250, 250);
-    text-shadow: 0.039vw 0.039vw 0.8vw rgba(23, 79, 143, 0.8);
+    margin-top: -22px;
+    padding: 6px 16px;
+    color: var(--color-white);
+    text-shadow: 1px 1px 14px var(--color-text-light-1);
     font-weight: bold;
-    font-size: 1.784vw;
-    transition: 0.6s ease;
-    border-radius: 0 0.176vw 0.176vw 0;
+    font-size: 31px;
+    transition: 0.3s ease;
+    border-radius: 0 3px 3px 0;
     user-select: none;
 }
 
@@ -52,13 +54,13 @@
 
 .next {
     right: 0;
-    border-radius: 0.176vw 0 0 0.176vw;
+    border-radius: 3px 0 0 3px;
 }
 
 .prev:hover,
 .next:hover {
-    background-color: rgba(128, 128, 128, 0.7);
-    text-shadow: 0.039vw 0.039vw 0.8vw rgba(255, 255, 255, 0.5);
+    background-color: var(--color-black-transparent-03);
+    text-shadow: 1px 1px 13px var(--color-black-transparent-05);
 }
 
 .idx-show {
@@ -67,18 +69,18 @@
     left: 10px;
     padding: 5px 10px;
     margin: 0 auto;
-    color: rgba(255, 255, 255, 0.9);
-    background-color: rgba(0, 0, 0, 0.2);
-    border-radius: 1.172vw;
-    font-size: 0.720vw;
-    font-weight: bold;
+    color: var(--color-white);
+    background-color: var(--color-black-transparent-02);
+    border-radius: 20px;
+    font-size: 10px;
+    user-select: none;
 }
 
-#dot-below {    
+#dot-below {
     width: 100%;
     user-select: none;
     margin: auto;
-    margin-top: -30px;   
+    margin-top: -30px;
     z-index: 5;
     display: flex;
     justify-content: center;

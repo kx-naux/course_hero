@@ -1,35 +1,7 @@
 /* Import google font */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-/* ------------ROOT VARIABLES----------------------- */
-:root{
-    --color-primary: #192561;
-    --color-secondary: #3748a3;
-
-    --color-text-light-1: #a0a0a0;
-    --color-text-light-2: #545454;
-    --color-text-light-3: #373737;
-
-    --color-white: #fff;
-    --color-light-grey-1: #f5f5f5;
-    --color-light-grey-2: #e8e8e8;
-    --color-light-grey-3: #c4c4c4;
-    --color-grey: #bababa;
-    --color-light-black: #111;
-    --color-black: #000;
-
-    --color-sky-blue: #ebf8ff;
-    --color-blue-1: #1f3080;
-    --color-blue-2: #273b91;
-
-    --color-error: #ff7782;
-    --color-success: #41f1b6;
-    --color-warning: #ffbb55;
-
-    --card-border-radius: 8px;
-
-    --box-shadow-1: 0 2px 4px rgba(0,0,0,.08), 0 4px 12px rgba(0,0,0,.08);
-}
+@import url('./root.css');
 
 /* General Style */
 * {

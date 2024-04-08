@@ -1,0 +1,35 @@
+/* Root Variable */
+:root{
+    --color-primary: #192561;
+    --color-secondary: #3748a3;
+
+    --color-text-light-1: #a0a0a0;
+    --color-text-light-2: #545454;
+    --color-text-light-3: #373737;
+
+    --color-white: #fff;
+    --color-black-transparent-05: rgba(255,255,255,0.5);
+    --color-light-grey-1: #f5f5f5;
+    --color-light-grey-2: #e8e8e8;
+    --color-light-grey-3: #c4c4c4;
+    --color-grey: #bababa;
+    --color-light-black: #111;
+    --color-black: #000;
+    --color-black-transparent-02: rgba(0,0,0,0.2);
+    --color-black-transparent-03: rgba(0,0,0,0.3);
+    --color-black-transparent-04: rgba(0,0,0,0.4);
+    --color-black-transparent-05: rgba(0,0,0,0.5);
+
+    --color-sky-blue: #ebf8ff;
+    --color-blue-1: #1f3080;
+    --color-blue-2: #273b91;
+    --color-blue-3: #4059c2;
+
+    --color-error: #ff7782;
+    --color-success: #41f1b6;
+    --color-warning: #ffbb55;
+
+    --box-shadow-1: 0 2px 4px rgba(0,0,0,.08), 0 4px 12px rgba(0,0,0,.08);
+    
+    --card-border-radius: 8px;
+}
