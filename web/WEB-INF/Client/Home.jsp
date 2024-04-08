@@ -10,7 +10,7 @@
         <!-- Navigation Bar -->
         <nav>
             <div class="nav-logo-div">
-
+                
             </div>
             <div class="nav-option-div">
 
