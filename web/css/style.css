@@ -166,7 +166,7 @@ a:has(.nav-option):hover + .nav-option-dropdown,
 .nav-icon {
     align-self: center;
     font-size: 24px;
-    font-weight: 700;
+    font-weight: 400;
     color: #8c8c8c;
     cursor: pointer;
     padding: 0 6px;

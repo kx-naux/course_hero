@@ -173,22 +173,35 @@
                         <img src="./img/home/collaborate/companies/meta.svg" alt="Meta" />
                         <img src="./img/home/collaborate/companies/microsoft.svg" alt="Microsoft" />
                         <img src="./img/home/collaborate/companies/tiktok.svg" alt="Tik Tok" />
+                        <img src="./img/home/collaborate/companies/mooiko.png" alt="Mooiko" />
+                        <img src="./img/home/collaborate/companies/mysoftware.png" alt="MySoftware" />
+                        <img src="./img/home/collaborate/companies/penta.png" alt="Pentamaster" />       
+                        <img src="./img/home/collaborate/companies/sip.png" alt="SIP Technology" />
+                        <img src="./img/home/collaborate/companies/riot.svg" alt="Riot Games" />
                     </div>
                 </div>
                 <div class="logos logos-row-2">
                     <div class="logos-slide logos-slide-row-2">
                         <img src="./img/home/collaborate/universities/Cambridge.svg" alt="University of Cambridge" />
-                        <img src="./img/home/collaborate/universities/Harvard.svg" alt="Harvard University" />
                         <img src="./img/home/collaborate/universities/MIT.svg" alt="Massachusetts Institute of Technology" />
                         <img src="./img/home/collaborate/universities/Oxford.svg" alt="University of Oxford" />
                         <img src="./img/home/collaborate/universities/Peking.svg" alt="Peking University" />
                         <img src="./img/home/collaborate/universities/Princeton.svg" alt="Princeton University" />
                         <img src="./img/home/collaborate/universities/tarumt.png" alt="TARUMT" />
                         <img src="./img/home/collaborate/universities/Stanford.svg" alt="Stanford University" />
+                        <img src="./img/home/collaborate/universities/Tsinghua.png" alt="Tsing Hua University" />
+                        <img src="./img/home/collaborate/universities/harvard.png" alt="Harvard University" />
                     </div>
                 </div>
             </div>
         </div>
+        <script>
+            var copy1 = document.querySelector(".logos-slide-row-1").cloneNode(true);
+            document.querySelector(".logos-row-1").appendChild(copy1);
+
+            var copy2 = document.querySelector(".logos-slide-row-2").cloneNode(true);
+            document.querySelector(".logos-row-2").appendChild(copy2);
+        </script>
     </section>
 
     <!-- Information section -->

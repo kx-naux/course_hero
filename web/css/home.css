@@ -3,7 +3,7 @@
 /*Unit Collaboration*/
 .unit-collaboration-section {
     padding: 24px 20px;
-    background-color: #f4f4f4;
+    background-color: #f6f6f6;
 }
 
 .unit-collborate-div {
@@ -76,11 +76,13 @@
 
 .logos-slide-row-1 {
     display: inline-block;
+    max-width: none !important;
     animation: 40s slide1 infinite linear;
 }
 
 .logos-slide-row-2 {
     display: inline-block;
+    max-width: none !important;
     animation: 40s slide2 infinite linear;
 }
 
