@@ -99,14 +99,35 @@
         </section>
 
         <!-- Hottest Product -->
-
+        <section class="section hottest-course-section">
+            <div class="course-section-div">
+                <div class="course-section-title">
+                    <h1>Hottest COurses in 2024</h1>
+                    <a href="#"><p>View More</p></a>
+                </div>
+                <div class="courses">
+                    <div class="course-product-card">
+                        
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <!-- Unit Collaboration -->
         <section class="section unit-collaboration-section">
             <div class="unit-collborate-div">
-                <p>We collaborate with <span>325+ leading universities and companies</span></p>
+                <p>We collaborate with <span>325+ leading companies and universities</span></p>
                 <div class="logos logos-row-1">
                     <div class="logos-slide logos-slide-row-1">
+                        <img src="./img/home/collaborate/companies/amazon.svg" alt="Amazon" />
+                        <img src="./img/home/collaborate/companies/apple.svg" alt="Apple" />
+                        <img src="./img/home/collaborate/companies/cisco.svg" alt="Cisco" />
+                        <img src="./img/home/collaborate/companies/google.svg" alt="Google" />
+                        <img src="./img/home/collaborate/companies/ibm.svg" alt="IBM" />
+                        <img src="./img/home/collaborate/companies/meta.svg" alt="Meta" />
+                        <img src="./img/home/collaborate/companies/microsoft.svg" alt="Microsoft" />
+                        <img src="./img/home/collaborate/companies/tiktok.svg" alt="Tik Tok" />
+                        <!--copy of logos-->
                         <img src="./img/home/collaborate/companies/amazon.svg" alt="Amazon" />
                         <img src="./img/home/collaborate/companies/apple.svg" alt="Apple" />
                         <img src="./img/home/collaborate/companies/cisco.svg" alt="Cisco" />
@@ -125,8 +146,17 @@
                         <img src="./img/home/collaborate/universities/Oxford.svg" alt="University of Oxford" />
                         <img src="./img/home/collaborate/universities/Peking.svg" alt="Peking University" />
                         <img src="./img/home/collaborate/universities/Princeton.svg" alt="Princeton University" />
-                        <img src="./img/home/collaborate/universities/Stanford.svg" alt="Stanford University" />
                         <img src="./img/home/collaborate/universities/tarumt.png" alt="TARUMT" />
+                        <img src="./img/home/collaborate/universities/Stanford.svg" alt="Stanford University" />
+                        <!--copy of logos-->
+                        <img src="./img/home/collaborate/universities/Cambridge.svg" alt="University of Cambridge" />
+                        <img src="./img/home/collaborate/universities/Harvard.svg" alt="Harvard University" />
+                        <img src="./img/home/collaborate/universities/MIT.svg" alt="Massachusetts Institute of Technology" />
+                        <img src="./img/home/collaborate/universities/Oxford.svg" alt="University of Oxford" />
+                        <img src="./img/home/collaborate/universities/Peking.svg" alt="Peking University" />
+                        <img src="./img/home/collaborate/universities/Princeton.svg" alt="Princeton University" />
+                        <img src="./img/home/collaborate/universities/tarumt.png" alt="TARUMT" />
+                        <img src="./img/home/collaborate/universities/Stanford.svg" alt="Stanford University" />
                     </div>
                 </div>
             </div>
