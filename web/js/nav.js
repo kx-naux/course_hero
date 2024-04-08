@@ -1,4 +1,4 @@
-//Navbar onscroll 
+// Navbar onscroll and to top button
 document.addEventListener("DOMContentLoaded", function () {
     window.addEventListener('scroll', function () {
         if (window.scrollY > 10) {
@@ -8,3 +8,4 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
+
