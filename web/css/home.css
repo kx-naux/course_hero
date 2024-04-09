@@ -41,9 +41,9 @@
     padding: 6px 16px;
     color: var(--color-white);
     text-shadow: 1px 1px 14px var(--color-text-light-1);
-    font-weight: bold;
+    font-weight: 400;
     font-size: 31px;
-    transition: 0.3s ease;
+    transition: 0.2s ease;
     border-radius: 0 3px 3px 0;
     user-select: none;
 }
@@ -61,6 +61,11 @@
 .next:hover {
     background-color: var(--color-black-transparent-03);
     text-shadow: 1px 1px 13px var(--color-white-transparent-05);
+}
+
+.prev:active,
+.next:active {
+    background-color: var(--color-black-transparent-05);
 }
 
 .idx-show {
@@ -92,7 +97,7 @@
     width: 8px;
     margin: 0 2px;
     background-color: var(--color-white-transparent-05);
-    box-shadow: 1px 1px 8px var(--color-grey-transparent-05);
+    box-shadow: 1px 1px 8px var(--color-grey-transparent-03);
     border-radius: 50%;
     display: inline-block;
     transition: background-color 0.6s ease;

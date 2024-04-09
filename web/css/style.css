@@ -12,6 +12,7 @@
     text-decoration: none;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
 }
 
 body {
@@ -21,6 +22,48 @@ body {
     display: flex;
     background-color: var(--color-white);
     flex-direction: column;
+}
+
+/*Scroll Bar*/
+body::-webkit-scrollbar {
+    width: 12px;               /* width of the entire scrollbar */
+}
+
+body::-webkit-scrollbar-track {
+    background: var(--scroll-bar-track-color);
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: var(--scroll-bar-color);
+    border-radius: 20px;
+    border: 3px solid var(--scroll-bar-track-color);
+}
+
+body::-webkit-scrollbar-thumb:hover{
+    background-color: var(--scroll-bar-hover-color);
+}
+
+/*To top button*/
+#toTopBtn {
+    display: none;
+    position: fixed;
+    bottom: 16px;
+    right: 16px;
+    z-index: 109;
+    border: none;
+    outline: none;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    cursor: pointer;
+    padding: 3px 9px;
+    border-radius: 50%;
+    font-size: 26px;
+    box-shadow: var(--box-shadow-1);
+    transition: 0.3s all ease-in-out;
+}
+
+#toTopBtn:hover {
+    background-color: var(--color-secondary);
 }
 
 /* Navigation Bar */

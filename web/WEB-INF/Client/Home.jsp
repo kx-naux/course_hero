@@ -13,6 +13,9 @@
         <script src="./js/nav.js"></script>        
     </head>
     <body>
+        <!--To top button-->
+        <button onclick="toTopFunc()" id="toTopBtn" title="Go to top"><i class="ri-arrow-up-s-line"></i></button>
+        
         <!-- Navigation Bar -->
         <nav class="nav-bar">
             <!-- Logo -->
