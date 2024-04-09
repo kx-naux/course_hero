@@ -1,1 +1,31 @@
+@import url('./root.css');
+
+.course-section-div {
+    padding: 14px 10px;
+}
+
+/*Section Title*/
+.course-section-title {
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+}
+
+.course-section-title h1 {
+    color: var(--color-blue-1);
+    font-size: var(--font-size-l);
+    font-weight: 600;
+}
+
+.course-section-title a {
+    color: var(--color-text-light-1);
+    font-size: var(--font-size-s);
+    transition: 0.2s all ease;  
+}
+
+.course-section-title a:hover {
+     color: var(--color-blue-2);
+     text-decoration: underline;
+}
+
 /*Product Card*/

@@ -15,7 +15,7 @@
     <body>
         <!--To top button-->
         <button onclick="toTopFunc()" id="toTopBtn" title="Go to top"><i class="ri-arrow-up-s-line"></i></button>
-        
+
         <!-- Navigation Bar -->
         <nav class="nav-bar">
             <!-- Logo -->
@@ -135,7 +135,7 @@
         <!-- Hottest Product -->
         <section class="section hottest-course-section">
             <div class="course-section-div">
-                <div class="course-section-title">
+                <div class="course-section-title flex-row">
                     <h1>Hottest Courses in 2024</h1>
                     <a href="#"><p>View More</p></a>
                 </div>
@@ -164,8 +164,9 @@
                                     <div class="course-tag-field flex-row">
                                         <p class="course-tag tag-orange">Hot Sell</p>
                                     </div>
-                                    <div class="course-price-field">
-                                        <p>RM <span class="course-price">449</span></p>
+                                    <div class="course-price-field flex-row">
+                                        <p class="course-price">RM <span>449</span></p>                                      
+                                        <p class="course-noraml-price">RM <span>449</span></p>
                                     </div>
                                 </div>
                             </div>

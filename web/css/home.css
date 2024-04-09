@@ -3,7 +3,7 @@
 /*image carousel*/
 .slideshow-section {
     justify-content: center;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
 }
 
 .slideshow-section::after {
@@ -69,6 +69,7 @@
 }
 
 .idx-show {
+    display: none;
     position: absolute;
     top: 10px;
     left: 10px;

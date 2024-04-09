@@ -192,7 +192,7 @@ body::-webkit-scrollbar-thumb:hover{
     width: 150px;
     display: none;
     position: absolute;
-    top: 62px;
+    top: 70px;
     background-color:  var(--color-white);
     color: var(--color-text-light-1);
     box-shadow: var(--box-shadow-1);
@@ -200,7 +200,7 @@ body::-webkit-scrollbar-thumb:hover{
 }
 
 .nav-bar.nav-scroll .nav-option-dropdown {
-    top: 42px;
+    top: 52px;
 }
 
 .nav-option-dropdown a {
@@ -326,5 +326,3 @@ a:has(.nav-option):hover + .nav-option-dropdown,
     margin-right: auto;
     max-width: 1240px;
 }
-
-/*To top button*/
