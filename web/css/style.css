@@ -46,9 +46,8 @@ body::-webkit-scrollbar-thumb:hover{
 
 /*To top button*/
 #toTopBtn {
-    display: none;
     position: fixed;
-    bottom: 16px;
+    bottom: -50px;
     right: 16px;
     z-index: 109;
     border: none;
@@ -60,7 +59,11 @@ body::-webkit-scrollbar-thumb:hover{
     border-radius: 50%;
     font-size: 26px;
     box-shadow: var(--box-shadow-1);
-    transition: 0.3s all ease-in-out;
+    transition: 0.3s all ease-out;
+}
+
+#toTopBtn.active {
+    bottom: 16px;
 }
 
 #toTopBtn:hover {

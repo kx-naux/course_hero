@@ -1,7 +1,7 @@
 // Navbar onscroll and to top button
 document.addEventListener("DOMContentLoaded", function () {
     window.addEventListener('scroll', function () {
-        if (window.scrollY > 10) {
+        if (window.scrollY > 15) {
             document.querySelector('.nav-bar').classList.add('nav-scroll');
         } else {
             document.querySelector('.nav-bar').classList.remove('nav-scroll');
@@ -10,10 +10,10 @@ document.addEventListener("DOMContentLoaded", function () {
         // Get the button:
         let topTopBtn = document.getElementById("toTopBtn");
 
-        if (window.scrollY > 20) {
-            topTopBtn.style.display = "block";
+        if (window.scrollY > 15) {
+            topTopBtn.classList.add('active');
         } else {
-            topTopBtn.style.display = "none";
+            topTopBtn.classList.remove('active');
         }
     });
 });

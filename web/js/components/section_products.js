@@ -2,10 +2,10 @@
 var courses = {
     'courses': [
         {
-            "course_id": "",
+            "course_id": "2024563234234",
             "course_title": "The Ultimate Excel Programming Course",
             "course_img": "./img/course/beginner_excel.jpg",
-            "author": "Woo Yu Beng",
+            "author": ["Woo Yu Beng","Snijders Wang Wang","Low Kah Xuan"],
             "course_rating": 3.5,
             "course_number_rate": 2340,
             "course_tag": ["Hot Sell"],
