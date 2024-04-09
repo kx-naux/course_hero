@@ -139,26 +139,245 @@
                     <h1>Hottest Courses in 2024</h1>
                     <a href="#"><p>View More</p></a>
                 </div>
-                <div class="courses">
+                <div class="courses flex-row">
 
-                    <div class="course-product">
+                    <div class="course-product" courseID="">
                         <a>
-                            <div class="course-product-card" courseID="">
+                            <div class="course-product-card">
                                 <div class="product-card-top">
                                     <img src="./img/course/beginner_excel.jpg" alt="">
                                 </div>
                                 <div class="product-card-bottom flex-col">
                                     <h1 class="course-title">The Ultimate Excel Programming Course</h1>
-                                    <p class="author">Woo Yu Beng</p>
+                                    <p class="course-author">Woo Yu Beng</p>
                                     <div class="course-review flex-row">
                                         <p class="rating-digit">3.5</p>
-                                        <div class="rating-star flex-row">
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-half-fill"></i>
-                                            <i class="ri-star-line"></i>
-                                        </div>
+                                        <i class="ri-star-fill"></i>
+                                        <p class="rating-number-field">(<span class="raing-number">2303</span>)</p>
+                                    </div>
+                                    <div class="course-tag-field flex-row">
+                                        <p class="course-tag tag-orange">Hot Sell</p>
+                                    </div>
+                                    <div class="course-price-field flex-row">
+                                        <p class="course-price">RM <span>449</span></p>                                      
+                                        <p class="course-noraml-price">RM <span>449</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="course-product-desc">
+                            <h1 class="course-title">The Ultimate Excel Programming Course</h1>
+                            <p class="course-category">Microsoft Excel</p>
+                            <p class="course-update">Updated on <span class="course-update-date">8/4/2024</span></p>
+                            <div class="course-label flex-row">
+                                <p>9.5 Hours</p>
+                                <p>All Level</p>
+                            </div>
+                            <p class="course-desc"></p>
+                            <ul class="course-features">
+                                <li><p>Go from complete beginner to proficient Excel user within 10 hours of content.</p></li>
+                                <li><p>Learn to create workbooks and spreadsheets everyone will be jealous of.</p></li>
+                                <li><p>Acquire critical Excel knowledge within the first 2 hours of tutorials.</p></li>
+                            </ul>
+                            <div class="flex-row">
+                                <input class="cart-btn" type="button" value="Add to Cart" onclick="" />
+                                <p class="wish-btn"><i class="ri-heart-line"></i></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="course-product" courseID="">
+                        <a>
+                            <div class="course-product-card">
+                                <div class="product-card-top">
+                                    <img src="./img/course/beginner_excel.jpg" alt="">
+                                </div>
+                                <div class="product-card-bottom flex-col">
+                                    <h1 class="course-title">The Ultimate Excel Programming Course</h1>
+                                    <p class="course-author">Woo Yu Beng</p>
+                                    <div class="course-review flex-row">
+                                        <p class="rating-digit">3.5</p>
+                                        <i class="ri-star-fill"></i>
+                                        <p class="rating-number-field">(<span class="raing-number">2303</span>)</p>
+                                    </div>
+                                    <div class="course-tag-field flex-row">
+                                        <p class="course-tag tag-orange">Hot Sell</p>
+                                    </div>
+                                    <div class="course-price-field flex-row">
+                                        <p class="course-price">RM <span>449</span></p>                                      
+                                        <p class="course-noraml-price">RM <span>449</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="course-product-desc">
+                            <h1 class="course-title">The Ultimate Excel Programming Course</h1>
+                            <p class="course-category">Microsoft Excel</p>
+                            <p class="course-update">Updated on <span class="course-update-date">8/4/2024</span></p>
+                            <div class="course-label flex-row">
+                                <p>9.5 Hours</p>
+                                <p>All Level</p>
+                            </div>
+                            <p class="course-desc"></p>
+                            <ul class="course-features">
+                                <li><p>Go from complete beginner to proficient Excel user within 10 hours of content.</p></li>
+                                <li><p>Learn to create workbooks and spreadsheets everyone will be jealous of.</p></li>
+                                <li><p>Acquire critical Excel knowledge within the first 2 hours of tutorials.</p></li>
+                            </ul>
+                            <div class="flex-row">
+                                <input class="cart-btn" type="button" value="Add to Cart" onclick="" />
+                                <p class="wish-btn"><i class="ri-heart-line"></i></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="course-product" courseID="">
+                        <a>
+                            <div class="course-product-card">
+                                <div class="product-card-top">
+                                    <img src="./img/course/beginner_excel.jpg" alt="">
+                                </div>
+                                <div class="product-card-bottom flex-col">
+                                    <h1 class="course-title">The Ultimate Excel Programming Course</h1>
+                                    <p class="course-author">Woo Yu Beng</p>
+                                    <div class="course-review flex-row">
+                                        <p class="rating-digit">3.5</p>
+                                        <i class="ri-star-fill"></i>
+                                        <p class="rating-number-field">(<span class="raing-number">2303</span>)</p>
+                                    </div>
+                                    <div class="course-tag-field flex-row">
+                                        <p class="course-tag tag-orange">Hot Sell</p>
+                                    </div>
+                                    <div class="course-price-field flex-row">
+                                        <p class="course-price">RM <span>449</span></p>                                      
+                                        <p class="course-noraml-price">RM <span>449</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="course-product-desc">
+                            <h1 class="course-title">The Ultimate Excel Programming Course</h1>
+                            <p class="course-category">Microsoft Excel</p>
+                            <p class="course-update">Updated on <span class="course-update-date">8/4/2024</span></p>
+                            <div class="course-label flex-row">
+                                <p>9.5 Hours</p>
+                                <p>All Level</p>
+                            </div>
+                            <p class="course-desc"></p>
+                            <ul class="course-features">
+                                <li><p>Go from complete beginner to proficient Excel user within 10 hours of content.</p></li>
+                                <li><p>Learn to create workbooks and spreadsheets everyone will be jealous of.</p></li>
+                                <li><p>Acquire critical Excel knowledge within the first 2 hours of tutorials.</p></li>
+                            </ul>
+                            <div class="flex-row">
+                                <input class="cart-btn" type="button" value="Add to Cart" onclick="" />
+                                <p class="wish-btn"><i class="ri-heart-line"></i></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="course-product" courseID="">
+                        <a>
+                            <div class="course-product-card">
+                                <div class="product-card-top">
+                                    <img src="./img/course/beginner_excel.jpg" alt="">
+                                </div>
+                                <div class="product-card-bottom flex-col">
+                                    <h1 class="course-title">The Ultimate Excel Programming Course</h1>
+                                    <p class="course-author">Woo Yu Beng</p>
+                                    <div class="course-review flex-row">
+                                        <p class="rating-digit">3.5</p>
+                                        <i class="ri-star-fill"></i>
+                                        <p class="rating-number-field">(<span class="raing-number">2303</span>)</p>
+                                    </div>
+                                    <div class="course-tag-field flex-row">
+                                        <p class="course-tag tag-orange">Hot Sell</p>
+                                    </div>
+                                    <div class="course-price-field flex-row">
+                                        <p class="course-price">RM <span>449</span></p>                                      
+                                        <p class="course-noraml-price">RM <span>449</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="course-product-desc">
+                            <h1 class="course-title">The Ultimate Excel Programming Course</h1>
+                            <p class="course-category">Microsoft Excel</p>
+                            <p class="course-update">Updated on <span class="course-update-date">8/4/2024</span></p>
+                            <div class="course-label flex-row">
+                                <p>9.5 Hours</p>
+                                <p>All Level</p>
+                            </div>
+                            <p class="course-desc"></p>
+                            <ul class="course-features">
+                                <li><p>Go from complete beginner to proficient Excel user within 10 hours of content.</p></li>
+                                <li><p>Learn to create workbooks and spreadsheets everyone will be jealous of.</p></li>
+                                <li><p>Acquire critical Excel knowledge within the first 2 hours of tutorials.</p></li>
+                            </ul>
+                            <div class="flex-row">
+                                <input class="cart-btn" type="button" value="Add to Cart" onclick="" />
+                                <p class="wish-btn"><i class="ri-heart-line"></i></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="course-product" courseID="">
+                        <a>
+                            <div class="course-product-card">
+                                <div class="product-card-top">
+                                    <img src="./img/course/beginner_excel.jpg" alt="">
+                                </div>
+                                <div class="product-card-bottom flex-col">
+                                    <h1 class="course-title">The Ultimate Excel Programming Course</h1>
+                                    <p class="course-author">Woo Yu Beng</p>
+                                    <div class="course-review flex-row">
+                                        <p class="rating-digit">3.5</p>
+                                        <i class="ri-star-fill"></i>
+                                        <p class="rating-number-field">(<span class="raing-number">2303</span>)</p>
+                                    </div>
+                                    <div class="course-tag-field flex-row">
+                                        <p class="course-tag tag-orange">Hot Sell</p>
+                                    </div>
+                                    <div class="course-price-field flex-row">
+                                        <p class="course-price">RM <span>449</span></p>                                      
+                                        <p class="course-noraml-price">RM <span>449</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="course-product-desc">
+                            <h1 class="course-title">The Ultimate Excel Programming Course</h1>
+                            <p class="course-category">Microsoft Excel</p>
+                            <p class="course-update">Updated on <span class="course-update-date">8/4/2024</span></p>
+                            <div class="course-label flex-row">
+                                <p>9.5 Hours</p>
+                                <p>All Level</p>
+                            </div>
+                            <p class="course-desc"></p>
+                            <ul class="course-features">
+                                <li><p>Go from complete beginner to proficient Excel user within 10 hours of content.</p></li>
+                                <li><p>Learn to create workbooks and spreadsheets everyone will be jealous of.</p></li>
+                                <li><p>Acquire critical Excel knowledge within the first 2 hours of tutorials.</p></li>
+                            </ul>
+                            <div class="flex-row">
+                                <input class="cart-btn" type="button" value="Add to Cart" onclick="" />
+                                <p class="wish-btn"><i class="ri-heart-line"></i></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="course-product" courseID="">
+                        <a>
+                            <div class="course-product-card">
+                                <div class="product-card-top">
+                                    <img src="./img/course/beginner_excel.jpg" alt="">
+                                </div>
+                                <div class="product-card-bottom flex-col">
+                                    <h1 class="course-title">The Ultimate Excel Programming Course</h1>
+                                    <p class="course-author">Woo Yu Beng</p>
+                                    <div class="course-review flex-row">
+                                        <p class="rating-digit">3.5</p>
+                                        <i class="ri-star-fill"></i>
                                         <p class="rating-number-field">(<span class="raing-number">2303</span>)</p>
                                     </div>
                                     <div class="course-tag-field flex-row">
@@ -208,6 +427,7 @@
                         <img src="./img/home/collaborate/companies/mysoftware.png" alt="MySoftware" />
                         <img src="./img/home/collaborate/companies/penta.png" alt="Pentamaster" />       
                         <img src="./img/home/collaborate/companies/sip.png" alt="SIP Technology" />
+                        <img src="./img/home/collaborate/companies/qm.webp" alt="Quantum Metal" />
                         <img src="./img/home/collaborate/companies/cisco.svg" alt="Cisco" />
                         <img src="./img/home/collaborate/companies/google.svg" alt="Google" />
                         <img src="./img/home/collaborate/companies/ibm.svg" alt="IBM" />

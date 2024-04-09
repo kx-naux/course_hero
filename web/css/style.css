@@ -22,6 +22,7 @@ body {
     display: flex;
     background-color: var(--color-white);
     flex-direction: column;
+    overflow-x: hidden;
 }
 
 /*Scroll Bar*/
@@ -321,7 +322,7 @@ a:has(.nav-option):hover + .nav-option-dropdown,
     flex-direction: column;
 }
 
-.section div{
+.section > div{
     margin-left: auto;
     margin-right: auto;
     max-width: 1240px;
