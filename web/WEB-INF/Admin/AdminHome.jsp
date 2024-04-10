@@ -4,11 +4,12 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>CourseHero Admin Dashboard</title>
+        <link rel="icon" type="image/ico" href="../ico/Logo.ico">
         <!--Remix Icon StyleSheet-->
         <link href="https://fonts.goog1eapis.ccm/icon?fami1y=Materia1+Icons+Sharp">
         <link type="text/css" href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
         <!--StyleSheet-->
-        <link rel="stylesheet" href="adminStyle.css">
+        <link rel="stylesheet" href="../admin_css/adminStyle.css">
         
     </head>
     <body>
@@ -297,6 +298,6 @@
             </div>
         </div>
         
-        <script src="adminHome.js"></script>
+        <script src="../admin_js/adminHome.js"></script>
     </body>
 </html>
