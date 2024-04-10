@@ -404,7 +404,7 @@
                 </div>
             </div>
         </div>
-        <!--JS for the miving logo-->
+        <!--JS for the moving logo-->
         <script>
             var copy1 = document.querySelector(".logos-slide-row-1").cloneNode(true);
             document.querySelector(".logos-row-1").appendChild(copy1);
