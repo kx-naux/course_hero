@@ -13,7 +13,7 @@
 
 .course-section-title h1 {
     color: var(--color-blue-1);
-    font-size: var(--font-size-l);
+    font-size: var(--font-size-xl);
     font-weight: 600;
 }
 
@@ -222,6 +222,11 @@
 }
 
 /*Tag Design*/
+.course-tag.tag-red {
+    background-color: var(--tag-red-bg);
+    color: var(--tag-red-color);
+}
+
 .course-tag.tag-orange {
     background-color: var(--tag-orange-bg);
     color: var(--tag-orange-color);
@@ -230,4 +235,19 @@
 .course-tag.tag-yellow {
     background-color: var(--tag-yellow-bg);
     color: var(--tag-yellow-color);
+}
+
+.course-tag.tag-green {
+    background-color: var(--tag-green-bg);
+    color: var(--tag-green-color);
+}
+
+.course-tag.tag-blue {
+    background-color: var(--tag-blue-bg);
+    color: var(--tag-blue-color);
+}
+
+.course-tag.tag-purple {
+    background-color: var(--tag-purple-bg);
+    color: var(--tag-purple-color);
 }

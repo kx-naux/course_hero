@@ -37,10 +37,18 @@
     
     --color-transparent: rgba(0,0,0,0);
     
+    --tag-red-color: #781212;
+    --tag-red-bg: #ffc2c2;
     --tag-orange-color: #6e2f0d;
     --tag-orange-bg: #ffcf94;
     --tag-yellow-color: #63500c;
     --tag-yellow-bg: #eceb98;
+    --tag-green-color: #23540c;
+    --tag-green-bg: #c6f2b1;
+    --tag-blue-color: #146685;
+    --tag-blue-bg: #aaddf0;
+    --tag-purple-color: #37156e;
+    --tag-purple-bg: #cbb7eb;
 
     --scroll-bar-color: var(--color-secondary);
     --scroll-bar-hover-color: var(--color-primary);
@@ -52,8 +60,8 @@
     --box-shadow-1: 0 2px 4px rgba(0,0,0,.08), 0 4px 12px rgba(0,0,0,.08);
     --box-shadow-2: 0 2px 4px rgba(0,0,0,.05), 0 4px 12px rgba(0,0,0,.05);
 
-    --font-size-xxl: 26px;
-    --font-size-xl: 24px;
+    --font-size-xxl: 24px;
+    --font-size-xl: 22px;
     --font-size-l: 20px;
     --font-size-m: 18px;
     --font-size-xm: 16px;

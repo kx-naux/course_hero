@@ -244,8 +244,8 @@
                                         <p class="course-normal-price">RM <span>650.00</span></p>
                                     </div>
                                     <div class="course-tag-field flex-row">
-                                        <p class="course-tag tag-orange">Hot Sell</p>
-                                        <p class="course-tag tag-yellow">New Course</p>
+                                        <p class="course-tag tag-red">Hot Sell</p>
+                                        <p class="course-tag tag-green">New Course</p>
                                     </div>
                                 </div>
                             </div>
@@ -281,8 +281,8 @@
                                         <p class="course-normal-price">RM <span>650.00</span></p>
                                     </div>
                                     <div class="course-tag-field flex-row">
-                                        <p class="course-tag tag-orange">Hot Sell</p>
-                                        <p class="course-tag tag-yellow">New Course</p>
+                                        <p class="course-tag tag-blue">Hot Sell</p>
+                                        <p class="course-tag tag-purple">New Course</p>
                                     </div>
                                 </div>
                             </div>
@@ -373,33 +373,33 @@
                 <p>We collaborate with <span>325+ leading companies and universities</span></p>
                 <div class="logos logos-row-1">
                     <div class="logos-slide logos-slide-row-1">
-                        <img src="./img/home/collaborate/companies/amazon.svg" alt="Amazon" />
-                        <img src="./img/home/collaborate/companies/apple.svg" alt="Apple" />
-                        <img src="./img/home/collaborate/companies/mooiko.png" alt="Mooiko" />
-                        <img src="./img/home/collaborate/companies/mysoftware.png" alt="MySoftware" />
-                        <img src="./img/home/collaborate/companies/penta.png" alt="Pentamaster" />       
-                        <img src="./img/home/collaborate/companies/sip.png" alt="SIP Technology" />
-                        <img src="./img/home/collaborate/companies/qm.webp" alt="Quantum Metal" />
-                        <img src="./img/home/collaborate/companies/cisco.svg" alt="Cisco" />
-                        <img src="./img/home/collaborate/companies/google.svg" alt="Google" />
-                        <img src="./img/home/collaborate/companies/ibm.svg" alt="IBM" />
-                        <img src="./img/home/collaborate/companies/meta.svg" alt="Meta" />
-                        <img src="./img/home/collaborate/companies/microsoft.svg" alt="Microsoft" />
-                        <img src="./img/home/collaborate/companies/tiktok.svg" alt="Tik Tok" />
-                        <img src="./img/home/collaborate/companies/riot.svg" alt="Riot Games" />
+                        <a href="https://www.amazon.com/" target=”_blank”><img src="./img/home/collaborate/companies/amazon.svg" alt="Amazon" title="Amazon.com, Inc." /></a>
+                        <a href="https://www.apple.com/" target=”_blank”><img src="./img/home/collaborate/companies/apple.svg" alt="Apple" title="Apple Computer, Inc." /></a>
+                        <a href="https://mooiko.com/" target=”_blank”><img src="./img/home/collaborate/companies/mooiko.png" alt="Mooiko" title="MOOIKO SOFTWARE SDN. BHD." /></a>
+                        <a href="https://www.sqlacc.com/" target=”_blank”><img src="./img/home/collaborate/companies/mysoftware.png" alt="MySoftware" title="MY SOFTWARE SOLUTIONS SDN. BHD." /></a>
+                        <a href="https://pentamaster.com.my/" target=”_blank”><img src="./img/home/collaborate/companies/penta.png" alt="Pentamaster" title="Pentamaster Corporation Berhad" /></a>    
+                        <a href="https://sip-technology.com/en/" target=”_blank”><img src="./img/home/collaborate/companies/sip.png" alt="SIP Technology" title="Sip Technology (M) Sdn. Bhd." /></a>
+                        <a href="https://www.quantummetal.com.my/" target=”_blank”><img src="./img/home/collaborate/companies/qm.webp" alt="Quantum Metal" title="QUANTUM METAL SDN BHD" /></a>
+                        <a href="https://www.cisco.com/" target=”_blank”><img src="./img/home/collaborate/companies/cisco.svg" alt="Cisco" title="Cisco Systems, Inc." /></a>
+                        <a href="https://about.google/intl/ALL_my/" target=”_blank”><img src="./img/home/collaborate/companies/google.svg" alt="Google" title="Google LLC" /></a>
+                        <a href="https://www.ibm.com/us-en" target=”_blank”><img src="./img/home/collaborate/companies/ibm.svg" alt="IBM" title="International Business Machines" /></a>
+                        <a href="https://about.meta.com/metaverse/" target=”_blank”><img src="./img/home/collaborate/companies/meta.svg" alt="Meta" title="Meta Platforms, Inc." /></a>
+                        <a href="https://www.microsoft.com/en-my" target=”_blank”><img src="./img/home/collaborate/companies/microsoft.svg" alt="Microsoft" title="Microsoft Corporation, Inc." /></a>
+                        <a href="https://www.tiktok.com/en/" target=”_blank”><img src="./img/home/collaborate/companies/tiktok.svg" alt="Tik Tok" title="ByteDance Ltd." /></a>
+                        <a href="https://www.riotgames.com/" target=”_blank”><img src="./img/home/collaborate/companies/riot.svg" alt="Riot Games" title="Riot Games, Inc." /></a>
                     </div>
                 </div>
                 <div class="logos logos-row-2">
                     <div class="logos-slide logos-slide-row-2">
-                        <img src="./img/home/collaborate/universities/Cambridge.svg" alt="University of Cambridge" />
-                        <img src="./img/home/collaborate/universities/MIT.svg" alt="Massachusetts Institute of Technology" />
-                        <img src="./img/home/collaborate/universities/Oxford.svg" alt="University of Oxford" />
-                        <img src="./img/home/collaborate/universities/Peking.svg" alt="Peking University" />
-                        <img src="./img/home/collaborate/universities/Princeton.svg" alt="Princeton University" />
-                        <img src="./img/home/collaborate/universities/tarumt.png" alt="TARUMT" />
-                        <img src="./img/home/collaborate/universities/Stanford.svg" alt="Stanford University" />
-                        <img src="./img/home/collaborate/universities/Tsinghua.png" alt="Tsing Hua University" />
-                        <img src="./img/home/collaborate/universities/harvard.png" alt="Harvard University" />
+                        <a href="https://www.cam.ac.uk/" target=”_blank”><img src="./img/home/collaborate/universities/Cambridge.svg" alt="University of Cambridge" title="University of Cambridge" /></a>
+                        <a href="https://www.mit.edu/" target=”_blank”><img src="./img/home/collaborate/universities/MIT.svg" alt="Massachusetts Institute of Technology" title="Massachusetts Institute of Technology" /></a>
+                        <a href="https://www.ox.ac.uk/" target=”_blank”><img src="./img/home/collaborate/universities/Oxford.svg" alt="University of Oxford" title="University of Oxford" /></a>
+                        <a href="https://english.pku.edu.cn/" target=”_blank”><img src="./img/home/collaborate/universities/Peking.svg" alt="Peking University" title="Peking University" /></a>
+                        <a href="https://www.princeton.edu/" target=”_blank”><img src="./img/home/collaborate/universities/Princeton.svg" alt="Princeton University" title="Princeton University" /></a>
+                        <a href="https://tarc.edu.my/" target=”_blank”><img src="./img/home/collaborate/universities/tarumt.png" alt="TARUMT" title="Tunku Abdul Rahman University of Management & Technology" /></a>
+                        <a href="https://www.stanford.edu/" target=”_blank”><img src="./img/home/collaborate/universities/Stanford.svg" alt="Stanford University" title="Stanford University" /></a>
+                        <a href="https://www.tsinghua.edu.cn/en/" target=”_blank”><img src="./img/home/collaborate/universities/Tsinghua.png" alt="Tsing Hua University" title="Tsing Hua University" /></a>
+                        <a href="https://www.harvard.edu/" target=”_blank”><img src="./img/home/collaborate/universities/harvard.png" alt="Harvard University" title="Harvard University" /></a>
                     </div>
                 </div>
             </div>
@@ -441,21 +441,21 @@
     <section class="section category-section">
 
     </section>
+    
+    <!-- FAQ section -->
+    <section class="section faq-section">
 
-    <!-- Guest ask to sign up section -->
+    </section>
+
     <!--JSP conditional rendering-->
     <c:choose>
         <c:when test="${empty sessionScope.username}">
+            <!-- Guest ask to sign up section -->
             <section class="section guest-sign-up-section">
 
             </section>
         </c:when>
     </c:choose>
-
-    <!-- FAQ section -->
-    <section class="section faq-section">
-
-    </section>
 
     <!-- Footer section -->
     <section class="section footer-section">

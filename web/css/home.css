@@ -214,6 +214,11 @@
 .logos-slide img {
     height: 50px;
     margin: 0 40px;
+    transition: 0.3s all ease-in-out;
+}
+
+.logos-slide img:hover {
+    transform: scale(1.2);
 }
 
 /*Infomation section*/
