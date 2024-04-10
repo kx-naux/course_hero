@@ -1,4 +1,4 @@
-@import url('./root.css');
+@import url('../root.css');
 
 .course-section-div {
     padding: 35px 14px 50px;
@@ -8,7 +8,7 @@
 .course-section-title {
     justify-content: space-between;
     align-items: center;
-    padding: 12px;
+    padding: 4px;
 }
 
 .course-section-title h1 {
@@ -38,14 +38,36 @@
     overflow-y: hidden;
     overflow-x: auto;
     max-width: 100%;
+    scroll-snap-type: x mandatory;
+}
+
+/*div scroll bar style*/
+.courses::-webkit-scrollbar {
+    width: 12px;               /* width of the entire scrollbar */
+}
+
+.courses::-webkit-scrollbar-track {
+    background: var(--scroll-bar-track-color);
+}
+
+.courses::-webkit-scrollbar-thumb {
+    background-color: var(--color-light-grey-2);
+    border-radius: 20px;
+    border: 3px solid var(--scroll-bar-track-color);
+}
+
+.courses::-webkit-scrollbar-thumb:hover{
+    background-color: var(--color-light-grey-3);
 }
 
 /*Product Card*/
 .course-product {
+    scroll-snap-align: center;
     min-width: 260px;
-    min-height: 300px;
+    min-height: 320px;
     max-width: 260px;
-    max-height: 300px;
+    max-height: 320px;
+    position: relative;
 }
 
 .course-product-card {
@@ -96,4 +118,65 @@
     font-size: var(--font-size-xs);
     font-weight: 200;
     color: var(--color-text-light-2);
+}
+
+.course-price-field {
+    padding: 4px 0;
+    gap: 10px;
+    align-items: center;
+}
+
+.course-price-field .course-price{
+    font-weight: 700;
+    font-size: var(--font-size-xm);
+    color: var(--color-text-light-3);
+}
+
+.course-price-field .course-normal-price{
+    font-weight: 300;
+    font-size: var(--font-size-s);
+    color: var(--color-text-light-2);
+    text-decoration: line-through;
+}
+
+.course-tag-field {
+    padding: 6px 0;
+    gap: 10px;
+    align-items: center;
+}
+
+.course-tag-field .course-tag{
+    font-weight: 600;
+    font-size: var(--font-size-xs);
+    background-color: var(--color-light-grey-2);
+    color: var(--color-text-light-2);
+    border-radius: 2px;
+    padding: 2px 8px;
+}
+
+/*Hover for more information*/
+.course-product-desc {
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translate(140%, -50%);
+    z-index: 10;
+    border: 1px solid var(--color-light-grey-2);
+    background-color: var(--color-white);
+    box-shadow: var(--box-shadow-1);
+    padding: 20px;
+    margin-left: 20px;
+    width: 360px;
+    min-height: 300px;
+}
+
+/*Tag Design*/
+.course-tag.tag-orange {
+    background-color: var(--tag-orange-bg);
+    color: var(--tag-orange-color);
+}
+
+.course-tag.tag-yellow {
+    background-color: var(--tag-yellow-bg);
+    color: var(--tag-yellow-color);
 }

@@ -33,6 +33,11 @@
     --color-error: #ff7782;
     --color-success: #41f1b6;
     --color-warning: #ffbb55;
+    
+    --tag-orange-color: #6e2f0d;
+    --tag-orange-bg: #ffcf94;
+    --tag-yellow-color: #63500c;
+    --tag-yellow-bg: #eceb98;
 
     --scroll-bar-color: var(--color-secondary);
     --scroll-bar-hover-color: var(--color-primary);

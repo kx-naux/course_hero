@@ -96,7 +96,7 @@
     cursor: pointer;
     height: 8px;
     width: 8px;
-    margin: 0 2px;
+    margin: 0 4px;
     background-color: var(--color-white-transparent-05);
     box-shadow: 1px 1px 8px var(--color-grey-transparent-03);
     border-radius: 50%;
