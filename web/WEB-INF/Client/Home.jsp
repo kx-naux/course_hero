@@ -142,11 +142,15 @@
                 </div>
                 <div class="courses flex-row">
 
-                    <div class="course-product" courseID="">
+                    <div class="course-product" courseID="121238719823">
                         <a href="#">
                             <div class="course-product-card">
                                 <div class="product-card-top">
                                     <img src="./img/course/beginner_excel.jpg" alt="">
+                                    <div class="action-btn-field flex-row">
+                                        <button onclick="cartButtonClick(event)"><i class="ri-shopping-cart-line"></i></button>
+                                        <button onclick="likeButtonClick(event)"><i class="ri-heart-line"></i></button>
+                                    </div>
                                 </div>
                                 <div class="product-card-bottom flex-col">
                                     <h1 class="course-title">The Ultimate Excel Programming Course</h1>
@@ -173,12 +177,17 @@
                             </div>
                         </a>
                     </div>
-                    
-                    <div class="course-product" courseID="">
+
+
+                    <div class="course-product" courseID="121238719823">
                         <a href="#">
                             <div class="course-product-card">
                                 <div class="product-card-top">
                                     <img src="./img/course/beginner_excel.jpg" alt="">
+                                    <div class="action-btn-field flex-row">
+                                        <button onclick="cartButtonClick(event)"><i class="ri-shopping-cart-line"></i></button>
+                                        <button onclick="likeButtonClick(event)"><i class="ri-heart-line"></i></button>
+                                    </div>
                                 </div>
                                 <div class="product-card-bottom flex-col">
                                     <h1 class="course-title">The Ultimate Excel Programming Course</h1>
@@ -205,12 +214,17 @@
                             </div>
                         </a>
                     </div>
-                    
-                    <div class="course-product" courseID="">
+
+
+                    <div class="course-product" courseID="121238719823">
                         <a href="#">
                             <div class="course-product-card">
                                 <div class="product-card-top">
                                     <img src="./img/course/beginner_excel.jpg" alt="">
+                                    <div class="action-btn-field flex-row">
+                                        <button onclick="cartButtonClick(event)"><i class="ri-shopping-cart-line"></i></button>
+                                        <button onclick="likeButtonClick(event)"><i class="ri-heart-line"></i></button>
+                                    </div>
                                 </div>
                                 <div class="product-card-bottom flex-col">
                                     <h1 class="course-title">The Ultimate Excel Programming Course</h1>
@@ -237,12 +251,17 @@
                             </div>
                         </a>
                     </div>
-                    
-                    <div class="course-product" courseID="">
+
+
+                    <div class="course-product" courseID="121238719823">
                         <a href="#">
                             <div class="course-product-card">
                                 <div class="product-card-top">
                                     <img src="./img/course/beginner_excel.jpg" alt="">
+                                    <div class="action-btn-field flex-row">
+                                        <button onclick="cartButtonClick(event)"><i class="ri-shopping-cart-line"></i></button>
+                                        <button onclick="likeButtonClick(event)"><i class="ri-heart-line"></i></button>
+                                    </div>
                                 </div>
                                 <div class="product-card-bottom flex-col">
                                     <h1 class="course-title">The Ultimate Excel Programming Course</h1>
@@ -269,12 +288,54 @@
                             </div>
                         </a>
                     </div>
-                    
-                    <div class="course-product" courseID="">
+
+
+                    <div class="course-product" courseID="121238719823">
                         <a href="#">
                             <div class="course-product-card">
                                 <div class="product-card-top">
                                     <img src="./img/course/beginner_excel.jpg" alt="">
+                                    <div class="action-btn-field flex-row">
+                                        <button onclick="cartButtonClick(event)"><i class="ri-shopping-cart-line"></i></button>
+                                        <button onclick="likeButtonClick(event)"><i class="ri-heart-line"></i></button>
+                                    </div>
+                                </div>
+                                <div class="product-card-bottom flex-col">
+                                    <h1 class="course-title">The Ultimate Excel Programming Course</h1>
+                                    <p class="course-category">Microsoft Excel</p>
+                                    <p class="course-author">Woo Yu Beng, Snijders Wang Wang, Low Kah Xuan</p>
+                                    <div class="course-review flex-row">
+                                        <p class="rating-digit">3.5</p>
+                                        <i class="ri-star-fill"></i>
+                                        <p class="rating-number-field">(<span class="raing-number">2303</span>)</p>
+                                    </div>
+                                    <div class="course-label flex-row">
+                                        <p>9.5 Hours</p>
+                                        <p>All Level</p>
+                                    </div>
+                                    <div class="course-price-field flex-row">
+                                        <p class="course-price">RM <span>449.90</span></p>                                      
+                                        <p class="course-normal-price">RM <span>650.00</span></p>
+                                    </div>
+                                    <div class="course-tag-field flex-row">
+                                        <p class="course-tag tag-orange">Hot Sell</p>
+                                        <p class="course-tag tag-yellow">New Course</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+
+                    <div class="course-product" courseID="121238719823">
+                        <a href="#">
+                            <div class="course-product-card">
+                                <div class="product-card-top">
+                                    <img src="./img/course/beginner_excel.jpg" alt="">
+                                    <div class="action-btn-field flex-row">
+                                        <button onclick="cartButtonClick(event)"><i class="ri-shopping-cart-line"></i></button>
+                                        <button onclick="likeButtonClick(event)"><i class="ri-heart-line"></i></button>
+                                    </div>
                                 </div>
                                 <div class="product-card-bottom flex-col">
                                     <h1 class="course-title">The Ultimate Excel Programming Course</h1>
@@ -345,11 +406,11 @@
         </div>
         <!--JS for the miving logo-->
         <script>
-                    var copy1 = document.querySelector(".logos-slide-row-1").cloneNode(true);
-                    document.querySelector(".logos-row-1").appendChild(copy1);
+            var copy1 = document.querySelector(".logos-slide-row-1").cloneNode(true);
+            document.querySelector(".logos-row-1").appendChild(copy1);
 
-                    var copy2 = document.querySelector(".logos-slide-row-2").cloneNode(true);
-                    document.querySelector(".logos-row-2").appendChild(copy2);
+            var copy2 = document.querySelector(".logos-slide-row-2").cloneNode(true);
+            document.querySelector(".logos-row-2").appendChild(copy2);
         </script>
     </section>
 
@@ -380,6 +441,16 @@
     <section class="section category-section">
 
     </section>
+
+    <!-- Guest ask to sign up section -->
+    <!--JSP conditional rendering-->
+    <c:choose>
+        <c:when test="${empty sessionScope.username}">
+            <section class="section guest-sign-up-section">
+
+            </section>
+        </c:when>
+    </c:choose>
 
     <!-- FAQ section -->
     <section class="section faq-section">

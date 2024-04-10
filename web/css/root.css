@@ -24,6 +24,7 @@
     --color-black-transparent-03: rgba(0,0,0,0.3);
     --color-black-transparent-04: rgba(0,0,0,0.4);
     --color-black-transparent-05: rgba(0,0,0,0.5);
+    --color-black-transparent-06: rgba(0,0,0,0.6);
 
     --color-sky-blue: #ebf8ff;
     --color-blue-1: #1f3080;
@@ -34,6 +35,8 @@
     --color-success: #41f1b6;
     --color-warning: #ffbb55;
     
+    --color-transparent: rgba(0,0,0,0);
+    
     --tag-orange-color: #6e2f0d;
     --tag-orange-bg: #ffcf94;
     --tag-yellow-color: #63500c;
@@ -43,6 +46,8 @@
     --scroll-bar-hover-color: var(--color-primary);
     --scroll-bar-track-color: var(--color-white);
 
+    --box-shadow-white-0: 0 2px 4px rgba(255,255,255,.16), 0 4px 12px rgba(255,255,255,.16);
+    
     --box-shadow-0: 0 2px 4px rgba(0,0,0,.16), 0 4px 12px rgba(0,0,0,.16);
     --box-shadow-1: 0 2px 4px rgba(0,0,0,.08), 0 4px 12px rgba(0,0,0,.08);
     --box-shadow-2: 0 2px 4px rgba(0,0,0,.05), 0 4px 12px rgba(0,0,0,.05);

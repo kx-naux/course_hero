@@ -35,10 +35,24 @@ function productCard(course) {
     return cardDiv;
 }
 
+//Add to cart / remove from cart
+function cartButtonClick(evt) {
+    evt.preventDefault();
+    const courseID = evt.target.closest('.course-product').getAttribute('courseID');
+    console.log("Cart Clicked - Course ID:", courseID);
+}
+
+//Add to wishlist / remove from wishlist
+function likeButtonClick(evt) {
+    evt.preventDefault();
+    const courseID = evt.target.closest('.course-product').getAttribute('courseID');
+    console.log("Like Clicked - Course ID:", courseID);
+}
+
 //Add scroll detect for the div
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     const coursesDiv = document.querySelector(".courses");
-    const spdScrollLatest = 0.6 * window.screen.width;
+    const spdScrollLatest = 0.2 * window.screen.width;
 
     coursesDiv.addEventListener("wheel", (evt) => {
         evt.preventDefault();
