@@ -34,10 +34,10 @@
     gap: 18px;
     flex-wrap: nowrap;
     width: 100%;
-    justify-content: start;
-    overflow-y: hidden;
-    overflow-x: auto;
     max-width: 100%;
+    justify-content: start;
+    overflow-y: visible;
+    overflow-x: scroll;
     scroll-snap-type: x mandatory;
 }
 
@@ -62,11 +62,11 @@
 
 /*Product Card*/
 .course-product {
-    scroll-snap-align: center;
-    min-width: 260px;
-    min-height: 320px;
-    max-width: 260px;
-    max-height: 320px;
+    scroll-snap-align: start;
+    min-width: 280px;
+    min-height: 380px;
+    max-width: 280px;
+    max-height: 380px;
     position: relative;
 }
 
@@ -84,11 +84,18 @@
     font-size: var(--font-size-xm);
     font-weight: 700;
     color: var(--color-text-light-3);
-    padding: 4px 0;
+    padding: 6px 0 2px;
+}
+
+.course-category {
+    font-size: var(--font-size-s);
+    font-weight: 400;
+    color: var(--color-text-light-2);
+    padding: 0 0 4px 0;
 }
 
 .course-author {
-    padding: 0 10px 4px 0;
+    padding: 4px 10px 2px 0;
     white-space: nowrap;
     overflow: hidden;
     text-wrap: nowrap;
@@ -120,8 +127,24 @@
     color: var(--color-text-light-2);
 }
 
+.course-label {
+    align-items: center;
+    font-size: var(--font-size-s);
+    font-weight: 400;
+    color: var(--color-text-light-1);
+}
+
+.course-label p::after {
+    content: "·";
+    margin: 0 4px;
+}
+
+.course-label p:last-of-type::after {
+    content: "";
+}
+
 .course-price-field {
-    padding: 4px 0;
+    padding: 14px 0 4px;
     gap: 10px;
     align-items: center;
 }
@@ -140,7 +163,7 @@
 }
 
 .course-tag-field {
-    padding: 6px 0;
+    padding: 2px 0;
     gap: 10px;
     align-items: center;
 }
@@ -152,22 +175,6 @@
     color: var(--color-text-light-2);
     border-radius: 2px;
     padding: 2px 8px;
-}
-
-/*Hover for more information*/
-.course-product-desc {
-    position: absolute;
-    top: 50%;
-    right: 50%;
-    transform: translate(140%, -50%);
-    z-index: 10;
-    border: 1px solid var(--color-light-grey-2);
-    background-color: var(--color-white);
-    box-shadow: var(--box-shadow-1);
-    padding: 20px;
-    margin-left: 20px;
-    width: 360px;
-    min-height: 300px;
 }
 
 /*Tag Design*/

@@ -12,10 +12,7 @@ var courses = {
             "course_price": 455.90,
             "course_normal_price": 655.50,
             "course_category": "Microsoft Excel",
-            "course_update_date": "8/4/2024",
-            "course_label": ["9.5 Hour", "All Level"],
-            "course_desc": "This is description of the course",
-            "course_feature": ["Feature 1", "Feature 2", "Feature 3"]
+            "course_label": ["9.5 Hour", "All Level"]
         },
     ]
 }
