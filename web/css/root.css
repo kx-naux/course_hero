@@ -25,6 +25,12 @@
     --color-black-transparent-04: rgba(0,0,0,0.4);
     --color-black-transparent-05: rgba(0,0,0,0.5);
     --color-black-transparent-06: rgba(0,0,0,0.6);
+    
+    --color-orange-1: #ff6600;
+    
+    --color-yellow-1: #6e6501;
+    --color-yellow-2: #b0a202;
+    --color-yellow-3: #ffea00;
 
     --color-sky-blue: #ebf8ff;
     --color-blue-1: #1f3080;
@@ -60,6 +66,7 @@
     --box-shadow-1: 0 2px 4px rgba(0,0,0,.08), 0 4px 12px rgba(0,0,0,.08);
     --box-shadow-2: 0 2px 4px rgba(0,0,0,.05), 0 4px 12px rgba(0,0,0,.05);
 
+    --font-size-xxxl: 28px;
     --font-size-xxl: 24px;
     --font-size-xl: 22px;
     --font-size-l: 20px;

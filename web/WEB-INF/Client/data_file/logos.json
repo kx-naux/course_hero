@@ -1,0 +1,122 @@
+{
+    "companies": [
+        {
+            "name": "Amazon",
+            "website": "https://www.amazon.com/",
+            "imagePath": "./img/home/collaborate/companies/amazon.svg"
+        },
+        {
+            "name": "Apple",
+            "website": "https://www.apple.com/",
+            "imagePath": "./img/home/collaborate/companies/apple.svg"
+        },
+        {
+            "name": "Mooiko",
+            "website": "https://mooiko.com/",
+            "imagePath": "./img/home/collaborate/companies/mooiko.png"
+        },
+        {
+            "name": "MySoftware",
+            "website": "https://www.sqlacc.com/",
+            "imagePath": "./img/home/collaborate/companies/mysoftware.png"
+        },
+        {
+            "name": "Pentamaster",
+            "website": "https://pentamaster.com.my/",
+            "imagePath": "./img/home/collaborate/companies/penta.png"
+        },
+        {
+            "name": "SIP Technology",
+            "website": "https://sip-technology.com/en/",
+            "imagePath": "./img/home/collaborate/companies/sip.png"
+        },
+        {
+            "name": "Quantum Metal",
+            "website": "https://www.quantummetal.com.my/",
+            "imagePath": "./img/home/collaborate/companies/qm.webp"
+        },
+        {
+            "name": "Cisco",
+            "website": "https://www.cisco.com/",
+            "imagePath": "./img/home/collaborate/companies/cisco.svg"
+        },
+        {
+            "name": "Google",
+            "website": "https://about.google/intl/ALL_my/",
+            "imagePath": "./img/home/collaborate/companies/google.svg"
+        },
+        {
+            "name": "IBM",
+            "website": "https://www.ibm.com/us-en",
+            "imagePath": "./img/home/collaborate/companies/ibm.svg"
+        },
+        {
+            "name": "Meta",
+            "website": "https://about.meta.com/metaverse/",
+            "imagePath": "./img/home/collaborate/companies/meta.svg"
+        },
+        {
+            "name": "Microsoft",
+            "website": "https://www.microsoft.com/en-my",
+            "imagePath": "./img/home/collaborate/companies/microsoft.svg"
+        },
+        {
+            "name": "Tik Tok",
+            "website": "https://www.tiktok.com/en/",
+            "imagePath": "./img/home/collaborate/companies/tiktok.svg"
+        },
+        {
+            "name": "Riot Games",
+            "website": "https://www.riotgames.com/",
+            "imagePath": "./img/home/collaborate/companies/riot.svg"
+        }
+    ],
+    "universities": [
+        {
+            "name": "University of Cambridge",
+            "website": "https://www.cam.ac.uk/",
+            "imagePath": "./img/home/collaborate/universities/Cambridge.svg"
+        },
+        {
+            "name": "Massachusetts Institute of Technology",
+            "website": "https://www.mit.edu/",
+            "imagePath": "./img/home/collaborate/universities/MIT.svg"
+        },
+        {
+            "name": "University of Oxford",
+            "website": "https://www.ox.ac.uk/",
+            "imagePath": "./img/home/collaborate/universities/Oxford.svg"
+        },
+        {
+            "name": "Peking University",
+            "website": "https://english.pku.edu.cn/",
+            "imagePath": "./img/home/collaborate/universities/Peking.svg"
+        },
+        {
+            "name": "Princeton University",
+            "website": "https://www.princeton.edu/",
+            "imagePath": "./img/home/collaborate/universities/Princeton.svg"
+        },
+        {
+            "name": "Tunku Abdul Rahman University of Management & Technology",
+            "website": "https://tarc.edu.my/",
+            "imagePath": "./img/home/collaborate/universities/tarumt.png"
+        },
+        {
+            "name": "Stanford University",
+            "website": "https://www.stanford.edu/",
+            "imagePath": "./img/home/collaborate/universities/Stanford.svg"
+        },
+        {
+            "name": "Tsing Hua University",
+            "website": "https://www.tsinghua.edu.cn/en/",
+            "imagePath": "./img/home/collaborate/universities/Tsinghua.png"
+        },
+        {
+            "name": "Harvard University",
+            "website": "https://www.harvard.edu/",
+            "imagePath": "./img/home/collaborate/universities/harvard.png"
+        }
+    ]
+}
+

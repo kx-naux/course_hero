@@ -1,4 +1,4 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -244,8 +244,8 @@
                                         <p class="course-normal-price">RM <span>650.00</span></p>
                                     </div>
                                     <div class="course-tag-field flex-row">
-                                        <p class="course-tag tag-red">Hot Sell</p>
-                                        <p class="course-tag tag-green">New Course</p>
+                                        <p class="course-tag tag-red">New</p>
+                                        <p class="course-tag tag-green">Free</p>
                                     </div>
                                 </div>
                             </div>
@@ -399,7 +399,7 @@
                         <a href="https://tarc.edu.my/" target=”_blank”><img src="./img/home/collaborate/universities/tarumt.png" alt="TARUMT" title="Tunku Abdul Rahman University of Management & Technology" /></a>
                         <a href="https://www.stanford.edu/" target=”_blank”><img src="./img/home/collaborate/universities/Stanford.svg" alt="Stanford University" title="Stanford University" /></a>
                         <a href="https://www.tsinghua.edu.cn/en/" target=”_blank”><img src="./img/home/collaborate/universities/Tsinghua.png" alt="Tsing Hua University" title="Tsing Hua University" /></a>
-                        <a href="https://www.harvard.edu/" target=”_blank”><img src="./img/home/collaborate/universities/harvard.png" alt="Harvard University" title="Harvard University" /></a>
+                        <a href="https://www.harvard.edu/" target=”_blank”><img src="./img/home/collaborate/universities/harvard.png" alt="Harvard University" title="Harvard University" /></a>                  
                     </div>
                 </div>
             </div>
@@ -441,7 +441,7 @@
     <section class="section category-section">
 
     </section>
-    
+
     <!-- FAQ section -->
     <section class="section faq-section">
 
@@ -452,7 +452,18 @@
         <c:when test="${empty sessionScope.username}">
             <!-- Guest ask to sign up section -->
             <section class="section guest-sign-up-section">
-
+                <div class="guest-sign-up-div flex-row">
+                    <div class="guest-left-div">
+                        <img src="./img/home/GuestSignUp.png" alt="Learning" />
+                    </div>
+                    <div class="guest-right-div flex-col">
+                        <h1 class="guest-sign-up-title">Start for free</h1>
+                        <p class="guest-sign-up-desc">If you’ve made it this far, you must be at least a little curious. Sign up and take the first step toward your goals.</p>
+                        <a href="http://localhost:8080/CourseHero/sign-up">
+                            Sign Up
+                        </a>
+                    </div>
+                </div>
             </section>
         </c:when>
     </c:choose>

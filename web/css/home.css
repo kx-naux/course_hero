@@ -262,3 +262,53 @@
 .home-info-div-col .info-desc {
     color: var(--color-text-light-2);
 }
+
+/*Guest Sign Up*/
+.guest-sign-up-section {
+    padding: 50px 20px;
+    background-color: var(--color-white);
+}
+
+.guest-sign-up-div div {
+    min-width: 50%;
+    max-width: 50%;
+}
+
+.guest-left-div {
+    display: flex;
+    justify-content: center;
+}
+
+.guest-left-div img {
+    width: 80%;
+}
+
+.guest-right-div {
+    padding: 0 15% 0 5%;
+    justify-content: center;
+    gap: 28px
+}
+
+.guest-right-div h1 {
+    font-weight: 600;
+    font-size: var(--font-size-xxxl);
+    color: var(--color-primary);
+}
+
+.guest-right-div p {
+    font-weight: 300;
+    font-size: var(--font-size-xm);
+    color: var(--color-text-light-2);
+}
+
+.guest-right-div a {
+    font-weight: 500;
+    font-size: var(--font-size-m);
+    border-radius: 2px;
+    padding: 6px 14px;
+    width: 100px;
+    color: var(--color-white);
+    background-color: var(--color-orange-1);
+    justify-content: center;
+    display: flex;
+}

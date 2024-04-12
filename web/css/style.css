@@ -58,7 +58,7 @@ body::-webkit-scrollbar-thumb:hover{
     padding: 3px 9px;
     border-radius: 50%;
     font-size: 26px;
-    box-shadow: var(--box-shadow-1);
+    box-shadow: var(--box-shadow-0);
     transition: 0.3s all ease-out;
 }
 
