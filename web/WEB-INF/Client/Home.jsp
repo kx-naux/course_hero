@@ -326,7 +326,6 @@
                         </a>
                     </div>
 
-
                     <div class="course-product" courseID="121238719823">
                         <a href="#">
                             <div class="course-product-card">
