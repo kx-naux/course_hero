@@ -330,3 +330,5 @@ a:has(.nav-option):hover + .nav-option-dropdown,
     margin-right: auto;
     max-width: 1240px;
 }
+
+/*footer*/ 

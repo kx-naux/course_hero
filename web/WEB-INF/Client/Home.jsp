@@ -476,7 +476,15 @@
 
         <!-- Footer section -->
         <section class="section footer-section">
-
+            <div class="footer-div flex-col">
+                <div class="footer-top flex-row">
+                    
+                </div>
+                <hr class="footer-divider" />
+                <div class="footer-bot flex-row">
+                    
+                </div>
+            </div>
         </section>
     </body>
 </html>
