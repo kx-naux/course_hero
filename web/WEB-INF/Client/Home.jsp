@@ -1,4 +1,6 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page import="module.CollaborateLogos" %>
+<%@ page import="java.util.List, java.util.Map" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -132,6 +134,18 @@
             </div>
             <script src="./js/home/carousel.js"></script>
         </section>
+
+        <!-- Learning section -->
+        <!--JSP conditional rendering-->
+        <c:choose>
+            <c:when test="${not empty sessionScope.username}">
+                <section class="section learning-section">
+                    <div>
+
+                    </div>
+                </section>
+            </c:when>
+        </c:choose>
 
         <!-- Hottest Product -->
         <section class="section hottest-course-section">
@@ -372,104 +386,96 @@
                 <p>We collaborate with <span>325+ leading companies and universities</span></p>
                 <div class="logos logos-row-1">
                     <div class="logos-slide logos-slide-row-1">
-                        <a href="https://www.amazon.com/" target=”_blank”><img src="./img/home/collaborate/companies/amazon.svg" alt="Amazon" title="Amazon.com, Inc." /></a>
-                        <a href="https://www.apple.com/" target=”_blank”><img src="./img/home/collaborate/companies/apple.svg" alt="Apple" title="Apple Computer, Inc." /></a>
-                        <a href="https://mooiko.com/" target=”_blank”><img src="./img/home/collaborate/companies/mooiko.png" alt="Mooiko" title="MOOIKO SOFTWARE SDN. BHD." /></a>
-                        <a href="https://www.sqlacc.com/" target=”_blank”><img src="./img/home/collaborate/companies/mysoftware.png" alt="MySoftware" title="MY SOFTWARE SOLUTIONS SDN. BHD." /></a>
-                        <a href="https://pentamaster.com.my/" target=”_blank”><img src="./img/home/collaborate/companies/penta.png" alt="Pentamaster" title="Pentamaster Corporation Berhad" /></a>    
-                        <a href="https://sip-technology.com/en/" target=”_blank”><img src="./img/home/collaborate/companies/sip.png" alt="SIP Technology" title="Sip Technology (M) Sdn. Bhd." /></a>
-                        <a href="https://www.quantummetal.com.my/" target=”_blank”><img src="./img/home/collaborate/companies/qm.webp" alt="Quantum Metal" title="QUANTUM METAL SDN BHD" /></a>
-                        <a href="https://www.cisco.com/" target=”_blank”><img src="./img/home/collaborate/companies/cisco.svg" alt="Cisco" title="Cisco Systems, Inc." /></a>
-                        <a href="https://about.google/intl/ALL_my/" target=”_blank”><img src="./img/home/collaborate/companies/google.svg" alt="Google" title="Google LLC" /></a>
-                        <a href="https://www.ibm.com/us-en" target=”_blank”><img src="./img/home/collaborate/companies/ibm.svg" alt="IBM" title="International Business Machines" /></a>
-                        <a href="https://about.meta.com/metaverse/" target=”_blank”><img src="./img/home/collaborate/companies/meta.svg" alt="Meta" title="Meta Platforms, Inc." /></a>
-                        <a href="https://www.microsoft.com/en-my" target=”_blank”><img src="./img/home/collaborate/companies/microsoft.svg" alt="Microsoft" title="Microsoft Corporation, Inc." /></a>
-                        <a href="https://www.tiktok.com/en/" target=”_blank”><img src="./img/home/collaborate/companies/tiktok.svg" alt="Tik Tok" title="ByteDance Ltd." /></a>
-                        <a href="https://www.riotgames.com/" target=”_blank”><img src="./img/home/collaborate/companies/riot.svg" alt="Riot Games" title="Riot Games, Inc." /></a>
+                        <% 
+                            List<Map<String, String>> companies = CollaborateLogos.getCompanies();
+                            for (Map<String, String> company : companies) {
+                        %>
+                        <a href="<%= company.get("link") %>" target="_blank">
+                            <img src="<%= company.get("image") %>" alt="<%= company.get("alt") %>" title="<%= company.get("title") %>" />
+                        </a>
+                        <% } %>
                     </div>
                 </div>
                 <div class="logos logos-row-2">
                     <div class="logos-slide logos-slide-row-2">
-                        <a href="https://www.cam.ac.uk/" target=”_blank”><img src="./img/home/collaborate/universities/Cambridge.svg" alt="University of Cambridge" title="University of Cambridge" /></a>
-                        <a href="https://www.mit.edu/" target=”_blank”><img src="./img/home/collaborate/universities/MIT.svg" alt="Massachusetts Institute of Technology" title="Massachusetts Institute of Technology" /></a>
-                        <a href="https://www.ox.ac.uk/" target=”_blank”><img src="./img/home/collaborate/universities/Oxford.svg" alt="University of Oxford" title="University of Oxford" /></a>
-                        <a href="https://english.pku.edu.cn/" target=”_blank”><img src="./img/home/collaborate/universities/Peking.svg" alt="Peking University" title="Peking University" /></a>
-                        <a href="https://www.princeton.edu/" target=”_blank”><img src="./img/home/collaborate/universities/Princeton.svg" alt="Princeton University" title="Princeton University" /></a>
-                        <a href="https://tarc.edu.my/" target=”_blank”><img src="./img/home/collaborate/universities/tarumt.png" alt="TARUMT" title="Tunku Abdul Rahman University of Management & Technology" /></a>
-                        <a href="https://www.stanford.edu/" target=”_blank”><img src="./img/home/collaborate/universities/Stanford.svg" alt="Stanford University" title="Stanford University" /></a>
-                        <a href="https://www.tsinghua.edu.cn/en/" target=”_blank”><img src="./img/home/collaborate/universities/Tsinghua.png" alt="Tsing Hua University" title="Tsing Hua University" /></a>
-                        <a href="https://www.harvard.edu/" target=”_blank”><img src="./img/home/collaborate/universities/harvard.png" alt="Harvard University" title="Harvard University" /></a>                  
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--JS for the moving logo-->
-        <script>
-            var copy1 = document.querySelector(".logos-slide-row-1").cloneNode(true);
-            document.querySelector(".logos-row-1").appendChild(copy1);
-
-            var copy2 = document.querySelector(".logos-slide-row-2").cloneNode(true);
-            document.querySelector(".logos-row-2").appendChild(copy2);
-        </script>
-    </section>
-
-    <!-- Information section -->
-    <section class="section home-information-section">
-        <div class="home-info-div">
-            <div class="home-info-div-col">
-                <p class="info-icon"><i class="ri-vidicon-fill"></i></i></p>
-                <p class="info-desc">Learn in-demand skill with over 210,000 video courses</p>
-            </div>
-            <div class="home-info-div-col">
-                <p class="info-icon"><i class="ri-bard-fill"></i></p>
-                <p class="info-desc">Choose course taught by real-world experts</p>
-            </div>
-            <div class="home-info-div-col">
-                <p class="info-icon"><i class="ri-pass-valid-fill"></i></p>
-                <p class="info-desc">Learn at your own pace, with life time access</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Feedback from customer -->
-    <section class="section feedback-section">
-
-    </section>
-
-    <!-- Category section -->
-    <section class="section category-section">
-
-    </section>
-
-    <!-- FAQ section -->
-    <section class="section faq-section">
-
-    </section>
-
-    <!--JSP conditional rendering-->
-    <c:choose>
-        <c:when test="${empty sessionScope.username}">
-            <!-- Guest ask to sign up section -->
-            <section class="section guest-sign-up-section">
-                <div class="guest-sign-up-div flex-row">
-                    <div class="guest-left-div">
-                        <img src="./img/home/GuestSignUp.png" alt="Learning" />
-                    </div>
-                    <div class="guest-right-div flex-col">
-                        <h1 class="guest-sign-up-title">Start for free</h1>
-                        <p class="guest-sign-up-desc">If you’ve made it this far, you must be at least a little curious. Sign up and take the first step toward your goals.</p>
-                        <a href="http://localhost:8080/CourseHero/sign-up">
-                            Sign Up
+                        <% 
+                            List<Map<String, String>> universities = CollaborateLogos.getUniversities();
+                            for (Map<String, String> university : universities) {
+                        %>
+                        <a href="<%= university.get("link") %>" target="_blank">
+                            <img src="<%= university.get("image") %>" alt="<%= university.get("alt") %>" title="<%= university.get("title") %>" />
                         </a>
+                        <% } %>
                     </div>
                 </div>
-            </section>
-        </c:when>
-    </c:choose>
+            </div>
+            <!--JS for the moving logo-->
+            <script>
+                var copy1 = document.querySelector(".logos-slide-row-1").cloneNode(true);
+                document.querySelector(".logos-row-1").appendChild(copy1);
 
-    <!-- Footer section -->
-    <section class="section footer-section">
+                var copy2 = document.querySelector(".logos-slide-row-2").cloneNode(true);
+                document.querySelector(".logos-row-2").appendChild(copy2);
+            </script>
+        </section>
 
-    </section>
-</body>
+        <!-- Information section -->
+        <section class="section home-information-section">
+            <div class="home-info-div">
+                <div class="home-info-div-col">
+                    <p class="info-icon"><i class="ri-vidicon-fill"></i></i></p>
+                    <p class="info-desc">Learn in-demand skill with over 210,000 video courses</p>
+                </div>
+                <div class="home-info-div-col">
+                    <p class="info-icon"><i class="ri-bard-fill"></i></p>
+                    <p class="info-desc">Choose course taught by real-world experts</p>
+                </div>
+                <div class="home-info-div-col">
+                    <p class="info-icon"><i class="ri-pass-valid-fill"></i></p>
+                    <p class="info-desc">Learn at your own pace, with life time access</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Feedback from customer -->
+        <section class="section feedback-section">
+
+        </section>
+
+        <!-- Category section -->
+        <section class="section category-section">
+
+        </section>
+
+        <!-- FAQ section -->
+        <section class="section faq-section">
+
+        </section>
+
+        <!--JSP conditional rendering-->
+        <c:choose>
+            <c:when test="${empty sessionScope.username}">
+                <!-- Guest ask to sign up section -->
+                <section class="section guest-sign-up-section">
+                    <div class="guest-sign-up-div flex-row">
+                        <div class="guest-left-div">
+                            <img src="./img/home/GuestSignUp.png" alt="Learning" />
+                        </div>
+                        <div class="guest-right-div flex-col">
+                            <h1 class="guest-sign-up-title">Start for free</h1>
+                            <p class="guest-sign-up-desc">If you’ve made it this far, you must be at least a little curious. Sign up and take the first step toward your goals.</p>
+                            <a href="http://localhost:8080/CourseHero/sign-up">
+                                Sign Up
+                            </a>
+                        </div>
+                    </div>
+                </section>
+            </c:when>
+        </c:choose>
+
+        <!-- Footer section -->
+        <section class="section footer-section">
+
+        </section>
+    </body>
 </html>

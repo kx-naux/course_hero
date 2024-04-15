@@ -202,13 +202,13 @@
 .logos-slide-row-1 {
     display: inline-block;
     max-width: none !important;
-    animation: 55s slide1 infinite linear;
+    animation: 75s slide1 infinite linear;
 }
 
 .logos-slide-row-2 {
     display: inline-block;
     max-width: none !important;
-    animation: 45s slide2 infinite linear;
+    animation: 55s slide2 infinite linear;
 }
 
 .logos-slide img {
@@ -308,7 +308,11 @@
     padding: 6px 14px;
     width: 100px;
     color: var(--color-white);
-    background-color: var(--color-orange-1);
+    background-color: var(--color-orange-2);
     justify-content: center;
     display: flex;
+}
+
+.guest-right-div a:hover {
+    background-color: var(--color-orange-1);
 }

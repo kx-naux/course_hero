@@ -25,9 +25,11 @@
     --color-black-transparent-04: rgba(0,0,0,0.4);
     --color-black-transparent-05: rgba(0,0,0,0.5);
     --color-black-transparent-06: rgba(0,0,0,0.6);
-    
-    --color-orange-1: #ff6600;
-    
+
+    --color-orange-1: #cc5200;
+    --color-orange-2: #ff6600;
+    --color-orange-3: #ff9933;
+
     --color-yellow-1: #6e6501;
     --color-yellow-2: #b0a202;
     --color-yellow-3: #ffea00;
@@ -40,9 +42,9 @@
     --color-error: #ff7782;
     --color-success: #41f1b6;
     --color-warning: #ffbb55;
-    
+
     --color-transparent: rgba(0,0,0,0);
-    
+
     --tag-red-color: #781212;
     --tag-red-bg: #ffc2c2;
     --tag-orange-color: #6e2f0d;
@@ -61,7 +63,7 @@
     --scroll-bar-track-color: var(--color-white);
 
     --box-shadow-white-0: 0 2px 4px rgba(255,255,255,.16), 0 4px 12px rgba(255,255,255,.16);
-    
+
     --box-shadow-0: 0 2px 4px rgba(0,0,0,.16), 0 4px 12px rgba(0,0,0,.16);
     --box-shadow-1: 0 2px 4px rgba(0,0,0,.08), 0 4px 12px rgba(0,0,0,.08);
     --box-shadow-2: 0 2px 4px rgba(0,0,0,.05), 0 4px 12px rgba(0,0,0,.05);
