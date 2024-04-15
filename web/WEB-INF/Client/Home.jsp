@@ -162,8 +162,8 @@
                                 <div class="product-card-top">
                                     <img src="./img/course/beginner_excel.jpg" alt="">
                                     <div class="action-btn-field flex-row">
-                                        <button onclick="cartButtonClick(event)"><i class="ri-shopping-cart-line"></i></button>
-                                        <button onclick="likeButtonClick(event)"><i class="ri-heart-line"></i></button>
+                                        <button class="cart-Btn" status="0" onclick="cartButtonClick(event)"><i class="ri-shopping-cart-line"></i></button>
+                                        <button class="wish-Btn" status="0" onclick="likeButtonClick(event)"><i class="ri-heart-line"></i></button>
                                     </div>
                                 </div>
                                 <div class="product-card-bottom flex-col">
@@ -199,8 +199,8 @@
                                 <div class="product-card-top">
                                     <img src="./img/course/beginner_excel.jpg" alt="">
                                     <div class="action-btn-field flex-row">
-                                        <button onclick="cartButtonClick(event)"><i class="ri-shopping-cart-line"></i></button>
-                                        <button onclick="likeButtonClick(event)"><i class="ri-heart-line"></i></button>
+                                        <button class="cart-Btn" status="0" onclick="cartButtonClick(event)"><i class="ri-shopping-cart-line"></i></button>
+                                        <button class="wish-Btn" status="0" onclick="likeButtonClick(event)"><i class="ri-heart-line"></i></button>
                                     </div>
                                 </div>
                                 <div class="product-card-bottom flex-col">
@@ -236,8 +236,8 @@
                                 <div class="product-card-top">
                                     <img src="./img/course/beginner_excel.jpg" alt="">
                                     <div class="action-btn-field flex-row">
-                                        <button onclick="cartButtonClick(event)"><i class="ri-shopping-cart-line"></i></button>
-                                        <button onclick="likeButtonClick(event)"><i class="ri-heart-line"></i></button>
+                                        <button class="cart-Btn" status="0" onclick="cartButtonClick(event)"><i class="ri-shopping-cart-line"></i></button>
+                                        <button class="wish-Btn" status="0" onclick="likeButtonClick(event)"><i class="ri-heart-line"></i></button>
                                     </div>
                                 </div>
                                 <div class="product-card-bottom flex-col">
@@ -273,8 +273,8 @@
                                 <div class="product-card-top">
                                     <img src="./img/course/beginner_excel.jpg" alt="">
                                     <div class="action-btn-field flex-row">
-                                        <button onclick="cartButtonClick(event)"><i class="ri-shopping-cart-line"></i></button>
-                                        <button onclick="likeButtonClick(event)"><i class="ri-heart-line"></i></button>
+                                        <button class="cart-Btn" status="0" onclick="cartButtonClick(event)"><i class="ri-shopping-cart-line"></i></button>
+                                        <button class="wish-Btn" status="0" onclick="likeButtonClick(event)"><i class="ri-heart-line"></i></button>
                                     </div>
                                 </div>
                                 <div class="product-card-bottom flex-col">
@@ -310,8 +310,8 @@
                                 <div class="product-card-top">
                                     <img src="./img/course/beginner_excel.jpg" alt="">
                                     <div class="action-btn-field flex-row">
-                                        <button onclick="cartButtonClick(event)"><i class="ri-shopping-cart-line"></i></button>
-                                        <button onclick="likeButtonClick(event)"><i class="ri-heart-line"></i></button>
+                                        <button class="cart-Btn" status="0" onclick="cartButtonClick(event)"><i class="ri-shopping-cart-line"></i></button>
+                                        <button class="wish-Btn" status="0" onclick="likeButtonClick(event)"><i class="ri-heart-line"></i></button>
                                     </div>
                                 </div>
                                 <div class="product-card-bottom flex-col">
@@ -346,8 +346,8 @@
                                 <div class="product-card-top">
                                     <img src="./img/course/beginner_excel.jpg" alt="">
                                     <div class="action-btn-field flex-row">
-                                        <button onclick="cartButtonClick(event)"><i class="ri-shopping-cart-line"></i></button>
-                                        <button onclick="likeButtonClick(event)"><i class="ri-heart-line"></i></button>
+                                        <button class="cart-Btn" status="0" onclick="cartButtonClick(event)"><i class="ri-shopping-cart-line"></i></button>
+                                        <button class="wish-Btn" status="0" onclick="likeButtonClick(event)"><i class="ri-heart-line"></i></button>
                                     </div>
                                 </div>
                                 <div class="product-card-bottom flex-col">
@@ -411,11 +411,12 @@
             </div>
             <!--JS for the moving logo-->
             <script>
-                var copy1 = document.querySelector(".logos-slide-row-1").cloneNode(true);
-                document.querySelector(".logos-row-1").appendChild(copy1);
-
-                var copy2 = document.querySelector(".logos-slide-row-2").cloneNode(true);
-                document.querySelector(".logos-row-2").appendChild(copy2);
+                // Clone and append elements from each row
+                for (var i = 1; i <= 2; i++) {
+                    var sourceRow = document.querySelector(".logos-slide-row-" + i);
+                    var targetRow = document.querySelector(".logos-row-" + i);
+                    targetRow.appendChild(sourceRow.cloneNode(true));
+                }
             </script>
         </section>
 

@@ -114,7 +114,7 @@
     color: var(--color-white);
     background: var(--color-transparent);
     border: 2px solid var(--color-white);
-    box-shadow: var(--box-shadow-white-0); 
+    box-shadow: var(--box-shadow-white-0);
     cursor: pointer;
     transition: 0.1s all ease-in-out;
 }
@@ -122,6 +122,41 @@
 .action-btn-field button:hover {
     color: var(--color-black);
     background: var(--color-white);
+}
+
+.action-btn-field button::after {
+    width: 100%;
+    position: absolute;
+    font-size: 15px;
+    color: var(--color-white);
+    text-shadow: var(--text-shadow-1);
+    opacity: 0;
+    visibility: hidden;
+    transition: .2s ease-in-out;
+    top: 85%;
+    right: 0;
+}
+
+.action-btn-field button:hover::after {
+    visibility: visible;
+    opacity: 1;
+    top: 75%;
+}
+
+.cart-Btn[status="0"]::after {
+    content: 'Add to cart';
+}
+
+.cart-Btn[status="1"]::after {
+    content: 'Remove from cart';
+}
+
+.wish-Btn[status="0"]::after {
+    content: 'Add to wishlist';
+}
+
+.wish-Btn[status="1"]::after {
+    content: 'Remove from wishlist';
 }
 
 .course-title {
