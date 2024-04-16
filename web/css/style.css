@@ -371,6 +371,7 @@ a:has(.nav-option):hover + .nav-option-dropdown,
 
 .footer-contact i {
     margin-right: 10px;
+    font-size: var(--font-size-m);
 }
 
 .footer-list a,
@@ -400,4 +401,20 @@ a:has(.nav-option):hover + .nav-option-dropdown,
 .footer-bot .footer-logo {
     width: 28px;
     height: 28px;
+}
+
+.footer-bot-right {
+    color: var(--color-white-transparent-05);
+    align-items: center;
+    justify-content: end;
+    gap: 20px;
+    font-size: var(--font-size-xl);
+}
+
+.footer-bot-right a {
+    cursor: pointer;
+}
+
+.footer-bot-right a:hover {
+    color: var(--color-white);
 }
