@@ -342,7 +342,7 @@ a:has(.nav-option):hover + .nav-option-dropdown,
 }
 
 .footer-div .footer-divider {
-    margin: 20px -10px 15px;
+    margin: 20px -1% 15px;
     border-top: 1px solid var(--color-white-transparent-05);
 }
 
@@ -389,7 +389,7 @@ a:has(.nav-option):hover + .nav-option-dropdown,
 
 /*footer bottom part*/
 .footer-bot-left {
-    gap: 10px;
+    gap: 15px;
     color: var(--color-light-grey-1);
     align-items: center;
     justify-content: start;
