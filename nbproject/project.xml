@@ -20,8 +20,12 @@
             </test-roots>
         </data>
         <spellchecker-wordlist xmlns="http://www.netbeans.org/ns/spellchecker-wordlist/1">
+            <word>getwaves</word>
+            <word>https</word>
+            <word>io</word>
             <word>JS</word>
             <word>JSP</word>
+            <word>svg</word>
         </spellchecker-wordlist>
     </configuration>
 </project>

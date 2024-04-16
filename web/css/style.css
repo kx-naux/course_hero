@@ -332,6 +332,15 @@ a:has(.nav-option):hover + .nav-option-dropdown,
 }
 
 /*footer*/
+.footer-wave-div {
+    margin: 0 0 -155px;
+    z-index: -1;
+}
+
+.footer-wave-div svg path {
+    fill: var(--color-dark-blue-1);
+}
+
 .footer-section {
     background-color: var(--color-dark-blue-1);
     padding: 40px 0 20px;
@@ -342,7 +351,7 @@ a:has(.nav-option):hover + .nav-option-dropdown,
 }
 
 .footer-div .footer-divider {
-    margin: 20px -1% 15px;
+    margin: 30px -1% 15px;
     border-top: 1px solid var(--color-white-transparent-05);
 }
 
