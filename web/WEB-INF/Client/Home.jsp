@@ -14,90 +14,14 @@
         <link type="text/css" href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
         <script src="./js/nav.js"></script>   
         <script src="./js/components/section_products.js"></script> 
+        <jsp:useBean id="webpath" class="module.WebPath" scope="application" />
     </head>
     <body>
         <!--To top button-->
         <button onclick="toTopFunc()" id="toTopBtn" title="Go to top"><i class="ri-arrow-up-s-line"></i></button>
-
-        <!-- Navigation Bar -->
-        <nav class="nav-bar">
-            <!-- Logo -->
-            <div class="nav-logo-div">
-                <a href="http://localhost:8080/CourseHero/home"><img class="nav-logo" src="./img/Logo.png" alt="Course Hero" /></a>
-            </div>
-            <!--Nav options-->
-            <div class="nav-option-div">
-                <ul>
-                    <li>
-                        <a href="http://localhost:8080/CourseHero/home">
-                            <div class="nav-option selected">
-                                <p>Home</p>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="http://localhost:8080/CourseHero/about-us">
-                            <div class="nav-option">
-                                <p>About Us <i class="ri-arrow-down-s-line"></i></p>
-                            </div>
-                        </a>
-                        <div class="nav-option-dropdown">
-                            <ul>
-                                <li><a href="#">Our Team</a></li>
-                                <li><a href="#">Our Office</a></li>
-                                <li><a href="#">Contact Us</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="http://localhost:8080/CourseHero/products">
-                            <div class="nav-option">
-                                <p>Courses</p>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="http://localhost:8080/CourseHero/learning">
-                            <div class="nav-option">
-                                <p>Learning</p>
-                            </div>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <!--Nav button-->
-            <div class="nav-function-div">
-                <!--Search course-->
-                <a href="http://localhost:8080/CourseHero/search">
-                    <p class="nav-icon"><i class="ri-search-line"></i></p>
-                </a>
-                <div>
-
-                </div>
-                <!--JSP conditional rendering-->
-                <c:choose>
-                    <c:when test="${not empty sessionScope.username}">
-                        <!-- Logged in -->
-                        <a href="http://localhost:8080/CourseHero/wishlist">
-                            <p class="nav-icon"><i class="ri-heart-line"></i></P>
-                        </a>
-                        <a href="http://localhost:8080/CourseHero/cart">
-                            <p class="nav-icon"><i class="ri-shopping-cart-line"></i></P>
-                        </a>
-                        <input hidden type="text" id="hidden_username" value="${sessionScope.username}"/>
-                    </c:when>
-                    <c:otherwise>
-                        <!-- Not Logged in -->
-                        <a href="http://localhost:8080/CourseHero/login">
-                            <input class="nav-btn nav-login-btn" type="button" value="Log In" />
-                        </a>
-                        <a href="http://localhost:8080/CourseHero/sign-up">
-                            <input class="nav-btn nav-sign-up-btn" type="button" value="Sign Up" />
-                        </a>
-                    </c:otherwise>
-                </c:choose>
-            </div>
-        </nav>
+        
+        <!-- Include the navigation bar -->
+        <%@ include file="../Components/navbar.jsp" %>
 
         <!-- Image Carousel -->
         <section class="section slideshow-section flex-col">
@@ -462,7 +386,7 @@
                             </div>
                         </div>
                     </a>
-                    
+
                     <a href="#">
                         <div class="category-card flex-row">
                             <div class="category-card-left">
@@ -474,7 +398,7 @@
                             </div>
                         </div>
                     </a>
-                    
+
                     <a href="#">
                         <div class="category-card  flex-row">
                             <div class="category-card-left">
@@ -486,7 +410,7 @@
                             </div>
                         </div>
                     </a>
-                    
+
                     <a href="#">
                         <div class="category-card flex-row">
                             <div class="category-card-left">
@@ -506,16 +430,128 @@
         <!-- FAQ section -->
         <section class="section faq-section">
             <div class="faq-div flex-col">
-                
+
+                <!--faq title-->
                 <div class="faq-div-top flex-col">
-                    <h1>Frequent Ask Questions</h1>
+                    <h1>Frequently Asked Questions</h1>
                     <p>Quick answer to question you might have about the courses, service, or topic</p>
                 </div>
-                
-                <div class="faq-div-content">
-                    
+
+                <!--faq content-->
+                <div class="faq-div-content flex-col">
+
+                    <!--Row 1--> 
+                    <div class="faq-row flex-row">
+                        <div class="faq-col flex-row">
+                            <div class="faq-icon">
+                                <p><i class="ri-store-line"></i></p>
+                            </div>
+                            <div class="faq-text flex-col">
+                                <h1>What is Course Hero?</h1>
+                                <p>Course Hero is an online platform that offers a diverse range of courses in various subjects. We aim to provide high-quality educational content to learners worldwide.</p>
+                            </div>
+                        </div>
+                        <div class="faq-col flex-row">
+                            <div class="faq-icon">
+                                <p><i class="ri-book-3-line"></i></p>
+                            </div>
+                            <div class="faq-text flex-col">
+                                <h1>How do I enroll in a course?</h1>
+                                <p>Enrolling in a course is simple! Just browse our course catalog, select the course you're interested in, and click on the "Add to cart" button. Follow the prompts to complete the enrollment process.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Row 2--> 
+                    <div class="faq-row flex-row">
+                        <div class="faq-col flex-row">
+                            <div class="faq-icon">
+                                <p><i class="ri-user-3-line"></i></p>
+                            </div>
+                            <div class="faq-text flex-col">
+                                <h1>Are the courses self-paced or scheduled?</h1>
+                                <p>All of our courses are self-paced, allowing you to learn at your own convenience. You can find this information on the course page.</p>
+                            </div>
+                        </div>
+                        <div class="faq-col flex-row">
+                            <div class="faq-icon">
+                                <p><i class="ri-computer-line"></i></p>
+                            </div>
+                            <div class="faq-text flex-col">
+                                <h1>Can I access my courses on any device?</h1>
+                                <p>Yes, you can access your courses on any device with an internet connection, including desktop computers, laptops, tablets, and smartphones.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Row 3--> 
+                    <div class="faq-row flex-row">
+                        <div class="faq-col flex-row">
+                            <div class="faq-icon">
+                                <p><i class="ri-award-line"></i></p>
+                            </div>
+                            <div class="faq-text flex-col">
+                                <h1>Are there any prerequisites for the courses?</h1>
+                                <p>Prerequisites vary depending on the course. Some courses may require prior knowledge or experience in a specific subject, while others are suitable for beginners. Check the course description for details on prerequisites.</p>
+                            </div>
+                        </div>
+                        <div class="faq-col flex-row">
+                            <div class="faq-icon">
+                                <p><i class="ri-file-text-line"></i></p>
+                            </div>
+                            <div class="faq-text flex-col">
+                                <h1>Can I preview a course before enrolling?</h1>
+                                <p>Yes, you can! Many of our courses offer a free preview or introductory lesson, allowing you to get a feel for the content before enrolling.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Row 4--> 
+                    <div class="faq-row flex-row">
+                        <div class="faq-col flex-row">
+                            <div class="faq-icon">
+                                <p><i class="ri-pass-valid-line"></i></p>
+                            </div>
+                            <div class="faq-text flex-col">
+                                <h1>Are certificates offered upon course completion?</h1>
+                                <p>Yes, we provide certificates of completion for many of our courses. These certificates can be a valuable addition to your resume or portfolio.</p>
+                            </div>
+                        </div>
+                        <div class="faq-col flex-row">
+                            <div class="faq-icon">
+                                <p><i class="ri-money-dollar-box-line"></i></p>
+                            </div>
+                            <div class="faq-text flex-col">
+                                <h1>What payment methods do you accept?</h1>
+                                <p>We accept various payment methods, including credit/debit cards, Touch N Go, and other secure online payment options. You can choose the payment method that is most convenient for you during the checkout process.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Row 5--> 
+                    <div class="faq-row flex-row">
+                        <div class="faq-col flex-row">
+                            <div class="faq-icon">
+                                <p><i class="ri-hand-heart-line"></i></p>
+                            </div>
+                            <div class="faq-text flex-col">
+                                <h1>Is financial aid available for courses?</h1>
+                                <p>We strive to make education accessible to everyone. Some courses may offer financial aid or scholarships. Check the course page for details on available assistance options.</p>
+                            </div>
+                        </div>
+                        <div class="faq-col flex-row">
+                            <div class="faq-icon">
+                                <p><i class="ri-book-read-line"></i></p>
+                            </div>
+                            <div class="faq-text flex-col">
+                                <h1>How long do I have access to a course after enrolling?</h1>
+                                <p>You will have lifetime access to any course you enroll in. This means you can revisit course materials and resources at any time, even after you've completed the course.</p>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
-                
+
                 <div class="faq-div-bot flex-col">
                     <div class="faq-help flex-row">
                         <img src="./img/home/customer-service.png" alt="Live Support" />
@@ -526,8 +562,11 @@
                         <a class="faq-help-btn" href="#">Get in touch <i class="ri-send-plane-fill"></i></a>
                     </div>
                 </div>
-                
+
             </div>
+            
+            <!--import js file for faq section-->
+            <script src="./js/home/faq_read_more.js"></script>
         </section>
 
         <!--JSP conditional rendering-->
@@ -552,7 +591,7 @@
         </c:choose>
 
         <!--Footer import-->
-        <%@ include file="../Static_Components/footer_wave.html" %>  
-        <%@ include file="../Static_Components/footer.html" %>  
+        <%@ include file="../Components/footer_wave.html" %>  
+        <%@ include file="../Components/footer.jsp" %>  
     </body>
 </html>

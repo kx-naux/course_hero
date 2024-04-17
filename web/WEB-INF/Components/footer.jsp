@@ -41,7 +41,7 @@
         <div class="footer-bot flex-row">
             <!--logo and copyright div-->
             <div class="footer-bot-left flex-row">
-                <a href="http://localhost:8080/CourseHero/home"><img class="footer-logo" src="./img/Logo.png" alt="Course Hero" /></a>
+                <a href="<%= webpath.getPageUrl("home") %>"><img class="footer-logo" src="./img/Logo.png" alt="Course Hero" /></a>
                 <p>@2024 Course Hero Inc. All right reserved.</p>
             </div>
             <!--social media div-->

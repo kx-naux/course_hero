@@ -24,6 +24,7 @@
             </test-roots>
         </data>
         <spellchecker-wordlist xmlns="http://www.netbeans.org/ns/spellchecker-wordlist/1">
+            <word>faq</word>
             <word>getwaves</word>
             <word>https</word>
             <word>io</word>
