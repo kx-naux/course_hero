@@ -21,7 +21,7 @@
         <button onclick="toTopFunc()" id="toTopBtn" title="Go to top"><i class="ri-arrow-up-s-line"></i></button>
         
         <!-- Include the navigation bar -->
-        <%@ include file="../Components/navbar.jsp" %>
+        <%@ include file="./Components/navbar.jsp" %>
 
         <!-- Image Carousel -->
         <section class="section slideshow-section flex-col">
@@ -591,7 +591,7 @@
         </c:choose>
 
         <!--Footer import-->
-        <%@ include file="../Components/footer_wave.html" %>  
-        <%@ include file="../Components/footer.jsp" %>  
+        <%@ include file="./Components/footer_wave.html" %>  
+        <%@ include file="./Components/footer.jsp" %>  
     </body>
 </html>
