@@ -9,7 +9,7 @@
         <ul>
             <li>
                 <a href="<%= webpath.getPageUrl("home") %>">
-                    <div class="nav-option selected">
+                    <div class="nav-option">
                         <p>Home</p>
                     </div>
                 </a>

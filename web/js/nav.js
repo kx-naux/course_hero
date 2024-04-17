@@ -1,3 +1,18 @@
+// Find selected option
+document.addEventListener("DOMContentLoaded", function () {
+    // Get all anchor tags inside nav-option-div
+    const navLinks = document.querySelectorAll('.nav-option-div a');
+
+    // Loop through each anchor tag
+    navLinks.forEach(function(navLink) {
+        // Check if the href attribute of the anchor tag matches the current URL
+        if(navLink.href === window.location.href) {
+            // If it matches, add the 'selected' class to its parent div
+            navLink.querySelector('.nav-option').classList.add('selected');
+        }
+    });
+});
+
 // Navbar onscroll and to top button
 document.addEventListener("DOMContentLoaded", function () {
     window.addEventListener('scroll', function () {
