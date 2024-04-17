@@ -382,8 +382,9 @@
 .faq-div-content .faq-row {
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    gap: 35px;
+    gap: 70px;
 }
 
 .faq-div-content .faq-row .faq-col {
@@ -459,6 +460,7 @@
     width: 45px;
     height: 45px;
     border-radius: 50%;
+    filter: grayscale(40%);
 }
 
 .faq-div-bot .faq-help-text {

@@ -15,11 +15,6 @@
     scroll-behavior: smooth;
 }
 
-html {
-    scroll-snap-type: y proximity;
-    scroll-padding-top: 60px; /* Adjust the value to your needs */
-}
-
 body {
     margin: 0;
     padding: 0;
