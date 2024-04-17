@@ -2,6 +2,7 @@
 <%@ page import="module.CollaborateLogos" %>
 <%@ page import="java.util.List, java.util.Map" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -19,7 +20,7 @@
     <body>
         <!--To top button-->
         <button onclick="toTopFunc()" id="toTopBtn" title="Go to top"><i class="ri-arrow-up-s-line"></i></button>
-        
+
         <!-- Include the navigation bar -->
         <%@ include file="./Components/navbar.jsp" %>
 
@@ -553,6 +554,8 @@
                 </div>
 
                 <div class="faq-div-bot flex-col">
+                    <button class="faq-more-btn" status="0" onclick="faqShow(this)">Show More</button>
+
                     <div class="faq-help flex-row">
                         <img src="./img/home/customer-service.png" alt="Live Support" />
                         <div class="faq-help-text flex-col">
@@ -564,7 +567,7 @@
                 </div>
 
             </div>
-            
+
             <!--import js file for faq section-->
             <script src="./js/home/faq_read_more.js"></script>
         </section>
