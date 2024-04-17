@@ -263,6 +263,68 @@
     color: var(--color-text-light-2);
 }
 
+/*Category Section*/
+.category-section {
+    padding: 35px 0 60px;
+}
+
+.category-div-top {
+    justify-content: start;
+    margin-bottom: 20px;
+}
+
+.category-div-top h1 {
+    color: var(--color-blue-1);
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+}
+
+.category-div-bot {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    column-gap: 20px;
+    row-gap: 24px;
+}
+
+.category-card {
+    width: 400px;
+    height: 120px;
+    box-shadow: var(--box-shadow-2);
+    border: 1px solid var(--color-light-grey-1);
+    transition: 0.2s all ease-in-out
+}
+
+.category-card:hover {
+    transform: scale(1.03);
+}
+
+.category-card-left {
+    width: 150px;
+    height: 100%;
+}
+
+.category-card-right {
+    width: 65%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.category-card-right .category-name {
+    color: var(--color-primary);
+    font-weight: 600;
+    font-size: var(--font-size-xm);
+}
+
+.category-card-right .category-course-qty {
+    color: var(--color-text-light-2);
+    font-weight: 300;
+    font-size: var(--font-size-s);
+}
+
 /*Guest Sign Up*/
 .guest-sign-up-section {
     padding: 65px 20px 75px;

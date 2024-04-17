@@ -452,13 +452,49 @@
                 <div class="category-div-bot">
 
                     <a href="#">
-                        <div class="category-card">
+                        <div class="category-card flex-row">
                             <div class="category-card-left">
-                                <img src="" alt="" />
+                                <img src="./img/categories/data_science.png" alt="Data Science" />
                             </div>
                             <div class="category-card-right flex-col">
                                 <h1 class="category-name">Data Science</h1>
                                 <p class="category-course-qty"><span>12</span> Courses</p>
+                            </div>
+                        </div>
+                    </a>
+                    
+                    <a href="#">
+                        <div class="category-card flex-row">
+                            <div class="category-card-left">
+                                <img src="./img/categories/business.png" alt="Business" />
+                            </div>
+                            <div class="category-card-right flex-col">
+                                <h1 class="category-name">Business</h1>
+                                <p class="category-course-qty"><span>8</span> Courses</p>
+                            </div>
+                        </div>
+                    </a>
+                    
+                    <a href="#">
+                        <div class="category-card  flex-row">
+                            <div class="category-card-left">
+                                <img src="./img/categories/math.png" alt="Mathematics" />
+                            </div>
+                            <div class="category-card-right flex-col">
+                                <h1 class="category-name">Mathematics</h1>
+                                <p class="category-course-qty"><span>12</span> Courses</p>
+                            </div>
+                        </div>
+                    </a>
+                    
+                    <a href="#">
+                        <div class="category-card flex-row">
+                            <div class="category-card-left">
+                                <img src="./img/categories/language_learning.png" alt="Language Learning" />
+                            </div>
+                            <div class="category-card-right flex-col">
+                                <h1 class="category-name">Language Learning</h1>
+                                <p class="category-course-qty"><span>7</span> Courses</p>
                             </div>
                         </div>
                     </a>
