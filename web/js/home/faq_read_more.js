@@ -3,11 +3,11 @@ function faqShow(button) {
     var status = button.getAttribute('status');
 
     if (status === '0') {
-        button.textContent = 'Show Less';
+        button.textContent = 'Show less';
         button.setAttribute('status', '1');
         faqDiv.classList.add('active');
     } else {
-        button.textContent = 'Show More';
+        button.textContent = 'Show more';
         button.setAttribute('status', '0');
         faqDiv.classList.remove('active');
     }

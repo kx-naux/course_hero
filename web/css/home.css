@@ -358,6 +358,7 @@
 }
 
 .faq-section .faq-div-content:after {
+    opacity: 1;
     position: absolute;
     bottom: 0;
     width: 100%;
@@ -368,11 +369,14 @@
 }
 
 .faq-section .faq-div-content.active:after  {
-    display: none;
+    opacity: 0;
+    transform: translateY(100px);
+    transition: all 0.5s linear;
 }
 
 .faq-section .faq-div-content.active {
-    max-height: none;
+    max-height: 2000px;
+    transition:all 0.5s linear;
 }
 
 .faq-div-content .faq-row {
@@ -423,8 +427,8 @@
 
 .faq-section .faq-div-bot .faq-more-btn {
     padding: 8px 12px;
-    font-weight: 600;
-    font-size: var(--font-size-xm);
+    font-weight: 400;
+    font-size: var(--font-size-s);
     color: var(--color-text-light-3);
     background-color: var(--color-white);
     border: 1px solid var(--color-light-grey-3);

@@ -554,7 +554,7 @@
                 </div>
 
                 <div class="faq-div-bot flex-col">
-                    <button class="faq-more-btn" status="0" onclick="faqShow(this)">Show More</button>
+                    <button class="faq-more-btn" status="0" onclick="faqShow(this)">Show more</button>
 
                     <div class="faq-help flex-row">
                         <img src="./img/home/customer-service.png" alt="Live Support" />
