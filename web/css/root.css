@@ -18,13 +18,15 @@
     --color-grey-transparent-03: rgba(50,50,50,0.3);
     --color-grey-transparent-05: rgba(50,50,50,0.5);
 
-    --color-light-black: #111;
     --color-black: #000;
     --color-black-transparent-02: rgba(0,0,0,0.2);
     --color-black-transparent-03: rgba(0,0,0,0.3);
     --color-black-transparent-04: rgba(0,0,0,0.4);
     --color-black-transparent-05: rgba(0,0,0,0.5);
     --color-black-transparent-06: rgba(0,0,0,0.6);
+    --color-light-black: #111;
+    --color-light-black-1: #222;
+    --color-light-black-2: #333;
 
     --color-orange-1: #cc5200;
     --color-orange-2: #ff6600;

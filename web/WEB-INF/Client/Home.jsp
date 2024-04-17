@@ -505,7 +505,29 @@
 
         <!-- FAQ section -->
         <section class="section faq-section">
-
+            <div class="faq-div flex-col">
+                
+                <div class="faq-div-top flex-col">
+                    <h1>Frequent Ask Questions</h1>
+                    <p>Quick answer to question you might have about the courses, service, or topic</p>
+                </div>
+                
+                <div class="faq-div-content">
+                    
+                </div>
+                
+                <div class="faq-div-bot flex-col">
+                    <div class="faq-help flex-row">
+                        <img src="./img/home/customer-service.png" alt="Live Support" />
+                        <div class="faq-help-text flex-col">
+                            <h1>Still have questions?</h1>
+                            <p>Can't find the answer you're looking for? Please chat to our friendly team.</p>
+                        </div>
+                        <a class="faq-help-btn" href="#">Get in touch <i class="ri-send-plane-fill"></i></a>
+                    </div>
+                </div>
+                
+            </div>
         </section>
 
         <!--JSP conditional rendering-->
@@ -529,13 +551,8 @@
             </c:when>
         </c:choose>
 
-        <!--Wave svg https://getwaves.io/ -->
-        <div class="footer-wave-div">
-            <svg id="wave" style="transform:rotate(0deg); transition: 0.3s" viewBox="0 0 1440 290" version="1.1" xmlns="http://www.w3.org/2000/svg">
-            <path style="transform:translate(0, 0px); opacity:1" fill="url(#sw-gradient-0)" d="M0,0L80,29C160,58,320,116,480,116C640,116,800,58,960,38.7C1120,19,1280,39,1440,82.2C1600,126,1760,193,1920,198.2C2080,203,2240,145,2400,101.5C2560,58,2720,29,2880,43.5C3040,58,3200,116,3360,120.8C3520,126,3680,77,3840,77.3C4000,77,4160,126,4320,159.5C4480,193,4640,213,4800,203C4960,193,5120,155,5280,154.7C5440,155,5600,193,5760,207.8C5920,222,6080,213,6240,212.7C6400,213,6560,222,6720,198.2C6880,174,7040,116,7200,82.2C7360,48,7520,39,7680,43.5C7840,48,8000,68,8160,62.8C8320,58,8480,29,8640,24.2C8800,19,8960,39,9120,48.3C9280,58,9440,58,9600,72.5C9760,87,9920,116,10080,125.7C10240,135,10400,126,10560,135.3C10720,145,10880,174,11040,188.5C11200,203,11360,203,11440,203L11520,203L11520,290L11440,290C11360,290,11200,290,11040,290C10880,290,10720,290,10560,290C10400,290,10240,290,10080,290C9920,290,9760,290,9600,290C9440,290,9280,290,9120,290C8960,290,8800,290,8640,290C8480,290,8320,290,8160,290C8000,290,7840,290,7680,290C7520,290,7360,290,7200,290C7040,290,6880,290,6720,290C6560,290,6400,290,6240,290C6080,290,5920,290,5760,290C5600,290,5440,290,5280,290C5120,290,4960,290,4800,290C4640,290,4480,290,4320,290C4160,290,4000,290,3840,290C3680,290,3520,290,3360,290C3200,290,3040,290,2880,290C2720,290,2560,290,2400,290C2240,290,2080,290,1920,290C1760,290,1600,290,1440,290C1280,290,1120,290,960,290C800,290,640,290,480,290C320,290,160,290,80,290L0,290Z"></path>
-            </svg>
-        </div>
         <!--Footer import-->
+        <%@ include file="../Static_Components/footer_wave.html" %>  
         <%@ include file="../Static_Components/footer.html" %>  
     </body>
 </html>
