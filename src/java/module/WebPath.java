@@ -11,6 +11,7 @@ public class WebPath {
         pageUrls = new HashMap<>();
         pageUrls.put("login", "/login");
         pageUrls.put("sign up","/sign-up");
+        pageUrls.put("forget password","/forget-pw");
         pageUrls.put("home", "/home");
         pageUrls.put("about us", "/about-us");
         pageUrls.put("products", "/products");

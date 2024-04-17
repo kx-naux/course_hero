@@ -11,6 +11,15 @@
         <jsp:useBean id="webpath" class="module.WebPath" scope="application" />
     </head>
     <body>
-        
+        <section class="login-section flex-col">
+            <div class="login-div flex-row">
+                <div class="login-left flex-col">
+                    
+                </div>
+                <div class="login-right">
+                    
+                </div>
+            </div>
+        </section>
     </body>
 </html>
