@@ -352,7 +352,7 @@
 
 .faq-section .faq-div-content {
     position: relative;
-    max-height: 450px;
+    max-height: 350px;
     overflow-y: hidden;
     gap: 30px;
 }
@@ -371,12 +371,12 @@
 .faq-section .faq-div-content.active:after  {
     opacity: 0;
     transform: translateY(100px);
-    transition: all 0.5s linear;
+    transition: all 0.7s linear;
 }
 
 .faq-section .faq-div-content.active {
     max-height: 2000px;
-    transition:all 0.5s linear;
+    transition:all 0.7s linear;
 }
 
 .faq-div-content .faq-row {
@@ -413,7 +413,7 @@
 .faq-div-content .faq-text p {
     font-weight: 400;
     font-size: var(--font-size-s);
-    color: var(--color-text-light-2);
+    color: var(--color-text-light-1);
     text-align: justify;
 }
 
@@ -422,7 +422,7 @@
     justify-content: center;
     align-items: center;
     gap: 15px;
-    margin-top: 25px;
+    margin-top: 30px;
 }
 
 .faq-section .faq-div-bot .faq-more-btn {
