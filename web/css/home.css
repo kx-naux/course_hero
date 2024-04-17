@@ -470,8 +470,8 @@
 
 .faq-div-bot .faq-help-text h1 {
     font-weight: 500;
-    font-size: var(--font-size-m);
-    color: var(--color-text-light-3);
+    font-size: var(--font-size-xm);
+    color: var(--color-text-light-2);
 }
 
 .faq-div-bot .faq-help-text p {

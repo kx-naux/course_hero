@@ -6,8 +6,6 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.*;
 import java.io.IOException;
 
-import module.CollaborateLogos;
-
 @WebServlet(name = "Home Page", urlPatterns = {"/home"})
 public class HomePage extends HttpServlet {
 
