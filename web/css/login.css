@@ -1,2 +1,175 @@
 @import url('./root.css');
 
+.login-section {
+    height: 100vh;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    background:
+        linear-gradient(135deg,#0000 20.5%,var(--color-light-grey-0) 0 29.5%,#0000 0) 0 16px,
+        linear-gradient( 45deg,#0000 8%,var(--color-light-grey-0) 0 17%, #0000 0 58%) 32px 0,
+        linear-gradient(135deg,#0000 8%,var(--color-light-grey-0) 0 17%, #0000 0 58%,var(--color-light-grey-0) 0 67%,#0000 0),
+        linear-gradient( 45deg,#0000 8%,var(--color-light-grey-0) 0 17%, #0000 0 58%,var(--color-light-grey-0) 0 67%,#0000 0 83%,var(--color-light-grey-0) 0 92%,#0000 0),
+        var(--color-light-grey-1);
+    background-size: 64px 64px;
+}
+
+
+.login-section .login-div {
+    max-height: 500px;
+    max-width: 800px;
+    height: 100%;
+    width: 100%;
+    border-radius: 4px;
+    box-shadow: var(--box-shadow-1);
+}
+
+.login-div .login-panel {
+    height: 100%;
+    width: 100%;
+}
+
+/*left panel*/
+.login-div .login-left {
+    justify-content: center;
+    background-color: var(--color-white);
+    position: relative;
+}
+
+.login-div .login-left-row-1 {
+    position: absolute;
+    top: 0;
+    padding: 25px;
+}
+
+.login-div .login-left-row-1 .login-logo {
+    height: 40px;
+    width: 40px;
+}
+
+/*login form*/
+.login-div .login-form-div {
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.login-form-div h1 {
+    color: var(--color-blue-1);
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.login-form-input-div ,
+.login-form-input-div .login-form-input-div{
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+
+.input-field {
+    position: relative;
+    padding: 15px 0 0;
+    width: 100%;
+    max-width: 300px;
+    margin-top: 10px;
+}
+
+.form-input {
+    font-family: inherit;
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid #9b9b9b;
+    outline: 0;
+    font-size: var(--font-size-s);
+    color: #4f4f4f;
+    padding: 7px 0;
+    background: transparent;
+    transition: border-color 0.2s;
+}
+
+.form-input::placeholder {
+    color: transparent;
+    font-size: var(--font-size-s);
+}
+
+.form-input:placeholder-shown ~ .form-label {
+    font-size: var(--font-size-xs);
+    cursor: text;
+    top: 24px;
+}
+
+.form-label {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: var(--font-size-xs);
+    color: var(--color-text-light-1);
+    pointer-events: none;
+}
+
+.form-input:focus {
+    padding-bottom: 6px;
+    border-width: 3px;
+    border-image: linear-gradient(to right, #1a378f, #4565c4);
+    border-image-slice: 1;
+}
+
+.form-input:focus ~ .form-label {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: var(--font-size-xs);
+    color: var(--color-primary);
+    font-weight: 600;
+}
+
+.forget-password {
+    width: 100%;
+    max-width: 300px;
+    display: flex;
+    justify-content: right;
+    margin-top: 8px;
+}
+
+.forget-password p {
+    font-weight: 300;
+    font-size: var(--font-size-xs);
+    color: var(--color-text-light-1);
+    transition: 0.2s all ease;
+}
+
+.forget-password:hover {
+    text-decoration: underline;
+    color: var(--color-text-light-2);
+}
+
+.login-form-div .invalid-msg {
+    font-size: var(--font-size-s);
+    font-weight: 400;
+    color: var(--color-text-error);
+}
+
+.login-form-div .login-form-bot {
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.login-form-div .login-form-bot input {
+
+}
+
+.login-form-div .login-form-bot p {
+    font-size: var(--font-size-xs);
+    font-weight: 400;
+    color: var(--color-text-light-2);
+}
+
+/*right panel*/
+.login-div .login-right {
+    background-color: var(--color-blue-1);
+}
