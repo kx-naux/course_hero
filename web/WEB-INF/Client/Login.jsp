@@ -40,10 +40,17 @@
                     </div>
                 </div>
                 <div class="login-panel login-right">
-
+                    <div class="login-right-content">
+                        
+                    </div>
+                    <div class="login-right-background">
+                        <div class="right-backgound-div shape-1"></div>
+                        <div class="right-backgound-div shape-2"></div>
+                        <div class="right-backgound-div shape-3"></div>
+                    </div>
                 </div>
+                <a class="back-to-home-a" href="<%= webpath.getPageUrl("home") %>">Back to home page <i class="ri-arrow-go-back-line"></i></a>
             </div>
-            <a class="back-to-home-a" href="<%= webpath.getPageUrl("home") %>">Back to home page<i class="ri-arrow-go-back-line"></i></a>
         </section>
     </body>
 </html>

@@ -6,7 +6,7 @@
     --color-text-light-1: #a0a0a0;
     --color-text-light-2: #545454;
     --color-text-light-3: #373737;
-    
+
     --color-text-error: #e31b1b;
 
     --color-white: #fff;
@@ -41,13 +41,29 @@
     --color-yellow-3: #ffea00;
 
     --color-sky-blue: #ebf8ff;
-    
+
     --color-blue-1: #1f3080;
     --color-blue-2: #273b91;
     --color-blue-3: #4059c2;
-    
+
     --color-dark-blue-1: #111942;
     --color-dark-blue-2: #152059;
+
+    --color-purple-1: #800080;
+    --color-purple-2: #A020F0;
+    --color-purple-3: #8A2BE2;
+
+    --neon-purple-1: #DA70D6;
+    --neon-purple-2: #B452CD;
+    --neon-purple-3: #9932CC;
+
+    --color-pink-1: #FFC0CB;
+    --color-pink-2: #FF69B4;
+    --color-pink-3: #FF1493;
+
+    --neon-pink-1: #FF6EC7;
+    --neon-pink-2: #FF4D94;
+    --neon-pink-3: #FF3687;
 
     --color-error: #ff7782;
     --color-success: #41f1b6;
@@ -77,7 +93,7 @@
     --box-shadow-0: 0 2px 4px rgba(0,0,0,.16), 0 4px 12px rgba(0,0,0,.16);
     --box-shadow-1: 0 2px 4px rgba(0,0,0,.08), 0 4px 12px rgba(0,0,0,.08);
     --box-shadow-2: 0 2px 4px rgba(0,0,0,.05), 0 4px 12px rgba(0,0,0,.05);
-    
+
     --text-shadow-1: 2px 2px 4px rgba(0, 0, 0, 0.5), 2px 2px 12px rgba(0, 0, 0, 0.5);
 
     --font-size-xxxl: 28px;
