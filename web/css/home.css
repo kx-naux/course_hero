@@ -263,6 +263,40 @@
     color: var(--color-text-light-2);
 }
 
+/*Testimonial section*/
+.testimonial-section {
+    padding: 35px 0 60px;
+    background:
+      radial-gradient(35.36% 35.36% at 100% 25%,#0000 66%,var(--color-sky-blue-0) 68% 70%,#0000 72%) 32px 32px/calc(2*32px) calc(2*32px),
+      radial-gradient(35.36% 35.36% at 0    75%,#0000 66%,var(--color-sky-blue-0) 68% 70%,#0000 72%) 32px 32px/calc(2*32px) calc(2*32px),
+      radial-gradient(35.36% 35.36% at 100% 25%,#0000 66%,var(--color-sky-blue-0) 68% 70%,#0000 72%) 0 0/calc(2*32px) calc(2*32px),
+      radial-gradient(35.36% 35.36% at 0    75%,#0000 66%,var(--color-sky-blue-0) 68% 70%,#0000 72%) 0 0/calc(2*32px) calc(2*32px),
+      repeating-conic-gradient(var(--color-sky-blue-1) 0 25%,#0000 0 50%) 0 0/calc(2*32px) calc(2*32px),
+      radial-gradient(#0000 66%,var(--color-sky-blue-0) 68% 70%,#0000 72%) 0 calc(32px/2)/32px 32px
+      var(--color-sky-blue-1);
+}
+
+.testimonial-section .testimonial-div {
+    
+}
+
+.testimonial-div .testimonial-top {
+    justify-content: center;
+    align-items: center;
+}
+
+.testimonial-div .testimonial-top h1 {
+    font-weight: 600;
+    font-size: var(--font-size-xl);
+    color: var(--color-blue-1);
+}
+
+.testimonial-div .testimonial-top p {
+    font-weight: 300;
+    font-size: var(--font-size-m);
+    color: var(--color-text-light-3);
+}
+
 /*Category Section*/
 .category-section {
     padding: 35px 0 60px;
