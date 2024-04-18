@@ -184,6 +184,16 @@
     color: var(--color-text-light-2);
 }
 
+.login-form-div .login-form-bot p a {
+    color: var(--color-blue-3);
+    transition: 0.2s all ease;
+}
+
+.login-form-div .login-form-bot p a:hover {
+    color: var(--color-blue-3);
+    text-decoration: underline;
+}
+
 /*right panel*/
 .login-div .login-right {
     background-color: var(--color-blue-1);
