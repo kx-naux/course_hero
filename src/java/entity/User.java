@@ -6,7 +6,7 @@ package entity;
 
 /**
  *
- * @author PC
+ * @author Woo Yu Beng
  */
 public class User {
     
