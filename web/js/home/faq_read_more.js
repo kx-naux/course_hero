@@ -1,6 +1,6 @@
 function faqShow(button) {
     const faqDiv = document.querySelector("div.faq-div-content");
-    var status = button.getAttribute('status');
+    const status = button.getAttribute('status');
 
     if (status === '0') {
         button.textContent = 'Show less';

@@ -81,8 +81,7 @@
                 </div>
                 <div class="courses flex-row">
 
-                    <div class="course-product" courseID="121238719823">
-                        <a href="#">
+                    <div class="course-product" courseID="121238719823" onclick="redirectToProductPage(this)">
                             <div class="course-product-card">
                                 <div class="product-card-top">
                                     <img src="./img/course/beginner_excel.jpg" alt="">
@@ -114,12 +113,10 @@
                                     </div>
                                 </div>
                             </div>
-                        </a>
                     </div>
 
 
-                    <div class="course-product" courseID="121238719823">
-                        <a href="#">
+                    <div class="course-product" courseID="121238719823" onclick="redirectToProductPage(this)">
                             <div class="course-product-card">
                                 <div class="product-card-top">
                                     <img src="./img/course/beginner_excel.jpg" alt="">
@@ -151,12 +148,10 @@
                                     </div>
                                 </div>
                             </div>
-                        </a>
                     </div>
 
 
-                    <div class="course-product" courseID="121238719823">
-                        <a href="#">
+                    <div class="course-product" courseID="121238719823" onclick="redirectToProductPage(this)">
                             <div class="course-product-card">
                                 <div class="product-card-top">
                                     <img src="./img/course/beginner_excel.jpg" alt="">
@@ -188,12 +183,10 @@
                                     </div>
                                 </div>
                             </div>
-                        </a>
                     </div>
 
 
-                    <div class="course-product" courseID="121238719823">
-                        <a href="#">
+                    <div class="course-product" courseID="121238719823" onclick="redirectToProductPage(this)">
                             <div class="course-product-card">
                                 <div class="product-card-top">
                                     <img src="./img/course/beginner_excel.jpg" alt="">
@@ -225,12 +218,10 @@
                                     </div>
                                 </div>
                             </div>
-                        </a>
                     </div>
 
 
-                    <div class="course-product" courseID="121238719823">
-                        <a href="#">
+                    <div class="course-product" courseID="121238719823" onclick="redirectToProductPage(this)">
                             <div class="course-product-card">
                                 <div class="product-card-top">
                                     <img src="./img/course/beginner_excel.jpg" alt="">
@@ -262,11 +253,9 @@
                                     </div>
                                 </div>
                             </div>
-                        </a>
                     </div>
 
-                    <div class="course-product" courseID="121238719823">
-                        <a href="#">
+                    <div class="course-product" courseID="121238719823" onclick="redirectToProductPage(this)">
                             <div class="course-product-card">
                                 <div class="product-card-top">
                                     <img src="./img/course/beginner_excel.jpg" alt="">
@@ -298,7 +287,6 @@
                                     </div>
                                 </div>
                             </div>
-                        </a>
                     </div>
 
                 </div>

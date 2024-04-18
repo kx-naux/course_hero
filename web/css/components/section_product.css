@@ -68,6 +68,7 @@
     max-width: 280px;
     max-height: 380px;
     position: relative;
+    cursor: pointer;
 }
 
 .course-product-card {

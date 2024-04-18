@@ -35,6 +35,12 @@ function productCard(course) {
     return cardDiv;
 }
 
+//Move to product page onclick
+function redirectToProductPage(product) {
+    const courseID = product.getAttribute('courseID');
+    console.log("Course Clicked - Course ID:", courseID);
+}
+
 //Add to cart / remove from cart
 function cartButtonClick(evt) {
     evt.preventDefault();

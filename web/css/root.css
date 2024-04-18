@@ -6,10 +6,13 @@
     --color-text-light-1: #a0a0a0;
     --color-text-light-2: #545454;
     --color-text-light-3: #373737;
+    
+    --color-text-error: #e31b1b;
 
     --color-white: #fff;
     --color-white-transparent-05: rgba(255,255,255,0.5);
 
+    --color-light-grey-0: #f9f9f9;
     --color-light-grey-1: #f5f5f5;
     --color-light-grey-2: #e8e8e8;
     --color-light-grey-3: #c4c4c4;
