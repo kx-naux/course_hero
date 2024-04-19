@@ -265,19 +265,16 @@
 
 /*Testimonial section*/
 .testimonial-section {
-    padding: 35px 0 60px;
+    margin-top: -100px;
+    padding: 240px 0 250px;
     background:
-      radial-gradient(35.36% 35.36% at 100% 25%,#0000 66%,var(--color-sky-blue-0) 68% 70%,#0000 72%) 32px 32px/calc(2*32px) calc(2*32px),
-      radial-gradient(35.36% 35.36% at 0    75%,#0000 66%,var(--color-sky-blue-0) 68% 70%,#0000 72%) 32px 32px/calc(2*32px) calc(2*32px),
-      radial-gradient(35.36% 35.36% at 100% 25%,#0000 66%,var(--color-sky-blue-0) 68% 70%,#0000 72%) 0 0/calc(2*32px) calc(2*32px),
-      radial-gradient(35.36% 35.36% at 0    75%,#0000 66%,var(--color-sky-blue-0) 68% 70%,#0000 72%) 0 0/calc(2*32px) calc(2*32px),
-      repeating-conic-gradient(var(--color-sky-blue-1) 0 25%,#0000 0 50%) 0 0/calc(2*32px) calc(2*32px),
-      radial-gradient(#0000 66%,var(--color-sky-blue-0) 68% 70%,#0000 72%) 0 calc(32px/2)/32px 32px
-      var(--color-sky-blue-1);
-}
-
-.testimonial-section .testimonial-div {
-    
+        radial-gradient(35.36% 35.36% at 100% 25%,#0000 66%,var(--color-sky-blue-0) 68% 70%,#0000 72%) 32px 32px/calc(2*32px) calc(2*32px),
+        radial-gradient(35.36% 35.36% at 0    75%,#0000 66%,var(--color-sky-blue-0) 68% 70%,#0000 72%) 32px 32px/calc(2*32px) calc(2*32px),
+        radial-gradient(35.36% 35.36% at 100% 25%,#0000 66%,var(--color-sky-blue-0) 68% 70%,#0000 72%) 0 0/calc(2*32px) calc(2*32px),
+        radial-gradient(35.36% 35.36% at 0    75%,#0000 66%,var(--color-sky-blue-0) 68% 70%,#0000 72%) 0 0/calc(2*32px) calc(2*32px),
+        repeating-conic-gradient(var(--color-sky-blue-1) 0 25%,#0000 0 50%) 0 0/calc(2*32px) calc(2*32px),
+        radial-gradient(#0000 66%,var(--color-sky-blue-0) 68% 70%,#0000 72%) 0 calc(32px/2)/32px 32px
+        var(--color-sky-blue-1);
 }
 
 .testimonial-div .testimonial-top {
@@ -295,6 +292,129 @@
     font-weight: 300;
     font-size: var(--font-size-m);
     color: var(--color-text-light-3);
+}
+
+.testimonial-container {
+    margin-top: 40px;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.testimonial-content {
+    margin-inline: 28px;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.testimonial-slide {
+    max-width: 320px;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+}
+
+.testimonial-slide-top,
+.testimonial-slide-bot{
+    justify-content: center;
+    align-items: center;
+}
+
+.testimonial-img {
+    border-radius: 50%;
+    width: 110px;
+    height: 110px;
+    margin-bottom: 15px;
+}
+
+.testimonial-name {
+    font-size: var(--font-size-m);
+    font-weight: 600;
+    color: var(--color-blue-1);
+}
+
+.tsetimonial-country {
+    font-size: var(--font-size-s);
+    font-weight: 400;
+    color: var(--color-text-light-2);
+}
+
+.testimonial-position {
+    font-size: var(--font-size-xm);
+    font-weight: 500;
+    color: var(--color-text-light-3);
+}
+
+.testimonial-slide-divider {
+    margin: 20px auto 30px;
+    border-top: 4px solid var(--color-blue-2);
+    border-radius: 4px;
+    width: 50px;
+}
+
+.testimonial-feedback {
+    padding: 0 10px;
+    font-size: var(--font-size-xm);
+    font-weight: 500;
+    color: var(--color-text-light-2);
+}
+
+.testimonial-div .swiper-button-prev:after,
+.testimonial-div .swiper-button-next:after {
+    content: "";
+}
+
+.testimonial-div .swiper-button-prev,
+.testimonial-div .swiper-button-next {
+    width: initial;
+    height: initial;
+    font-size: 3rem;
+    color: var(--color-blue-1);
+    display: none;
+}
+
+.testimonial-div .swiper-button-prev {
+    left: 0;
+}
+
+.testimonial-div .swiper-button-next {
+    right: 0;
+}
+
+.testimonial-div .swiper-pagination-bullet {
+    background-color: var(--color-blue-2);
+    opacity: 1;
+}
+
+.testimonial-div .swiper-pagination-bullet-active {
+    background-color: var(--color-blue-1);
+}
+
+section:has(+.testimonial-wave-top) {
+    z-index: 11;
+}
+
+.testimonial-wave-top {
+    margin-top: -40px;
+    margin-bottom: -140px;
+    z-index:10;
+}
+.testimonial-wave-bot {
+    margin-top: -240px;
+    margin-bottom: -60px;
+    z-index:10;
+}
+
+.testimonial-wave-bot + section {
+    z-index: 11;
+}
+
+.testimonial-wave-top path,
+.testimonial-wave-bot path {
+    fill: var(--color-white);
 }
 
 /*Category Section*/
