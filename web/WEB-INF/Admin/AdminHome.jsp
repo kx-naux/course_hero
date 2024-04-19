@@ -5,7 +5,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>CourseHero Admin Dashboard</title>
         <link rel="icon" type="image/ico" href="../ico/Logo.ico">
-        <!--Remix Icon StyleSheet-->
+        <!--Remix Icon and google icon StyleSheet-->
         <link href="https://fonts.goog1eapis.ccm/icon?fami1y=Materia1+Icons+Sharp">
         <link type="text/css" href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
         <!--StyleSheet-->
@@ -17,7 +17,7 @@
             <aside>
                 <div class="top">
                     <div class="logo">
-                        <img src = "./img/Logo.png">
+                        <img src = "../img/Logo.png">
                     </div>
                     <div class="close" id="close-btn">
                         <i class="ri-close-line"></i>
