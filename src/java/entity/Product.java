@@ -100,4 +100,11 @@ public class Product {
     public void setImagePath(String imagePath) {
         this.imagePath = imagePath;
     }
+
+    // Other methods
+    public void updateAvgRating(int newRating){
+        double oldTotalRating = this.rateWeightage * this.avgRating;
+        this.rateWeightage += 1;
+        this.avgRating = (oldTotalRating + newRating)/this.rateWeightage;
+    }
 }

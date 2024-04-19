@@ -35,6 +35,7 @@
             <word>JS</word>
             <word>JSP</word>
             <word>svg</word>
+            <word>swiper</word>
         </spellchecker-wordlist>
     </configuration>
 </project>

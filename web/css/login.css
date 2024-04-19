@@ -16,6 +16,7 @@
 
 
 .login-section .login-div {
+    position: relative;
     max-height: 500px;
     max-width: 800px;
     height: 100%;
@@ -51,7 +52,7 @@
 .login-div .login-form-div {
     justify-content: center;
     align-items: center;
-    gap: 15px;
+    gap: 20px;
 }
 
 .login-form-div h1 {
@@ -160,7 +161,21 @@
 }
 
 .login-form-div .login-form-bot input {
+    width: 100%;
+    color: var(--color-white);
+    background-color: var(--color-blue-2);
+    border-radius: 2px;
+    padding: 8px 14px;
+    cursor: pointer;
+    transition: 0.2s all ease-in-out
+}
 
+.login-form-div .login-form-bot input:hover {
+    background-color: var(--color-blue-1);
+}
+
+.login-form-div .login-form-bot input:active {
+    transform: scale(0.98);
 }
 
 .login-form-div .login-form-bot p {
@@ -169,7 +184,106 @@
     color: var(--color-text-light-2);
 }
 
+.login-form-div .login-form-bot p a {
+    color: var(--color-blue-3);
+    transition: 0.2s all ease;
+}
+
+.login-form-div .login-form-bot p a:hover {
+    color: var(--color-blue-3);
+    text-decoration: underline;
+}
+
 /*right panel*/
 .login-div .login-right {
     background-color: var(--color-blue-1);
+    position: relative;
+}
+
+.login-right .login-right-background {
+    overflow: hidden;
+    position: absolute;
+    top: 50px;
+    inset: 0;
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.login-right-background .right-backgound-div {
+    width: 400px;
+    height: 300px;
+    border-radius: 50%;
+    position: relative;
+    opacity: 0.6;
+    filter: blur(90px);
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+}
+
+.login-right-background .right-backgound-div.shape-1 {
+    animation-name: one-bg;
+}
+
+.login-right-background .right-backgound-div.shape-2 {
+    width: 300px;
+    height: 200px;
+    animation-name: two-bg;
+}
+
+.login-right-background .right-backgound-div.shape-3 {
+    animation-name: three-bg;
+}
+
+.login-right-background .right-backgound-div:nth-of-type(1) {
+    background-color: var(--color-pink-2);
+}
+
+.login-right-background .right-backgound-div:nth-of-type(2) {
+    background-color: var(--color-white);
+}
+
+.login-right-background .right-backgound-div:nth-of-type(3) {
+    background-color: var(--color-purple-1);
+}
+
+
+@keyframes one-bg {
+    0% { left: 0px; top: 0px; transform: scale(1) rotate(0deg); }
+    25% { left: -80px; top: 70px; transform: scale(1.2) rotate(45deg); }
+    50% { left: 20px; top: 200px; transform: scale(1) rotate(90deg); }
+    75% { left: 60px; top: 100px; transform: scale(1.2) rotate(135deg); }
+    100% { left: 0px; top: 0px; transform: scale(1) rotate(0deg); }
+}
+
+@keyframes two-bg {
+    0% { left: 0px; top: 0px; transform: scale(1) rotate(0deg); }
+    25% { left: 50px; top: 30px; transform: scale(1.1) rotate(-45deg); }
+    50% { left: 100px; top: 50px; transform: scale(1) rotate(-90deg); }
+    75% { left: 50px; top: 180px; transform: scale(1.1) rotate(-135deg); }
+    100% { left: 0px; top: 0px; transform: scale(1) rotate(0deg); }
+}
+
+@keyframes three-bg {
+    0% { left: 0px; top: 0px; transform: scale(1) rotate(0deg); }
+    25% { left: 60px; top: 100px; transform: scale(1.2) rotate(45deg); }
+    50% { left: 20px; top: 200px; transform: scale(1) rotate(90deg); }
+    75% { left: -30px; top: 70px; transform: scale(1.2) rotate(135deg); }
+    100% { left: 0px; top: 0px; transform: scale(1) rotate(0deg); }
+}
+
+/*Back to home*/
+.back-to-home-a {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    transform: translateY(30px);
+    font-size: var(--font-size-s);
+    font-weight: 400;
+    color: var(--color-text-light-1);
+    transition: 0.2s all ease-in-out;
+}
+
+.back-to-home-a:hover {
+    color: var(--color-text-light-3);
 }
