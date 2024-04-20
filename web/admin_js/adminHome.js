@@ -1,4 +1,4 @@
-//phone menu usage only
+////phone menu usage only
 //const sideMenu = document.querySelector("aside");
 //const menuBtn = document.querySelector("#menu-btn");
 //const closeBtn = document.querySelector("#close-btn");
@@ -30,7 +30,7 @@ themeToggler.addEventListener('click', () => {
     }
     else{
         document.documentElement.style.setProperty('--color-background', '#181a1e');
-        document.documentElement.style.setProperty('--color-white', '#20528');
+        document.documentElement.style.setProperty('--color-white', '#363949');
         document.documentElement.style.setProperty('--color-dark', '#edeffd');
         document.documentElement.style.setProperty('--color-dark-variant', '#a3bdcc');
         document.documentElement.style.setProperty('--color-light', 'rgba(0,0,0,0.4)'); 
