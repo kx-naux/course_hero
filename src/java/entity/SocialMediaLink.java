@@ -12,6 +12,7 @@ package entity;
 public class SocialMediaLink {
     private String socialMediaLinkID;
     private String authorID;
+    private String socialMediaName;
     private String destLink;
 
     // Constructor - empty
@@ -19,9 +20,10 @@ public class SocialMediaLink {
     }
 
     // Constructor - fully parameterized
-    public SocialMediaLink(String socialMediaLinkID, Author author, String destLink) {
+    public SocialMediaLink(String socialMediaLinkID, Author author, String socialMediaName, String destLink) {
         this.socialMediaLinkID = socialMediaLinkID;
         this.authorID = author.getAuthorID();
+        this.socialMediaName = socialMediaName;
         this.destLink = destLink;
     }
 
@@ -32,6 +34,10 @@ public class SocialMediaLink {
 
     public String getAuthorID() {
         return authorID;
+    }
+    
+    public String getSocialMediaName(){
+        return socialMediaName;
     }
 
     public String getDestLink() {
@@ -45,6 +51,10 @@ public class SocialMediaLink {
 
     public void setAuthorID(String authorID) {
         this.authorID = authorID;
+    }
+    
+    public void setSocialMediaName(String socialMediaName){
+        this.socialMediaName = socialMediaName;
     }
 
     public void setDestLink(String destLink) {

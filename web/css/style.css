@@ -396,6 +396,7 @@ a:has(.nav-option):hover + .nav-option-dropdown,
 }
 
 .footer-bot-right {
+    padding-right: 10px;
     color: var(--color-white-transparent-05);
     align-items: center;
     justify-content: end;

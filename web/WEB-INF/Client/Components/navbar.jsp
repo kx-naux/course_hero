@@ -22,9 +22,9 @@
                 </a>
                 <div class="nav-option-dropdown">
                     <ul>
-                        <li><a href="#">Our Team</a></li>
-                        <li><a href="#">Our Office</a></li>
-                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="<%= webpath.getPageUrl("about us") %>">Our Team</a></li>
+                        <li><a href="<%= webpath.getPageUrl("about us") %>">Our Office</a></li>
+                        <li><a href="<%= webpath.getPageUrl("about us") %>">Contact Us</a></li>
                     </ul>
                 </div>
             </li>

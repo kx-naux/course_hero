@@ -12,10 +12,10 @@ import java.sql.*;
  */
 
 public class AccountDA {
-    private String host = "jdbc:derby://localhost:1527/OnlineCourseAppDB";
-    private String user = "nbuser";
-    private String password = "nbuser";
-    private String tableName = "Accounts";
+    private final String host = "jdbc:derby://localhost:1527/OnlineCourseAppDB";
+    private final String user = "nbuser";
+    private final String password = "nbuser";
+    private final String tableName = "ACCOUNTS";
     private Connection conn;
     private PreparedStatement stmt;
     
@@ -61,10 +61,33 @@ public class AccountDA {
     }
     
     public void updateRecord(Account account) throws SQLException{
-        
+        Account accountExist = retrieveRecord(account.getAccountID());
+        if(accountExist==null){
+            throw new SQLException("Record Does Not Exist");
+        }else{
+            String query = "UPDATE " + tableName + " SET EMAIL = ?, SALTEDPASSWORD = ?, SALT = ? WHERE ACCOUNT_ID = ?";
+            stmt = conn.prepareStatement(query);
+            
+            stmt.setString(1, account.getEmail());
+            stmt.setString(2, account.getSaltedPassword());
+            stmt.setString(3, account.getSalt());
+            stmt.setString(4, account.getAccountID());
+            
+            stmt.executeUpdate();
+        }
     }
     
     public void deleteRecord(Account account) throws SQLException{
-        
+        Account accountExist = retrieveRecord(account.getAccountID());
+        if(accountExist==null){
+            throw new SQLException("Record Does Not Exist");
+        }else{
+            String query = "DELETE FROM " + tableName + " WHERE ACCOUNT_ID = ?";
+            stmt = conn.prepareStatement(query);
+            
+            stmt.setString(1, account.getAccountID());
+            
+            stmt.executeUpdate();
+        }
     }   
 }
