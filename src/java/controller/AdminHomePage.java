@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.*;
 import java.io.IOException;
 
-@WebServlet(name = "Admin Home Page", urlPatterns = {"/admin/home"})
+@WebServlet(name = "Admin Home Page", urlPatterns = {"/admin/dashboard"})
 public class AdminHomePage extends HttpServlet {
 
     @Override

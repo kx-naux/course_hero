@@ -13,63 +13,91 @@
         
     </head>
     <body>
-        <div class="container">
-            <aside>
-                <div class="top">
-                    <div class="logo">
+        <div class="flex-container">
+            <div class="global-sidebar">
+                <div class="sidebar-top">
+                    <!-- Logo side -->
+                    <div class="logo"> 
                         <img src = "../img/Logo.png">
                     </div>
-                    <div class="close" id="close-btn">
-                        <i class="ri-close-line"></i>
+                    <!-- close button for the sidebar -->
+                    <div class="expand-btn">
+                        <i class="ri-arrow-left-double-line hide"></i>
+                        <i class="ri-arrow-right-double-line expand"></i>
                     </div>
                 </div>
-                
-                <div class="sidebar">
-                    <a href="#">
-                        <i class="ri-menu-line"></i>
-                        <h3>Dashboard</h3>
-                    </a>
-                    <a href="#">
-                        <i class="ri-menu-line"></i>
-                        <h3>Customers</h3>
-                    </a>
-                    <a href="#">
-                        <i class="ri-menu-line"></i>
-                        <h3>Orders</h3>
-                    </a>
-                    <a href="#">
-                        <i class="ri-menu-line"></i>
-                        <h3>Analytics</h3>
-                    </a>
-                    <a href="#">
-                        <i class="ri-menu-line"></i>
-                        <h3>Messages</h3>
-                        <span class="message-count">26</span>
-                    </a>
-                    <a href="#">
-                        <i class="ri-menu-line"></i>
-                        <h3>Products</h3>
-                    </a>
-                    <a href="#">
-                        <i class="ri-menu-line"></i>
-                        <h3>Reports</h3>
-                    </a>
-                    <a href="#">
-                        <i class="ri-menu-line"></i>
-                        <h3>Settings</h3>
-                    </a>
-                    <a href="#">
-                        <i class="ri-menu-line"></i>
-                        <h3>Add Products</h3>
-                    </a>
-                    <a href="#">
-                        <i class="ri-menu-line"></i>
-                        <h3>Logout</h3>
-                    </a>
+                <div class="sidebar-navigation">
+                    <!-- sidebar content -->
+                    <ul>
+                        <li>
+                            <a href="http://localhost:8080/course_hero/admin/dashboard">
+                                <i class="ri-dashboard-line"></i>
+                                <h3 class="nav-item">Dashboard</h3>
+                            </a>
+                            <span class="tooltip">Dashboard</span>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="ri-user-line"></i>
+                                <h3 class="nav-item">Customers</h3>
+                            </a>
+                            <span class="tooltip">Customers</span>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="ri-file-list-3-line"></i>
+                                <h3 class="nav-item">Orders</h3>
+                            </a>
+                            <span class="tooltip">Orders</span>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="ri-donut-chart-line"></i>
+                                <h3 class="nav-item">Analytics</h3>
+                            </a>
+                            <span class="tooltip">Analytics</span>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="ri-chat-1-line"></i>
+                                <h3 class="nav-item">Messages</h3>
+                                <span class="message-count">26</span>
+                            </a>
+                            <span class="tooltip">Messages</span>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="ri-box-3-line"></i>
+                                <h3 class="nav-item">Products</h3>
+                            </a>
+                            <span class="tooltip">Products</span>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="ri-folder-chart-line"></i>
+                                <h3 class="nav-item">Reports</h3>
+                            </a>
+                            <span class="tooltip">Reports</span>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="ri-settings-2-line"></i>
+                                <h3 class="nav-item">Settings</h3>
+                            </a>
+                            <span class="tooltip">Settings</span>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="ri-logout-circle-line"></i>
+                                <h3 class="nav-item">Logout</h3>
+                            </a>
+                            <span class="tooltip">Logout</span>
+                        </li>
+                    </ul>
                 </div>
-            </aside>
-            <!-------------------- END OF ASIDE ------------------->
-            <main>
+            </div>
+            <!-------------------- END OF GLOBAL SIDEBAR ------------------->
+            <div class="main-content">
                 <h1>Dashboard</h1>
                 
                 <div class="date">
@@ -191,7 +219,7 @@
                     </table>
                     <a href="#">Show All</a>
                 </div>
-            </main>
+            </div>
             <!----------  END OF MAIN ------------------->
             
             <div class="right">
@@ -299,5 +327,6 @@
         </div>
         
         <script src="../admin_js/adminHome.js"></script>
+        <script src="../admin_js/global_sidebar.js"></script>
     </body>
 </html>

@@ -17,6 +17,7 @@ public class Author {
     private String institution;
     private String awardsHonors;
     private String biography;
+    private String website;
     private LocalDate dob;
 
     // Constructor - empty
@@ -25,7 +26,7 @@ public class Author {
 
     // Constructor - fully parameterized
     public Author(String authorID, String authorName, String nationality, String institution,
-                  String awardsHonors, String biography, LocalDate dob) {
+                  String awardsHonors, String biography, LocalDate dob, String website) {
         this.authorID = authorID;
         this.authorName = authorName;
         this.nationality = nationality;
@@ -33,6 +34,7 @@ public class Author {
         this.awardsHonors = awardsHonors;
         this.biography = biography;
         this.dob = dob;
+        this.website = website;
     }
 
     // Getters
@@ -63,6 +65,10 @@ public class Author {
     public LocalDate getDob() {
         return dob;
     }
+    
+    public String getWebsite(){
+        return website;
+    }
 
     // Setters
     public void setAuthorID(String authorID) {
@@ -91,5 +97,9 @@ public class Author {
 
     public void setDob(LocalDate dob) {
         this.dob = dob;
+    }
+    
+    public void setWebsite(String website){
+        this.website = website;
     }
 }
