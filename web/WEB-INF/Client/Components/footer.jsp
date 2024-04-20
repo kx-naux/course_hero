@@ -32,7 +32,7 @@
             <!--contact div-->
             <div class="flex-col">
                 <p class="footer-list-title">Contact</p>
-                <p class="footer-contact"><a href="https://maps.app.goo.gl/mN2fXzWxSR8NDedD7" target="_blank">77, Lorong Lembah Permai 3, 11200 Tanjung Bungah, Pulau Pinang</a></p>  
+                <p class="footer-contact"><a href="https://maps.app.goo.gl/HvkXdPKRUdNbj6Lh8" target="_blank">Jln Tun Razak, Imbi, 55100 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur</a></p>  
                 <p class="footer-contact"><a href="tel:+601117608595" target="_blank"><i class="ri-phone-line"></i>(+60) 11-1760 8595</a></p>
                 <p class="footer-contact"><a href="mailto:sales@coursehero.com" target="_blank"><i class="ri-mail-line"></i>sales@coursehero.com</a></p>
             </div>

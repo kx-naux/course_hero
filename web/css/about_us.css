@@ -1,5 +1,75 @@
 @import url('./root.css');
 
+/*Office section*/
+.office-section {
+    padding: 50px 10px 50px;
+}
+.office-section .office-div {
+    width: 100%;
+    gap: 15px;
+    justify-content: center;
+}
+
+.office-div .office-div-title {
+    text-align: center;
+    font-weight: 600;
+    font-size: var(--font-size-xl);
+    color: var(--color-blue-1);
+}
+
+.office-div .office-div-sub-title {
+    text-align: center;
+    font-weight: 300;
+    font-size: var(--font-size-xm);
+    color: var(--color-text-light-2);
+}
+
+.office-div .office-emb-map {
+    margin: 0 auto;
+    max-width: 600px;
+    width: 100%;
+    height: 300px;
+}
+
+.office-div .office-address {
+    padding: 0 30px;
+    margin-bottom: 10px;
+    text-align: center;
+    font-weight: 400;
+    font-size: var(--font-size-xm);
+    color: var(--color-text-light-3);
+}
+
+.office-div .offices {
+    padding: 0 30px;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    gap: 15px;
+}
+
+.office-div .offices .office {
+    padding: 15px 0 5px;
+    width: 180px;
+    height: 160px;
+    text-align: center;
+    justify-content: start;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.office-div .offices .office .office-img-div {
+    height: 85px;
+    width: 160px;
+    display: flex;
+    justify-content: center;
+}
+
+.office-div .offices .office img {
+    object-fit: cover;
+}
+
 /*link section*/
 .link-section {
     padding: 50px 30px 40px;
@@ -40,6 +110,14 @@
     font-size: var(--font-size-xm);
     font-weight: 600;
     color: var(--color-text-light-3);
+}
+
+.link-section .link-div .link-col a i{
+    transition: 0.3s all ease-in-out
+}
+
+.link-section .link-div .link-col a:hover i {
+    margin-left: 10px;
 }
 
 .link-section .link-div .link-col:nth-of-type(1)  hr{

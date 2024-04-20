@@ -68,46 +68,103 @@
                 </div>
             </div>
         </section>
-        
-        <!-- office section -->
-        <section class="section office-section">
-            <div class="office-div">
 
-            </div>
-        </section>
-        
         <!-- contact section -->
         <section class="section contact-section">
             <div class="contact-div">
 
             </div>
         </section>
-        
+
+        <!-- office section -->
+        <section class="section office-section">
+            <div class="office-div flex-col">
+
+                <div>
+                    <h1 class="office-div-title">Our Office</h1>
+                    <p class="office-div-sub-title">Where Creativity Meets Functionality</p>
+                </div>
+
+                <iframe class="office-emb-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3983.8212218137173!2d101.71623467340225!3d3.1418545532007176!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc363008476f63%3A0x97f4e0e71b480088!2sExchange%20106%20%40%20TRX!5e0!3m2!1sen!2smy!4v1713628959822!5m2!1sen!2smy" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+                <p class="office-address">Jln Tun Razak, Imbi, 55100 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur</p>
+
+                <div class="offices flex-row">
+                    <div class="office flex-col">
+                        <span hidden class="office-map"></span>
+                        <span hidden class="office-address"></span>
+                        <div class="office-img-div">
+                            <img src="./img/about_us/office/sh.png" alt="" />
+                        </div>
+                        <p>China - Shang Hai</p>
+                    </div>
+
+                    <div class="office flex-col">
+                        <span hidden class="office-map"></span>
+                        <span hidden class="office-address"></span>
+                        <div class="office-img-div">
+                            <img src="./img/about_us/office/tk.png" alt="" />
+                        </div>
+                        <p>Japan - Tokyo</p>
+                    </div>
+
+                    <div class="office flex-col selected">
+                        <span hidden class="office-map">https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3983.8212218137173!2d101.71623467340225!3d3.1418545532007176!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc363008476f63%3A0x97f4e0e71b480088!2sExchange%20106%20%40%20TRX!5e0!3m2!1sen!2smy!4v1713628959822!5m2!1sen!2smy</span>
+                        <span hidden class="office-address">Jln Tun Razak, Imbi, 55100 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur</span>
+                        <div class="office-img-div">
+                            <img src="./img/about_us/office/kl_slc.png" alt="" />
+                        </div>
+                        <p>Malaysia - Kuala Lumpur</p>
+                    </div>
+
+                    <div class="office flex-col">
+                        <span hidden class="office-map"></span>
+                        <span hidden class="office-address"></span>
+                        <div class="office-img-div">
+                            <img src="./img/about_us/office/sg.png" alt="" />
+                        </div>
+                        <p>Singapore</p>
+                    </div>
+
+                    <div class="office flex-col">
+                        <span hidden class="office-map"></span>
+                        <span hidden class="office-address"></span>
+                        <div class="office-img-div">
+                            <img src="./img/about_us/office/kr.png" alt="" />
+                        </div>
+                        <p>Korea - Seoul</p>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
         <!-- link section -->
         <section class="section link-section">
             <div class="link-div flex-row">
-                
+
                 <div class="link-col flex-col">
                     <hr />
                     <h1>Work with us</h1>
                     <p>At Course Hero, we’re all learners and instructors. We live out our values every day to create a culture that is diverse, inclusive, and committed to helping employees thrive.</p>
                     <a href="#">Join our team<i class="ri-arrow-right-s-line"></i></a>
                 </div>
-                
+
                 <div class="link-col flex-col">
                     <hr />
                     <h1>See our research</h1>
                     <p>We’re committed to improving lives through learning. Dig into our original research to learn about the forces that are shaping the modern workplace.</p>
                     <a href="#">Learn more<i class="ri-arrow-right-s-line"></i></a>
                 </div>
-                
+
                 <div class="link-col flex-col">
                     <hr />
                     <h1>Read our blog</h1>
                     <p>Want to know what we’ve been up to lately? Check out the Course Hero blog to get the scoop on the latest news, ideas and projects, and more.</p>
                     <a href="#">Read now<i class="ri-arrow-right-s-line"></i></a>
                 </div>
-                
+
             </div>
         </section>
 
