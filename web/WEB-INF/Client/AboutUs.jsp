@@ -82,6 +82,34 @@
 
             </div>
         </section>
+        
+        <!-- link section -->
+        <section class="section link-section">
+            <div class="link-div flex-row">
+                
+                <div class="link-col flex-col">
+                    <hr />
+                    <h1>Work with us</h1>
+                    <p>At Course Hero, we’re all learners and instructors. We live out our values every day to create a culture that is diverse, inclusive, and committed to helping employees thrive.</p>
+                    <a href="#">Join our team<i class="ri-arrow-right-s-line"></i></a>
+                </div>
+                
+                <div class="link-col flex-col">
+                    <hr />
+                    <h1>See our research</h1>
+                    <p>We’re committed to improving lives through learning. Dig into our original research to learn about the forces that are shaping the modern workplace.</p>
+                    <a href="#">Learn more<i class="ri-arrow-right-s-line"></i></a>
+                </div>
+                
+                <div class="link-col flex-col">
+                    <hr />
+                    <h1>Read our blog</h1>
+                    <p>Want to know what we’ve been up to lately? Check out the Course Hero blog to get the scoop on the latest news, ideas and projects, and more.</p>
+                    <a href="#">Read now<i class="ri-arrow-right-s-line"></i></a>
+                </div>
+                
+            </div>
+        </section>
 
         <!--Footer import-->
         <%@ include file="./Components/footer_wave.html" %>  

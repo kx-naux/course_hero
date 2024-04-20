@@ -1,2 +1,67 @@
 @import url('./root.css');
 
+/*link section*/
+.link-section {
+    padding: 50px 30px 40px;
+}
+
+.link-section .link-div {
+    width: 100%;
+    gap: 15px;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.link-section .link-div .link-col {
+    flex: 1 1 300px;
+    min-width: 300px;
+    max-width: 380px;
+    gap: 20px;
+}
+
+.link-section .link-div .link-col hr {
+    width: 100%;
+    border: 3px solid var(--color-grey);
+}
+
+.link-section .link-div .link-col h1 {
+    font-size: var(--font-size-l);
+    font-weight: 600;
+    color: var(--color-light-black);
+}
+
+.link-section .link-div .link-col p {
+    font-size: var(--font-size-xm);
+    font-weight: 300;
+    color: var(--color-text-light-3);
+}
+
+.link-section .link-div .link-col a {
+    font-size: var(--font-size-xm);
+    font-weight: 600;
+    color: var(--color-text-light-3);
+}
+
+.link-section .link-div .link-col:nth-of-type(1)  hr{
+    border-color: #A435F0;
+}
+
+.link-section .link-div .link-col:nth-of-type(2) hr {
+    border-color: #5624D0;
+}
+
+.link-section .link-div .link-col:nth-of-type(3) hr {
+    border-color: #35ABAE;
+}
+
+.link-section .link-div .link-col:nth-of-type(1)  a{
+    color: #A435F0;
+}
+
+.link-section .link-div .link-col:nth-of-type(2) a {
+    color: #5624D0;
+}
+
+.link-section .link-div .link-col:nth-of-type(3) a {
+    color: #35ABAE;
+}
