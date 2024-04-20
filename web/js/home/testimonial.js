@@ -1,26 +1,29 @@
 /*=============== SWIPER JS ===============*/
 let swiperCards = new Swiper(".swiper", {
-  loop: true,
-  spaceBetween: 32,
-  grabCursor: true,
+    loop: true,
+    spaceBetween: 32,
+    centeredSlides: true,
 
-  pagination: {
-    el: ".swiper-pagination",
-    clickable: true,
-    dynamicBullets: true
-  },
-
-  navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev"
-  },
-
-  breakpoints:{
-    600: {
-      slidesPerView: 2
+    mousewheel: {
+        invert: false
     },
-    968: {
-      slidesPerView: 3
+
+    autoplay: {
+        delay: 5000, 
+        disableOnInteraction: false
+    },
+
+    navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev"
+    },
+
+    breakpoints: {
+        660: {
+            slidesPerView: 2
+        },
+        985: {
+            slidesPerView: 3
+        }
     }
-  }
 });

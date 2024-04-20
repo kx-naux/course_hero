@@ -276,7 +276,7 @@
 .back-to-home-a {
     position: absolute;
     bottom: 0;
-    right: 0;
+    right: 10px;
     transform: translateY(30px);
     font-size: var(--font-size-s);
     font-weight: 400;

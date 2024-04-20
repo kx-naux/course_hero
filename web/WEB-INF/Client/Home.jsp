@@ -1,5 +1,5 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ page import="module.CollaborateLogos" %>
+<%@ page import="module.CollaborateLogos, module.TestimonialData" %>
 <%@ page import="java.util.List, java.util.Map" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -300,24 +300,24 @@
                 <p>We collaborate with <span>325+ leading companies and universities</span></p>
                 <div class="logos logos-row-1">
                     <div class="logos-slide logos-slide-row-1">
-                        <% 
+                        <%
                             List<Map<String, String>> companies = CollaborateLogos.getCompanies();
                             for (Map<String, String> company : companies) {
                         %>
-                        <a href="<%= company.get("link") %>" target="_blank">
-                            <img src="<%= company.get("image") %>" alt="<%= company.get("alt") %>" title="<%= company.get("title") %>" />
+                        <a href="<%= company.get("link")%>" target="_blank">
+                            <img src="<%= company.get("image")%>" alt="<%= company.get("alt")%>" title="<%= company.get("title")%>" />
                         </a>
                         <% } %>
                     </div>
                 </div>
                 <div class="logos logos-row-2">
                     <div class="logos-slide logos-slide-row-2">
-                        <% 
+                        <%
                             List<Map<String, String>> universities = CollaborateLogos.getUniversities();
                             for (Map<String, String> university : universities) {
                         %>
-                        <a href="<%= university.get("link") %>" target="_blank">
-                            <img src="<%= university.get("image") %>" alt="<%= university.get("alt") %>" title="<%= university.get("title") %>" />
+                        <a href="<%= university.get("link")%>" target="_blank">
+                            <img src="<%= university.get("image")%>" alt="<%= university.get("alt")%>" title="<%= university.get("title")%>" />
                         </a>
                         <% } %>
                     </div>
@@ -366,72 +366,24 @@
                 <!--testimonial cards-->
                 <div class="testimonial-container swiper">
                     <div class="testimonial-content swiper-wrapper">
-
                         <!-- Slides -->
+                        <%
+                            List<Map<String, String>> testimonials = TestimonialData.getTestimonials();
+                            for (Map<String, String> testimonial : testimonials) {
+                        %>
                         <article class="testimonial-slide flex-col swiper-slide">
                             <div class="testimonial-slide-top flex-col">
-                                <img class="testimonial-img" src="./img/home/testimonial/avatar-1.png" alt="" />
-                                <h1 class="testimonial-name">Woo Yu Beng</h1>
-                                <h2 class="tsetimonial-country">Malaysia</h2>
-                                <h3 class="testimonial-position">Software Engineer in Riot Games</h3>
+                                <img class="testimonial-img" src="<%= testimonial.get("image")%>" alt="" />
+                                <h1 class="testimonial-name"><%= testimonial.get("name")%></h1>
+                                <h2 class="tsetimonial-country"><%= testimonial.get("country")%></h2>
+                                <h3 class="testimonial-position"><%= testimonial.get("position")%></h3>
                             </div>
                             <hr class="testimonial-slide-divider" />
                             <div class="testimonial-slide-bot flex-col">
-                                <p class="testimonial-feedback">If you invest in your education and build your skills, you will see major growth in your career. Just a few months after I began investing in myself, my life has changed in the best way.</p>
+                                <p class="testimonial-feedback"><%= testimonial.get("comment")%></p>
                             </div>
                         </article>
-
-                        <article class="testimonial-slide swiper-slide">
-                            <div class="testimonial-slide-top flex-col">
-                                <img class="testimonial-img" src="./img/home/testimonial/avatar-2.png" alt="" />
-                                <h1 class="testimonial-name">Snijders Wang</h1>
-                                <h2 class="tsetimonial-country">Malaysia</h2>
-                                <h3 class="testimonial-position">Project Manager in Google</h3>
-                            </div>
-                            <hr class="testimonial-slide-divider" />
-                            <div class="testimonial-slide-bot flex-col">
-                                <p class="testimonial-feedback">If you invest in your education and build your skills, you will see major growth in your career. Just a few months after I began investing in myself, my life has changed in the best way.</p>
-                            </div>
-                        </article>
-
-                        <article class="testimonial-slide swiper-slide">
-                            <div class="testimonial-slide-top flex-col">
-                                <img class="testimonial-img" src="./img/home/testimonial/avatar-3.png" alt="" />
-                                <h1 class="testimonial-name">Lee Peng Jin</h1>
-                                <h2 class="tsetimonial-country">Malaysia</h2>
-                                <h3 class="testimonial-position">Data Scientist in Tesla</h3>
-                            </div>
-                            <hr class="testimonial-slide-divider" />
-                            <div class="testimonial-slide-bot flex-col">
-                                <p class="testimonial-feedback">If you invest in your education and build your skills, you will see major growth in your career. Just a few months after I began investing in myself, my life has changed in the best way.</p>
-                            </div>
-                        </article>
-
-                        <article class="testimonial-slide swiper-slide">
-                            <div class="testimonial-slide-top flex-col">
-                                <img class="testimonial-img" src="./img/home/testimonial/avatar-4.png" alt="" />
-                                <h1 class="testimonial-name">Teoh Zhe Yi</h1>
-                                <h2 class="tsetimonial-country">Malaysia</h2>
-                                <h3 class="testimonial-position">Senior Software Engineer in Microsoft</h3>
-                            </div>
-                            <hr class="testimonial-slide-divider" />
-                            <div class="testimonial-slide-bot flex-col">
-                                <p class="testimonial-feedback">If you invest in your education and build your skills, you will see major growth in your career. Just a few months after I began investing in myself, my life has changed in the best way.</p>
-                            </div>
-                        </article>
-
-                        <article class="testimonial-slide swiper-slide">
-                            <div class="testimonial-slide-top flex-col">
-                                <img class="testimonial-img" src="./img/home/testimonial/avatar-5.png" alt="" />
-                                <h1 class="testimonial-name">Ng Jun Fong</h1>
-                                <h2 class="tsetimonial-country">Malaysia</h2>
-                                <h3 class="testimonial-position">Software Enginner in Amazon</h3>
-                            </div>
-                            <hr class="testimonial-slide-divider" />
-                            <div class="testimonial-slide-bot flex-col">
-                                <p class="testimonial-feedback">If you invest in your education and build your skills, you will see major growth in your career. Just a few months after I began investing in myself, my life has changed in the best way.</p>
-                            </div>
-                        </article>
+                        <% }%>
 
                     </div>
 
@@ -444,9 +396,6 @@
                         <i class="ri-arrow-left-s-line"></i>
                     </div>
 
-                    <!-- Pagination -->
-                    <div class="swiper-pagination"></div>
-
                 </div>
 
             </div>
@@ -458,7 +407,7 @@
             <script src="./js/home/testimonial.js"></script>
         </section>
         <svg class="testimonial-wave-bot" style="transform:rotate(0deg); transition: 0.3s" viewBox="0 0 1440 250" version="1.1" xmlns="http://www.w3.org/2000/svg"><path style="transform:translate(0, 0px); opacity:1;" d="M0,50L48,62.5C96,75,192,100,288,120.8C384,142,480,158,576,137.5C672,117,768,58,864,62.5C960,67,1056,133,1152,145.8C1248,158,1344,117,1440,95.8C1536,75,1632,75,1728,91.7C1824,108,1920,142,2016,162.5C2112,183,2208,192,2304,179.2C2400,167,2496,133,2592,129.2C2688,125,2784,150,2880,141.7C2976,133,3072,92,3168,100C3264,108,3360,167,3456,183.3C3552,200,3648,175,3744,170.8C3840,167,3936,183,4032,183.3C4128,183,4224,167,4320,145.8C4416,125,4512,100,4608,108.3C4704,117,4800,158,4896,150C4992,142,5088,83,5184,58.3C5280,33,5376,42,5472,62.5C5568,83,5664,117,5760,116.7C5856,117,5952,83,6048,58.3C6144,33,6240,17,6336,12.5C6432,8,6528,17,6624,50C6720,83,6816,142,6864,170.8L6912,200L6912,250L6864,250C6816,250,6720,250,6624,250C6528,250,6432,250,6336,250C6240,250,6144,250,6048,250C5952,250,5856,250,5760,250C5664,250,5568,250,5472,250C5376,250,5280,250,5184,250C5088,250,4992,250,4896,250C4800,250,4704,250,4608,250C4512,250,4416,250,4320,250C4224,250,4128,250,4032,250C3936,250,3840,250,3744,250C3648,250,3552,250,3456,250C3360,250,3264,250,3168,250C3072,250,2976,250,2880,250C2784,250,2688,250,2592,250C2496,250,2400,250,2304,250C2208,250,2112,250,2016,250C1920,250,1824,250,1728,250C1632,250,1536,250,1440,250C1344,250,1248,250,1152,250C1056,250,960,250,864,250C768,250,672,250,576,250C480,250,384,250,288,250C192,250,96,250,48,250L0,250Z"></path></svg>
-        
+
         <!-- Category section -->
         <section class="section category-section">
             <div class="category-div flex-col">
