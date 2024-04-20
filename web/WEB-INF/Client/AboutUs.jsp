@@ -1,0 +1,90 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Course Hero | About Us</title>
+        <link rel="icon" type="image/ico" href="./ico/Logo.ico">
+        <link type="text/css" href="./css/style.css" rel="stylesheet" >
+        <link type="text/css" href="./css/about_us.css" rel="stylesheet" >
+        <link type="text/css" href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
+        <script src="./js/nav.js"></script>   
+        <jsp:useBean id="webpath" class="module.WebPath" scope="application" />
+    </head>
+    <body>
+        <!--To top button-->
+        <button onclick="toTopFunc()" id="toTopBtn" title="Go to top"><i class="ri-arrow-up-s-line"></i></button>
+
+        <!-- Include the navigation bar -->
+        <%@ include file="./Components/navbar.jsp" %>
+
+        <!-- welcome section -->
+        <section class="section welcome-section">
+            <div class="welcome-div">
+
+            </div>
+        </section>
+
+        <!-- story section -->
+        <section class="section story-section">
+            <div class="story-div">
+
+            </div>
+        </section>
+
+        <!-- team section -->
+        <section class="section team-section">
+            <div class="team-div">
+
+            </div>
+        </section>
+
+        <!-- number section -->
+        <section class="section number-section">
+            <div class="number-div">
+
+            </div>
+        </section>
+
+        <!-- reason1 section -->
+        <section class="section reason-section">
+            <div class="reason-div">
+                <!--title-->
+                <div class="reason-title">
+                    <h1>Skills are the key to unlocking potential</h1>
+                    <p>Whether you want to learn a new skill, train your teams, or share what you know with the world, you're in the right place, as a leader in online learning, we're here to help you achieve your goals and transform your life.</p>
+                </div>
+
+                <!-- video-->
+                <div>
+
+                </div>
+
+                <!--Bento UI-->
+                <div>
+
+                </div>
+            </div>
+        </section>
+        
+        <!-- office section -->
+        <section class="section office-section">
+            <div class="office-div">
+
+            </div>
+        </section>
+        
+        <!-- contact section -->
+        <section class="section contact-section">
+            <div class="contact-div">
+
+            </div>
+        </section>
+
+        <!--Footer import-->
+        <%@ include file="./Components/footer_wave.html" %>  
+        <%@ include file="./Components/footer.jsp" %> 
+    </body>
+</html>
