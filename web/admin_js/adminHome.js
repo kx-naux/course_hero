@@ -4,7 +4,7 @@
 //const closeBtn = document.querySelector("#close-btn");
 
 //theme changer
-const themeToggler = document.querySelector(".theme-toggler");
+const themeToggler = document.querySelector("#theme-checkbox");
 
 /*
 //show sidebar
