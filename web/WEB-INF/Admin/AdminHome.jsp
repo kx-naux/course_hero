@@ -106,11 +106,11 @@
                 
                 <div class="insights">
                     <div class="sales">
-                        <i class="ri-menu-line"></i>
+                        <i class="ri-bar-chart-grouped-line"></i>
                         <div class="middle">
                             <div class="left">
                                 <h3>Total Sales</h3>
-                                <h1>$25,024<h1>
+                                <h1>RM 25,024<h1>
                             </div>
                             <div class="progress">
                                 <svg>
@@ -127,11 +127,11 @@
                 
                 <!------------- END OF SALES --------->
                     <div class="expenses">
-                        <i class="ri-menu-line"></i>
+                        <i class="ri-line-chart-line"></i>
                         <div class="middle">
                             <div class="left">
                                 <h3>Total Expenses</h3>
-                                <h1>$14,160<h1>
+                                <h1>RM 14,160<h1>
                             </div>
                             <div class="progress">
                                 <svg>
@@ -146,11 +146,11 @@
                     </div>
                 <!------------- END OF EXPENSES --------->
                 <div class="income">
-                    <i class="ri-menu-line"></i>
+                    <i class="ri-money-dollar-circle-line"></i>
                         <div class="middle">
                             <div class="left">
                                 <h3>Total Income</h3>
-                                <h1>$10,864<h1>
+                                <h1>RM 10,864<h1>
                             </div>
                             <div class="progress">
                                 <svg>
@@ -183,35 +183,35 @@
                             <tr>
                                 <td>Foldable Mini Drone</td>
                                 <td>85631</td>
-                                <td>Due</td>
+                                <td class="danger">Due</td>
                                 <td class="warning">Pending</td>
                                 <td class="primary">Details</td>
                             </tr>
                             <tr>
                                 <td>Foldable Mini Drone</td>
                                 <td>85631</td>
-                                <td>Due</td>
+                                <td class="danger">Due</td>
                                 <td class="warning">Pending</td>
                                 <td class="primary">Details</td>
                             </tr>
                             <tr>
                                 <td>Foldable Mini Drone</td>
                                 <td>85631</td>
-                                <td>Due</td>
+                                <td class="danger">Due</td>
                                 <td class="warning">Pending</td>
                                 <td class="primary">Details</td>
                             </tr>
                             <tr>
                                 <td>Foldable Mini Drone</td>
                                 <td>85631</td>
-                                <td>Due</td>
+                                <td class="danger">Due</td>
                                 <td class="warning">Pending</td>
                                 <td class="primary">Details</td>
                             </tr>
                             <tr>
                                 <td>Foldable Mini Drone</td>
                                 <td>85631</td>
-                                <td>Due</td>
+                                <td class="danger">Due</td>
                                 <td class="warning">Pending</td>
                                 <td class="primary">Details</td>
                             </tr>
@@ -224,20 +224,15 @@
             
             <div class="right">
                 <div class="top">
-                    <button id="menu-btn">
-                        <i class="ri-menu-line"></i>
-                    </button>
-                    <div class="theme-toggler">
-                        <i class="ri-menu-line active"></i>
-                        <i class="ri-menu-line"></i>
-                    </div>
+                    <!-- include dark theme toggler -->
+                    <%@ include file="./Components/dark-theme-toggler.jsp" %>
                     <div class="profile">
                         <div class="info">
                             <p>Hey, <b>Snijders</b></p>
                             <small>Admin</small>
                         </div>
                         <div class="profile-photo">
-                            <img src="profile.png" alt="alt"/>
+                            <img src="../img/admin/default_profile.png" alt="alt"/>
                         </div>
                     </div>
                 </div>
@@ -247,7 +242,7 @@
                     <div class="updates">
                         <div class="update">
                             <div class="profile-photo">
-                                <img src="profile2.png" alt="alt"/>
+                                <img src="../img/admin/default_profile.png" alt="alt"/>
                             </div>
                             <div class="message">
                                 <p><b>Mike Tyson</b> received his order of Night lion tech GPS drone.</p>
@@ -256,7 +251,7 @@
                         </div>
                         <div class="update">
                             <div class="profile-photo">
-                                <img src="profile3.png" alt="alt"/>
+                                <img src="../img/admin/default_profile.png" alt="alt"/>
                             </div>
                             <div class="message">
                                 <p><b>Mike Tyson</b> received his order of Night lion tech GPS drone.</p>
@@ -265,7 +260,7 @@
                         </div>
                         <div class="update">
                             <div class="profile-photo">
-                                <img src="profile4.png" alt="alt"/>
+                                <img src="../img/admin/default_profile.png" alt="alt"/>
                             </div>
                             <div class="message">
                                 <p><b>Mike Tyson</b> received his order of Night lion tech GPS drone.</p>
@@ -279,7 +274,7 @@
                     <h2>Sales Analytics</h2>
                     <div class="item online">
                         <div class="icon">
-                            <i class="ri-menu-line"></i>
+                            <i class="ri-file-list-line"></i>
                         </div>
                         <div class="right">
                             <div class="info">
@@ -292,7 +287,7 @@
                     </div>
                     <div class="item offline">
                         <div class="icon">
-                            <i class="ri-menu-line"></i>
+                            <i class="ri-file-list-line"></i>
                         </div>
                         <div class="right">
                             <div class="info">
@@ -305,7 +300,7 @@
                     </div>
                     <div class="item customers">
                         <div class="icon">
-                            <i class="ri-menu-line"></i>
+                            <i class="ri-user-add-line"></i>
                         </div>
                         <div class="right">
                             <div class="info">
