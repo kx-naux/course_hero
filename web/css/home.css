@@ -296,7 +296,7 @@
 
 .testimonial-container {
     margin-top: 40px;
-    max-width: 100%;
+    max-width: 980px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -304,17 +304,16 @@
 
 .testimonial-content {
     margin-inline: 28px;
-    border-radius: 20px;
-    overflow: hidden;
 }
 
 .testimonial-slide {
-    max-width: 320px;
+    max-width: 300px;
     overflow: hidden;
     justify-content: center;
     align-items: center;
     text-align: center;
     gap: 10px;
+    cursor: default;
 }
 
 .testimonial-slide-top,
@@ -373,7 +372,6 @@
     height: initial;
     font-size: 3rem;
     color: var(--color-blue-1);
-    display: none;
 }
 
 .testimonial-div .swiper-button-prev {
@@ -382,15 +380,6 @@
 
 .testimonial-div .swiper-button-next {
     right: 0;
-}
-
-.testimonial-div .swiper-pagination-bullet {
-    background-color: var(--color-blue-2);
-    opacity: 1;
-}
-
-.testimonial-div .swiper-pagination-bullet-active {
-    background-color: var(--color-blue-1);
 }
 
 section:has(+.testimonial-wave-top) {

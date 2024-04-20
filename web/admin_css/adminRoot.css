@@ -15,8 +15,8 @@
     --color-dark-variant:#677483;
     --color-background: #f6f6f9;
     
-    --card-border-radius: 15px;
-    --border-radius-1: 15px;
+    --card-border-radius: 8px;
+    --border-radius-1: 8px;
     --border-radius-2: 0.8rem;
     --border-radius-3: 1.2rem;
     
@@ -63,11 +63,14 @@ img{
 
 h1{
     font-weight: 800;
-    font-size: 1.8rem;
+    font-size: 1.8vw;
+    letter-spacing: 1px;
 }
 
 h2{
-    font-size: 1.4rem;
+    font-weight: 700;
+    font-size: 1.2vw;
+    letter-spacing: 1px;
 }
 
 h3{
@@ -82,10 +85,6 @@ small{
     font-size: 0.75rem;
 }
 
-.text-muted {
-    color: var(--color-info-dark);
-}
-
 p{
     color: var(--color-dark-variant);
 }
@@ -94,19 +93,22 @@ b{
     color: var(--color-dark);
 }
 
+.text-muted {
+    color: var(--color-info-dark) !important;
+}
+
 .primary{
-    color: var(--color-primary);
+    color: var(--color-primary) !important;
 }
 
 .danger{
-    color: var(--color-danger);
+    color: var(--color-danger) !important;
 }
 
 .success{
-    color: var(--color-success);
+    color: var(--color-success) !important;
 }
 
 .warning{
-    color: var(--color-warning);
+    color: var(--color-warning) !important;
 }
-
