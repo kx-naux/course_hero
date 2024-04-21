@@ -1,5 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ page import="module.OfficeData" %>
+<%@ page import="module.OfficeData, module.NumberStatisticData" %>
 <%@ page import="java.util.List, java.util.Map" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -37,7 +37,7 @@
         </section>
 
         <!-- team section -->
-        <section class="section team-section">
+        <section class="section team-section" id="team">
             <div class="team-div">
 
             </div>
@@ -45,12 +45,41 @@
 
         <!-- number section -->
         <section class="section number-section">
-            <div class="number-div">
-
+            <div class="number-div flex-col">
+                
+                <div class="number-div-title flex-col">
+                    <h1>Creating impact around the world</h1>
+                    <p>With our global catalog spanning the latest skills and topics, people and organization, everywhere are able to adapt to change and thrive.</p>
+                </div>
+                
+                <div class="number-div-content flex-row">
+                    
+                    <div class="number-col flex-col">
+                        <h1>98K+</h1>
+                        <p>Learners</p>
+                    </div>
+                    
+                    <div class="number-col flex-col">
+                        <h1>12K+</h1>
+                        <p>Authors</p>
+                    </div>
+                    
+                    <div class="number-col flex-col">
+                        <h1>10K+</h1>
+                        <p>Courses</p>
+                    </div>
+                    
+                    <div class="number-col flex-col">
+                        <h1>45</h1>
+                        <p>Categories</p>
+                    </div>
+                                       
+                </div>
+                
             </div>
         </section>
 
-        <!-- reason1 section -->
+        <!-- reason section -->
         <section class="section reason-section">
             <div class="reason-div">
                 <!--title-->
@@ -71,15 +100,8 @@
             </div>
         </section>
 
-        <!-- contact section -->
-        <section class="section contact-section">
-            <div class="contact-div">
-
-            </div>
-        </section>
-
         <!-- office section -->
-        <section class="section office-section">
+        <section class="section office-section" id="office">
             <div class="office-div flex-col">
 
                 <div>
@@ -87,15 +109,15 @@
                     <p class="office-div-sub-title">Where Creativity Meets Functionality</p>
                 </div>
 
-                <% 
+                <%
                     Map<String, String> hq = OfficeData.getHeadquartersOffice();
                 %>
-                
+
                 <!--iframe map-->
-                <iframe class="office-emb-map" src="<%= hq.get("map") %>" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe class="office-emb-map" src="<%= hq.get("map")%>" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
                 <!--address-->
-                <p class="office-address"><%= hq.get("address") %></p>
+                <p class="office-address"><%= hq.get("address")%></p>
 
                 <!--offices-->
                 <div class="offices flex-row">
@@ -129,6 +151,13 @@
 
             <!--import office js-->
             <script src="./js/about_us/office.js"></script>
+        </section>
+
+        <!-- contact section -->
+        <section class="section contact-section" id="contact">
+            <div class="contact-div">
+
+            </div>
         </section>
 
         <!-- link section -->

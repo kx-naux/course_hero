@@ -1,9 +1,68 @@
 @import url('./root.css');
 
+/*number statistic section*/
+.number-section {
+    background-color: var(--color-blue-1);
+    padding: 50px 20px 50px;
+}
+
+.number-section .number-div {
+    width: 100%;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+}
+
+.number-div .number-div-title  {
+    max-width: 800px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--color-white);
+}
+
+.number-div .number-div-title h1 {
+    font-weight: 600;
+    font-size: var(--font-size-xl);
+}
+
+.number-div .number-div-title p {
+    font-weight: 300;
+    font-size: var(--font-size-xm);
+}
+
+.number-div .number-div-content {
+    width: 100%;
+    padding: 30px 50px;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    gap: 35px;
+    color: var(--color-white);
+    row-gap: 50px;
+}
+
+.number-div-content .number-col {
+    justify-content: center;
+    align-items: center;
+    min-width: 250px;
+}
+
+.number-div-content .number-col h1 { 
+    font-weight: 600;
+    font-size: var(--font-size-xl);
+}
+
+.number-div-content .number-col p {
+    font-weight: 300;
+    font-size: var(--font-size-s);
+}
+
 /*Office section*/
 .office-section {
     padding: 50px 10px 50px;
 }
+
 .office-section .office-div {
     width: 100%;
     gap: 15px;
