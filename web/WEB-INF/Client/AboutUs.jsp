@@ -40,6 +40,15 @@
         <section class="section team-section" id="team">
             <div class="team-div">
 
+                <div class="team-div-title flex-col">
+                    <h1>Meet Our Team</h1>
+                    <hr />
+                </div>
+
+                <div class="team-div-content">
+                    
+                </div>
+
             </div>
         </section>
 
