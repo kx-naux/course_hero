@@ -46,36 +46,26 @@
         <!-- number section -->
         <section class="section number-section">
             <div class="number-div flex-col">
-                
+
                 <div class="number-div-title flex-col">
                     <h1>Creating impact around the world</h1>
                     <p>With our global catalog spanning the latest skills and topics, people and organization, everywhere are able to adapt to change and thrive.</p>
                 </div>
-                
+
                 <div class="number-div-content flex-row">
-                    
+
+                    <%
+                        List<Map<String, String>> statistic = NumberStatisticData.getStatistic();
+                        for (Map<String, String> s : statistic) {
+                    %>
                     <div class="number-col flex-col">
-                        <h1>98K+</h1>
-                        <p>Learners</p>
+                        <h1><%= s.get("number")%></h1>
+                        <p><%= s.get("title")%></p>
                     </div>
-                    
-                    <div class="number-col flex-col">
-                        <h1>12K+</h1>
-                        <p>Authors</p>
-                    </div>
-                    
-                    <div class="number-col flex-col">
-                        <h1>10K+</h1>
-                        <p>Courses</p>
-                    </div>
-                    
-                    <div class="number-col flex-col">
-                        <h1>45</h1>
-                        <p>Categories</p>
-                    </div>
-                                       
+                    <% } %>
+
                 </div>
-                
+
             </div>
         </section>
 
