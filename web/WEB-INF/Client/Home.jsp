@@ -360,7 +360,7 @@
                 <!--testimonial title-->
                 <div class="testimonial-top flex-col">
                     <h1>Feedback From Hero Community</h1>
-                    <p>100k+ people have already enrolled</p>
+                    <p>100K+ people have already enrolled</p>
                 </div>
 
                 <!--testimonial cards-->

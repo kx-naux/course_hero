@@ -122,7 +122,7 @@ body::-webkit-scrollbar-thumb:hover{
 
 .nav-option-div {
     flex: 3 1 500px;
-    height: 68px;
+    height: 70px;
     transition: 0.3s all ease-in-out;
 }
 
