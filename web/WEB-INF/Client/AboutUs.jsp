@@ -46,7 +46,7 @@
                 </div>
 
                 <div class="team-div-content">
-                    
+
                 </div>
 
             </div>
@@ -154,7 +154,43 @@
 
         <!-- contact section -->
         <section class="section contact-section" id="contact">
-            <div class="contact-div">
+            <div class="contact-div flex-col">
+
+                <div class="contact-div-title flex-row">
+                    <h1>Contact Us</h1>
+                </div>
+
+                <div class="contact-div-content flex-row">
+
+                    <div class="contact-left flex-col">
+
+                        <!--phone number-->
+                        <div class="contact-info flex-col">
+                            <h1>Call Us <i class="ri-phone-fill"></i></h1>
+                            <p>(+60) 11-1760 8595</p>
+                        </div>
+
+                        <!--email-->
+                        <div class="contact-info flex-col">
+                            <h1>Send Email <i class="ri-mail-fill"></i></h1>
+                            <p>hello@coursehero.com</p>
+                        </div>
+
+                        <!--social media icon-->
+                        <div class="contact-social-media flex-row">
+                            <a class="facebook" href="#"><i class="ri-facebook-fill"></i></a>
+                            <a class="linkedin" href="#"><i class="ri-linkedin-fill"></i></a>
+                            <a class="youtube" href="#"><i class="ri-youtube-fill"></i></a>
+                            <a class="instagram" href="#"><i class="ri-instagram-fill"></i></a>
+                            <a class="tiktok" href="#"><i class="ri-tiktok-fill"></i></a>
+                        </div>
+
+                    </div>
+                    <div class="contact-right flex-col">
+                        <img src="./img/about_us/mail-box.png" alt="" />
+                    </div>
+
+                </div>
 
             </div>
         </section>
