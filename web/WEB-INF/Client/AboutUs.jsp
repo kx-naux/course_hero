@@ -87,16 +87,20 @@
                     <p class="office-div-sub-title">Where Creativity Meets Functionality</p>
                 </div>
 
+                <% 
+                    Map<String, String> hq = OfficeData.getHeadquartersOffice();
+                %>
+                
                 <!--iframe map-->
-                <iframe class="office-emb-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3983.8212218137173!2d101.71623467340225!3d3.1418545532007176!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc363008476f63%3A0x97f4e0e71b480088!2sExchange%20106%20%40%20TRX!5e0!3m2!1sen!2smy!4v1713628959822!5m2!1sen!2smy" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe class="office-emb-map" src="<%= hq.get("map") %>" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
                 <!--address-->
-                <p class="office-address">Jln Tun Razak, Imbi, 55100 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur</p>
+                <p class="office-address"><%= hq.get("address") %></p>
 
                 <!--offices-->
                 <div class="offices flex-row">
                     <%
-                        List<Map<String, String>> offices = OfficeData.getOfficies();
+                        List<Map<String, String>> offices = OfficeData.getOffices();
                         String selected = "";
                         String image = "";
                         for (Map<String, String> office : offices) {
@@ -109,7 +113,7 @@
                                 selected = "";
                             }
                     %>
-                    <div class="office flex-col <%= selected%>">
+                    <div class="office flex-col <%= selected%>" onclick="changeOffice(this)">
                         <span hidden class="office-map"><%= office.get("map")%></span>
                         <span hidden class="office-address"><%= office.get("address")%></span>
                         <div class="office-img-div">
@@ -122,6 +126,9 @@
                 </div>
 
             </div>
+
+            <!--import office js-->
+            <script src="./js/about_us/office.js"></script>
         </section>
 
         <!-- link section -->
