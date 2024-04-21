@@ -38,14 +38,64 @@
 
         <!-- team section -->
         <section class="section team-section" id="team">
-            <div class="team-div">
+            <div class="team-div flex-col">
 
                 <div class="team-div-title flex-col">
                     <h1>Meet Our Team</h1>
-                    <hr />
+                    <p>With a blend of expertise and enthusiasm, we're here to inspire and assist you in reaching your educational goals.</p>
                 </div>
 
-                <div class="team-div-content">
+                <div class="team-div-content flex-row">
+                    
+                    <div class="team-card flex-col">
+                        <div class="team-img">
+                            <img src="./img/about_us/team/yb.png" alt="" />
+                        </div>
+                        <div class="team-info flex-col">
+                            <h1>Woo Yu Beng</h1>
+                            <p>Developer</p>
+                        </div>
+                    </div>
+                    
+                    <div class="team-card flex-col">
+                        <div class="team-img">
+                            <img src="./img/about_us/team/sw.png" alt="" />
+                        </div>
+                        <div class="team-info flex-col">
+                            <h1>Snijders Wang</h1>
+                            <p>Developer</p>
+                        </div>
+                    </div>
+                    
+                    <div class="team-card flex-col">
+                        <div class="team-img">
+                            <img src="./img/about_us/team/kx.png" alt="" />
+                        </div>
+                        <div class="team-info flex-col">
+                            <h1>Low Kah Xuan</h1>
+                            <p>Developer</p>
+                        </div>
+                    </div>
+                    
+                    <div class="team-card flex-col">
+                        <div class="team-img">
+                            <img src="./img/about_us/team/zl.png" alt="" />
+                        </div>
+                        <div class="team-info flex-col">
+                            <h1>Lau Zhan Liang</h1>
+                            <p>Developer</p>
+                        </div>
+                    </div>
+                    
+                    <div class="team-card flex-col">
+                        <div class="team-img">
+                            <img src="./img/about_us/team/wy.png" alt="" />
+                        </div>
+                        <div class="team-info flex-col">
+                            <h1>Tan Woeiyi</h1>
+                            <p>Developer</p>
+                        </div>
+                    </div>
 
                 </div>
 

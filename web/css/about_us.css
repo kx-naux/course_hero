@@ -1,5 +1,68 @@
 @import url('./root.css');
 
+/*our team section*/
+.team-section {
+    padding: 50px 20px 50px;
+}
+
+.team-section .team-div {
+    width: 100%;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+}
+
+.team-div .team-div-title {
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+}
+
+.team-div .team-div-title h1 {
+    color: var(--color-blue-1);
+    font-weight: 600;
+    font-size: var(--font-size-xl);
+}
+
+.team-div .team-div-title p {
+    font-weight: 300;
+    font-size: var(--font-size-xm);
+    color: var(--color-text-light-2);
+}
+
+.team-div .team-div-content {
+    justify-content: center;
+    align-items: center;
+    row-gap: 10px;
+    column-gap: 60px;
+    flex-wrap: wrap;
+}
+
+.team-div-content .team-card  {
+    max-width: 280px;
+}
+
+.team-card .team-img img{
+    width: 100%;
+    border-radius: 8px;
+}
+
+.team-card .team-info {
+    align-items: center;
+}
+
+.team-card .team-info  h1 {
+    color: var(--color-text-light-3);
+    font-weight: 600;
+    font-size: var(--font-size-m);
+}
+
+.team-card .team-info  p {
+    color: var(--color-text-light-2);
+    font-weight: 300;
+    font-size: var(--font-size-s);
+}
+
 /*number statistic section*/
 .number-section {
     background-color: var(--color-blue-1);
@@ -235,7 +298,7 @@
 }
 
 .contact-div-content .contact-social-media a.instagram:hover {
-    background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+    background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
     border-color: #f09433;
     color: #fff;
 }
