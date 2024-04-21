@@ -17,7 +17,7 @@
     </head>
     <body>
         <!--To top button-->
-        <button onclick="toTopFunc()" id="toTopBtn" title="Go to top"><i class="ri-arrow-up-s-line"></i></button>
+        <%@ include file="./Components/to_top_button.html" %>
 
         <!-- Include the navigation bar -->
         <%@ include file="./Components/navbar.jsp" %>
