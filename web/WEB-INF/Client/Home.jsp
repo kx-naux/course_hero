@@ -469,7 +469,7 @@
         </section>
 
         <!-- FAQ section -->
-        <section class="section faq-section">
+        <section class="section faq-section" id="faq">
             <div class="faq-div flex-col">
 
                 <!--faq title-->

@@ -21,11 +21,11 @@
             <div class="flex-col">
                 <p class="footer-list-title">Company</p>
                 <ul class="footer-list">
-                    <li><a href="#">About</a></li>
+                    <li><a href="<%= webpath.getPageUrl("about us") %>">About</a></li>
                     <li><a href="#">News</a></li>
                     <li><a href="#">Investor</a></li>
                     <li><a href="#">Careers</a></li>
-                    <li><a href="#">FAQs</a></li>
+                    <li><a href="<%= webpath.getPageUrl("home") %>#faq">FAQs</a></li>
                     <li><a href="#">Term</a></li>
                 </ul>
             </div>
