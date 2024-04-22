@@ -304,7 +304,7 @@
 }
 
 .contact-div-content .contact-social-media a.tiktok:hover {
-    background:  linear-gradient(35deg, rgba(1,1,1,1) 0%, rgba(105,217,192,1) 25%, rgba(185,185,185,1) 50%, rgba(238,29,82,1) 75%, rgba(1,1,1,1) 100%);
+    background-color: #111;
     border-color: #010101;
     color: #fff;
 }
