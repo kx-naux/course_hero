@@ -53,6 +53,16 @@
                         </div>
                         <div class="team-info flex-col">
                             <h1>Woo Yu Beng</h1>
+                            <p>Project Manager</p>
+                        </div>
+                    </div>
+                                        
+                     <div class="team-card flex-col">
+                        <div class="team-img">
+                            <img src="./img/about_us/team/wy.png" alt="" />
+                        </div>
+                        <div class="team-info flex-col">
+                            <h1>Tan Woeiyi</h1>
                             <p>Developer</p>
                         </div>
                     </div>
@@ -87,15 +97,7 @@
                         </div>
                     </div>
                     
-                    <div class="team-card flex-col">
-                        <div class="team-img">
-                            <img src="./img/about_us/team/wy.png" alt="" />
-                        </div>
-                        <div class="team-info flex-col">
-                            <h1>Tan Woeiyi</h1>
-                            <p>Developer</p>
-                        </div>
-                    </div>
+                   
 
                 </div>
 
