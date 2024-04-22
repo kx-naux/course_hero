@@ -25,7 +25,7 @@
         <!-- welcome section -->
         <section class="section welcome-section">
             <div class="welcome-div flex-col">
-                
+
                 <div class="welcome-div-content flex-row">
                     <div class="welcome-left flex-row">
                         Welcome to where possible begin
@@ -34,17 +34,25 @@
                         <img src="" alt="" />
                     </div>
                 </div>
-                
+
                 <div class="welcome-bot flex-col">
                     <p>Check out our latest company news!</p>
                 </div>
-                
+
             </div>
         </section>
 
         <!-- story section -->
         <section class="section story-section">
-            <div class="story-div">
+            <div class="story-div flex-row">
+
+                <div class="story-left">
+                    <h1>Our Story</h1>
+                    <p></p>
+                </div>
+                <div class="story-right">
+                    <img src="" alt="" />
+                </div>
 
             </div>
         </section>
@@ -59,7 +67,7 @@
                 </div>
 
                 <div class="team-div-content flex-row">
-                    
+
                     <div class="team-card flex-col">
                         <div class="team-img">
                             <img src="./img/about_us/team/yb.png" alt="" />
@@ -69,8 +77,8 @@
                             <p>Developer</p>
                         </div>
                     </div>
-                                        
-                     <div class="team-card flex-col">
+
+                    <div class="team-card flex-col">
                         <div class="team-img">
                             <img src="./img/about_us/team/wy.png" alt="" />
                         </div>
@@ -79,7 +87,7 @@
                             <p>Project Manager</p>
                         </div>
                     </div>
-                    
+
                     <div class="team-card flex-col">
                         <div class="team-img">
                             <img src="./img/about_us/team/sw.png" alt="" />
@@ -89,7 +97,7 @@
                             <p>Developer</p>
                         </div>
                     </div>
-                    
+
                     <div class="team-card flex-col">
                         <div class="team-img">
                             <img src="./img/about_us/team/kx.png" alt="" />
@@ -99,7 +107,7 @@
                             <p>Developer</p>
                         </div>
                     </div>
-                    
+
                     <div class="team-card flex-col">
                         <div class="team-img">
                             <img src="./img/about_us/team/zl.png" alt="" />
@@ -109,8 +117,8 @@
                             <p>Developer</p>
                         </div>
                     </div>
-                    
-                   
+
+
 
                 </div>
 
