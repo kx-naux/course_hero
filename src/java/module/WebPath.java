@@ -23,7 +23,7 @@ public class WebPath {
     public String getPageUrl(String page) {
     String url = pageUrls.get(page);
     if (url != null) {
-        return "http://localhost:8080/CourseHero" + url;
+        return "http://localhost:8080/course_hero" + url;
     } else {
         return "#";
     }
