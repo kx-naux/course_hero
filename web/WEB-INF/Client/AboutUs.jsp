@@ -24,8 +24,21 @@
 
         <!-- welcome section -->
         <section class="section welcome-section">
-            <div class="welcome-div">
-
+            <div class="welcome-div flex-col">
+                
+                <div class="welcome-div-content flex-row">
+                    <div class="welcome-left flex-row">
+                        Welcome to where possible begin
+                    </div>
+                    <div class="welcome-right flex-row">
+                        <img src="" alt="" />
+                    </div>
+                </div>
+                
+                <div class="welcome-bot flex-col">
+                    <p>Check out our latest company news!</p>
+                </div>
+                
             </div>
         </section>
 
@@ -53,7 +66,7 @@
                         </div>
                         <div class="team-info flex-col">
                             <h1>Woo Yu Beng</h1>
-                            <p>Project Manager</p>
+                            <p>Developer</p>
                         </div>
                     </div>
                                         
@@ -63,7 +76,7 @@
                         </div>
                         <div class="team-info flex-col">
                             <h1>Tan Woeiyi</h1>
-                            <p>Developer</p>
+                            <p>Project Manager</p>
                         </div>
                     </div>
                     
