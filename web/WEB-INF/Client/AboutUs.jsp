@@ -11,8 +11,7 @@
         <link rel="icon" type="image/ico" href="./ico/Logo.ico">
         <link type="text/css" href="./css/style.css" rel="stylesheet" >
         <link type="text/css" href="./css/about_us.css" rel="stylesheet" >
-        <link type="text/css" href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
-        <script src="./js/nav.js"></script>   
+        <link type="text/css" href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet"> 
         <jsp:useBean id="webpath" class="module.WebPath" scope="application" />
     </head>
     <body>
@@ -31,7 +30,7 @@
                         Welcome to where possible begin
                     </div>
                     <div class="welcome-right flex-row">
-                        <img src="" alt="" />
+                        <img src="./img/about_us/man.png" alt="" />
                     </div>
                 </div>
 
@@ -48,11 +47,23 @@
 
                 <div class="story-left">
                     <h1>Our Story</h1>
-                    <p></p>
+                    <p>
+                        Embark on a journey of empowerment with Course Hero, a global leader in online education. Our story is one of dedication to making quality education accessible to all, fueled by a vibrant community of learners, educators, and experts. From comprehensive study resources to interactive tutorials, we provide the tools and support needed to unlock your full potential. Guided by a relentless pursuit of innovation, we're shaping the future of learning through cutting-edge technology and strategic partnerships, ensuring that every learner has the opportunity to thrive.
+                    </p>
+                    <p>
+                        Join us on this transformative journey, where the pursuit of knowledge knows no bounds. Whether you're a student striving for academic success, an educator inspiring the next generation, or a lifelong learner hungry for knowledge, Course Hero is here to support you every step of the way. Welcome to Course Hero – where every learner has the opportunity to become a hero in their own right.
+                    </p>
                 </div>
                 <div class="story-right">
-                    <img src="" alt="" />
+                    <img src="./img/about_us/story.png" alt="" />
                 </div>
+
+            </div>
+        </section>
+
+        <!--milestone section-->
+        <section class="section milestone-section">
+            <div class="milestone-div">
 
             </div>
         </section>
@@ -148,6 +159,18 @@
 
                 </div>
 
+            </div>
+        </section>
+
+        <!--collaborate section-->
+        <section class="section collaborate-section">
+            <div class="collaborate-div flex-row">
+                <div class="collaborate-left flex-col">
+                    <p>Course Hero partners with more than 325+ leading universities and companies to bring flexible, affordable, job-relevant online learning to individuals and organizations worldwide. We offer a range of learning opportunities—from hands-on projects and courses to job-ready certificates.</p>
+                </div>
+                <div class="collaborate-right flex-col">
+                    <img src="./img/about_us/collaborate.png" alt="" />
+                </div>
             </div>
         </section>
 

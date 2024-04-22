@@ -74,4 +74,6 @@
             </c:otherwise>
         </c:choose>
     </div>
-</nav>
+</nav>         
+                  
+<script src="./js/nav.js"></script> 
