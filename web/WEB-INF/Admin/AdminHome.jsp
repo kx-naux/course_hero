@@ -1,5 +1,4 @@
-<%@ page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ page import="java.util.List, java.util.Map" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -11,9 +10,9 @@
         <link type="text/css" href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
         <!--StyleSheet-->
         <link rel="stylesheet" href="../admin_css/adminStyle.css">
-        <jsp:useBean id="webpath" class="module.WebPath" scope="application" />
+        
     </head>
-    <body> 
+    <body>
         <div class="flex-container">
             <div class="global-sidebar">
                 <div class="sidebar-top">
@@ -31,117 +30,32 @@
                     <!-- sidebar content -->
                     <ul>
                         <li>
-                            <a href="<%= webpath.getPageUrl("dashboard") %>">
-                                <i class="ri-home-line"></i>
+                            <a href="http://localhost:8080/course_hero/admin/dashboard">
+                                <i class="ri-dashboard-line"></i>
                                 <h3 class="nav-item">Dashboard</h3>
                             </a>
                             <span class="tooltip">Dashboard</span>
                         </li>
                         <li>
                             <a href="#">
+                                <i class="ri-user-line"></i>
+                                <h3 class="nav-item">Customers</h3>
+                            </a>
+                            <span class="tooltip">Customers</span>
+                        </li>
+                        <li>
+                            <a href="#">
                                 <i class="ri-file-list-3-line"></i>
                                 <h3 class="nav-item">Orders</h3>
                             </a>
-
-                            <span class="tooltip">Manage Orders</span>
+                            <span class="tooltip">Orders</span>
                         </li>
                         <li>
                             <a href="#">
-                                <i class="ri-file-line"></i>
-                                <h3 class="nav-item">Contract Entries</h3>
+                                <i class="ri-donut-chart-line"></i>
+                                <h3 class="nav-item">Analytics</h3>
                             </a>
-
-                            <span class="tooltip">Contract Entries</span>
-                        </li>
-                        <li>
-                            <a>
-                                <i class="ri-user-line"></i>
-                                <h3 class="nav-item">Client</h3>
-                                <i class="arrow ri-arrow-down-s-line"></i>
-                            </a>
-                            <ul class="sub-menu">
-                                <li>
-                                    <a href="#">
-                                        <h3>Search Client</h3>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <h3>Add New Client</h3>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <h3>Update Client</h3>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <h3>Delete Client</h3>
-                                    </a>
-                                </li>
-                            </ul>
-                            <span class="tooltip">Manage Client</span>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="ri-box-3-line"></i>
-                                <h3 class="nav-item">Product</h3>
-                                <i class="arrow ri-arrow-down-s-line"></i>
-                            </a>
-                            <ul class="sub-menu">
-                                <li>
-                                    <a href="#">
-                                        <h3>Search Product</h3>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <h3>Add New Product</h3>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <h3>Update Product</h3>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <h3>Delete Product</h3>
-                                    </a>
-                                </li>
-                            </ul>
-                            <span class="tooltip">Manage Product</span>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="ri-team-line"></i>
-                                <h3 class="nav-item">Staff</h3>
-                                <i class="arrow ri-arrow-down-s-line"></i>
-                            </a>
-                            <ul class="sub-menu">
-                                <li>
-                                    <a href="#">
-                                        <h3>Search Staff</h3>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <h3>Add New Staff</h3>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <h3>Update Staff</h3>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <h3>Delete Staff</h3>
-                                    </a>
-                                </li>
-                            </ul>
-                            <span class="tooltip">Manage Staff</span>
+                            <span class="tooltip">Analytics</span>
                         </li>
                         <li>
                             <a href="#">
@@ -153,10 +67,17 @@
                         </li>
                         <li>
                             <a href="#">
-                                <i class="ri-folder-chart-line"></i>
-                                <h3 class="nav-item">Report</h3>
+                                <i class="ri-box-3-line"></i>
+                                <h3 class="nav-item">Products</h3>
                             </a>
-                            <span class="tooltip">Report</span>
+                            <span class="tooltip">Products</span>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="ri-folder-chart-line"></i>
+                                <h3 class="nav-item">Reports</h3>
+                            </a>
+                            <span class="tooltip">Reports</span>
                         </li>
                         <li>
                             <a href="#">
@@ -165,7 +86,7 @@
                             </a>
                             <span class="tooltip">Settings</span>
                         </li>
-                        <li class="logout">
+                        <li>
                             <a href="#">
                                 <i class="ri-logout-circle-line"></i>
                                 <h3 class="nav-item">Logout</h3>
@@ -178,7 +99,6 @@
             <!-------------------- END OF GLOBAL SIDEBAR ------------------->
             <div class="main-content">
                 <h1>Dashboard</h1>
-                <div class="horizontal-line"></div>
                 
                 <div class="date">
                     <input type="date">
@@ -248,10 +168,7 @@
                 <!----------  END OF INSIGHTS ------------------->
                 
                 <div class="recent-orders">
-                    <div class="title">
-                        <h2>Recent Orders</h2>
-                        <div class="horizontal-line"></div>
-                    </div>
+                    <h2>Recent Orders</h2>
                     <table>
                         <thead>
                             <tr>
@@ -259,7 +176,7 @@
                                 <th>Product Number</th>
                                 <th>Payment</th>
                                 <th>Status</th>
-                                <th>Details</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -300,7 +217,7 @@
                             </tr>
                         </tbody>
                     </table>
-                    <a class="show-all" href="#">Show All</a>
+                    <a href="#">Show All</a>
                 </div>
             </div>
             <!----------  END OF MAIN ------------------->
@@ -321,10 +238,7 @@
                 </div>
                 <!----------  END OF TOP ------------------->
                 <div class="recent-updates">
-                    <div class="title">
-                        <h2>Recent Updates</h2>
-                        <div class="horizontal-line"></div>
-                    </div>
+                    <h2>Recent Updates</h2>
                     <div class="updates">
                         <div class="update">
                             <div class="profile-photo">
@@ -357,10 +271,7 @@
                 </div>
                 <!----------  END OF RECENT UPDATES ------------------->
                 <div class="sales-analytics">
-                    <div class="title">
-                        <h2>Sales Analytics</h2>
-                        <div class="horizontal-line"></div>
-                    </div>
+                    <h2>Sales Analytics</h2>
                     <div class="item online">
                         <div class="icon">
                             <i class="ri-file-list-line"></i>

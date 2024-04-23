@@ -2,33 +2,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import url('adminRoot.css');
 
-.horizontal-line{
-    border-top: 1px solid var(--color-dark);
-    padding-top: 2vh;
-    margin-top: 2vh;
-}
-
-.title{
-    display: grid;
-    gap: 10px;
-    grid-template-columns: max-content auto;
-}
-
-.title h2{
-    width: fit-content;
-}
-
-.right-align-line:after{
-  content:" ";
-  height: 2px;
-  width: 130px;
-  background: red;
-  display: block;
-  position: absolute;
-  top: 50%;
-  right: -50%;
-}
-
 .profile-photo{
     width: 2.8rem;
     height: 2.8rem;
@@ -52,14 +25,13 @@
     background: #363949;
     padding: 2vh 0.5vw;
     width: 80px;
-    min-height: 100vh;
-    transition: width 0.5s ease-in-out;
+    height: 100vh;
+    transition: all 0.5s ease-in-out;
     align-items: center;
 }
 
 .global-sidebar.active{
-    width: 250px;
-    margin-right: 1vw;
+    width: 200px;
 }
 
 .global-sidebar .sidebar-top .logo{
@@ -91,8 +63,8 @@
 /* expand button */
 .global-sidebar .sidebar-top .expand-btn{
     position: absolute;
-    top: 0vh;
-    left: 25%;
+    top: 2vh;
+    left: 25px;
     color: #FFF;
     line-height: 50px;
     font-size: 2.8em;
@@ -101,7 +73,7 @@
 }
 
 .global-sidebar.active .sidebar-top .expand-btn{
-    transform: translateX(150px);
+    transform: translateX(140px);
     transition: 0.6s ease-in-out;
 }
 
@@ -124,7 +96,7 @@
 .global-sidebar ul li{
     position:relative;
     list-style-type: none;
-    min-height: 50px;
+    height: 50px;
     width: 90%;
     margin: 2vh auto;
     line-height: 50px;
@@ -136,7 +108,7 @@
     text-decoration: none;
     border-radius: 10px;
     color: #FFF;
-    transition: 0.2s ease-in-out;
+    transition: 0.3s ease-in-out;
     align-items: center;
     padding: 0.25vh 0.5vw;
 }
@@ -146,14 +118,14 @@
     color: #363949;
 }
 
-.global-sidebar ul li a.active{
+.global-sidebar ul li a:active{
     background-color: #FFF;
     color: #363949;
 }
 
 /* this is the logout button */
-.global-sidebar ul li.logout{
-    margin-top: 5vh;
+.global-sidebar ul li:last-child{
+    margin-top: 20vh;
 }
 
 .global-sidebar ul li a i{
@@ -163,56 +135,16 @@
     line-height: 50px;
 }
 
-/*submenu*/
-.global-sidebar ul li a i.arrow{
-    font-size: 24px;
-    text-align: right;
-    position: absolute;
-    right: 5px;
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-}
-
-.global-sidebar.active ul li a i.arrow{
-    opacity: 1;
-}
-
-
-.global-sidebar .sub-menu{
-    display: none;
-}
-
-.global-sidebar .sub-menu.active{
-    display: none;
-}
-
-.global-sidebar.active .sub-menu{
-    margin-left: 25px;
-    padding-left: 15px;
-    border-left: 1px solid white;
-    display: none;
-    transition: 0.3s ease-in-out 0.25s;
-    text-align: center;
-}
-
-.global-sidebar.active .sub-menu.active{
-    display: block;
-    
-}
-
-.global-sidebar .sub-menu a h3{
-    font-weight: 500;
-}
-
 .global-sidebar .nav-item{
+    transform: translateX(-50%);
     margin-left: 15px;
-    white-space: nowrap;
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.5s ease-in-out;
+    transition: transform 0.5s ease-in-out, opacity 0.3s ease-in-out;
 }
 
 .global-sidebar.active .nav-item{
+    transform: translateX(0);
     opacity: 1;
 }
 
@@ -220,7 +152,6 @@
     position: absolute;
     top: 0;
     left: 60px;
-    white-space: nowrap;
     font-weight: 600;
     font-size: 14px;
     z-index: 20;
@@ -345,12 +276,12 @@
 }
 
 .main-content .insights .sales svg circle {
-    stroke-dashoffset: 0;
-    stroke-dasharray: 180;
+    stroke-dashoffset: -30;
+    stroke-dasharray: 200;
 }
 
 .main-content .insights .expenses svg circle {
-    stroke-dashoffset: 10;
+    stroke-dashoffset: 20;
     stroke-dasharray: 80;
 }
 
@@ -363,16 +294,11 @@
     position: absolute;
     top:0;
     left: 0;
-    bottom: 0;
-    right: 0;
+    height: 100%;
+    width: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
-    margin: auto auto;
-    font-weight: 600;
-    font-size: 14px;
-    line-height: 1em;
-    letter-spacing: 1px;
+    align-items: center
 }
 
 .main-content .insights small{
@@ -399,47 +325,31 @@
     transition: all 0.3s ease;
 }
 
-.main-content .recent-orders table thead{
-    font-size: 16px;
-    letter-spacing: 1px;
-    line-height: 1.8em;
-}
-
 .main-content .recent-orders table:hover{
     box-shadow: none;
 }
 
-.main-content .recent-orders table tbody td{
+.main-content table tbody td{
     height: 2.8rem;
     border-radius: 1px solid var(--color-light);
     color: var(--color-dark-variant);
 }
 
-.main-content table tbody tr{
-    border: 2px solid var(--color-dark);
+.main-content table tbody tr:last-child td{
+    border: none;
 }
 
-.main-content .recent-orders .show-all{
-    font-size: 12px;
-    font-weight: 600;    
+.main-content .recent-orders a{
     text-align: center;
     display: block;
-    width: 15%;
     margin: 1rem auto;
-    color: #FFF;
-    background: var(--color-primary);
-    padding: 8px; 
-    border-radius: 100vh;
-    transition: 0.2s ease-in-out;
-}
-
-.main-content .recent-orders .show-all:hover{   
-    transform: scale(0.9);
+    color: var(--color-primary);
 }
 
 /* ======================== RIGHT ===================== */
 .right{
     margin-top: 1.4rem;
+    transition: all 0.3s ease-in-out;
 }
 
 .right .top{
@@ -491,7 +401,7 @@
 
 /* ======================== SALES ANALYTICS ===================== */
 .right .sales-analytics{
-    margin-top: 3rem;
+    margin-top: 2rem;
 }
 
 .right .sales-analytics h2{
