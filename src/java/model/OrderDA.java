@@ -2,8 +2,6 @@ package model;
 import entity.Order;
 import java.sql.*;
 
-
-
 public class OrderDA {
     private final String host = "jdbc:derby://localhost:1527/OnlineCourseAppDB";
     private final String user = "nbuser";
