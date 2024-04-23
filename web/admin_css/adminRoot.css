@@ -7,7 +7,7 @@
     --color-warning: #ffbb55;
     --color-white: #fff;
     --color-black: #000;
-    --color-info-dark: #7d8ada1;
+    --color-info-dark: #7d8ada;
     --color-info-light: #dce1eb;
     --color-dark: #363949;
     --color-light: rgba(132, 139, 200, 0.18);
@@ -23,7 +23,7 @@
     --card-padding: 1.8rem;
     --padding-1: 1.2rem;
     
-    --box-shadow: 0rem 0rem 1rem var(--color-light);
+    --box-shadow: 0rem 0.5rem 1rem var(--color-light);
 }
 
 *{
@@ -52,6 +52,10 @@ body{
     color: var(--color-dark);
 }
 
+div{
+    position: relative;
+}
+
 a{
     color: var(--color-dark);
 }
@@ -70,7 +74,6 @@ h1{
 h2{
     font-weight: 700;
     font-size: 1.2vw;
-    letter-spacing: 1px;
 }
 
 h3{
@@ -82,7 +85,8 @@ h4{
 }
 
 small{
-    font-size: 0.75rem;
+    font-size: 12px;
+    font-weight: 500;
 }
 
 p{

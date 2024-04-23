@@ -9,6 +9,8 @@ public class WebPath {
 
     public WebPath() {
         pageUrls = new HashMap<>();
+        
+        //client
         pageUrls.put("login", "/login");
         pageUrls.put("sign up","/sign-up");
         pageUrls.put("forget password","/forget-pw");
@@ -18,12 +20,15 @@ public class WebPath {
         pageUrls.put("learning", "/learning");
         pageUrls.put("cart","/cart");
         pageUrls.put("wishlist","/wishlist");
+        
+        //admin
+        pageUrls.put("dashboard","/admin/dashboard");
     }
 
     public String getPageUrl(String page) {
     String url = pageUrls.get(page);
     if (url != null) {
-        return "http://localhost:8080/CourseHero" + url;
+        return "http://localhost:8080/course_hero" + url;
     } else {
         return "#";
     }
