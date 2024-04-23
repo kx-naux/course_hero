@@ -22,9 +22,9 @@
                 </a>
                 <div class="nav-option-dropdown">
                     <ul>
-                        <li><a href="<%= webpath.getPageUrl("about us") %>">Our Team</a></li>
-                        <li><a href="<%= webpath.getPageUrl("about us") %>">Our Office</a></li>
-                        <li><a href="<%= webpath.getPageUrl("about us") %>">Contact Us</a></li>
+                        <li><a href="<%= webpath.getPageUrl("about us") %>#team">Our Team</a></li>
+                        <li><a href="<%= webpath.getPageUrl("about us") %>#office">Our Office</a></li>
+                        <li><a href="<%= webpath.getPageUrl("about us") %>#contact">Contact Us</a></li>
                     </ul>
                 </div>
             </li>
@@ -74,4 +74,6 @@
             </c:otherwise>
         </c:choose>
     </div>
-</nav>
+</nav>         
+                  
+<script src="./js/nav.js"></script> 

@@ -1,5 +1,314 @@
 @import url('./root.css');
 
+/*our team section*/
+.team-section {
+    padding: 50px 20px 50px;
+}
+
+.team-section .team-div {
+    width: 100%;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+}
+
+.team-div .team-div-title {
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+}
+
+.team-div .team-div-title h1 {
+    color: var(--color-blue-1);
+    font-weight: 600;
+    font-size: var(--font-size-xl);
+}
+
+.team-div .team-div-title p {
+    font-weight: 300;
+    font-size: var(--font-size-xm);
+    color: var(--color-text-light-2);
+}
+
+.team-div .team-div-content {
+    justify-content: center;
+    align-items: center;
+    row-gap: 10px;
+    column-gap: 60px;
+    flex-wrap: wrap;
+}
+
+.team-div-content .team-card  {
+    max-width: 280px;
+}
+
+.team-card .team-img img{
+    width: 100%;
+    border-radius: 8px;
+}
+
+.team-card .team-info {
+    align-items: center;
+}
+
+.team-card .team-info  h1 {
+    color: var(--color-text-light-3);
+    font-weight: 600;
+    font-size: var(--font-size-m);
+}
+
+.team-card .team-info  p {
+    color: var(--color-text-light-2);
+    font-weight: 300;
+    font-size: var(--font-size-s);
+}
+
+/*number statistic section*/
+.number-section {
+    background-color: var(--color-blue-1);
+    padding: 50px 20px 50px;
+}
+
+.number-section .number-div {
+    width: 100%;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+}
+
+.number-div .number-div-title  {
+    max-width: 800px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--color-white);
+}
+
+.number-div .number-div-title h1 {
+    font-weight: 600;
+    font-size: var(--font-size-xl);
+}
+
+.number-div .number-div-title p {
+    font-weight: 300;
+    font-size: var(--font-size-xm);
+}
+
+.number-div .number-div-content {
+    width: 100%;
+    padding: 30px 50px;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    gap: 35px;
+    color: var(--color-white);
+    row-gap: 50px;
+}
+
+.number-div-content .number-col {
+    justify-content: center;
+    align-items: center;
+    min-width: 250px;
+}
+
+.number-div-content .number-col h1 {
+    font-weight: 600;
+    font-size: var(--font-size-xl);
+}
+
+.number-div-content .number-col p {
+    font-weight: 300;
+    font-size: var(--font-size-s);
+}
+
+/*Office section*/
+.office-section {
+    padding: 50px 10px 50px;
+}
+
+.office-section .office-div {
+    width: 100%;
+    gap: 15px;
+    justify-content: center;
+}
+
+.office-div .office-div-title {
+    text-align: center;
+    font-weight: 600;
+    font-size: var(--font-size-xl);
+    color: var(--color-blue-1);
+}
+
+.office-div .office-div-sub-title {
+    text-align: center;
+    font-weight: 300;
+    font-size: var(--font-size-xm);
+    color: var(--color-text-light-2);
+}
+
+.office-div .office-emb-map {
+    margin: 0 auto;
+    max-width: 1000px;
+    width: 100%;
+    height: 300px;
+}
+
+.office-div .office-address {
+    padding: 0 30px;
+    margin-bottom: 10px;
+    text-align: center;
+    font-weight: 400;
+    font-size: var(--font-size-xm);
+    color: var(--color-text-light-3);
+}
+
+.office-div .offices {
+    padding: 0 30px;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    gap: 15px;
+}
+
+.office-div .offices .office {
+    padding: 15px 0 5px;
+    width: 180px;
+    height: 160px;
+    text-align: center;
+    justify-content: start;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.office-div .offices .office .office-img-div {
+    height: 85px;
+    width: 160px;
+    display: flex;
+    justify-content: center;
+}
+
+.office-div .offices .office img {
+    object-fit: cover;
+}
+
+.office-div .offices .office p{
+    font-weight: 300;
+    font-size: var(--font-size-xm);
+    color: var(--color-text-light-1);
+}
+
+.office-div .offices .office.selected p{
+    font-weight: 400;
+    font-size: var(--font-size-xm);
+    color: var(--color-orange-1);
+}
+
+/*contact us section*/
+.contact-section {
+    padding: 60px 30px 60px;
+}
+
+.contact-section .contact-div {
+    width: 100%;
+    justify-content: center;
+}
+
+.contact-div .contact-div-title {
+    width: 100%;
+    justify-content: center;
+}
+.contact-div .contact-div-title h1 {
+    font-weight: 600;
+    font-size: var(--font-size-xl);
+    color: var(--color-blue-1);
+}
+
+.contact-div-content {
+    padding: 30px 30px;
+    flex-wrap: wrap-reverse;
+}
+
+.contact-div-content > div{
+    flex: 1 1 300px;
+    justify-content: center;
+    gap: 30px;
+    min-width: 400px;
+}
+
+.contact-div-content .contact-left {
+    padding: 20px 40px;
+}
+
+.contact-div-content .contact-right {
+    align-items: center;
+}
+
+.contact-div-content .contact-right img {
+    width: 250px;
+}
+
+.contact-div-content .contact-info {
+    gap: 5px;
+}
+
+.contact-div-content .contact-info  h1{
+    font-weight: 600;
+    font-size: var(--font-size-l);
+    color: var(--color-secondary);
+}
+
+.contact-div-content .contact-info p {
+    font-weight: 300;
+    font-size: var(--font-size-m);
+    color: var(--color-text-light-3);
+}
+
+.contact-div-content .contact-social-media {
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.contact-div-content .contact-social-media a {
+    font-size: var(--font-size-xl);
+    color: var(--color-text-light-1);
+    border-radius: 50%;
+    border: 1px solid var(--color-text-light-1);
+    padding: 6px 12px;
+    cursor: pointer;
+    transition: 0.2s all ease-in-out;
+}
+
+.contact-div-content .contact-social-media a.facebook:hover {
+    background-color: #4267B2;
+    border-color: #4267B2;
+    color: #fff;
+}
+
+.contact-div-content .contact-social-media a.linkedin:hover {
+    background-color: #0a66c2;
+    border-color: #0a66c2;
+    color: #fff;
+}
+
+.contact-div-content .contact-social-media a.youtube:hover {
+    background-color: #ff0000;
+    border-color: #ff0000;
+    color: #fff;
+}
+
+.contact-div-content .contact-social-media a.instagram:hover {
+    background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+    border-color: #f09433;
+    color: #fff;
+}
+
+.contact-div-content .contact-social-media a.tiktok:hover {
+    background-color: #111;
+    border-color: #010101;
+    color: #fff;
+}
+
 /*link section*/
 .link-section {
     padding: 50px 30px 40px;
@@ -40,6 +349,14 @@
     font-size: var(--font-size-xm);
     font-weight: 600;
     color: var(--color-text-light-3);
+}
+
+.link-section .link-div .link-col a i{
+    transition: 0.3s all ease-in-out
+}
+
+.link-section .link-div .link-col a:hover i {
+    margin-left: 5px;
 }
 
 .link-section .link-div .link-col:nth-of-type(1)  hr{

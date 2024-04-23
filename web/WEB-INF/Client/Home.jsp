@@ -14,13 +14,12 @@
         <link type="text/css" href="./css/components/section_product.css" rel="stylesheet" >
         <link type="text/css" href="./css/home/swiper-bundle.min.css" rel="stylesheet" >
         <link type="text/css" href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
-        <script src="./js/nav.js"></script>   
         <script src="./js/components/section_products.js"></script> 
         <jsp:useBean id="webpath" class="module.WebPath" scope="application" />
     </head>
     <body>
         <!--To top button-->
-        <button onclick="toTopFunc()" id="toTopBtn" title="Go to top"><i class="ri-arrow-up-s-line"></i></button>
+        <%@ include file="./Components/to_top_button.html" %>
 
         <!-- Include the navigation bar -->
         <%@ include file="./Components/navbar.jsp" %>
@@ -360,7 +359,7 @@
                 <!--testimonial title-->
                 <div class="testimonial-top flex-col">
                     <h1>Feedback From Hero Community</h1>
-                    <p>100k+ people have already enrolled</p>
+                    <p>100K+ people have already enrolled</p>
                 </div>
 
                 <!--testimonial cards-->
@@ -469,7 +468,7 @@
         </section>
 
         <!-- FAQ section -->
-        <section class="section faq-section">
+        <section class="section faq-section" id="faq">
             <div class="faq-div flex-col">
 
                 <!--faq title-->
