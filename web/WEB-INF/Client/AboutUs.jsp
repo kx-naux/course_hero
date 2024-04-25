@@ -4,7 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Course Hero | About Us</title>
@@ -28,7 +28,7 @@
                 <div class="welcome-div-content flex-row">
                     <div class="welcome-left flex-col">
                         <h1 class="welcome-title">
-                            Welcome to where possible begin
+                            Welcome to where possibilities begin
                         </h1>
                     </div>
                     <div class="welcome-right flex-col">
