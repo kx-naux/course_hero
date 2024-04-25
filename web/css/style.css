@@ -415,9 +415,9 @@ a:has(.nav-option):hover + .nav-option-dropdown,
 /*toast msg style*/
 .toast-div {
     position: fixed;
-    bottom: 25px;
-    left: 50%;
-    transform: translateX(-50%);
+    top: 75px;
+    right: 10px;
+    /*transform: translateX(-50%);*/
     z-index: 9999;
 }
 
