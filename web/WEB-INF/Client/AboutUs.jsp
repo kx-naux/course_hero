@@ -26,10 +26,12 @@
             <div class="welcome-div flex-col">
 
                 <div class="welcome-div-content flex-row">
-                    <div class="welcome-left flex-row">
-                        Welcome to where possible begin
+                    <div class="welcome-left flex-col">
+                        <h1 class="welcome-title">
+                            Welcome to where possible begin
+                        </h1>
                     </div>
-                    <div class="welcome-right flex-row">
+                    <div class="welcome-right flex-col">
                         <img src="./img/about_us/man.png" alt="" />
                     </div>
                 </div>

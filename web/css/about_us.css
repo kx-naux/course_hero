@@ -1,5 +1,62 @@
 @import url('./root.css');
 
+/*welcome section*/
+.welcome-section {
+    padding: 0 20px ;
+}
+
+.welcome-section .welcome-div {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.welcome-div .welcome-div-content {
+    width: 100%;
+}
+
+.welcome-div .welcome-div-content > div {
+    flex: 1 1 300px;
+    width: 50%;
+}
+
+.welcome-div .welcome-div-content .welcome-left,
+.welcome-div .welcome-div-content .welcome-right{
+    justify-content: center;
+    align-items: center;
+}
+
+.welcome-div-content .welcome-left .welcome-title {
+    max-width: 450px;
+    font-weight: 700;
+    font-size: var(--font-size-6xl);
+    color: var(--color-dark-blue-2);
+}
+
+.welcome-div .welcome-div-content .welcome-right img {
+    max-width: 350px;
+}
+
+.welcome-bot {
+    cursor: pointer;
+    padding: 16px 20px;
+    width: 100vw;
+    text-align: center;
+    background-color: var(--color-light-black-2);
+    color: var(--color-white);
+     font-weight: 400;
+    font-size: var(--font-size-xm);
+}
+
+.welcome-bot p:hover {
+    text-decoration: underline;
+}
+
+/*story section*/
+.story-section {
+    
+}
+
 /*our team section*/
 .team-section {
     padding: 50px 20px 50px;
