@@ -20,6 +20,7 @@ public class WebPath {
         pageUrls.put("learning", "/learning");
         pageUrls.put("cart","/cart");
         pageUrls.put("wishlist","/wishlist");
+        pageUrls.put("merchandise", "/merch");
         
         //admin
         pageUrls.put("dashboard","/admin/dashboard");

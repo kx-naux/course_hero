@@ -42,6 +42,13 @@
                     </div>
                 </a>
             </li>
+            <li>
+                <a href="<%= webpath.getPageUrl("merchandise") %>">
+                    <div class="nav-option">
+                        <p>Merchandise</p>
+                    </div>
+                </a>
+            </li>
         </ul>
     </div>
     <!--Nav button-->
