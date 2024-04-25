@@ -47,16 +47,16 @@
         <section class="section story-section">
             <div class="story-div flex-row">
 
-                <div class="story-left">
+                <div class="story-left flex-col">
                     <h1>Our Story</h1>
                     <p>
                         Embark on a journey of empowerment with Course Hero, a global leader in online education. Our story is one of dedication to making quality education accessible to all, fueled by a vibrant community of learners, educators, and experts. From comprehensive study resources to interactive tutorials, we provide the tools and support needed to unlock your full potential. Guided by a relentless pursuit of innovation, we're shaping the future of learning through cutting-edge technology and strategic partnerships, ensuring that every learner has the opportunity to thrive.
                     </p>
                     <p>
-                        Join us on this transformative journey, where the pursuit of knowledge knows no bounds. Whether you're a student striving for academic success, an educator inspiring the next generation, or a lifelong learner hungry for knowledge, Course Hero is here to support you every step of the way. Welcome to Course Hero – where every learner has the opportunity to become a hero in their own right.
+                        Course Hero is here to support you every step of the way. Welcome to Course Hero – where every learner has the opportunity to become a hero in their own right.
                     </p>
                 </div>
-                <div class="story-right">
+                <div class="story-right flex-col">
                     <img src="./img/about_us/story.png" alt="" />
                 </div>
 

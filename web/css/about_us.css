@@ -13,6 +13,7 @@
 
 .welcome-div .welcome-div-content {
     width: 100%;
+    flex-wrap: wrap-reverse;
 }
 
 .welcome-div .welcome-div-content > div {
@@ -44,7 +45,7 @@
     text-align: center;
     background-color: var(--color-light-black-2);
     color: var(--color-white);
-     font-weight: 400;
+    font-weight: 400;
     font-size: var(--font-size-xm);
 }
 
@@ -54,7 +55,45 @@
 
 /*story section*/
 .story-section {
-    
+    padding: 80px 0 80px;
+}
+
+.story-section .story-div {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.story-section .story-div > div {
+    flex: 1 1 300px;
+}
+
+.story-section .story-div .story-left {
+    gap: 20px;
+}
+
+.story-section .story-div .story-left h1 {
+    color: var(--color-blue-1);
+    font-weight: 600;
+    font-size: var(--font-size-xxl);
+}
+
+.story-section .story-div .story-left p {
+    font-weight: 400;
+    font-size: var(--font-size-xm);
+    color: var(--color-text-light-2);
+    line-height: 26px;
+}
+
+.story-section .story-div .story-right {
+    justify-content: center;
+    align-items: center;
+}
+
+.story-section .story-div .story-right img {
+    max-width: 550px;
 }
 
 /*our team section*/
@@ -78,7 +117,7 @@
 .team-div .team-div-title h1 {
     color: var(--color-blue-1);
     font-weight: 600;
-    font-size: var(--font-size-xl);
+    font-size: var(--font-size-xxl);
 }
 
 .team-div .team-div-title p {
@@ -90,13 +129,15 @@
 .team-div .team-div-content {
     justify-content: center;
     align-items: center;
-    row-gap: 10px;
+    row-gap: 4px;
     column-gap: 60px;
     flex-wrap: wrap;
+    max-width: 900px;
 }
 
 .team-div-content .team-card  {
-    max-width: 280px;
+    max-width: 250px;
+    transition: 0.2s all ease-in-out;
 }
 
 .team-card .team-img img{
@@ -118,6 +159,10 @@
     color: var(--color-text-light-2);
     font-weight: 300;
     font-size: var(--font-size-s);
+}
+
+.team-div-content .team-card:hover {
+    transform: translateY(-20px);
 }
 
 /*number statistic section*/
@@ -192,7 +237,7 @@
 .office-div .office-div-title {
     text-align: center;
     font-weight: 600;
-    font-size: var(--font-size-xl);
+    font-size: var(--font-size-xxl);
     color: var(--color-blue-1);
 }
 
@@ -277,7 +322,7 @@
 }
 .contact-div .contact-div-title h1 {
     font-weight: 600;
-    font-size: var(--font-size-xl);
+    font-size: var(--font-size-xxl);
     color: var(--color-blue-1);
 }
 
