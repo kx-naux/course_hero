@@ -223,6 +223,42 @@
     font-size: var(--font-size-s);
 }
 
+/*collaboration section*/
+.collaborate-section {
+    padding: 50px 0 50px;
+}
+
+.collaborate-section .collaborate-div {
+    width: 100%;
+    gap: 25px;
+}
+
+.collaborate-section .collaborate-div  > div {
+    justify-content: center;
+    align-items: center;
+}
+
+.collaborate-section .collaborate-div .collaborate-left {
+    flex: 1;
+    max-width: 700px;
+}
+
+.collaborate-section .collaborate-div .collaborate-left p {
+    font-weight: 300;
+    font-size: var(--font-size-m);
+    color: var(--color-text-light-2);
+    line-height: 32px;
+}
+
+ .collaborate-div .collaborate-left .collaborate-span-num {
+    font-weight: 600;
+    color: var(--color-text-light-3);
+}
+
+.collaborate-section .collaborate-div .collaborate-right img {
+    max-width: 500px;
+}
+
 /*Office section*/
 .office-section {
     padding: 50px 10px 50px;

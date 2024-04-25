@@ -168,7 +168,7 @@
         <section class="section collaborate-section">
             <div class="collaborate-div flex-row">
                 <div class="collaborate-left flex-col">
-                    <p>Course Hero partners with more than 325+ leading universities and companies to bring flexible, affordable, job-relevant online learning to individuals and organizations worldwide. We offer a range of learning opportunities—from hands-on projects and courses to job-ready certificates.</p>
+                    <p>Course Hero partners with <span class="collaborate-span-num">more than 325+ leading universities and companies</span> to bring flexible, affordable, job-relevant online learning to individuals and organizations worldwide. We offer a range of learning opportunities—from hands-on projects and courses to job-ready certificates.</p>
                 </div>
                 <div class="collaborate-right flex-col">
                     <img src="./img/about_us/collaborate.png" alt="" />
