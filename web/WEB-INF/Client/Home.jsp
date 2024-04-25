@@ -18,6 +18,9 @@
         <jsp:useBean id="webpath" class="module.WebPath" scope="application" />
     </head>
     <body>
+        <!--Toast message-->
+        <%@ include file="./Components/toast_msg.html" %>
+        
         <!--To top button-->
         <%@ include file="./Components/to_top_button.html" %>
 
@@ -623,7 +626,7 @@
                         <div class="guest-right-div flex-col">
                             <h1 class="guest-sign-up-title">Start for free</h1>
                             <p class="guest-sign-up-desc">If you’ve made it this far, you must be at least a little curious. Sign up and take the first step toward your goals.</p>
-                            <a href="<%= webpath.getPageUrl("sign up") %>">
+                            <a href="<%= webpath.getPageUrl("sign up")%>">
                                 Sign Up
                             </a>
                         </div>
