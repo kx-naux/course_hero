@@ -164,6 +164,22 @@
             </div>
         </section>
 
+        <!-- reason section -->
+        <section class="section reason-section">
+            <div class="reason-div flex-col">
+                <!--title-->
+                <div class="reason-title flex-col">
+                    <h1>Why Choose Course Hero for Your Online Learning Journey</h1>
+                    <p>Elevate Your Learning Experience with Course Hero</p>
+                </div>
+
+                <!--Bento UI-->
+                <div class="reason-bento">
+
+                </div>
+            </div>
+        </section>
+
         <!--collaborate section-->
         <section class="section collaborate-section">
             <div class="collaborate-div flex-row">
@@ -172,27 +188,6 @@
                 </div>
                 <div class="collaborate-right flex-col">
                     <img src="./img/about_us/collaborate.png" alt="" />
-                </div>
-            </div>
-        </section>
-
-        <!-- reason section -->
-        <section class="section reason-section">
-            <div class="reason-div">
-                <!--title-->
-                <div class="reason-title">
-                    <h1>Skills are the key to unlocking potential</h1>
-                    <p>Whether you want to learn a new skill, train your teams, or share what you know with the world, you're in the right place, as a leader in online learning, we're here to help you achieve your goals and transform your life.</p>
-                </div>
-
-                <!-- video-->
-                <div>
-
-                </div>
-
-                <!--Bento UI-->
-                <div>
-
                 </div>
             </div>
         </section>
