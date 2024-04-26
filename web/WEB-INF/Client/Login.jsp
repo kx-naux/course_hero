@@ -41,8 +41,8 @@
                 </div>
                 <div class="login-panel login-right">
                     <div class="login-right-content">
-                        
-                    </div>
+                        <img src="./img/login/login.png" alt="" />
+                    </div> 
                     <div class="login-right-background">
                         <div class="right-backgound-div shape-1"></div>
                         <div class="right-backgound-div shape-2"></div>
