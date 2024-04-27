@@ -103,6 +103,8 @@
 
     --text-shadow-1: 2px 2px 4px rgba(0, 0, 0, 0.5), 2px 2px 12px rgba(0, 0, 0, 0.5);
 
+    --font-size-8xl: 48px;
+    --font-size-7xl: 44px;
     --font-size-6xl: 40px;
     --font-size-5xl: 36px;
     --font-size-4xl: 32px;

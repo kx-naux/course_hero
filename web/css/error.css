@@ -4,6 +4,15 @@ body:has(.error-content-div) {
     max-height: 100vh;
     height: 100vh;
     background: var(--color-white);
+    overflow: hidden;
+}
+
+.nav-logo {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    width: 50px;
+    height: 50px;
 }
 
 /*error div*/
@@ -18,24 +27,149 @@ body:has(.error-content-div) {
     flex-grow: 1;
     align-items: center;
     justify-content: center;
-    padding: 0 0 65px;
 }
 
 /*left content*/
 .error-content-div .error-content-left {
-    
+    gap: 5px;
+}
+
+.error-content-div .error-content-left h1 {
+    font-size: var(--font-size-8xl);
+    font-weight: 700;
+    color: var(--color-navy-blue);
+}
+
+.error-content-div .error-content-left h2 {
+    text-transform: uppercase;
+    font-size: var(--font-size-xxxl);
+    font-weight: 500;
+    color: var(--color-blue-2);
+}
+
+.error-content-div .error-content-left p {
+    font-size: var(--font-size-m);
+    font-weight: 400;
+    color: var(--color-text-light-1);
+    margin-bottom: 30px;
+}
+.error-content-div .error-content-left a {
+    border-radius: 30px;
+    color: var(--color-navy-blue);
+    text-decoration: none;
+    border: 1px solid var(--color-navy-blue);
+    padding: 12px 24px;
+    font-size:  var(--font-size-xm);
+    font-weight: 400;
+    position: relative;
+    transition: all 0.6s;
+    overflow: hidden;
+}
+
+.error-content-div .error-content-left a:hover {
+    color: var(--color-white);
+}
+
+.error-content-div .error-content-left a::before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 0%;
+    top: 0;
+    left: -40px;
+    transform: skewX(45deg);
+    background-color: var(--color-navy-blue);
+    z-index: -1;
+    transition: all 0.6s;
+}
+
+.error-content-div .error-content-left a:hover::before {
+    width: 160%;
 }
 
 /*right content*/
 .error-content-div .error-content-right {
-    
+    position: relative;
+}
+
+.error-content-right .astro-bg {
+    width: 480px;
+    height: 380px;
+    border-radius: 50%;
+    position: absolute;
+    opacity: 0.6;
+    filter: blur(70px);
+    z-index: 1;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+}
+
+.error-content-right .astro-bg-1 {
+    left: 40%;
+    top: 15%;
+    animation-name: astro-bg-1;
+    background-color: var(--color-navu-blue);
+}
+
+.error-content-right .astro-bg-2 {
+    left: 16%;
+    top: 35%;
+    animation-name: astro-bg-2;
+    background-color: var(--color-primary);
+    width: 380px;
+    height: 280px;
+}
+
+@keyframes astro-bg-1 {
+    0% {
+        opacity: 0.6;
+        transform: scale(1) rotate(0deg);
+    }
+    25% {
+        opacity: 0.7;
+        transform: scale(1.8) rotate(45deg);
+    }
+    50% {
+        opacity: 0.8;
+        transform: scale(1) rotate(90deg);
+    }
+    75% {
+        opacity: 0.5;
+        transform: scale(1.2) rotate(135deg);
+    }
+    100% {
+        opacity: 0.6;
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+@keyframes astro-bg-2 {
+    0% {
+         opacity: 0.6;
+        transform: scale(1) rotate(0deg);
+    }
+    25% {
+         opacity: 0.3;
+        transform: scale(1.1) rotate(-45deg);
+    }
+    50% {
+         opacity: 0.4;
+        transform: scale(1) rotate(-90deg);
+    }
+    75% {
+         opacity: 0.7;
+        transform: scale(1.5) rotate(-135deg);
+    }
+    100% {
+         opacity: 0.6;
+        transform: scale(1) rotate(0deg);
+    }
 }
 
 @keyframes astronaut {
     0% {
         transform: rotate(0deg);
     }
-
     100% {
         transform: rotate(360deg);
     }

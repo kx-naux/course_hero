@@ -1,4 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,17 +12,19 @@
         <jsp:useBean id="webpath" class="module.WebPath" scope="application" />
     </head>
     <body>
-        <!-- Include the navigation bar -->
-        <%@ include file="./Client/Components/navbar.jsp" %>
-
+        <!--logo-->
+        <a href="<%= webpath.getPageUrl("home")%>"><img class="nav-logo" src="./img/Logo.png" alt="Course Hero" /></a>
         <div class="error-content-div flex-row">
+            <!--error message-->
             <div class="error-content-left flex-col">
-                <h1>${param.code} - error</h1>
+                <h1>Error - ${param.code}</h1>
                 <h2>${sessionScope.errorDesc}</h2>
                 <p>${sessionScope.errorDetail}</p>
-                <a href="<%= webpath.getPageUrl("home") %>">Back to home</a>
+                <a href="<%= webpath.getPageUrl("home")%>">Back to home</a>
             </div>
             <div class="error-content-right flex-col">
+                <div class="astro-bg astro-bg-1"></div>
+                <div class="astro-bg astro-bg-2"></div>
                 <div data-js="astro" class="astronaut">
                     <div class="head"></div>
                     <div class="arm arm-left"></div>
