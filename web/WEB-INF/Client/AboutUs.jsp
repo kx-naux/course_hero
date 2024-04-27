@@ -84,7 +84,7 @@
                             <div class="ms-desc"><span class="ms-desc-bold">First Office in Malaysia:</span> Course Hero establishes its presence in Kuala Lumpur, Malaysia, marking the beginning of its international expansion.</div>
                         </div>
                     </li>
-                    
+
                     <!-- Item 2 -->
                     <li>
                         <div class="direction-l">
@@ -108,7 +108,7 @@
                             <div class="ms-desc"><span class="ms-desc-bold">Third Office in China:</span> Setting foot in one of the world's largest markets, Course Hero establishes an office in the bustling metropolis of Shanghai, China.</div>
                         </div>
                     </li>
-                    
+
                     <!-- Item 4 -->
                     <li>
                         <div class="direction-l">
@@ -120,8 +120,8 @@
                             <div class="ms-desc"><span class="ms-desc-bold">Fourth Office in Japan:</span> Course Hero extends its operations to Japan, opening an office in the dynamic city of Tokyo, further strengthening its presence in the Asia-Pacific region.</div>
                         </div>
                     </li>
-                    
-                    
+
+
                     <!-- Item 5 -->
                     <li>
                         <div class="direction-r">
@@ -133,7 +133,7 @@
                             <div class="ms-desc"><span class="ms-desc-bold">Fifth Office in Korea:</span> Continuing its expansion in East Asia, Course Hero sets up an office in Seoul, South Korea, catering to the growing demand for online learning solutions.</div>
                         </div>
                     </li>
-                    
+
                     <!-- Item 6 -->
                     <li>
                         <div class="direction-l">
@@ -145,7 +145,7 @@
                             <div class="ms-desc"><span class="ms-desc-bold">Strategic Partnerships with Leading Companies and Universities:</span> Course Hero solidifies its position as a premier online learning platform by forging strategic partnerships with top-tier companies and universities.</div>
                         </div>
                     </li>
-                    
+
                 </ul>
 
             </div>
@@ -254,7 +254,38 @@
 
                 <!--Bento UI-->
                 <div class="reason-bento">
-
+                    <div class="bento-grid bento-grid-1">
+                        <h1>Diveristy Course Selection</h1>
+                        <img src="./img/about_us/reason/diversity_course.png" alt="" />
+                    </div>
+                    <div class="bento-grid bento-grid-2">
+                        <img src="./img/about_us/reason/flexible.png" alt="" />
+                        <h1>Flexible Learning Option</h1>
+                    </div>
+                    <div class="bento-grid bento-grid-3">
+                        <h1>Supportive Community</h1>
+                        <img src="./img/about_us/reason/community.png" alt="" />
+                    </div>
+                    <div class="bento-grid bento-grid-4">
+                        <h1>Expert Instructor</h1>
+                        <img src="./img/about_us/reason/expert.png" alt="" />
+                    </div>
+                    <div class="bento-grid bento-grid-5">
+                        <img src="./img/about_us/reason/trusted.png" alt="" />
+                        <h1>Trusted Reputation</h1>
+                    </div>
+                    <div class="bento-grid bento-grid-6">
+                        <h1>Interactive Learning Experience</h1>
+                        <img src="./img/about_us/reason/interactive.png" alt="" />
+                    </div>
+                    <div class="bento-grid bento-grid-7">
+                        <img src="./img/about_us/reason/price.png" alt="" />
+                        <h1>Affordable Pricing</h1>
+                    </div>
+                    <div class="bento-grid bento-grid-8">
+                        <h1>Continuous Updates</h1>
+                        <img src="./img/about_us/reason/update.png" alt="" />
+                    </div>
                 </div>
             </div>
         </section>
