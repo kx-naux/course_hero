@@ -65,7 +65,88 @@
 
         <!--milestone section-->
         <section class="section milestone-section">
-            <div class="milestone-div">
+            <div class="milestone-div flex-col">
+
+                <div class="milestone-title flex-col">
+                    <h1>Milestone</h1>
+                    <p>Charting Course Hero's Path to Global Impact</p>
+                </div>
+
+                <ul class="milestone">
+                    <!-- Item 1 -->
+                    <li>
+                        <div class="direction-r">
+                            <div class="flag-wrapper">
+                                <span class="hexa"></span>
+                                <span class="flag">2019</span>
+                                <span class="time-wrapper"><span class="time">January</span></span>
+                            </div>
+                            <div class="ms-desc"><span class="ms-desc-bold">First Office in Malaysia:</span> Course Hero establishes its presence in Kuala Lumpur, Malaysia, marking the beginning of its international expansion.</div>
+                        </div>
+                    </li>
+                    
+                    <!-- Item 2 -->
+                    <li>
+                        <div class="direction-l">
+                            <div class="flag-wrapper">
+                                <span class="hexa"></span>
+                                <span class="flag">2020</span>
+                                <span class="time-wrapper"><span class="time">February</span></span>
+                            </div>
+                            <div class="ms-desc"><span class="ms-desc-bold">Second Office in Singapore:</span> Expanding its reach in Southeast Asia, Course Hero opens its second office in the vibrant city-state of Singapore.</div>
+                        </div>
+                    </li>
+
+                    <!-- Item 3 -->
+                    <li>
+                        <div class="direction-r">
+                            <div class="flag-wrapper">
+                                <span class="hexa"></span>
+                                <span class="flag">2021</span>
+                                <span class="time-wrapper"><span class="time">May</span></span>
+                            </div>
+                            <div class="ms-desc"><span class="ms-desc-bold">Third Office in China:</span> Setting foot in one of the world's largest markets, Course Hero establishes an office in the bustling metropolis of Shanghai, China.</div>
+                        </div>
+                    </li>
+                    
+                    <!-- Item 4 -->
+                    <li>
+                        <div class="direction-l">
+                            <div class="flag-wrapper">
+                                <span class="hexa"></span>
+                                <span class="flag">2022</span>
+                                <span class="time-wrapper"><span class="time">September</span></span>
+                            </div>
+                            <div class="ms-desc"><span class="ms-desc-bold">Fourth Office in Japan:</span> Course Hero extends its operations to Japan, opening an office in the dynamic city of Tokyo, further strengthening its presence in the Asia-Pacific region.</div>
+                        </div>
+                    </li>
+                    
+                    
+                    <!-- Item 5 -->
+                    <li>
+                        <div class="direction-r">
+                            <div class="flag-wrapper">
+                                <span class="hexa"></span>
+                                <span class="flag">2023</span>
+                                <span class="time-wrapper"><span class="time">October</span></span>
+                            </div>
+                            <div class="ms-desc"><span class="ms-desc-bold">Fifth Office in Korea:</span> Continuing its expansion in East Asia, Course Hero sets up an office in Seoul, South Korea, catering to the growing demand for online learning solutions.</div>
+                        </div>
+                    </li>
+                    
+                    <!-- Item 6 -->
+                    <li>
+                        <div class="direction-l">
+                            <div class="flag-wrapper">
+                                <span class="hexa"></span>
+                                <span class="flag">2024</span>
+                                <span class="time-wrapper"><span class="time">January</span></span>
+                            </div>
+                            <div class="ms-desc"><span class="ms-desc-bold">Strategic Partnerships with Leading Companies and Universities:</span> Course Hero solidifies its position as a premier online learning platform by forging strategic partnerships with top-tier companies and universities.</div>
+                        </div>
+                    </li>
+                    
+                </ul>
 
             </div>
         </section>
@@ -130,8 +211,6 @@
                             <p>Developer</p>
                         </div>
                     </div>
-
-
 
                 </div>
 

@@ -13,6 +13,8 @@ public class LoginPage extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {  
         
+        // check is user login, if yes goto home page else login page
+        
         // Forward the request to home.jsp
         request.getRequestDispatcher("/WEB-INF/Client/Login.jsp").forward(request, response);
     }
