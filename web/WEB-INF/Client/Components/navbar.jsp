@@ -2,48 +2,48 @@
 <nav class="nav-bar">
     <!-- Logo -->
     <div class="nav-logo-div">
-        <a href="<%= webpath.getPageUrl("home") %>"><img class="nav-logo" src="./img/Logo.png" alt="Course Hero" /></a>
+        <a href="<%= webpath.getPageUrl("home")%>"><img class="nav-logo" src="./img/Logo.png" alt="Course Hero" /></a>
     </div>
     <!--Nav options-->
     <div class="nav-option-div">
         <ul>
             <li>
-                <a href="<%= webpath.getPageUrl("home") %>">
+                <a href="<%= webpath.getPageUrl("home")%>">
                     <div class="nav-option">
                         <p>Home</p>
                     </div>
                 </a>
             </li>
             <li>
-                <a href="<%= webpath.getPageUrl("about us") %>">
+                <a href="<%= webpath.getPageUrl("about us")%>">
                     <div class="nav-option">
                         <p>About Us <i class="ri-arrow-down-s-line"></i></p>
                     </div>
                 </a>
                 <div class="nav-option-dropdown">
                     <ul>
-                        <li><a href="<%= webpath.getPageUrl("about us") %>#team">Our Team</a></li>
-                        <li><a href="<%= webpath.getPageUrl("about us") %>#office">Our Office</a></li>
-                        <li><a href="<%= webpath.getPageUrl("about us") %>#contact">Contact Us</a></li>
+                        <li><a href="<%= webpath.getPageUrl("about us")%>#team">Our Team</a></li>
+                        <li><a href="<%= webpath.getPageUrl("about us")%>#office">Our Office</a></li>
+                        <li><a href="<%= webpath.getPageUrl("about us")%>#contact">Contact Us</a></li>
                     </ul>
                 </div>
             </li>
             <li>
-                <a href="<%= webpath.getPageUrl("products") %>">
+                <a href="<%= webpath.getPageUrl("products")%>">
                     <div class="nav-option">
                         <p>Courses</p>
                     </div>
                 </a>
             </li>
             <li>
-                <a href="<%= webpath.getPageUrl("learning") %>">
+                <a href="<%= webpath.getPageUrl("learning")%>">
                     <div class="nav-option">
                         <p>Learning</p>
                     </div>
                 </a>
             </li>
             <li>
-                <a href="<%= webpath.getPageUrl("merchandise") %>">
+                <a href="<%= webpath.getPageUrl("merchandise")%>">
                     <div class="nav-option">
                         <p>Merchandise</p>
                     </div>
@@ -55,32 +55,52 @@
     <div class="nav-function-div">
         <!--Search course-->
         <p class="nav-icon"><i class="ri-search-line"></i><span class="nav-icon-tooltip">Search</span></p>
-        <div>
-
-        </div>
         <!--JSP conditional rendering-->
         <c:choose>
             <c:when test="${not empty sessionScope.username}">
                 <!-- Logged in -->
-                <a href="<%= webpath.getPageUrl("wishlist") %>">
+                <a href="<%= webpath.getPageUrl("wishlist")%>">
                     <p class="nav-icon"><i class="ri-heart-line"></i><span class="nav-icon-tooltip">Wishlist</span></P>
                 </a>
-                <a href="<%= webpath.getPageUrl("cart") %>">
+                <a href="<%= webpath.getPageUrl("cart")%>">
                     <p class="nav-icon"><i class="ri-shopping-cart-line"></i><span class="nav-icon-tooltip">Cart</span></P>
                 </a>
                 <input hidden type="text" id="hidden_username" value="${sessionScope.username}"/>
             </c:when>
             <c:otherwise>
                 <!-- Not Logged in -->
-                <a href="<%= webpath.getPageUrl("login") %>">
+                <a href="<%= webpath.getPageUrl("login")%>">
                     <input class="nav-btn nav-login-btn" type="button" value="Log In" />
                 </a>
-                <a href="<%= webpath.getPageUrl("sign up") %>">
+                <a href="<%= webpath.getPageUrl("sign up")%>">
                     <input class="nav-btn nav-sign-up-btn" type="button" value="Sign Up" />
                 </a>
             </c:otherwise>
         </c:choose>
     </div>
 </nav>         
-                  
+<div class="nav-saerch active">
+    <div class="nav-search-div-bg">
+        <div class="nav-search-div flex-col">
+            <div class="nav-saerch-box flex-row">
+                <p><i class="ri-search-line"></i></p>
+                <input type="text" id="nav-search-input" />
+            </div>
+            <div class="nav-saerch-result">
+                
+            </div>
+            <div class="nav-popular-search flex-col">
+                <h1>Popular searches</h1>
+                <ul class="flex-row">
+                    <li>Data Science</li>
+                    <li>Python</li>
+                    <li>Software Engineering</li>
+                    <li>Java Swing</li>
+                    <li>Web Development</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script src="./js/nav.js"></script> 
