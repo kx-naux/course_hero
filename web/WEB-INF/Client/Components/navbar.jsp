@@ -54,7 +54,7 @@
     <!--Nav button-->
     <div class="nav-function-div">
         <!--Search course-->
-        <p class="nav-icon"><i class="ri-search-line"></i></p>
+        <p class="nav-icon"><i class="ri-search-line"></i><span class="nav-icon-tooltip">Search</span></p>
         <div>
 
         </div>
@@ -63,10 +63,10 @@
             <c:when test="${not empty sessionScope.username}">
                 <!-- Logged in -->
                 <a href="<%= webpath.getPageUrl("wishlist") %>">
-                    <p class="nav-icon"><i class="ri-heart-line"></i></P>
+                    <p class="nav-icon"><i class="ri-heart-line"></i><span class="nav-icon-tooltip">Wishlist</span></P>
                 </a>
                 <a href="<%= webpath.getPageUrl("cart") %>">
-                    <p class="nav-icon"><i class="ri-shopping-cart-line"></i></P>
+                    <p class="nav-icon"><i class="ri-shopping-cart-line"></i><span class="nav-icon-tooltip">Cart</span></P>
                 </a>
                 <input hidden type="text" id="hidden_username" value="${sessionScope.username}"/>
             </c:when>

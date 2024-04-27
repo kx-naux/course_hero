@@ -257,12 +257,34 @@ a:has(.nav-option):hover + .nav-option-dropdown,
 }
 
 .nav-icon {
+    position: relative;
     align-self: center;
     font-size: 24px;
     font-weight: 400;
     color: var(--color-text-light-1);
     cursor: pointer;
-    padding: 0 6px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    transition: 0.3s all ease-in-out;
+}
+
+.nav-icon .nav-icon-tooltip {
+    display: none;
+    position: absolute;
+    color: var(--color-text-light-2);
+    font-size: var(--font-size-s);
+    background-color: var(--color-white);
+    border: 1px solid var(--color-light-grey-3);
+    border-radius: 4px;
+    padding: 4px 8px;
+    left: 50%;
+    bottom: -35px;
+    transform: translateX(-50%);
+    transition: 0.3s all ease-in-out;
+}
+
+.nav-icon:hover .nav-icon-tooltip {
+    display: block;
 }
 
 .nav-bar.nav-scroll .nav-icon {
@@ -271,6 +293,7 @@ a:has(.nav-option):hover + .nav-option-dropdown,
 
 .nav-icon:hover {
     color: var(--color-secondary);
+    background-color: var(--color-light-grey-2);
 }
 
 .nav-btn {
@@ -313,6 +336,9 @@ a:has(.nav-option):hover + .nav-option-dropdown,
 .nav-sign-up-btn:active {
     background-color: var(--color-primary);
 }
+
+/*navbar search*/
+
 
 /*footer*/
 .footer-wave-div {
