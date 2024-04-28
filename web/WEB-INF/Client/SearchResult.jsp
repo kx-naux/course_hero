@@ -38,7 +38,7 @@
                                 <option value="relevance">Most Relevant</option>
                                 <option value="newest">Newest</option>
                             </select>
-                            <div><i class="ri-arrow-drop-down-line"></i></div>
+                            <div class="sort-select-icon flex-col"><p><i class="ri-arrow-down-s-line"></i></p></div>
                         </div>
                         <label for="sort-type">Sort by</label>
                     </div>

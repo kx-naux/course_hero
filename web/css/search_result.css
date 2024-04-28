@@ -36,11 +36,11 @@
 }
 
 .search-result-info-div .result-function .sort-div {
+    position: relative;
     background-color: var(--color-transparent);
     border: 1px solid var(--color-text-light-3);
     align-items: center;
     cursor: pointer;
-    padding: 0 20px;
     justify-content: center;
     user-select: none;
     transition: 0.2s all ease-in-out;
@@ -48,6 +48,47 @@
 
 .search-result-info-div .result-function .sort-div:hover {
     background-color: var(--color-light-grey-2);
+}
+
+.search-result-info-div .result-function .sort-div label {
+    position: absolute;
+    top: 7px;
+    left: 15px;
+    font-weight: 700;
+    font-size: var(--font-size-xs);
+    color: var(--color-text-light-2);
+}
+
+.search-result-info-div .result-function .sort-div .sort-select{
+    width: 100%;
+    height: 100%;
+}
+
+.search-result-info-div .result-function .sort-div .sort-select select {
+    padding: 30px 40px 10px 15px;
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+    background-color: var(--color-transparent);
+    appearance: none;
+    font-weight: 400;
+    font-size: var(--font-size-xm);
+    color: var(--color-text-light-2);
+}
+
+.search-result-info-div .result-function .sort-div .sort-select .sort-select-icon {
+    position: absolute;
+    right: 0;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-result-info-div .result-function .sort-div .sort-select .sort-select-icon p{
+    padding: 0 6px;
+    font-weight: 600;
+    font-size: var(--font-size-l);
+    color: var(--color-text-light-2);
 }
 
 .search-result-info-div .result-function .clear-filter-btn {
