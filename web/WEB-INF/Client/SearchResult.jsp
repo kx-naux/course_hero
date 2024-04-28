@@ -29,10 +29,10 @@
                 <h1><span class="result-amount">10,000</span> results for “<span class="search-query">${param.query}</span>”</h1>
 
                 <div class="result-function flex-row">
-                    <button class="filter-btn"><i class="ri-filter-3-fill"></i> Filter</button>
+                    <button class="filter-btn"><i class="ri-filter-3-fill"></i> Filter <span class="filter-count"></span></button>
                     <div class="sort-div">
                         <div class="sort-select flex-row">
-                            <select id="sort-type">
+                            <select id="sort-type" onchange="applyFilter()">
                                 <option value="most-reviewed">Most Reviewed</option>
                                 <option value="highest-rated">Highest Rated</option>
                                 <option value="relevance" selected>Most Relevant</option>
@@ -49,11 +49,60 @@
 
             <div class="search-result-div flex-row">
                 <!--filter div-->
-                <div class="search-filter-div">
+                <div class="search-filter-div">                
+
+
+                        <button class="apply-filter-btn" onclick="applyFilter()">Apply Filter</button>
+
+                        <!--rating filter-->
+                        <div class="filter-div flex-col">
+                            <div class="filter-type-title flex-row">
+                                <h1>Rating</h1>
+                                <p><i class="ri-arrow-down-s-line"></i></p>
+                            </div>
+                            <div class="rating-filter-div flex-col">
+                                <label for="filter-rating-1" class="rating-filter-option flex-row">
+                                    <input name="ratings" id="filter-rating-1" type="radio" value="4.5" />
+                                    <span class="filter-icon flex-row">
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-half-fill"></i>
+                                    </span>
+                                    <span class="filter-desc">4.5 & up</span>
+                                    <span class="result-count">(6000)</span>
+                                </label>
+                                <label for="filter-rating-2" class="rating-filter-option flex-row">
+                                    <input name="ratings" id="filter-rating-2" type="radio" value="4.0" />
+                                    <span class="filter-icon flex-row">
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-line"></i>
+                                    </span>
+                                    <span class="filter-desc">4.0 & up</span>
+                                    <span class="result-count">(1000)</span>
+                                </label>
+                            </div>
+
+                        </div>
+
+                    <!--Video Duration-->
+
+                    <!--Course Level-->
+
+                    <!--Price-->
+
+                    <!--course category-->                   
 
                 </div>
+
                 <!--result course-->
-                <div class="result-course-div">
+                <div class="result-course-div flex-col">
+
+
 
                 </div>
             </div>
