@@ -89,7 +89,7 @@ function search_suggestion_click(e) {
 // event handler for suggestion course
 function search_suggestion_course_click(e) {
     let id = e.querySelector(".nav-search-suggestion-course").getAttribute("courseID");
-    window.location.href = "/course_hero/search?query=" + id;
+    window.location.href = "/course_hero/course?id=" + id;
 }
 
 // event handler for popular search suggestion
