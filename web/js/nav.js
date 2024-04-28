@@ -1,3 +1,9 @@
+// When the user clicks on the button, scroll to the top of the document
+function toTopFunc() {
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+}
+
 // Find selected option
 document.addEventListener("DOMContentLoaded", function () {
     // Get all anchor tags inside nav-option-div
@@ -33,8 +39,23 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-// When the user clicks on the button, scroll to the top of the document
-function toTopFunc() {
-    document.body.scrollTop = 0; // For Safari
-    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+// open saerch div
+
+// event handler for suggestion query
+function search_suggestion_click(e) {
+    let query = e.querySelector(".suggest-query").innerText;
+    window.location.href = "/course_hero/search?query=" + query;
 }
+
+// event handler for suggestion course
+function search_suggestion_course_click(e) {
+    let id = e.querySelector(".nav-search-suggestion-course").getAttribute("courseID");
+    window.location.href = "/course_hero/search?query=" + id;
+}
+
+// event handler for popular search suggestion
+function popular_search_click(e) {
+    window.location.href = "/course_hero/search?query=" + e.innerText;
+}
+
+

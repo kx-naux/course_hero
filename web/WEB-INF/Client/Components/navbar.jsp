@@ -84,19 +84,65 @@
         <div class="nav-search-div flex-col">
             <div class="nav-saerch-box flex-row">
                 <p><i class="ri-search-line"></i></p>
-                <input type="text" id="nav-search-input" />
+                <form class="nav-search-form flex-row" action="/course_hero/search" method="get" >
+                    <input type="text" id="nav-search-input" name="query" placeholder="Search for courses" />
+                </form>
             </div>
-            <div class="nav-saerch-result">
-                
+            <div class="nav-saerch-result flex-col">
+                <a onclick="search_suggestion_click(this)">
+                    <div class="nav-search-suggestion-query flex-row">
+                        <p class="suggest-icon"><i class="ri-search-line"></i></p>
+                        <p class="suggest-query">Python</p>
+                    </div>
+                </a>
+                <a onclick="search_suggestion_click(this)">
+                    <div class="nav-search-suggestion-query flex-row">
+                        <p class="suggest-icon"><i class="ri-search-line"></i></p>
+                        <p class="suggest-query">Python</p>
+                    </div>
+                </a>
+                <a onclick="search_suggestion_click(this)">
+                    <div class="nav-search-suggestion-query flex-row">
+                        <p class="suggest-icon"><i class="ri-search-line"></i></p>
+                        <p class="suggest-query">Python</p>
+                    </div>
+                </a>
+                <a onclick="search_suggestion_course_click(this)">
+                    <div class="nav-search-suggestion-course flex-row" courseID="121238719823">
+                        <img src="./img/course/beginner_excel.jpg" alt="" />
+                        <div class="suggestion-course-detail flex-col">
+                            <h1>The Ultimate Excel Programming Course</h1>
+                            <p>Woo Yu Beng</p>
+                        </div>
+                    </div>
+                </a>
+                <a onclick="search_suggestion_course_click(this)">
+                    <div class="nav-search-suggestion-course flex-row" courseID="121238719823">
+                        <img src="./img/course/beginner_excel.jpg" alt="" />
+                        <div class="suggestion-course-detail flex-col">
+                            <h1>The Ultimate Excel Programming Course</h1>
+                            <p>Woo Yu Beng</p>
+                        </div>
+                    </div>
+                </a>
+                <a onclick="search_suggestion_course_click(this)">
+                    <div class="nav-search-suggestion-course flex-row" courseID="121238719823">
+                        <img src="./img/course/beginner_excel.jpg" alt="" />
+                        <div class="suggestion-course-detail flex-col">
+                            <h1>The Ultimate Excel Programming Course</h1>
+                            <p>Woo Yu Beng</p>
+                        </div>
+                    </div>
+                </a>
             </div>
             <div class="nav-popular-search flex-col">
                 <h1>Popular searches</h1>
                 <ul class="flex-row">
-                    <li>Data Science</li>
-                    <li>Python</li>
-                    <li>Software Engineering</li>
-                    <li>Java Swing</li>
-                    <li>Web Development</li>
+                    <li><a onclick="popular_search_click(this)">Data Science</a></li>
+                    <li><a onclick="popular_search_click(this)">Python</a></li>
+                    <li><a onclick="popular_search_click(this)">Software Engineering</a></li>
+                    <li><a onclick="popular_search_click(this)">Java Swing</a></li>
+                    <li><a onclick="popular_search_click(this)">Web Development</a></li>
                 </ul>
             </div>
         </div>
