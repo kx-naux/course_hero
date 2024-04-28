@@ -414,7 +414,8 @@ a:has(.nav-option):hover + .nav-option-dropdown,
     background-color: var(--color-light-grey-2);
 }
 
-.nav-saerch-result a .nav-search-suggestion-query {
+.nav-saerch-result a .nav-search-suggestion-query,
+.nav-saerch-result a .nav-search-suggestion-course{
     gap: 20px;
     align-items: center;
 }
@@ -432,15 +433,23 @@ a:has(.nav-option):hover + .nav-option-dropdown,
     color: var(--color-text-light-2);
 }
 
-.nav-saerch-result a .nav-search-suggestion-course {
-    gap: 20px;
-}
-
 .nav-saerch-result a .nav-search-suggestion-course img{
     border: 1px solid var(--color-text-light-1);
     height: 32px;
     width: 32px;
     object-fit: cover;
+}
+
+.nav-saerch-result a .nav-search-suggestion-course .suggestion-course-detail h1{
+    font-size: var(--font-size-xm);
+    font-weight: 500;
+    color: var(--color-text-light-2);
+}
+
+.nav-saerch-result a .nav-search-suggestion-course .suggestion-course-detail p{
+font-size: var(--font-size-xs);
+    font-weight: 300;
+    color: var(--color-text-light-2);
 }
 
 .nav-saerch .nav-search-div .nav-popular-search {
