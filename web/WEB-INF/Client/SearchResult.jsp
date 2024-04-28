@@ -35,7 +35,7 @@
                             <select id="sort-type">
                                 <option value="most-reviewed">Most Reviewed</option>
                                 <option value="highest-rated">Highest Rated</option>
-                                <option value="relevance">Most Relevant</option>
+                                <option value="relevance" selected>Most Relevant</option>
                                 <option value="newest">Newest</option>
                             </select>
                             <div class="sort-select-icon flex-col"><p><i class="ri-arrow-down-s-line"></i></p></div>
@@ -48,7 +48,25 @@
             </div>
 
             <div class="search-result-div flex-row">
+                <!--filter div-->
+                <div class="search-filter-div">
 
+                </div>
+                <!--result course-->
+                <div class="result-course-div">
+
+                </div>
+            </div>
+
+            <!--pagination, 20 course per page-->
+            <div class="result-pagination-div flex-row">
+                <p class="page-action-btn page-previous-btn"><i class="ri-arrow-left-s-line"></i></p>
+                <p class="first-page-number page-number current-page">1</p>
+                <p class="page-number">2</p>
+                <p class="page-number">3</p>
+                <p>...</p>
+                <p class="last-page-number page-number">500</p>
+                <p class="page-action-btn page-nect-btn"><i class="ri-arrow-right-s-line"></i></p>
             </div>
         </section>
 
