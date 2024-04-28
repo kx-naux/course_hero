@@ -54,7 +54,7 @@
     <!--Nav button-->
     <div class="nav-function-div">
         <!--Search course-->
-        <p class="nav-icon"><i class="ri-search-line"></i><span class="nav-icon-tooltip">Search</span></p>
+        <p class="nav-icon toggle-search"><i class="ri-search-line"></i><span class="nav-icon-tooltip">Search</span></p>
         <!--JSP conditional rendering-->
         <c:choose>
             <c:when test="${not empty sessionScope.username}">
@@ -79,16 +79,16 @@
         </c:choose>
     </div>
 </nav>         
-<div class="nav-saerch active">
+<div class="nav-search">
     <div class="nav-search-div-bg">
         <div class="nav-search-div flex-col">
-            <div class="nav-saerch-box flex-row">
+            <div class="nav-search-box flex-row">
                 <p><i class="ri-search-line"></i></p>
                 <form class="nav-search-form flex-row" action="/course_hero/search" method="get" >
                     <input type="text" id="nav-search-input" name="query" placeholder="Search for courses" />
                 </form>
             </div>
-            <div class="nav-saerch-result flex-col">
+            <div class="nav-search-result flex-col">
                 <a onclick="search_suggestion_click(this)">
                     <div class="nav-search-suggestion-query flex-row">
                         <p class="suggest-icon"><i class="ri-search-line"></i></p>
