@@ -1,1 +1,175 @@
 @import url('./root.css');
+
+/*search result information*/
+.search-result-info-div {
+    width: 100%;
+    padding: 20px 10px 30px;
+    gap: 20px;
+}
+
+.search-result-info-div h1 {
+    font-weight: 700;
+    font-size: var(--font-size-xxxl);
+    color: var(--color-text-light-2);
+}
+
+.search-result-info-div .result-function{
+    gap: 10px;
+}
+
+.search-result-info-div .result-function .filter-btn {
+    font-weight: 500;
+    font-size: var(--font-size-xm);
+    color: var(--color-text-light-2);
+    background-color: var(--color-transparent);
+    border: 1px solid var(--color-text-light-3);
+    align-items: center;
+    cursor: pointer;
+    padding: 0 15px;
+    justify-content: center;
+    user-select: none;
+    transition: 0.2s all ease-in-out;
+}
+
+.search-result-info-div .result-function .filter-btn i {
+    font-size: var(--font-size-l);
+}
+
+.search-result-info-div .result-function .filter-btn:hover {
+    background-color: var(--color-light-grey-2);
+}
+
+.search-result-info-div .result-function .sort-div {
+    position: relative;
+    background-color: var(--color-transparent);
+    border: 1px solid var(--color-text-light-3);
+    align-items: center;
+    cursor: pointer;
+    justify-content: center;
+    user-select: none;
+    transition: 0.2s all ease-in-out;
+}
+
+.search-result-info-div .result-function .sort-div:hover {
+    background-color: var(--color-light-grey-2);
+}
+
+.search-result-info-div .result-function .sort-div label {
+    position: absolute;
+    top: 7px;
+    left: 15px;
+    font-weight: 700;
+    font-size: var(--font-size-xs);
+    color: var(--color-text-light-2);
+}
+
+.search-result-info-div .result-function .sort-div .sort-select{
+    width: 100%;
+    height: 100%;
+}
+
+.search-result-info-div .result-function .sort-div .sort-select select {
+    padding: 30px 40px 10px 15px;
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+    background-color: var(--color-transparent);
+    appearance: none;
+    font-weight: 400;
+    font-size: var(--font-size-xm);
+    color: var(--color-text-light-2);
+}
+
+.search-result-info-div .result-function .sort-div .sort-select .sort-select-icon {
+    position: absolute;
+    right: 0;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-result-info-div .result-function .sort-div .sort-select .sort-select-icon p{
+    padding: 0 6px;
+    font-weight: 600;
+    font-size: var(--font-size-l);
+    color: var(--color-text-light-2);
+}
+
+.search-result-info-div .result-function .clear-filter-btn {
+    display: none;
+    font-weight: 500;
+    font-size: var(--font-size-xm);
+    color: var(--color-text-light-1);
+    background-color: var(--color-transparent);
+    align-items: center;
+    cursor: pointer;
+    padding: 0 20px;
+    justify-content: center;
+    user-select: none;
+    transition: 0.2s all ease-in-out;
+}
+
+.search-result-info-div .result-function .clear-filter-btn.active {
+    display: block;
+}
+
+.search-result-info-div .result-function .clear-filter-btn:hover {
+    color: var(--color-navy-blue);
+}
+
+/*search result*/
+
+/*result pagination div*/
+.result-pagination-div {
+    gap: 10px;
+    padding: 30px 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.result-pagination-div .page-action-btn{
+    padding: 8px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+    color: var(--color-text-light-1);
+    border: 1px solid var(--color-text-light-1);
+    border-radius: 50%;
+    transition: 0.2s all ease-in-out;
+    background-color: var(--color-transparent);
+    cursor: pointer;
+}
+
+.result-pagination-div .page-action-btn i{
+    font-size: var(--font-size-xxxl);
+}
+
+.result-pagination-div .page-action-btn:hover {
+    color: var(--color-text-light-2);
+    border: 1px solid var(--color-text-light-2);
+    background-color: var(--color-light-grey-2);
+}
+
+.result-pagination-div .page-number {
+    position: relative;
+    padding: 6px 10px;
+    font-weight: 700;
+    font-size: var(--font-size-xm);
+    color: var(--color-blue-2);
+    cursor: pointer;
+}
+
+.result-pagination-div .page-number.current-page::after {
+    content: "";
+    position: absolute;
+    border-radius: 20px;
+    bottom: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70%;
+    height: 2px;
+    background-color: var(--color-text-light-1);
+    justify-self: center;
+}
+

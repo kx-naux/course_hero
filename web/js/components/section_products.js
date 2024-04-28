@@ -1,11 +1,13 @@
 //Move to product page onclick
 function redirectToProductPage(product) {
-    const courseID = product.getAttribute('courseID');
-    console.log("Course Clicked - Course ID:", courseID);
+    const id = product.getAttribute('courseID');
+    window.location.href = "/course_hero/course?id=" + id;
 }
 
 //Add to cart / remove from cart
 function cartButtonClick(evt) {
+    // check is login?
+
     evt.preventDefault();
     const courseID = evt.target.closest('.course-product').getAttribute('courseID');
     console.log("Cart Clicked - Course ID:", courseID);
@@ -13,6 +15,8 @@ function cartButtonClick(evt) {
 
 //Add to wishlist / remove from wishlist
 function likeButtonClick(evt) {
+    // check is login?
+
     evt.preventDefault();
     const courseID = evt.target.closest('.course-product').getAttribute('courseID');
     console.log("Like Clicked - Course ID:", courseID);
