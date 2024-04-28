@@ -11,11 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "Search Result Page", urlPatterns = {"/search"})
 public class SearchResultPage extends HttpServlet {
 
-     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {  
-        
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         // Forward the request to home.jsp
         request.getRequestDispatcher("/WEB-INF/Client/SearchResult.jsp").forward(request, response);
     }
-    
+
 }

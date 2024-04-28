@@ -3,7 +3,7 @@
 /*search result information*/
 .search-result-info-div {
     width: 100%;
-    padding: 20px 10px 30px;
+    padding: 20px 10px 20px;
     gap: 20px;
 }
 
@@ -124,7 +124,114 @@
 
 .search-result-div .search-filter-div {
     flex: 1 1 300px;
-    max-width: 30%;
+    max-width: 25%;
+}
+
+.search-filter-div .apply-filter-btn {
+    font-weight: 600;
+    font-size: var(--font-size-xm);
+    color: var(--color-navy-blue);
+    background-color: var(--color-transperant);
+    border: 1px solid var(--color-navy-blue);
+    padding: 15px 20px;
+    margin: 0px 10px 15px 10px;
+    cursor: pointer;
+    transition: 0.2s all ease-in-out;
+}
+
+.search-filter-div .apply-filter-btn:hover {
+    background-color: var(--color-navy-blue);
+    color: var(--color-white);
+}
+
+.search-filter-div .filter-div {
+    border-top: 1px solid var(--color-light-grey-3);
+    padding: 10px 0;
+}
+
+.search-filter-div .filter-div:last-of-type {
+    border-bottom: 1px solid var(--color-light-grey-3);
+}
+
+.search-filter-div .filter-type-title{
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    font-weight: 600;
+    color: var(--color-text-light-3);
+    cursor: pointer;
+}
+
+.search-filter-div .filter-type-title h1{
+    font-size: var(--font-size-m);
+}
+
+.search-filter-div .filter-type-title p{
+    font-weight: 500;
+    font-size: var(--font-size-l);
+    padding: 0 5px;
+    transition: 0.2s all ease-in-out;
+    transform: rotate(180deg);
+}
+
+
+.search-filter-div .filter-div.active .filter-type-title p{
+    transform: rotate(0deg);
+}
+
+.search-filter-div .filter-option-div  {
+    display: none;
+    gap: 6px;
+}
+
+.search-filter-div .filter-div.active .filter-option-div {
+    display: flex;
+}
+
+.search-filter-div .result-count {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-light-2);
+}
+.search-filter-div .rating-filter-option {
+    padding: 4px 0;
+    font-weight: 400;
+    font-size: var(--font-size-xm);
+    color: var(--color-text-light-3);
+    gap: 6px;
+    align-items: center;
+    cursor: pointer;
+}
+
+.search-filter-div .check-filter-option {
+    padding: 4px 0;
+    font-weight: 400;
+    font-size: var(--font-size-xm);
+    color: var(--color-text-light-3);
+    gap: 6px;
+    align-items: center;
+    cursor: pointer;
+}
+
+.search-filter-div .rating-filter-option .filter-icon {
+    color: var(--color-blue-2);
+}
+
+.search-filter-div  .price-filter-div {
+    gap: 5px;
+    max-width: 100%;
+    padding: 10px 0 15px;
+    align-items: center;
+    color: var(--color-text-light-2);
+}
+
+.search-filter-div  .price-filter-div input{
+    font-weight: 400;
+    font-size: var(--font-size-xm);
+    color: var(--color-text-light-3);
+    border: 1px solid var(--color-text-light-2);
+    padding: 6px 12px;
+    flex: 1 1 50px;
+    max-width: 120px;
 }
 
 .search-result-div .result-course-div{
