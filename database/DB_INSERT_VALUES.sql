@@ -30,7 +30,7 @@ VALUES
     ('CH0000004', 'Private', 'Active', 'Team Collaboration', 'Collaboration space for team members.'),
     ('CH0000005', 'Public', 'Inactive', 'Event Coordination', 'Planning and coordination of upcoming events.');
 
-INSERT INTO PRODUCT_CATEGORY (PRODCAT_ID, CATEGORY_NAME, DESCRIPTION) //DON'T USE ASK YUBENG 
+INSERT INTO PRODUCT_CATEGORY (PRODCAT_ID, CATEGORY_NAME, DESCRIPTION) 
 VALUES 
     ('PC0000001', 'Books', 'Category for books.'),
     ('PC0000002', 'Package', 'Category for packages.'),
