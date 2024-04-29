@@ -134,7 +134,7 @@
     background-color: var(--color-transperant);
     border: 1px solid var(--color-navy-blue);
     padding: 15px 20px;
-    margin: 0px 10px 15px 10px;
+    margin: 15px 10px 15px 10px;
     cursor: pointer;
     transition: 0.2s all ease-in-out;
 }
@@ -236,8 +236,181 @@
 }
 
 .search-result-div .result-course-div{
-    flex: 1 1 300px;
     width: 100%;
+    padding: 0px 20px;
+    border-bottom: 1px solid var(--color-light-grey-3);
+}
+
+.search-result-div .result-course-div:last-of-type {
+    border-bottom: none;
+}
+
+.search-result-div .result-course-div .result-course-div {
+    padding: 15px 10px;
+    cursor: pointer;
+    gap: 15px;
+    background-color: var(--color-transperent);
+    border-radius: 2px;
+}
+
+.search-result-div .result-course-div .result-course-div:hover {
+    background-color: var(--color-light-grey-1);
+}
+
+.result-course-div .result-course-left {
+    flex-grow: 1;
+    max-width: 30%;
+}
+
+.result-course-div .result-course-left img {
+    width: 100%;
+    max-width: 100%;
+    border: 1px solid var(--color-light-grey-3);
+    align-self: center;
+}
+
+.result-course-div .result-course-right {
+    width: 100%;
+    padding-right: 120px;
+    position: relative;
+    gap: 2px;
+}
+
+.result-course-div .result-course-right .course-title{
+    font-size: var(--font-size-xm);
+    font-weight: 700;
+    color: var(--color-text-light-3);
+    padding: 0 0 2px;
+}
+
+.result-course-div .result-course-right .course-category {
+    font-size: var(--font-size-s);
+    font-weight: 500;
+    color: var(--color-text-light-3);
+    padding: 0 0 2px 0;
+}
+
+.result-course-div .result-course-right .course-desc {
+    font-size: var(--font-size-s);
+    font-weight: 400;
+    color: var(--color-text-light-2);
+}
+
+.result-course-div .result-course-right .course-author {
+    padding: 0 10px 8px 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-wrap: nowrap;
+    text-overflow: ellipsis;
+    font-size: var(--font-size-xs);
+    font-weight: 300;
+    color: var(--color-text-light-1);
+}
+
+.result-course-div .result-course-right .course-rating {
+    font-size: var(--font-size-s);
+    align-items: center;
+    gap: 6px;
+}
+
+.result-course-div .result-course-right .course-rating .rating-digit {
+    color: var(--color-text-light-3);
+    font-weight: 500;
+}
+
+.result-course-div .result-course-right .course-rating i{
+    transform: translateY(-1px);
+    color: var(--color-blue-3);
+}
+
+.result-course-div .result-course-right .course-rating .rating-number-field{
+    font-size: var(--font-size-xs);
+    font-weight: 200;
+    color: var(--color-text-light-2);
+}
+
+.result-course-div .result-course-right .course-label {
+    align-items: center;
+    font-size: var(--font-size-s);
+    font-weight: 300;
+    color: var(--color-text-light-2);
+}
+
+.result-course-div .result-course-right .course-label p::after {
+    content: "·";
+    margin: 0 4px;
+}
+
+.result-course-div .result-course-right .course-label p:last-of-type::after {
+    content: "";
+}
+
+
+.result-course-div .result-course-right .course-tag-field {
+    padding: 2px 0;
+    gap: 10px;
+    align-items: center;
+}
+
+.result-course-div .result-course-right .course-tag-field .course-tag{
+    font-weight: 600;
+    font-size: var(--font-size-xs);
+    background-color: var(--color-light-grey-2);
+    color: var(--color-text-light-2);
+    border-radius: 2px;
+    padding: 2px 8px;
+}
+
+.result-course-div .result-course-right .course-price-field {
+    position: absolute;
+    right: 0;
+    top: 0;
+    gap: 5px;
+    align-items: flex-end;
+}
+
+.result-course-div .result-course-right .course-price-field .course-price{
+    font-weight: 700;
+    font-size: var(--font-size-xm);
+    color: var(--color-text-light-3);
+}
+
+.result-course-div .result-course-right .course-price-field .course-normal-price{
+    font-weight: 300;
+    font-size: var(--font-size-s);
+    color: var(--color-text-light-2);
+    text-decoration: line-through;
+}
+
+/*Tag Design*/
+.result-course-div .result-course-right .course-tag.tag-red {
+    background-color: var(--tag-red-bg);
+    color: var(--tag-red-color);
+}
+
+.result-course-div .result-course-right .course-tag.tag-orange {
+    background-color: var(--tag-orange-bg);
+    color: var(--tag-orange-color);
+}
+
+.result-course-div .result-course-right .course-tag.tag-yellow {
+    background-color: var(--tag-yellow-bg);
+    color: var(--tag-yellow-color);
+}
+
+.result-course-div .result-course-right .course-tag.tag-green {
+    background-color: var(--tag-green-bg);
+    color: var(--tag-green-color);
+}
+
+.result-course-div .result-course-right .course-tag.tag-blue {
+    background-color: var(--tag-blue-bg);
+    color: var(--tag-blue-color);
+}
+
+.result-course-div .result-course-right .course-tag.tag-purple {
+    background-color: var(--tag-purple-bg);
+    color: var(--tag-purple-color);
 }
 
 /*result pagination div*/

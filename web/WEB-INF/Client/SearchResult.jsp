@@ -275,7 +275,93 @@
                     <!--result course-->
                     <div class="result-course-div flex-col">
 
-
+                        <div class="result-course-div flex-row" courseID="12376213" onclick="redirectToProductPage(this)">
+                            <div class="result-course-left flex-col">
+                                <img src="./img/course/beginner_excel.jpg" alt="">
+                            </div>
+                            <div class="result-course-right flex-col">
+                                <h1 class="course-title">The Ultimate Excel Programming Course</h1>
+                                <h2 class="course-category">Microsoft Excel</h2>
+                                <h2 class="course-desc">This course will teach you the programming for Microsoft Excel</h2>
+                                <p class="course-author">Woo Yu Beng, Snijders Wang</p>
+                                <div class="course-rating flex-row">
+                                    <p class="rating-digit">3.5</p>
+                                    <i class="ri-star-fill"></i>
+                                    <p class="rating-number-field">(<span class="raing-number">2303</span>)</p>
+                                </div>
+                                <div class="course-label flex-row">
+                                    <p>9.5 Hours</p>
+                                    <p>All Level</p>
+                                </div>
+                                <div class="course-tag-field flex-row">
+                                    <p class="course-tag tag-orange">Hot Sell</p>
+                                    <p class="course-tag tag-yellow">New Course</p>
+                                </div>
+                                <div class="course-price-field flex-col">
+                                    <p class="course-price">RM <span>449.90</span></p>                                      
+                                    <p class="course-normal-price">RM <span>650.00</span></p>
+                                </div>
+                            </div>
+                        </div>
+                              
+                         <div class="result-course-div flex-row" courseID="12376213" onclick="redirectToProductPage(this)">
+                            <div class="result-course-left flex-col">
+                                <img src="./img/course/beginner_excel.jpg" alt="">
+                            </div>
+                            <div class="result-course-right flex-col">
+                                <h1 class="course-title">The Ultimate Excel Programming Course</h1>
+                                <h2 class="course-category">Microsoft Excel</h2>
+                                <h2 class="course-desc">This course will teach you the programming for Microsoft Excel</h2>
+                                <p class="course-author">Woo Yu Beng, Snijders Wang</p>
+                                <div class="course-rating flex-row">
+                                    <p class="rating-digit">3.5</p>
+                                    <i class="ri-star-fill"></i>
+                                    <p class="rating-number-field">(<span class="raing-number">2303</span>)</p>
+                                </div>
+                                <div class="course-label flex-row">
+                                    <p>9.5 Hours</p>
+                                    <p>All Level</p>
+                                </div>
+                                <div class="course-tag-field flex-row">
+                                    <p class="course-tag tag-orange">Hot Sell</p>
+                                    <p class="course-tag tag-yellow">New Course</p>
+                                </div>
+                                <div class="course-price-field flex-col">
+                                    <p class="course-price">RM <span>449.90</span></p>                                      
+                                    <p class="course-normal-price">RM <span>650.00</span></p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                         <div class="result-course-div flex-row" courseID="12376213" onclick="redirectToProductPage(this)">
+                            <div class="result-course-left flex-col">
+                                <img src="./img/course/beginner_excel.jpg" alt="">
+                            </div>
+                            <div class="result-course-right flex-col">
+                                <h1 class="course-title">The Ultimate Excel Programming Course</h1>
+                                <h2 class="course-category">Microsoft Excel</h2>
+                                <h2 class="course-desc">This course will teach you the programming for Microsoft Excel</h2>
+                                <p class="course-author">Woo Yu Beng, Snijders Wang</p>
+                                <div class="course-rating flex-row">
+                                    <p class="rating-digit">3.5</p>
+                                    <i class="ri-star-fill"></i>
+                                    <p class="rating-number-field">(<span class="raing-number">2303</span>)</p>
+                                </div>
+                                <div class="course-label flex-row">
+                                    <p>9.5 Hours</p>
+                                    <p>All Level</p>
+                                </div>
+                                <div class="course-tag-field flex-row">
+                                    <p class="course-tag tag-orange">Hot Sell</p>
+                                    <p class="course-tag tag-yellow">New Course</p>
+                                </div>
+                                <div class="course-price-field flex-col">
+                                    <p class="course-price">RM <span>449.90</span></p>                                      
+                                    <p class="course-normal-price">RM <span>650.00</span></p>
+                                </div>
+                            </div>
+                        </div>
+                        
 
                     </div>
                 </div>
