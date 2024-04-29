@@ -366,6 +366,10 @@
                     <p class="first-page-number page-number current-page"><%= currentPage%></p>
                     <% if (currentPage + 1 < lastPage) {%>
                     <p class="first-page-number page-number"><%= currentPage + 1%></p>
+                    <%
+                        }
+                        if (currentPage + 1 != lastPage && currentPage + 2 != lastPage && currentPage + 1 < lastPage) {
+                    %>
                     <p>...</p>
                     <% }
                         if (lastPage > 1 && currentPage != lastPage) {%>
