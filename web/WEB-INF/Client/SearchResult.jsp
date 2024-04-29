@@ -57,7 +57,7 @@
                         <input class="apply-filter-btn" type="submit" value="Apply Filter" />
 
                         <!--rating filter-->
-                        <div class="filter-div flex-col active">
+                        <div class="filter-div flex-col ${param.ratings != null ? 'active' : ''}">
                             <div class="filter-type-title flex-row">
                                 <h1>Ratings</h1>
                                 <p><i class="ri-arrow-down-s-line"></i></p>
@@ -118,11 +118,14 @@
                         <%
                             String[] durations = request.getParameterValues("duration");
                             List<String> durationList = null;
+                            String videoActive = "";
+
                             if (durations != null) {
                                 durationList = Arrays.asList(durations);
-                            }
+                                videoActive = "active";
+                            } 
                         %>
-                        <div class="filter-div flex-col active">
+                        <div class="filter-div flex-col <%= videoActive %> ">
                             <div class="filter-type-title flex-row">
                                 <h1>Video Duration</h1>
                                 <p><i class="ri-arrow-down-s-line"></i></p>
@@ -180,11 +183,14 @@
                         <%
                             String[] levels = request.getParameterValues("level");
                             List<String> levelList = null;
+                            String levelActive = "";
+                            
                             if (levels != null) {
                                 levelList = Arrays.asList(levels);
+                                levelActive = "active";
                             }
                         %>
-                        <div class="filter-div flex-col">
+                        <div class="filter-div flex-col <%= levelActive %>">
                             <div class="filter-type-title flex-row">
                                 <h1>Level</h1>
                                 <p><i class="ri-arrow-down-s-line"></i></p>
@@ -230,7 +236,13 @@
                         </div>
 
                         <!--Price-->
-                        <div class="filter-div flex-col">
+                        <%
+                            String priceActive = "active";
+                            if (request.getParameter("minPrice").equals("") && request.getParameter("maxPrice").equals("")) {
+                                priceActive = "";
+                            }
+                        %>
+                        <div class="filter-div flex-col <%= priceActive %>">
                             <div class="filter-type-title flex-row">
                                 <h1>Price Range</h1>
                                 <p><i class="ri-arrow-down-s-line"></i></p>
@@ -246,11 +258,14 @@
                         <%
                             String[] categories = request.getParameterValues("category");
                             List<String> categoryList = null;
+                            String categoryActive = "";
+                            
                             if (categories != null) {
                                 categoryList = Arrays.asList(categories);
+                                categoryActive = "active";
                             }
                         %>
-                        <div class="filter-div flex-col">
+                        <div class="filter-div flex-col <%= categoryActive %>">
                             <div class="filter-type-title flex-row">
                                 <h1>Category</h1>
                                 <p><i class="ri-arrow-down-s-line"></i></p>
@@ -303,8 +318,8 @@
                                 </div>
                             </div>
                         </div>
-                              
-                         <div class="result-course-div flex-row" courseID="12376213" onclick="redirectToProductPage(this)">
+
+                        <div class="result-course-div flex-row" courseID="12376213" onclick="redirectToProductPage(this)">
                             <div class="result-course-left flex-col">
                                 <img src="./img/course/beginner_excel.jpg" alt="">
                             </div>
@@ -332,8 +347,8 @@
                                 </div>
                             </div>
                         </div>
-                        
-                         <div class="result-course-div flex-row" courseID="12376213" onclick="redirectToProductPage(this)">
+
+                        <div class="result-course-div flex-row" courseID="12376213" onclick="redirectToProductPage(this)">
                             <div class="result-course-left flex-col">
                                 <img src="./img/course/beginner_excel.jpg" alt="">
                             </div>
@@ -361,7 +376,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
 
                     </div>
                 </div>
