@@ -17,9 +17,9 @@
         <div class="error-content-div flex-row">
             <!--error message-->
             <div class="error-content-left flex-col">
-                <h1>Course Not Found</h1>
+                <h1><%= session.getAttribute("type") %> Not Found</h1>
                 <h2>
-                    <%= request.getParameter("id") == null ? "No course ID" : "Course ID: " + request.getParameter("id")%>
+                    <%= request.getParameter("id") == null ? ("No " + session.getAttribute("param")) :  ( session.getAttribute("param")+ ": " + request.getParameter("id"))%>
                 </h2>
                 <p>${sessionScope.errorDetail}</p>
                 <a href="<%= webpath.getPageUrl("home")%>">Back to home</a>

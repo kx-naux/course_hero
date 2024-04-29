@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet(name = "SingleCoursePage", urlPatterns = {"/course"})
-public class SingleCoursePage extends HttpServlet {
+@WebServlet(name = "Author Page", urlPatterns = {"/author"})
+public class AuthorPage extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -18,11 +18,11 @@ public class SingleCoursePage extends HttpServlet {
         // check is course id exist
         if (request.getParameter("id") == null) {
             HttpSession session = request.getSession();
-            session.setAttribute("type", "Course");
-            session.setAttribute("param", "Course ID");
+            session.setAttribute("type", "Author");
+            session.setAttribute("param", "Author ID");
             session.setAttribute("errorDetail", "Your search has ventured beyond the known universe.");
             
-            // Forward the request to error page
+            // Forward the request to  error page
             request.getRequestDispatcher("/WEB-INF/Client/NotFoundError.jsp").forward(request, response);
         }
 
