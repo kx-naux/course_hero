@@ -27,7 +27,7 @@ public class AuthorPage extends HttpServlet {
         }
 
         // Forward the request to Course.jsp
-        request.getRequestDispatcher("/WEB-INF/Client/Course.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/Client/Author.jsp").forward(request, response);
     }
 
 }
