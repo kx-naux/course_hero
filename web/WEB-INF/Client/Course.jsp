@@ -23,8 +23,18 @@
         <!-- Include the navigation bar -->
         <%@ include file="./Components/navbar.jsp" %>
         
-        <section>
-            
+        <section class="section course-section">
+            <div class="course-div flex-row">
+                
+                <div class="course-div-left flex-col">
+                    
+                </div>
+                
+                <div class="course-div-right flex-col">
+                    
+                </div>
+                
+            </div>
         </section>
         
         <!--Footer import-->
