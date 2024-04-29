@@ -390,31 +390,57 @@
                 <!--pagination, 20 course per page-->
                 <%
                     int currentPage = 1;
-                    int LastPage = 500;
+                    int lastPage = 500;
                     if (request.getParameter("p") != null) {
                         currentPage = Integer.parseInt(request.getParameter("p"));
                     }
-                    
+
                     String previousAllow = "";
                     String nextAllow = "";
-                    
+
                     if (currentPage > 1) {
                         previousAllow = "allow";
                     }
-                    
-                    if (currentPage < LastPage) {
+
+                    if (currentPage < lastPage) {
                         nextAllow = "allow";
                     }
                 %>
                 <input type="number" id="current_page" name="p" value="<%= currentPage%>" hidden />
                 <div class="result-pagination-div flex-row">
-                    <p class="page-action-btn page-previous-btn <%= previousAllow %>"><i class="ri-arrow-left-s-line"></i></p>
-                    <p class="first-page-number page-number current-page">1</p>
-                    <p class="page-number">2</p>
-                    <p class="page-number">3</p>
+                    <p class="page-action-btn page-previous-btn <%= previousAllow%>"><i class="ri-arrow-left-s-line"></i></p>
+                        <%
+                            if (currentPage - 1 != 0) {
+
+                        %>
+                    <p class="first-page-number page-number">1</p>
+                    <%                        }
+                        if (currentPage - 1 != 1 && currentPage - 1 != 2 && currentPage - 1 > 0) {
+                    %>
                     <p>...</p>
-                    <p class="last-page-number page-number">500</p>
-                    <p class="page-action-btn page-next-btn <%= nextAllow %>"><i class="ri-arrow-right-s-line"></i></p>
+                    <%                        }
+                        if (currentPage - 1 > 1) {
+                    %>
+                    <p class="first-page-number page-number"><%= currentPage - 1%></p>
+                    <%
+                        }
+                    %>
+                    <p class="first-page-number page-number current-page"><%= currentPage%></p>
+                    <%
+                        if (currentPage
+                                + 1 < lastPage) {
+                    %>
+                    <p class="first-page-number page-number"><%= currentPage + 1%></p>
+                    <p>...</p>
+                    <%
+                        }
+                        if (lastPage > 1 && currentPage != lastPage) {
+                    %>
+                    <p class="last-page-number page-number"><%= lastPage%></p>
+                    <%
+                        }
+                    %>
+                    <p class="page-action-btn page-next-btn <%= nextAllow%>"><i class="ri-arrow-right-s-line"></i></p>
                 </div>
             </section>
         </form>
