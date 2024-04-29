@@ -24,19 +24,15 @@
     background-color: var(--color-transparent);
     border: 1px solid var(--color-text-light-3);
     align-items: center;
-    cursor: pointer;
     padding: 0 15px;
     justify-content: center;
     user-select: none;
     transition: 0.2s all ease-in-out;
+    cursor: default;
 }
 
 .search-result-info-div .result-function .filter-btn i {
     font-size: var(--font-size-l);
-}
-
-.search-result-info-div .result-function .filter-btn:hover {
-    background-color: var(--color-light-grey-2);
 }
 
 .search-result-info-div .result-function .sort-div {
