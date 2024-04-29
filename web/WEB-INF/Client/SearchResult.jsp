@@ -26,7 +26,7 @@
 
         <!-- Search Result Information -->
         <form hidden="" id="resetFilter"><input type="text" name="query" value="${param.query}" hidden /></form>
-        <form>
+        <form id="searchForm">
             <section class="section search-result-section flex-col">
                 <div class="search-result-info-div flex-col">
                     <input type="text" name="query" value="${param.query}" hidden />
@@ -242,10 +242,9 @@
                             String minPrice = request.getParameter("minPrice");
                             String maxPrice = request.getParameter("maxPrice");
 
-                            if ((minPrice != null && minPrice.equals("")) && (maxPrice!= null && maxPrice.equals(""))) {
+                            if ((minPrice != null && minPrice.equals("")) && (maxPrice != null && maxPrice.equals(""))) {
                                 priceActive = "";
-                            }
-                            else if (minPrice == null && maxPrice == null) {
+                            } else if (minPrice == null && maxPrice == null) {
                                 priceActive = "";
                             }
                         %>
@@ -389,15 +388,33 @@
                 </div>
 
                 <!--pagination, 20 course per page-->
-                <input type="number" id="current_page" name="p" value="1" hidden />
+                <%
+                    int currentPage = 1;
+                    int LastPage = 500;
+                    if (request.getParameter("p") != null) {
+                        currentPage = Integer.parseInt(request.getParameter("p"));
+                    }
+                    
+                    String previousAllow = "";
+                    String nextAllow = "";
+                    
+                    if (currentPage > 1) {
+                        previousAllow = "allow";
+                    }
+                    
+                    if (currentPage < LastPage) {
+                        nextAllow = "allow";
+                    }
+                %>
+                <input type="number" id="current_page" name="p" value="<%= currentPage%>" hidden />
                 <div class="result-pagination-div flex-row">
-                    <p class="page-action-btn page-previous-btn"><i class="ri-arrow-left-s-line"></i></p>
+                    <p class="page-action-btn page-previous-btn <%= previousAllow %>"><i class="ri-arrow-left-s-line"></i></p>
                     <p class="first-page-number page-number current-page">1</p>
                     <p class="page-number">2</p>
                     <p class="page-number">3</p>
                     <p>...</p>
                     <p class="last-page-number page-number">500</p>
-                    <p class="page-action-btn page-nect-btn"><i class="ri-arrow-right-s-line"></i></p>
+                    <p class="page-action-btn page-next-btn <%= nextAllow %>"><i class="ri-arrow-right-s-line"></i></p>
                 </div>
             </section>
         </form>

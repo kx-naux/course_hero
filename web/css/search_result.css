@@ -422,6 +422,7 @@
 }
 
 .result-pagination-div .page-action-btn{
+    opacity: 0.5;
     padding: 8px 10px;
     display: flex;
     justify-content: center;
@@ -432,17 +433,23 @@
     border-radius: 50%;
     transition: 0.2s all ease-in-out;
     background-color: var(--color-transparent);
-    cursor: pointer;
+    cursor: not-allowed;
 }
 
 .result-pagination-div .page-action-btn i{
     font-size: var(--font-size-xxxl);
+        pointer-events: none;
 }
 
-.result-pagination-div .page-action-btn:hover {
+.result-pagination-div .page-action-btn.allow {
+    opacity: 1;
+}
+
+.result-pagination-div .page-action-btn.allow:hover {
     color: var(--color-text-light-2);
     border: 1px solid var(--color-text-light-2);
     background-color: var(--color-light-grey-2);
+    cursor: pointer;
 }
 
 .result-pagination-div .page-number {
