@@ -1,3 +1,13 @@
+// show clear filter if there is filter
+document.addEventListener('DOMContentLoaded', () => {
+    const filterActive = document.querySelectorAll("div.filter-div.active");
+    
+    if (filterActive.length > 0) {
+        document.querySelector("button.clear-filter-btn").classList.add("active");
+        document.querySelector("span.filter-count").innerText = "(" + filterActive.length +")";
+    }
+});
+
 // Get all elements with the class "filter-div"
 const filterDivs = document.querySelectorAll("div.filter-type-title");
 

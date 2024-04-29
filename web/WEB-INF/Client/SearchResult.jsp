@@ -25,6 +25,7 @@
         <%@ include file="./Components/navbar.jsp" %>
 
         <!-- Search Result Information -->
+        <form hidden="" id="resetFilter"><input type="text" name="query" value="${param.query}" hidden /></form>
         <form>
             <section class="section search-result-section flex-col">
                 <div class="search-result-info-div flex-col">
@@ -45,7 +46,7 @@
                             </div>
                             <label for="sort-type">Sort by</label>
                         </div>
-                        <button type="reset" class="clear-filter-btn"><i class="ri-delete-back-2-fill"></i> Clear filters</button>
+                        <button type="button" class="clear-filter-btn" onclick="document.getElementById('resetFilter').submit();"><i class="ri-delete-back-2-fill"></i> Clear filters</button>
                     </div>
 
                 </div>
@@ -123,9 +124,9 @@
                             if (durations != null) {
                                 durationList = Arrays.asList(durations);
                                 videoActive = "active";
-                            } 
+                            }
                         %>
-                        <div class="filter-div flex-col <%= videoActive %> ">
+                        <div class="filter-div flex-col <%= videoActive%> ">
                             <div class="filter-type-title flex-row">
                                 <h1>Video Duration</h1>
                                 <p><i class="ri-arrow-down-s-line"></i></p>
@@ -184,13 +185,13 @@
                             String[] levels = request.getParameterValues("level");
                             List<String> levelList = null;
                             String levelActive = "";
-                            
+
                             if (levels != null) {
                                 levelList = Arrays.asList(levels);
                                 levelActive = "active";
                             }
                         %>
-                        <div class="filter-div flex-col <%= levelActive %>">
+                        <div class="filter-div flex-col <%= levelActive%>">
                             <div class="filter-type-title flex-row">
                                 <h1>Level</h1>
                                 <p><i class="ri-arrow-down-s-line"></i></p>
@@ -238,11 +239,17 @@
                         <!--Price-->
                         <%
                             String priceActive = "active";
-                            if (request.getParameter("minPrice").equals("") && request.getParameter("maxPrice").equals("")) {
+                            String minPrice = request.getParameter("minPrice");
+                            String maxPrice = request.getParameter("maxPrice");
+
+                            if ((minPrice != null && minPrice.equals("")) && (maxPrice!= null && maxPrice.equals(""))) {
+                                priceActive = "";
+                            }
+                            else if (minPrice == null && maxPrice == null) {
                                 priceActive = "";
                             }
                         %>
-                        <div class="filter-div flex-col <%= priceActive %>">
+                        <div class="filter-div flex-col <%= priceActive%>">
                             <div class="filter-type-title flex-row">
                                 <h1>Price Range</h1>
                                 <p><i class="ri-arrow-down-s-line"></i></p>
@@ -259,13 +266,13 @@
                             String[] categories = request.getParameterValues("category");
                             List<String> categoryList = null;
                             String categoryActive = "";
-                            
+
                             if (categories != null) {
                                 categoryList = Arrays.asList(categories);
                                 categoryActive = "active";
                             }
                         %>
-                        <div class="filter-div flex-col <%= categoryActive %>">
+                        <div class="filter-div flex-col <%= categoryActive%>">
                             <div class="filter-type-title flex-row">
                                 <h1>Category</h1>
                                 <p><i class="ri-arrow-down-s-line"></i></p>
