@@ -62,13 +62,13 @@ VALUES
     ('AU0000004', 'Alejandro Lopez', 'Mexican', 'California Institute of Technology', 'Breakthrough Prize in Physics', 'Dr. Alejandro Lopez is a theoretical physicist at Caltech, known for his groundbreaking research in quantum mechanics and string theory.', '1978-03-10', 'https://www.example.com/alejandrolopez'),
     ('AU0000005', 'Sara Khan', 'Indian', 'Harvard University', 'National Medal of Science', 'Dr. Sara Khan is a leading bioinformatician at Harvard, specializing in computational biology and genomics.', '1985-06-25', 'https://www.example.com/sarakhan');
 
-INSERT INTO ACCOUNTS (account_id, email, saltedpassword, salt)
+INSERT INTO ACCOUNTS (account_id, username, email, saltedpassword, salt)
 VALUES 
-    ('AC0000001', 'wy123@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 'salt1'),
-    ('AC0000002', 'kx123@gmail.com', '21232f297a57a5a743894a0e4a801fc3', 'salt2'),
-    ('AC0000003', 'yb123@yahoo.com', 'ee11cbb19052e40b07aac0ca060c23ee', 'salt3'),
-    ('AC0000004', 'cc123@hotmail.com', '202cb962ac59075b964b07152d234b70', 'salt4'),
-    ('AC0000005', 'zl123@hotmail.com', '250cf8b51c773f3f8dc8b4be867a9a02', 'salt5');
+    ('AC0000001', 'woeiyi','wy123@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 'salt1'),
+    ('AC0000002', 'KahXuan','kx123@gmail.com', '21232f297a57a5a743894a0e4a801fc3', 'salt2'),
+    ('AC0000003', 'YuBeng','yb123@yahoo.com', 'ee11cbb19052e40b07aac0ca060c23ee', 'salt3'),
+    ('AC0000004', 'Snijders','cc123@hotmail.com', '202cb962ac59075b964b07152d234b70', 'salt4'),
+    ('AC0000005', 'ZhanLiang','lauzl-pm22@student.tarc.edu.my', '250cf8b51c773f3f8dc8b4be867a9a02', 'salt5');
 
 INSERT INTO SHIPPING_METHOD (SHIPPING_METHOD_ID, SHIPPING_TYPE, DELIVERY_SPEED, DESCRIPTION, COVERAGE_AREA, SHIPPING_RATES, RETURN_POLICY)
 VALUES 

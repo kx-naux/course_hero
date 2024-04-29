@@ -1,3 +1,7 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
+ */
 package controller;
 
 import JPAEntity.Accounts;
@@ -23,16 +27,43 @@ import javax.transaction.Status;
 import javax.transaction.SystemException;
 import javax.transaction.UserTransaction;
 
-
-@WebServlet(name = "Login Page", urlPatterns = {"/login"})
-public class LoginPage extends HttpServlet {
+/**
+ *
+ * @author User
+ */
+public class Login extends HttpServlet {
     @PersistenceContext EntityManager em;
     @Resource UserTransaction utx;
 
     //Email Regex Patter to check the input is email or username
     String emailPattern = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$";
     Pattern pattern = Pattern.compile(emailPattern);
+    
 
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {  
+        
+        // Forward the request to home.jsp
+        //request.getRequestDispatcher("/WEB-INF/Client/Login.jsp").forward(request, response);
+    }
+
+    /**
+     * Handles the HTTP <code>POST</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {  
         
@@ -52,18 +83,20 @@ public class LoginPage extends HttpServlet {
         if(isEmail(username)){
             Query qry = em.createNamedQuery("Accounts.findByEmail").setParameter("email",username);
             accounts = qry.getResultList();
-        }else{
-            Query qry = em.createNamedQuery("Accounts.findByUsername").setParameter("email",username);
+        }else{  
+            Query qry = em.createNamedQuery("Accounts.findByUsername").setParameter("username",username);
             accounts = qry.getResultList();
         }
         
         //check is account record found
         if(accounts.isEmpty()){
-            //redirect to login page
+            //redirect to error
+            response.sendRedirect("LoginError.jsp");
+            return;
         }else{
             //always will only has one result as the username and email must be unique in databases
             accountRetrieved = accounts.get(0);
-            response.sendRedirect("/WEB-INF/Client/LoginError.jsp");
+            response.sendRedirect("LoginError.jsp");
         }
         
         //hash the password input
@@ -81,9 +114,9 @@ public class LoginPage extends HttpServlet {
             if(rememberMe == "rememberMe"){
                 setRmbMeToken(userData);
             }
-            response.sendRedirect("/WEB-INF/Client/Home.jsp");
+            response.sendRedirect("Home.jsp");
         }else{
-            response.sendRedirect("/WEB-INF/Client/LoginError.jsp");
+            response.sendRedirect("LoginError.jsp");
 
             //redirect to login page
         }
@@ -92,15 +125,8 @@ public class LoginPage extends HttpServlet {
         // Forward the request to home.jsp
         //request.getRequestDispatcher("/WEB-INF/Client/Login.jsp").forward(request, response);
     }
-    
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {  
-        
-        // Forward the request to home.jsp
-        request.getRequestDispatcher("/WEB-INF/Client/Login.jsp").forward(request, response);
-    }
-    
-    private boolean isEmail(String usernameInput){
+
+        private boolean isEmail(String usernameInput){
         Matcher matcher = pattern.matcher(usernameInput);
         return matcher.matches();
     }
@@ -156,6 +182,4 @@ public class LoginPage extends HttpServlet {
         
         return token;
     }
-   
-        
 }
