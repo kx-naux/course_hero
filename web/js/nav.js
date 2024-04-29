@@ -75,9 +75,68 @@ document.addEventListener("click", (event) => {
     }
 });
 
+const dummySearchSuggestion = {
+    'keyword' : ["Python","Java","C++"],
+    'course' : [
+        {
+            'courseID' : "1231231231",
+            'img' : "./img/course/beginner_excel.jpg",
+            'courseTitle' : "The Ultimate Course Programming",
+            'courseAuthor' : "Woo Yu Beng, Snijders"
+        },
+        {
+            'courseID' : "1231231231",
+            'img' : "./img/course/beginner_excel.jpg",
+            'courseTitle' : "The Ultimate Course Programming",
+            'courseAuthor' : "Woo Yu Beng, Snijders"
+        },
+        {
+            'courseID' : "1231231231",
+            'img' : "./img/course/beginner_excel.jpg",
+            'courseTitle' : "The Ultimate Course Programming",
+            'courseAuthor' : "Woo Yu Beng, Snijders"
+        }
+    ]
+};
+
 // insert search suggestion record 
 function insert_suggestion(data) {
-    let show_div = document.querySelector(".nav-search-result").innerText;
+    let show_div = document.querySelector("div.nav-search-result");
+    
+    // remove previous suggection
+    show_div.innerHTML = "";
+    
+    // Insert keyword suggestions
+    data.keyword.forEach(keyword => {
+        let suggestionLink = document.createElement("a");
+        suggestionLink.setAttribute("onclick", "search_suggestion_click(this)");
+        let suggestionQuery = document.createElement("div");
+        suggestionQuery.classList.add("nav-search-suggestion-query", "flex-row");
+        suggestionQuery.innerHTML = `
+            <p class="suggest-icon"><i class="ri-search-line"></i></p>
+            <p class="suggest-query">${keyword}</p>
+        `;
+        suggestionLink.appendChild(suggestionQuery);
+        show_div.appendChild(suggestionLink);
+    });
+    
+    // Insert course suggestions
+    data.course.forEach(course => {
+        let courseLink = document.createElement("a");
+        courseLink.setAttribute("onclick", "search_suggestion_course_click(this)");
+        let suggestionCourse = document.createElement("div");
+        suggestionCourse.classList.add("nav-search-suggestion-course", "flex-row");
+        suggestionCourse.setAttribute("courseID", course.courseID);
+        suggestionCourse.innerHTML = `
+            <img src="${course.img}" alt="" />
+            <div class="suggestion-course-detail flex-col">
+                <h1>${course.courseTitle}</h1>
+                <p>${course.courseAuthor}</p>
+            </div>
+        `;
+        courseLink.appendChild(suggestionCourse);
+        show_div.appendChild(courseLink);
+    });
 }
 
 // event handler for suggestion query
