@@ -160,6 +160,7 @@
     font-weight: 600;
     color: var(--color-text-light-3);
     cursor: pointer;
+    user-select: none;
 }
 
 .search-filter-div .filter-type-title h1{
@@ -174,7 +175,6 @@
     transform: rotate(180deg);
 }
 
-
 .search-filter-div .filter-div.active .filter-type-title p{
     transform: rotate(0deg);
 }
@@ -186,6 +186,7 @@
 
 .search-filter-div .filter-div.active .filter-option-div {
     display: flex;
+    user-select: none;
 }
 
 .search-filter-div .result-count {

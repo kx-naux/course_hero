@@ -1,4 +1,6 @@
+<%@page import="java.time.Duration"%>
 <%@ page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page import="java.util.List,java.util.Arrays;" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
@@ -34,10 +36,10 @@
                         <div class="sort-div">
                             <div class="sort-select flex-row">
                                 <select id="sort-type" name="sort" onchange="this.form.submit()">
-                                    <option value="most-reviewed">Most Reviewed</option>
-                                    <option value="highest-rated">Highest Rated</option>
-                                    <option value="relevance" selected>Most Relevant</option>
-                                    <option value="newest">Newest</option>
+                                    <option value="most-reviewed" ${param.sort == 'most-reviewed' ? 'selected' : ''}>Most Reviewed</option>
+                                    <option value="highest-rated" ${param.sort == 'highest-rated' ? 'selected' : ''}>Highest Rated</option>
+                                    <option value="relevance" ${param.sort == 'relevance' ? 'selected' : ''}>Most Relevant</option>
+                                    <option value="newest" ${param.sort == 'newest' ? 'selected' : ''}>Newest</option>
                                 </select>
                                 <div class="sort-select-icon flex-col"><p><i class="ri-arrow-down-s-line"></i></p></div>
                             </div>
@@ -51,7 +53,7 @@
                 <div class="search-result-div flex-row">
                     <!--filter div-->
                     <div class="search-filter-div flex-col">  
-                        
+
                         <input class="apply-filter-btn" type="submit" value="Apply Filter" />
 
                         <!--rating filter-->
@@ -62,7 +64,7 @@
                             </div>
                             <div class="filter-option-div rating-filter-div flex-col">
                                 <label for="filter-rating-1" class="rating-filter-option flex-row">
-                                    <input name="ratings" id="filter-rating-1" type="radio" value="4.5" />
+                                    <input name="ratings" id="filter-rating-1" type="radio" value="4.5" ${param.ratings == '4.5' ? 'checked' : ''} />
                                     <span class="filter-icon flex-row">
                                         <i class="ri-star-fill"></i>
                                         <i class="ri-star-fill"></i>
@@ -74,7 +76,7 @@
                                     <span class="result-count">(6000)</span>
                                 </label>
                                 <label for="filter-rating-2" class="rating-filter-option flex-row">
-                                    <input name="ratings" id="filter-rating-2" type="radio" value="4.0" />
+                                    <input name="ratings" id="filter-rating-2" type="radio" value="4.0" ${param.ratings == '4.0' ? 'checked' : ''} />
                                     <span class="filter-icon flex-row">
                                         <i class="ri-star-fill"></i>
                                         <i class="ri-star-fill"></i>
@@ -86,7 +88,7 @@
                                     <span class="result-count">(1000)</span>
                                 </label>
                                 <label for="filter-rating-3" class="rating-filter-option flex-row">
-                                    <input name="ratings" id="filter-rating-3" type="radio" value="3.5" />
+                                    <input name="ratings" id="filter-rating-3" type="radio" value="3.5" ${param.ratings == '3.5' ? 'checked' : ''}/>
                                     <span class="filter-icon flex-row">
                                         <i class="ri-star-fill"></i>
                                         <i class="ri-star-fill"></i>
@@ -98,7 +100,7 @@
                                     <span class="result-count">(1000)</span>
                                 </label>
                                 <label for="filter-rating-4" class="rating-filter-option flex-row">
-                                    <input name="ratings" id="filter-rating-4" type="radio" value="3.0" />
+                                    <input name="ratings" id="filter-rating-4" type="radio" value="3.0" ${param.ratings == '3.0' ? 'checked' : ''} />
                                     <span class="filter-icon flex-row">
                                         <i class="ri-star-fill"></i>
                                         <i class="ri-star-fill"></i>
@@ -113,6 +115,13 @@
                         </div>
 
                         <!--Video Duration-->
+                        <%
+                            String[] durations = request.getParameterValues("duration");
+                            List<String> durationList = null;
+                            if (durations != null) {
+                                durationList = Arrays.asList(durations);
+                            }
+                        %>
                         <div class="filter-div flex-col active">
                             <div class="filter-type-title flex-row">
                                 <h1>Video Duration</h1>
@@ -120,27 +129,47 @@
                             </div>
                             <div class="filter-option-div duration-filter-div flex-col">
                                 <label for="filter-duration-1" class="check-filter-option flex-row">
+                                    <%   if (durations != null && durationList.contains("extrashort")) { %>
+                                    <input name="duration" id="filter-duration-1" type="checkbox" value="extrashort" checked />
+                                    <% } else {  %>
                                     <input name="duration" id="filter-duration-1" type="checkbox" value="extrashort" />
+                                    <% }%>
                                     <span class="filter-desc">0-1 Hour</span>
                                     <span class="result-count">(1000)</span>
                                 </label>
                                 <label for="filter-duration-2" class="check-filter-option flex-row">
-                                    <input name="duration" id="filter-duration-2" type="checkbox" value="short" />
+                                    <%   if (durations != null && durationList.contains("short")) { %>
+                                    <input name="duration" id="filter-duration-2" type="checkbox" value="short" checked />
+                                    <% } else {  %>
+                                    <input name="duration" id="filter-duration-2" type="checkbox" value="short"  />
+                                    <% }%>
                                     <span class="filter-desc">1-3 Hours</span>
                                     <span class="result-count">(1000)</span>
                                 </label>
                                 <label for="filter-duration-3" class="check-filter-option flex-row">
-                                    <input name="duration" id="filter-duration-3" type="checkbox" value="medium" />
+                                    <%   if (durations != null && durationList.contains("medium")) { %>
+                                    <input name="duration" id="filter-duration-3" type="checkbox" value="medium" checked />
+                                    <% } else {  %>
+                                    <input name="duration" id="filter-duration-3" type="checkbox" value="medium"  />
+                                    <% }%>
                                     <span class="filter-desc">3-6 Hours</span>
                                     <span class="result-count">(1000)</span>
                                 </label>
                                 <label for="filter-duration-4" class="check-filter-option flex-row">
-                                    <input name="duration" id="filter-duration-4" type="checkbox" value="long" />
+                                    <%   if (durations != null && durationList.contains("long")) { %>
+                                    <input name="duration" id="filter-duration-4" type="checkbox" value="long" checked  />
+                                    <% } else {  %>
+                                    <input name="duration" id="filter-duration-4" type="checkbox" value="long"  />
+                                    <% }%>
                                     <span class="filter-desc">6-17 Hours</span>
                                     <span class="result-count">(1000)</span>
                                 </label>
                                 <label for="filter-duration-5" class="check-filter-option flex-row">
-                                    <input name="duration" id="filter-duration-5" type="checkbox" value="extralong" />
+                                    <%   if (durations != null && durationList.contains("extralong")) { %>
+                                    <input name="duration" id="filter-duration-5" type="checkbox" value="extralong" checked />
+                                    <% } else {  %>
+                                    <input name="duration" id="filter-duration-5" type="checkbox" value="extralong"  />
+                                    <% }%>
                                     <span class="filter-desc">17+ Hours</span>
                                     <span class="result-count">(1000)</span>
                                 </label>
@@ -148,6 +177,13 @@
                         </div>
 
                         <!--Course Level-->
+                        <%
+                            String[] levels = request.getParameterValues("level");
+                            List<String> levelList = null;
+                            if (levels != null) {
+                                levelList = Arrays.asList(levels);
+                            }
+                        %>
                         <div class="filter-div flex-col">
                             <div class="filter-type-title flex-row">
                                 <h1>Level</h1>
@@ -155,22 +191,38 @@
                             </div>
                             <div class="filter-option-div level-filter-div flex-col">
                                 <label for="filter-level-1" class="check-filter-option flex-row">
-                                    <input name="duration" id="filter-level-1" type="checkbox" value="all" />
+                                    <%   if (levels != null && levelList.contains("all")) { %>
+                                    <input name="level" id="filter-level-1" type="checkbox" value="all" checked />
+                                    <% } else {  %>
+                                    <input name="level" id="filter-level-1" type="checkbox" value="all" />
+                                    <% } %>
                                     <span class="filter-desc">All Levels</span>
                                     <span class="result-count">(1000)</span>
                                 </label>
                                 <label for="filter-level-2" class="check-filter-option flex-row">
-                                    <input name="duration" id="filter-level-2" type="checkbox" value="beginner" />
+                                    <%   if (levels != null && levelList.contains("beginner")) { %>
+                                    <input name="level" id="filter-level-2" type="checkbox" value="beginner" checked />
+                                    <% } else {  %>
+                                    <input name="level" id="filter-level-2" type="checkbox" value="beginner" />
+                                    <% }%>
                                     <span class="filter-desc">Beginner</span>
                                     <span class="result-count">(1000)</span>
                                 </label>
                                 <label for="filter-level-3" class="check-filter-option flex-row">
-                                    <input name="duration" id="filter-level-3" type="checkbox" value="intermediate" />
+                                    <%   if (levels != null && levelList.contains("intermediate")) { %>
+                                    <input name="level" id="filter-level-3" type="checkbox" value="intermediate" checked />
+                                    <% } else {  %>
+                                    <input name="level" id="filter-level-3" type="checkbox" value="intermediate" />
+                                    <% }%>
                                     <span class="filter-desc">Intermediate</span>
                                     <span class="result-count">(1000)</span>
                                 </label>
                                 <label for="filter-level-4" class="check-filter-option flex-row">
-                                    <input name="duration" id="filter-level-4" type="checkbox" value="expert" />
+                                    <%   if (levels != null && levelList.contains("expert")) { %>
+                                    <input name="level" id="filter-level-4" type="checkbox" value="expert" checked />
+                                    <% } else {  %>
+                                    <input name="level" id="filter-level-4" type="checkbox" value="expert" />
+                                    <% }%>
                                     <span class="filter-desc">Expert</span>
                                     <span class="result-count">(1000)</span>
                                 </label>
@@ -184,13 +236,20 @@
                                 <p><i class="ri-arrow-down-s-line"></i></p>
                             </div>
                             <div class="filter-option-div price-filter-div flex-row">
-                                <input type="number" min="0" name="minPrice" id="minPrice" maxlength="13" placeholder="RM MIN" value />
+                                <input type="number" min="0" name="minPrice" id="minPrice" maxlength="13" placeholder="RM MIN" value="${param.minPrice}" />
                                 <span> to </span>
-                                <input type="number" min="0" name="maxPrice" id="maxPrice" maxlength="13" placeholder="RM MAX" value />
+                                <input type="number" min="0" name="maxPrice" id="maxPrice" maxlength="13" placeholder="RM MAX" value="${param.maxPrice}" />
                             </div>
                         </div>
 
                         <!--course category-->   
+                        <%
+                            String[] categories = request.getParameterValues("category");
+                            List<String> categoryList = null;
+                            if (categories != null) {
+                                categoryList = Arrays.asList(categories);
+                            }
+                        %>
                         <div class="filter-div flex-col">
                             <div class="filter-type-title flex-row">
                                 <h1>Category</h1>
