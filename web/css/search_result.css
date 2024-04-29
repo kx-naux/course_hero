@@ -461,6 +461,10 @@
     cursor: pointer;
 }
 
+.result-pagination-div .page-number.current-page {
+    cursor: default;
+}
+
 .result-pagination-div .page-number.current-page::after {
     content: "";
     position: absolute;

@@ -411,7 +411,6 @@
                     <p class="page-action-btn page-previous-btn <%= previousAllow%>"><i class="ri-arrow-left-s-line"></i></p>
                         <%
                             if (currentPage - 1 != 0) {
-
                         %>
                     <p class="first-page-number page-number">1</p>
                     <%                        }
