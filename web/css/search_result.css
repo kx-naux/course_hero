@@ -448,6 +448,15 @@
     cursor: pointer;
 }
 
+.result-pagination-div .number-dot {
+    user-select: none;
+    font-weight: 800;
+    font-size: var(--font-size-xm);
+    color: var(--color-text-light-2);
+    letter-spacing: 2px;
+    cursor: default;
+}
+
 .result-pagination-div .page-number {
     position: relative;
     padding: 6px 10px;
@@ -470,7 +479,7 @@
     transform: translateX(-50%);
     width: 70%;
     height: 2px;
-    background-color: var(--color-text-light-1);
+    background-color: var(--color-blue-2);
     justify-self: center;
 }
 

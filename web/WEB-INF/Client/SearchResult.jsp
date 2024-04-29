@@ -358,7 +358,7 @@
                     <p class="first-page-number page-number">1</p>
                     <% }
                         if (currentPage - 1 != 1 && currentPage - 1 != 2 && currentPage - 1 > 0) { %>
-                    <p>...</p>
+                    <p class="number-dot">...</p>
                     <% }
                         if (currentPage - 1 > 1) {%>
                     <p class="first-page-number page-number"><%= currentPage - 1%></p>
@@ -370,7 +370,7 @@
                         }
                         if (currentPage + 1 != lastPage && currentPage + 2 != lastPage && currentPage + 1 < lastPage) {
                     %>
-                    <p>...</p>
+                    <p class="number-dot">...</p>
                     <% }
                         if (lastPage > 1 && currentPage != lastPage) {%>
                     <p class="last-page-number page-number"><%= lastPage%></p>
