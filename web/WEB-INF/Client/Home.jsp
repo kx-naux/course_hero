@@ -19,6 +19,7 @@
         <jsp:useBean id="userData" class="JPAEntity.Users" scope="session" />
     </head>
     <body>
+        <p>${userData.accountId.username}</p>
         <!--Toast message-->
         <%@ include file="./Components/toast_msg.html" %>
 

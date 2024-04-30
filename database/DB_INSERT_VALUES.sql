@@ -64,11 +64,11 @@ VALUES
 
 INSERT INTO ACCOUNTS (account_id, username, email, saltedpassword, salt)
 VALUES 
-    ('AC0000001', 'woeiyi','wy123@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 'salt1'),
-    ('AC0000002', 'KahXuan','kx123@gmail.com', '21232f297a57a5a743894a0e4a801fc3', 'salt2'),
-    ('AC0000003', 'YuBeng','yb123@yahoo.com', 'ee11cbb19052e40b07aac0ca060c23ee', 'salt3'),
-    ('AC0000004', 'Snijders','cc123@hotmail.com', '202cb962ac59075b964b07152d234b70', 'salt4'),
-    ('AC0000005', 'ZhanLiang','lauzl-pm22@student.tarc.edu.my', '250cf8b51c773f3f8dc8b4be867a9a02', 'salt5');
+    ('AC0000001', 'Woeiyi','tanw-pm22@student.tarc.edu.my', 'rsMy/Kq0BnTwMSCf27ARkb2Rg/OaTmbBBIMZ2DuOyio=', 'salt1'),
+    ('AC0000002', 'KahXuan','lowkx-pm22@student.tarc.edu.my', '8dGxzvvhQiV0Bm8JU4VLIgNHydvcADLdxUEXUbLOOEg=', 'salt2'),
+    ('AC0000003', 'YuBeng','wooyb-pm22@student.tarc.edu.my', 'cAjNy6eveLrPrRTVQ9jJEt6qOUQ33+D+sLI2Ci3gblg=', 'salt3'),
+    ('AC0000004', 'Snijders','wangccs-pm22@student.tarc.edu.my', 'otvdT0YCdjwhOHXMs4f3iWa/vQj9CgeU7pT0bx4ismw=', 'salt4'),
+    ('AC0000005', 'ZhanLiang','lauzl-pm22@student.tarc.edu.my', 'orl7K6ppIZsbzVrnUcFPPRmgwiq9NPX/F3pKyOiuFI4=', 'salt5');
 
 INSERT INTO SHIPPING_METHOD (SHIPPING_METHOD_ID, SHIPPING_TYPE, DELIVERY_SPEED, DESCRIPTION, COVERAGE_AREA, SHIPPING_RATES, RETURN_POLICY)
 VALUES 
