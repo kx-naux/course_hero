@@ -77,7 +77,7 @@
                                     <div class="flex-row">
                                         <p><i class="ri-check-line"></i></p>
                                         <div>
-                                            <span>You will be able to program in Python professionally</span>
+                                            <span>You will learn Selenium, Beautiful Soup, Request, Flask, Pandas, NumPy, Scikit Learn, Plotly, and Matplotlib.</span>
                                         </div>
                                     </div>
                                 </li>
@@ -85,7 +85,7 @@
                                     <div class="flex-row">
                                         <p><i class="ri-check-line"></i></p>
                                         <div>
-                                            <span>You will learn Selenium, Beautiful Soup, Request, Flask, Pandas, NumPy, Scikit Learn, Plotly, and Matplotlib.</span>
+                                            <span>You will be able to program in Python professionally</span>
                                         </div>
                                     </div>
                                 </li>
@@ -104,7 +104,7 @@
                     <!--Course syllabus-->
                     <div class="course-syllabus-div flex-col">
                         <h1>Syllabus</h1>
-                        <div class="flex-row">
+                        <div class="syllabus-info flex-row">
                             <p>10 Section</p>
                             <p>58h 19m Video</p>
                         </div>
