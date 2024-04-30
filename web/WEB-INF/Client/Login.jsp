@@ -19,7 +19,7 @@
                     <div class="login-left-row-1">
                         <a href="<%= webpath.getPageUrl("home")%>"><img class="login-logo" src="./img/Logo.png" alt="Course Hero" /></a>
                     </div>
-                    <form action="login" method="post">
+                    <form action="Login" method="post">
                         <div class="login-form-div flex-col">
                             <h1>Welcome Back</h1>
                             <div class="login-form-input-div flex-col">
@@ -40,10 +40,11 @@
                                 </div>
                             </div>
                             <%
-                                if (session.getAttribute("errorMsg") != null) {
+                                if (session.getAttribute("loginErrorMsg") != null) {
                             %>
-                            <p class="invalid-msg"><%= session.getAttribute("errorMsg") %></p>
-                            <% } %>
+                            <p class="invalid-msg"><%= session.getAttribute("loginErrorMsg") %></p>
+                            <% session.removeAttribute("loginErrorMsg");} %>
+
                             <div class="login-form-bot flex-col">
                                 <input type="submit" value="Sign In"/>
                                 <P>Doesn't have account? <a class="sign-up" href="<%= webpath.getPageUrl("sign up")%>">Sign up now</a></P>
