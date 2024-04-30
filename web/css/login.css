@@ -52,7 +52,7 @@
 .login-div .login-form-div {
     justify-content: center;
     align-items: center;
-    gap: 20px;
+    gap: 25px;
 }
 
 .login-form-div h1 {
@@ -128,18 +128,39 @@
     font-weight: 600;
 }
 
-.forget-password {
+.remember-me-div {
+    position: relative;
+    padding: 5px 0 20px;
     width: 100%;
     max-width: 300px;
-    display: flex;
-    justify-content: right;
-    margin-top: 8px;
+    margin-top: 10px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.remember-me-div input {
+    cursor: pointer;
+}
+
+.remember-me-div label {
+    font-weight: 300;
+    font-size: var(--font-size-s);
+    color: var(--color-text-light-1);
+    transition: 0.2s all ease;
+    padding-left: 8px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.forget-password {
+    justify-content: flex-end;
+    align-items: center;
 }
 
 .forget-password p {
     font-weight: 300;
     font-size: var(--font-size-xs);
-    color: var(--color-text-light-1);
+    color: var(--color-secondary);
     transition: 0.2s all ease;
 }
 

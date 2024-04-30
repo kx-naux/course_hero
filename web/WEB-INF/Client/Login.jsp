@@ -31,11 +31,13 @@
                                 <input type="password" id="password" name="password" class="form-input" placeholder="Password" oninput="reset_error_msg()" />
                                 <label for="password" class="form-label">Password</label>
                             </div>
-                            <div class="input-field">
+                            <div class="remember-me-div flex-row">
+                                <diV class="flex-row">
                                 <input type="checkbox" id="rememberMe" name="rememberMe" value="rememberMe"/>
-                                <label for="rememberMe" class="form-label">Remember Me</label>
+                                <label for="rememberMe" class="">Remember Me</label>
+                                </div>
+                                <a class="forget-password" href="<%= webpath.getPageUrl("forget passworde") %>"><p>Forget password</p></a>
                             </div>
-                            <a class="forget-password" href="<%= webpath.getPageUrl("forget passworde") %>"><p>Forget password</p></a>
                         </div>
                         <div class="login-form-bot flex-col">
                             <input type="submit" value="Sign In"/>
