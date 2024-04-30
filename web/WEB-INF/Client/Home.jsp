@@ -19,7 +19,6 @@
         <jsp:useBean id="userData" class="JPAEntity.Users" scope="session" />
     </head>
     <body>
-        <p>${userData.accountId.username}</p>
         <!--Toast message-->
         <%@ include file="./Components/toast_msg.html" %>
 
@@ -68,7 +67,7 @@
         <!-- Learning section -->
         <!--JSP conditional rendering-->
         <c:choose>
-            <c:when test="${not empty sessionScope.username}">
+            <c:when test="${not empty userData.accountId.username}">
                 <section class="section learning-section">
                     <div>
 
@@ -1060,7 +1059,7 @@
 
         <!--JSP conditional rendering-->
         <c:choose>
-            <c:when test="${empty sessionScope.username}">
+            <c:when test="${empty userData.accountId.username}">
                 <!-- Guest ask to sign up section -->
                 <section class="section guest-sign-up-section">
                     <div class="guest-sign-up-div flex-row">

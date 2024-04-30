@@ -57,7 +57,7 @@
         <p class="nav-icon toggle-search"><i class="ri-search-line"></i><span class="nav-icon-tooltip">Search</span></p>
         <!--JSP conditional rendering-->
         <c:choose>
-            <c:when test="${not empty sessionScope.username}">
+            <c:when test="${not empty userData.accountId.username}">
                 <!-- Logged in -->
                 <a href="<%= webpath.getPageUrl("wishlist")%>">
                     <p class="nav-icon"><i class="ri-heart-line"></i><span class="nav-icon-tooltip">Wishlist</span></P>
@@ -65,7 +65,7 @@
                 <a href="<%= webpath.getPageUrl("cart")%>">
                     <p class="nav-icon"><i class="ri-shopping-cart-line"></i><span class="nav-icon-tooltip">Cart</span></P>
                 </a>
-                <input hidden type="text" id="hidden_username" value="${sessionScope.username}"/>
+                <input hidden type="text" id="hidden_username" value="${userData.accountId.username}"/>
             </c:when>
             <c:otherwise>
                 <!-- Not Logged in -->
