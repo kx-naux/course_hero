@@ -46,6 +46,7 @@
 }
 
 .course-div-left .course-general-div .course-tag-field {
+    margin-top: 20px;
     padding: 2px 0;
     gap: 10px;
     align-items: center;
@@ -58,6 +59,46 @@
     color: var(--color-text-light-2);
     border-radius: 2px;
     padding: 2px 8px;
+}
+
+.course-div-left .course-general-div .course-rating{
+    gap: 8px;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.course-div-left .course-general-div .course-rating .rating-digit{
+    font-weight: 600;
+    font-size: var(--font-size-xm);
+    color: var(--color-text-light-2);
+}
+
+.course-div-left .course-general-div .course-rating > div i{
+    font-weight: 400;
+    font-size: var(--font-size-xm);
+    color: var(--color-blue-2);
+}
+
+.course-div-left .course-general-div .course-rating .rating-number-field a{
+    font-weight: 400;
+    font-size: var(--font-size-s);
+    color:  var(--color-blue-2);
+}
+
+.course-div-left .course-general-div .course-rating .rating-number-field a:hover{
+    text-decoration: underline;
+}
+
+.course-div-left .course-general-div .course-rating .course-sell{
+     font-weight: 400;
+    font-size: var(--font-size-s);
+    color: var(--color-text-light-2);
+}
+
+.course-div-left .course-general-div .course-update-date {
+      font-weight: 400;
+    font-size: var(--font-size-s);
+    color: var(--color-text-light-2);
 }
 
 /*right side content*/
@@ -169,6 +210,15 @@
     justify-content: center;
     align-items: center;
     margin-top: 20px;
+    padding-top: 8px;
+    border-top: 1px solid var(--color-light-grey-3);
+    gap: 8px;
+}
+
+.course-sticky-div .sticky-div-bot .sticky-div-share p {
+    font-weight: 600;
+    font-size: var(--font-size-xm);
+    color: var(--color-text-light-2);
 }
 
 .course-sticky-div .sticky-div-bot .sticky-div-share button {

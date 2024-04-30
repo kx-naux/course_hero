@@ -47,9 +47,9 @@
                                 <i class="ri-star-half-fill"></i>
                             </div>
                             <p class="rating-number-field"><a href="#rating-div">(<span class="raing-number">2303</span> ratings)</a></p>
-                            <p>4864 students</p>
+                            <p class="course-sell">4864 students</p>
                         </div>
-                        <p class="course-update-date"><i class="ri-information-line"></i> Last updated 4/2024</p>
+                        <p class="course-update-date"><i class="ri-information-line"></i> Last updated 16/4/2024</p>
                     </div>
 
                     <!--What you will learn-->
@@ -340,7 +340,8 @@
 
                             <!--share this course-->
                             <div class="sticky-div-share flex-col">
-                                <button class="share-btn">Share Course <i class="ri-link"></i></button>
+                                <p>Share this course</p>
+                                <button class="share-btn">Copy link <i class="ri-link"></i></button>
                             </div>
 
                         </div>
