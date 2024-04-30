@@ -44,6 +44,7 @@
                             %>
                             <p class="invalid-msg"><%= session.getAttribute("loginErrorMsg") %></p>
                             <% session.removeAttribute("loginErrorMsg");} %>
+
                             <div class="login-form-bot flex-col">
                                 <input type="submit" value="Sign In"/>
                                 <P>Doesn't have account? <a class="sign-up" href="<%= webpath.getPageUrl("sign up")%>">Sign up now</a></P>

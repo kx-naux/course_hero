@@ -221,6 +221,155 @@
     line-height: 30px;
 }
 
+.course-div-left .course-author-div {
+    gap: 20px;
+}
+
+.course-div-left .course-author-div .author-list {
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.course-div-left .course-author-div .author-list .author-item {
+    align-items: center;
+    gap: 6px;
+    width: 220px;
+    min-width: 220px;
+}
+
+.course-div-left .course-author-div .author-list .author-item .author-img {
+    min-width: 120px;
+    max-width: 120px;
+}
+
+.course-div-left .course-author-div .author-list .author-item .author-img img {
+    width: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid var(--color-text-light-2);
+}
+
+.course-div-left .course-author-div .author-list .author-item .author-info {
+    align-items: center;
+}
+
+.course-div-left .course-author-div .author-list .author-item .author-name{
+    font-weight: 600;
+    font-size: var(--font-size-xm);
+    color: var(--color-text-light-3);
+    text-align: center;
+}
+
+.course-div-left .course-author-div .author-list .author-item .author-position{
+    font-weight: 400;
+    font-size: var(--font-size-s);
+    color: var(--color-text-light-2);
+    text-align: center;
+}
+
+.course-div-left .course-rating-div .course-overall-rating {
+    padding: 20px 0;
+    font-weight: 600;
+    font-size: var(--font-size-xxl);
+    color: var(--color-text-light-3);
+    align-items: center;
+}
+
+.course-div-left .course-rating-div .course-overall-rating p::after {
+    content: "·";
+    padding: 5px 8px 0;
+    font-weight: 600;
+    font-size: var(--font-size-xxxl);
+    color: var(--color-text-light-2);
+}
+
+.course-div-left .course-rating-div .course-overall-rating p:last-of-type::after {
+    content: "";
+}
+
+.course-div-left .course-rating-div .course-overall-rate i {
+    color: var(--rating-star-color);
+}
+
+.course-div-left .course-rating-div .course-review {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    row-gap: 25px;
+    column-gap: 35px;
+}
+
+.course-div-left .course-rating-div .course-review .user-review {
+    width: 100%;
+    max-width: 330px;
+    border-top: 1px solid var(--color-text-light-1);
+    gap: 15px;
+    padding: 15px 0;
+}
+
+.user-review .user-review-top {
+    align-items: center;
+    gap: 12px;
+}
+
+.user-review .user-review-top .user-img {
+    width: 40px;
+    height: 40px;
+}
+
+.user-review .user-review-top .user-img img {
+    width: 100%;
+    object-fit: cover;
+}
+
+.user-review .user-review-top .user-name {
+    font-weight: 600;
+    font-size: var(--font-size-s);
+    color: var(--color-text-light-2);
+}
+
+.user-review .user-review-top .review-top-bot {
+    gap: 10px;
+}
+
+.user-review .user-review-top .rating-stars  {
+    font-weight: 500;
+    font-size: var(--font-size-xm);
+    color: var(--rating-star-color);
+    align-items: center;
+}
+
+.user-review .user-review-top .review-date {
+    font-weight: 600;
+    font-size: var(--font-size-xs);
+    color: var(--color-text-light-2);
+}
+
+.user-review .user-review-bot p{
+    font-weight: 400;
+    font-size: var(--font-size-s);
+    color: var(--color-text-light-2);
+    text-overflow: ellipsis;
+}
+
+.course-div-left .course-rating-div .all-review-btn {
+    margin-top: 30px;
+    width: 100%;
+    height: 40px;
+    font-weight: 600;
+    font-size: var(--font-size-s);
+    color: var(--color-text-light-2);
+    background-color: var(--color-transparent);
+    border: 1px solid var(--color-text-light-3);
+    cursor: pointer;
+    transition: 0.2s all ease-in-out;
+    user-select: none;
+    max-width: 150px;
+}
+
+.course-div-left .course-rating-div .all-review-btn:hover {
+    background-color: var(--color-light-grey-2);
+}
+
 /*right side content*/
 .course-section .course-div .course-div-right {
     max-width: 360px;
@@ -252,8 +401,15 @@
     padding: 10px 20px 20px;
 }
 
+.course-sticky-div .sticky-div-bot .sticky-div-title {
+    padding: 6px 0 4px;
+    font-weight: 600;
+    font-size: var(--font-size-xs);
+    color: var(--color-text-light-2);
+}
+
 .course-sticky-div .sticky-div-bot .sticky-div-price {
-    padding: 14px 0 4px;
+    padding: 8px 0 4px;
     gap: 10px;
     align-items: center;
 }

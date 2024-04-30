@@ -23,7 +23,7 @@
         <!-- Include the navigation bar -->
         <%@ include file="./Components/navbar.jsp" %>
 
-        <section class="section course-section" courseID="123123123">
+        <section class="section course-section" courseID="${param.id}">
             <div class="course-div flex-row">
 
                 <div class="course-div-left flex-col">
@@ -179,15 +179,30 @@
                     <div class="course-author-div flex-col">
                         <h1>Author</h1>
 
-                        <a href="<%= webpath.getPageUrl("author")%>?id=123123">
-                            <div class="author-item flex-col">
-                                <h1>Dr. Angela Yu</h1>
-                                <P class="author-position">Developer and Lead Instructor</P>
-                                <div class="author-img">
-                                    <img src="./img/author/angelayu.jpg" alt=""/>
+                        <div class="author-list flex-row">
+                            <a href="<%= webpath.getPageUrl("author")%>?id=123123">
+                                <div class="author-item flex-col">
+                                    <div class="author-img">
+                                        <img src="./img/author/angelayu.jpg" alt=""/>
+                                    </div>
+                                    <div class="author-info flex-col">
+                                        <h1 class="author-name">Dr. Angela Yu</h1>
+                                        <P class="author-position">Developer and Lead Instructor</P>
+                                    </div>
                                 </div>
-                            </div>
-                        </a>
+                            </a>
+                            <a href="<%= webpath.getPageUrl("author")%>?id=123123">
+                                <div class="author-item flex-col">
+                                    <div class="author-img">
+                                        <img src="./img/author/angelayu.jpg" alt=""/>
+                                    </div>
+                                    <div class="author-info flex-col">
+                                        <h1 class="author-name">Dr. Angela Yu</h1>
+                                        <P class="author-position">Developer and Lead Instructor</P>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
 
                     </div>
 
@@ -207,8 +222,8 @@
                                     </div>
                                     <div class="flex-col">
                                         <p class="user-name">Woo Yu Beng</p>
-                                        <div class="flex-row">
-                                            <div class="flex-row">
+                                        <div class="review-top-bot flex-row">
+                                            <div class="rating-stars flex-row">
                                                 <i class="ri-star-fill"></i>
                                                 <i class="ri-star-fill"></i>
                                                 <i class="ri-star-fill"></i>
@@ -231,8 +246,8 @@
                                     </div>
                                     <div class="flex-col">
                                         <p class="user-name">Woo Yu Beng</p>
-                                        <div class="flex-row">
-                                            <div class="flex-row">
+                                        <div class="review-top-bot flex-row">
+                                            <div class="rating-stars flex-row">
                                                 <i class="ri-star-fill"></i>
                                                 <i class="ri-star-fill"></i>
                                                 <i class="ri-star-fill"></i>
@@ -255,8 +270,8 @@
                                     </div>
                                     <div class="flex-col">
                                         <p class="user-name">Woo Yu Beng</p>
-                                        <div class="flex-row">
-                                            <div class="flex-row">
+                                        <div class="review-top-bot flex-row">
+                                            <div class="rating-stars flex-row">
                                                 <i class="ri-star-fill"></i>
                                                 <i class="ri-star-fill"></i>
                                                 <i class="ri-star-fill"></i>
@@ -279,8 +294,8 @@
                                     </div>
                                     <div class="flex-col">
                                         <p class="user-name">Woo Yu Beng</p>
-                                        <div class="flex-row">
-                                            <div class="flex-row">
+                                        <div class="review-top-bot flex-row">
+                                            <div class="rating-stars flex-row">
                                                 <i class="ri-star-fill"></i>
                                                 <i class="ri-star-fill"></i>
                                                 <i class="ri-star-fill"></i>
@@ -297,6 +312,8 @@
                             </div>
 
                         </div>
+                        
+                        <button class="all-review-btn">Show all reviews</button>
 
                     </div>
 
@@ -315,6 +332,11 @@
                         </div>
 
                         <div class="sticky-div-bot flex-col">
+                            <!--course title-->
+                            <div class="sticky-div-title flex-row">
+                                <h1>100 Days of Code: The Complete Python Pro Bootcamp</h1>
+                            </div>
+                            
                             <!--Course Price-->
                             <div class="sticky-div-price flex-row">
                                 <p class="course-price">RM <span>449.90</span></p>                                      
