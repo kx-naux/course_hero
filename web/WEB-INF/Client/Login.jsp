@@ -17,33 +17,33 @@
             <div class="login-div flex-row">
                 <div class="login-panel login-left flex-col">
                     <div class="login-left-row-1">
-                        <a href="<%= webpath.getPageUrl("home") %>"><img class="login-logo" src="./img/Logo.png" alt="Course Hero" /></a>
+                        <a href="<%= webpath.getPageUrl("home")%>"><img class="login-logo" src="./img/Logo.png" alt="Course Hero" /></a>
                     </div>
-                    <form action="Login" method="post">
+                    <form action="login" method="post">
                         <div class="login-form-div flex-col">
-                        <h1>Welcome Back</h1>
-                        <div class="login-form-input-div flex-col">
-                            <div class="input-field">
-                                <input type="text" id="username" name="username" class="form-input" placeholder="Username / Email" oninput="reset_error_msg()" />
-                                <label for="username" class="form-label">Username / Email</label>
-                            </div>
-                            <div class="input-field">
-                                <input type="password" id="password" name="password" class="form-input" placeholder="Password" oninput="reset_error_msg()" />
-                                <label for="password" class="form-label">Password</label>
-                            </div>
-                            <div class="remember-me-div flex-row">
-                                <diV class="flex-row">
-                                <input type="checkbox" id="rememberMe" name="rememberMe" value="rememberMe"/>
-                                <label for="rememberMe" class="">Remember Me</label>
+                            <h1>Welcome Back</h1>
+                            <div class="login-form-input-div flex-col">
+                                <div class="input-field">
+                                    <input type="text" id="username" name="username" class="form-input" placeholder="Username / Email" oninput="reset_error_msg()" />
+                                    <label for="username" class="form-label">Username / Email</label>
                                 </div>
-                                <a class="forget-password" href="<%= webpath.getPageUrl("forget passworde") %>"><p>Forget password</p></a>
+                                <div class="input-field">
+                                    <input type="password" id="password" name="password" class="form-input" placeholder="Password" oninput="reset_error_msg()" />
+                                    <label for="password" class="form-label">Password</label>
+                                </div>
+                                <div class="remember-me-div flex-row">
+                                    <diV class="flex-row">
+                                        <input type="checkbox" id="rememberMe" name="rememberMe" value="rememberMe"/>
+                                        <label for="rememberMe" class="">Remember Me</label>
+                                    </div>
+                                    <a class="forget-password" href="<%= webpath.getPageUrl("forget passworde")%>"><p>Forget password</p></a>
+                                </div>
+                            </div>
+                            <div class="login-form-bot flex-col">
+                                <input type="submit" value="Sign In"/>
+                                <P>Doesn't have account? <a class="sign-up" href="<%= webpath.getPageUrl("sign up")%>">Sign up now</a></P>
                             </div>
                         </div>
-                        <div class="login-form-bot flex-col">
-                            <input type="submit" value="Sign In"/>
-                            <P>Doesn't have account? <a class="sign-up" href="<%= webpath.getPageUrl("sign up") %>">Sign up now</a></P>
-                        </div>
-                    </div>
                     </form>
                 </div>
                 <div class="login-panel login-right">
@@ -56,7 +56,7 @@
                         <div class="right-backgound-div shape-3"></div>
                     </div>
                 </div>
-                <a class="back-to-home-a" href="<%= webpath.getPageUrl("home") %>">Back to home page <i class="ri-arrow-go-back-line"></i></a>
+                <a class="back-to-home-a" href="<%= webpath.getPageUrl("home")%>">Back to home page <i class="ri-arrow-go-back-line"></i></a>
             </div>
         </section>
     </body>
