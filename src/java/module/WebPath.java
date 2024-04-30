@@ -17,10 +17,11 @@ public class WebPath {
         pageUrls.put("home", "/home");
         pageUrls.put("about us", "/about-us");
         pageUrls.put("products", "/courses");
+        pageUrls.put("author", "/author");
         pageUrls.put("learning", "/learning");
         pageUrls.put("cart","/cart");
         pageUrls.put("wishlist","/wishlist");
-        pageUrls.put("merchandise", "/merchandises");
+        pageUrls.put("merchandises", "/merchandises");
         pageUrls.put("merchandise", "/merch");
       
         pageUrls.put("ErrorLogin","/ErrorLogin");

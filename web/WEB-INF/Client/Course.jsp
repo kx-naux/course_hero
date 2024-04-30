@@ -29,44 +29,202 @@
                 <div class="course-div-left flex-col">
 
                     <!--Course General Info-->
-                    <div class="course-general-div">
-
+                    <div class="course-general-div  flex-col">
+                        <h1 class="course-title">100 Days of Code: The Complete Python Pro Bootcamp</h1>
+                        <h2 class="course-short-desc">Master Python by building 100 projects in 100 days. Learn data science, automation, build websites, games and apps!</h2>
+                        <h3 class="course-category">Python Programming</h3>
+                        <div class="course-rating">
+                            <p class="rating-digit">4.5</p>
+                            <div class="flex-row">
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-half-fill"></i>
+                            </div>
+                            <p class="rating-number-field"><a href="#rating-div">(<span class="raing-number">2303</span> ratings)</a></p>
+                            <p>4864 students</p>
+                        </div>
+                        <p class="course-update-date">Last updated 4/2024</p>
                     </div>
 
                     <!--What you will learn-->
-                    <div class="course-learn-div">
-
-                    </div>
-
-                    <!--Course Include-->
-                    <div class="course-include-div"> 
-
+                    <div class="course-learn-div  flex-col">
+                        <h1>What you'll learn</h1>
+                        <div class="course-learn-point">
+                            <ul class="course-learn-point-list flex-row">
+                                <li>
+                                    <div class="flex-row">
+                                        <p><i class="ri-check-line"></i></p>
+                                        <div>
+                                            <span>You will master the Python programming language by building 100 unique projects over 100 days.</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="flex-row">
+                                        <p><i class="ri-check-line"></i></p>
+                                        <div>
+                                            <span>You will learn automation, game, app and web development, data science and machine learning all using Python.</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="flex-row">
+                                        <p><i class="ri-check-line"></i></p>
+                                        <div>
+                                            <span>You will be able to program in Python professionally</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="flex-row">
+                                        <p><i class="ri-check-line"></i></p>
+                                        <div>
+                                            <span>You will learn Selenium, Beautiful Soup, Request, Flask, Pandas, NumPy, Scikit Learn, Plotly, and Matplotlib.</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="flex-row">
+                                        <p><i class="ri-check-line"></i></p>
+                                        <div>
+                                            <span>Create a portfolio of 100 Python projects to apply for developer jobs</span>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>   
                     </div>
 
                     <!--Course syllabus-->
-                    <div class="course-syllabus-div">
+                    <div class="course-syllabus-div flex-col">
+                        <h1>Syllabus</h1>
+                        <div class="flex-row">
+                            <p>10 Section</p>
+                            <p>58h 19m Video</p>
+                        </div>
+                        <div class="course-syllabus-list flex-col">
 
+                            <div class="syllabus-item flex-row">
+                                <div class="syllabus-item-left">
+                                    <p class="section-number">1</p>
+                                </div>
+                                <div class="syllabus-item-right">
+                                    <h1 class="section-title">Introduction to Python</h1>
+                                    <p class="section-desc">Learn the basics of Python, one of the world’s most popular and powerful programming languages, and see how it can be utilized in Finance.</p>
+                                </div>
+                            </div>
+
+                            <div class="syllabus-item flex-row">
+                                <div class="syllabus-item-left">
+                                    <p class="section-number">2</p>
+                                </div>
+                                <div class="syllabus-item-right">
+                                    <h1 class="section-title">Introduction to NumPy</h1>
+                                    <p class="section-desc">Learn the basics of Python, one of the world’s most popular and powerful programming languages, and see how it can be utilized in Finance.</p>
+                                </div>
+                            </div>
+
+                            <div class="syllabus-item flex-row">
+                                <div class="syllabus-item-left">
+                                    <p class="section-number">3</p>
+                                </div>
+                                <div class="syllabus-item-right">
+                                    <h1 class="section-title">Introduction to Pandas</h1>
+                                    <p class="section-desc">Learn the basics of Python, one of the world’s most popular and powerful programming languages, and see how it can be utilized in Finance.</p>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
 
                     <!--Course requirements-->
-                    <div class="course-requirement-div">
-
+                    <div class="course-requirement-div flex-col">
+                        <h1>Requirements</h1>
+                        <ul>
+                            <li>No programming experience needed - I'll teach you everything you need to know</li>
+                            <li>A Mac or Windows PC computer with access to the internet</li>
+                            <li>No paid software required - I'll teach you how to use PyCharm, Jupyter Notebooks and Google Colab</li>
+                            <li>I'll walk you through, step-by-step how to get all the software installed and set up</li>
+                        </ul>
                     </div>
 
                     <!--Course description-->
-                    <div class="course-desc-div">
+                    <div class="course-desc-div flex-col">
+                        <h1>Description</h1>
+                        <p>Welcome to the 100 Days of Code - The Complete Python Pro Bootcamp, the only course you need to learn to code with Python. With over 500,000 5 STAR reviews and a 4.8 average, my courses are some of the HIGHEST RATED courses in the history of Udemy!  
+
+                            100 days, 1 hour per day, learn to build 1 project per day, this is how you master Python.
+
+                            At 60+ hours, this Python course is without a doubt the most comprehensive Python course available anywhere online. Even if you have zero programming experience, this course will take you from beginner to professional.</p>
+                    </div>
+
+                    <!--Course target-->
+                    <div class="course-target-div flex-col">
+                        <h1>Who this course is for</h1>
+                        <ul>
+                            <li>If you want to learn to code from scratch through building fun and useful projects, then take this course.</li>
+                            <li>If you want to start your own startup by building your own websites and web apps.</li>
+                            <li>If you are a complete beginner then this course will be everything you need to become a Python professional</li>
+                            <li>If you are a seasoned programmer wanting to switch to Python then this is the quickest way. Learn through coding projects.</li>
+                        </ul>
+                    </div>
+
+                    <!--Course Author-->
+                    <div class="course-author-div flex-col">
+                        <h1>Author</h1>
+
+                        <a href="<%= webpath.getPageUrl("author")%>?id=123123">
+                            <div class="author-item flex-col">
+                                <h1>Dr. Angela Yu</h1>
+                                <P class="author-position">Developer and Lead Instructor</P>
+                                <div class="author-img">
+                                    <img src="./img/author/angelayu.jpg" alt=""/>
+                                </div>
+                            </div>
+                        </a>
 
                     </div>
 
-                    <!--Course description-->
-                    <div class="course-author-div">
-
-                    </div>
-                    
                     <!--Course rating-->
-                    <div class="course-rating-div">
+                    <div class="course-rating-div flex-col" id="rating-div">
+                        <div class="course-overall-rating flex-row">
+                            <p class="course-overall-rate"><i class="ri-star-fill"></i> 4.7 course rating</p>
+                            <p class="course-overall-rate">258 ratings</p>
+                        </div>
+
+                        <div class="course-review">
+
+                            <div class="user-review flex-col">
+                                <div class="user-review-top flex-row">
+                                    <div class="user-img">
+                                        <img src="./img/user/default.png" alt="" />
+                                    </div>
+                                    <div class="flex-col">
+                                        <p class="user-name">Woo Yu Beng</p>
+                                        <div class="flex-row">
+                                            <div class="flex-row">
+                                                <i class="ri-star-fill"></i>
+                                                <i class="ri-star-fill"></i>
+                                                <i class="ri-star-fill"></i>
+                                                <i class="ri-star-fill"></i>
+                                                <i class="ri-star-half-fill"></i>
+                                            </div>
+                                            <p class="review-date">29/4/2024</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="user-review-bot flex-col">
+                                    <p>I have a B.S. in Computer Programming. My curriculum did not include Python, so I decided to give this a try. This course is amazing! I do not normally leave reviews, but I am very happy with the purchase.</p>
+                                </div>
+                            </div>
+
+                        </div>
 
                     </div>
+
+                    <!--More course form author-->
 
                 </div>
 

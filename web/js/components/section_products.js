@@ -6,6 +6,8 @@ function redirectToProductPage(product) {
 
 //Add to cart / remove from cart
 function cartButtonClick(evt) {
+    evt.stopPropagation();
+    
     // check is login?
 
     evt.preventDefault();
@@ -15,6 +17,8 @@ function cartButtonClick(evt) {
 
 //Add to wishlist / remove from wishlist
 function likeButtonClick(evt) {
+    evt.stopPropagation();
+    
     // check is login?
 
     evt.preventDefault();
