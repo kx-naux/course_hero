@@ -23,7 +23,7 @@
         <!-- Include the navigation bar -->
         <%@ include file="./Components/navbar.jsp" %>
 
-        <section class="section course-section">
+        <section class="section course-section" courseID="123123123">
             <div class="course-div flex-row">
 
                 <div class="course-div-left flex-col">
@@ -194,7 +194,79 @@
                             <p class="course-overall-rate">258 ratings</p>
                         </div>
 
-                        <div class="course-review">
+                        <div class="course-review flex-row">
+
+                            <div class="user-review flex-col">
+                                <div class="user-review-top flex-row">
+                                    <div class="user-img">
+                                        <img src="./img/user/default.png" alt="" />
+                                    </div>
+                                    <div class="flex-col">
+                                        <p class="user-name">Woo Yu Beng</p>
+                                        <div class="flex-row">
+                                            <div class="flex-row">
+                                                <i class="ri-star-fill"></i>
+                                                <i class="ri-star-fill"></i>
+                                                <i class="ri-star-fill"></i>
+                                                <i class="ri-star-fill"></i>
+                                                <i class="ri-star-half-fill"></i>
+                                            </div>
+                                            <p class="review-date">29/4/2024</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="user-review-bot flex-col">
+                                    <p>I have a B.S. in Computer Programming. My curriculum did not include Python, so I decided to give this a try. This course is amazing! I do not normally leave reviews, but I am very happy with the purchase.</p>
+                                </div>
+                            </div>
+
+                            <div class="user-review flex-col">
+                                <div class="user-review-top flex-row">
+                                    <div class="user-img">
+                                        <img src="./img/user/default.png" alt="" />
+                                    </div>
+                                    <div class="flex-col">
+                                        <p class="user-name">Woo Yu Beng</p>
+                                        <div class="flex-row">
+                                            <div class="flex-row">
+                                                <i class="ri-star-fill"></i>
+                                                <i class="ri-star-fill"></i>
+                                                <i class="ri-star-fill"></i>
+                                                <i class="ri-star-fill"></i>
+                                                <i class="ri-star-half-fill"></i>
+                                            </div>
+                                            <p class="review-date">29/4/2024</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="user-review-bot flex-col">
+                                    <p>I have a B.S. in Computer Programming. My curriculum did not include Python, so I decided to give this a try. This course is amazing! I do not normally leave reviews, but I am very happy with the purchase.</p>
+                                </div>
+                            </div>
+
+                            <div class="user-review flex-col">
+                                <div class="user-review-top flex-row">
+                                    <div class="user-img">
+                                        <img src="./img/user/default.png" alt="" />
+                                    </div>
+                                    <div class="flex-col">
+                                        <p class="user-name">Woo Yu Beng</p>
+                                        <div class="flex-row">
+                                            <div class="flex-row">
+                                                <i class="ri-star-fill"></i>
+                                                <i class="ri-star-fill"></i>
+                                                <i class="ri-star-fill"></i>
+                                                <i class="ri-star-fill"></i>
+                                                <i class="ri-star-half-fill"></i>
+                                            </div>
+                                            <p class="review-date">29/4/2024</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="user-review-bot flex-col">
+                                    <p>I have a B.S. in Computer Programming. My curriculum did not include Python, so I decided to give this a try. This course is amazing! I do not normally leave reviews, but I am very happy with the purchase.</p>
+                                </div>
+                            </div>
 
                             <div class="user-review flex-col">
                                 <div class="user-review-top flex-row">
@@ -238,23 +310,35 @@
                             </video>
                         </div>
 
-                        <!--Course Price-->
-                        <div class="sticky-div-price">
-                            <p class="course-price">RM <span>449.90</span></p>                                      
-                            <p class="course-normal-price">RM <span>650.00</span></p>
-                            <p class="course-offer">50% OFF</p>
-                        </div>
+                        <div class="sticky-div-bot flex-col">
+                            <!--Course Price-->
+                            <div class="sticky-div-price flex-row">
+                                <p class="course-price">RM <span>449.90</span></p>                                      
+                                <p class="course-normal-price">RM <span>650.00</span></p>
+                                <p class="course-offer">50% off</p>
+                            </div>
 
-                        <!--Course add to cart or wish list-->
-                        <div class="sticky-div-cart">
-                            <button class="course-cart">Add to cart</button>
-                            <button class="course-cart"><i class="ri-heart-line"></i></button>
-                        </div>
+                            <!--Course add to cart or wish list-->
+                            <div class="sticky-div-cart flex-row">
+                                <%
+                                    boolean inCart = false;
+                                    boolean inWishlist = false;
+                                %>
+                                <button class="course-cart" status="<%= inCart ? "1" : "0" %>"><%= inWishlist ? "Go to cart" : "Add to cart" %></button>
+                                <button class="course-wish" status="<%= inWishlist ? "1" : "0" %>"><i class="ri-heart-line"></i></button>
+                            </div>
 
-                        <!--Information-->
-                        <div class="sticky-div-info">
-                            <p>30-Day Money-Back Guarantee</p>
-                            <p>Full Lifetime Access</p>
+                            <!--Information-->
+                            <div class="sticky-div-info flex-col">
+                                <p>30-Day Money-Back Guarantee</p>
+                                <p>Full Lifetime Access</p>
+                            </div>
+
+                            <!--share this course-->
+                            <div class="sticky-div-share flex-col">
+                                <button class="share-btn">Share Course <i class="ri-link"></i></button>
+                            </div>
+
                         </div>
                     </div>
 
@@ -262,7 +346,9 @@
 
             </div>
         </section>
-
+                            
+        <script src="./js/single_course/single_course.js"></script>
+        
         <!--Footer import-->
         <%--<%@ include file="./Components/footer_wave.html" %>--%>  
         <%@ include file="./Components/footer.jsp" %>  
