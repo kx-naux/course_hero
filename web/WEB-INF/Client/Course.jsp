@@ -111,8 +111,8 @@
                         <div class="course-syllabus-list flex-col">
 
                             <div class="syllabus-item flex-row">
-                                <div class="syllabus-item-left">
-                                    <p class="section-number">1</p>
+                                <div class="syllabus-item-left flex-col">
+                                    <div class="section-number">1</div>
                                 </div>
                                 <div class="syllabus-item-right">
                                     <h1 class="section-title">Introduction to Python</h1>
@@ -121,8 +121,8 @@
                             </div>
 
                             <div class="syllabus-item flex-row">
-                                <div class="syllabus-item-left">
-                                    <p class="section-number">2</p>
+                                <div class="syllabus-item-left flex-col">
+                                    <div class="section-number">2</div>
                                 </div>
                                 <div class="syllabus-item-right">
                                     <h1 class="section-title">Introduction to NumPy</h1>
@@ -131,8 +131,8 @@
                             </div>
 
                             <div class="syllabus-item flex-row">
-                                <div class="syllabus-item-left">
-                                    <p class="section-number">3</p>
+                                <div class="syllabus-item-left flex-col">
+                                    <div class="section-number">3</div>
                                 </div>
                                 <div class="syllabus-item-right">
                                     <h1 class="section-title">Introduction to Pandas</h1>
@@ -146,7 +146,7 @@
                     <!--Course requirements-->
                     <div class="course-requirement-div flex-col">
                         <h1>Requirements</h1>
-                        <ul>
+                        <ul class="flex-col">
                             <li>No programming experience needed - I'll teach you everything you need to know</li>
                             <li>A Mac or Windows PC computer with access to the internet</li>
                             <li>No paid software required - I'll teach you how to use PyCharm, Jupyter Notebooks and Google Colab</li>
@@ -167,7 +167,7 @@
                     <!--Course target-->
                     <div class="course-target-div flex-col">
                         <h1>Who this course is for</h1>
-                        <ul>
+                        <ul class="flex-col">
                             <li>If you want to learn to code from scratch through building fun and useful projects, then take this course.</li>
                             <li>If you want to start your own startup by building your own websites and web apps.</li>
                             <li>If you are a complete beginner then this course will be everything you need to become a Python professional</li>
