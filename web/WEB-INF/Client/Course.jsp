@@ -179,15 +179,26 @@
                     <div class="course-author-div flex-col">
                         <h1>Author</h1>
 
-                        <a href="<%= webpath.getPageUrl("author")%>?id=123123">
-                            <div class="author-item flex-col">
-                                <h1>Dr. Angela Yu</h1>
-                                <P class="author-position">Developer and Lead Instructor</P>
-                                <div class="author-img">
-                                    <img src="./img/author/angelayu.jpg" alt=""/>
+                        <div class="author-list flex-row">
+                            <a href="<%= webpath.getPageUrl("author")%>?id=123123">
+                                <div class="author-item flex-col">
+                                    <h1>Dr. Angela Yu</h1>
+                                    <P class="author-position">Developer and Lead Instructor</P>
+                                    <div class="author-img">
+                                        <img src="./img/author/angelayu.jpg" alt=""/>
+                                    </div>
                                 </div>
-                            </div>
-                        </a>
+                            </a>
+                            <a href="<%= webpath.getPageUrl("author")%>?id=123123">
+                                <div class="author-item flex-col">
+                                    <h1>Dr. Angela Yu</h1>
+                                    <P class="author-position">Developer and Lead Instructor</P>
+                                    <div class="author-img">
+                                        <img src="./img/author/angelayu.jpg" alt=""/>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
 
                     </div>
 

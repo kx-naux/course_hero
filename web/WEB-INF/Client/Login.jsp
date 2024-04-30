@@ -36,9 +36,14 @@
                                         <input type="checkbox" id="rememberMe" name="rememberMe" value="rememberMe"/>
                                         <label for="rememberMe" class="">Remember Me</label>
                                     </div>
-                                    <a class="forget-password" href="<%= webpath.getPageUrl("forget passworde")%>"><p>Forget password</p></a>
+                                    <a class="forget-password" href="<%= webpath.getPageUrl("forget password")%>"><p>Forget password</p></a>
                                 </div>
                             </div>
+                            <%
+                                if (session.getAttribute("errorMsg") != null) {
+                            %>
+                            <p class="invalid-msg"><%= session.getAttribute("errorMsg") %></p>
+                            <% } %>
                             <div class="login-form-bot flex-col">
                                 <input type="submit" value="Sign In"/>
                                 <P>Doesn't have account? <a class="sign-up" href="<%= webpath.getPageUrl("sign up")%>">Sign up now</a></P>

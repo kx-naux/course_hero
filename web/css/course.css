@@ -221,6 +221,10 @@
     line-height: 30px;
 }
 
+.course-div-left .course-author-div .author-list {
+    
+}
+
 /*right side content*/
 .course-section .course-div .course-div-right {
     max-width: 360px;
