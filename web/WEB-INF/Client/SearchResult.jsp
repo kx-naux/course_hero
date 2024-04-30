@@ -118,62 +118,37 @@
                         <!--Video Duration-->
                         <%
                             String[] durations = request.getParameterValues("duration");
-                            List<String> durationList = null;
-                            String videoActive = "";
-
-                            if (durations != null) {
-                                durationList = Arrays.asList(durations);
-                                videoActive = "active";
-                            }
+                            List<String> durationList = (durations != null) ? Arrays.asList(durations) : null;
+                            String videoActive = (durationList != null) ? "active" : "";
                         %>
-                        <div class="filter-div flex-col <%= videoActive%> ">
+                        <div class="filter-div flex-col <%= videoActive%>">
                             <div class="filter-type-title flex-row">
                                 <h1>Video Duration</h1>
                                 <p><i class="ri-arrow-down-s-line"></i></p>
                             </div>
                             <div class="filter-option-div duration-filter-div flex-col">
                                 <label for="filter-duration-1" class="check-filter-option flex-row">
-                                    <%   if (durations != null && durationList.contains("extrashort")) { %>
-                                    <input name="duration" id="filter-duration-1" type="checkbox" value="extrashort" checked />
-                                    <% } else {  %>
-                                    <input name="duration" id="filter-duration-1" type="checkbox" value="extrashort" />
-                                    <% }%>
+                                    <input name="duration" id="filter-duration-1" type="checkbox" value="extrashort" <%= (durationList != null && durationList.contains("extrashort")) ? "checked" : ""%> />
                                     <span class="filter-desc">0-1 Hour</span>
                                     <span class="result-count">(1000)</span>
                                 </label>
                                 <label for="filter-duration-2" class="check-filter-option flex-row">
-                                    <%   if (durations != null && durationList.contains("short")) { %>
-                                    <input name="duration" id="filter-duration-2" type="checkbox" value="short" checked />
-                                    <% } else {  %>
-                                    <input name="duration" id="filter-duration-2" type="checkbox" value="short"  />
-                                    <% }%>
+                                    <input name="duration" id="filter-duration-2" type="checkbox" value="short" <%= (durationList != null && durationList.contains("short")) ? "checked" : ""%> />
                                     <span class="filter-desc">1-3 Hours</span>
                                     <span class="result-count">(1000)</span>
                                 </label>
                                 <label for="filter-duration-3" class="check-filter-option flex-row">
-                                    <%   if (durations != null && durationList.contains("medium")) { %>
-                                    <input name="duration" id="filter-duration-3" type="checkbox" value="medium" checked />
-                                    <% } else {  %>
-                                    <input name="duration" id="filter-duration-3" type="checkbox" value="medium"  />
-                                    <% }%>
+                                    <input name="duration" id="filter-duration-3" type="checkbox" value="medium" <%= (durationList != null && durationList.contains("medium")) ? "checked" : ""%> />
                                     <span class="filter-desc">3-6 Hours</span>
                                     <span class="result-count">(1000)</span>
                                 </label>
                                 <label for="filter-duration-4" class="check-filter-option flex-row">
-                                    <%   if (durations != null && durationList.contains("long")) { %>
-                                    <input name="duration" id="filter-duration-4" type="checkbox" value="long" checked  />
-                                    <% } else {  %>
-                                    <input name="duration" id="filter-duration-4" type="checkbox" value="long"  />
-                                    <% }%>
+                                    <input name="duration" id="filter-duration-4" type="checkbox" value="long" <%= (durationList != null && durationList.contains("long")) ? "checked" : ""%> />
                                     <span class="filter-desc">6-17 Hours</span>
                                     <span class="result-count">(1000)</span>
                                 </label>
                                 <label for="filter-duration-5" class="check-filter-option flex-row">
-                                    <%   if (durations != null && durationList.contains("extralong")) { %>
-                                    <input name="duration" id="filter-duration-5" type="checkbox" value="extralong" checked />
-                                    <% } else {  %>
-                                    <input name="duration" id="filter-duration-5" type="checkbox" value="extralong"  />
-                                    <% }%>
+                                    <input name="duration" id="filter-duration-5" type="checkbox" value="extralong" <%= (durationList != null && durationList.contains("extralong")) ? "checked" : ""%> />
                                     <span class="filter-desc">17+ Hours</span>
                                     <span class="result-count">(1000)</span>
                                 </label>
@@ -183,13 +158,8 @@
                         <!--Course Level-->
                         <%
                             String[] levels = request.getParameterValues("level");
-                            List<String> levelList = null;
-                            String levelActive = "";
-
-                            if (levels != null) {
-                                levelList = Arrays.asList(levels);
-                                levelActive = "active";
-                            }
+                            List<String> levelList = (levels != null) ? Arrays.asList(levels) : null;
+                            String levelActive = (levelList != null) ? "active" : "";
                         %>
                         <div class="filter-div flex-col <%= levelActive%>">
                             <div class="filter-type-title flex-row">
@@ -198,38 +168,22 @@
                             </div>
                             <div class="filter-option-div level-filter-div flex-col">
                                 <label for="filter-level-1" class="check-filter-option flex-row">
-                                    <%   if (levels != null && levelList.contains("all")) { %>
-                                    <input name="level" id="filter-level-1" type="checkbox" value="all" checked />
-                                    <% } else {  %>
-                                    <input name="level" id="filter-level-1" type="checkbox" value="all" />
-                                    <% } %>
+                                    <input name="level" id="filter-level-1" type="checkbox" value="all" <%= (levelList != null && levelList.contains("all")) ? "checked" : ""%> />
                                     <span class="filter-desc">All Levels</span>
                                     <span class="result-count">(1000)</span>
                                 </label>
                                 <label for="filter-level-2" class="check-filter-option flex-row">
-                                    <%   if (levels != null && levelList.contains("beginner")) { %>
-                                    <input name="level" id="filter-level-2" type="checkbox" value="beginner" checked />
-                                    <% } else {  %>
-                                    <input name="level" id="filter-level-2" type="checkbox" value="beginner" />
-                                    <% }%>
+                                    <input name="level" id="filter-level-2" type="checkbox" value="beginner" <%= (levelList != null && levelList.contains("beginner")) ? "checked" : ""%> />
                                     <span class="filter-desc">Beginner</span>
                                     <span class="result-count">(1000)</span>
                                 </label>
                                 <label for="filter-level-3" class="check-filter-option flex-row">
-                                    <%   if (levels != null && levelList.contains("intermediate")) { %>
-                                    <input name="level" id="filter-level-3" type="checkbox" value="intermediate" checked />
-                                    <% } else {  %>
-                                    <input name="level" id="filter-level-3" type="checkbox" value="intermediate" />
-                                    <% }%>
+                                    <input name="level" id="filter-level-3" type="checkbox" value="intermediate" <%= (levelList != null && levelList.contains("intermediate")) ? "checked" : ""%> />
                                     <span class="filter-desc">Intermediate</span>
                                     <span class="result-count">(1000)</span>
                                 </label>
                                 <label for="filter-level-4" class="check-filter-option flex-row">
-                                    <%   if (levels != null && levelList.contains("expert")) { %>
-                                    <input name="level" id="filter-level-4" type="checkbox" value="expert" checked />
-                                    <% } else {  %>
-                                    <input name="level" id="filter-level-4" type="checkbox" value="expert" />
-                                    <% }%>
+                                    <input name="level" id="filter-level-4" type="checkbox" value="expert" <%= (levelList != null && levelList.contains("expert")) ? "checked" : ""%> />
                                     <span class="filter-desc">Expert</span>
                                     <span class="result-count">(1000)</span>
                                 </label>
@@ -289,7 +243,6 @@
                                 </label>
                             </div>
                         </div>
-
 
                     </div>
 
@@ -395,51 +348,34 @@
                         currentPage = Integer.parseInt(request.getParameter("p"));
                     }
 
-                    String previousAllow = "";
-                    String nextAllow = "";
-
-                    if (currentPage > 1) {
-                        previousAllow = "allow";
-                    }
-
-                    if (currentPage < lastPage) {
-                        nextAllow = "allow";
-                    }
+                    boolean previousAllow = currentPage > 1;
+                    boolean nextAllow = currentPage < lastPage;
                 %>
                 <input type="number" id="current_page" name="p" value="<%= currentPage%>" hidden />
                 <div class="result-pagination-div flex-row">
-                    <p class="page-action-btn page-previous-btn <%= previousAllow%>"><i class="ri-arrow-left-s-line"></i></p>
-                        <%
-                            if (currentPage - 1 != 0) {
-                        %>
+                    <p class="page-action-btn page-previous-btn <%= previousAllow ? "allow" : ""%>"><i class="ri-arrow-left-s-line"></i></p>
+                        <% if (currentPage - 1 != 0) { %>
                     <p class="first-page-number page-number">1</p>
-                    <%                        }
-                        if (currentPage - 1 != 1 && currentPage - 1 != 2 && currentPage - 1 > 0) {
-                    %>
-                    <p>...</p>
-                    <%                        }
-                        if (currentPage - 1 > 1) {
-                    %>
+                    <% }
+                        if (currentPage - 1 != 1 && currentPage - 1 != 2 && currentPage - 1 > 0) { %>
+                    <p class="number-dot">...</p>
+                    <% }
+                        if (currentPage - 1 > 1) {%>
                     <p class="first-page-number page-number"><%= currentPage - 1%></p>
-                    <%
-                        }
-                    %>
+                    <% }%>
                     <p class="first-page-number page-number current-page"><%= currentPage%></p>
-                    <%
-                        if (currentPage
-                                + 1 < lastPage) {
-                    %>
+                    <% if (currentPage + 1 < lastPage) {%>
                     <p class="first-page-number page-number"><%= currentPage + 1%></p>
-                    <p>...</p>
                     <%
                         }
-                        if (lastPage > 1 && currentPage != lastPage) {
+                        if (currentPage + 1 != lastPage && currentPage + 2 != lastPage && currentPage + 1 < lastPage) {
                     %>
+                    <p class="number-dot">...</p>
+                    <% }
+                        if (lastPage > 1 && currentPage != lastPage) {%>
                     <p class="last-page-number page-number"><%= lastPage%></p>
-                    <%
-                        }
-                    %>
-                    <p class="page-action-btn page-next-btn <%= nextAllow%>"><i class="ri-arrow-right-s-line"></i></p>
+                    <% }%>
+                    <p class="page-action-btn page-next-btn <%= nextAllow ? "allow" : ""%>"><i class="ri-arrow-right-s-line"></i></p>
                 </div>
             </section>
         </form>

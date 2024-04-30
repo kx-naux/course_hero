@@ -89,7 +89,7 @@
                 </form>
             </div>
             <div class="nav-search-result flex-col">
-                <a onclick="search_suggestion_click(this)">
+<!--                <a onclick="search_suggestion_click(this)">
                     <div class="nav-search-suggestion-query flex-row">
                         <p class="suggest-icon"><i class="ri-search-line"></i></p>
                         <p class="suggest-query">Python</p>
@@ -133,7 +133,7 @@
                             <p>Woo Yu Beng</p>
                         </div>
                     </div>
-                </a>
+                </a>-->
             </div>
             <div class="nav-popular-search flex-col">
                 <h1>Popular searches</h1>

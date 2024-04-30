@@ -16,12 +16,16 @@ public class WebPath {
         pageUrls.put("forget password","/forget-pw");
         pageUrls.put("home", "/home");
         pageUrls.put("about us", "/about-us");
-        pageUrls.put("products", "/products");
+        pageUrls.put("products", "/courses");
         pageUrls.put("learning", "/learning");
         pageUrls.put("cart","/cart");
         pageUrls.put("wishlist","/wishlist");
+        pageUrls.put("merchandise", "/merchandises");
         pageUrls.put("merchandise", "/merch");
+      
         pageUrls.put("ErrorLogin","/ErrorLogin");
+      
+        
         //admin
         pageUrls.put("dashboard","/admin/dashboard");
     }
