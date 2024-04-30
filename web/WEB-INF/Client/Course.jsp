@@ -312,7 +312,7 @@
                             </div>
 
                         </div>
-                        
+
                         <button class="all-review-btn">Show all reviews</button>
 
                     </div>
@@ -336,7 +336,7 @@
                             <div class="sticky-div-title flex-row">
                                 <h1>100 Days of Code: The Complete Python Pro Bootcamp</h1>
                             </div>
-                            
+
                             <!--Course Price-->
                             <div class="sticky-div-price flex-row">
                                 <p class="course-price">RM <span>449.90</span></p>                                      
@@ -369,6 +369,241 @@
                         </div>
                     </div>
 
+                </div>
+
+            </div>
+        </section>
+
+        <section class="section all-review-section">
+            <div class="all-review-div flex-col">
+
+                <!--title and close btn-->
+                <div class="all-review-top flex-row">
+                    <p class="course-overall-rate"><i class="ri-star-fill"></i> 4.7 course rating</p>
+                    <p class="course-overall-rate">258 ratings</p>
+                    <span class="close-btn"><i class="ri-close-line"></i></span>
+                </div>
+
+                <div class="all-review-bot flex-row">
+
+                    <div class="review-content-left flex-col">
+
+                        <div class="rating-count flex-row">
+                            <div class="rating-percentage-bar flex-col">
+                                <span class="background-bar"></span>
+                                <span class="front-bar" style="width: 70%"></span>
+                            </div>
+                            <div class="rating-stars flex-row">
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                            </div>
+                            <p class="review-number">70%</p>
+                        </div>
+                        <div class="rating-count flex-row">
+                            <div class="rating-percentage-bar">
+                                <span class="background-bar"></span>
+                                <span class="front-bar" style="width: 20%"></span>
+                                                            </div>
+                            <div class="rating-stars flex-row">
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-line"></i>
+                            </div>
+                            <p class="review-number">20%</p>
+                        </div>
+                        <div class="rating-count flex-row">
+                            <div class="rating-percentage-bar">
+                                <span class="background-bar"></span>
+                                <span class="front-bar" style="width: 4%"></span>
+                            </div>
+                            <div class="rating-stars flex-row">
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-line"></i>
+                                <i class="ri-star-line"></i>
+                            </div>
+                            <p class="review-number">4%</p>
+                        </div>
+                        <div class="rating-count flex-row">
+                            <div class="rating-percentage-bar">
+                                <span class="background-bar"></span>
+                                <span class="front-bar" style="width: 1%"></span>
+                            </div>
+                            <div class="rating-stars flex-row">
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-line"></i>
+                                <i class="ri-star-line"></i>
+                                <i class="ri-star-line"></i>
+                            </div>
+                            <p class="review-number">1%</p>
+                        </div>
+                        <div class="rating-count flex-row">
+                            <div class="rating-percentage-bar">
+                                <span class="background-bar"></span>
+                                <span class="front-bar"  style="width: 1%"></span>
+                            </div>
+                            <div class="rating-stars flex-row">
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-line"></i>
+                                <i class="ri-star-line"></i>
+                                <i class="ri-star-line"></i>
+                                <i class="ri-star-line"></i>
+                            </div>
+                            <p class="review-number">1%</p>
+                        </div>
+
+                    </div>
+
+                    <div class="review-content-right flex-col">
+
+                        <div class="user-review flex-col">
+                            <div class="user-review-top flex-row">
+                                <div class="user-img">
+                                    <img src="./img/user/default.png" alt="" />
+                                </div>
+                                <div class="flex-col">
+                                    <p class="user-name">Woo Yu Beng</p>
+                                    <div class="review-top-bot flex-row">
+                                        <div class="rating-stars flex-row">
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-half-fill"></i>
+                                        </div>
+                                        <p class="review-date">29/4/2024</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="user-review-bot flex-col">
+                                <p>I have a B.S. in Computer Programming. My curriculum did not include Python, so I decided to give this a try. This course is amazing! I do not normally leave reviews, but I am very happy with the purchase.</p>
+                            </div>
+                        </div>
+                        <div class="user-review flex-col">
+                            <div class="user-review-top flex-row">
+                                <div class="user-img">
+                                    <img src="./img/user/default.png" alt="" />
+                                </div>
+                                <div class="flex-col">
+                                    <p class="user-name">Woo Yu Beng</p>
+                                    <div class="review-top-bot flex-row">
+                                        <div class="rating-stars flex-row">
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-half-fill"></i>
+                                        </div>
+                                        <p class="review-date">29/4/2024</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="user-review-bot flex-col">
+                                <p>I have a B.S. in Computer Programming. My curriculum did not include Python, so I decided to give this a try. This course is amazing! I do not normally leave reviews, but I am very happy with the purchase.</p>
+                            </div>
+                        </div>
+                        <div class="user-review flex-col">
+                            <div class="user-review-top flex-row">
+                                <div class="user-img">
+                                    <img src="./img/user/default.png" alt="" />
+                                </div>
+                                <div class="flex-col">
+                                    <p class="user-name">Woo Yu Beng</p>
+                                    <div class="review-top-bot flex-row">
+                                        <div class="rating-stars flex-row">
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-half-fill"></i>
+                                        </div>
+                                        <p class="review-date">29/4/2024</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="user-review-bot flex-col">
+                                <p>I have a B.S. in Computer Programming. My curriculum did not include Python, so I decided to give this a try. This course is amazing! I do not normally leave reviews, but I am very happy with the purchase.</p>
+                            </div>
+                        </div>
+                        <div class="user-review flex-col">
+                            <div class="user-review-top flex-row">
+                                <div class="user-img">
+                                    <img src="./img/user/default.png" alt="" />
+                                </div>
+                                <div class="flex-col">
+                                    <p class="user-name">Woo Yu Beng</p>
+                                    <div class="review-top-bot flex-row">
+                                        <div class="rating-stars flex-row">
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-half-fill"></i>
+                                        </div>
+                                        <p class="review-date">29/4/2024</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="user-review-bot flex-col">
+                                <p>I have a B.S. in Computer Programming. My curriculum did not include Python, so I decided to give this a try. This course is amazing! I do not normally leave reviews, but I am very happy with the purchase.</p>
+                            </div>
+                        </div>
+                        <div class="user-review flex-col">
+                            <div class="user-review-top flex-row">
+                                <div class="user-img">
+                                    <img src="./img/user/default.png" alt="" />
+                                </div>
+                                <div class="flex-col">
+                                    <p class="user-name">Woo Yu Beng</p>
+                                    <div class="review-top-bot flex-row">
+                                        <div class="rating-stars flex-row">
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-half-fill"></i>
+                                        </div>
+                                        <p class="review-date">29/4/2024</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="user-review-bot flex-col">
+                                <p>I have a B.S. in Computer Programming. My curriculum did not include Python, so I decided to give this a try. This course is amazing! I do not normally leave reviews, but I am very happy with the purchase.</p>
+                            </div>
+                        </div>
+                        <div class="user-review flex-col">
+                            <div class="user-review-top flex-row">
+                                <div class="user-img">
+                                    <img src="./img/user/default.png" alt="" />
+                                </div>
+                                <div class="flex-col">
+                                    <p class="user-name">Woo Yu Beng</p>
+                                    <div class="review-top-bot flex-row">
+                                        <div class="rating-stars flex-row">
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-half-fill"></i>
+                                        </div>
+                                        <p class="review-date">29/4/2024</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="user-review-bot flex-col">
+                                <p>I have a B.S. in Computer Programming. My curriculum did not include Python, so I decided to give this a try. This course is amazing! I do not normally leave reviews, but I am very happy with the purchase.</p>
+                            </div>
+                        </div>
+
+                        <button class="show-more-btn">Show more reviews</button>
+                    </div>
                 </div>
 
             </div>

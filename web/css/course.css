@@ -198,7 +198,7 @@
 
 .course-div-left .course-syllabus-list .syllabus-item-right p {
     font-weight: 400;
-    font-size: var(--font-size-xm);
+    font-size: var(--font-size-s);
     color: var(--color-text-light-2);
 }
 
@@ -298,7 +298,8 @@
     column-gap: 35px;
 }
 
-.course-div-left .course-rating-div .course-review .user-review {
+.course-div-left .course-rating-div .course-review .user-review,
+.review-content-right .user-review{
     width: 100%;
     max-width: 330px;
     border-top: 1px solid var(--color-text-light-1);
@@ -306,45 +307,53 @@
     padding: 15px 0;
 }
 
-.user-review .user-review-top {
+.user-review .user-review-top,
+.review-content-right .user-review .user-review-top {
     align-items: center;
     gap: 12px;
 }
 
-.user-review .user-review-top .user-img {
+.user-review .user-review-top .user-img,
+.review-content-right .user-review .user-review-top .user-img {
     width: 40px;
     height: 40px;
 }
 
-.user-review .user-review-top .user-img img {
+.user-review .user-review-top .user-img img,
+.review-content-right .user-review .user-review-top .user-img img {
     width: 100%;
     object-fit: cover;
 }
 
-.user-review .user-review-top .user-name {
+.user-review .user-review-top .user-name,
+.review-content-right .user-review .user-review-top .user-name {
     font-weight: 600;
     font-size: var(--font-size-s);
     color: var(--color-text-light-2);
 }
 
-.user-review .user-review-top .review-top-bot {
+.user-review .user-review-top .review-top-bot,
+.review-content-right .user-review .user-review-top .review-top-bot{
     gap: 10px;
 }
 
-.user-review .user-review-top .rating-stars  {
+.user-review .user-review-top .rating-stars,
+.review-content-right .user-review .user-review-top .rating-stars{
     font-weight: 500;
     font-size: var(--font-size-xm);
     color: var(--rating-star-color);
     align-items: center;
 }
 
-.user-review .user-review-top .review-date {
+.user-review .user-review-top .review-date ,
+.review-content-right .user-review .user-review-top .review-date  {
     font-weight: 600;
     font-size: var(--font-size-xs);
     color: var(--color-text-light-2);
 }
 
-.user-review .user-review-bot p{
+.user-review .user-review-bot p,
+.review-content-right .user-review .user-review-bot p{
     font-weight: 400;
     font-size: var(--font-size-s);
     color: var(--color-text-light-2);
@@ -543,4 +552,156 @@
 .course-div-left .course-general-div  .course-tag.tag-purple {
     background-color: var(--tag-purple-bg);
     color: var(--tag-purple-color);
+}
+
+/*all review section*/
+.all-review-section {
+    display: none;
+    top: 0;
+    position: fixed;
+    background-color: var(--color-black-transparent-05);
+    width: 100vw;
+    height: 100vh;
+    z-index: 1000;
+}
+
+.all-review-section.active {
+    display: block;
+}
+
+.all-review-section .all-review-div {
+    max-width: 1000px;
+    margin-top: 20px;
+    background-color: var(--color-white);
+    padding: 30px;
+    height: 90vh;
+    gap: 20px;
+}
+
+.all-review-div .all-review-top {
+    font-weight: 600;
+    font-size: var(--font-size-xxl);
+    color: var(--color-text-light-3);
+    align-items: center;
+    position: relative;
+}
+
+.all-review-div .all-review-top .course-overall-rate i {
+    color: var(--rating-star-color);
+}
+
+.all-review-div .all-review-top p::after {
+    content: "·";
+    padding: 5px 8px 0;
+    font-weight: 600;
+    font-size: var(--font-size-xxxl);
+    color: var(--color-text-light-2);
+}
+
+.all-review-div .all-review-top p:last-of-type::after {
+    content: "";
+}
+
+.all-review-div .all-review-top .close-btn{
+    position: absolute;
+    top: 0;
+    right: 10px;
+    font-weight: 600;
+    font-size: var(--font-size-xl);
+    color: var(--color-text-light-1);
+    cursor: pointer;
+    padding: 2px;
+}
+
+.all-review-div .all-review-top .close-btn:hover{
+    color: var(--color-text-light-2);
+}
+
+.all-review-div .all-review-bot  {
+    gap: 30px;
+    height: 100%;
+    max-height: 75vh;
+}
+
+.all-review-div .all-review-bot > div {
+    width: 100%;
+}
+
+/*all review left side*/
+.all-review-div .all-review-bot .review-content-left {
+    max-width: 230px;
+    gap: 10px;
+}
+
+.review-content-left .rating-count  {
+    gap: 12px;
+    align-items: center;
+}
+
+.review-content-left .rating-count .rating-percentage-bar  {
+    position: relative;
+    width: 100%;
+    max-width: 100px;
+}
+
+.review-content-left .rating-count .rating-percentage-bar span {
+    min-height: 10px;
+    max-height: 100%;
+    background-color: var(--color-light-grey-2);
+    display: block;
+    min-width: 2%;
+    position: absolute;
+    top: -5px;
+    left: 0;
+}
+
+.review-content-left .rating-count .rating-percentage-bar .front-bar {
+    background-color: var(--color-blue-3);
+}
+
+.review-content-left .rating-count .rating-percentage-bar .background-bar {
+    width: 100%;
+}
+
+.review-content-left .rating-count .rating-stars {
+    font-weight: 500;
+    font-size: var(--font-size-s);
+    color: var(--rating-star-color);
+    align-items: center;
+}
+
+.review-content-left .rating-count .review-number {
+     font-weight: 500;
+    font-size: var(--font-size-s);
+    color: var(--color-text-light-2);
+}
+
+/*all review right side*/
+.all-review-div .all-review-bot .review-content-right {
+    max-height: 100%;
+    height: 100%;
+    overflow-y: auto;
+    padding-right: 8px;
+}
+
+    .review-content-right .show-more-btn {
+    width: 100%;
+    min-height: 40px;
+    font-weight: 600;
+    font-size: var(--font-size-s);
+    color: var(--color-text-light-2);
+    background-color: var(--color-transparent);
+    border: 1px solid var(--color-text-light-3);
+    cursor: pointer;
+    transition: 0.2s all ease-in-out;
+    user-select: none;
+}
+
+.review-content-right .show-more-btn:hover {
+    background-color: var(--color-light-grey-2);
+}
+
+.review-content-right .user-review {
+    padding: 25px 0;
+    max-width: 9999px;
 }
