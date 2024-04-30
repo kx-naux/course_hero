@@ -64,7 +64,7 @@ VALUES
 
 INSERT INTO ACCOUNTS (account_id, username, email, saltedpassword, salt)
 VALUES 
-    ('AC0000001', 'woeiyi','tanw-pm22@student.tarc.edu.my', 'rsMy/Kq0BnTwMSCf27ARkb2Rg/OaTmbBBIMZ2DuOyio=', 'salt1'),
+    ('AC0000001', 'Woeiyi','tanw-pm22@student.tarc.edu.my', 'rsMy/Kq0BnTwMSCf27ARkb2Rg/OaTmbBBIMZ2DuOyio=', 'salt1'),
     ('AC0000002', 'KahXuan','lowkx-pm22@student.tarc.edu.my', '8dGxzvvhQiV0Bm8JU4VLIgNHydvcADLdxUEXUbLOOEg=', 'salt2'),
     ('AC0000003', 'YuBeng','wooyb-pm22@student.tarc.edu.my', 'cAjNy6eveLrPrRTVQ9jJEt6qOUQ33+D+sLI2Ci3gblg=', 'salt3'),
     ('AC0000004', 'Snijders','wangccs-pm22@student.tarc.edu.my', 'otvdT0YCdjwhOHXMs4f3iWa/vQj9CgeU7pT0bx4ismw=', 'salt4'),
