@@ -33,7 +33,11 @@
                         <h1 class="course-title">100 Days of Code: The Complete Python Pro Bootcamp</h1>
                         <h2 class="course-short-desc">Master Python by building 100 projects in 100 days. Learn data science, automation, build websites, games and apps!</h2>
                         <h3 class="course-category">Python Programming</h3>
-                        <div class="course-rating">
+                        <div class="course-tag-field flex-row">
+                            <p class="course-tag tag-orange">Hot Sell</p>
+                            <p class="course-tag tag-yellow">New Course</p>
+                        </div>
+                        <div class="course-rating flex-row">
                             <p class="rating-digit">4.5</p>
                             <div class="flex-row">
                                 <i class="ri-star-fill"></i>
@@ -45,7 +49,7 @@
                             <p class="rating-number-field"><a href="#rating-div">(<span class="raing-number">2303</span> ratings)</a></p>
                             <p>4864 students</p>
                         </div>
-                        <p class="course-update-date">Last updated 4/2024</p>
+                        <p class="course-update-date"><i class="ri-information-line"></i> Last updated 4/2024</p>
                     </div>
 
                     <!--What you will learn-->
@@ -324,8 +328,8 @@
                                     boolean inCart = false;
                                     boolean inWishlist = false;
                                 %>
-                                <button class="course-cart" status="<%= inCart ? "1" : "0" %>"><%= inWishlist ? "Go to cart" : "Add to cart" %></button>
-                                <button class="course-wish" status="<%= inWishlist ? "1" : "0" %>"><i class="ri-heart-line"></i></button>
+                                <button class="course-cart" status="<%= inCart ? "1" : "0"%>"><%= inWishlist ? "Go to cart" : "Add to cart"%></button>
+                                <button class="course-wish" status="<%= inWishlist ? "1" : "0"%>"><i class="ri-heart-line"></i></button>
                             </div>
 
                             <!--Information-->
@@ -346,9 +350,9 @@
 
             </div>
         </section>
-                            
+
         <script src="./js/single_course/single_course.js"></script>
-        
+
         <!--Footer import-->
         <%--<%@ include file="./Components/footer_wave.html" %>--%>  
         <%@ include file="./Components/footer.jsp" %>  

@@ -7,7 +7,7 @@
 
 .course-section .course-div {
     width: 100%;
-    gap: 10px;
+    gap: 20px;
     justify-content: center;
 }
 
@@ -17,9 +17,47 @@
 }
 
 /*left side content*/
-
 .course-section .course-div .course-div-left {
     max-width: 750px;
+    gap: 45px;
+}
+
+.course-div .course-div-left .course-general-div {
+    gap: 14px;
+    justify-content: flex-start;
+}
+
+.course-div-left .course-general-div .course-title {
+    font-weight: 700;
+    font-size: var(--font-size-4xl);
+    color: var(--color-text-light-3);
+}
+
+.course-div-left .course-general-div .course-short-desc{
+    font-weight: 400;
+    font-size: var(--font-size-m);
+    color: var(--color-text-light-2);
+}
+
+.course-div-left .course-general-div .course-category{
+    font-weight: 600;
+    font-size: var(--font-size-m);
+    color: var(--color-text-light-3);
+}
+
+.course-div-left .course-general-div .course-tag-field {
+    padding: 2px 0;
+    gap: 10px;
+    align-items: center;
+}
+
+.course-div-left .course-general-div .course-tag-field .course-tag{
+    font-weight: 600;
+    font-size: var(--font-size-xs);
+    background-color: var(--color-light-grey-2);
+    color: var(--color-text-light-2);
+    border-radius: 2px;
+    padding: 2px 8px;
 }
 
 /*right side content*/
@@ -148,4 +186,35 @@
 
 .course-sticky-div .sticky-div-bot .sticky-div-share button:hover {
     background-color: var(--color-light-grey-2);
+}
+
+/*Tag Design*/
+.course-div-left .course-general-div .course-tag.tag-red {
+    background-color: var(--tag-red-bg);
+    color: var(--tag-red-color);
+}
+
+.course-div-left .course-general-div  .course-tag.tag-orange {
+    background-color: var(--tag-orange-bg);
+    color: var(--tag-orange-color);
+}
+
+.course-div-left .course-general-div  .course-tag.tag-yellow {
+    background-color: var(--tag-yellow-bg);
+    color: var(--tag-yellow-color);
+}
+
+.course-div-left .course-general-div  .course-tag.tag-green {
+    background-color: var(--tag-green-bg);
+    color: var(--tag-green-color);
+}
+
+.course-div-left .course-general-div  .course-tag.tag-blue {
+    background-color: var(--tag-blue-bg);
+    color: var(--tag-blue-color);
+}
+
+.course-div-left .course-general-div  .course-tag.tag-purple {
+    background-color: var(--tag-purple-bg);
+    color: var(--tag-purple-color);
 }
