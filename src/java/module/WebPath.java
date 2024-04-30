@@ -21,6 +21,10 @@ public class WebPath {
         pageUrls.put("cart","/cart");
         pageUrls.put("wishlist","/wishlist");
         pageUrls.put("merchandise", "/merchandises");
+        pageUrls.put("merchandise", "/merch");
+      
+        pageUrls.put("ErrorLogin","/ErrorLogin");
+      
         
         //admin
         pageUrls.put("dashboard","/admin/dashboard");

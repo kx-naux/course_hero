@@ -16,6 +16,7 @@
         <link type="text/css" href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
         <script src="./js/components/section_products.js"></script> 
         <jsp:useBean id="webpath" class="module.WebPath" scope="application" />
+        <jsp:useBean id="userData" class="JPAEntity.Users" scope="session" />
     </head>
     <body>
         <!--Toast message-->

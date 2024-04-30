@@ -24,19 +24,20 @@
                         <h1>Welcome Back</h1>
                         <div class="login-form-input-div flex-col">
                             <div class="input-field">
-                                <input type="text" id="username" name="username" class="form-input" placeholder="Username / Email" oninput="reset_error_msg()" />
+                                <input type="text" id="username" class="form-input" placeholder="Username / Email" oninput="reset_error_msg()" />
                                 <label for="username" class="form-label">Username / Email</label>
                             </div>
                             <div class="input-field">
-                                <input type="password" id="password" name="password" class="form-input" placeholder="Password" oninput="reset_error_msg()" />
+                                <input type="password" id="password" class="form-input" placeholder="Password" oninput="reset_error_msg()" />
                                 <label for="password" class="form-label">Password</label>
                             </div>
                             <div class="input-field">
-                                <input type="checkbox" id="rememberMe" name="rememberMe" value="rememberMe"/>
+                                <input type="checkbox" id="rememberMe" value="rememberMe"/>
                                 <label for="rememberMe" class="form-label">Remember Me</label>
                             </div>
                             <a class="forget-password" href="<%= webpath.getPageUrl("forget passworde") %>"><p>Forget password</p></a>
                         </div>
+                        <p class="invalid-msg">Invalid login Credential</p>
                         <div class="login-form-bot flex-col">
                             <input type="submit" value="Sign In"/>
                             <P>Doesn't have account? <a class="sign-up" href="<%= webpath.getPageUrl("sign up") %>">Sign up now</a></P>
