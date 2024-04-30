@@ -31,6 +31,7 @@ import javax.transaction.UserTransaction;
  *
  * @author User
  */
+@WebServlet(name = "LoginServlet", urlPatterns = {"/login"})
 public class Login extends HttpServlet {
     @PersistenceContext EntityManager em;
     @Resource UserTransaction utx;
@@ -54,6 +55,7 @@ public class Login extends HttpServlet {
         
         // Forward the request to home.jsp
         //request.getRequestDispatcher("/WEB-INF/Client/Login.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/Client/Login.jsp").forward(request, response);
     }
 
     /**
@@ -73,13 +75,11 @@ public class Login extends HttpServlet {
         String hashedInputPassword = "";
         Users userData;
         HttpSession session = request.getSession();
-        //test wy push
-        
         //get data from forms
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        String rememberMe = request.getParameter("rememberMe");
-        
+        String rememberMe = request.getParameter("rememberMe"); 
+
         //get the account record based on username/email
         if(isEmail(username)){
             Query qry = em.createNamedQuery("Accounts.findByEmail").setParameter("email",username);
@@ -91,13 +91,13 @@ public class Login extends HttpServlet {
         
         //check is account record found
         if(accounts.isEmpty()){
-            //redirect to error
-            response.sendRedirect("LoginError.jsp");
+            //redirect to login
+            session.setAttribute("loginErrorMsg","Invalid Login Credentials");
+            response.sendRedirect("login");
             return;
         }else{
             //always will only has one result as the username and email must be unique in databases
             accountRetrieved = accounts.get(0);
-            response.sendRedirect("LoginError.jsp");
         }
         
         //hash the password input
@@ -108,17 +108,21 @@ public class Login extends HttpServlet {
         }
         
         //check is password valid onot
-        if(hashedInputPassword == accountRetrieved.getSaltedpassword()){
-            userData = getUserData(accountRetrieved.getAccountId());
+        if(hashedInputPassword.equals(accountRetrieved.getSaltedpassword())){
+            userData = getUserData(accountRetrieved);
             session.setAttribute("userData",userData);
+            session.setAttribute("loginStatus","logined");
             //check remember me
-            if(rememberMe == "rememberMe"){
-                setRmbMeToken(userData);
+            if(rememberMe!=null){
+                setRmbMeToken(userData,response);
+            }else{
+                //remove token in cookie if exist
+                removeRmbMeTokenInCookie(request,response);
             }
-            response.sendRedirect("Home.jsp");
+            response.sendRedirect("home");
         }else{
-            response.sendRedirect("LoginError.jsp");
-
+            session.setAttribute("loginErrorMsg","Invalid Login Credentials");
+            response.sendRedirect("login");
             //redirect to login page
         }
         
@@ -126,31 +130,78 @@ public class Login extends HttpServlet {
         // Forward the request to home.jsp
         //request.getRequestDispatcher("/WEB-INF/Client/Login.jsp").forward(request, response);
     }
-
-        private boolean isEmail(String usernameInput){
+    
+    private void removeRmbMeTokenInCookie(HttpServletRequest request, HttpServletResponse response){
+        Cookie[] cookies = request.getCookies();
+        if(cookies != null){
+            for (Cookie cookie : cookies) {
+                if (cookie.getName().equals("rmbMeToken")) {
+                    cookie.setMaxAge(0);
+                    response.addCookie(cookie);
+                    break;
+                }
+            }
+        }
+    }
+    
+    public static Users checkRmbMeToken(HttpServletRequest request,EntityManager em){
+        String token = getRmbMeCookie(request);
+        if(token == null){
+            return null;
+        }
+        
+        RememberMeToken obj = em.find(RememberMeToken.class, token);
+        //token not found in databases
+        if(obj == null){
+            return null;
+        }else
+        {
+            return obj.getUserId();
+        }
+    }
+    
+    private static String getRmbMeCookie(HttpServletRequest request){
+        String rmbMeToken = null;
+        Cookie[] cookies = request.getCookies();
+        if(cookies != null){
+            for (Cookie cookie : cookies) {
+                if (cookie.getName().equals("rmbMeToken")) {
+                    rmbMeToken = cookie.getValue();
+                    break;
+                }
+            }
+        }
+        
+        return rmbMeToken;
+    }
+    
+    private boolean isEmail(String usernameInput){
         Matcher matcher = pattern.matcher(usernameInput);
         return matcher.matches();
     }
+   
+        
     
     private boolean isPasswordValid(String hashedInputPassword,String saltUserPassword){
         return hashedInputPassword.equals(saltUserPassword);
     }
     
-    private Users getUserData(String accountID){
+    private Users getUserData(Accounts accountID){
         Query query = em.createNamedQuery("Users.findByAccountId").setParameter("accountId",accountID);
         List<Users> users = query.getResultList();     
         return users.get(0);
     }
     
-    private void setRmbMeToken(Users user){
+    private void setRmbMeToken(Users user,HttpServletResponse response){
         String token = generateRmbMeToken();
-        Cookie cookie = new Cookie("rmbMeToken",token);
-        cookie.setHttpOnly(true);
-        cookie.setSecure(true);
-        cookie.setMaxAge(28*24*60*60); // set cookie exipre in 28 days
-        RememberMeToken rmbMeToken = new RememberMeToken(token,new Date(System.currentTimeMillis()),user);
+        Cookie tokenCookie = new Cookie("rmbMeToken",token);
+        tokenCookie.setHttpOnly(true);
+        tokenCookie.setSecure(true);
+        tokenCookie.setMaxAge(28*24*60*60); // set cookie exipre in 28 days
+        response.addCookie(tokenCookie);
         
-        //safe to databases
+        RememberMeToken rmbMeToken = new RememberMeToken(token,new Date(System.currentTimeMillis()),user);
+        //save to databases
         try{
             utx.begin();
             em.persist(rmbMeToken);
