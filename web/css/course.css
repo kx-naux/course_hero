@@ -27,6 +27,12 @@
     justify-content: flex-start;
 }
 
+.course-div-left .course-general-div .course-category{
+    font-weight: 600;
+    font-size: var(--font-size-l);
+    color: var(--color-blue-1);
+}
+
 .course-div-left .course-general-div .course-title {
     font-weight: 700;
     font-size: var(--font-size-4xl);
@@ -39,14 +45,14 @@
     color: var(--color-text-light-2);
 }
 
-.course-div-left .course-general-div .course-category{
+.course-div-left .course-general-div .course-level{
     font-weight: 600;
-    font-size: var(--font-size-m);
+    font-size: var(--font-size-xm);
     color: var(--color-text-light-3);
 }
 
 .course-div-left .course-general-div .course-tag-field {
-    margin-top: 20px;
+    margin-top: 10px;
     padding: 2px 0;
     gap: 10px;
     align-items: center;

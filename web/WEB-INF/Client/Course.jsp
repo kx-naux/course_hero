@@ -30,9 +30,10 @@
 
                     <!--Course General Info-->
                     <div class="course-general-div  flex-col">
-                        <h1 class="course-title">100 Days of Code: The Complete Python Pro Bootcamp</h1>
-                        <h2 class="course-short-desc">Master Python by building 100 projects in 100 days. Learn data science, automation, build websites, games and apps!</h2>
-                        <h3 class="course-category">Python Programming</h3>
+                        <a href="<%= webpath.getPageUrl("products")%>?id=123123"><h1 class="course-category">Python Programming</h1></a>
+                        <h2 class="course-title">100 Days of Code: The Complete Python Pro Bootcamp</h2>
+                        <h3 class="course-short-desc">Master Python by building 100 projects in 100 days. Learn data science, automation, build websites, games and apps!</h3>
+                        <h4 class="course-level">All Level</h4>
                         <div class="course-tag-field flex-row">
                             <p class="course-tag tag-orange">Hot Sell</p>
                             <p class="course-tag tag-yellow">New Course</p>
@@ -406,7 +407,7 @@
                             <div class="rating-percentage-bar">
                                 <span class="background-bar"></span>
                                 <span class="front-bar" style="width: 20%"></span>
-                                                            </div>
+                            </div>
                             <div class="rating-stars flex-row">
                                 <i class="ri-star-fill"></i>
                                 <i class="ri-star-fill"></i>
