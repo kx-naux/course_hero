@@ -127,7 +127,7 @@
                             </div>
 
                         </div>
-                        <div class="cart-list-bot">
+                        <div class="cart-list-bot flex-col">
                             <h1>Total: RM 128.80</h1>
                             <a>Go to cart</a>
                         </div>
