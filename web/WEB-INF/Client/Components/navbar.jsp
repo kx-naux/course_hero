@@ -69,13 +69,11 @@
                     <a href="<%= webpath.getPageUrl("wishlist")%>">
                         <p class="nav-icon">
                             <i class="ri-heart-line"></i>    
-                            <%
-                                if (numberWishlist > 0) {
-                            %>
-                            <span class="nav-icon-number"><%= numberWishlist%></span>
-                            <% }%>
                         </P>
                     </a>
+                    <div class="wish-list flex-col">
+
+                    </div>
                 </div>
                 <div class="relative flex-col nav-icon-div">
                     <a href="<%= webpath.getPageUrl("cart")%>">
@@ -88,6 +86,59 @@
                             <% }%>
                         </P>
                     </a>
+                    <div class="cart-list flex-col">
+                        <%
+                            if (numberCart > 0) {
+                        %>
+                        <!--cart list with items-->
+                        <div class="cart-list-item flex-col">
+
+                            <div class="course-item">
+                                <div class="course-item-img">
+                                    <img src="./img/course/beginner_excel" alt="" />
+                                </div>
+                                <div class="course-item-info">
+                                    <h1 class="course-title">The Ultimate Excel Programming Course</h1>
+                                    <p class="course-author">Woo Yu Beng, Snijders Wang</p>
+                                    <p clas="course-price">RM 58.00</p>
+                                </div>
+                            </div>
+
+                            <div class="course-item">
+                                <div class="course-item-img">
+                                    <img src="./img/course/beginner_excel" alt="" />
+                                </div>
+                                <div class="course-item-info">
+                                    <h1 class="course-title">The Ultimate Excel Programming Course</h1>
+                                    <p class="course-author">Woo Yu Beng, Snijders Wang</p>
+                                    <p clas="course-price">RM 58.00</p>
+                                </div>
+                            </div>
+
+                            <div class="course-item">
+                                <div class="course-item-img">
+                                    <img src="./img/course/beginner_excel" alt="" />
+                                </div>
+                                <div class="course-item-info">
+                                    <h1 class="course-title">The Ultimate Excel Programming Course</h1>
+                                    <p class="course-author">Woo Yu Beng, Snijders Wang</p>
+                                    <p clas="course-price">RM 58.00</p>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="cart-list-bot">
+                            <h1>Total: RM 128.80</h1>
+                            <a>Go to cart</a>
+                        </div>
+                        <% } else {%>
+                        <!--cart list without items-->
+                        <div class="list-empty-div">
+                            <p>Your cart is empty</p>
+                            <a href="<%= webpath.getPageUrl("home")%>">Keep shopping</a>
+                        </div>
+                        <% }%>
+                    </div>
                 </div>
                 <div class="relative flex-col nav-icon-div">
                     <a href="<%= webpath.getPageUrl("profile")%>">

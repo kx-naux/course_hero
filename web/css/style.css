@@ -256,12 +256,12 @@ a:has(.nav-option):hover + .nav-option-dropdown,
 .nav-function-div > p,
 .nav-icon-div {
     justify-content: center;
-    padding: 14px 10px;
+    padding: 14px 14px;
 }
 
 .nav-bar.nav-scroll .nav-function-div > p,
 .nav-bar.nav-scroll .nav-icon-div {
-    padding: 10px 6px;
+    padding: 10px 14px;
 }
 
 .nav-icon {
@@ -331,7 +331,7 @@ a:has(.nav-option):hover + .nav-option-dropdown,
     object-fit: cover;
     width: 35px;
     height: 35px;
-    border: 1px solid var(--color-text-light-2);
+    border: 1px solid var(--color-light-grey-3);
 }
 
 .nav-bar.nav-scroll .nav-profile-pic {
@@ -554,12 +554,13 @@ a:has(.nav-option):hover + .nav-option-dropdown,
     border-bottom: 1px solid var(--color-light-grey-3);
 }
 
-.profile-list .user-info{
-    padding: 20px 16px;
-}
-
+.cart-list > div:last-of-type,
 .profile-list > div:last-of-type {
     border-bottom: none;
+}
+
+.profile-list .user-info{
+    padding: 20px 16px;
 }
 
 .profile-list .user-info {
@@ -576,7 +577,7 @@ a:has(.nav-option):hover + .nav-option-dropdown,
     width: 70px;
     height: 70px;
     object-fit: cover;
-    border: 1px solid var(--color-text-light-1);
+    border: 1px solid var(--color-light-grey-3);
     border-radius: 50%;
 }
 
