@@ -224,7 +224,11 @@
     font-weight: 400;
     font-size: var(--font-size-xm);
     color: var(--color-text-light-2);
-    line-height: 30px;
+    margin-bottom: 10px;
+}
+
+.course-div-left .course-desc-div p:last-of-type {
+    margin-bottom: 0px;
 }
 
 .course-div-left .course-author-div {

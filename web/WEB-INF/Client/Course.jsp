@@ -158,11 +158,11 @@
                     <!--Course description-->
                     <div class="course-desc-div flex-col">
                         <h1>Description</h1>
-                        <p>Welcome to the 100 Days of Code - The Complete Python Pro Bootcamp, the only course you need to learn to code with Python. With over 500,000 5 STAR reviews and a 4.8 average, my courses are some of the HIGHEST RATED courses in the history of Udemy!  
+                        <p>Welcome to the 100 Days of Code - The Complete Python Pro Bootcamp, the only course you need to learn to code with Python. With over 500,000 5 STAR reviews and a 4.8 average, my courses are some of the HIGHEST RATED courses in the history of Udemy!  </p>
 
-                            100 days, 1 hour per day, learn to build 1 project per day, this is how you master Python.
+                         <p>100 days, 1 hour per day, learn to build 1 project per day, this is how you master Python.</p>
 
-                            At 60+ hours, this Python course is without a doubt the most comprehensive Python course available anywhere online. Even if you have zero programming experience, this course will take you from beginner to professional.</p>
+                         <p>At 60+ hours, this Python course is without a doubt the most comprehensive Python course available anywhere online. Even if you have zero programming experience, this course will take you from beginner to professional.</p>
                     </div>
 
                     <!--Course target-->

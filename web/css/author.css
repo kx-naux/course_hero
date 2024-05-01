@@ -21,10 +21,16 @@
     gap: 40px;
 }
 
+.author-section .author-div .author-left .author-left-div-title {
+    font-weight: 700;
+    font-size: var(--font-size-l);
+    color: var(--color-text-light-3);
+}
+
 .author-left .author-info .author-title {
     font-weight: 500;
     font-size: var(--font-size-m);
-    color: var(--color-text-light-2);
+    color: var(--color-blue-2);
 }
 
 .author-left .author-info .author-name {
@@ -32,6 +38,107 @@
     font-size: var(--font-size-4xl);
     color: var(--color-text-light-3);
 }
+
+.author-left .author-info .author-position {
+    font-weight: 500;
+    font-size: var(--font-size-m);
+    color: var(--color-text-light-2);
+}
+
+.author-left .author-info .author-join-date {
+    margin-top: 15px;
+    font-weight: 500;
+    font-size: var(--font-size-s);
+    color: var(--color-text-light-2);
+}
+
+.author-left .author-about .about-content {
+    font-weight: 400;
+    font-size: var(--font-size-xm);
+    color: var(--color-text-light-2);
+    line-height: 26px;
+    margin-bottom: 14px;
+}
+
+.author-left .author-about .about-content:last-of-type {
+    margin-bottom: 0px;
+}
+
+/*pagination style*/
+.result-pagination-div {
+    gap: 10px;
+    padding: 40px 20px 0px;
+    justify-content: center;
+    align-items: center;
+}
+
+.result-pagination-div .page-action-btn{
+    opacity: 0.5;
+    padding: 8px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+    color: var(--color-text-light-1);
+    border: 1px solid var(--color-text-light-1);
+    border-radius: 50%;
+    transition: 0.2s all ease-in-out;
+    background-color: var(--color-transparent);
+    cursor: not-allowed;
+}
+
+.result-pagination-div .page-action-btn i{
+    font-size: var(--font-size-xxxl);
+        pointer-events: none;
+}
+
+.result-pagination-div .page-action-btn.allow {
+    opacity: 1;
+}
+
+.result-pagination-div .page-action-btn.allow:hover {
+    color: var(--color-text-light-2);
+    border: 1px solid var(--color-text-light-2);
+    background-color: var(--color-light-grey-2);
+    cursor: pointer;
+}
+
+.result-pagination-div .number-dot {
+    user-select: none;
+    font-weight: 800;
+    font-size: var(--font-size-xm);
+    color: var(--color-text-light-2);
+    letter-spacing: 2px;
+    cursor: default;
+}
+
+.result-pagination-div .page-number {
+    position: relative;
+    padding: 6px 10px;
+    font-weight: 700;
+    font-size: var(--font-size-xm);
+    color: var(--color-blue-2);
+    cursor: pointer;
+}
+
+.result-pagination-div .page-number.current-page {
+    cursor: default;
+}
+
+.result-pagination-div .page-number.current-page::after {
+    content: "";
+    position: absolute;
+    border-radius: 20px;
+    bottom: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70%;
+    height: 2px;
+    background-color: var(--color-blue-2);
+    justify-self: center;
+}
+
+
 
 /*author right side*/
 .author-section .author-div .author-right {
