@@ -32,13 +32,6 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "SocialMediaLinks.findByDestLink", query = "SELECT s FROM SocialMediaLinks s WHERE s.destLink = :destLink")})
 public class SocialMediaLinks implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-    @Id
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 9)
-    @Column(name = "SOCIALMEDIALINK_ID")
-    private String socialmedialinkId;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 20)
@@ -49,6 +42,14 @@ public class SocialMediaLinks implements Serializable {
     @Size(min = 1, max = 255)
     @Column(name = "DEST_LINK")
     private String destLink;
+
+    private static final long serialVersionUID = 1L;
+    @Id
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 9)
+    @Column(name = "SOCIALMEDIALINK_ID")
+    private String socialmedialinkId;
     @JoinColumn(name = "AUTHOR_ID", referencedColumnName = "AUTHOR_ID")
     @ManyToOne(optional = false)
     private Authors authorId;
@@ -122,5 +123,6 @@ public class SocialMediaLinks implements Serializable {
     public String toString() {
         return "JPAEntity.SocialMediaLinks[ socialmedialinkId=" + socialmedialinkId + " ]";
     }
+    
     
 }

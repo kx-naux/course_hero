@@ -35,13 +35,6 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Merchandise.findByStockBalance", query = "SELECT m FROM Merchandise m WHERE m.stockBalance = :stockBalance")})
 public class Merchandise implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-    @Id
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 9)
-    @Column(name = "MERCH_ID")
-    private String merchId;
     @Basic(optional = false)
     @NotNull
     @Column(name = "DIMENSION_H_CM")
@@ -62,6 +55,14 @@ public class Merchandise implements Serializable {
     @NotNull
     @Column(name = "STOCK_BALANCE")
     private int stockBalance;
+
+    private static final long serialVersionUID = 1L;
+    @Id
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 9)
+    @Column(name = "MERCH_ID")
+    private String merchId;
     @JoinColumn(name = "PRODUCT_ID", referencedColumnName = "PRODUCT_ID")
     @ManyToOne(optional = false)
     private Product productId;
@@ -162,5 +163,9 @@ public class Merchandise implements Serializable {
     public String toString() {
         return "JPAEntity.Merchandise[ merchId=" + merchId + " ]";
     }
+
+    
+
+    
     
 }

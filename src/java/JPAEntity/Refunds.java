@@ -32,13 +32,6 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Refunds.findByReason", query = "SELECT r FROM Refunds r WHERE r.reason = :reason")})
 public class Refunds implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-    @Id
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 9)
-    @Column(name = "REFUND_ID")
-    private String refundId;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 30)
@@ -49,6 +42,14 @@ public class Refunds implements Serializable {
     @Size(min = 1, max = 255)
     @Column(name = "REASON")
     private String reason;
+
+    private static final long serialVersionUID = 1L;
+    @Id
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 9)
+    @Column(name = "REFUND_ID")
+    private String refundId;
     @JoinColumn(name = "TRANSACTION_ID", referencedColumnName = "TRANSACTION_ID")
     @ManyToOne(optional = false)
     private Transactions transactionId;
@@ -82,13 +83,6 @@ public class Refunds implements Serializable {
         this.refundType = refundType;
     }
 
-    public String getReason() {
-        return reason;
-    }
-
-    public void setReason(String reason) {
-        this.reason = reason;
-    }
 
     public Transactions getTransactionId() {
         return transactionId;
@@ -121,6 +115,14 @@ public class Refunds implements Serializable {
     @Override
     public String toString() {
         return "JPAEntity.Refunds[ refundId=" + refundId + " ]";
+    }
+    
+    public String getReason() {
+        return reason;
+    }
+
+    public void setReason(String reason) {
+        this.reason = reason;
     }
     
 }

@@ -34,13 +34,6 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "ShippingMethod.findByReturnPolicy", query = "SELECT s FROM ShippingMethod s WHERE s.returnPolicy = :returnPolicy")})
 public class ShippingMethod implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-    @Id
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 9)
-    @Column(name = "SHIPPING_METHOD_ID")
-    private String shippingMethodId;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 21)
@@ -70,6 +63,14 @@ public class ShippingMethod implements Serializable {
     @Size(min = 1, max = 1000)
     @Column(name = "RETURN_POLICY")
     private String returnPolicy;
+
+    private static final long serialVersionUID = 1L;
+    @Id
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 9)
+    @Column(name = "SHIPPING_METHOD_ID")
+    private String shippingMethodId;
 
     public ShippingMethod() {
     }
@@ -112,13 +113,6 @@ public class ShippingMethod implements Serializable {
         this.deliverySpeed = deliverySpeed;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
 
     public String getCoverageArea() {
         return coverageArea;
@@ -168,5 +162,16 @@ public class ShippingMethod implements Serializable {
     public String toString() {
         return "JPAEntity.ShippingMethod[ shippingMethodId=" + shippingMethodId + " ]";
     }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+
+    
     
 }

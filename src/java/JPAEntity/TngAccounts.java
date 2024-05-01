@@ -31,6 +31,12 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "TngAccounts.findByPhoneno", query = "SELECT t FROM TngAccounts t WHERE t.phoneno = :phoneno")})
 public class TngAccounts implements Serializable {
 
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 15)
+    @Column(name = "PHONENO")
+    private String phoneno;
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -38,11 +44,6 @@ public class TngAccounts implements Serializable {
     @Size(min = 1, max = 9)
     @Column(name = "TNG_ID")
     private String tngId;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 15)
-    @Column(name = "PHONENO")
-    private String phoneno;
     @JoinColumn(name = "USER_ID", referencedColumnName = "USER_ID")
     @OneToOne(optional = false)
     private Users userId;
@@ -67,13 +68,6 @@ public class TngAccounts implements Serializable {
         this.tngId = tngId;
     }
 
-    public String getPhoneno() {
-        return phoneno;
-    }
-
-    public void setPhoneno(String phoneno) {
-        this.phoneno = phoneno;
-    }
 
     public Users getUserId() {
         return userId;
@@ -106,6 +100,14 @@ public class TngAccounts implements Serializable {
     @Override
     public String toString() {
         return "JPAEntity.TngAccounts[ tngId=" + tngId + " ]";
+    }
+
+    public String getPhoneno() {
+        return phoneno;
+    }
+
+    public void setPhoneno(String phoneno) {
+        this.phoneno = phoneno;
     }
     
 }

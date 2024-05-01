@@ -32,13 +32,6 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "AuthorContribution.findByDescription", query = "SELECT a FROM AuthorContribution a WHERE a.description = :description")})
 public class AuthorContribution implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-    @Id
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 9)
-    @Column(name = "CONTRIBUTION_ID")
-    private String contributionId;
     @Basic(optional = false)
     @NotNull
     @Column(name = "CONTRIBUTION")
@@ -48,6 +41,14 @@ public class AuthorContribution implements Serializable {
     @Size(min = 1, max = 355)
     @Column(name = "DESCRIPTION")
     private String description;
+
+    private static final long serialVersionUID = 1L;
+    @Id
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 9)
+    @Column(name = "CONTRIBUTION_ID")
+    private String contributionId;
     @JoinColumn(name = "AUTHOR_ID", referencedColumnName = "AUTHOR_ID")
     @ManyToOne(optional = false)
     private Authors authorId;
@@ -76,21 +77,6 @@ public class AuthorContribution implements Serializable {
         this.contributionId = contributionId;
     }
 
-    public double getContribution() {
-        return contribution;
-    }
-
-    public void setContribution(double contribution) {
-        this.contribution = contribution;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
 
     public Authors getAuthorId() {
         return authorId;
@@ -131,6 +117,22 @@ public class AuthorContribution implements Serializable {
     @Override
     public String toString() {
         return "JPAEntity.AuthorContribution[ contributionId=" + contributionId + " ]";
+    }
+
+    public double getContribution() {
+        return contribution;
+    }
+
+    public void setContribution(double contribution) {
+        this.contribution = contribution;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
     
 }

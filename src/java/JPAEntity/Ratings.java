@@ -37,13 +37,6 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Ratings.findByTotalVote", query = "SELECT r FROM Ratings r WHERE r.totalVote = :totalVote")})
 public class Ratings implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-    @Id
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 9)
-    @Column(name = "RATING_ID")
-    private String ratingId;
     @Basic(optional = false)
     @NotNull
     @Column(name = "SCORE")
@@ -62,6 +55,14 @@ public class Ratings implements Serializable {
     @NotNull
     @Column(name = "TOTAL_VOTE")
     private int totalVote;
+
+    private static final long serialVersionUID = 1L;
+    @Id
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 9)
+    @Column(name = "RATING_ID")
+    private String ratingId;
     @JoinColumn(name = "PRODUCT_ID", referencedColumnName = "PRODUCT_ID")
     @ManyToOne(optional = false)
     private Product productId;
@@ -92,21 +93,6 @@ public class Ratings implements Serializable {
         this.ratingId = ratingId;
     }
 
-    public int getScore() {
-        return score;
-    }
-
-    public void setScore(int score) {
-        this.score = score;
-    }
-
-    public String getComment() {
-        return comment;
-    }
-
-    public void setComment(String comment) {
-        this.comment = comment;
-    }
 
     public Date getTimeRated() {
         return timeRated;
@@ -164,5 +150,20 @@ public class Ratings implements Serializable {
     public String toString() {
         return "JPAEntity.Ratings[ ratingId=" + ratingId + " ]";
     }
-    
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
 }

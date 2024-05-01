@@ -46,19 +46,12 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Transactions.findByTimeAdded", query = "SELECT t FROM Transactions t WHERE t.timeAdded = :timeAdded")})
 public class Transactions implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-    @Id
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 9)
-    @Column(name = "TRANSACTION_ID")
-    private String transactionId;
     @Basic(optional = false)
     @NotNull
     @Column(name = "SUBTOTAL")
     private double subtotal;
     @Basic(optional = false)
-    @NotNull
+    @NotNull()
     @Column(name = "PROMO_AMOUNT")
     private double promoAmount;
     @Basic(optional = false)
@@ -88,6 +81,13 @@ public class Transactions implements Serializable {
     @Column(name = "TIME_ADDED")
     @Temporal(TemporalType.TIMESTAMP)
     private Date timeAdded;
+    private static final long serialVersionUID = 1L;
+    @Id
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 9)
+    @Column(name = "TRANSACTION_ID")
+    private String transactionId;
     @JoinColumn(name = "PROMOTION_ID", referencedColumnName = "PROMOTION_ID")
     @ManyToOne
     private Promotions promotionId;
@@ -131,13 +131,6 @@ public class Transactions implements Serializable {
         this.transactionId = transactionId;
     }
 
-    public double getSubtotal() {
-        return subtotal;
-    }
-
-    public void setSubtotal(double subtotal) {
-        this.subtotal = subtotal;
-    }
 
     public double getPromoAmount() {
         return promoAmount;
@@ -147,13 +140,6 @@ public class Transactions implements Serializable {
         this.promoAmount = promoAmount;
     }
 
-    public double getTax() {
-        return tax;
-    }
-
-    public void setTax(double tax) {
-        this.tax = tax;
-    }
 
     public String getTransactionType() {
         return transactionType;
@@ -171,21 +157,6 @@ public class Transactions implements Serializable {
         this.transactionFee = transactionFee;
     }
 
-    public double getTotal() {
-        return total;
-    }
-
-    public void setTotal(double total) {
-        this.total = total;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
 
     public Date getTimeAdded() {
         return timeAdded;
@@ -269,5 +240,37 @@ public class Transactions implements Serializable {
     public String toString() {
         return "JPAEntity.Transactions[ transactionId=" + transactionId + " ]";
     }
-    
+
+    public double getSubtotal() {
+        return subtotal;
+    }
+
+    public void setSubtotal(double subtotal) {
+        this.subtotal = subtotal;
+    }
+
+    public double getTax() {
+        return tax;
+    }
+
+    public void setTax(double tax) {
+        this.tax = tax;
+    }
+
+    public double getTotal() {
+        return total;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
 }

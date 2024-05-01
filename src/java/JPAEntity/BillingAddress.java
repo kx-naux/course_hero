@@ -164,6 +164,19 @@ public class BillingAddress implements Serializable {
     }
 
     
+
+    @XmlTransient
+    public List<Shipping> getShippingList() {
+        return shippingList;
+    }
+
+    public void setShippingList(List<Shipping> shippingList) {
+        this.shippingList = shippingList;
+    }
+
+   
+   
+
     public String getCity() {
         return city;
     }
@@ -172,6 +185,7 @@ public class BillingAddress implements Serializable {
         this.city = city;
     }
 
+   
     public String getPostalcode() {
         return postalcode;
     }
@@ -186,15 +200,6 @@ public class BillingAddress implements Serializable {
 
     public void setCountry(String country) {
         this.country = country;
-    }
-
-    @XmlTransient
-    public List<Shipping> getShippingList() {
-        return shippingList;
-    }
-
-    public void setShippingList(List<Shipping> shippingList) {
-        this.shippingList = shippingList;
     }
     
 }

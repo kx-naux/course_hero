@@ -37,13 +37,6 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "CourseSubscriptions.findByFinishTime", query = "SELECT c FROM CourseSubscriptions c WHERE c.finishTime = :finishTime")})
 public class CourseSubscriptions implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-    @Id
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 9)
-    @Column(name = "SUBSCRIPTIONS_ID")
-    private String subscriptionsId;
     @Basic(optional = false)
     @NotNull
     @Column(name = "SUBSCRIBE_TIME")
@@ -64,6 +57,14 @@ public class CourseSubscriptions implements Serializable {
     @Column(name = "FINISH_TIME")
     @Temporal(TemporalType.TIMESTAMP)
     private Date finishTime;
+
+    private static final long serialVersionUID = 1L;
+    @Id
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 9)
+    @Column(name = "SUBSCRIPTIONS_ID")
+    private String subscriptionsId;
     @JoinColumn(name = "COURSE_ID", referencedColumnName = "COURSE_ID")
     @ManyToOne(optional = false)
     private Courses courseId;
@@ -110,13 +111,6 @@ public class CourseSubscriptions implements Serializable {
         this.startTime = startTime;
     }
 
-    public String getProgress() {
-        return progress;
-    }
-
-    public void setProgress(String progress) {
-        this.progress = progress;
-    }
 
     public Date getFinishTime() {
         return finishTime;
@@ -166,5 +160,20 @@ public class CourseSubscriptions implements Serializable {
     public String toString() {
         return "JPAEntity.CourseSubscriptions[ subscriptionsId=" + subscriptionsId + " ]";
     }
+
+   
+
+ 
+
+    public String getProgress() {
+        return progress;
+    }
+
+    public void setProgress(String progress) {
+        this.progress = progress;
+    }
+
+    
+
     
 }

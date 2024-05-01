@@ -39,13 +39,6 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Payments.findByDateIssued", query = "SELECT p FROM Payments p WHERE p.dateIssued = :dateIssued")})
 public class Payments implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-    @Id
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 9)
-    @Column(name = "PAYMENT_ID")
-    private String paymentId;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 15)
@@ -70,6 +63,14 @@ public class Payments implements Serializable {
     @Column(name = "DATE_ISSUED")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateIssued;
+
+    private static final long serialVersionUID = 1L;
+    @Id
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 9)
+    @Column(name = "PAYMENT_ID")
+    private String paymentId;
     @JoinColumn(name = "PAYMENT_METHOD_ID", referencedColumnName = "PAYMENT_METHOD_ID")
     @ManyToOne(optional = false)
     private PaymentMethod paymentMethodId;
@@ -117,21 +118,6 @@ public class Payments implements Serializable {
         this.paymentGateway = paymentGateway;
     }
 
-    public double getAmount() {
-        return amount;
-    }
-
-    public void setAmount(double amount) {
-        this.amount = amount;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
 
     public Date getDateIssued() {
         return dateIssued;
@@ -181,5 +167,29 @@ public class Payments implements Serializable {
     public String toString() {
         return "JPAEntity.Payments[ paymentId=" + paymentId + " ]";
     }
+
+    
+
+    
+
+    public double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    
+
+   
     
 }

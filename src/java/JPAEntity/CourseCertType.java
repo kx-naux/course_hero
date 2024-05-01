@@ -37,13 +37,6 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "CourseCertType.findByCertLevel", query = "SELECT c FROM CourseCertType c WHERE c.certLevel = :certLevel")})
 public class CourseCertType implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-    @Id
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 9)
-    @Column(name = "CERTTYPE_ID")
-    private String certtypeId;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
@@ -59,6 +52,14 @@ public class CourseCertType implements Serializable {
     @Size(min = 1, max = 20)
     @Column(name = "CERT_LEVEL")
     private String certLevel;
+
+    private static final long serialVersionUID = 1L;
+    @Id
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 9)
+    @Column(name = "CERTTYPE_ID")
+    private String certtypeId;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "certtypeId")
     private List<CourseCertificates> courseCertificatesList;
     @JoinColumn(name = "COURSE_ID", referencedColumnName = "COURSE_ID")
@@ -87,13 +88,6 @@ public class CourseCertType implements Serializable {
         this.certtypeId = certtypeId;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
 
     public String getIssuingAuthority() {
         return issuingAuthority;
@@ -152,5 +146,17 @@ public class CourseCertType implements Serializable {
     public String toString() {
         return "JPAEntity.CourseCertType[ certtypeId=" + certtypeId + " ]";
     }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    
+
+   
     
 }

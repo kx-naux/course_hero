@@ -34,13 +34,6 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "ProductCategory.findByDescription", query = "SELECT p FROM ProductCategory p WHERE p.description = :description")})
 public class ProductCategory implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-    @Id
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 9)
-    @Column(name = "PRODCAT_ID")
-    private String prodcatId;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 30)
@@ -49,6 +42,14 @@ public class ProductCategory implements Serializable {
     @Size(max = 100)
     @Column(name = "DESCRIPTION")
     private String description;
+
+    private static final long serialVersionUID = 1L;
+    @Id
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 9)
+    @Column(name = "PRODCAT_ID")
+    private String prodcatId;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "prodcatId")
     private List<Product> productList;
 
@@ -80,13 +81,6 @@ public class ProductCategory implements Serializable {
         this.categoryName = categoryName;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
 
     @XmlTransient
     public List<Product> getProductList() {
@@ -120,6 +114,18 @@ public class ProductCategory implements Serializable {
     @Override
     public String toString() {
         return "JPAEntity.ProductCategory[ prodcatId=" + prodcatId + " ]";
+    }
+
+    
+    
+
+   
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
     
 }

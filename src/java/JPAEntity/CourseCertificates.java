@@ -35,13 +35,6 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "CourseCertificates.findByCertificateNumber", query = "SELECT c FROM CourseCertificates c WHERE c.certificateNumber = :certificateNumber")})
 public class CourseCertificates implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-    @Id
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 9)
-    @Column(name = "CERTIFICATE_ID")
-    private String certificateId;
     @Basic(optional = false)
     @NotNull
     @Column(name = "TIME_ISSUED")
@@ -52,6 +45,14 @@ public class CourseCertificates implements Serializable {
     @Size(min = 1, max = 9)
     @Column(name = "CERTIFICATE_NUMBER")
     private String certificateNumber;
+
+    private static final long serialVersionUID = 1L;
+    @Id
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 9)
+    @Column(name = "CERTIFICATE_ID")
+    private String certificateId;
     @JoinColumn(name = "COURSE_ID", referencedColumnName = "COURSE_ID")
     @ManyToOne(optional = false)
     private Courses courseId;
@@ -147,5 +148,9 @@ public class CourseCertificates implements Serializable {
     public String toString() {
         return "JPAEntity.CourseCertificates[ certificateId=" + certificateId + " ]";
     }
+
+   
+
+    
     
 }
