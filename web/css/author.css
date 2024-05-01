@@ -21,6 +21,18 @@
     gap: 40px;
 }
 
+.author-left .author-info .author-title {
+    font-weight: 500;
+    font-size: var(--font-size-m);
+    color: var(--color-text-light-2);
+}
+
+.author-left .author-info .author-name {
+    font-weight: 700;
+    font-size: var(--font-size-4xl);
+    color: var(--color-text-light-3);
+}
+
 /*author right side*/
 .author-section .author-div .author-right {
     max-width: 250px;
