@@ -1,7 +1,13 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="JPAEntity.Courses"%>
+<%@page import="JPAEntity.AuthorContribution"%>
 <%@ page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import="java.util.List, java.util.Map" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+<jsp:useBean id="authorData" class="JPAEntity.Authors" scope="request" />
+<%List<Courses> authCourses = new ArrayList<Courses>(); %>
+<%authCourses = (List<Courses>)request.getAttribute("authorCourses"); %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -12,6 +18,7 @@
         <link type="text/css" href="./css/author.css" rel="stylesheet" >
         <link type="text/css" href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
         <jsp:useBean id="webpath" class="module.WebPath" scope="application" />
+        
     </head>
     <body>
         <!--Toast message-->
@@ -30,19 +37,16 @@
 
                     <div class="author-info flex-col">
                         <h1 class="author-title">Author</h1>
-                        <h2 class="author-name">Dr. Angela Yu</h2>
-                        <h3 class="author-position">Developer and Lead Instructor</h3>
-                        <p class="author-join-date">Join since 18/6/2021</p>
+                        <h2 class="author-name">${authorData.authorName}</h2>
+                        <h3 class="author-position">${authorData.awardsHonors}</h3>
+                        <p class="author-join-date">${authorData.institution}</p>
                     </div>
 
                     <div class="author-about flex-col">
                         <h1 class="author-left-div-title">About me</h1>
                         <P class="about-content">
-                            I'm Angela, I'm a developer with a passion for teaching. I'm the lead instructor at the London App Brewery, London's leading Programming Bootcamp. I've helped hundreds of thousands of students learn to code and change their lives by becoming a developer. I've been invited by companies such as Twitter, Facebook and Google to teach their employees.
+                            ${authorData.biography}
                         </P> 
-                        <P class="about-content">
-                            My first foray into programming was when I was just 12 years old, wanting to build my own Space Invader game. Since then, I've made hundred of websites, apps and games. But most importantly, I realised that my greatest passion is teaching.
-                        </P>
                     </div>
 
                     <div class="author-courses flex-col">
@@ -50,8 +54,8 @@
                         <h1 class="author-left-div-title">My courses (15)</h1>
 
                         <div class="course-div flex-row">
-
-                            <div class="course-product" courseID="121238719823" onclick="redirectToProductPage(this)">
+                            <% for(Courses course:authCourses){ %>
+                            <div class="course-product" courseID="<%= course.getCourseId() %>" onclick="redirectToProductPage(this)">
                                 <div class="course-product-card">
                                     <div class="product-card-top">
                                         <img src="./img/course/beginner_excel.jpg" alt="">
@@ -61,11 +65,17 @@
                                         </div>
                                     </div>
                                     <div class="product-card-bottom flex-col">
-                                        <h1 class="course-title">The Ultimate Excel Programming Course</h1>
-                                        <p class="course-category">Microsoft Excel</p>
-                                        <p class="course-author">Woo Yu Beng, Snijders Wang Wang, Low Kah Xuan</p>
+                                        <h1 class="course-title"><%= course.getProductId().getProdName() %></h1>
+                                        <p class="course-category"><%= course.getCoursecatId().getCategoryName() %></p>
+                                        
+                                        <% String authorsStr = ""; %>
+                                        <% for(AuthorContribution authContri: course.getAuthorContributionList()){ 
+                                                authorsStr = authorsStr + ", ";
+                                            }%>
+                                            
+                                        <p class="course-author"><%= authorsStr%></p>
                                         <div class="course-review flex-row">
-                                            <p class="rating-digit">3.5</p>
+                                            <p class="rating-digit"><% course.getProductId().getAvgRating(); %></p>
                                             <i class="ri-star-fill"></i>
                                             <p class="rating-number-field">(<span class="raing-number">2303</span>)</p>
                                         </div>
@@ -84,6 +94,7 @@
                                     </div>
                                 </div>
                             </div>
+                            <%}%>
 
                             <div class="course-product" courseID="121238719823" onclick="redirectToProductPage(this)">
                                 <div class="course-product-card">
