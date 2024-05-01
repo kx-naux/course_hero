@@ -22,11 +22,31 @@
 
         <!-- Include the navigation bar -->
         <%@ include file="./Components/navbar.jsp" %>
-        
-        <section>
-            
+
+        <section class="section author-section">
+            <div class="author-div flex-row">
+                
+                <div class="author-left flex-col">
+                    
+                </div>            
+                
+                <div class="author-right flex-col">
+                    
+                    <div class="author-img">
+                        <img src="./img/author/angelayu.jpg" alt=""/>
+                    </div>
+                    
+                    <div class="author-link flex-col">
+                        <a href="#" class="author-link-btn"><i class="ri-link"></i> Website</a>
+                        <a href="#" class="author-link-btn"><i class="ri-linkedin-box-fill"></i> LinkedIn</a>
+                        <a href="#" class="author-link-btn"><i class="ri-instagram-fill"></i> Instagram</a>
+                    </div>
+                    
+                </div>
+
+            </div>
         </section>
-        
+
         <!--Footer import-->
         <%--<%@ include file="./Components/footer_wave.html" %>--%>  
         <%@ include file="./Components/footer.jsp" %>  
