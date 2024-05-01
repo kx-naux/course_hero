@@ -295,7 +295,7 @@ a:has(.nav-option):hover + .nav-option-dropdown,
 }
 
 .nav-bar.nav-scroll .nav-icon .nav-icon-tooltip {
-     bottom: -35px;
+    bottom: -35px;
 }
 
 .nav-icon:hover .nav-icon-tooltip {
@@ -538,7 +538,7 @@ a:has(.nav-option):hover + .nav-option-dropdown,
     right: 0px;
     background-color: var(--color-white);
     box-shadow: var(--box-shadow-1);
-    padding: 20px;
+    max-width: 340px;
 }
 
 .nav-bar.nav-scroll .nav-icon-div .profile-list  {
@@ -548,6 +548,81 @@ a:has(.nav-option):hover + .nav-option-dropdown,
 .nav-icon-div:hover > div,
 .nav-icon-div .profile-list:hover {
     display: flex;
+}
+
+.profile-list > div {
+    border-bottom: 1px solid var(--color-light-grey-3);
+}
+
+.profile-list .user-info{
+    padding: 20px 16px;
+}
+
+.profile-list > div:last-of-type {
+    border-bottom: none;
+}
+
+.profile-list .user-info {
+    gap: 10px;
+    align-items: center;
+}
+
+.profile-list .user-info > div {
+    width: 100%;
+    flex: 1 1 50px;
+}
+
+.profile-list .user-info .user-info-left img {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border: 1px solid var(--color-text-light-1);
+    border-radius: 50%;
+}
+
+.profile-list .user-info .user-info-right {
+    gap: 4px;
+    justify-content: center;
+}
+
+.profile-list .user-info .username{
+    font-size: var(--font-size-xm);
+    font-weight: 700;
+    color: var(--color-text-light-3);
+}
+
+.profile-list .user-info .email{
+    max-width: 200px;
+    font-size: var(--font-size-xs);
+    font-weight: 400;
+    color: var(--color-text-light-2);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.profile-list > div > ul {
+    list-style: none;
+    gap: 5px;
+}
+
+.profile-list > div > ul li a{
+    font-size: var(--font-size-xm);
+    font-weight: 500;
+    color: var(--color-text-light-2);
+    padding: 18px 20px;
+    display: block;
+}
+
+.profile-list > div > ul li a i{
+    font-size: var(--font-size-l);
+    font-weight: 500;
+    margin-right: 10px;
+}
+
+.profile-list > div > ul li a:hover {
+    color: var(--color-blue-2);
+    background-color: var(--color-light-grey-1);
 }
 
 /*footer*/

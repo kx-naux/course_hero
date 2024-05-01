@@ -91,16 +91,16 @@
                 </div>
                 <div class="relative flex-col nav-icon-div">
                     <a href="<%= webpath.getPageUrl("profile")%>">
-                        <p class="nav-icon"><img class="nav-profile-pic" src="./img/user/wy.png" alt="" /></p>
+                        <p class="nav-icon"><img class="nav-profile-pic" src="./img/user/kx.png" alt="" /></p>
                     </a>
                     <div class="profile-list flex-col">
 
                         <div class="user-info flex-row">
-                            <div class="user-info-left">
-                                <img class="nav-profile-pic" src="./img/user/wy.png" alt="" />
+                            <div class="user-info-left flex-col">
+                                <img class="profile-list-pic" src="./img/user/kx.png" alt="" />
                             </div>
                             <div class="user-info-right flex-col">
-                                <h1 class="username">${userData.accountId.username}</h1>
+                                <p class="username">${userData.accountId.username}</p>
                                 <p class="email">${userData.accountId.email}</p>
                             </div>
                         </div>
