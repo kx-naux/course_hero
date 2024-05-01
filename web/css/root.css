@@ -7,8 +7,6 @@
     --color-text-light-2: #545454;
     --color-text-light-3: #373737;
 
-    --color-text-error: #e31b1b;
-
     --color-white: #fff;
     --color-white-transparent-05: rgba(255,255,255,0.5);
 
@@ -77,6 +75,8 @@
     --toast-color-default: #c2c2c2;
 
     --color-transparent: rgba(0,0,0,0);
+    
+    --color-text-error: #e31b1b;
 
     --rating-star-color: #cc9616;
     
