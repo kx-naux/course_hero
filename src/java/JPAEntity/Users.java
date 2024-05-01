@@ -216,14 +216,6 @@ public class Users implements Serializable {
         this.usertype = usertype;
     }
 
-    public Date getDateJoined() {
-        return dateJoined;
-    }
-
-    public void setDateJoined(Date dateJoined) {
-        this.dateJoined = dateJoined;
-    }
-
     public String getGender() {
         return gender;
     }
