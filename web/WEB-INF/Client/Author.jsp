@@ -31,7 +31,8 @@
                     <div class="author-info flex-col">
                         <h1 class="author-title">Author</h1>
                         <h2 class="author-name">Dr. Angela Yu</h2>
-                        <h3 class="authoir-position">Developer and Lead Instructor</h3>
+                        <h3 class="author-position">Developer and Lead Instructor</h3>
+                        <p class="author-join-date">Join since 18/6/2021</p>
                     </div>
 
                     <div class="author-about flex-col">
@@ -57,7 +58,7 @@
                     <div class="author-link flex-col">
                         <a href="#" class="author-link-btn"><i class="ri-link"></i> Website</a>
                         <a href="#" class="author-link-btn"><i class="ri-linkedin-box-fill"></i> LinkedIn</a>
-                        <a href="#" class="author-link-btn"><i class="ri-instagram-fill"></i> Instagram</a>
+                        <a href="#" class="author-link-btn"><i class="ri-instagram-line"></i> Instagram</a>
                     </div>
 
                 </div>

@@ -65,7 +65,6 @@
                 <a href="<%= webpath.getPageUrl("cart")%>">
                     <p class="nav-icon"><i class="ri-shopping-cart-line"></i><span class="nav-icon-tooltip">Cart</span></P>
                 </a>
-                <input hidden type="text" id="hidden_username" value="${userData.accountId.username}"/>
             </c:when>
             <c:otherwise>
                 <!-- Not Logged in -->

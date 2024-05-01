@@ -1,1 +1,69 @@
 @import url('./root.css');
+
+.author-section {
+    padding: 40px 20px 70px;
+}
+
+.author-section .author-div {
+    width: 100%;
+    gap: 30px;
+    justify-content: center;
+}
+
+.author-section .author-div > div {
+    flex: 1 1 300px;
+    width: 100%;
+}
+
+/*author left side*/
+.author-section .author-div .author-left {
+    max-width: 650px;
+    gap: 40px;
+}
+
+/*author right side*/
+.author-section .author-div .author-right {
+    max-width: 250px;
+    gap: 30px;
+    align-items: center;
+}
+
+.author-right .author-img {
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+}
+
+.author-right .author-img img {
+    border-radius: 50%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.author-right .author-link  {
+    gap: 10px;
+    width: 100%;
+    align-items: center;
+}
+
+.author-right .author-link .author-link-btn {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    font-size: var(--font-size-xm);
+    color: var(--color-text-light-2);
+    background-color: var(--color-transparent);
+    border: 1px solid var(--color-text-light-3);
+    cursor: pointer;
+    transition: 0.2s all ease-in-out;
+    user-select: none;
+    max-width: 200px;
+    gap: 10px;
+}
+
+.author-right .author-link .author-link-btn:hover {
+    background-color: var(--color-light-grey-2);
+}
