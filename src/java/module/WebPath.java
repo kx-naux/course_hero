@@ -24,6 +24,8 @@ public class WebPath {
         pageUrls.put("wishlist", "/wishlist");
         pageUrls.put("merchandises", "/merchandises");
         pageUrls.put("merchandise", "/merch");
+        pageUrls.put("profile", "/profile");
+        pageUrls.put("help", "/help");
 
         //admin
         pageUrls.put("dashboard", "/admin/dashboard");

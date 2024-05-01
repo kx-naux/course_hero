@@ -58,13 +58,70 @@
         <!--JSP conditional rendering-->
         <c:choose>
             <c:when test="${not empty userData.accountId.username}">
+
+                <%
+                    int numberWishlist = 0;
+                    int numberCart = 5;
+                %>
+
                 <!-- Logged in -->
-                <a href="<%= webpath.getPageUrl("wishlist")%>">
-                    <p class="nav-icon"><i class="ri-heart-line"></i><span class="nav-icon-tooltip">Wishlist</span></P>
-                </a>
-                <a href="<%= webpath.getPageUrl("cart")%>">
-                    <p class="nav-icon"><i class="ri-shopping-cart-line"></i><span class="nav-icon-tooltip">Cart</span></P>
-                </a>
+                <div class="relative flex-col nav-icon-div">
+                    <a href="<%= webpath.getPageUrl("wishlist")%>">
+                        <p class="nav-icon">
+                            <i class="ri-heart-line"></i>    
+                            <%
+                                if (numberWishlist > 0) {
+                            %>
+                            <span class="nav-icon-number"><%= numberWishlist%></span>
+                            <% }%>
+                        </P>
+                    </a>
+                </div>
+                <div class="relative flex-col nav-icon-div">
+                    <a href="<%= webpath.getPageUrl("cart")%>">
+                        <p class="nav-icon">
+                            <i class="ri-shopping-cart-line"></i>
+                            <%
+                                if (numberCart > 0) {
+                            %>
+                            <span class="nav-icon-number"><%= numberCart%></span>
+                            <% }%>
+                        </P>
+                    </a>
+                </div>
+                <div class="relative flex-col nav-icon-div">
+                    <a href="<%= webpath.getPageUrl("profile")%>">
+                        <p class="nav-icon"><img class="nav-profile-pic" src="./img/user/wy.png" alt="" /></p>
+                    </a>
+                    <div class="profile-list flex-col">
+
+                        <div class="user-info flex-row">
+                            <div class="user-info-left">
+                                <img class="nav-profile-pic" src="./img/user/wy.png" alt="" />
+                            </div>
+                            <div class="user-info-right flex-col">
+                                <h1 class="username">${userData.accountId.username}</h1>
+                                <p class="email">${userData.accountId.email}</p>
+                            </div>
+                        </div>
+
+                        <div>
+                            <ul class="flex-col">
+                                <li><a href="<%= webpath.getPageUrl("profile")%>"><i class="ri-user-settings-line"></i> Account Settings</a></li>
+                                <li><a href="<%= webpath.getPageUrl("cart")%>"><i class="ri-shopping-cart-line"></i> Cart</a></li>
+                                <li><a href="<%= webpath.getPageUrl("wishlist")%>"><i class="ri-heart-line"></i> Wishlist</a></li>
+                                <li><a href="<%= webpath.getPageUrl("help")%>"><i class="ri-question-line"></i> Help</a></li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <ul class="flex-col">
+                                <li><a href="<%= webpath.getPageUrl("logout")%>"><i class="ri-logout-box-r-line"></i> Log out</a></li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
             </c:when>
             <c:otherwise>
                 <!-- Not Logged in -->
@@ -88,51 +145,51 @@
                 </form>
             </div>
             <div class="nav-search-result flex-col">
-<!--                <a onclick="search_suggestion_click(this)">
-                    <div class="nav-search-suggestion-query flex-row">
-                        <p class="suggest-icon"><i class="ri-search-line"></i></p>
-                        <p class="suggest-query">Python</p>
-                    </div>
-                </a>
-                <a onclick="search_suggestion_click(this)">
-                    <div class="nav-search-suggestion-query flex-row">
-                        <p class="suggest-icon"><i class="ri-search-line"></i></p>
-                        <p class="suggest-query">Python</p>
-                    </div>
-                </a>
-                <a onclick="search_suggestion_click(this)">
-                    <div class="nav-search-suggestion-query flex-row">
-                        <p class="suggest-icon"><i class="ri-search-line"></i></p>
-                        <p class="suggest-query">Python</p>
-                    </div>
-                </a>
-                <a onclick="search_suggestion_course_click(this)">
-                    <div class="nav-search-suggestion-course flex-row" courseID="121238719823">
-                        <img src="./img/course/beginner_excel.jpg" alt="" />
-                        <div class="suggestion-course-detail flex-col">
-                            <h1>The Ultimate Excel Programming Course</h1>
-                            <p>Woo Yu Beng</p>
-                        </div>
-                    </div>
-                </a>
-                <a onclick="search_suggestion_course_click(this)">
-                    <div class="nav-search-suggestion-course flex-row" courseID="121238719823">
-                        <img src="./img/course/beginner_excel.jpg" alt="" />
-                        <div class="suggestion-course-detail flex-col">
-                            <h1>The Ultimate Excel Programming Course</h1>
-                            <p>Woo Yu Beng</p>
-                        </div>
-                    </div>
-                </a>
-                <a onclick="search_suggestion_course_click(this)">
-                    <div class="nav-search-suggestion-course flex-row" courseID="121238719823">
-                        <img src="./img/course/beginner_excel.jpg" alt="" />
-                        <div class="suggestion-course-detail flex-col">
-                            <h1>The Ultimate Excel Programming Course</h1>
-                            <p>Woo Yu Beng</p>
-                        </div>
-                    </div>
-                </a>-->
+                <!--                <a onclick="search_suggestion_click(this)">
+                                    <div class="nav-search-suggestion-query flex-row">
+                                        <p class="suggest-icon"><i class="ri-search-line"></i></p>
+                                        <p class="suggest-query">Python</p>
+                                    </div>
+                                </a>
+                                <a onclick="search_suggestion_click(this)">
+                                    <div class="nav-search-suggestion-query flex-row">
+                                        <p class="suggest-icon"><i class="ri-search-line"></i></p>
+                                        <p class="suggest-query">Python</p>
+                                    </div>
+                                </a>
+                                <a onclick="search_suggestion_click(this)">
+                                    <div class="nav-search-suggestion-query flex-row">
+                                        <p class="suggest-icon"><i class="ri-search-line"></i></p>
+                                        <p class="suggest-query">Python</p>
+                                    </div>
+                                </a>
+                                <a onclick="search_suggestion_course_click(this)">
+                                    <div class="nav-search-suggestion-course flex-row" courseID="121238719823">
+                                        <img src="./img/course/beginner_excel.jpg" alt="" />
+                                        <div class="suggestion-course-detail flex-col">
+                                            <h1>The Ultimate Excel Programming Course</h1>
+                                            <p>Woo Yu Beng</p>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a onclick="search_suggestion_course_click(this)">
+                                    <div class="nav-search-suggestion-course flex-row" courseID="121238719823">
+                                        <img src="./img/course/beginner_excel.jpg" alt="" />
+                                        <div class="suggestion-course-detail flex-col">
+                                            <h1>The Ultimate Excel Programming Course</h1>
+                                            <p>Woo Yu Beng</p>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a onclick="search_suggestion_course_click(this)">
+                                    <div class="nav-search-suggestion-course flex-row" courseID="121238719823">
+                                        <img src="./img/course/beginner_excel.jpg" alt="" />
+                                        <div class="suggestion-course-detail flex-col">
+                                            <h1>The Ultimate Excel Programming Course</h1>
+                                            <p>Woo Yu Beng</p>
+                                        </div>
+                                    </div>
+                                </a>-->
             </div>
             <div class="nav-popular-search flex-col">
                 <h1>Popular searches</h1>

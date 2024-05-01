@@ -238,34 +238,45 @@ a:has(.nav-option):hover + .nav-option-dropdown,
 }
 
 .nav-function-div {
-    padding:14px 0;
     flex: 1 2 300px;
     justify-content: right;
     display: flex;
     flex-direction: row;
-    gap: 16px;
+    gap: 22px;
     transition: 0.3s all ease-in-out;
 }
 
 .nav-bar.nav-scroll .nav-function-div {
-    gap: 12px;
-    padding: 0;
+    gap: 16px;
 }
 
 .nav-function-div a{
     align-self: center;
 }
 
+.nav-icon-div {
+    justify-content: center;
+    padding: 14px 0;
+}
+
+.nav-bar.nav-scroll .nav-icon-div {
+    padding: 0;
+}
+
 .nav-icon {
+    display: flex;
     position: relative;
     align-self: center;
     font-size: 24px;
     font-weight: 400;
     color: var(--color-text-light-1);
     cursor: pointer;
-    padding: 2px 8px;
+    padding: 5px 8px;
     border-radius: 4px;
-    transition: 0.3s all ease-in-out;
+}
+
+.nav-icon:has(img) {
+    padding: 0;
 }
 
 .nav-icon .nav-icon-tooltip {
@@ -280,11 +291,26 @@ a:has(.nav-option):hover + .nav-option-dropdown,
     left: 50%;
     bottom: -35px;
     transform: translateX(-50%);
-    transition: 0.3s all ease-in-out;
 }
 
 .nav-icon:hover .nav-icon-tooltip {
     display: block;
+}
+
+.nav-icon .nav-icon-number{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    color: var(--color-white);
+    font-weight: 500;
+    font-size: var(--font-size-xs);
+    background-color: var(--color-blue-2);
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    top: -3px;
+    right: -3px;
 }
 
 .nav-bar.nav-scroll .nav-icon {
@@ -293,7 +319,19 @@ a:has(.nav-option):hover + .nav-option-dropdown,
 
 .nav-icon:hover {
     color: var(--color-secondary);
-    background-color: var(--color-light-grey-2);
+}
+
+.nav-profile-pic {
+    border-radius: 50%;
+    object-fit: cover;
+    width: 35px;
+    height: 35px;
+    border: 1px solid var(--color-text-light-2);
+}
+
+.nav-bar.nav-scroll .nav-profile-pic {
+    width: 28px;
+    height: 28px;
 }
 
 .nav-btn {
@@ -447,7 +485,7 @@ a:has(.nav-option):hover + .nav-option-dropdown,
 }
 
 .nav-search-result a .nav-search-suggestion-course .suggestion-course-detail p{
-font-size: var(--font-size-xs);
+    font-size: var(--font-size-xs);
     font-weight: 300;
     color: var(--color-text-light-2);
 }
@@ -485,6 +523,26 @@ font-size: var(--font-size-xs);
 
 .nav-search .nav-search-div .nav-popular-search ul li a:active{
     background-color: var(--color-light-grey-3);
+}
+
+/*nav hover list*/
+.nav-icon-div .profile-list {
+    position: absolute;
+    display: none;
+    top: 50px;
+    right: 0px;
+    background-color: var(--color-white);
+    box-shadow: var(--box-shadow-1);
+    padding: 20px;
+}
+
+.nav-bar.nav-scroll .nav-icon-div .profile-list  {
+    top: 30px;
+}
+
+.nav-icon-div:hover > div,
+.nav-icon-div .profile-list:hover {
+    display: flex;
 }
 
 /*footer*/
@@ -731,6 +789,10 @@ font-size: var(--font-size-xs);
 .flex-col {
     display: flex;
     flex-direction: column;
+}
+
+.relative {
+    position: relative;
 }
 
 .section {
