@@ -131,7 +131,7 @@ public class Login extends HttpServlet {
         //request.getRequestDispatcher("/WEB-INF/Client/Login.jsp").forward(request, response);
     }
     
-    private void removeRmbMeTokenInCookie(HttpServletRequest request, HttpServletResponse response){
+    public static void removeRmbMeTokenInCookie(HttpServletRequest request, HttpServletResponse response){
         Cookie[] cookies = request.getCookies();
         if(cookies != null){
             for (Cookie cookie : cookies) {
