@@ -1,3 +1,31 @@
+//Move to product page onclick
+function redirectToProductPage(product) {
+    const id = product.getAttribute('courseID');
+    window.location.href = "/course_hero/course?id=" + id;
+}
+
+//Add to cart / remove from cart
+function cartButtonClick(evt) {
+    evt.stopPropagation();
+    
+    // check is login?
+
+    evt.preventDefault();
+    const courseID = evt.target.closest('.course-product').getAttribute('courseID');
+    console.log("Cart Clicked - Course ID:", courseID);
+}
+
+//Add to wishlist / remove from wishlist
+function likeButtonClick(evt) {
+    evt.stopPropagation();
+    
+    // check is login?
+
+    evt.preventDefault();
+    const courseID = evt.target.closest('.course-product').getAttribute('courseID');
+    console.log("Like Clicked - Course ID:", courseID);
+}
+
 // set event handler for pagination button 
 const searchForm = document.querySelector("form#authorForm");
 const previousBtn = document.querySelector("p.page-previous-btn");
