@@ -242,25 +242,26 @@ a:has(.nav-option):hover + .nav-option-dropdown,
     justify-content: right;
     display: flex;
     flex-direction: row;
-    gap: 22px;
     transition: 0.3s all ease-in-out;
 }
 
-.nav-bar.nav-scroll .nav-function-div {
-    gap: 16px;
+.nav-function-div:not(:has(div)) {
+    gap: 10px;
 }
 
 .nav-function-div a{
     align-self: center;
 }
 
+.nav-function-div > p,
 .nav-icon-div {
     justify-content: center;
-    padding: 14px 0;
+    padding: 14px 10px;
 }
 
+.nav-bar.nav-scroll .nav-function-div > p,
 .nav-bar.nav-scroll .nav-icon-div {
-    padding: 0;
+    padding: 10px 6px;
 }
 
 .nav-icon {
@@ -289,8 +290,12 @@ a:has(.nav-option):hover + .nav-option-dropdown,
     border-radius: 4px;
     padding: 4px 8px;
     left: 50%;
-    bottom: -35px;
+    bottom: -25px;
     transform: translateX(-50%);
+}
+
+.nav-bar.nav-scroll .nav-icon .nav-icon-tooltip {
+     bottom: -35px;
 }
 
 .nav-icon:hover .nav-icon-tooltip {
@@ -529,7 +534,7 @@ a:has(.nav-option):hover + .nav-option-dropdown,
 .nav-icon-div .profile-list {
     position: absolute;
     display: none;
-    top: 50px;
+    top: 60px;
     right: 0px;
     background-color: var(--color-white);
     box-shadow: var(--box-shadow-1);
@@ -537,7 +542,7 @@ a:has(.nav-option):hover + .nav-option-dropdown,
 }
 
 .nav-bar.nav-scroll .nav-icon-div .profile-list  {
-    top: 30px;
+    top: 50px;
 }
 
 .nav-icon-div:hover > div,
