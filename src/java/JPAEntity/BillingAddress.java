@@ -5,6 +5,7 @@
 package JPAEntity;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -12,11 +13,13 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -64,6 +67,8 @@ public class BillingAddress implements Serializable {
     @Size(min = 1, max = 40)
     @Column(name = "COUNTRY")
     private String country;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "addressId")
+    private List<Shipping> shippingList;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -158,6 +163,7 @@ public class BillingAddress implements Serializable {
         return "JPAEntity.BillingAddress[ addressId=" + addressId + " ]";
     }
 
+    
     public String getCity() {
         return city;
     }
@@ -180,6 +186,15 @@ public class BillingAddress implements Serializable {
 
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    @XmlTransient
+    public List<Shipping> getShippingList() {
+        return shippingList;
+    }
+
+    public void setShippingList(List<Shipping> shippingList) {
+        this.shippingList = shippingList;
     }
     
 }

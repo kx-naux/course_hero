@@ -34,6 +34,12 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "RememberMeToken.findByDateIssued", query = "SELECT r FROM RememberMeToken r WHERE r.dateIssued = :dateIssued")})
 public class RememberMeToken implements Serializable {
 
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "DATE_ISSUED")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dateIssued;
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -41,11 +47,6 @@ public class RememberMeToken implements Serializable {
     @Size(min = 1, max = 50)
     @Column(name = "TOKEN")
     private String token;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "DATE_ISSUED")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date dateIssued;
     @JoinColumn(name = "USER_ID", referencedColumnName = "USER_ID")
     @ManyToOne
     private Users userId;
@@ -116,5 +117,5 @@ public class RememberMeToken implements Serializable {
     public String toString() {
         return "JPAEntity.RememberMeToken[ token=" + token + " ]";
     }
-    
+
 }
