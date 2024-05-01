@@ -13,6 +13,7 @@
         <link type="text/css" href="./css/about_us.css" rel="stylesheet" >
         <link type="text/css" href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet"> 
         <jsp:useBean id="webpath" class="module.WebPath" scope="application" />
+        <jsp:useBean id="aboutUsStats" class="entity.AboutUsStats" scope="application"/>
     </head>
     <body>
         <!--To top button-->
@@ -229,7 +230,7 @@
                 <div class="number-div-content flex-row">
 
                     <%
-                        List<Map<String, String>> statistic = NumberStatisticData.getStatistic();
+                        List<Map<String, String>> statistic = aboutUsStats.getStatistic();
                         for (Map<String, String> s : statistic) {
                     %>
                     <div class="number-col flex-col">
