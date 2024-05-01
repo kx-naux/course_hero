@@ -156,4 +156,10 @@ function popular_search_click(e) {
     window.location.href = "/course_hero/search?query=" + e.innerText;
 }
 
+// move wishlist item to cart 
+function moveTOCart(e) {
+    const id = e.getAttribute("courseID");
+    
+}
+
 

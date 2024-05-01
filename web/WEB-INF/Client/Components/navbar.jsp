@@ -60,7 +60,7 @@
             <c:when test="${not empty userData.accountId.username}">
 
                 <%
-                    int numberWishlist = 0;
+                    int numberWishlist = 2;
                     int numberCart = 5;
                 %>
 
@@ -72,7 +72,74 @@
                         </P>
                     </a>
                     <div class="wish-list flex-col">
+                        <%
+                            if (numberWishlist > 0) {
+                        %>
+                        <!-- wish list with items-->
+                        <div class="wish-list-item flex-col">
 
+                            <div class="flex-col">
+                                <div class="course-item flex-row">
+                                    <div class="course-item-img">
+                                        <img src="./img/course/beginner_excel.jpg" alt="" />
+                                    </div>
+                                    <div class="course-item-info flex-col">
+                                        <h1 class="course-title">The Ultimate Excel Programming Course</h1>
+                                        <p class="course-author">Woo Yu Beng, Snijders Wang</p>
+                                        <p class="course-price">RM 58.00</p>
+                                    </div>
+
+                                </div>
+                                <div class="course-move-cart-div flex-col">
+                                    <button class="move-cart-btn" courseID="123123" onclick="moveTOCart(this)">Add to cart</button>
+                                </div>
+                            </div>
+
+                            <div class="flex-col">
+                                <div class="course-item flex-row">
+                                    <div class="course-item-img">
+                                        <img src="./img/course/beginner_excel.jpg" alt="" />
+                                    </div>
+                                    <div class="course-item-info flex-col">
+                                        <h1 class="course-title">The Ultimate Excel Programming Course</h1>
+                                        <p class="course-author">Woo Yu Beng, Snijders Wang</p>
+                                        <p class="course-price">RM 58.00</p>
+                                    </div>
+
+                                </div>
+                                <div class="course-move-cart-div flex-col">
+                                    <button class="move-cart-btn" courseID="123123" onclick="moveTOCart(this)">Add to cart</button>
+                                </div>
+                            </div>
+                            
+                            <div class="flex-col">
+                                <div class="course-item flex-row">
+                                    <div class="course-item-img">
+                                        <img src="./img/course/beginner_excel.jpg" alt="" />
+                                    </div>
+                                    <div class="course-item-info flex-col">
+                                        <h1 class="course-title">The Ultimate Excel Programming Course</h1>
+                                        <p class="course-author">Woo Yu Beng, Snijders Wang</p>
+                                        <p class="course-price">RM 58.00</p>
+                                    </div>
+
+                                </div>
+                                <div class="course-move-cart-div flex-col">
+                                    <button class="move-cart-btn" courseID="123123" onclick="moveTOCart(this)">Add to cart</button>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="wish-list-bot flex-col">
+                            <a href="<%= webpath.getPageUrl("wishlist")%>">Go to wishlist</a>
+                        </div>
+                        <% } else {%>
+                        <!-- wish list without items-->
+                        <div class="list-empty-div flex-col">
+                            <p>Your wishlist is empty</p>
+                            <a href="<%= webpath.getPageUrl("produsts")%>">Explore courses</a>
+                        </div>
+                        <% }%>
                     </div>
                 </div>
                 <div class="relative flex-col nav-icon-div">
@@ -93,47 +160,47 @@
                         <!--cart list with items-->
                         <div class="cart-list-item flex-col">
 
-                            <div class="course-item">
+                            <div class="course-item flex-row">
                                 <div class="course-item-img">
-                                    <img src="./img/course/beginner_excel" alt="" />
+                                    <img src="./img/course/beginner_excel.jpg" alt="" />
                                 </div>
-                                <div class="course-item-info">
+                                <div class="course-item-info flex-col">
                                     <h1 class="course-title">The Ultimate Excel Programming Course</h1>
                                     <p class="course-author">Woo Yu Beng, Snijders Wang</p>
-                                    <p clas="course-price">RM 58.00</p>
+                                    <p class="course-price">RM 58.00</p>
                                 </div>
                             </div>
 
-                            <div class="course-item">
+                            <div class="course-item flex-row">
                                 <div class="course-item-img">
-                                    <img src="./img/course/beginner_excel" alt="" />
+                                    <img src="./img/course/beginner_excel.jpg" alt="" />
                                 </div>
-                                <div class="course-item-info">
+                                <div class="course-item-info flex-col">
                                     <h1 class="course-title">The Ultimate Excel Programming Course</h1>
                                     <p class="course-author">Woo Yu Beng, Snijders Wang</p>
-                                    <p clas="course-price">RM 58.00</p>
+                                    <p class="course-price">RM 58.00</p>
                                 </div>
                             </div>
 
-                            <div class="course-item">
+                            <div class="course-item flex-row">
                                 <div class="course-item-img">
-                                    <img src="./img/course/beginner_excel" alt="" />
+                                    <img src="./img/course/beginner_excel.jpg" alt="" />
                                 </div>
-                                <div class="course-item-info">
+                                <div class="course-item-info flex-col">
                                     <h1 class="course-title">The Ultimate Excel Programming Course</h1>
                                     <p class="course-author">Woo Yu Beng, Snijders Wang</p>
-                                    <p clas="course-price">RM 58.00</p>
+                                    <p class="course-price">RM 58.00</p>
                                 </div>
                             </div>
 
                         </div>
                         <div class="cart-list-bot flex-col">
                             <h1>Total: RM 128.80</h1>
-                            <a>Go to cart</a>
+                            <a href="<%= webpath.getPageUrl("cart")%>">Go to cart</a>
                         </div>
                         <% } else {%>
                         <!--cart list without items-->
-                        <div class="list-empty-div">
+                        <div class="list-empty-div flex-col">
                             <p>Your cart is empty</p>
                             <a href="<%= webpath.getPageUrl("home")%>">Keep shopping</a>
                         </div>
