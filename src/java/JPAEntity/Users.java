@@ -48,7 +48,7 @@ public class Users implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "DOB")
-    @Temporal(TemporalTypeTemporalType.DATE)
+    @Temporal(TemporalType.DATE)
     private Date dob;
     @Basic(optional = false)
     @NotNull
@@ -58,7 +58,7 @@ public class Users implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "DATE_JOINED")
-    @Temporal(TemporalTypeTemporalType.TIMESTAMP)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date dateJoined;
     @Basic(optional = false)
     @NotNull
