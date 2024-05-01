@@ -11,6 +11,11 @@ const toast_icon = toast.querySelector(".toast-type");
 const toast_title = toast.querySelector(".toast-text-1");
 const toast_message = toast.querySelector(".toast-text-2");
 
+function notiSound() {
+    const audio = new Audio('http://localhost:8080/course_hero/audio/dc_notification.mp3');
+    audio.play();
+}
+
 /**
  * Displays a toast message with the specified type, title, and message.
  * 
@@ -18,10 +23,10 @@ const toast_message = toast.querySelector(".toast-text-2");
  * @param {string} title - The title of the toast message.
  * @param {string} message - The content of the toast message.
  */
-function toast_msg(type = TOAST_DEFAULT, title, message) {
+function toast_msg(type, title, message) {
     toast_title.innerText = title;
     toast_message.innerText = message;
-    
+
     clearTimeout(timeoutId); // Clear previous timeout
     toast_progess.classList.remove('active');
     toast_progess.classList.add("reset-animation");
@@ -47,6 +52,8 @@ function toast_msg(type = TOAST_DEFAULT, title, message) {
     void toast_progess.offsetWidth; // Trigger reflow to apply CSS changes immediately
     toast_progess.classList.remove("reset-animation");
     toast_progess.classList.add("active");
+
+    notiSound();
 
     timeoutId = setTimeout(() => {
         toast.className = 'toast';
