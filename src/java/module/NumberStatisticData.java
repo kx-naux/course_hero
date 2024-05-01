@@ -7,6 +7,55 @@ import java.util.Map;
 
 public class NumberStatisticData {
 
+    
+    private int learnersNum;
+    private int authorsNum;
+    private int coursesNum;
+    private int categoriesNum;
+    
+    public NumberStatisticData(){
+        
+    }
+    
+    public NumberStatisticData(int learnerNum,int authorsNum, int coursesNum, int categoriesNum){
+        this.learnersNum = learnerNum;
+        this.authorsNum = authorsNum;
+        this.coursesNum = coursesNum;
+        this.categoriesNum = categoriesNum;
+    }
+    
+    public int getLearnersNum() {
+        return learnersNum;
+    }
+
+    public void setLearnersNum(int learnerNum) {
+        this.learnersNum = learnerNum;
+    }
+    
+    public int getAuthorsNum() {
+        return authorsNum;
+    }
+
+    public void setAuthorsNum(int authorsNum) {
+        this.authorsNum = authorsNum;
+    }
+    
+    public int getCoursesNum() {
+        return coursesNum;
+    }
+
+    public void setCoursesNum(int coursesNum) {
+        this.coursesNum = coursesNum;
+    }
+    
+    public int getCategoriesNum() {
+        return categoriesNum;
+    }
+
+    public void setCategoriesNum(int categoriesNum) {
+        this.categoriesNum = categoriesNum;
+    }
+    
     public static List<Map<String, String>> getStatistic() {
         List<Map<String, String>> statistic = new ArrayList<>();
 
