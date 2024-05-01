@@ -8,10 +8,13 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -45,7 +48,7 @@ public class Users implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "DOB")
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalTypeTemporalType.DATE)
     private Date dob;
     @Basic(optional = false)
     @NotNull
@@ -55,13 +58,36 @@ public class Users implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "DATE_JOINED")
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalTypeTemporalType.TIMESTAMP)
     private Date dateJoined;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 20)
     @Column(name = "GENDER")
     private String gender;
+    @JoinTable(name = "PREFERRED_COURSE", joinColumns = {
+        @JoinColumn(name = "USER_ID", referencedColumnName = "USER_ID")}, inverseJoinColumns = {
+        @JoinColumn(name = "COURSECAT_ID", referencedColumnName = "COURSECAT_ID")})
+    @ManyToMany
+    private List<CourseCategory> courseCategoryList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
+    private List<CourseSubscriptions> courseSubscriptionsList;
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "userId")
+    private Bankcardinfo bankcardinfo;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
+    private List<CartItems> cartItemsList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
+    private List<Transactions> transactionsList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
+    private List<CourseCertificates> courseCertificatesList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
+    private List<Messages> messagesList;
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "userId")
+    private TngAccounts tngAccounts;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "users")
+    private List<UserChatrooms> userChatroomsList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
+    private List<Ratings> ratingsList;
     @OneToMany(mappedBy = "userId")
     private List<RememberMeToken> rememberMeTokenList;
 
@@ -164,6 +190,16 @@ public class Users implements Serializable {
         return "JPAEntity.Users[ userId=" + userId + " ]";
     }
 
+
+    @XmlTransient
+    public List<RememberMeToken> getRememberMeTokenList() {
+        return rememberMeTokenList;
+    }
+
+    public void setRememberMeTokenList(List<RememberMeToken> rememberMeTokenList) {
+        this.rememberMeTokenList = rememberMeTokenList;
+    }
+
     public Date getDob() {
         return dob;
     }
@@ -180,6 +216,14 @@ public class Users implements Serializable {
         this.usertype = usertype;
     }
 
+    public Date getDateJoined() {
+        return dateJoined;
+    }
+
+    public void setDateJoined(Date dateJoined) {
+        this.dateJoined = dateJoined;
+    }
+
     public String getGender() {
         return gender;
     }
@@ -189,12 +233,91 @@ public class Users implements Serializable {
     }
 
     @XmlTransient
-    public List<RememberMeToken> getRememberMeTokenList() {
-        return rememberMeTokenList;
+    public List<CourseCategory> getCourseCategoryList() {
+        return courseCategoryList;
     }
 
-    public void setRememberMeTokenList(List<RememberMeToken> rememberMeTokenList) {
-        this.rememberMeTokenList = rememberMeTokenList;
+    public void setCourseCategoryList(List<CourseCategory> courseCategoryList) {
+        this.courseCategoryList = courseCategoryList;
+    }
+
+    @XmlTransient
+    public List<CourseSubscriptions> getCourseSubscriptionsList() {
+        return courseSubscriptionsList;
+    }
+
+    public void setCourseSubscriptionsList(List<CourseSubscriptions> courseSubscriptionsList) {
+        this.courseSubscriptionsList = courseSubscriptionsList;
+    }
+
+    public Bankcardinfo getBankcardinfo() {
+        return bankcardinfo;
+    }
+
+    public void setBankcardinfo(Bankcardinfo bankcardinfo) {
+        this.bankcardinfo = bankcardinfo;
+    }
+
+    @XmlTransient
+    public List<CartItems> getCartItemsList() {
+        return cartItemsList;
+    }
+
+    public void setCartItemsList(List<CartItems> cartItemsList) {
+        this.cartItemsList = cartItemsList;
+    }
+
+    @XmlTransient
+    public List<Transactions> getTransactionsList() {
+        return transactionsList;
+    }
+
+    public void setTransactionsList(List<Transactions> transactionsList) {
+        this.transactionsList = transactionsList;
+    }
+
+    @XmlTransient
+    public List<CourseCertificates> getCourseCertificatesList() {
+        return courseCertificatesList;
+    }
+
+    public void setCourseCertificatesList(List<CourseCertificates> courseCertificatesList) {
+        this.courseCertificatesList = courseCertificatesList;
+    }
+
+    @XmlTransient
+    public List<Messages> getMessagesList() {
+        return messagesList;
+    }
+
+    public void setMessagesList(List<Messages> messagesList) {
+        this.messagesList = messagesList;
+    }
+
+    public TngAccounts getTngAccounts() {
+        return tngAccounts;
+    }
+
+    public void setTngAccounts(TngAccounts tngAccounts) {
+        this.tngAccounts = tngAccounts;
+    }
+
+    @XmlTransient
+    public List<UserChatrooms> getUserChatroomsList() {
+        return userChatroomsList;
+    }
+
+    public void setUserChatroomsList(List<UserChatrooms> userChatroomsList) {
+        this.userChatroomsList = userChatroomsList;
+    }
+
+    @XmlTransient
+    public List<Ratings> getRatingsList() {
+        return ratingsList;
+    }
+
+    public void setRatingsList(List<Ratings> ratingsList) {
+        this.ratingsList = ratingsList;
     }
     
 }
