@@ -11,6 +11,7 @@
 <%authCourses = (List<Courses>)request.getAttribute("authorCourses"); %>
 <%List<SocialMediaLinks> socialMediaLinks = new ArrayList<SocialMediaLinks>();%>
 <%socialMediaLinks = (List<SocialMediaLinks>)request.getAttribute("socialMediaLinks");%>
+<%long numOfCoursesRec = ((Long)request.getAttribute("numberOfCourses")).longValue();%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -56,7 +57,7 @@
 
                     <div class="author-courses flex-col">
 
-                        <h1 class="author-left-div-title">My courses (<%= authCourses.size() %>)</h1>
+                        <h1 class="author-left-div-title">My courses (<%= numOfCoursesRec %>)</h1>
 
                         <div class="course-div flex-row">
                             <% for(Courses course:authCourses){ %>
@@ -106,12 +107,16 @@
 
 
                         </div>
-
+                        <% if(numOfCoursesRec != 0){ %>
+                        
+                        
+                        <%}%>
                         <form id="authorForm">
                             <!--pagination, 20 course per page-->
                             <%
-                                int currentPage = 1;
-                                int lastPage = (authCourses.size()-1/20);
+                                long currentPage = 1;
+                                long dataPerPage = 4;
+                                long lastPage = ((numOfCoursesRec-1)/dataPerPage) + 1;
                                 if (request.getParameter("p") != null) {
                                     currentPage = Integer.parseInt(request.getParameter("p"));
                                 }

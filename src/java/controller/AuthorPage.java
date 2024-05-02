@@ -35,22 +35,44 @@ public class AuthorPage extends HttpServlet {
         authors = authorsQuery.getResultList();
     }
     
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {  
         String authorId = request.getParameter("id");
         HttpSession session = request.getSession();
         Authors author = null;
         // check is course id input exist
         if (authorId == null) {
-           goToErrorPage(request,response);
+           goToNotFoundErrorPage(request,response);
         }
         else{
             author = findMatchingAuthorId(authorId);
             if(author == null){
-                goToErrorPage(request,response);
+                goToNotFoundErrorPage(request,response);
             }else{
+                //get number of courses recorded
+                Query getCountQuery = em.createNamedQuery("AuthorContribution.countAllAvailabeCoursesByAuthor").setParameter("authorId", author);
+                long numberOfCoursesRecord = (long)getCountQuery.getSingleResult();
+                request.setAttribute("numberOfCourses", numberOfCoursesRecord);
+                
+                //do pagination for courses
+                int reqPage = 1;
+                int maxDataInPage=4;
+                long lastPage = (numberOfCoursesRecord-1)/Long.parseLong(String.valueOf(maxDataInPage)) + 1;
+                if (request.getParameter("p") != null) {
+                    reqPage = Integer.parseInt(request.getParameter("p"));
+                    if(reqPage > lastPage){
+                    goToCustomErrorPage(request,response,"Invalid URL");
+                    }
+                }
+
+                int offset = (reqPage-1)*maxDataInPage;
+                
+
                 //give author result get author and it's courses
                 request.setAttribute("authorData",author);
-                Query query = em.createNamedQuery("AuthorContribution.findByAuthorId").setParameter("authorId", author);
+
+                Query query = em.createNamedQuery("AuthorContribution.findByAuthorIdWhereCourseIsAvailable").setParameter("authorId", author);
+                query.setFirstResult(offset);
+                query.setMaxResults(maxDataInPage);
                 List<AuthorContribution> authorNCourses = query.getResultList();
                 List<Courses> authCourses = new ArrayList<>();
                 if(!authorNCourses.isEmpty()){  
@@ -100,7 +122,7 @@ public class AuthorPage extends HttpServlet {
         return authCourses;
     }
     
-    private void goToErrorPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+    private void goToNotFoundErrorPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         HttpSession session = request.getSession();
         session.setAttribute("type", "Author");
         session.setAttribute("param", "Author ID");
@@ -108,6 +130,15 @@ public class AuthorPage extends HttpServlet {
             
         // Forward the request to  error page
         request.getRequestDispatcher("/WEB-INF/Client/NotFoundError.jsp").forward(request, response);
+    }
+    
+    private void goToCustomErrorPage(HttpServletRequest request, HttpServletResponse response, String errorMessage) throws ServletException, IOException{
+        HttpSession session = request.getSession();
+        session.setAttribute("errorMessage", errorMessage);
+        session.setAttribute("errorDetail", "Your search has ventured beyond the known universe.");    
+        
+        // Forward the request to  error page
+        request.getRequestDispatcher("/WEB-INF/Client/CustomError.jsp").forward(request, response);
     }
 
 }

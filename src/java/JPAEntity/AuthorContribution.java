@@ -30,7 +30,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "AuthorContribution.findByContributionId", query = "SELECT a FROM AuthorContribution a WHERE a.contributionId = :contributionId"),
     @NamedQuery(name = "AuthorContribution.findByContribution", query = "SELECT a FROM AuthorContribution a WHERE a.contribution = :contribution"),
     @NamedQuery(name = "AuthorContribution.findByDescription", query = "SELECT a FROM AuthorContribution a WHERE a.description = :description"),
-    @NamedQuery(name = "AuthorContribution.findByAuthorId", query = "SELECT a FROM AuthorContribution a WHERE a.authorId = :authorId")})
+    @NamedQuery(name = "AuthorContribution.findByAuthorIdWhereCourseIsAvailable", query = "SELECT a FROM AuthorContribution a WHERE a.authorId = :authorId AND a.courseId.productId.status = 'Active' "),
+    @NamedQuery(name = "AuthorContribution.countAllAvailabeCoursesByAuthor", query = "SELECT COUNT(a) FROM AuthorContribution a WHERE a.authorId = :authorId AND a.courseId.productId.status = 'Active'")})
 public class AuthorContribution implements Serializable {
 
     @Basic(optional = false)
