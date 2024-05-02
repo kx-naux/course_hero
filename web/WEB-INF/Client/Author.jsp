@@ -39,14 +39,16 @@
                         <h1 class="author-title">Author</h1>
                         <h2 class="author-name">${authorData.authorName}</h2>
                         <h3 class="author-position">${authorData.authorPosition}</h3>
-                        <p class="author-join-date">${authorData.dateJoined}</p>
+                        <h4 class="author-insitution"><i class="ri-graduation-cap-fill"></i> ${authorData.institution}</h4>
+                        <h4 class="author-award"><i class="ri-award-fill"></i> ${authorData.awardsHonors}</h4>
+                        <p class="author-join-date"><i class="ri-information-line"></i> Join on: ${authorData.dateJoined}</p>
                     </div>
 
                     <div class="author-about flex-col">
                         <h1 class="author-left-div-title">About me</h1>
-                        <P class="about-content">
+                        <p class="about-content">
                             ${authorData.biography}
-                        </P> 
+                        </p> 
                     </div>
 
                     <div class="author-courses flex-col">

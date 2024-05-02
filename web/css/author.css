@@ -41,8 +41,18 @@
 
 .author-left .author-info .author-position {
     font-weight: 500;
+    font-size: var(--font-size-l);
+    color: var(--color-text-light-2);
+}
+
+.author-left .author-info h4 {
+    font-weight: 400;
     font-size: var(--font-size-m);
     color: var(--color-text-light-2);
+}
+
+.author-left .author-info h4:first-of-type {
+     margin-top: 15px;
 }
 
 .author-left .author-info .author-join-date {
@@ -298,7 +308,7 @@
 
 .result-pagination-div .page-action-btn i{
     font-size: var(--font-size-xxxl);
-        pointer-events: none;
+    pointer-events: none;
 }
 
 .result-pagination-div .page-action-btn.allow {
