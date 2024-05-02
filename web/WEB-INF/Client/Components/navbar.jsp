@@ -45,7 +45,7 @@
             <li>
                 <a href="<%= webpath.getPageUrl("merchandises")%>">
                     <div class="nav-option">
-                        <p>Merchandise</p>
+                        <p>Merchandises</p>
                     </div>
                 </a>
             </li>

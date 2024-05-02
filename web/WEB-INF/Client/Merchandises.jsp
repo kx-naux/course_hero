@@ -58,6 +58,126 @@
                         </div>
                     </div>
                 </div>
+                
+                <div class="merch-pic-div cap flex-row">
+                    <button type="button"><span></span></button>
+                    <div class="outer-info">
+                        <div class="merch-pic-info flex-row" merchID="123123">
+                            <div class="merch-pic-info-left flex-col">
+                                <h1 class="merch-info-title">Course Hero Cap</h1>
+                                <p class="merch-info-price">RM <span>18.00</span></p>
+                            </div>
+                            <div class="merch-pic-info-right flex-col">
+                                <i class="ri-arrow-right-line"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="merch-pic-div hoodie flex-row">
+                    <button type="button"><span></span></button>
+                    <div class="outer-info">
+                        <div class="merch-pic-info flex-row" merchID="123123">
+                            <div class="merch-pic-info-left flex-col">
+                                <h1 class="merch-info-title">Course Hero X SEN Hoodie</h1>
+                                <p class="merch-info-price">RM <span>118.00</span></p>
+                            </div>
+                            <div class="merch-pic-info-right flex-col">
+                                <i class="ri-arrow-right-line"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="merch-pic-div note2 flex-row">
+                    <button type="button"><span></span></button>
+                    <div class="outer-info">
+                        <div class="merch-pic-info flex-row" merchID="123123">
+                            <div class="merch-pic-info-left flex-col">
+                                <h1 class="merch-info-title">Course Hero Planner</h1>
+                                <p class="merch-info-price">RM <span>28.00</span></p>
+                            </div>
+                            <div class="merch-pic-info-right flex-col">
+                                <i class="ri-arrow-right-line"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="merch-pic-div bear flex-row">
+                    <button type="button"><span></span></button>
+                    <div class="outer-info">
+                        <div class="merch-pic-info flex-row" merchID="123123">
+                            <div class="merch-pic-info-left flex-col">
+                                <h1 class="merch-info-title">Course Hero Teddy bear</h1>
+                                <p class="merch-info-price">RM <span>32.00</span></p>
+                            </div>
+                            <div class="merch-pic-info-right flex-col">
+                                <i class="ri-arrow-right-line"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="merch-pic-div bag flex-row">
+                    <button type="button"><span></span></button>
+                    <div class="outer-info">
+                        <div class="merch-pic-info flex-row" merchID="123123">
+                            <div class="merch-pic-info-left flex-col">
+                                <h1 class="merch-info-title">Course Hero Bag</h1>
+                                <p class="merch-info-price">RM <span>12.00</span></p>
+                            </div>
+                            <div class="merch-pic-info-right flex-col">
+                                <i class="ri-arrow-right-line"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="merch-pic-div pad flex-row">
+                    <button type="button"><span></span></button>
+                    <div class="outer-info">
+                        <div class="merch-pic-info flex-row" merchID="123123">
+                            <div class="merch-pic-info-left flex-col">
+                                <h1 class="merch-info-title">Course Hero Mouse Pad</h1>
+                                <p class="merch-info-price">RM <span>28.00</span></p>
+                            </div>
+                            <div class="merch-pic-info-right flex-col">
+                                <i class="ri-arrow-right-line"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="merch-pic-div mug flex-row">
+                    <button type="button"><span></span></button>
+                    <div class="outer-info">
+                        <div class="merch-pic-info flex-row" merchID="123123">
+                            <div class="merch-pic-info-left flex-col">
+                                <h1 class="merch-info-title">Course Hero X LOL Mug</h1>
+                                <p class="merch-info-price">RM <span>22.00</span></p>
+                            </div>
+                            <div class="merch-pic-info-right flex-col">
+                                <i class="ri-arrow-right-line"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="merch-pic-div note1 flex-row">
+                    <button type="button"><span></span></button>
+                    <div class="outer-info">
+                        <div class="merch-pic-info flex-row" merchID="123123">
+                            <div class="merch-pic-info-left flex-col">
+                                <h1 class="merch-info-title">Course Hero Notebook</h1>
+                                <p class="merch-info-price">RM <span>11.00</span></p>
+                            </div>
+                            <div class="merch-pic-info-right flex-col">
+                                <i class="ri-arrow-right-line"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
             </div>
         </section>
