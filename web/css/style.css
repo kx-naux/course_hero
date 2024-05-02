@@ -322,6 +322,10 @@ a:has(.nav-option):hover + .nav-option-dropdown,
     font-size: 20px;
 }
 
+.nav-icon-div:has(.wish-list:hover) .nav-icon,
+.nav-icon-div:has(.cart-list:hover) .nav-icon,
+.nav-icon-div:hover .nav-icon,
+.nav-icon-div a:hover .nav-icon,
 .nav-icon:hover {
     color: var(--color-secondary);
 }
@@ -558,6 +562,7 @@ a:has(.nav-option):hover + .nav-option-dropdown,
 .cart-list > div,
 .profile-list > div {
     border-bottom: 1px solid var(--color-light-grey-3);
+    padding: 10px;
 }
 
 .wish-list > div:last-of-type,
@@ -568,9 +573,6 @@ a:has(.nav-option):hover + .nav-option-dropdown,
 
 .profile-list .user-info{
     padding: 20px 16px;
-}
-
-.profile-list .user-info {
     gap: 10px;
     align-items: center;
 }
@@ -615,10 +617,10 @@ a:has(.nav-option):hover + .nav-option-dropdown,
 }
 
 .profile-list > div > ul li a{
-    font-size: var(--font-size-xm);
+    font-size: var(--font-size-s);
     font-weight: 500;
     color: var(--color-text-light-2);
-    padding: 18px 20px;
+    padding: 10px 20px;
     display: block;
 }
 
@@ -689,6 +691,13 @@ a:has(.nav-option):hover + .nav-option-dropdown,
     font-size: var(--font-size-s);
     font-weight: 600;
     color: var(--color-text-light-3);
+}
+
+.cart-list-item .course-item .merch-qty {
+    margin-left: 10px;
+    font-size: var(--font-size-xs);
+    font-weight: 400;
+    color: var(--color-text-light-2);
 }
 
 .wish-list .wish-list-bot,

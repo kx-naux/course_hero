@@ -111,7 +111,7 @@
                                     <button class="move-cart-btn" courseID="123123" onclick="moveTOCart(this)">Add to cart</button>
                                 </div>
                             </div>
-                            
+
                             <div class="flex-col">
                                 <div class="course-item flex-row">
                                     <div class="course-item-img">
@@ -193,6 +193,19 @@
                                 </div>
                             </div>
 
+                            <div class="course-item flex-row">
+                                <div class="course-item-img">
+                                    <img src="./img/merchandise/prx_shirt.png" alt="" />
+                                </div>
+                                <div class="course-item-info flex-col">
+                                    <h1 class="course-title">Course Hero X PRX T-shirt</h1>
+                                    <div class="flex-row">
+                                        <p class="course-price">RM 58.00</p>
+                                        <p class="merch-qty">Qty: 1</p>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                         <div class="cart-list-bot flex-col">
                             <h1>Total: RM 128.80</h1>
@@ -228,7 +241,7 @@
                                 <li><a href="<%= webpath.getPageUrl("profile")%>"><i class="ri-user-settings-line"></i> Account Settings</a></li>
                                 <li><a href="<%= webpath.getPageUrl("cart")%>"><i class="ri-shopping-cart-line"></i> Cart</a></li>
                                 <li><a href="<%= webpath.getPageUrl("wishlist")%>"><i class="ri-heart-line"></i> Wishlist</a></li>
-                                <li><a href="<%= webpath.getPageUrl("purchanse history")%>"><i class="ri-question-line"></i> Purchase history</a></li>
+                                <li><a href="<%= webpath.getPageUrl("purchanse history")%>"><i class="ri-shopping-bag-line"></i> Purchase history</a></li>
                                 <li><a href="<%= webpath.getPageUrl("help")%>"><i class="ri-question-line"></i> Help</a></li>
                             </ul>
                         </div>
