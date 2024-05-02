@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import JPAEntity.AuthorContribution;
 import JPAEntity.Authors;
 import JPAEntity.Courses;
+import JPAEntity.SocialMediaLinks;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -24,7 +25,7 @@ import javax.servlet.ServletConfig;
 public class AuthorPage extends HttpServlet {
     @PersistenceContext EntityManager em;
     
-    private List<AuthorContribution> authorNCourses;
+   
     private List<Authors> authors;
     
     @Override
@@ -32,9 +33,6 @@ public class AuthorPage extends HttpServlet {
         super.init(config);
         Query authorsQuery = em.createNamedQuery("Authors.findAll");
         authors = authorsQuery.getResultList();
-        
-        Query authContriQuery = em.createNamedQuery("AuthorContribution.findAll");
-        authorNCourses = authContriQuery.getResultList();
     }
     
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -52,21 +50,31 @@ public class AuthorPage extends HttpServlet {
             }else{
                 //give author result get author and it's courses
                 request.setAttribute("authorData",author);
-                //Query query = em.createNamedQuery("AuthorContribution.findByAuthorId").setParameter("authorId", author);
-                //List<AuthorContribution> authorNCourses = query.getResultList();
-                List<Courses> authCourses = getAuthorCourses(author);
-                //if(!authorNCourses.isEmpty()){  
-                //   for(AuthorContribution authContri:authorNCourses){
-                //        authCourses.add(authContri.getCourseId());
-                //    }
-                //}
+                Query query = em.createNamedQuery("AuthorContribution.findByAuthorId").setParameter("authorId", author);
+                List<AuthorContribution> authorNCourses = query.getResultList();
+                List<Courses> authCourses = new ArrayList<>();
+                if(!authorNCourses.isEmpty()){  
+                    for(AuthorContribution authContri:authorNCourses){
+                        authCourses.add(authContri.getCourseId());
+                    }
+                }
                 request.setAttribute("authorCourses",authCourses);
+                
+                //find social media link of author and pass it to jsp
+                List<SocialMediaLinks> smLinks = getAuthorSocialMedia(author); 
+                request.setAttribute("socialMediaLinks",smLinks);
             }
         }
         //
 
         // Forward the request to Course.jsp
         request.getRequestDispatcher("/WEB-INF/Client/Author.jsp").forward(request, response);
+    }
+    
+    private List<SocialMediaLinks> getAuthorSocialMedia(Authors author){
+        Query query = em.createNamedQuery("SocialMediaLinks.findByAuthorId").setParameter("authorId", author);
+        List<SocialMediaLinks> resultList = query.getResultList();
+        return resultList;
     }
     
     private Authors findMatchingAuthorId(String authId){
@@ -78,7 +86,7 @@ public class AuthorPage extends HttpServlet {
         return null;
     }
     
-    private List<Courses> getAuthorCourses(Authors auth){
+    private List<Courses> getAuthorCourses(List<AuthorContribution> authorNCourses, Authors auth){
         List<Courses> authCourses = new ArrayList<>();
         for(AuthorContribution authContri:authorNCourses){
             if(!authContri.getCourseId().getProductId().getStatus().equals("Active")){

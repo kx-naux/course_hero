@@ -29,7 +29,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "SocialMediaLinks.findAll", query = "SELECT s FROM SocialMediaLinks s"),
     @NamedQuery(name = "SocialMediaLinks.findBySocialmedialinkId", query = "SELECT s FROM SocialMediaLinks s WHERE s.socialmedialinkId = :socialmedialinkId"),
     @NamedQuery(name = "SocialMediaLinks.findBySocialmediaName", query = "SELECT s FROM SocialMediaLinks s WHERE s.socialmediaName = :socialmediaName"),
-    @NamedQuery(name = "SocialMediaLinks.findByDestLink", query = "SELECT s FROM SocialMediaLinks s WHERE s.destLink = :destLink")})
+    @NamedQuery(name = "SocialMediaLinks.findByDestLink", query = "SELECT s FROM SocialMediaLinks s WHERE s.destLink = :destLink"),
+    @NamedQuery(name = "SocialMediaLinks.findByAuthorId", query = "SELECT s FROM SocialMediaLinks s WHERE s.authorId = :authorId")})
 public class SocialMediaLinks implements Serializable {
 
     @Basic(optional = false)
