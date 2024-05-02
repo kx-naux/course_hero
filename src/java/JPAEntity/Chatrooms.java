@@ -36,13 +36,6 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Chatrooms.findByReqDescription", query = "SELECT c FROM Chatrooms c WHERE c.reqDescription = :reqDescription")})
 public class Chatrooms implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-    @Id
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 9)
-    @Column(name = "CHATROOM_ID")
-    private String chatroomId;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 10)
@@ -63,6 +56,14 @@ public class Chatrooms implements Serializable {
     @Size(min = 1, max = 500)
     @Column(name = "REQ_DESCRIPTION")
     private String reqDescription;
+
+    private static final long serialVersionUID = 1L;
+    @Id
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 9)
+    @Column(name = "CHATROOM_ID")
+    private String chatroomId;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "chatroomId")
     private List<Messages> messagesList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "chatrooms")
@@ -99,13 +100,6 @@ public class Chatrooms implements Serializable {
         this.chatroomType = chatroomType;
     }
 
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
 
     public String getReqTitle() {
         return reqTitle;
@@ -165,5 +159,21 @@ public class Chatrooms implements Serializable {
     public String toString() {
         return "JPAEntity.Chatrooms[ chatroomId=" + chatroomId + " ]";
     }
+
+   
+
+   
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+   
+
+    
     
 }

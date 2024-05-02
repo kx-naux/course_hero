@@ -81,6 +81,10 @@ public class AuthorPage extends HttpServlet {
     private List<Courses> getAuthorCourses(Authors auth){
         List<Courses> authCourses = new ArrayList<>();
         for(AuthorContribution authContri:authorNCourses){
+            if(!authContri.getCourseId().getProductId().getStatus().equals("Active")){
+                continue;
+            }
+            //get author courses
             if(authContri.getAuthorId().getAuthorId().equals(auth.getAuthorId())){
                 authCourses.add(authContri.getCourseId());
             }

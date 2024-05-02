@@ -200,29 +200,6 @@ public class Users implements Serializable {
         this.rememberMeTokenList = rememberMeTokenList;
     }
 
-    public Date getDob() {
-        return dob;
-    }
-
-    public void setDob(Date dob) {
-        this.dob = dob;
-    }
-
-    public String getUsertype() {
-        return usertype;
-    }
-
-    public void setUsertype(String usertype) {
-        this.usertype = usertype;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
 
     @XmlTransient
     public List<CourseCategory> getCourseCategoryList() {
@@ -310,6 +287,30 @@ public class Users implements Serializable {
 
     public void setRatingsList(List<Ratings> ratingsList) {
         this.ratingsList = ratingsList;
+    }
+
+    public Date getDob() {
+        return dob;
+    }
+
+    public void setDob(Date dob) {
+        this.dob = dob;
+    }
+
+    public String getUsertype() {
+        return usertype;
+    }
+
+    public void setUsertype(String usertype) {
+        this.usertype = usertype;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
     
 }

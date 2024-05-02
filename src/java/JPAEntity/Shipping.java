@@ -43,13 +43,6 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Shipping.findByShippingNotes", query = "SELECT s FROM Shipping s WHERE s.shippingNotes = :shippingNotes")})
 public class Shipping implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-    @Id
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 9)
-    @Column(name = "SHIPPING_ID")
-    private String shippingId;
     @Basic(optional = false)
     @NotNull
     @Column(name = "SHIPPING_DATE")
@@ -78,6 +71,14 @@ public class Shipping implements Serializable {
     @Size(min = 1, max = 200)
     @Column(name = "SHIPPING_NOTES")
     private String shippingNotes;
+
+    private static final long serialVersionUID = 1L;
+    @Id
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 9)
+    @Column(name = "SHIPPING_ID")
+    private String shippingId;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "shippingId")
     private List<Transactions> transactionsList;
     @JoinColumn(name = "ADDRESS_ID", referencedColumnName = "ADDRESS_ID")

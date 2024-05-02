@@ -42,20 +42,13 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Promotions.findByGeographicRestiriction", query = "SELECT p FROM Promotions p WHERE p.geographicRestiriction = :geographicRestiriction")})
 public class Promotions implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-    @Id
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 9)
-    @Column(name = "PROMOTION_ID")
-    private String promotionId;
     @Basic(optional = false)
     @NotNull
     @Column(name = "START_TIME")
     @Temporal(TemporalType.TIMESTAMP)
     private Date startTime;
     @Basic(optional = false)
-    @NotNull
+    @NotNull()
     @Column(name = "END_TIME")
     @Temporal(TemporalType.TIMESTAMP)
     private Date endTime;
@@ -85,6 +78,13 @@ public class Promotions implements Serializable {
     @Size(max = 300)
     @Column(name = "GEOGRAPHIC_RESTIRICTION")
     private String geographicRestiriction;
+    private static final long serialVersionUID = 1L;
+    @Id
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 9)
+    @Column(name = "PROMOTION_ID")
+    private String promotionId;
     @OneToMany(mappedBy = "promotionId")
     private List<Transactions> transactionsList;
 
@@ -138,13 +138,6 @@ public class Promotions implements Serializable {
         this.promoType = promoType;
     }
 
-    public double getAmount() {
-        return amount;
-    }
-
-    public void setAmount(double amount) {
-        this.amount = amount;
-    }
 
     public double getMinReq() {
         return minReq;
@@ -162,13 +155,6 @@ public class Promotions implements Serializable {
         this.legalTnc = legalTnc;
     }
 
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
 
     public String getGeographicRestiriction() {
         return geographicRestiriction;
@@ -211,5 +197,20 @@ public class Promotions implements Serializable {
     public String toString() {
         return "JPAEntity.Promotions[ promotionId=" + promotionId + " ]";
     }
-    
+
+    public double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 }

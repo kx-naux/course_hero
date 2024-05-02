@@ -5,6 +5,7 @@
 package JPAEntity;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -17,6 +18,8 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -33,16 +36,12 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Courses.findAll", query = "SELECT c FROM Courses c"),
     @NamedQuery(name = "Courses.findByCourseId", query = "SELECT c FROM Courses c WHERE c.courseId = :courseId"),
     @NamedQuery(name = "Courses.findByToolsUsed", query = "SELECT c FROM Courses c WHERE c.toolsUsed = :toolsUsed"),
-    @NamedQuery(name = "Courses.findByLearningObj", query = "SELECT c FROM Courses c WHERE c.learningObj = :learningObj")})
+    @NamedQuery(name = "Courses.findByLearningObj", query = "SELECT c FROM Courses c WHERE c.learningObj = :learningObj"),
+    @NamedQuery(name = "Courses.findByLengthHour", query = "SELECT c FROM Courses c WHERE c.lengthHour = :lengthHour"),
+    @NamedQuery(name = "Courses.findByCourseLevel", query = "SELECT c FROM Courses c WHERE c.courseLevel = :courseLevel"),
+    @NamedQuery(name = "Courses.findByDateAdded", query = "SELECT c FROM Courses c WHERE c.dateAdded = :dateAdded")})
 public class Courses implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-    @Id
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 9)
-    @Column(name = "COURSE_ID")
-    private String courseId;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 100)
@@ -53,6 +52,20 @@ public class Courses implements Serializable {
     @Size(min = 1, max = 255)
     @Column(name = "LEARNING_OBJ")
     private String learningObj;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "LENGTH_HOUR")
+    private double lengthHour;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 50)
+    @Column(name = "COURSE_LEVEL")
+    private String courseLevel;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "DATE_ADDED")
+    @Temporal(TemporalType.DATE)
+    private Date dateAdded;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "courseId")
     private List<CourseSubscriptions> courseSubscriptionsList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "courseId")
@@ -61,6 +74,14 @@ public class Courses implements Serializable {
     private List<CourseCertType> courseCertTypeList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "courseId")
     private List<AuthorContribution> authorContributionList;
+
+    private static final long serialVersionUID = 1L;
+    @Id
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 9)
+    @Column(name = "COURSE_ID")
+    private String courseId;
     @JoinColumn(name = "COURSECAT_ID", referencedColumnName = "COURSECAT_ID")
     @ManyToOne(optional = false)
     private CourseCategory coursecatId;
@@ -75,10 +96,13 @@ public class Courses implements Serializable {
         this.courseId = courseId;
     }
 
-    public Courses(String courseId, String toolsUsed, String learningObj) {
+    public Courses(String courseId, String toolsUsed, String learningObj, double lengthHour, String courseLevel, Date dateAdded) {
         this.courseId = courseId;
         this.toolsUsed = toolsUsed;
         this.learningObj = learningObj;
+        this.lengthHour = lengthHour;
+        this.courseLevel = courseLevel;
+        this.dateAdded = dateAdded;
     }
 
     public String getCourseId() {
@@ -105,40 +129,28 @@ public class Courses implements Serializable {
         this.learningObj = learningObj;
     }
 
-    @XmlTransient
-    public List<CourseSubscriptions> getCourseSubscriptionsList() {
-        return courseSubscriptionsList;
+    public double getLengthHour() {
+        return lengthHour;
     }
 
-    public void setCourseSubscriptionsList(List<CourseSubscriptions> courseSubscriptionsList) {
-        this.courseSubscriptionsList = courseSubscriptionsList;
+    public void setLengthHour(double lengthHour) {
+        this.lengthHour = lengthHour;
     }
 
-    @XmlTransient
-    public List<CourseCertificates> getCourseCertificatesList() {
-        return courseCertificatesList;
+    public String getCourseLevel() {
+        return courseLevel;
     }
 
-    public void setCourseCertificatesList(List<CourseCertificates> courseCertificatesList) {
-        this.courseCertificatesList = courseCertificatesList;
+    public void setCourseLevel(String courseLevel) {
+        this.courseLevel = courseLevel;
     }
 
-    @XmlTransient
-    public List<CourseCertType> getCourseCertTypeList() {
-        return courseCertTypeList;
+    public Date getDateAdded() {
+        return dateAdded;
     }
 
-    public void setCourseCertTypeList(List<CourseCertType> courseCertTypeList) {
-        this.courseCertTypeList = courseCertTypeList;
-    }
-
-    @XmlTransient
-    public List<AuthorContribution> getAuthorContributionList() {
-        return authorContributionList;
-    }
-
-    public void setAuthorContributionList(List<AuthorContribution> authorContributionList) {
-        this.authorContributionList = authorContributionList;
+    public void setDateAdded(Date dateAdded) {
+        this.dateAdded = dateAdded;
     }
 
     public CourseCategory getCoursecatId() {
@@ -180,6 +192,44 @@ public class Courses implements Serializable {
     @Override
     public String toString() {
         return "JPAEntity.Courses[ courseId=" + courseId + " ]";
+    }
+
+    
+
+    @XmlTransient
+    public List<CourseSubscriptions> getCourseSubscriptionsList() {
+        return courseSubscriptionsList;
+    }
+
+    public void setCourseSubscriptionsList(List<CourseSubscriptions> courseSubscriptionsList) {
+        this.courseSubscriptionsList = courseSubscriptionsList;
+    }
+
+    @XmlTransient
+    public List<CourseCertificates> getCourseCertificatesList() {
+        return courseCertificatesList;
+    }
+
+    public void setCourseCertificatesList(List<CourseCertificates> courseCertificatesList) {
+        this.courseCertificatesList = courseCertificatesList;
+    }
+
+    @XmlTransient
+    public List<CourseCertType> getCourseCertTypeList() {
+        return courseCertTypeList;
+    }
+
+    public void setCourseCertTypeList(List<CourseCertType> courseCertTypeList) {
+        this.courseCertTypeList = courseCertTypeList;
+    }
+
+    @XmlTransient
+    public List<AuthorContribution> getAuthorContributionList() {
+        return authorContributionList;
+    }
+
+    public void setAuthorContributionList(List<AuthorContribution> authorContributionList) {
+        this.authorContributionList = authorContributionList;
     }
     
 }

@@ -30,13 +30,6 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "MerchCategory.findByDescription", query = "SELECT m FROM MerchCategory m WHERE m.description = :description")})
 public class MerchCategory implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-    @Id
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 9)
-    @Column(name = "MERCHCAT_ID")
-    private String merchcatId;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 30)
@@ -45,6 +38,14 @@ public class MerchCategory implements Serializable {
     @Size(max = 100)
     @Column(name = "DESCRIPTION")
     private String description;
+
+    private static final long serialVersionUID = 1L;
+    @Id
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 9)
+    @Column(name = "MERCHCAT_ID")
+    private String merchcatId;
 
     public MerchCategory() {
     }
@@ -74,13 +75,6 @@ public class MerchCategory implements Serializable {
         this.categoryName = categoryName;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
 
     @Override
     public int hashCode() {
@@ -105,6 +99,18 @@ public class MerchCategory implements Serializable {
     @Override
     public String toString() {
         return "JPAEntity.MerchCategory[ merchcatId=" + merchcatId + " ]";
+    }
+
+    
+
+   
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
     
 }

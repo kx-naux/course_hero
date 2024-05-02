@@ -37,7 +37,7 @@ public class RememberMeToken implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "DATE_ISSUED")
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.TIMESTAMP)   
     private Date dateIssued;
 
     private static final long serialVersionUID = 1L;
@@ -117,5 +117,4 @@ public class RememberMeToken implements Serializable {
     public String toString() {
         return "JPAEntity.RememberMeToken[ token=" + token + " ]";
     }
-
 }

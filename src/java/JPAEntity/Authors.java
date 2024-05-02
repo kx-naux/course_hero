@@ -38,24 +38,18 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Authors.findByInstitution", query = "SELECT a FROM Authors a WHERE a.institution = :institution"),
     @NamedQuery(name = "Authors.findByAwardsHonors", query = "SELECT a FROM Authors a WHERE a.awardsHonors = :awardsHonors"),
     @NamedQuery(name = "Authors.findByBiography", query = "SELECT a FROM Authors a WHERE a.biography = :biography"),
-    @NamedQuery(name = "Authors.findByDob", query = "SELECT a FROM Authors a WHERE a.dob = :dob"),
+    @NamedQuery(name = "Authors.findByDateJoined", query = "SELECT a FROM Authors a WHERE a.dateJoined = :dateJoined"),
+    @NamedQuery(name = "Authors.findByAuthorPosition", query = "SELECT a FROM Authors a WHERE a.authorPosition = :authorPosition"),
     @NamedQuery(name = "Authors.findByWebsite", query = "SELECT a FROM Authors a WHERE a.website = :website")})
 public class Authors implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-    @Id
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 9)
-    @Column(name = "AUTHOR_ID")
-    private String authorId;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 30)
     @Column(name = "AUTHOR_NAME")
     private String authorName;
     @Basic(optional = false)
-    @NotNull
+    @NotNull()
     @Size(min = 1, max = 30)
     @Column(name = "NATIONALITY")
     private String nationality;
@@ -73,13 +67,25 @@ public class Authors implements Serializable {
     @Column(name = "BIOGRAPHY")
     private String biography;
     @Basic(optional = false)
-    @NotNull
-    @Column(name = "DOB")
+    @NotNull()
+    @Column(name = "DATE_JOINED")
     @Temporal(TemporalType.DATE)
-    private Date dob;
+    private Date dateJoined;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 60)
+    @Column(name = "AUTHOR_POSITION")
+    private String authorPosition;
     @Size(max = 255)
     @Column(name = "WEBSITE")
     private String website;
+    private static final long serialVersionUID = 1L;
+    @Id
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 9)
+    @Column(name = "AUTHOR_ID")
+    private String authorId;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "authorId")
     private List<AuthorContribution> authorContributionList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "authorId")
@@ -92,13 +98,14 @@ public class Authors implements Serializable {
         this.authorId = authorId;
     }
 
-    public Authors(String authorId, String authorName, String nationality, String institution, String biography, Date dob) {
+    public Authors(String authorId, String authorName, String nationality, String institution, String biography, Date dateJoined, String authorPosition) {
         this.authorId = authorId;
         this.authorName = authorName;
         this.nationality = nationality;
         this.institution = institution;
         this.biography = biography;
-        this.dob = dob;
+        this.dateJoined = dateJoined;
+        this.authorPosition = authorPosition;
     }
 
     public String getAuthorId() {
@@ -117,21 +124,6 @@ public class Authors implements Serializable {
         this.authorName = authorName;
     }
 
-    public String getNationality() {
-        return nationality;
-    }
-
-    public void setNationality(String nationality) {
-        this.nationality = nationality;
-    }
-
-    public String getInstitution() {
-        return institution;
-    }
-
-    public void setInstitution(String institution) {
-        this.institution = institution;
-    }
 
     public String getAwardsHonors() {
         return awardsHonors;
@@ -141,29 +133,23 @@ public class Authors implements Serializable {
         this.awardsHonors = awardsHonors;
     }
 
-    public String getBiography() {
-        return biography;
+
+    public Date getDateJoined() {
+        return dateJoined;
     }
 
-    public void setBiography(String biography) {
-        this.biography = biography;
+    public void setDateJoined(Date dateJoined) {
+        this.dateJoined = dateJoined;
     }
 
-    public Date getDob() {
-        return dob;
+    public String getAuthorPosition() {
+        return authorPosition;
     }
 
-    public void setDob(Date dob) {
-        this.dob = dob;
+    public void setAuthorPosition(String authorPosition) {
+        this.authorPosition = authorPosition;
     }
 
-    public String getWebsite() {
-        return website;
-    }
-
-    public void setWebsite(String website) {
-        this.website = website;
-    }
 
     @XmlTransient
     public List<AuthorContribution> getAuthorContributionList() {
@@ -206,6 +192,43 @@ public class Authors implements Serializable {
     @Override
     public String toString() {
         return "JPAEntity.Authors[ authorId=" + authorId + " ]";
+    }
+
+    
+
+    public String getNationality() {
+        return nationality;
+    }
+
+    public void setNationality(String nationality) {
+        this.nationality = nationality;
+    }
+
+    public String getInstitution() {
+        return institution;
+    }
+
+    public void setInstitution(String institution) {
+        this.institution = institution;
+    }
+
+    
+
+    public String getBiography() {
+        return biography;
+    }
+
+    public void setBiography(String biography) {
+        this.biography = biography;
+    }
+
+    
+    public String getWebsite() {
+        return website;
+    }
+
+    public void setWebsite(String website) {
+        this.website = website;
     }
     
 }

@@ -38,8 +38,8 @@
                     <div class="author-info flex-col">
                         <h1 class="author-title">Author</h1>
                         <h2 class="author-name">${authorData.authorName}</h2>
-                        <h3 class="author-position">${authorData.awardsHonors}</h3>
-                        <p class="author-join-date">${authorData.institution}</p>
+                        <h3 class="author-position">${authorData.authorPosition}</h3>
+                        <p class="author-join-date">${authorData.dateJoined}</p>
                     </div>
 
                     <div class="author-about flex-col">
@@ -51,7 +51,7 @@
 
                     <div class="author-courses flex-col">
 
-                        <h1 class="author-left-div-title">My courses (15)</h1>
+                        <h1 class="author-left-div-title">My courses (<%= authCourses.size() %>)</h1>
 
                         <div class="course-div flex-row">
                             <% for(Courses course:authCourses){ %>
@@ -70,22 +70,23 @@
                                         
                                         <% String authorsStr = ""; %>
                                         <% for(AuthorContribution authContri: course.getAuthorContributionList()){ 
-                                                authorsStr = authorsStr + ", ";
+                                                authorsStr = authContri.getAuthorId().getAuthorName() + ", ";
                                             }%>
+                                        <% authorsStr = authorsStr.substring(0, authorsStr.length() - 2); %>
                                             
                                         <p class="course-author"><%= authorsStr%></p>
                                         <div class="course-review flex-row">
-                                            <p class="rating-digit"><% course.getProductId().getAvgRating(); %></p>
+                                            <p class="rating-digit"><%= course.getProductId().getAvgRating() %></p>
                                             <i class="ri-star-fill"></i>
                                             <p class="rating-number-field">(<span class="raing-number">2303</span>)</p>
                                         </div>
                                         <div class="course-label flex-row">
-                                            <p>9.5 Hours</p>
-                                            <p>All Level</p>
+                                            <p><%= course.getLengthHour() %> Hour(s)</p>
+                                            <p><%= course.getCourseLevel() %></p>
                                         </div>
                                         <div class="course-price-field flex-row">
-                                            <p class="course-price">RM <span>449.90</span></p>                                      
-                                            <p class="course-normal-price">RM <span>650.00</span></p>
+                                            <p class="course-price">RM <span><%= course.getProductId().getPrice() - course.getProductId().getDiscount()  %></span></p>                                      
+                                            <p class="course-normal-price">RM <span><%= course.getProductId().getPrice() %></span></p>
                                         </div>
                                         <div class="course-tag-field flex-row">
                                             <p class="course-tag tag-orange">Hot Sell</p>
@@ -96,140 +97,7 @@
                             </div>
                             <%}%>
 
-                            <div class="course-product" courseID="121238719823" onclick="redirectToProductPage(this)">
-                                <div class="course-product-card">
-                                    <div class="product-card-top">
-                                        <img src="./img/course/beginner_excel.jpg" alt="">
-                                        <div class="action-btn-field flex-row">
-                                            <button class="cart-Btn" status="0" onclick="cartButtonClick(event)"><i class="ri-shopping-cart-line"></i></button>
-                                            <button class="wish-Btn" status="0" onclick="likeButtonClick(event)"><i class="ri-heart-line"></i></button>
-                                        </div>
-                                    </div>
-                                    <div class="product-card-bottom flex-col">
-                                        <h1 class="course-title">The Ultimate Excel Programming Course</h1>
-                                        <p class="course-category">Microsoft Excel</p>
-                                        <p class="course-author">Woo Yu Beng, Snijders Wang Wang, Low Kah Xuan</p>
-                                        <div class="course-review flex-row">
-                                            <p class="rating-digit">3.5</p>
-                                            <i class="ri-star-fill"></i>
-                                            <p class="rating-number-field">(<span class="raing-number">2303</span>)</p>
-                                        </div>
-                                        <div class="course-label flex-row">
-                                            <p>9.5 Hours</p>
-                                            <p>All Level</p>
-                                        </div>
-                                        <div class="course-price-field flex-row">
-                                            <p class="course-price">RM <span>449.90</span></p>                                      
-                                            <p class="course-normal-price">RM <span>650.00</span></p>
-                                        </div>
-                                        <div class="course-tag-field flex-row">
-                                            <p class="course-tag tag-orange">Hot Sell</p>
-                                            <p class="course-tag tag-yellow">New Course</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="course-product" courseID="121238719823" onclick="redirectToProductPage(this)">
-                                <div class="course-product-card">
-                                    <div class="product-card-top">
-                                        <img src="./img/course/beginner_excel.jpg" alt="">
-                                        <div class="action-btn-field flex-row">
-                                            <button class="cart-Btn" status="0" onclick="cartButtonClick(event)"><i class="ri-shopping-cart-line"></i></button>
-                                            <button class="wish-Btn" status="0" onclick="likeButtonClick(event)"><i class="ri-heart-line"></i></button>
-                                        </div>
-                                    </div>
-                                    <div class="product-card-bottom flex-col">
-                                        <h1 class="course-title">The Ultimate Excel Programming Course</h1>
-                                        <p class="course-category">Microsoft Excel</p>
-                                        <p class="course-author">Woo Yu Beng, Snijders Wang Wang, Low Kah Xuan</p>
-                                        <div class="course-review flex-row">
-                                            <p class="rating-digit">3.5</p>
-                                            <i class="ri-star-fill"></i>
-                                            <p class="rating-number-field">(<span class="raing-number">2303</span>)</p>
-                                        </div>
-                                        <div class="course-label flex-row">
-                                            <p>9.5 Hours</p>
-                                            <p>All Level</p>
-                                        </div>
-                                        <div class="course-price-field flex-row">
-                                            <p class="course-price">RM <span>449.90</span></p>                                      
-                                            <p class="course-normal-price">RM <span>650.00</span></p>
-                                        </div>
-                                        <div class="course-tag-field flex-row">
-                                            <p class="course-tag tag-orange">Hot Sell</p>
-                                            <p class="course-tag tag-yellow">New Course</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="course-product" courseID="121238719823" onclick="redirectToProductPage(this)">
-                                <div class="course-product-card">
-                                    <div class="product-card-top">
-                                        <img src="./img/course/beginner_excel.jpg" alt="">
-                                        <div class="action-btn-field flex-row">
-                                            <button class="cart-Btn" status="0" onclick="cartButtonClick(event)"><i class="ri-shopping-cart-line"></i></button>
-                                            <button class="wish-Btn" status="0" onclick="likeButtonClick(event)"><i class="ri-heart-line"></i></button>
-                                        </div>
-                                    </div>
-                                    <div class="product-card-bottom flex-col">
-                                        <h1 class="course-title">The Ultimate Excel Programming Course</h1>
-                                        <p class="course-category">Microsoft Excel</p>
-                                        <p class="course-author">Woo Yu Beng, Snijders Wang Wang, Low Kah Xuan</p>
-                                        <div class="course-review flex-row">
-                                            <p class="rating-digit">3.5</p>
-                                            <i class="ri-star-fill"></i>
-                                            <p class="rating-number-field">(<span class="raing-number">2303</span>)</p>
-                                        </div>
-                                        <div class="course-label flex-row">
-                                            <p>9.5 Hours</p>
-                                            <p>All Level</p>
-                                        </div>
-                                        <div class="course-price-field flex-row">
-                                            <p class="course-price">RM <span>449.90</span></p>                                      
-                                            <p class="course-normal-price">RM <span>650.00</span></p>
-                                        </div>
-                                        <div class="course-tag-field flex-row">
-                                            <p class="course-tag tag-orange">Hot Sell</p>
-                                            <p class="course-tag tag-yellow">New Course</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="course-product" courseID="121238719823" onclick="redirectToProductPage(this)">
-                                <div class="course-product-card">
-                                    <div class="product-card-top">
-                                        <img src="./img/course/beginner_excel.jpg" alt="">
-                                        <div class="action-btn-field flex-row">
-                                            <button class="cart-Btn" status="0" onclick="cartButtonClick(event)"><i class="ri-shopping-cart-line"></i></button>
-                                            <button class="wish-Btn" status="0" onclick="likeButtonClick(event)"><i class="ri-heart-line"></i></button>
-                                        </div>
-                                    </div>
-                                    <div class="product-card-bottom flex-col">
-                                        <h1 class="course-title">The Ultimate Excel Programming Course</h1>
-                                        <p class="course-category">Microsoft Excel</p>
-                                        <p class="course-author">Woo Yu Beng, Snijders Wang Wang, Low Kah Xuan</p>
-                                        <div class="course-review flex-row">
-                                            <p class="rating-digit">3.5</p>
-                                            <i class="ri-star-fill"></i>
-                                            <p class="rating-number-field">(<span class="raing-number">2303</span>)</p>
-                                        </div>
-                                        <div class="course-label flex-row">
-                                            <p>9.5 Hours</p>
-                                            <p>All Level</p>
-                                        </div>
-                                        <div class="course-price-field flex-row">
-                                            <p class="course-price">RM <span>449.90</span></p>                                      
-                                            <p class="course-normal-price">RM <span>650.00</span></p>
-                                        </div>
-                                        <div class="course-tag-field flex-row">
-                                            <p class="course-tag tag-orange">Hot Sell</p>
-                                            <p class="course-tag tag-yellow">New Course</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            
 
 
                         </div>
@@ -238,7 +106,7 @@
                             <!--pagination, 20 course per page-->
                             <%
                                 int currentPage = 1;
-                                int lastPage = 100;
+                                int lastPage = (authCourses.size()-1/20);
                                 if (request.getParameter("p") != null) {
                                     currentPage = Integer.parseInt(request.getParameter("p"));
                                 }

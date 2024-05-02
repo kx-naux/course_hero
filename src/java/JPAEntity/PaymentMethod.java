@@ -34,13 +34,6 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "PaymentMethod.findByAcceptedCurrencies", query = "SELECT p FROM PaymentMethod p WHERE p.acceptedCurrencies = :acceptedCurrencies")})
 public class PaymentMethod implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-    @Id
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 9)
-    @Column(name = "PAYMENT_METHOD_ID")
-    private String paymentMethodId;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 20)
@@ -51,6 +44,14 @@ public class PaymentMethod implements Serializable {
     @Size(min = 1, max = 255)
     @Column(name = "ACCEPTED_CURRENCIES")
     private String acceptedCurrencies;
+
+    private static final long serialVersionUID = 1L;
+    @Id
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 9)
+    @Column(name = "PAYMENT_METHOD_ID")
+    private String paymentMethodId;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "paymentMethodId")
     private List<Payments> paymentsList;
 
@@ -124,5 +125,9 @@ public class PaymentMethod implements Serializable {
     public String toString() {
         return "JPAEntity.PaymentMethod[ paymentMethodId=" + paymentMethodId + " ]";
     }
+
+    
+
+   
     
 }
