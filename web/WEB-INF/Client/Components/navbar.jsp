@@ -81,7 +81,7 @@
                             <div class="flex-col">
                                 <div class="course-item flex-row">
                                     <div class="course-item-img">
-                                        <img src="./img/course/beginner_excel.jpg" alt="" />
+                                        <img src="./img/course/beginner_excel.jpg" alt=""  draggable="false" />
                                     </div>
                                     <div class="course-item-info flex-col">
                                         <h1 class="course-title">The Ultimate Excel Programming Course</h1>
@@ -98,7 +98,7 @@
                             <div class="flex-col">
                                 <div class="course-item flex-row">
                                     <div class="course-item-img">
-                                        <img src="./img/course/beginner_excel.jpg" alt="" />
+                                        <img src="./img/course/beginner_excel.jpg" alt=""  draggable="false" />
                                     </div>
                                     <div class="course-item-info flex-col">
                                         <h1 class="course-title">The Ultimate Excel Programming Course</h1>
@@ -115,7 +115,7 @@
                             <div class="flex-col">
                                 <div class="course-item flex-row">
                                     <div class="course-item-img">
-                                        <img src="./img/course/beginner_excel.jpg" alt="" />
+                                        <img src="./img/course/beginner_excel.jpg" alt=""  draggable="false"  />
                                     </div>
                                     <div class="course-item-info flex-col">
                                         <h1 class="course-title">The Ultimate Excel Programming Course</h1>
@@ -162,7 +162,7 @@
 
                             <div class="course-item flex-row">
                                 <div class="course-item-img">
-                                    <img src="./img/course/beginner_excel.jpg" alt="" />
+                                    <img src="./img/course/beginner_excel.jpg" alt="" draggable="false" />
                                 </div>
                                 <div class="course-item-info flex-col">
                                     <h1 class="course-title">The Ultimate Excel Programming Course</h1>
@@ -173,7 +173,7 @@
 
                             <div class="course-item flex-row">
                                 <div class="course-item-img">
-                                    <img src="./img/course/beginner_excel.jpg" alt="" />
+                                    <img src="./img/course/beginner_excel.jpg" alt=""  draggable="false" />
                                 </div>
                                 <div class="course-item-info flex-col">
                                     <h1 class="course-title">The Ultimate Excel Programming Course</h1>
@@ -184,7 +184,7 @@
 
                             <div class="course-item flex-row">
                                 <div class="course-item-img">
-                                    <img src="./img/course/beginner_excel.jpg" alt="" />
+                                    <img src="./img/course/beginner_excel.jpg" alt=""  draggable="false" />
                                 </div>
                                 <div class="course-item-info flex-col">
                                     <h1 class="course-title">The Ultimate Excel Programming Course</h1>
@@ -195,10 +195,11 @@
 
                             <div class="course-item flex-row">
                                 <div class="course-item-img">
-                                    <img src="./img/merchandise/prx_shirt.png" alt="" />
+                                    <img src="./img/merchandise/prx_shirt.png" alt="" draggable="false" />
                                 </div>
                                 <div class="course-item-info flex-col">
                                     <h1 class="course-title">Course Hero X PRX T-shirt</h1>
+                                    <p class="course-author">Collectible</p>
                                     <div class="flex-row">
                                         <p class="course-price">RM 58.00</p>
                                         <p class="merch-qty">Qty: 1</p>
@@ -222,13 +223,13 @@
                 </div>
                 <div class="relative flex-col nav-icon-div">
                     <a href="<%= webpath.getPageUrl("profile")%>">
-                        <p class="nav-icon"><img class="nav-profile-pic" src="./img/user/kx.png" alt="" /></p>
+                        <p class="nav-icon"><img class="nav-profile-pic" src="./img/user/kx.png" alt=""  draggable="false" /></p>
                     </a>
                     <div class="profile-list flex-col">
 
                         <div class="user-info flex-row">
                             <div class="user-info-left flex-col">
-                                <img class="profile-list-pic" src="./img/user/kx.png" alt="" />
+                                <img class="profile-list-pic" src="./img/user/kx.png" alt=""  draggable="false"  />
                             </div>
                             <div class="user-info-right flex-col">
                                 <p class="username">${userData.accountId.username}</p>

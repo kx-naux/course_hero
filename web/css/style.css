@@ -545,6 +545,7 @@ a:has(.nav-option):hover + .nav-option-dropdown,
     background-color: var(--color-white);
     box-shadow: var(--box-shadow-1);
     max-width: 340px;
+    width: 320px;
 }
 
 .nav-bar.nav-scroll .nav-icon-div .wish-list,
@@ -693,10 +694,14 @@ a:has(.nav-option):hover + .nav-option-dropdown,
     color: var(--color-text-light-3);
 }
 
+.cart-list-item .course-item div:has(.merch-qty) {
+    justify-content: space-between;
+}
+
+
 .cart-list-item .course-item .merch-qty {
-    margin-left: 10px;
     font-size: var(--font-size-xs);
-    font-weight: 400;
+    font-weight: 500;
     color: var(--color-text-light-2);
 }
 
