@@ -1,3 +1,4 @@
+<%@page import="JPAEntity.SocialMediaLinks"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="JPAEntity.Courses"%>
 <%@page import="JPAEntity.AuthorContribution"%>
@@ -8,6 +9,9 @@
 <jsp:useBean id="authorData" class="JPAEntity.Authors" scope="request" />
 <%List<Courses> authCourses = new ArrayList<Courses>(); %>
 <%authCourses = (List<Courses>)request.getAttribute("authorCourses"); %>
+<%List<SocialMediaLinks> socialMediaLinks = new ArrayList<SocialMediaLinks>();%>
+<%socialMediaLinks = (List<SocialMediaLinks>)request.getAttribute("socialMediaLinks");%>
+<%long numOfCoursesRec = ((Long)request.getAttribute("numberOfCourses")).longValue();%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -53,7 +57,7 @@
 
                     <div class="author-courses flex-col">
 
-                        <h1 class="author-left-div-title">My courses (<%= authCourses.size() %>)</h1>
+                        <h1 class="author-left-div-title">My courses (<%= numOfCoursesRec %>)</h1>
 
                         <div class="course-div flex-row">
                             <% for(Courses course:authCourses){ %>
@@ -103,12 +107,16 @@
 
 
                         </div>
-
+                        <% if(numOfCoursesRec != 0){ %>
+                        
+                        
+                        <%}%>
                         <form id="authorForm">
                             <!--pagination, 20 course per page-->
                             <%
-                                int currentPage = 1;
-                                int lastPage = (authCourses.size()-1/20);
+                                long currentPage = 1;
+                                long dataPerPage = 4;
+                                long lastPage = ((numOfCoursesRec-1)/dataPerPage) + 1;
                                 if (request.getParameter("p") != null) {
                                     currentPage = Integer.parseInt(request.getParameter("p"));
                                 }
@@ -155,9 +163,37 @@
                     </div>
 
                     <div class="author-link flex-col">
-                        <a href="#" class="author-link-btn"><i class="ri-link"></i> Website</a>
-                        <a href="#" class="author-link-btn"><i class="ri-linkedin-box-fill"></i> LinkedIn</a>
-                        <a href="#" class="author-link-btn"><i class="ri-instagram-line"></i> Instagram</a>
+                        <%for(SocialMediaLinks link:socialMediaLinks){
+                            if(link.getSocialmediaName().equalsIgnoreCase("LinkedIn")){%>
+                            <a href=<%= link.getDestLink() %> class="author-link-btn"><i class="ri-linkedin-box-fill"></i> LinkedIn</a>
+                            <% socialMediaLinks.remove(link); %>
+                            <%}%>
+                        <%}%>
+                        
+                        <%for(SocialMediaLinks link:socialMediaLinks){
+                            if(link.getSocialmediaName().equalsIgnoreCase("Youtube")){%>
+                            <a href=<%= link.getDestLink() %> class="author-link-btn"><i class="ri-linkedin-box-fill"></i> Youtube</a>
+                            <% socialMediaLinks.remove(link); %>
+                            <%}%>
+                        <%}%>
+                        
+                        <%for(SocialMediaLinks link:socialMediaLinks){
+                            if(link.getSocialmediaName().equalsIgnoreCase("X")){%>
+                            <a href=<%= link.getDestLink() %> class="author-link-btn"><i class="ri-linkedin-box-fill"></i> X</a>
+                            <% socialMediaLinks.remove(link); %>
+                            <%}%>
+                        <%}%>
+                        
+                        <%for(SocialMediaLinks link:socialMediaLinks){
+                            if(link.getSocialmediaName().equalsIgnoreCase("Instagram")){%>
+                            <a href=<%= link.getDestLink() %> class="author-link-btn"><i class="ri-linkedin-box-fill"></i> Instagram</a>
+                            <% socialMediaLinks.remove(link); %>
+                            <%}%>
+                        <%}%>
+                        
+                        <%for(SocialMediaLinks link:socialMediaLinks){%>
+                            <a href=<%= link.getDestLink() %> class="author-link-btn"><i class="ri-link"></i> <%= link.getSocialmediaName() %></a>
+                        <%}%>
                     </div>
 
                 </div>
