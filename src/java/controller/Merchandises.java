@@ -13,7 +13,6 @@ public class Merchandises extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-
         // Forward the request to Merchandises.jsp
         request.getRequestDispatcher("/WEB-INF/Client/Merchandises.jsp").forward(request, response);
     }

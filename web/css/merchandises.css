@@ -1,0 +1,142 @@
+@import url('./root.css');
+
+/*merch item display section*/
+.show-merch-div {
+    position: relative;
+}
+
+.show-merch-div img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.show-merch-div .merch-pic-div{
+    position: absolute;
+    width: 100%;
+}
+
+.show-merch-div .merch-pic-div button{
+    width: 38px;
+    height: 38px;
+    border: 2px solid var(--color-white-transparent-05);
+    background: var(--color-black-transparent-03);
+    animation: sizeChange 1.4s infinite cubic-bezier(0.4, 0, 1, 1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all .6s ease-in-out;
+
+}
+
+.show-merch-div .merch-pic-div button span{
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--color-white);
+    place-items: center;
+    transition: all .3s ease-in-out;
+    display: grid;
+    position: relative;
+}
+
+@keyframes sizeChange{
+    0% {
+        transform: scale(1.02);
+    }
+    50% {
+        transform: scale(0.92);
+        border: 2px solid var(--color-white-transparent-07);
+    }
+    100% {
+        transform: scale(1.02);
+    }
+}
+
+.show-merch-div .merch-pic-div button:hover {
+    border: 3px solid var(--color-white);
+    background: var(--color-black-transparent-06);
+    animation-name: none;
+    transform: scale(0.85);
+}
+
+.show-merch-div .merch-pic-div button:hover span{
+    width: 10px;
+    height: 10px;
+}
+
+.merch-pic-div .merch-pic-info {
+    display: none;
+    background-color: var(--color-white);
+    border-radius: 8px;
+    padding: 10px 12px;
+    min-width: 150px;
+    max-width: 200px;
+    max-height: 120px;
+    gap: 5px;
+    cursor: pointer;
+    border: 1px solid var(--color-light-grey-2);
+    box-shadow: var(--box-shadow-1);
+}
+
+.merch-pic-div .merch-pic-info > div {
+    width: 100%;
+    flex: 1 1 20px;
+}
+
+.merch-pic-div .merch-pic-info .merch-pic-info-right {
+    max-width: 25px;
+    justify-content: center;
+    align-items: center;
+}
+.merch-pic-div .merch-pic-info .merch-pic-info-right i {
+    font-weight: 600;
+    font-size: var(--font-size-xl);
+    color: var(--color-navy-blue);
+}
+
+.merch-pic-div .merch-pic-info .merch-pic-info-left {
+    gap: 8px;
+}
+
+.merch-pic-div .merch-pic-info .merch-pic-info-left .merch-info-title{
+    font-weight: 700;
+    font-size: var(--font-size-s);
+    color: var(--color-navy-blue);
+}
+
+.merch-pic-div .merch-pic-info .merch-pic-info-left .merch-info-price{
+    font-weight: 400;
+    font-size: var(--font-size-xs);
+    color: var(--color-text-light-3);
+}
+
+.merch-pic-div .merch-pic-info .merch-pic-info-left .merch-info-price span{
+    font-weight: 500;
+    font-size: var(--font-size-xm);
+    color: var(--color-text-light-3);
+}
+
+.merch-pic-div .outer-info {
+    transform: translate(-5px,-25%);
+    padding: 0 15px;
+}
+
+.merch-pic-div .outer-info:hover .merch-pic-info,
+.merch-pic-info:hover,
+.merch-pic-div:has(button:hover) .merch-pic-info {
+    display: flex;
+}
+
+/*div locate*/
+.show-merch-div .merch-pic-div.prx-tshirt{
+    top: 75%;
+    left: 64%;
+}
+
+.show-merch-div .merch-pic-div.bottle1{
+    top: 35%;
+    left: 18.2%;
+}

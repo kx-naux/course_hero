@@ -1,17 +1,78 @@
-<%-- 
-    Document   : Merchandises
-    Created on : May 2, 2024, 8:36:20 AM
-    Author     : PC
---%>
+<%@ page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page import="java.util.List, java.util.Map" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Course Hero | Merchandises</title>
+        <link rel="icon" type="image/ico" href="./ico/Logo.ico">
+        <link type="text/css" href="./css/style.css" rel="stylesheet" >
+        <link type="text/css" href="./css/merchandises.css" rel="stylesheet" >
+        <link type="text/css" href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
+        <jsp:useBean id="webpath" class="module.WebPath" scope="application" />
     </head>
     <body>
-        
+        <!--Toast message-->
+        <%@ include file="./Components/toast_msg.html" %>
+
+        <!--To top button-->
+        <%@ include file="./Components/to_top_button.html" %>
+
+        <!-- Include the navigation bar -->
+        <%@ include file="./Components/navbar.jsp" %>
+
+        <section class="section show-merch-section">
+            <div class="show-merch-div">
+                <!--bg pic-->
+                <img src="./img/merchandises/merch.png" alt="" />
+
+                <!--merch item in pic-->
+                <div class="merch-pic-div prx-tshirt flex-row">
+                    <button type="button"><span></span></button>
+                    <div class="outer-info">
+                        <div class="merch-pic-info flex-row" merchID="123123">
+                            <div class="merch-pic-info-left flex-col">
+                                <h1 class="merch-info-title">Course Hero X PRX T-shirt</h1>
+                                <p class="merch-info-price">RM <span>58.00</span></p>
+                            </div>
+                            <div class="merch-pic-info-right flex-col">
+                                <i class="ri-arrow-right-line"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="merch-pic-div bottle1 flex-row">
+                    <button type="button"><span></span></button>
+                    <div class="outer-info">
+                        <div class="merch-pic-info flex-row" merchID="123123">
+                            <div class="merch-pic-info-left flex-col">
+                                <h1 class="merch-info-title">Bottle 1</h1>
+                                <p class="merch-info-price">RM <span>58.00</span></p>
+                            </div>
+                            <div class="merch-pic-info-right flex-col">
+                                <i class="ri-arrow-right-line"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="section merch-list-section">
+            <div class="merch-list-div">
+
+            </div>
+        </section>
+
+
+        <script src="./js/merchandise/merchandises.js"></script>
+
+        <!--Footer import-->
+        <%--<%@ include file="./Components/footer_wave.html" %>--%>  
+        <%@ include file="./Components/footer.jsp" %>  
     </body>
 </html>
