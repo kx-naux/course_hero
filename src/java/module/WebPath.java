@@ -23,6 +23,7 @@ public class WebPath {
         
         //admin
         pageUrls.put("dashboard","/admin/dashboard");
+        pageUrls.put("manage-client","/admin/manage-client");
     }
 
     public String getPageUrl(String page) {

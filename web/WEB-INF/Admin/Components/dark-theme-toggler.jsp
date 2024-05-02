@@ -98,3 +98,22 @@
     </span>
   </label>
 </div>
+<!-- Right after the browser renders the sidebar -->
+<script type="text/javascript">
+    // If localStorage is supported by the browser
+    if (typeof(Storage) !== "undefined") {
+        // If we need to open the bar
+        if(localStorage.getItem("theme") === "dark"){
+            // change background
+        document.documentElement.style.setProperty('--color-background', '#181a1e');
+        document.documentElement.style.setProperty('--color-white', '#363949');
+        document.documentElement.style.setProperty('--color-dark', '#edeffd');
+        document.documentElement.style.setProperty('--color-dark-variant', '#a3bdcc');
+        document.documentElement.style.setProperty('--color-light', 'rgba(0,0,0,0.4)'); 
+        
+        // check the dark theme button
+        document.getElementById("theme-checkbox").checked = true;
+        }
+    }
+</script>
+<script src="../admin_js/adminThemeToggler.js"></script>

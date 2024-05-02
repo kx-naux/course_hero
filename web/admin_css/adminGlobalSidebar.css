@@ -1,0 +1,258 @@
+/* google Poppins Font import */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('adminRoot.css');
+
+/* ========================== SIDEBAR ==================== */
+.global-sidebar{
+    background: #363949;
+    padding: 2vh 0.5vw;
+    width: 80px;
+    min-height: 100vh;
+    transition: width 0.5s ease-in-out;
+    align-items: center;
+}
+
+.global-sidebar.active{
+    width: 250px;
+    margin-right: 1vw;
+}
+
+.global-sidebar .sidebar-top .logo{
+    display: flex;
+    height: 80px;
+    margin: 0 auto;
+    align-items: center;
+    pointer-events: none;
+}
+.global-sidebar .sidebar-top .logo img{
+    width: 80px;
+    height: 80px;
+    opacity: 0;
+    transition: 0s;
+}
+
+.global-sidebar.active .sidebar-top .logo img{
+    width: 80px;
+    height: 80px;
+    opacity: 1;
+    transition: 0.3s ease-in-out 0.25s;
+}
+
+.global-sidebar .sidebar-top{
+    display: flex;
+    margin-bottom: 5vh;
+}
+
+/* expand button */
+.global-sidebar .sidebar-top .expand-btn{
+    position: absolute;
+    top: 0vh;
+    left: 25%;
+    color: #FFF;
+    line-height: 50px;
+    font-size: 2.8em;
+    cursor: pointer;
+    transition: 0.4s ease-in-out;
+}
+
+.global-sidebar.active .sidebar-top .expand-btn{
+    transform: translateX(150px);
+    transition: 0.6s ease-in-out;
+}
+
+.global-sidebar.active .expand-btn .expand{
+    display:none;
+}
+
+.global-sidebar .expand-btn .hide{
+    display:none;
+}
+
+.global-sidebar.active .expand-btn .hide{
+    display:block;
+    background: #363949;
+    padding: 4px;
+    border-radius: 0px 100vh 100vh 0px;   
+}
+
+/*sidebar content*/
+.global-sidebar ul li{
+    position:relative;
+    list-style-type: none;
+    min-height: 50px;
+    width: 90%;
+    margin: 2vh auto;
+    line-height: 50px;
+}
+
+.global-sidebar ul li a{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    border-radius: 10px;
+    color: #FFF;
+    transition: 0.2s ease-in-out;
+    padding: 0.25vh 0.5vw;
+}
+
+.global-sidebar ul li a:hover{
+    background-color: #FFF;
+    color: #363949;
+}
+
+.global-sidebar ul li a.active{
+    background-color: #FFF;
+    color: #363949;
+}
+
+/* this is the logout button */
+.global-sidebar ul li.logout{
+    margin-top: 5vh;
+}
+
+.global-sidebar ul li a i{
+    font-size: 2.8em;
+    text-align: center;
+    border-radius: 5px;
+    line-height: 50px;
+}
+
+/*submenu*/
+.global-sidebar ul li a i.arrow{
+    font-size: 24px;
+    text-align: right;
+    position: absolute;
+    right: 5px;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.global-sidebar.active ul li a i.arrow{
+    opacity: 1;
+}
+
+.global-sidebar .sub-menu{
+    position: absolute;
+    top: 0;
+    left: 70px;
+    white-space: nowrap;
+    z-index: -1;
+    background: #363949;
+    padding: 5px 5px;
+    border-radius: 15px;
+    box-shadow: var(--box-shadow);
+    transform: translateX(-100%);
+    
+    /*hidden state*/
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.4s ease-in-out;
+}
+
+.global-sidebar .sub-menu.active{
+     z-index: 21;
+     transform: translate(0);
+    
+    /*visible state*/
+    opacity: 1;
+    visibility: visible;
+}
+
+.global-sidebar .sub-menu.active a{
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.global-sidebar.active .sub-menu.active a{
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.global-sidebar.active .sub-menu{
+    position: static;
+    /*reset style to expanded global sidebar sub menu*/
+    top: unset;
+    left: unset;
+    white-space: nowrap;
+    padding: unset;
+    border-radius: unset;
+    box-shadow: unset;
+    
+    margin-left: 25px;
+    padding-left: 15px;
+    border-left: 1px solid white;
+    transition: 0s;
+    text-align: center;
+    position: absolute;
+    transform: translateY(-150%);
+    opacity: 0;
+    visibility: visible;
+}
+
+.global-sidebar.active .sub-menu.active{
+    position: relative;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0%);
+    transition: transform 0.5s ease, opacity 1.5s ease;
+    z-index: 10;
+}
+
+.global-sidebar .sub-menu a h3{
+    font-weight: 500;
+}
+
+.global-sidebar .nav-item{
+    margin-left: 15px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.global-sidebar.active .nav-item{
+    opacity: 1;
+}
+
+.global-sidebar ul li .tooltip{
+    position: absolute;
+    top: 0;
+    left: 60px;
+    white-space: nowrap;
+    font-weight: 600;
+    font-size: 14px;
+    z-index: 20;
+    opacity: 0;
+    transition: 0.3s ease-in-out;
+    background: #FFF;
+    color: #363949;
+    padding: 5px 15px;
+    border-radius: 15px;
+    box-shadow: var(--box-shadow);
+    pointer-events: none;
+}
+
+.global-sidebar.active ul li:hover .tooltip{
+    opacity: 0;
+}
+
+.global-sidebar ul li:hover .tooltip{
+    opacity: 1;
+}
+
+.tooltip.removeFromSubmenu{
+    opacity: 0 !important;
+}
+
+.global-sidebar .message-count{
+    position: absolute;
+    top: 0.25vh;
+    left: 30px;
+    background: var(--color-danger);
+    color: var(--color-white);
+    padding: 0px 5px;
+    line-height: 2em;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 100vh;
+}
