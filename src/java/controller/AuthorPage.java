@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import JPAEntity.AuthorContribution;
 import JPAEntity.Authors;
 import JPAEntity.Courses;
+import JPAEntity.SocialMediaLinks;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -24,7 +25,7 @@ import javax.servlet.ServletConfig;
 public class AuthorPage extends HttpServlet {
     @PersistenceContext EntityManager em;
     
-    private List<AuthorContribution> authorNCourses;
+   
     private List<Authors> authors;
     
     @Override
@@ -32,41 +33,70 @@ public class AuthorPage extends HttpServlet {
         super.init(config);
         Query authorsQuery = em.createNamedQuery("Authors.findAll");
         authors = authorsQuery.getResultList();
-        
-        Query authContriQuery = em.createNamedQuery("AuthorContribution.findAll");
-        authorNCourses = authContriQuery.getResultList();
     }
     
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {  
         String authorId = request.getParameter("id");
         HttpSession session = request.getSession();
         Authors author = null;
         // check is course id input exist
         if (authorId == null) {
-           goToErrorPage(request,response);
+           goToNotFoundErrorPage(request,response);
         }
         else{
             author = findMatchingAuthorId(authorId);
             if(author == null){
-                goToErrorPage(request,response);
+                goToNotFoundErrorPage(request,response);
             }else{
+                //get number of courses recorded
+                Query getCountQuery = em.createNamedQuery("AuthorContribution.countAllAvailabeCoursesByAuthor").setParameter("authorId", author);
+                long numberOfCoursesRecord = (long)getCountQuery.getSingleResult();
+                request.setAttribute("numberOfCourses", numberOfCoursesRecord);
+                
+                //do pagination for courses
+                int reqPage = 1;
+                int maxDataInPage=4;
+                long lastPage = (numberOfCoursesRecord-1)/Long.parseLong(String.valueOf(maxDataInPage)) + 1;
+                if (request.getParameter("p") != null) {
+                    reqPage = Integer.parseInt(request.getParameter("p"));
+                    if(reqPage > lastPage){
+                    goToCustomErrorPage(request,response,"Invalid URL");
+                    }
+                }
+
+                int offset = (reqPage-1)*maxDataInPage;
+                
+
                 //give author result get author and it's courses
                 request.setAttribute("authorData",author);
-                //Query query = em.createNamedQuery("AuthorContribution.findByAuthorId").setParameter("authorId", author);
-                //List<AuthorContribution> authorNCourses = query.getResultList();
-                List<Courses> authCourses = getAuthorCourses(author);
-                //if(!authorNCourses.isEmpty()){  
-                //   for(AuthorContribution authContri:authorNCourses){
-                //        authCourses.add(authContri.getCourseId());
-                //    }
-                //}
+
+                Query query = em.createNamedQuery("AuthorContribution.findByAuthorIdWhereCourseIsAvailable").setParameter("authorId", author);
+                query.setFirstResult(offset);
+                query.setMaxResults(maxDataInPage);
+                List<AuthorContribution> authorNCourses = query.getResultList();
+                List<Courses> authCourses = new ArrayList<>();
+                if(!authorNCourses.isEmpty()){  
+                    for(AuthorContribution authContri:authorNCourses){
+                        authCourses.add(authContri.getCourseId());
+                    }
+                }
                 request.setAttribute("authorCourses",authCourses);
+                
+                //find social media link of author and pass it to jsp
+                List<SocialMediaLinks> smLinks = getAuthorSocialMedia(author); 
+                request.setAttribute("socialMediaLinks",smLinks);
             }
         }
         //
 
         // Forward the request to Course.jsp
         request.getRequestDispatcher("/WEB-INF/Client/Author.jsp").forward(request, response);
+    }
+    
+    private List<SocialMediaLinks> getAuthorSocialMedia(Authors author){
+        Query query = em.createNamedQuery("SocialMediaLinks.findByAuthorId").setParameter("authorId", author);
+        List<SocialMediaLinks> resultList = query.getResultList();
+        return resultList;
     }
     
     private Authors findMatchingAuthorId(String authId){
@@ -78,7 +108,7 @@ public class AuthorPage extends HttpServlet {
         return null;
     }
     
-    private List<Courses> getAuthorCourses(Authors auth){
+    private List<Courses> getAuthorCourses(List<AuthorContribution> authorNCourses, Authors auth){
         List<Courses> authCourses = new ArrayList<>();
         for(AuthorContribution authContri:authorNCourses){
             if(!authContri.getCourseId().getProductId().getStatus().equals("Active")){
@@ -92,7 +122,7 @@ public class AuthorPage extends HttpServlet {
         return authCourses;
     }
     
-    private void goToErrorPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+    private void goToNotFoundErrorPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         HttpSession session = request.getSession();
         session.setAttribute("type", "Author");
         session.setAttribute("param", "Author ID");
@@ -100,6 +130,15 @@ public class AuthorPage extends HttpServlet {
             
         // Forward the request to  error page
         request.getRequestDispatcher("/WEB-INF/Client/NotFoundError.jsp").forward(request, response);
+    }
+    
+    private void goToCustomErrorPage(HttpServletRequest request, HttpServletResponse response, String errorMessage) throws ServletException, IOException{
+        HttpSession session = request.getSession();
+        session.setAttribute("errorMessage", errorMessage);
+        session.setAttribute("errorDetail", "Your search has ventured beyond the known universe.");    
+        
+        // Forward the request to  error page
+        request.getRequestDispatcher("/WEB-INF/Client/CustomError.jsp").forward(request, response);
     }
 
 }
