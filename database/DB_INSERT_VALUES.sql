@@ -54,13 +54,13 @@ VALUES
     ('MC0000004', 'Accesories', 'Category for everyday accesories.'),
     ('MC0000005', 'Stationaries', 'Category for stationaries.');
 
-INSERT INTO AUTHORS (AUTHOR_ID, AUTHOR_NAME, NATIONALITY, INSTITUTION, AWARDS_HONORS, BIOGRAPHY, DOB, WEBSITE)
+INSERT INTO AUTHORS (AUTHOR_ID, AUTHOR_NAME, NATIONALITY, INSTITUTION, AWARDS_HONORS, BIOGRAPHY, DATE_JOINED,AUTHOR_POSITION, WEBSITE)
 VALUES 
-    ('AU0000001', 'Lena Watson', 'American', 'Stanford University', 'Nobel Prize in Computer Science', 'Dr. Lena Watson is a renowned computer scientist at     Stanford University, known for her groundbreaking work in artificial intelligence and machine learning.', '1975-08-20',   'https://www.example.com/lenawatson'),
-    ('AU0000002', 'Max Chen', 'Chinese', 'Massachusetts Institute of Technology', 'Fields Medal in Mathematics', 'Dr. Max Chen is a brilliant mathematician at MIT, recognized for his contributions to number theory and algebraic geometry.', '1980-04-15', 'https://www.example.com/maxchen'),
-    ('AU0000003', 'Emily Park', 'British', 'University College London', 'Turing Award in Computer Science', 'Dr. Emily Park is a cybersecurity expert at UCL, renowned for her innovative algorithms and protocols that enhance online security.', '1982-11-28', 'https://www.example.com/emilypark'),
-    ('AU0000004', 'Alejandro Lopez', 'Mexican', 'California Institute of Technology', 'Breakthrough Prize in Physics', 'Dr. Alejandro Lopez is a theoretical physicist at Caltech, known for his groundbreaking research in quantum mechanics and string theory.', '1978-03-10', 'https://www.example.com/alejandrolopez'),
-    ('AU0000005', 'Sara Khan', 'Indian', 'Harvard University', 'National Medal of Science', 'Dr. Sara Khan is a leading bioinformatician at Harvard, specializing in computational biology and genomics.', '1985-06-25', 'https://www.example.com/sarakhan');
+    ('AU0000001', 'Lena Watson', 'American', 'Stanford University', 'Nobel Prize in Computer Science', 'Dr. Lena Watson is a renowned computer scientist at     Stanford University, known for her groundbreaking work in artificial intelligence and machine learning.', '2021-08-20', 'Manager At Mooiko',  'https://www.example.com/lenawatson'),
+    ('AU0000002', 'Max Chen', 'Chinese', 'Massachusetts Institute of Technology', 'Fields Medal in Mathematics', 'Dr. Max Chen is a brilliant mathematician at MIT, recognized for his contributions to number theory and algebraic geometry.', '2022-04-15', 'Manager At SiP', 'https://www.example.com/maxchen'),
+    ('AU0000003', 'Emily Park', 'British', 'University College London', 'Turing Award in Computer Science', 'Dr. Emily Park is a cybersecurity expert at UCL, renowned for her innovative algorithms and protocols that enhance online security.', '2023-11-28', 'Manager At MySoftware', 'https://www.example.com/emilypark'),
+    ('AU0000004', 'Alejandro Lopez', 'Mexican', 'California Institute of Technology', 'Breakthrough Prize in Physics', 'Dr. Alejandro Lopez is a theoretical physicist at Caltech, known for his groundbreaking research in quantum mechanics and string theory.', '2024-03-10', 'Manager At Pentamaster', 'https://www.example.com/alejandrolopez'),
+    ('AU0000005', 'Sara Khan', 'Indian', 'Harvard University', 'National Medal of Science', 'Dr. Sara Khan is a leading bioinformatician at Harvard, specializing in computational biology and genomics.', '1985-06-25', 'Manager At QuantumMetal', 'https://www.example.com/sarakhan');
 
 INSERT INTO ACCOUNTS (account_id, username, email, saltedpassword, salt)
 VALUES 
@@ -111,16 +111,16 @@ VALUES
     ('SL0000005', 'AU0000003', 'YouTube', 'https://www.youtube.com/em.Park'),
     ('SL0000006', 'AU0000005', 'YouTube', 'https://www.youtube.com/SaraKhan');
 
-INSERT INTO PRODUCT (PRODUCT_ID, PRODCAT_ID, PROD_NAME, PRICE, RATE_WEIGHTAGE, AVG_RATING, DISCOUNT, IMAGE_PATH) 
+INSERT INTO PRODUCT (PRODUCT_ID, PRODCAT_ID, PROD_NAME, PRICE, RATE_WEIGHTAGE, AVG_RATING, DISCOUNT, IMAGE_PATH, STATUS) 
 VALUES 
-    ('PR0000001', 'PC0000001', 'Algebra Part 1', 1500.0, 5, 4.5, 0.1, 'images/algebraP1.jpg'),
-    ('PR0000002', 'PC0000001', 'Algebra Rocks Hoodie', 800.0, 4, 4.2, 0.05, 'images/algebraHoodie.jpg'),
-    ('PR0000003', 'PC0000002', 'JavaScript', 100.0, 3, 4.0, 0.0, 'images/Javascript.jpg'),
-    ('PR0000004', 'PC0000002', 'C++', 50.0, 2, 3.8, 0.0, 'images/c++.jpg'),
-    ('PR0000005', 'PC0000003', 'I Love Bio Tshirt', 30.0, 1, 4.1, 0.0, 'images/bioShirt.jpg'),
-    ('PR0000006', 'PC0000003', 'I Love Bio Cup', 25.0, 1, 2.0, 0.0, 'image/bioCup.jpg'),
-    ('PR0000007', 'PC0000002', 'Java Hoodie', 99.0, 2, 4.0, 1.5, 'image/javaHoodie.jpg'),
-    ('PR0000008', 'PC0000005', 'Physics Cap', 60.0, 3, 3.0, 0.0, 'image/physicsCap.jpg');
+    ('PR0000001', 'PC0000001', 'Algebra Part 1', 1500.0, 5, 4.5, 0.1, 'images/algebraP1.jpg','Active'),
+    ('PR0000002', 'PC0000001', 'Algebra Rocks Hoodie', 800.0, 4, 4.2, 0.05, 'images/algebraHoodie.jpg','Active'),
+    ('PR0000003', 'PC0000002', 'JavaScript', 100.0, 3, 4.0, 0.0, 'images/Javascript.jpg','Active'),
+    ('PR0000004', 'PC0000002', 'C++', 50.0, 2, 3.8, 0.0, 'images/c++.jpg','Active'),
+    ('PR0000005', 'PC0000003', 'I Love Bio Tshirt', 30.0, 1, 4.1, 0.0, 'images/bioShirt.jpg','Active'),
+    ('PR0000006', 'PC0000003', 'I Love Bio Cup', 25.0, 1, 2.0, 2, 'image/bioCup.jpg','Active'),
+    ('PR0000007', 'PC0000002', 'Java Hoodie', 99.0, 2, 4.0, 1.5, 'image/javaHoodie.jpg','Active'),
+    ('PR0000008', 'PC0000005', 'Physics Cap', 60.0, 3, 3.0, 0.0, 'image/physicsCap.jpg','Active');
 
 INSERT INTO MERCHANDISE (MERCH_ID, PRODUCT_ID, DIMENSION_H_CM, DIMENSION_W_CM, DIMENSION_L_CM, WEIGHT_KG, STOCK_BALANCE)
 VALUES 
@@ -130,13 +130,13 @@ VALUES
     ('M00000004', 'PR0000007', 12.0, 6.5, 20.0, 0.9, 80),
     ('M00000005', 'PR0000008', 18.0, 10.0, 28.0, 1.1, 200);
 
-INSERT INTO COURSES (COURSE_ID, PRODUCT_ID, TOOLS_USED, COURSECAT_ID, LEARNING_OBJ)
+INSERT INTO COURSES (COURSE_ID, PRODUCT_ID, TOOLS_USED, COURSECAT_ID, LEARNING_OBJ,LENGTH_HOUR,COURSE_LEVEL,DATE_ADDED)
 VALUES 
-    ('CR0000001', 'PR0000003', 'IDE, Terminal', 'CC0000001', 'Learn programming fundamentals'),
-    ('CR0000002', 'PR0000003', 'Text Editor, Web Browser', 'CC0000001', 'Introduction to HTML and CSS'),
-    ('CR0000003', 'PR0000004', 'Programming IDE, Database Management System', 'CC0000001', 'Database design and SQL queries'),
-    ('CR0000004', 'PR0000001', 'Word Processor, Spreadsheet', 'CC0000004', 'Introduction to Microsoft Office applications'),
-    ('CR0000005', 'PR0000005', 'Code Editor, Compiler', 'CC0000003', 'Advanced programming concepts');
+    ('CR0000001', 'PR0000003', 'IDE, Terminal', 'CC0000001', 'Learn programming fundamentals',9,'Beginner','2024-04-15 10:30:00'),
+    ('CR0000002', 'PR0000006', 'Text Editor, Web Browser', 'CC0000001', 'Introduction to HTML and CSS',9.5,'Intermediate','2024-04-15 10:30:00'),
+    ('CR0000003', 'PR0000004', 'Programming IDE, Database Management System', 'CC0000001', 'Database design and SQL queries',10,'Advance','2024-04-15 10:30:00'),
+    ('CR0000004', 'PR0000001', 'Word Processor, Spreadsheet', 'CC0000004', 'Introduction to Microsoft Office applications',3,'Diploma Holder','2024-04-15 10:30:00'),
+    ('CR0000005', 'PR0000005', 'Code Editor, Compiler', 'CC0000003', 'Advanced programming concepts',38,'Beginner','2024-04-15 10:30:00');
 
 INSERT INTO COURSE_SUBSCRIPTIONS (SUBSCRIPTIONS_ID, COURSE_ID, USER_ID, SUBSCRIBE_TIME, START_TIME, PROGRESS, FINISH_TIME)
 VALUES 
@@ -221,7 +221,8 @@ VALUES
     ('ACN000002', 'AU0000002', 'CR0000001', 0.75, 'Lead instructor for the course'),
     ('ACN000003', 'AU0000003', 'CR0000003', 0.1, 'Provided technical expertise'),
     ('ACN000004', 'AU0000004', 'CR0000004', 0.4, 'Contributed to course design and curriculum'),
-    ('ACN000005', 'AU0000005', 'CR0000005', 0.3, 'Developed supplemental materials');
+    ('ACN000005', 'AU0000005', 'CR0000005', 0.3, 'Developed supplemental materials'),
+    ('ACN000006', 'AU0000001', 'CR0000002', 0.12, 'Half Chapter');
 
 INSERT INTO MESSAGES (MESSAGE_ID, USER_ID, CHATROOM_ID, MESSAGE_TYPE, CONTENT, DESTINATION, TIME_CREATED)
 VALUES 

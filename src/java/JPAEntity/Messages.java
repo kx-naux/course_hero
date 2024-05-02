@@ -37,13 +37,6 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Messages.findByTimeCreated", query = "SELECT m FROM Messages m WHERE m.timeCreated = :timeCreated")})
 public class Messages implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-    @Id
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 9)
-    @Column(name = "MESSAGE_ID")
-    private String messageId;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 20)
@@ -64,6 +57,14 @@ public class Messages implements Serializable {
     @Column(name = "TIME_CREATED")
     @Temporal(TemporalType.TIMESTAMP)
     private Date timeCreated;
+
+    private static final long serialVersionUID = 1L;
+    @Id
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 9)
+    @Column(name = "MESSAGE_ID")
+    private String messageId;
     @JoinColumn(name = "CHATROOM_ID", referencedColumnName = "CHATROOM_ID")
     @ManyToOne(optional = false)
     private Chatrooms chatroomId;
@@ -102,21 +103,6 @@ public class Messages implements Serializable {
         this.messageType = messageType;
     }
 
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public String getDestination() {
-        return destination;
-    }
-
-    public void setDestination(String destination) {
-        this.destination = destination;
-    }
 
     public Date getTimeCreated() {
         return timeCreated;
@@ -166,5 +152,29 @@ public class Messages implements Serializable {
     public String toString() {
         return "JPAEntity.Messages[ messageId=" + messageId + " ]";
     }
+
+    
+
+    
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public String getDestination() {
+        return destination;
+    }
+
+    public void setDestination(String destination) {
+        this.destination = destination;
+    }
+
+    
+
+    
     
 }

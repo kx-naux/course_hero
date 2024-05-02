@@ -35,13 +35,6 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "CartItems.findByTimeAdded", query = "SELECT c FROM CartItems c WHERE c.timeAdded = :timeAdded")})
 public class CartItems implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-    @Id
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 9)
-    @Column(name = "CARTITEM_ID")
-    private String cartitemId;
     @Basic(optional = false)
     @NotNull
     @Column(name = "QUANTITY")
@@ -51,6 +44,14 @@ public class CartItems implements Serializable {
     @Column(name = "TIME_ADDED")
     @Temporal(TemporalType.TIMESTAMP)
     private Date timeAdded;
+
+    private static final long serialVersionUID = 1L;
+    @Id
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 9)
+    @Column(name = "CARTITEM_ID")
+    private String cartitemId;
     @JoinColumn(name = "PRODUCT_ID", referencedColumnName = "PRODUCT_ID")
     @ManyToOne(optional = false)
     private Product productId;
@@ -79,13 +80,6 @@ public class CartItems implements Serializable {
         this.cartitemId = cartitemId;
     }
 
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
 
     public Date getTimeAdded() {
         return timeAdded;
@@ -135,5 +129,17 @@ public class CartItems implements Serializable {
     public String toString() {
         return "JPAEntity.CartItems[ cartitemId=" + cartitemId + " ]";
     }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+   
+
+
     
 }

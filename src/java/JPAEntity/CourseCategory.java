@@ -35,13 +35,6 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "CourseCategory.findByDescription", query = "SELECT c FROM CourseCategory c WHERE c.description = :description")})
 public class CourseCategory implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-    @Id
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 9)
-    @Column(name = "COURSECAT_ID")
-    private String coursecatId;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 30)
@@ -50,6 +43,14 @@ public class CourseCategory implements Serializable {
     @Size(max = 100)
     @Column(name = "DESCRIPTION")
     private String description;
+
+    private static final long serialVersionUID = 1L;
+    @Id
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 9)
+    @Column(name = "COURSECAT_ID")
+    private String coursecatId;
     @ManyToMany(mappedBy = "courseCategoryList")
     private List<Users> usersList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "coursecatId")
@@ -83,13 +84,6 @@ public class CourseCategory implements Serializable {
         this.categoryName = categoryName;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
 
     @XmlTransient
     public List<Users> getUsersList() {
@@ -132,6 +126,20 @@ public class CourseCategory implements Serializable {
     @Override
     public String toString() {
         return "JPAEntity.CourseCategory[ coursecatId=" + coursecatId + " ]";
+    }
+
+    
+
+    
+
+    
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
     
 }

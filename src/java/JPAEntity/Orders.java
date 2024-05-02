@@ -31,13 +31,14 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Orders.findByQuantity", query = "SELECT o FROM Orders o WHERE o.quantity = :quantity")})
 public class Orders implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-    @EmbeddedId
-    protected OrdersPK ordersPK;
     @Basic(optional = false)
     @NotNull
     @Column(name = "QUANTITY")
     private int quantity;
+
+    private static final long serialVersionUID = 1L;
+    @EmbeddedId
+    protected OrdersPK ordersPK;
     @JoinColumn(name = "PRODUCT_ID", referencedColumnName = "PRODUCT_ID", insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private Product product;
@@ -69,13 +70,6 @@ public class Orders implements Serializable {
         this.ordersPK = ordersPK;
     }
 
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
 
     public Product getProduct() {
         return product;
@@ -116,6 +110,14 @@ public class Orders implements Serializable {
     @Override
     public String toString() {
         return "JPAEntity.Orders[ ordersPK=" + ordersPK + " ]";
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
     
 }

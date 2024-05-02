@@ -35,13 +35,6 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Bankcardinfo.findByCvv", query = "SELECT b FROM Bankcardinfo b WHERE b.cvv = :cvv")})
 public class Bankcardinfo implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-    @Id
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 9)
-    @Column(name = "CARDINFOID")
-    private String cardinfoid;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 9)
@@ -67,6 +60,14 @@ public class Bankcardinfo implements Serializable {
     @Size(min = 1, max = 4)
     @Column(name = "CVV")
     private String cvv;
+
+    private static final long serialVersionUID = 1L;
+    @Id
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 9)
+    @Column(name = "CARDINFOID")
+    private String cardinfoid;
     @JoinColumn(name = "USER_ID", referencedColumnName = "USER_ID")
     @OneToOne(optional = false)
     private Users userId;
@@ -95,13 +96,6 @@ public class Bankcardinfo implements Serializable {
         this.cardinfoid = cardinfoid;
     }
 
-    public String getCardtype() {
-        return cardtype;
-    }
-
-    public void setCardtype(String cardtype) {
-        this.cardtype = cardtype;
-    }
 
     public String getCardHolderName() {
         return cardHolderName;
@@ -127,13 +121,6 @@ public class Bankcardinfo implements Serializable {
         this.expiryDate = expiryDate;
     }
 
-    public String getCvv() {
-        return cvv;
-    }
-
-    public void setCvv(String cvv) {
-        this.cvv = cvv;
-    }
 
     public Users getUserId() {
         return userId;
@@ -166,6 +153,26 @@ public class Bankcardinfo implements Serializable {
     @Override
     public String toString() {
         return "JPAEntity.Bankcardinfo[ cardinfoid=" + cardinfoid + " ]";
+    }
+
+    public String getCardtype() {
+        return cardtype;
+    }
+
+    public void setCardtype(String cardtype) {
+        this.cardtype = cardtype;
+    }
+
+    
+
+    
+
+    public String getCvv() {
+        return cvv;
+    }
+
+    public void setCvv(String cvv) {
+        this.cvv = cvv;
     }
     
 }
