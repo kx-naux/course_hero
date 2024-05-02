@@ -24,6 +24,7 @@
         <!-- Include the navigation bar -->
         <%@ include file="./Components/navbar.jsp" %>
 
+
         <section class="section merch-section" merchID="${param.id}">
             <div class="merch-top-div flex-row">
                 <div class="merch-div-left flex-col">
@@ -73,9 +74,9 @@
                             <div class="merch-qty flex-col">
                                 <label for="order_qty">Quantity:</label>
                                 <div class="flex-row">
-                                    <button id="order_qty_add" class="qty-btn add"><i class="ri-add-fill"></i></button>
-                                    <input type="text" id="order_qty" class="qty-input"  min="1" max="99" value="1" />
                                     <button id="order_qty_substract" class="qty-btn substract"><i class="ri-subtract-fill"></i></button>
+                                    <input type="text" id="order_qty" class="qty-input"  min="1" max="99" value="1" />
+                                    <button id="order_qty_add" class="qty-btn add"><i class="ri-add-fill"></i></button>
                                 </div>
                             </div>
 
@@ -107,7 +108,7 @@
                         <tbody>
                             <tr>
                                 <th>Category</th>
-                                <td>Collectible</td>
+                                <td>Apparel</td>
                             </tr>
                             <tr>
                                 <th>Dimension</th>
@@ -145,267 +146,272 @@
             </div>
 
             <!--user review-->
-            <div class="merch-review merch-bot-div flex-col">
-                <h1 class="merch-bot-div-title">User Review</h1>
+            <div class="merch-review merch-bot-div flex-row">
+                <div class="merch-review-left flex-col">
 
-                <div class="merch-overall-review flex-col">
+                    <h1 class="merch-bot-div-title">User Review</h1>
 
-                    <div class="rating-count flex-row">
-                        <div class="rating-percentage-bar flex-col">
-                            <span class="background-bar"></span>
-                            <span class="front-bar" style="width: 70%"></span>
+                    <div class="merch-overall-review flex-col">
+
+                        <div class="rating-count flex-row">
+                            <div class="rating-percentage-bar flex-col">
+                                <span class="background-bar"></span>
+                                <span class="front-bar" style="width: 70%"></span>
+                            </div>
+                            <div class="rating-stars flex-row">
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                            </div>
+                            <p class="review-number">70%</p>
                         </div>
-                        <div class="rating-stars flex-row">
-                            <i class="ri-star-fill"></i>
-                            <i class="ri-star-fill"></i>
-                            <i class="ri-star-fill"></i>
-                            <i class="ri-star-fill"></i>
-                            <i class="ri-star-fill"></i>
+                        <div class="rating-count flex-row">
+                            <div class="rating-percentage-bar">
+                                <span class="background-bar"></span>
+                                <span class="front-bar" style="width: 20%"></span>
+                            </div>
+                            <div class="rating-stars flex-row">
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-line"></i>
+                            </div>
+                            <p class="review-number">20%</p>
                         </div>
-                        <p class="review-number">70%</p>
-                    </div>
-                    <div class="rating-count flex-row">
-                        <div class="rating-percentage-bar">
-                            <span class="background-bar"></span>
-                            <span class="front-bar" style="width: 20%"></span>
+                        <div class="rating-count flex-row">
+                            <div class="rating-percentage-bar">
+                                <span class="background-bar"></span>
+                                <span class="front-bar" style="width: 4%"></span>
+                            </div>
+                            <div class="rating-stars flex-row">
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-line"></i>
+                                <i class="ri-star-line"></i>
+                            </div>
+                            <p class="review-number">4%</p>
                         </div>
-                        <div class="rating-stars flex-row">
-                            <i class="ri-star-fill"></i>
-                            <i class="ri-star-fill"></i>
-                            <i class="ri-star-fill"></i>
-                            <i class="ri-star-fill"></i>
-                            <i class="ri-star-line"></i>
+                        <div class="rating-count flex-row">
+                            <div class="rating-percentage-bar">
+                                <span class="background-bar"></span>
+                                <span class="front-bar" style="width: 1%"></span>
+                            </div>
+                            <div class="rating-stars flex-row">
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-line"></i>
+                                <i class="ri-star-line"></i>
+                                <i class="ri-star-line"></i>
+                            </div>
+                            <p class="review-number">1%</p>
                         </div>
-                        <p class="review-number">20%</p>
-                    </div>
-                    <div class="rating-count flex-row">
-                        <div class="rating-percentage-bar">
-                            <span class="background-bar"></span>
-                            <span class="front-bar" style="width: 4%"></span>
+                        <div class="rating-count flex-row">
+                            <div class="rating-percentage-bar">
+                                <span class="background-bar"></span>
+                                <span class="front-bar"  style="width: 1%"></span>
+                            </div>
+                            <div class="rating-stars flex-row">
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-line"></i>
+                                <i class="ri-star-line"></i>
+                                <i class="ri-star-line"></i>
+                                <i class="ri-star-line"></i>
+                            </div>
+                            <p class="review-number">1%</p>
                         </div>
-                        <div class="rating-stars flex-row">
-                            <i class="ri-star-fill"></i>
-                            <i class="ri-star-fill"></i>
-                            <i class="ri-star-fill"></i>
-                            <i class="ri-star-line"></i>
-                            <i class="ri-star-line"></i>
-                        </div>
-                        <p class="review-number">4%</p>
-                    </div>
-                    <div class="rating-count flex-row">
-                        <div class="rating-percentage-bar">
-                            <span class="background-bar"></span>
-                            <span class="front-bar" style="width: 1%"></span>
-                        </div>
-                        <div class="rating-stars flex-row">
-                            <i class="ri-star-fill"></i>
-                            <i class="ri-star-fill"></i>
-                            <i class="ri-star-line"></i>
-                            <i class="ri-star-line"></i>
-                            <i class="ri-star-line"></i>
-                        </div>
-                        <p class="review-number">1%</p>
-                    </div>
-                    <div class="rating-count flex-row">
-                        <div class="rating-percentage-bar">
-                            <span class="background-bar"></span>
-                            <span class="front-bar"  style="width: 1%"></span>
-                        </div>
-                        <div class="rating-stars flex-row">
-                            <i class="ri-star-fill"></i>
-                            <i class="ri-star-line"></i>
-                            <i class="ri-star-line"></i>
-                            <i class="ri-star-line"></i>
-                            <i class="ri-star-line"></i>
-                        </div>
-                        <p class="review-number">1%</p>
                     </div>
                 </div>
 
-                <form id="merchReview">
-                    <div class="merch-review-content flex-row">
 
-                        <div class="user-review flex-col">
-                            <div class="user-review-top flex-row">
-                                <div class="user-img">
-                                    <img src="./img/user/default.png" alt="" />
-                                </div>
-                                <div class="flex-col">
-                                    <p class="user-name">Woo Yu Beng</p>
-                                    <div class="review-top-bot flex-row">
-                                        <div class="rating-stars flex-row">
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-half-fill"></i>
+                <div class="merch-review-right flex-col">
+                    <form id="merchReview">
+                        <input type="text" name="id" value="${param.id}" hidden />
+
+                        <div class="flex-row">
+                            <div class="user-review flex-col">
+                                <div class="user-review-top flex-row">
+                                    <div class="user-img">
+                                        <img src="./img/user/default.png" alt="" />
+                                    </div>
+                                    <div class="flex-col">
+                                        <p class="user-name">Woo Yu Beng</p>
+                                        <div class="review-top-bot flex-row">
+                                            <div class="rating-stars flex-row">
+                                                <i class="ri-star-fill"></i>
+                                                <i class="ri-star-fill"></i>
+                                                <i class="ri-star-fill"></i>
+                                                <i class="ri-star-fill"></i>
+                                                <i class="ri-star-half-fill"></i>
+                                            </div>
+                                            <p class="review-date">29/4/2024</p>
                                         </div>
-                                        <p class="review-date">29/4/2024</p>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="user-review-bot flex-col">
-                                <p>I have a B.S. in Computer Programming. My curriculum did not include Python, so I decided to give this a try. This course is amazing! I do not normally leave reviews, but I am very happy with the purchase.</p>
-                            </div>
-                        </div>
-                        <div class="user-review flex-col">
-                            <div class="user-review-top flex-row">
-                                <div class="user-img">
-                                    <img src="./img/user/default.png" alt="" />
+                                <div class="user-review-bot flex-col">
+                                    <p>I have a B.S. in Computer Programming. My curriculum did not include Python, so I decided to give this a try. This course is amazing! I do not normally leave reviews, but I am very happy with the purchase.</p>
                                 </div>
-                                <div class="flex-col">
-                                    <p class="user-name">Woo Yu Beng</p>
-                                    <div class="review-top-bot flex-row">
-                                        <div class="rating-stars flex-row">
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-half-fill"></i>
+                            </div>
+                            <div class="user-review flex-col">
+                                <div class="user-review-top flex-row">
+                                    <div class="user-img">
+                                        <img src="./img/user/default.png" alt="" />
+                                    </div>
+                                    <div class="flex-col">
+                                        <p class="user-name">Woo Yu Beng</p>
+                                        <div class="review-top-bot flex-row">
+                                            <div class="rating-stars flex-row">
+                                                <i class="ri-star-fill"></i>
+                                                <i class="ri-star-fill"></i>
+                                                <i class="ri-star-fill"></i>
+                                                <i class="ri-star-fill"></i>
+                                                <i class="ri-star-half-fill"></i>
+                                            </div>
+                                            <p class="review-date">29/4/2024</p>
                                         </div>
-                                        <p class="review-date">29/4/2024</p>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="user-review-bot flex-col">
-                                <p>I have a B.S. in Computer Programming. My curriculum did not include Python, so I decided to give this a try. This course is amazing! I do not normally leave reviews, but I am very happy with the purchase.</p>
-                            </div>
-                        </div>
-                        <div class="user-review flex-col">
-                            <div class="user-review-top flex-row">
-                                <div class="user-img">
-                                    <img src="./img/user/default.png" alt="" />
+                                <div class="user-review-bot flex-col">
+                                    <p>I have a B.S. in Computer Programming. My curriculum did not include Python, so I decided to give this a try. This course is amazing! I do not normally leave reviews, but I am very happy with the purchase.</p>
                                 </div>
-                                <div class="flex-col">
-                                    <p class="user-name">Woo Yu Beng</p>
-                                    <div class="review-top-bot flex-row">
-                                        <div class="rating-stars flex-row">
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-half-fill"></i>
+                            </div>
+                            <div class="user-review flex-col">
+                                <div class="user-review-top flex-row">
+                                    <div class="user-img">
+                                        <img src="./img/user/default.png" alt="" />
+                                    </div>
+                                    <div class="flex-col">
+                                        <p class="user-name">Woo Yu Beng</p>
+                                        <div class="review-top-bot flex-row">
+                                            <div class="rating-stars flex-row">
+                                                <i class="ri-star-fill"></i>
+                                                <i class="ri-star-fill"></i>
+                                                <i class="ri-star-fill"></i>
+                                                <i class="ri-star-fill"></i>
+                                                <i class="ri-star-half-fill"></i>
+                                            </div>
+                                            <p class="review-date">29/4/2024</p>
                                         </div>
-                                        <p class="review-date">29/4/2024</p>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="user-review-bot flex-col">
-                                <p>I have a B.S. in Computer Programming. My curriculum did not include Python, so I decided to give this a try. This course is amazing! I do not normally leave reviews, but I am very happy with the purchase.</p>
-                            </div>
-                        </div>
-                        <div class="user-review flex-col">
-                            <div class="user-review-top flex-row">
-                                <div class="user-img">
-                                    <img src="./img/user/default.png" alt="" />
+                                <div class="user-review-bot flex-col">
+                                    <p>I have a B.S. in Computer Programming. My curriculum did not include Python, so I decided to give this a try. This course is amazing! I do not normally leave reviews, but I am very happy with the purchase.</p>
                                 </div>
-                                <div class="flex-col">
-                                    <p class="user-name">Woo Yu Beng</p>
-                                    <div class="review-top-bot flex-row">
-                                        <div class="rating-stars flex-row">
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-half-fill"></i>
+                            </div>
+                            <div class="user-review flex-col">
+                                <div class="user-review-top flex-row">
+                                    <div class="user-img">
+                                        <img src="./img/user/default.png" alt="" />
+                                    </div>
+                                    <div class="flex-col">
+                                        <p class="user-name">Woo Yu Beng</p>
+                                        <div class="review-top-bot flex-row">
+                                            <div class="rating-stars flex-row">
+                                                <i class="ri-star-fill"></i>
+                                                <i class="ri-star-fill"></i>
+                                                <i class="ri-star-fill"></i>
+                                                <i class="ri-star-fill"></i>
+                                                <i class="ri-star-half-fill"></i>
+                                            </div>
+                                            <p class="review-date">29/4/2024</p>
                                         </div>
-                                        <p class="review-date">29/4/2024</p>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="user-review-bot flex-col">
-                                <p>I have a B.S. in Computer Programming. My curriculum did not include Python, so I decided to give this a try. This course is amazing! I do not normally leave reviews, but I am very happy with the purchase.</p>
-                            </div>
-                        </div>
-                        <div class="user-review flex-col">
-                            <div class="user-review-top flex-row">
-                                <div class="user-img">
-                                    <img src="./img/user/default.png" alt="" />
+                                <div class="user-review-bot flex-col">
+                                    <p>I have a B.S. in Computer Programming. My curriculum did not include Python, so I decided to give this a try. This course is amazing! I do not normally leave reviews, but I am very happy with the purchase.</p>
                                 </div>
-                                <div class="flex-col">
-                                    <p class="user-name">Woo Yu Beng</p>
-                                    <div class="review-top-bot flex-row">
-                                        <div class="rating-stars flex-row">
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-half-fill"></i>
+                            </div>
+                            <div class="user-review flex-col">
+                                <div class="user-review-top flex-row">
+                                    <div class="user-img">
+                                        <img src="./img/user/default.png" alt="" />
+                                    </div>
+                                    <div class="flex-col">
+                                        <p class="user-name">Woo Yu Beng</p>
+                                        <div class="review-top-bot flex-row">
+                                            <div class="rating-stars flex-row">
+                                                <i class="ri-star-fill"></i>
+                                                <i class="ri-star-fill"></i>
+                                                <i class="ri-star-fill"></i>
+                                                <i class="ri-star-fill"></i>
+                                                <i class="ri-star-half-fill"></i>
+                                            </div>
+                                            <p class="review-date">29/4/2024</p>
                                         </div>
-                                        <p class="review-date">29/4/2024</p>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="user-review-bot flex-col">
-                                <p>I have a B.S. in Computer Programming. My curriculum did not include Python, so I decided to give this a try. This course is amazing! I do not normally leave reviews, but I am very happy with the purchase.</p>
-                            </div>
-                        </div>
-                        <div class="user-review flex-col">
-                            <div class="user-review-top flex-row">
-                                <div class="user-img">
-                                    <img src="./img/user/default.png" alt="" />
+                                <div class="user-review-bot flex-col">
+                                    <p>I have a B.S. in Computer Programming. My curriculum did not include Python, so I decided to give this a try. This course is amazing! I do not normally leave reviews, but I am very happy with the purchase.</p>
                                 </div>
-                                <div class="flex-col">
-                                    <p class="user-name">Woo Yu Beng</p>
-                                    <div class="review-top-bot flex-row">
-                                        <div class="rating-stars flex-row">
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-half-fill"></i>
+                            </div>
+                            <div class="user-review flex-col">
+                                <div class="user-review-top flex-row">
+                                    <div class="user-img">
+                                        <img src="./img/user/default.png" alt="" />
+                                    </div>
+                                    <div class="flex-col">
+                                        <p class="user-name">Woo Yu Beng</p>
+                                        <div class="review-top-bot flex-row">
+                                            <div class="rating-stars flex-row">
+                                                <i class="ri-star-fill"></i>
+                                                <i class="ri-star-fill"></i>
+                                                <i class="ri-star-fill"></i>
+                                                <i class="ri-star-fill"></i>
+                                                <i class="ri-star-half-fill"></i>
+                                            </div>
+                                            <p class="review-date">29/4/2024</p>
                                         </div>
-                                        <p class="review-date">29/4/2024</p>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="user-review-bot flex-col">
-                                <p>I have a B.S. in Computer Programming. My curriculum did not include Python, so I decided to give this a try. This course is amazing! I do not normally leave reviews, but I am very happy with the purchase.</p>
+                                <div class="user-review-bot flex-col">
+                                    <p>I have a B.S. in Computer Programming. My curriculum did not include Python, so I decided to give this a try. This course is amazing! I do not normally leave reviews, but I am very happy with the purchase.</p>
+                                </div>
                             </div>
                         </div>
 
-                    </div>
-
-                    <!--pagination, 20 course per page-->
-                    <%
-                        int currentPage = 1;
-                        int lastPage = 10;
-                        if (request.getParameter("p") != null) {
-                            currentPage = Integer.parseInt(request.getParameter("p"));
-                        }
-
-                        boolean previousAllow = currentPage > 1;
-                        boolean nextAllow = currentPage < lastPage;
-                    %>
-                    <input type="number" id="current_page" name="p" value="<%= currentPage%>" hidden />
-                    <div class="result-pagination-div flex-row">
-                        <p class="page-action-btn page-previous-btn <%= previousAllow ? "allow" : ""%>"><i class="ri-arrow-left-s-line"></i></p>
-                            <% if (currentPage - 1 != 0) { %>
-                        <p class="first-page-number page-number">1</p>
-                        <% }
-                            if (currentPage - 1 != 1 && currentPage - 1 != 2 && currentPage - 1 > 0) { %>
-                        <p class="number-dot">...</p>
-                        <% }
-                            if (currentPage - 1 > 1) {%>
-                        <p class="first-page-number page-number"><%= currentPage - 1%></p>
-                        <% }%>
-                        <p class="first-page-number page-number current-page"><%= currentPage%></p>
-                        <% if (currentPage + 1 < lastPage) {%>
-                        <p class="first-page-number page-number"><%= currentPage + 1%></p>
+                        <!--pagination, 20 course per page-->
                         <%
+                            int currentPage = 1;
+                            int lastPage = 10;
+                            if (request.getParameter("p") != null) {
+                                currentPage = Integer.parseInt(request.getParameter("p"));
                             }
-                            if (currentPage + 1 != lastPage && currentPage + 2 != lastPage && currentPage + 1 < lastPage) {
-                        %>
-                        <p class="number-dot">...</p>
-                        <% }
-                            if (lastPage > 1 && currentPage != lastPage) {%>
-                        <p class="last-page-number page-number"><%= lastPage%></p>
-                        <% }%>
-                        <p class="page-action-btn page-next-btn <%= nextAllow ? "allow" : ""%>"><i class="ri-arrow-right-s-line"></i></p>
-                    </div>
-                </form>
-            </div>
 
+                            boolean previousAllow = currentPage > 1;
+                            boolean nextAllow = currentPage < lastPage;
+                        %>
+                        <input type="number" id="current_page" name="p" value="<%= currentPage%>" hidden />
+                        <div class="result-pagination-div flex-row">
+                            <p class="page-action-btn page-previous-btn <%= previousAllow ? "allow" : ""%>"><i class="ri-arrow-left-s-line"></i></p>
+                                <% if (currentPage - 1 != 0) { %>
+                            <p class="first-page-number page-number">1</p>
+                            <% }
+                                if (currentPage - 1 != 1 && currentPage - 1 != 2 && currentPage - 1 > 0) { %>
+                            <p class="number-dot">...</p>
+                            <% }
+                                if (currentPage - 1 > 1) {%>
+                            <p class="first-page-number page-number"><%= currentPage - 1%></p>
+                            <% }%>
+                            <p class="first-page-number page-number current-page"><%= currentPage%></p>
+                            <% if (currentPage + 1 < lastPage) {%>
+                            <p class="first-page-number page-number"><%= currentPage + 1%></p>
+                            <%
+                                }
+                                if (currentPage + 1 != lastPage && currentPage + 2 != lastPage && currentPage + 1 < lastPage) {
+                            %>
+                            <p class="number-dot">...</p>
+                            <% }
+                                if (lastPage > 1 && currentPage != lastPage) {%>
+                            <p class="last-page-number page-number"><%= lastPage%></p>
+                            <% }%>
+                            <p class="page-action-btn page-next-btn <%= nextAllow ? "allow" : ""%>"><i class="ri-arrow-right-s-line"></i></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </section>
 
 
