@@ -14,7 +14,7 @@
     </servlet>
     <servlet>
         <servlet-name>MerchandisePage</servlet-name>
-        <servlet-class>MerchandisePage</servlet-class>
+        <servlet-class>controller.MerchandisePage</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
