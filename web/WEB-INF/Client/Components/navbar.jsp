@@ -228,6 +228,7 @@
                                 <li><a href="<%= webpath.getPageUrl("profile")%>"><i class="ri-user-settings-line"></i> Account Settings</a></li>
                                 <li><a href="<%= webpath.getPageUrl("cart")%>"><i class="ri-shopping-cart-line"></i> Cart</a></li>
                                 <li><a href="<%= webpath.getPageUrl("wishlist")%>"><i class="ri-heart-line"></i> Wishlist</a></li>
+                                <li><a href="<%= webpath.getPageUrl("purchanse history")%>"><i class="ri-question-line"></i> Purchase history</a></li>
                                 <li><a href="<%= webpath.getPageUrl("help")%>"><i class="ri-question-line"></i> Help</a></li>
                             </ul>
                         </div>
