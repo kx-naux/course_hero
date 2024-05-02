@@ -43,7 +43,7 @@
                 </a>
             </li>
             <li>
-                <a href="<%= webpath.getPageUrl("merchandise")%>">
+                <a href="<%= webpath.getPageUrl("merchandises")%>">
                     <div class="nav-option">
                         <p>Merchandise</p>
                     </div>

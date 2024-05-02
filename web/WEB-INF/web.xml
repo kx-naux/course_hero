@@ -16,6 +16,10 @@
         <servlet-name>MerchandisePage</servlet-name>
         <servlet-class>controller.MerchandisePage</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Merchandises</servlet-name>
+        <servlet-class>controller.Merchandises</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -31,6 +35,10 @@
     <servlet-mapping>
         <servlet-name>MerchandisePage</servlet-name>
         <url-pattern>/merch</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Merchandises</servlet-name>
+        <url-pattern>/merchandises</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

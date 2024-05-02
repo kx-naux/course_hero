@@ -158,6 +158,8 @@
                         <a href="#" class="author-link-btn"><i class="ri-link"></i> Website</a>
                         <a href="#" class="author-link-btn"><i class="ri-linkedin-box-fill"></i> LinkedIn</a>
                         <a href="#" class="author-link-btn"><i class="ri-instagram-line"></i> Instagram</a>
+                        <a href="#" class="author-link-btn"><i class="ri-facebook-fill"></i> Facebook</a>
+                        <a href="#" class="author-link-btn"><i class="ri-twitter-fill"></i> Twitter</a>
                     </div>
 
                 </div>

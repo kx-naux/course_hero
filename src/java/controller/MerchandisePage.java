@@ -24,7 +24,7 @@ public class MerchandisePage extends HttpServlet {
             request.getRequestDispatcher("/WEB-INF/Client/NotFoundError.jsp").forward(request, response);
         }
 
-        // Forward the request to Course.jsp
+        // Forward the request to Merchandise.jsp
         request.getRequestDispatcher("/WEB-INF/Client/Merchandise.jsp").forward(request, response);
     }
 }
