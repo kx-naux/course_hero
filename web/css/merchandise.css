@@ -228,14 +228,52 @@
 /*bot div / product info*/
 .merch-bot-div {
     gap: 20px;
+    padding: 24px 30px;
 }
 
 .merch-bot-div .merch-bot-div-title{
     font-weight: 700;
     font-size: var(--font-size-l);
     color: var(--color-text-light-3);
+    padding: 10px 0 5px;
 }
 
 
+.merch-spec table tbody tr {
+    display: flex;
+    justify-content: flex-start;
+    text-align: left;
+    padding: 12px 0;
+}
+
+.merch-spec table tbody tr th{
+    max-width: 180px;
+    min-width: 180px;
+    font-weight: 400;
+    font-size: var(--font-size-xm);
+    color: var(--color-text-light-1);
+    padding: 0 20px;
+}
+
+.merch-spec table tbody tr td{
+    font-weight: 500;
+    font-size: var(--font-size-xm);
+    color: var(--color-text-light-2);
+}
+
+.merch-bot-div .merch-desc {
+gap: 8px;
+font-weight: 400;
+    font-size: var(--font-size-xm);
+    color: var(--color-text-light-2);
+}
+
+.merch-bot-div .merch-shop-info ul {
+    list-style: decimal inside;
+    gap: 8px;
+    font-weight: 400;
+    font-size: var(--font-size-xm);
+    color: var(--color-text-light-2);
+}
 
 /*review div*/
