@@ -103,7 +103,7 @@
     transition: 0.2s all ease-in-out;
 }
 
-.course-product a:hover .action-btn-field,
+.course-product:hover  .action-btn-field,
 .action-btn-field:hover {
     display: flex;
 }

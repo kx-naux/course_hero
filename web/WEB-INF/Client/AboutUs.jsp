@@ -4,7 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Course Hero | About Us</title>
@@ -13,6 +13,7 @@
         <link type="text/css" href="./css/about_us.css" rel="stylesheet" >
         <link type="text/css" href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet"> 
         <jsp:useBean id="webpath" class="module.WebPath" scope="application" />
+        <jsp:useBean id="aboutUsStats" class="entity.AboutUsStats" scope="application"/>
     </head>
     <body>
         <!--To top button-->
@@ -26,10 +27,12 @@
             <div class="welcome-div flex-col">
 
                 <div class="welcome-div-content flex-row">
-                    <div class="welcome-left flex-row">
-                        Welcome to where possible begin
+                    <div class="welcome-left flex-col">
+                        <h1 class="welcome-title">
+                            Welcome to where possibilities begin
+                        </h1>
                     </div>
-                    <div class="welcome-right flex-row">
+                    <div class="welcome-right flex-col">
                         <img src="./img/about_us/man.png" alt="" />
                     </div>
                 </div>
@@ -45,16 +48,16 @@
         <section class="section story-section">
             <div class="story-div flex-row">
 
-                <div class="story-left">
+                <div class="story-left flex-col">
                     <h1>Our Story</h1>
                     <p>
                         Embark on a journey of empowerment with Course Hero, a global leader in online education. Our story is one of dedication to making quality education accessible to all, fueled by a vibrant community of learners, educators, and experts. From comprehensive study resources to interactive tutorials, we provide the tools and support needed to unlock your full potential. Guided by a relentless pursuit of innovation, we're shaping the future of learning through cutting-edge technology and strategic partnerships, ensuring that every learner has the opportunity to thrive.
                     </p>
                     <p>
-                        Join us on this transformative journey, where the pursuit of knowledge knows no bounds. Whether you're a student striving for academic success, an educator inspiring the next generation, or a lifelong learner hungry for knowledge, Course Hero is here to support you every step of the way. Welcome to Course Hero – where every learner has the opportunity to become a hero in their own right.
+                        Course Hero is here to support you every step of the way. Welcome to Course Hero – where every learner has the opportunity to become a hero in their own right.
                     </p>
                 </div>
-                <div class="story-right">
+                <div class="story-right flex-col">
                     <img src="./img/about_us/story.png" alt="" />
                 </div>
 
@@ -63,7 +66,88 @@
 
         <!--milestone section-->
         <section class="section milestone-section">
-            <div class="milestone-div">
+            <div class="milestone-div flex-col">
+
+                <div class="milestone-title flex-col">
+                    <h1>Milestone</h1>
+                    <p>Charting Course Hero's Path to Global Impact</p>
+                </div>
+
+                <ul class="milestone">
+                    <!-- Item 1 -->
+                    <li>
+                        <div class="direction-r">
+                            <div class="flag-wrapper">
+                                <span class="hexa"></span>
+                                <span class="flag">2019</span>
+                                <span class="time-wrapper"><span class="time">January</span></span>
+                            </div>
+                            <div class="ms-desc"><span class="ms-desc-bold">First Office in Malaysia:</span> Course Hero establishes its presence in Kuala Lumpur, Malaysia, marking the beginning of its international expansion.</div>
+                        </div>
+                    </li>
+
+                    <!-- Item 2 -->
+                    <li>
+                        <div class="direction-l">
+                            <div class="flag-wrapper">
+                                <span class="hexa"></span>
+                                <span class="flag">2020</span>
+                                <span class="time-wrapper"><span class="time">February</span></span>
+                            </div>
+                            <div class="ms-desc"><span class="ms-desc-bold">Second Office in Singapore:</span> Expanding its reach in Southeast Asia, Course Hero opens its second office in the vibrant city-state of Singapore.</div>
+                        </div>
+                    </li>
+
+                    <!-- Item 3 -->
+                    <li>
+                        <div class="direction-r">
+                            <div class="flag-wrapper">
+                                <span class="hexa"></span>
+                                <span class="flag">2021</span>
+                                <span class="time-wrapper"><span class="time">May</span></span>
+                            </div>
+                            <div class="ms-desc"><span class="ms-desc-bold">Third Office in China:</span> Setting foot in one of the world's largest markets, Course Hero establishes an office in the bustling metropolis of Shanghai, China.</div>
+                        </div>
+                    </li>
+
+                    <!-- Item 4 -->
+                    <li>
+                        <div class="direction-l">
+                            <div class="flag-wrapper">
+                                <span class="hexa"></span>
+                                <span class="flag">2022</span>
+                                <span class="time-wrapper"><span class="time">September</span></span>
+                            </div>
+                            <div class="ms-desc"><span class="ms-desc-bold">Fourth Office in Japan:</span> Course Hero extends its operations to Japan, opening an office in the dynamic city of Tokyo, further strengthening its presence in the Asia-Pacific region.</div>
+                        </div>
+                    </li>
+
+
+                    <!-- Item 5 -->
+                    <li>
+                        <div class="direction-r">
+                            <div class="flag-wrapper">
+                                <span class="hexa"></span>
+                                <span class="flag">2023</span>
+                                <span class="time-wrapper"><span class="time">October</span></span>
+                            </div>
+                            <div class="ms-desc"><span class="ms-desc-bold">Fifth Office in Korea:</span> Continuing its expansion in East Asia, Course Hero sets up an office in Seoul, South Korea, catering to the growing demand for online learning solutions.</div>
+                        </div>
+                    </li>
+
+                    <!-- Item 6 -->
+                    <li>
+                        <div class="direction-l">
+                            <div class="flag-wrapper">
+                                <span class="hexa"></span>
+                                <span class="flag">2024</span>
+                                <span class="time-wrapper"><span class="time">January</span></span>
+                            </div>
+                            <div class="ms-desc"><span class="ms-desc-bold">Strategic Partnerships with Leading Companies and Universities:</span> Course Hero solidifies its position as a premier online learning platform by forging strategic partnerships with top-tier companies and universities.</div>
+                        </div>
+                    </li>
+
+                </ul>
 
             </div>
         </section>
@@ -129,8 +213,6 @@
                         </div>
                     </div>
 
-
-
                 </div>
 
             </div>
@@ -148,7 +230,7 @@
                 <div class="number-div-content flex-row">
 
                     <%
-                        List<Map<String, String>> statistic = NumberStatisticData.getStatistic();
+                        List<Map<String, String>> statistic = aboutUsStats.getStatistic();
                         for (Map<String, String> s : statistic) {
                     %>
                     <div class="number-col flex-col">
@@ -162,35 +244,61 @@
             </div>
         </section>
 
-        <!--collaborate section-->
-        <section class="section collaborate-section">
-            <div class="collaborate-div flex-row">
-                <div class="collaborate-left flex-col">
-                    <p>Course Hero partners with more than 325+ leading universities and companies to bring flexible, affordable, job-relevant online learning to individuals and organizations worldwide. We offer a range of learning opportunities—from hands-on projects and courses to job-ready certificates.</p>
+        <!-- reason section -->
+        <section class="section reason-section">
+            <div class="reason-div flex-col">
+                <!--title-->
+                <div class="reason-title flex-col">
+                    <h1>Why Choose Course Hero for Your Online Learning Journey</h1>
+                    <p>Elevate Your Learning Experience with Course Hero</p>
                 </div>
-                <div class="collaborate-right flex-col">
-                    <img src="./img/about_us/collaborate.png" alt="" />
+
+                <!--Bento UI-->
+                <div class="reason-bento">
+                    <div class="bento-grid bento-grid-1">
+                        <h1>Diveristy Course Selection</h1>
+                        <img src="./img/about_us/reason/diversity_course.png" alt="" />
+                    </div>
+                    <div class="bento-grid bento-grid-2">
+                        <img src="./img/about_us/reason/flexible.png" alt="" />
+                        <h1>Flexible Learning Option</h1>
+                    </div>
+                    <div class="bento-grid bento-grid-3">
+                        <h1>Supportive Community</h1>
+                        <img src="./img/about_us/reason/community.png" alt="" />
+                    </div>
+                    <div class="bento-grid bento-grid-4">
+                        <h1>Expert Instructor</h1>
+                        <img src="./img/about_us/reason/expert.png" alt="" />
+                    </div>
+                    <div class="bento-grid bento-grid-5">
+                        <img src="./img/about_us/reason/trusted.png" alt="" />
+                        <h1>Trusted Reputation</h1>
+                    </div>
+                    <div class="bento-grid bento-grid-6">
+                        <h1>Interactive Learning Experience</h1>
+                        <img src="./img/about_us/reason/interactive.png" alt="" />
+                    </div>
+                    <div class="bento-grid bento-grid-7">
+                        <img src="./img/about_us/reason/price.png" alt="" />
+                        <h1>Affordable Pricing</h1>
+                    </div>
+                    <div class="bento-grid bento-grid-8">
+                        <h1>Continuous Updates</h1>
+                        <img src="./img/about_us/reason/update.png" alt="" />
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- reason section -->
-        <section class="section reason-section">
-            <div class="reason-div">
-                <!--title-->
-                <div class="reason-title">
-                    <h1>Skills are the key to unlocking potential</h1>
-                    <p>Whether you want to learn a new skill, train your teams, or share what you know with the world, you're in the right place, as a leader in online learning, we're here to help you achieve your goals and transform your life.</p>
+        <!--collaborate section-->
+        <section class="section collaborate-section">
+            <div class="collaborate-div flex-row">
+                <div class="collaborate-left flex-col">
+                    <p>Course Hero partners with <span class="collaborate-span-num">more than 325+ leading universities and companies</span> to bring flexible, affordable, job-relevant online learning to individuals and organizations worldwide. We offer a range of learning opportunities—from hands-on projects and courses to job-ready certificates.</p>
                 </div>
-
-                <!-- video-->
-                <div>
-
-                </div>
-
-                <!--Bento UI-->
-                <div>
-
+                <div class="collaborate-right flex-col">
+                    <img src="./img/about_us/collaborate.png" alt="" />
                 </div>
             </div>
         </section>

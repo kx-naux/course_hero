@@ -1,0 +1,279 @@
+@import url('./root.css');
+
+.merch-section {
+    background-color: var(--color-light-grey-1);
+}
+
+.merch-section .merch-top-div,
+.merch-section .merch-bot-div{
+    margin: 30px auto;
+    padding: 18px 24px;
+    background-color: var(--color-white);
+    border-radius: 4px;
+    overflow: hidden;
+    gap: 40px;
+}
+
+/*top div*/
+.merch-top-div > div {
+    width: 100%;
+    flex: 1 1 100px;
+}
+
+/*top left*/
+.merch-top-div .merch-div-left{
+    max-width: 480px;
+    flex: 1 1 100px;
+    justify-content: center;
+    align-items: center;
+}
+
+.merch-div-left .merch-img {
+    width: 100%;
+}
+
+.merch-div-left .merch-img img {
+    width: 100%;
+    object-fit: cover;
+}
+
+/*top right*/
+.merch-div-right {
+    padding: 30px 0 0;
+    gap: 35px;
+}
+
+.merch-div-right .merch-right-top {
+    gap: 8px;
+}
+
+.merch-div-right .merch-right-top .merch-name {
+    font-weight: 700;
+    font-size: var(--font-size-4xl);
+    color: var(--color-text-light-3);
+}
+
+.merch-div-right .merch-right-top .rating-stat {
+    font-weight: 600;
+    font-size: var(--font-size-s);
+    color: var(--color-text-light-2);
+}
+
+.merch-div-right .merch-right-top .rating-stat > *::after {
+    content: "|";
+    padding: 0 12px;
+    font-weight: 400;
+    color: var(--color-text-light-1);
+}
+
+.merch-div-right .merch-right-top .rating-stat > p:last-of-type::after {
+    content: "";
+}
+
+.merch-div-right .merch-right-top .merch-rating {
+    align-items: center;
+}
+
+.merch-div-right .merch-right-top .merch-rating p {
+    margin-right: 2px;
+}
+
+.merch-div-right .merch-right-top .merch-rating i {
+    color: var(--rating-star-color);
+}
+
+.merch-div-right .merch-right-top .merch-price {
+    gap: 20px;
+    margin: 20px 0 0;
+    align-items: center;
+}
+
+.merch-div-right .merch-right-top .merch-price .course-price {
+    font-weight: 700;
+    font-size: var(--font-size-xl);
+    color: var(--color-text-light-3);
+}
+
+.merch-div-right .merch-right-top .merch-price .course-normal-price {
+    font-weight: 300;
+    font-size: var(--font-size-xm);
+    color: var(--color-text-light-2);
+    text-decoration: line-through;
+    user-select: none;
+}
+
+.merch-div-right .merch-right-top .merch-price .course-offer{
+    padding: 3px 8px;
+    border-radius: 2px;
+    font-weight: 600;
+    font-size: var(--font-size-s);
+    color: var(--color-white);
+    background-color: var(--color-blue-2);
+    user-select: none;
+}
+
+.merch-div-right .merch-right-top .merch-tag-field {
+    gap: 10px;
+    align-items: center;
+}
+
+.merch-div-right .merch-right-top .merch-tag-field  .course-tag{
+    font-weight: 600;
+    font-size: var(--font-size-xs);
+    background-color: var(--color-light-grey-2);
+    color: var(--color-text-light-2);
+    border-radius: 2px;
+    padding: 2px 8px;
+}
+
+/*Tag Design*/
+.merch-div-right .merch-right-top .merch-tag-field  .course-tag.tag-red {
+    background-color: var(--tag-red-bg);
+    color: var(--tag-red-color);
+}
+
+.merch-div-right .merch-right-top .merch-tag-field  .course-tag.tag-orange {
+    background-color: var(--tag-orange-bg);
+    color: var(--tag-orange-color);
+}
+
+.merch-div-right .merch-right-top .merch-tag-field  .course-tag.tag-yellow {
+    background-color: var(--tag-yellow-bg);
+    color: var(--tag-yellow-color);
+}
+
+.merch-div-right .merch-right-top .merch-tag-field  .course-tag.tag-green {
+    background-color: var(--tag-green-bg);
+    color: var(--tag-green-color);
+}
+
+.merch-div-right .merch-right-top .merch-tag-field  .course-tag.tag-blue {
+    background-color: var(--tag-blue-bg);
+    color: var(--tag-blue-color);
+}
+
+.merch-div-right .merch-right-top .merch-tag-field  .course-tag.tag-purple {
+    background-color: var(--tag-purple-bg);
+    color: var(--tag-purple-color);
+}
+
+.merch-div-right .merch-right-bot {
+    gap: 24px;
+}
+
+.merch-right-bot .merch-buy-div {
+    gap: 18px;
+}
+
+.merch-right-bot .merch-buy-div .merch-qty {
+    font-weight: 400;
+    font-size: var(--font-size-s);
+    color: var(--color-text-light-2);
+    gap: 8px;
+}
+
+.merch-right-bot .merch-buy-div .merch-qty .qty-btn {
+    background-color: var(--color-light-grey-1);
+    padding: 12px 18px;
+    text-align: center;
+    border-radius: 50% 0 0 50% ;
+    font-weight: 400;
+    font-size: var(--font-size-m);
+    color: var(--color-text-light-2);
+    cursor: pointer;
+}
+
+.merch-right-bot .merch-buy-div .merch-qty .qty-btn.substract {
+    border-radius: 0 50% 50% 0;
+}
+
+.merch-right-bot .merch-buy-div .merch-qty input {
+    background-color: var(--color-light-grey-1);
+    padding: 12px 10px;
+    text-align: center;
+    max-width: 60px;
+    font-weight: 600;
+    font-size: var(--font-size-xm);
+    color: var(--color-text-light-3);
+}
+
+.merch-right-bot .merch-buy-div .add-cart-btn {
+    font-weight: 600;
+    font-size: var(--font-size-xm);
+    color: var(--color-text-light-2);
+    background-color: var(--color-transparent);
+    border: 1px solid var(--color-text-light-3);
+    align-items: center;
+    padding: 0 15px;
+    justify-content: center;
+    user-select: none;
+    transition: 0.2s all ease-in-out;
+    height: 50px;
+    cursor: pointer;
+    max-width: 400px;
+}
+
+.merch-right-bot .merch-buy-div .add-cart-btn:hover {
+    background-color: var(--color-light-grey-2);
+}
+
+.merch-right-bot .merch-shop-info ul {
+    list-style: none;
+    gap: 4px;
+    font-weight: 400;
+    font-size: var(--font-size-xm);
+    color: var(--color-text-light-2);
+}
+
+/*bot div / product info*/
+.merch-bot-div {
+    gap: 20px;
+    padding: 24px 30px;
+}
+
+.merch-bot-div .merch-bot-div-title{
+    font-weight: 700;
+    font-size: var(--font-size-l);
+    color: var(--color-text-light-3);
+    padding: 10px 0 5px;
+}
+
+
+.merch-spec table tbody tr {
+    display: flex;
+    justify-content: flex-start;
+    text-align: left;
+    padding: 12px 0;
+}
+
+.merch-spec table tbody tr th{
+    max-width: 180px;
+    min-width: 180px;
+    font-weight: 400;
+    font-size: var(--font-size-xm);
+    color: var(--color-text-light-1);
+    padding: 0 20px;
+}
+
+.merch-spec table tbody tr td{
+    font-weight: 500;
+    font-size: var(--font-size-xm);
+    color: var(--color-text-light-2);
+}
+
+.merch-bot-div .merch-desc {
+gap: 8px;
+font-weight: 400;
+    font-size: var(--font-size-xm);
+    color: var(--color-text-light-2);
+}
+
+.merch-bot-div .merch-shop-info ul {
+    list-style: decimal inside;
+    gap: 8px;
+    font-weight: 400;
+    font-size: var(--font-size-xm);
+    color: var(--color-text-light-2);
+}
+
+/*review div*/

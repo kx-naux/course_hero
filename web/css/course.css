@@ -1,0 +1,717 @@
+@import url('./root.css');
+
+/*course section*/
+.course-section {
+    padding: 40px 20px 70px;
+}
+
+.course-section .course-div {
+    width: 100%;
+    gap: 30px;
+    justify-content: center;
+}
+
+.course-section .course-div > div {
+    flex: 1 1 300px;
+    width: 100%;
+}
+
+/*left side content*/
+.course-section .course-div .course-div-left {
+    max-width: 750px;
+    gap: 45px;
+}
+
+.course-div .course-div-left .course-general-div {
+    gap: 14px;
+    justify-content: flex-start;
+}
+
+.course-div-left .course-general-div .course-category{
+    font-weight: 600;
+    font-size: var(--font-size-l);
+    color: var(--color-blue-1);
+}
+
+.course-div-left .course-general-div .course-title {
+    font-weight: 700;
+    font-size: var(--font-size-4xl);
+    color: var(--color-text-light-3);
+}
+
+.course-div-left .course-general-div .course-short-desc{
+    font-weight: 400;
+    font-size: var(--font-size-m);
+    color: var(--color-text-light-2);
+}
+
+.course-div-left .course-general-div .course-level{
+    font-weight: 600;
+    font-size: var(--font-size-xm);
+    color: var(--color-text-light-3);
+}
+
+.course-div-left .course-general-div .course-tag-field {
+    margin-top: 10px;
+    padding: 2px 0;
+    gap: 10px;
+    align-items: center;
+}
+
+.course-div-left .course-general-div .course-tag-field .course-tag{
+    font-weight: 600;
+    font-size: var(--font-size-xs);
+    background-color: var(--color-light-grey-2);
+    color: var(--color-text-light-2);
+    border-radius: 2px;
+    padding: 2px 8px;
+}
+
+.course-div-left .course-general-div .course-rating{
+    gap: 8px;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.course-div-left .course-general-div .course-rating .rating-digit{
+    font-weight: 600;
+    font-size: var(--font-size-xm);
+    color: var(--color-text-light-2);
+}
+
+.course-div-left .course-general-div .course-rating > div i{
+    font-weight: 400;
+    font-size: var(--font-size-xm);
+    color: var(--color-blue-2);
+}
+
+.course-div-left .course-general-div .course-rating .rating-number-field a{
+    font-weight: 400;
+    font-size: var(--font-size-s);
+    color:  var(--color-blue-2);
+}
+
+.course-div-left .course-general-div .course-rating .rating-number-field a:hover{
+    text-decoration: underline;
+}
+
+.course-div-left .course-general-div .course-rating .course-sell{
+    font-weight: 400;
+    font-size: var(--font-size-s);
+    color: var(--color-text-light-2);
+}
+
+.course-div-left .course-general-div .course-update-date {
+    font-weight: 400;
+    font-size: var(--font-size-s);
+    color: var(--color-text-light-2);
+}
+
+.course-div-left .course-learn-div {
+    margin: 0 10px;
+    padding: 30px 24px;
+    border: 1px solid var(--color-light-grey-3);
+    gap: 12px;
+}
+
+.course-div-left > div > h1 {
+    font-weight: 600;
+    font-size: var(--font-size-l);
+    color: var(--color-text-light-3);
+}
+
+.course-div-left .course-learn-div .course-learn-point ul{
+    flex-wrap: wrap;
+    list-style: none;
+    justify-content: flex-start;
+    column-gap: 20px;
+    row-gap: 12px;
+}
+
+.course-div-left .course-learn-div .course-learn-point ul li {
+    max-width: 320px;
+}
+
+.course-div-left .course-learn-div .course-learn-point ul li div p {
+    padding-right: 6px;
+}
+
+.course-div-left .course-learn-div .course-learn-point ul li div span {
+    font-weight: 400;
+    font-size: var(--font-size-s);
+    color: var(--color-text-light-2);
+}
+
+.course-div-left .course-syllabus-div .syllabus-info {
+    font-weight: 400;
+    font-size: var(--font-size-s);
+    color: var(--color-text-light-2);
+    align-items: center;
+}
+
+.course-div-left .course-syllabus-div .syllabus-info p::after {
+    content: "·";
+    padding: 5px 8px 0;
+    font-weight: 600;
+    font-size: var(--font-size-l);
+    color: var(--color-text-light-2);
+}
+
+.course-div-left .course-syllabus-div .syllabus-info p:last-of-type::after {
+    content: "";
+}
+
+.course-div-left .course-syllabus-list > div {
+    border: 1px solid var(--color-text-light-1);
+    border-top: none;
+    padding: 15px 15px 15px 0;
+}
+
+.course-div-left .course-syllabus-list > div:first-of-type {
+    border-top: 1px solid var(--color-text-light-1);
+}
+
+.course-div-left .course-syllabus-list .syllabus-item-left {
+    max-width: 100px;
+    width: 100px;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.course-div-left .course-syllabus-list .syllabus-item-left div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    font-size: var(--font-size-xs);
+    color: var(--color-white);
+    background-color: var(--color-text-light-2);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-top: 10px;
+}
+
+.course-div-left .course-syllabus-list .syllabus-item-right  {
+    gap: 5px;
+}
+
+.course-div-left .course-syllabus-list .syllabus-item-right h1 {
+    font-weight: 600;
+    font-size: var(--font-size-m);
+    color: var(--color-text-light-3);
+}
+
+.course-div-left .course-syllabus-list .syllabus-item-right p {
+    font-weight: 400;
+    font-size: var(--font-size-s);
+    color: var(--color-text-light-2);
+}
+
+.course-div-left .course-target-div ul,
+.course-div-left .course-requirement-div ul {
+    gap: 8px;
+}
+.course-div-left .course-target-div ul li,
+.course-div-left .course-requirement-div ul li {
+    margin-left: 20px;
+    font-weight: 400;
+    font-size: var(--font-size-xm);
+    color: var(--color-text-light-2);
+}
+
+.course-div-left .course-desc-div p {
+    font-weight: 400;
+    font-size: var(--font-size-xm);
+    color: var(--color-text-light-2);
+    margin-bottom: 10px;
+}
+
+.course-div-left .course-desc-div p:last-of-type {
+    margin-bottom: 0px;
+}
+
+.course-div-left .course-author-div {
+    gap: 20px;
+}
+
+.course-div-left .course-author-div .author-list {
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.course-div-left .course-author-div .author-list .author-item {
+    align-items: center;
+    gap: 6px;
+    width: 220px;
+    min-width: 220px;
+}
+
+.course-div-left .course-author-div .author-list .author-item .author-img {
+    min-width: 120px;
+    max-width: 120px;
+}
+
+.course-div-left .course-author-div .author-list .author-item .author-img img {
+    width: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid var(--color-text-light-2);
+}
+
+.course-div-left .course-author-div .author-list .author-item .author-info {
+    align-items: center;
+}
+
+.course-div-left .course-author-div .author-list .author-item .author-name{
+    font-weight: 600;
+    font-size: var(--font-size-xm);
+    color: var(--color-text-light-3);
+    text-align: center;
+}
+
+.course-div-left .course-author-div .author-list .author-item .author-position{
+    font-weight: 400;
+    font-size: var(--font-size-s);
+    color: var(--color-text-light-2);
+    text-align: center;
+}
+
+.course-div-left .course-rating-div .course-overall-rating {
+    padding: 20px 0;
+    font-weight: 600;
+    font-size: var(--font-size-xxl);
+    color: var(--color-text-light-3);
+    align-items: center;
+}
+
+.course-div-left .course-rating-div .course-overall-rating p::after {
+    content: "·";
+    padding: 5px 8px 0;
+    font-weight: 600;
+    font-size: var(--font-size-xxxl);
+    color: var(--color-text-light-2);
+}
+
+.course-div-left .course-rating-div .course-overall-rating p:last-of-type::after {
+    content: "";
+}
+
+.course-div-left .course-rating-div .course-overall-rate i {
+    color: var(--rating-star-color);
+}
+
+.course-div-left .course-rating-div .course-review {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    row-gap: 25px;
+    column-gap: 35px;
+}
+
+.course-div-left .course-rating-div .course-review .user-review,
+.review-content-right .user-review{
+    width: 100%;
+    max-width: 330px;
+    border-top: 1px solid var(--color-text-light-1);
+    gap: 15px;
+    padding: 15px 0;
+}
+
+.user-review .user-review-top,
+.review-content-right .user-review .user-review-top {
+    align-items: center;
+    gap: 12px;
+}
+
+.user-review .user-review-top .user-img,
+.review-content-right .user-review .user-review-top .user-img {
+    width: 40px;
+    height: 40px;
+}
+
+.user-review .user-review-top .user-img img,
+.review-content-right .user-review .user-review-top .user-img img {
+    width: 100%;
+    object-fit: cover;
+}
+
+.user-review .user-review-top .user-name,
+.review-content-right .user-review .user-review-top .user-name {
+    font-weight: 600;
+    font-size: var(--font-size-s);
+    color: var(--color-text-light-2);
+}
+
+.user-review .user-review-top .review-top-bot,
+.review-content-right .user-review .user-review-top .review-top-bot{
+    gap: 10px;
+}
+
+.user-review .user-review-top .rating-stars,
+.review-content-right .user-review .user-review-top .rating-stars{
+    font-weight: 500;
+    font-size: var(--font-size-xm);
+    color: var(--rating-star-color);
+    align-items: center;
+}
+
+.user-review .user-review-top .review-date ,
+.review-content-right .user-review .user-review-top .review-date  {
+    font-weight: 600;
+    font-size: var(--font-size-xs);
+    color: var(--color-text-light-2);
+}
+
+.user-review .user-review-bot p,
+.review-content-right .user-review .user-review-bot p{
+    font-weight: 400;
+    font-size: var(--font-size-s);
+    color: var(--color-text-light-2);
+    text-overflow: ellipsis;
+}
+
+.course-div-left .course-rating-div .all-review-btn {
+    margin-top: 30px;
+    width: 100%;
+    height: 40px;
+    font-weight: 600;
+    font-size: var(--font-size-s);
+    color: var(--color-text-light-2);
+    background-color: var(--color-transparent);
+    border: 1px solid var(--color-text-light-3);
+    cursor: pointer;
+    transition: 0.2s all ease-in-out;
+    user-select: none;
+    max-width: 150px;
+}
+
+.course-div-left .course-rating-div .all-review-btn:hover {
+    background-color: var(--color-light-grey-2);
+}
+
+/*right side content*/
+.course-section .course-div .course-div-right {
+    max-width: 360px;
+    min-height: 100%;
+    justify-content: flex-start;
+    padding: 0 5px;
+}
+
+.course-div-right .course-sticky-div {
+    position: sticky;
+    top: 70px;
+    box-shadow: var(--box-shadow-1);
+    border-radius: 2px;
+    background-color: var(--color-white);
+}
+
+.course-div-right .course-sticky-div .sticky-div-video {
+    width: 100%;
+    max-width: 100%;
+}
+
+.course-div-right .course-sticky-div .sticky-div-video video {
+    width: 100%;
+    max-width: 100%;
+}
+
+.course-div-right .course-sticky-div .sticky-div-bot {
+    gap: 14px;
+    padding: 10px 20px 20px;
+}
+
+.course-sticky-div .sticky-div-bot .sticky-div-title {
+    padding: 6px 0 4px;
+    font-weight: 600;
+    font-size: var(--font-size-xs);
+    color: var(--color-text-light-2);
+}
+
+.course-sticky-div .sticky-div-bot .sticky-div-price {
+    padding: 8px 0 4px;
+    gap: 10px;
+    align-items: center;
+}
+
+.course-sticky-div .sticky-div-bot .sticky-div-price .course-price{
+    font-weight: 700;
+    font-size: var(--font-size-l);
+    color: var(--color-text-light-3);
+}
+
+.course-sticky-div .sticky-div-bot .sticky-div-price .course-normal-price{
+    font-weight: 300;
+    font-size: var(--font-size-s);
+    color: var(--color-text-light-2);
+    text-decoration: line-through;
+    user-select: none;
+}
+
+.course-sticky-div .sticky-div-bot .sticky-div-price .course-offer {
+    padding: 2px 6px;
+    border-radius: 2px;
+    font-weight: 600;
+    font-size: var(--font-size-s);
+    color: var(--color-white);
+    background-color: var(--color-blue-2);
+    user-select: none;
+}
+
+.course-sticky-div .sticky-div-bot .sticky-div-cart {
+    gap: 10px;
+}
+
+.course-sticky-div .sticky-div-bot .sticky-div-cart button{
+    font-weight: 600;
+    font-size: var(--font-size-xm);
+    color: var(--color-text-light-2);
+    background-color: var(--color-transparent);
+    border: 1px solid var(--color-text-light-3);
+    align-items: center;
+    padding: 0 15px;
+    justify-content: center;
+    user-select: none;
+    transition: 0.2s all ease-in-out;
+    height: 50px;
+    cursor: pointer;
+}
+
+.course-sticky-div .sticky-div-bot .sticky-div-cart .course-cart{
+    flex-grow: 1;
+}
+
+.course-sticky-div .sticky-div-bot .sticky-div-cart .course-wish{
+    width: 55px;
+    font-size: var(--font-size-xl);
+    font-weight: 400;
+}
+
+.course-sticky-div .sticky-div-bot .sticky-div-cart button:hover {
+    background-color: var(--color-light-grey-2);
+}
+
+.course-sticky-div .sticky-div-bot .sticky-div-info {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    font-weight: 400;
+    font-size: var(--font-size-xs);
+    color: var(--color-text-light-1);
+}
+
+.course-sticky-div .sticky-div-bot .sticky-div-share {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    padding-top: 8px;
+    border-top: 1px solid var(--color-light-grey-3);
+    gap: 8px;
+}
+
+.course-sticky-div .sticky-div-bot .sticky-div-share p {
+    font-weight: 400;
+    font-size: var(--font-size-xm);
+    color: var(--color-text-light-2);
+}
+
+.course-sticky-div .sticky-div-bot .sticky-div-share button {
+    width: 100%;
+    height: 50px;
+    font-weight: 600;
+    font-size: var(--font-size-xm);
+    color: var(--color-text-light-2);
+    background-color: var(--color-transparent);
+    border: 1px solid var(--color-text-light-3);
+    cursor: pointer;
+    transition: 0.2s all ease-in-out;
+    user-select: none;
+}
+
+.course-sticky-div .sticky-div-bot .sticky-div-share button:hover {
+    background-color: var(--color-light-grey-2);
+}
+
+/*Tag Design*/
+.course-div-left .course-general-div .course-tag.tag-red {
+    background-color: var(--tag-red-bg);
+    color: var(--tag-red-color);
+}
+
+.course-div-left .course-general-div  .course-tag.tag-orange {
+    background-color: var(--tag-orange-bg);
+    color: var(--tag-orange-color);
+}
+
+.course-div-left .course-general-div  .course-tag.tag-yellow {
+    background-color: var(--tag-yellow-bg);
+    color: var(--tag-yellow-color);
+}
+
+.course-div-left .course-general-div  .course-tag.tag-green {
+    background-color: var(--tag-green-bg);
+    color: var(--tag-green-color);
+}
+
+.course-div-left .course-general-div  .course-tag.tag-blue {
+    background-color: var(--tag-blue-bg);
+    color: var(--tag-blue-color);
+}
+
+.course-div-left .course-general-div  .course-tag.tag-purple {
+    background-color: var(--tag-purple-bg);
+    color: var(--tag-purple-color);
+}
+
+/*all review section*/
+.all-review-section {
+    display: none;
+    top: 0;
+    position: fixed;
+    background-color: var(--color-black-transparent-05);
+    width: 100vw;
+    height: 100vh;
+    z-index: 1000;
+}
+
+.all-review-section.active {
+    display: block;
+}
+
+.all-review-section .all-review-div {
+    max-width: 1000px;
+    margin-top: 20px;
+    background-color: var(--color-white);
+    padding: 30px;
+    height: 90vh;
+    gap: 20px;
+}
+
+.all-review-div .all-review-top {
+    font-weight: 600;
+    font-size: var(--font-size-xxl);
+    color: var(--color-text-light-3);
+    align-items: center;
+    position: relative;
+}
+
+.all-review-div .all-review-top .course-overall-rate i {
+    color: var(--rating-star-color);
+}
+
+.all-review-div .all-review-top p::after {
+    content: "·";
+    padding: 5px 8px 0;
+    font-weight: 600;
+    font-size: var(--font-size-xxxl);
+    color: var(--color-text-light-2);
+}
+
+.all-review-div .all-review-top p:last-of-type::after {
+    content: "";
+}
+
+.all-review-div .all-review-top .close-btn{
+    position: absolute;
+    top: 0;
+    right: 10px;
+    font-weight: 600;
+    font-size: var(--font-size-xl);
+    color: var(--color-text-light-1);
+    cursor: pointer;
+    padding: 2px;
+}
+
+.all-review-div .all-review-top .close-btn:hover{
+    color: var(--color-text-light-2);
+}
+
+.all-review-div .all-review-bot  {
+    gap: 30px;
+    height: 100%;
+    max-height: 75vh;
+}
+
+.all-review-div .all-review-bot > div {
+    width: 100%;
+}
+
+/*all review left side*/
+.all-review-div .all-review-bot .review-content-left {
+    max-width: 230px;
+    gap: 10px;
+}
+
+.review-content-left .rating-count  {
+    gap: 12px;
+    align-items: center;
+}
+
+.review-content-left .rating-count .rating-percentage-bar  {
+    position: relative;
+    width: 100%;
+    max-width: 100px;
+}
+
+.review-content-left .rating-count .rating-percentage-bar span {
+    min-height: 10px;
+    max-height: 100%;
+    background-color: var(--color-light-grey-2);
+    display: block;
+    min-width: 2%;
+    position: absolute;
+    top: -5px;
+    left: 0;
+}
+
+.review-content-left .rating-count .rating-percentage-bar .front-bar {
+    background-color: var(--color-blue-3);
+}
+
+.review-content-left .rating-count .rating-percentage-bar .background-bar {
+    width: 100%;
+}
+
+.review-content-left .rating-count .rating-stars {
+    font-weight: 500;
+    font-size: var(--font-size-s);
+    color: var(--rating-star-color);
+    align-items: center;
+}
+
+.review-content-left .rating-count .review-number {
+     font-weight: 500;
+    font-size: var(--font-size-s);
+    color: var(--color-text-light-2);
+}
+
+/*all review right side*/
+.all-review-div .all-review-bot .review-content-right {
+    max-height: 100%;
+    height: 100%;
+    overflow-y: auto;
+    padding-right: 8px;
+}
+
+    .review-content-right .show-more-btn {
+    width: 100%;
+    min-height: 40px;
+    font-weight: 600;
+    font-size: var(--font-size-s);
+    color: var(--color-text-light-2);
+    background-color: var(--color-transparent);
+    border: 1px solid var(--color-text-light-3);
+    cursor: pointer;
+    transition: 0.2s all ease-in-out;
+    user-select: none;
+}
+
+.review-content-right .show-more-btn:hover {
+    background-color: var(--color-light-grey-2);
+}
+
+.review-content-right .user-review {
+    padding: 25px 0;
+    max-width: 9999px;
+}

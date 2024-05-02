@@ -7,8 +7,6 @@
     --color-text-light-2: #545454;
     --color-text-light-3: #373737;
 
-    --color-text-error: #e31b1b;
-
     --color-white: #fff;
     --color-white-transparent-05: rgba(255,255,255,0.5);
 
@@ -27,6 +25,7 @@
     --color-black-transparent-04: rgba(0,0,0,0.4);
     --color-black-transparent-05: rgba(0,0,0,0.5);
     --color-black-transparent-06: rgba(0,0,0,0.6);
+    --color-black-transparent-15: rgba(0,0,0,0.15);
     --color-light-black: #111;
     --color-light-black-1: #222;
     --color-light-black-2: #333;
@@ -48,6 +47,8 @@
     --color-blue-2: #273b91;
     --color-blue-3: #4059c2;
     --color-blue-4: #a5b5f5;
+       
+    --color-navy-blue: #172988;
 
     --color-dark-blue-1: #111942;
     --color-dark-blue-2: #152059;
@@ -68,12 +69,17 @@
     --neon-pink-2: #FF4D94;
     --neon-pink-3: #FF3687;
 
-    --color-error: #ff7782;
-    --color-success: #41f1b6;
-    --color-warning: #ffbb55;
+    --toast-color-error: #ff7782;
+    --toast-color-success: #64d640;
+    --toast-color-warning: #ffbb55;
+    --toast-color-default: #c2c2c2;
 
     --color-transparent: rgba(0,0,0,0);
+    
+    --color-text-error: #e31b1b;
 
+    --rating-star-color: #cc9616;
+    
     --tag-red-color: #781212;
     --tag-red-bg: #ffc2c2;
     --tag-orange-color: #6e2f0d;
@@ -99,6 +105,11 @@
 
     --text-shadow-1: 2px 2px 4px rgba(0, 0, 0, 0.5), 2px 2px 12px rgba(0, 0, 0, 0.5);
 
+    --font-size-8xl: 48px;
+    --font-size-7xl: 44px;
+    --font-size-6xl: 40px;
+    --font-size-5xl: 36px;
+    --font-size-4xl: 32px;
     --font-size-xxxl: 28px;
     --font-size-xxl: 24px;
     --font-size-xl: 22px;
