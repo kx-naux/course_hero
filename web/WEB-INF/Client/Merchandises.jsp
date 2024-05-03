@@ -188,7 +188,6 @@
             </div>
         </section>
 
-
         <script src="./js/merchandise/merchandises.js"></script>
 
         <!--Footer import-->

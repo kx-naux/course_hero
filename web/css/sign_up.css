@@ -1,0 +1,61 @@
+@import url('./root.css');
+
+.sign-up-section {
+    height: 100vh;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    background:
+        linear-gradient(135deg,#0000 20.5%,var(--color-light-grey-0) 0 29.5%,#0000 0) 0 16px,
+        linear-gradient( 45deg,#0000 8%,var(--color-light-grey-0) 0 17%, #0000 0 58%) 32px 0,
+        linear-gradient(135deg,#0000 8%,var(--color-light-grey-0) 0 17%, #0000 0 58%,var(--color-light-grey-0) 0 67%,#0000 0),
+        linear-gradient( 45deg,#0000 8%,var(--color-light-grey-0) 0 17%, #0000 0 58%,var(--color-light-grey-0) 0 67%,#0000 0 83%,var(--color-light-grey-0) 0 92%,#0000 0),
+        var(--color-light-grey-1);
+    background-size: 64px 64px;
+}
+
+.sign-up-section .sign-up-div {
+    margin: 100px 20px;
+    position: relative;
+    max-width: 800px;
+    min-width: 550px;
+    min-height: 300px;
+    width: 100%;
+    border-radius: 4px;
+    box-shadow: var(--box-shadow-1);
+    justify-content: center;
+    background-color: var(--color-white);
+    gap: 10px;
+    padding: 20px;
+}
+
+/*logo div*/
+.sign-up-div .logo-div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 25px;
+}
+
+.sign-up-div .logo-div img {
+    height: 40px;
+    width: 40px;
+}
+
+/*title div*/
+
+/*back to home btn*/
+.back-to-home-a {
+    position: absolute;
+    bottom: 0;
+    right: 10px;
+    transform: translateY(30px);
+    font-size: var(--font-size-s);
+    font-weight: 400;
+    color: var(--color-text-light-1);
+    transition: 0.2s all ease-in-out;
+}
+
+.back-to-home-a:hover {
+    color: var(--color-text-light-3);
+}

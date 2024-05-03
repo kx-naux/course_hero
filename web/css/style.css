@@ -170,11 +170,13 @@ body::-webkit-scrollbar-thumb:hover{
     color: var(--color-text-light-1);
 }
 
+.nav-option-div li:has(div.nav-option-dropdown:hover) .nav-option,
 .nav-option:hover {
     color: var(--color-text-light-2);
     background-color: var(--color-light-grey-1);
 }
 
+.nav-option-div li:has(div.nav-option-dropdown:hover) .nav-option::after,
 .nav-option:hover::after {
     width: 100%;
     opacity: 1;
