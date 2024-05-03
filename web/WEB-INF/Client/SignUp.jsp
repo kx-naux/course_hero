@@ -12,7 +12,7 @@
         <jsp:useBean id="webpath" class="module.WebPath" scope="application" />
     </head>
     <body>
-        <form action="sign-up" method="post">
+        <form action="sign-up" method="post" id="signUpForm">
             <section class="sign-up-section flex-col">
                 <div class="sign-up-div flex-col">
 
@@ -27,7 +27,7 @@
                     </div>
 
                     <!--hidden value for step count-->
-                    <input type="number" min="1" max="4" id="formCurrentPage" value="1" hidden />
+                    <input type="number" min="1" max="4" id="formProgress" value="1" hidden />
 
                     <!--step progress bar-->
                     <div class="form-progress-bar flex-row">
@@ -53,7 +53,7 @@
                     </div>
 
                     <!--1st page or sign up form-->
-                    <div class="sign-up-p1 flex-col">
+                    <div class="sign-up-p sign-up-p1 flex-col">
                         <!--email-->
                         <div class="sign-up-input-div required-input-div flex-col">
                             <label for="email">Email:</label>
@@ -89,7 +89,7 @@
                     </div>
 
                     <!--2nd page or sign up form-->
-                    <div class="sign-up-p2 flex-col">
+                    <div class="sign-up-p sign-up-p2 flex-col">
                         <!--address -->
                         <div class="sign-up-input-div flex-col">
                             <label for="address1">Address:</label>
@@ -103,6 +103,24 @@
                             <input type="text" id="city"  name="city" placeholder="city name" />
                         </div>
 
+                        <!--Postal Code-->
+                        <div class="sign-up-input-div flex-col">
+                            <label for="postalCode">Postel code:</label>
+                            <input type="text" id="postalCode"  name="postalCode" placeholder="postal code" />
+                        </div>
+
+                        <!--State-->
+                        <div class="sign-up-input-div flex-col">
+                            <label for="state">State Resides:</label>
+                            <input type="text" id="state"  name="state" placeholder="state name" />
+                        </div>
+
+                        <!--Country-->
+                        <div class="sign-up-input-div flex-col">
+                            <label for="state">Country:</label>
+                            <input type="text" id="country"  name="country" placeholder="country name" />
+                        </div>
+
                         <div class="sign-up-btn-div flex-col">
                             <input class="sign-up-btn next-btn" type="button" value="Next" />
                             <input class="sign-up-btn back-btn" type="button" value="Back" />
@@ -110,7 +128,27 @@
                     </div>
 
                     <!--3rd page or sign up form-->
-                    <div class="sign-up-p3 flex-col">
+                    <div class="sign-up-p sign-up-p3 flex-col">
+                        <!--password-->
+                        <div class="sign-up-input-div required-input-div flex-col">
+                            <label for="password">Password:</label>
+                            <input type="password" id="password"  name="password" placeholder="Password" />
+                        </div>
+                        
+                        <!--confirm password-->
+                        <div class="sign-up-input-div required-input-div flex-col">
+                            <label for="password2">Password:</label>
+                            <input type="password" id="password2"  name="password2" placeholder="Confirm password" />
+                        </div>
+
+                        <ul class="input-requirement">
+                            <!--<i class="ri-checkbox-circle-fill"></i>-->
+                            <li><i class="ri-close-circle-line"></i> Include at least 1 uppercase letter</li>
+                            <li><i class="ri-close-circle-line"></i> Include at least 1 lowercase letter</li>
+                            <li><i class="ri-close-circle-line"></i> Include at least 1 digit</li>
+                            <li><i class="ri-close-circle-line"></i> Include at least 1 symbol</li>
+                            <li><i class="ri-close-circle-line"></i> Have a minimum length of 8</li>
+                        </ul>
 
                         <div class="sign-up-btn-div flex-col">
                             <label for="termAgree"><input id="termAgree" name="termAgree" type="checkbox" />I agree to the <a>term & condition</a></label>
