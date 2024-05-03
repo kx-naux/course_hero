@@ -39,6 +39,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Product.findByDiscount", query = "SELECT p FROM Product p WHERE p.discount = :discount"),
     @NamedQuery(name = "Product.findByImagePath", query = "SELECT p FROM Product p WHERE p.imagePath = :imagePath"),
     @NamedQuery(name = "Product.findByStatus", query = "SELECT p FROM Product p WHERE p.status = :status")})
+
 public class Product implements Serializable {
 
     @Basic(optional = false)
@@ -48,6 +49,11 @@ public class Product implements Serializable {
     private String prodName;
     @Basic(optional = false)
     @NotNull()
+    @Size(min = 1, max = 1000)
+    @Column(name = "DESCRIPTION")
+    private String description;
+    @Basic(optional = false)
+    @NotNull
     @Column(name = "PRICE")
     private double price;
     @Basic(optional = false)
@@ -59,7 +65,7 @@ public class Product implements Serializable {
     @Column(name = "AVG_RATING")
     private double avgRating;
     @Basic(optional = false)
-    @NotNull
+    @NotNull()
     @Column(name = "DISCOUNT")
     private double discount;
     @Size(max = 100)
@@ -192,33 +198,6 @@ public class Product implements Serializable {
 
    
 
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-   
-
-    public double getDiscount() {
-        return discount;
-    }
-
-    public void setDiscount(double discount) {
-        this.discount = discount;
-    }
-
-    
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
 
     @XmlTransient
     public List<CartItems> getCartItemsList() {
@@ -254,6 +233,38 @@ public class Product implements Serializable {
 
     public void setRatingsList(List<Ratings> ratingsList) {
         this.ratingsList = ratingsList;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public double getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(double discount) {
+        this.discount = discount;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
     
 }

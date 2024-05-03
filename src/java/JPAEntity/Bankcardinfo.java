@@ -163,10 +163,6 @@ public class Bankcardinfo implements Serializable {
         this.cardtype = cardtype;
     }
 
-    
-
-    
-
     public String getCvv() {
         return cvv;
     }
@@ -174,5 +170,4 @@ public class Bankcardinfo implements Serializable {
     public void setCvv(String cvv) {
         this.cvv = cvv;
     }
-    
 }

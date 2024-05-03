@@ -149,8 +149,4 @@ public class CourseCertificates implements Serializable {
         return "JPAEntity.CourseCertificates[ certificateId=" + certificateId + " ]";
     }
 
-   
-
-    
-    
 }

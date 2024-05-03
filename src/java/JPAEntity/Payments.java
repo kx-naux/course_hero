@@ -168,9 +168,6 @@ public class Payments implements Serializable {
         return "JPAEntity.Payments[ paymentId=" + paymentId + " ]";
     }
 
-    
-
-    
 
     public double getAmount() {
         return amount;
@@ -186,10 +183,6 @@ public class Payments implements Serializable {
 
     public void setStatus(String status) {
         this.status = status;
-    }
+    }  
 
-    
-
-   
-    
 }

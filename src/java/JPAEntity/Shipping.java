@@ -198,6 +198,6 @@ public class Shipping implements Serializable {
     @Override
     public String toString() {
         return "JPAEntity.Shipping[ shippingId=" + shippingId + " ]";
-    }
-    
+    }   
+
 }

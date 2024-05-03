@@ -5,16 +5,20 @@
 package JPAEntity;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -38,6 +42,8 @@ public class MerchCategory implements Serializable {
     @Size(max = 100)
     @Column(name = "DESCRIPTION")
     private String description;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "merchcatId")
+    private List<Merchandise> merchandiseList;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -101,9 +107,15 @@ public class MerchCategory implements Serializable {
         return "JPAEntity.MerchCategory[ merchcatId=" + merchcatId + " ]";
     }
 
-    
 
-   
+    @XmlTransient
+    public List<Merchandise> getMerchandiseList() {
+        return merchandiseList;
+    }
+
+    public void setMerchandiseList(List<Merchandise> merchandiseList) {
+        this.merchandiseList = merchandiseList;
+    }
 
     public String getDescription() {
         return description;

@@ -161,9 +161,6 @@ public class CourseSubscriptions implements Serializable {
         return "JPAEntity.CourseSubscriptions[ subscriptionsId=" + subscriptionsId + " ]";
     }
 
-   
-
- 
 
     public String getProgress() {
         return progress;
@@ -171,9 +168,6 @@ public class CourseSubscriptions implements Serializable {
 
     public void setProgress(String progress) {
         this.progress = progress;
-    }
+    }  
 
-    
-
-    
 }

@@ -231,5 +231,5 @@ public class Courses implements Serializable {
     public void setAuthorContributionList(List<AuthorContribution> authorContributionList) {
         this.authorContributionList = authorContributionList;
     }
-    
+
 }

@@ -116,10 +116,7 @@ public class ProductCategory implements Serializable {
         return "JPAEntity.ProductCategory[ prodcatId=" + prodcatId + " ]";
     }
 
-    
-    
 
-   
     public String getDescription() {
         return description;
     }

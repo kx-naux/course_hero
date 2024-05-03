@@ -128,12 +128,6 @@ public class CourseCategory implements Serializable {
         return "JPAEntity.CourseCategory[ coursecatId=" + coursecatId + " ]";
     }
 
-    
-
-    
-
-    
-
     public String getDescription() {
         return description;
     }
