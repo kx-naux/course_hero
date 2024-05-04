@@ -4,7 +4,7 @@
 <% String errMsg = (String) request.getAttribute("errMsg"); %>
 <jsp:useBean id="loginFormData" class="entity.LoginFormData" scope="request"/>
 <% if (pageNumber == null) {
-        pageNumber = "5";
+        pageNumber = "1";
     }
     if (errField == null) {
         errField = "";
@@ -39,7 +39,6 @@
                 </div>
 
                 <!--hidden value for step count-->
-
                 <input type="number" min="1" max="5" id="formProgress" value="<%= pageNumber%>" hidden />
 
                 <!--insert error message here if any-->
