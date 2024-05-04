@@ -85,6 +85,7 @@ nextBtns[0].addEventListener('click', () => {
     var username = document.querySelector("input#username");
     var name = document.querySelector("input#name");
     var gender = document.querySelector("select#gender");
+    var dob = document.querySelector("input#dob");
 
     // Check if email input is not null and matches the regex pattern
     email.value = email.value.trim();
@@ -126,7 +127,7 @@ nextBtns[0].addEventListener('click', () => {
         name.classList.add("invalid-input");
         return;
     }
-    const nameRegex = /^[a-zA-Z'-]+$/;
+    const nameRegex = /^[a-zA-Z\s'-]+$/;
     if (!nameRegex.test(name.value)) {
         // Handle invalid name format
         showErrorMsg("Invalid name. Name must contain only letters, apostrophes, or hyphens.");
@@ -139,6 +140,14 @@ nextBtns[0].addEventListener('click', () => {
         // Handle gender not selected
         showErrorMsg("Please select gender");
         gender.classList.add("invalid-input");
+        return;
+    }
+    
+    // check date null check
+    if (!dob.value) {
+        // Handle gender not selected
+        showErrorMsg("Please select date of birth");
+        dob.classList.add("invalid-input");
         return;
     }
 
@@ -179,6 +188,14 @@ document.querySelector("input#name").addEventListener('input', (event) => {
         event.target.value = inputValue;
     }
 });
+
+// for the dob input field
+const startDate = new Date(1900, 0, 1);
+const currentDate = new Date();
+const endDate = new Date(currentDate.getFullYear() - 3, currentDate.getMonth(), currentDate.getDate());
+var dobInput = document.querySelector("input#dob");
+dobInput.setAttribute("min", startDate.toISOString().slice(0,10));
+dobInput.setAttribute("max", endDate.toISOString().slice(0,10));
 
 // for postal code input field
 document.querySelector("input#postalCode").addEventListener('input', (event) => {

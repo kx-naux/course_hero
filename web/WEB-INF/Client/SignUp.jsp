@@ -1,11 +1,17 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8"%>
-<% String pageNumber = (String)request.getAttribute("pageNumber"); %>
-<% String errField = (String)request.getAttribute("errField"); %>
-<% String errMsg = (String)request.getAttribute("errMsg"); %>
+<% String pageNumber = (String) request.getAttribute("pageNumber"); %>
+<% String errField = (String) request.getAttribute("errField"); %>
+<% String errMsg = (String) request.getAttribute("errMsg"); %>
 <jsp:useBean id="loginFormData" class="entity.LoginFormData" scope="request"/>
-<% if(pageNumber == null){pageNumber = "1";}
-   if(errField == null){errField = "";}
-   if(errMsg == null){errMsg = "";}%>
+<% if (pageNumber == null) {
+        pageNumber = "1";
+    }
+    if (errField == null) {
+        errField = "";
+    }
+    if (errMsg == null) {
+        errMsg = "";
+    }%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -34,16 +40,16 @@
 
                     <!--hidden value for step count-->
 
-                    <input type="number" min="1" max="4" id="formProgress" value="<%= pageNumber %>" hidden />
+                    <input type="number" min="1" max="5" id="formProgress" value="<%= pageNumber%>" hidden />
 
                     <!--insert error message here if any-->
-                    <% if(errField.equals("email&username")){ %>
-                        <input type="text"  id="errorInput" value="email" hidden />
-                        <input type="text"  id="errorInput" value="username" hidden />
-                    <%}else{%>
-                        <input type="text"  id="errorInput" value="<%= errField %>" hidden />
+                    <% if (errField.equals("email&username")) { %>
+                    <input type="text"  id="errorInput" value="email" hidden />
+                    <input type="text"  id="errorInput" value="username" hidden />
+                    <%} else {%>
+                    <input type="text"  id="errorInput" value="<%= errField%>" hidden />
                     <%}%>
-                    <span hidden id="errorMsg"><%= errMsg %></span>
+                    <span hidden id="errorMsg"><%= errMsg%></span>
 
 
                     <!--step progress bar-->
@@ -65,6 +71,11 @@
                         <hr class="progress-line" />
                         <div class="progress-point flex-col">
                             <span class="point-number">4</span>
+                            <p class="point-name">Confirmation</p>
+                        </div>
+                        <hr class="progress-line" />
+                        <div class="progress-point flex-col">
+                            <span class="point-number">5</span>
                             <p class="point-name">Verification</p>
                         </div>
                     </div>
@@ -94,9 +105,15 @@
                             <label for="gender">Gender:</label>
                             <select id="gender" name="gender" value="${loginFormData.gender}">
                                 <option hidden value="" >Select gender</option>
-                                <option value="female" <%= (loginFormData.getGender() != null && loginFormData.getGender().equalsIgnoreCase("female")) ? "selected" : "" %> >Female</option>
-                                <option value="male" <%= (loginFormData.getGender() != null && loginFormData.getGender().equalsIgnoreCase("male")) ? "selected" : "" %>>Male</option>
+                                <option value="female" <%= (loginFormData.getGender() != null && loginFormData.getGender().equalsIgnoreCase("female")) ? "selected" : ""%> >Female</option>
+                                <option value="male" <%= (loginFormData.getGender() != null && loginFormData.getGender().equalsIgnoreCase("male")) ? "selected" : ""%>>Male</option>
                             </select>
+                        </div>
+
+                        <!--date of birth-->
+                        <div class="sign-up-input-div required-input-div flex-col">
+                            <label for="name">Date of birth:</label>
+                            <input type="date" id="dob"  name="dob" placeholder="Select date"/>
                         </div>
 
                         <p class="invalid-msg"></p>
@@ -147,7 +164,7 @@
                             <input class="sign-up-btn back-btn" type="button" value="Back" />
                         </div>
                     </div>
-                                    
+
                     <!--3rd page or sign up form-->
                     <div class="sign-up-p sign-up-p3 flex-col">
                         <!--password-->
@@ -179,8 +196,8 @@
                             <input class="sign-up-btn back-btn" type="button" value="Back" />
                         </div>
                     </div>
-                    
-                      <!--4th page or sign up form-->
+
+                    <!--4th page or sign up form-->
                     <div class="sign-up-p sign-up-p4 flex-col">
                         <!--otp-->
                         <div class="sign-up-input-div required-input-div flex-col">
