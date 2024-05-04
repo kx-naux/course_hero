@@ -117,7 +117,6 @@ public class Refunds implements Serializable {
         return "JPAEntity.Refunds[ refundId=" + refundId + " ]";
     }
 
-
     public String getReason() {
         return reason;
     }

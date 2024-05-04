@@ -160,6 +160,7 @@ public class Chatrooms implements Serializable {
         return "JPAEntity.Chatrooms[ chatroomId=" + chatroomId + " ]";
     }
 
+
     public String getStatus() {
         return status;
     }
@@ -167,4 +168,6 @@ public class Chatrooms implements Serializable {
     public void setStatus(String status) {
         this.status = status;
     } 
+
+    
 }
