@@ -183,8 +183,30 @@
         </section>
 
         <section class="section merch-list-section">
-            <div class="merch-list-div">
-
+            <div class="merch-list-div flex-col">
+                
+                <h1 class="merch-list-title">All merchandises</h1>
+                
+                <div class="merch-category flex-col">
+                    <div class="merch-category-title-div flex-row">
+                        <h1>Apparel</h1>
+                        <p><i class="ri-add-fill"></i></p>
+                    </div>
+                    <div class="merch-category-item-list flex-row">
+                        
+                    </div>
+                </div>
+                
+                <div class="merch-category flex-col">
+                    <div class="merch-category-title-div flex-row">
+                        <h1>Drinkware</h1>
+                        <p><i class="ri-add-fill"></i></p>
+                    </div>
+                    <div class="merch-category-item-list flex-row">
+                        
+                    </div>
+                </div>
+                
             </div>
         </section>
 
