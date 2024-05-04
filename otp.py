@@ -5,23 +5,19 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
 class OTP:
-    # constructor
+    EMAIL = "lowkx-pm22@student.tarc.edu.my"  
+    PASSWORD = "rqbtfnqhzyitjamx"       
+
     def __init__(self, otp: str = None, time: str = None) -> None:
         self.__otp = otp
-        self.__timeSent = datetime.datetime.strptime(time, '%Y-%m-%d %H:%M:%S') if time != None else ""
+        self.__time_sent = datetime.datetime.strptime(time, '%Y-%m-%d %H:%M:%S') if time else ""
 
-    # get time
-    def getTimeSent(self) -> str:
-        return self.__timeSent.strftime('%Y-%m-%d %H:%M:%S')
+    def get_time_sent(self) -> str:
+        return self.__time_sent.strftime('%Y-%m-%d %H:%M:%S')
 
-    # send the code to user 
     def send_otp_email(self, recipient_email: str) -> None:
-        # Email configuration
-        email = "lowkx-pm22@student.tarc.edu.my"  # Your Gmail email address
-        password = "rqbtfnqhzyitjamx"       # Your Gmail password
-
         msg = MIMEMultipart()
-        msg['From'] = email
+        msg['From'] = self.EMAIL
         msg['To'] = recipient_email
         msg['Subject'] = '(No Reply) Course Hero - OTP Verification'
         body = f"""<div style="font-family: Helvetica,Arial,sans-serif;min-width:1000px;overflow:auto;line-height:2">
@@ -45,18 +41,19 @@ class OTP:
         </div>"""
         msg.attach(MIMEText(body, 'html'))
 
-        # Connect to Gmail's SMTP server
-        server = smtplib.SMTP('smtp.gmail.com', 587)
-        server.starttls()
-        server.login(email, password)
-        server.sendmail(email, recipient_email, msg.as_string())
-        server.quit()
-
-        self.__timeSent = datetime.datetime.now()
+        try:
+            server = smtplib.SMTP('smtp.gmail.com', 587)
+            server.starttls()
+            server.login(self.EMAIL, self.PASSWORD)
+            server.sendmail(self.EMAIL, recipient_email, msg.as_string())
+            server.quit()
+            self.__time_sent = datetime.datetime.now()
+            print("OTP email sent successfully.")
+        except Exception as e:
+            print("Failed to send OTP email:", e)
 
 if __name__ == "__main__":
     if len(sys.argv) != 3:
-        # python otp_email.py 123456 receiver@example.com
         print("Usage: python script.py <otp_code> <receiver_email>")
         sys.exit(1)
 

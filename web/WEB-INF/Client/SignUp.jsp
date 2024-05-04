@@ -172,7 +172,7 @@
                         <!--otp-->
                         <div class="sign-up-input-div required-input-div flex-col">
                             <label for="otp">OTP code:</label>
-                            <input type="text" id="otp"  name="otp" placeholder="Password" />
+                            <input type="text" id="otp"  name="otp" placeholder="enter the otp that send to ur email" />
                         </div>
 
                         <p class="invalid-msg"></p>
