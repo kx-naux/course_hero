@@ -33,6 +33,7 @@
                     </div>
 
                     <!--hidden value for step count-->
+
                     <input type="number" min="1" max="4" id="formProgress" value="<%= pageNumber %>" hidden />
 
                     <!--insert error message here if any-->
@@ -43,6 +44,7 @@
                         <input type="text"  id="errorInput" value="<%= errField %>" hidden />
                     <%}%>
                     <span hidden id="errorMsg"><%= errMsg %></span>
+
 
                     <!--step progress bar-->
                     <div class="form-progress-bar flex-row">
@@ -63,7 +65,7 @@
                         <hr class="progress-line" />
                         <div class="progress-point flex-col">
                             <span class="point-number">4</span>
-                            <p class="point-name">Complete</p>
+                            <p class="point-name">Verification</p>
                         </div>
                     </div>
 
@@ -145,7 +147,7 @@
                             <input class="sign-up-btn back-btn" type="button" value="Back" />
                         </div>
                     </div>
-
+                                    
                     <!--3rd page or sign up form-->
                     <div class="sign-up-p sign-up-p3 flex-col">
                         <!--password-->
@@ -175,6 +177,21 @@
                             <label for="termAgree" class="term-acpt-label"><input id="termAgree" name="termAgree" type="checkbox" />I agree to the <a>term & condition</a></label>
                             <input class="sign-up-btn submit-btn" type="submit" value="Submit" disabled />
                             <input class="sign-up-btn back-btn" type="button" value="Back" />
+                        </div>
+                    </div>
+                    
+                      <!--4th page or sign up form-->
+                    <div class="sign-up-p sign-up-p4 flex-col">
+                        <!--otp-->
+                        <div class="sign-up-input-div required-input-div flex-col">
+                            <label for="otp">OTP code:</label>
+                            <input type="text" id="otp"  name="otp" placeholder="enter the otp that send to ur email" />
+                        </div>
+
+                        <p class="invalid-msg"></p>
+
+                        <div class="sign-up-btn-div flex-col">
+                            <input class="sign-up-btn submit-btn" type="submit" value="Submit" disabled />
                         </div>
                     </div>
 

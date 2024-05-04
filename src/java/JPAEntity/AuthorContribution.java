@@ -31,7 +31,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "AuthorContribution.findByContribution", query = "SELECT a FROM AuthorContribution a WHERE a.contribution = :contribution"),
     @NamedQuery(name = "AuthorContribution.findByDescription", query = "SELECT a FROM AuthorContribution a WHERE a.description = :description"),
     @NamedQuery(name = "AuthorContribution.findByAuthorIdWhereCourseIsAvailable", query = "SELECT a FROM AuthorContribution a WHERE a.authorId = :authorId AND a.courseId.productId.status = 'Active' "),
-    @NamedQuery(name = "AuthorContribution.countAllAvailabeCoursesByAuthor", query = "SELECT COUNT(a) FROM AuthorContribution a WHERE a.authorId = :authorId AND a.courseId.productId.status = 'Active'")})
+    @NamedQuery(name = "AuthorContribution.countAllAvailabeCoursesByAuthor", query = "SELECT COUNT(a) FROM AuthorContribution a WHERE a.authorId = :authorId AND a.courseId.productId.status = 'Active'"),
+    @NamedQuery(name = "AuthorContribution.findByCourseId", query = "SELECT a FROM AuthorContribution a WHERE a.courseId = :courseId")})
 public class AuthorContribution implements Serializable {
 
     @Basic(optional = false)
@@ -78,7 +79,6 @@ public class AuthorContribution implements Serializable {
     public void setContributionId(String contributionId) {
         this.contributionId = contributionId;
     }
-
 
     public Authors getAuthorId() {
         return authorId;
@@ -136,5 +136,5 @@ public class AuthorContribution implements Serializable {
     public void setDescription(String description) {
         this.description = description;
     }
-    
+
 }

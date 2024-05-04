@@ -52,7 +52,7 @@
 }
 
 .author-left .author-info h4:first-of-type {
-     margin-top: 15px;
+    margin-top: 15px;
 }
 
 .author-left .author-info .author-join-date {
@@ -436,4 +436,61 @@
 .course-tag.tag-purple {
     background-color: var(--tag-purple-bg);
     color: var(--tag-purple-color);
+}
+
+/*welcome author section*/
+.welcome-author-section{
+    padding: 20px 20px 60px;
+}
+
+.welcome-author-div {
+    gap: 45px;
+    justify-content: center;
+}
+
+.welcome-author-div > div {
+    width: 100%;
+    max-width: 400px;
+    flex: 1 1 100px;
+    justify-content: center;
+}
+
+.welcome-author-div .welcome-author-left {
+    max-width: 380px;
+    max-height: 380px;
+}
+
+.welcome-author-div .welcome-author-left img {
+    width: 100%;
+    object-fit: cover;
+}
+
+.welcome-author-div .welcome-author-right {
+    gap: 30px;
+}
+
+.welcome-author-div .welcome-author-right h1 {
+    font-weight: 700;
+    font-size: var(--font-size-l);
+    color:  var(--color-navy-blue);
+}
+
+.welcome-author-div .welcome-author-right p{
+    font-weight: 400;
+    font-size: var(--font-size-xm);
+    color: var(--color-text-light-2);
+}
+
+.welcome-author-div .welcome-author-right a{
+    font-weight: 600;
+    font-size: var(--font-size-xm);
+    color: var(--color-white);
+    background-color:  var(--color-blue-2);
+    width: fit-content;
+    padding: 10px 20px;
+    transition: 0.3s all ease-in-out;
+}
+
+.welcome-author-div .welcome-author-right a:hover{
+    background-color:  var(--color-blue-3);
 }

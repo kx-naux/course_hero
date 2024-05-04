@@ -6,7 +6,7 @@
                 <p class="footer-list-title">Courses</p>
                 <ul class="footer-list">
                     <li><a href="<%= webpath.getPageUrl("products") %>">Catalog</a></li>
-                    <li><a href="#">Promotion</a></li>
+                    <li><a href="<%= webpath.getPageUrl("promotion")%>">Promotion</a></li>
                 </ul>
             </div>
             <div class="flex-col">

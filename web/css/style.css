@@ -305,7 +305,7 @@ a:has(.nav-option):hover + .nav-option-dropdown,
 }
 
 .nav-icon .nav-icon-number{
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     position: absolute;
@@ -318,6 +318,10 @@ a:has(.nav-option):hover + .nav-option-dropdown,
     height: 20px;
     top: -3px;
     right: -3px;
+}
+
+.nav-icon .nav-icon-number.active{
+    display: flex;
 }
 
 .nav-bar.nav-scroll .nav-icon {
@@ -558,6 +562,16 @@ a:has(.nav-option):hover + .nav-option-dropdown,
 
 .nav-icon-div:hover > div,
 .nav-icon-div .profile-list:hover {
+    display: flex;
+}
+
+.wish-list > div,
+.cart-list > div{
+    display: none;
+}
+
+.wish-list > div.active,
+.cart-list> div.active {
     display: flex;
 }
 
