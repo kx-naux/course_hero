@@ -80,6 +80,14 @@ public class MerchCategory implements Serializable {
     public void setCategoryName(String categoryName) {
         this.categoryName = categoryName;
     }
+    
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
 
     @Override
@@ -115,14 +123,6 @@ public class MerchCategory implements Serializable {
 
     public void setMerchandiseList(List<Merchandise> merchandiseList) {
         this.merchandiseList = merchandiseList;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
     
 }

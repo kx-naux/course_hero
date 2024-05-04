@@ -137,6 +137,15 @@ public class ShippingMethod implements Serializable {
     public void setReturnPolicy(String returnPolicy) {
         this.returnPolicy = returnPolicy;
     }
+    
+    
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }  
 
     @Override
     public int hashCode() {
@@ -162,13 +171,5 @@ public class ShippingMethod implements Serializable {
     public String toString() {
         return "JPAEntity.ShippingMethod[ shippingMethodId=" + shippingMethodId + " ]";
     }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }  
 
 }

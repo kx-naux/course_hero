@@ -135,6 +135,14 @@ public class CourseSubscriptions implements Serializable {
     public void setUserId(Users userId) {
         this.userId = userId;
     }
+    
+    public String getProgress() {
+        return progress;
+    }
+
+    public void setProgress(String progress) {
+        this.progress = progress;
+    }  
 
     @Override
     public int hashCode() {
@@ -162,12 +170,10 @@ public class CourseSubscriptions implements Serializable {
     }
 
 
-    public String getProgress() {
-        return progress;
-    }
+   
 
-    public void setProgress(String progress) {
-        this.progress = progress;
-    }  
+
+
+   
 
 }

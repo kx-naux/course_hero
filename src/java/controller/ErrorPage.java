@@ -32,5 +32,18 @@ public class ErrorPage extends HttpServlet {
         // Forward the request to error page
         request.getRequestDispatcher("/WEB-INF/Error.jsp").forward(request, response);
     }
+    
+    public static void forwardToServerErrorPage(HttpServletRequest request, HttpServletResponse response, String errMsg)
+        throws ServletException, IOException{
+        
+        HttpSession session = request.getSession();
+        String errorDesc = errMsg;
+        String errorDetail = "If issuse still presists, please contact customer support [contact number: +6012-3456 7890]";
+        
+        session.setAttribute("errorDesc", errorDesc);
+        session.setAttribute("errorDetail", errorDetail);
+        
+        request.getRequestDispatcher("/WEB-INF/Error.jsp").forward(request, response);
+    }
 
 }

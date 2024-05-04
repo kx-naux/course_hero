@@ -1,5 +1,11 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8"%>
-
+<% String pageNumber = (String)request.getAttribute("pageNumber"); %>
+<% String errField = (String)request.getAttribute("errField"); %>
+<% String errMsg = (String)request.getAttribute("errMsg"); %>
+<jsp:useBean id="loginFormData" class="entity.LoginFormData" scope="request"/>
+<% if(pageNumber == null){pageNumber = "1";}
+   if(errField == null){errField = "";}
+   if(errMsg == null){errMsg = "";}%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -27,11 +33,18 @@
                     </div>
 
                     <!--hidden value for step count-->
-                    <input type="number" min="1" max="4" id="formProgress" value="4" hidden />
+
+                    <input type="number" min="1" max="4" id="formProgress" value="<%= pageNumber %>" hidden />
 
                     <!--insert error message here if any-->
-                    <input type="text" id="errorInput" value="" hidden />
-                    <span hidden id="errorMsg"></span>
+                    <% if(errField.equals("email&username")){ %>
+                        <input type="text"  id="errorInput" value="email" hidden />
+                        <input type="text"  id="errorInput" value="username" hidden />
+                    <%}else{%>
+                        <input type="text"  id="errorInput" value="<%= errField %>" hidden />
+                    <%}%>
+                    <span hidden id="errorMsg"><%= errMsg %></span>
+
 
                     <!--step progress bar-->
                     <div class="form-progress-bar flex-row">
@@ -61,28 +74,28 @@
                         <!--email-->
                         <div class="sign-up-input-div required-input-div flex-col">
                             <label for="email">Email:</label>
-                            <input type="text" id="email"  name="email" placeholder="example@email.com" maxlength="50" />
+                            <input type="text" id="email"  name="email" placeholder="example@email.com" maxlength="50" value="${loginFormData.email}"/>
                         </div>
 
                         <!--username-->
                         <div class="sign-up-input-div required-input-div flex-col">
                             <label for="username">Username:</label>
-                            <input type="text" id="username"  name="username" placeholder="only characters, digits, and the special symbols (!, #, _, .)" maxlength="25" autocomplete="off" />
+                            <input type="text" id="username"  name="username" placeholder="only characters, digits, and the special symbols (!, #, _, .)" maxlength="25" value="${loginFormData.username}"/>
                         </div>
 
                         <!--display name-->
                         <div class="sign-up-input-div required-input-div flex-col">
                             <label for="name">Display Name:</label>
-                            <input type="text" id="name"  name="name" placeholder="name" maxlength="30" autocomplete="off"  />
+                            <input type="text" id="name"  name="name" placeholder="name" maxlength="30" value="${loginFormData.displayName}"/>
                         </div>
 
                         <!--gender-->
                         <div class="sign-up-input-div required-input-div flex-col">
                             <label for="gender">Gender:</label>
-                            <select id="gender">
-                                <option selected hidden>Select gender</option>
-                                <option value="female">Female</option>
-                                <option value="male">Male</option>
+                            <select id="gender" name="gender" value="${loginFormData.gender}">
+                                <option hidden value="" >Select gender</option>
+                                <option value="female" <%= (loginFormData.getGender() != null && loginFormData.getGender().equalsIgnoreCase("female")) ? "selected" : "" %> >Female</option>
+                                <option value="male" <%= (loginFormData.getGender() != null && loginFormData.getGender().equalsIgnoreCase("male")) ? "selected" : "" %>>Male</option>
                             </select>
                         </div>
 
@@ -99,32 +112,32 @@
                         <!--address -->
                         <div class="sign-up-input-div flex-col">
                             <label for="address1">Address:</label>
-                            <input type="text" id="address1"  name="address1" placeholder="address line 1" maxlength="50" />
-                            <input type="text" id="address2"  name="address2" placeholder="address line 2" maxlength="50" />
+                            <input type="text" id="address1"  name="address1" placeholder="address line 1" maxlength="50" value="${loginFormData.addressLine1}"/>
+                            <input type="text" id="address2"  name="address2" placeholder="address line 2" maxlength="50" value="${loginFormData.addressLine2}"/>
                         </div>
 
                         <!--City-->
                         <div class="sign-up-input-div flex-col">
                             <label for="city">City:</label>
-                            <input type="text" id="city"  name="city" placeholder="city name" maxlength="20" />
+                            <input type="text" id="city"  name="city" placeholder="city name" maxlength="20" value="${loginFormData.city}"/>
                         </div>
 
                         <!--Postal Code-->
                         <div class="sign-up-input-div flex-col">
                             <label for="postalCode">Postel code:</label>
-                            <input type="text" id="postalCode"  name="postalCode" placeholder="postal code" maxlength="9" />
+                            <input type="text" id="postalCode"  name="postalCode" placeholder="postal code" maxlength="9" value="${loginFormData.postalCode}"/>
                         </div>
 
                         <!--State-->
                         <div class="sign-up-input-div flex-col">
                             <label for="state">State Resides:</label>
-                            <input type="text" id="state"  name="state" placeholder="state name" maxlength="20" />
+                            <input type="text" id="state"  name="state" placeholder="state name" maxlength="20" value="${loginFormData.state}"/>
                         </div>
 
                         <!--Country-->
                         <div class="sign-up-input-div flex-col">
                             <label for="state">Country:</label>
-                            <input type="text" id="country"  name="country" placeholder="country name" maxlength="40" />
+                            <input type="text" id="country"  name="country" placeholder="country name" maxlength="40" value="${loginFormData.country}"/>
                         </div>
 
                         <p class="invalid-msg"></p>

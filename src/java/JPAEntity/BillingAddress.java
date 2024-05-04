@@ -90,6 +90,15 @@ public class BillingAddress implements Serializable {
     public BillingAddress(String addressId, String line1, String city, String stateResides, String postalcode, String country) {
         this.addressId = addressId;
         this.line1 = line1;
+        this.line2 = "";
+        this.city = city;
+        this.stateResides = stateResides;
+        this.postalcode = postalcode;
+        this.country = country;
+    }
+    
+    public BillingAddress(String line1, String city, String stateResides, String postalcode, String country) {
+        this.line1 = line1;
         this.city = city;
         this.stateResides = stateResides;
         this.postalcode = postalcode;
@@ -102,6 +111,10 @@ public class BillingAddress implements Serializable {
 
     public void setAddressId(String addressId) {
         this.addressId = addressId;
+    }
+    
+    public void setAddressId(long count){
+        this.addressId = String.format("BA%07d", count);
     }
 
     public String getLine1() {
@@ -174,6 +187,8 @@ public class BillingAddress implements Serializable {
         this.shippingList = shippingList;
     }
 
+    
+    
     public String getCity() {
         return city;
     }
@@ -182,6 +197,8 @@ public class BillingAddress implements Serializable {
         this.city = city;
     }
 
+   
+    
     public String getPostalcode() {
         return postalcode;
     }

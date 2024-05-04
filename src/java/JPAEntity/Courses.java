@@ -170,31 +170,6 @@ public class Courses implements Serializable {
         this.productId = productId;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (courseId != null ? courseId.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Courses)) {
-            return false;
-        }
-        Courses other = (Courses) object;
-        if ((this.courseId == null && other.courseId != null) || (this.courseId != null && !this.courseId.equals(other.courseId))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "JPAEntity.Courses[ courseId=" + courseId + " ]";
-    }
-
     @XmlTransient
     public List<CourseSubscriptions> getCourseSubscriptionsList() {
         return courseSubscriptionsList;
@@ -229,6 +204,31 @@ public class Courses implements Serializable {
 
     public void setAuthorContributionList(List<AuthorContribution> authorContributionList) {
         this.authorContributionList = authorContributionList;
+    }
+
+        @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (courseId != null ? courseId.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof Courses)) {
+            return false;
+        }
+        Courses other = (Courses) object;
+        if ((this.courseId == null && other.courseId != null) || (this.courseId != null && !this.courseId.equals(other.courseId))) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "JPAEntity.Courses[ courseId=" + courseId + " ]";
     }
 
 }
