@@ -146,7 +146,6 @@ nextBtns[0].addEventListener('click', () => {
 });
 
 nextBtns[1].addEventListener('click', () => {
-
     showSignUpPage(parseInt(formProgress.value) + 1);
 });
 
@@ -156,8 +155,6 @@ backBtns.forEach(btn => {
         showSignUpPage(parseInt(formProgress.value) - 1);
     });
 });
-
-// on submit validation check 
 
 // For the username input field
 document.querySelector("input#username").addEventListener('input', (event) => {
@@ -183,6 +180,16 @@ document.querySelector("input#name").addEventListener('input', (event) => {
     }
 });
 
+// for postal code input field
+document.querySelector("input#postalCode").addEventListener('input', (event) => {
+    const inputValue = event.target.value;
+    const regex = /^\d*$/; // Regular expression to allow only digits
+
+    if (!regex.test(inputValue)) {
+        event.target.value = inputValue.replace(/\D/g, ''); // Remove any non-digit characters
+    }
+});
+
 // input and select remove invalid while onclick
 inputs.forEach((input) => {
     input.addEventListener('blur', () => {
@@ -197,4 +204,78 @@ selects.forEach((select) => {
         removeErrorMsg();
     });
 });
+
+// able submit button
+const passwordInput = document.getElementById("password");
+const confirmPasswordInput = document.getElementById("password2");
+const termAgreeCheckbox = document.getElementById("termAgree");
+const submitButton = document.querySelector("input.sign-up-btn.submit-btn");
+
+// Function to check if the password meets the requirements
+function isPasswordValid(password) {
+    // Define regular expressions for each requirement
+    const uppercaseRegex = /[A-Z]/;
+    const lowercaseRegex = /[a-z]/;
+    const digitRegex = /\d/;
+    const symbolRegex = /[$&+,:;=?@#|'<>.^*()%!-]/;
+    const lengthRequirement = password.length >= 8;
+
+    // Check if all requirements are met
+    return (
+            uppercaseRegex.test(password) &&
+            lowercaseRegex.test(password) &&
+            digitRegex.test(password) &&
+            symbolRegex.test(password) &&
+            lengthRequirement
+            );
+}
+
+// Function to check if the passwords match
+function doPasswordsMatch() {
+    return passwordInput.value === confirmPasswordInput.value;
+}
+
+// Function to check if all conditions are met and enable the submit button
+function checkConditions() {
+    const passwordValid = isPasswordValid(passwordInput.value);
+    const passwordsMatch = doPasswordsMatch();
+    const termsAgreed = termAgreeCheckbox.checked;
+
+    submitButton.disabled = !(passwordValid && passwordsMatch && termsAgreed);
+}
+
+// Function to update the icon based on whether each requirement is met
+function updateRequirementIcons(password) {
+    // Define regular expressions for each requirement
+    const requirements = [
+        /[A-Z]/, // Include at least 1 uppercase letter
+        /[a-z]/, // Include at least 1 lowercase letter
+        /\d/, // Include at least 1 digit
+        /[$&+,:;=?@#|'<>.^*()%!-]/, // Include at least 1 symbol
+        /.{8,}/  // Have a minimum length of 8
+    ];
+
+    const requirementListItems = document.querySelectorAll(".input-requirement li");
+
+    // Loop through each requirement and update the corresponding icon
+    requirements.forEach((regex, index) => {
+        const listItem = requirementListItems[index];
+        const icon = listItem.querySelector("i");
+        if (regex.test(password)) {
+            icon.classList.remove("ri-close-circle-line");
+            icon.classList.add("ri-checkbox-circle-fill");
+        } else {
+            icon.classList.remove("ri-checkbox-circle-fill");
+            icon.classList.add("ri-close-circle-line");
+        }
+    });
+}
+
+confirmPasswordInput.addEventListener('input', checkConditions);
+termAgreeCheckbox.addEventListener('change', checkConditions);
+passwordInput.addEventListener('input', (event) => {
+    checkConditions();
+    updateRequirementIcons(event.target.value);
+});
+
 
