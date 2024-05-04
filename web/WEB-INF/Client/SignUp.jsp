@@ -4,7 +4,7 @@
 <% String errMsg = (String) request.getAttribute("errMsg"); %>
 <jsp:useBean id="loginFormData" class="entity.LoginFormData" scope="request"/>
 <% if (pageNumber == null) {
-        pageNumber = "1";
+        pageNumber = "3";
     }
     if (errField == null) {
         errField = "";
@@ -24,62 +24,62 @@
         <jsp:useBean id="webpath" class="module.WebPath" scope="application" />
     </head>
     <body>
-        <form action="sign-up" method="post" id="signUpForm">
-            <section class="sign-up-section flex-col">
-                <div class="sign-up-div flex-col">
 
-                    <!--position absolute-->
-                    <div class="logo-div">
-                        <a href="<%= webpath.getPageUrl("home")%>"><img src="./img/Logo.png" alt="Course Hero" /></a>
+        <section class="sign-up-section flex-col">
+            <div class="sign-up-div flex-col">
+
+                <!--position absolute-->
+                <div class="logo-div">
+                    <a href="<%= webpath.getPageUrl("home")%>"><img src="./img/Logo.png" alt="Course Hero" /></a>
+                </div>
+
+                <!--sign up title-->
+                <div class="sign-up-title-div">
+                    <h1>Sign Up</h1>
+                </div>
+
+                <!--hidden value for step count-->
+
+                <input type="number" min="1" max="5" id="formProgress" value="<%= pageNumber%>" hidden />
+
+                <!--insert error message here if any-->
+                <% if (errField.equals("email&username")) { %>
+                <input type="text"  id="errorInput" value="email" hidden />
+                <input type="text"  id="errorInput" value="username" hidden />
+                <%} else {%>
+                <input type="text"  id="errorInput" value="<%= errField%>" hidden />
+                <%}%>
+                <span hidden id="errorMsg"><%= errMsg%></span>
+
+
+                <!--step progress bar-->
+                <div class="form-progress-bar flex-row">
+                    <div class="progress-point flex-col">
+                        <span class="point-number">1</span>
+                        <p class="point-name">User Info</p>
                     </div>
-
-                    <!--sign up title-->
-                    <div class="sign-up-title-div">
-                        <h1>Sign Up</h1>
+                    <hr class="progress-line" />
+                    <div class="progress-point flex-col">
+                        <span class="point-number">2</span>
+                        <p class="point-name">Address</p>
                     </div>
-
-                    <!--hidden value for step count-->
-
-                    <input type="number" min="1" max="5" id="formProgress" value="<%= pageNumber%>" hidden />
-
-                    <!--insert error message here if any-->
-                    <% if (errField.equals("email&username")) { %>
-                    <input type="text"  id="errorInput" value="email" hidden />
-                    <input type="text"  id="errorInput" value="username" hidden />
-                    <%} else {%>
-                    <input type="text"  id="errorInput" value="<%= errField%>" hidden />
-                    <%}%>
-                    <span hidden id="errorMsg"><%= errMsg%></span>
-
-
-                    <!--step progress bar-->
-                    <div class="form-progress-bar flex-row">
-                        <div class="progress-point flex-col">
-                            <span class="point-number">1</span>
-                            <p class="point-name">User Info</p>
-                        </div>
-                        <hr class="progress-line" />
-                        <div class="progress-point flex-col">
-                            <span class="point-number">2</span>
-                            <p class="point-name">Address</p>
-                        </div>
-                        <hr class="progress-line" />
-                        <div class="progress-point flex-col">
-                            <span class="point-number">3</span>
-                            <p class="point-name">Password</p>
-                        </div>
-                        <hr class="progress-line" />
-                        <div class="progress-point flex-col">
-                            <span class="point-number">4</span>
-                            <p class="point-name">Confirmation</p>
-                        </div>
-                        <hr class="progress-line" />
-                        <div class="progress-point flex-col">
-                            <span class="point-number">5</span>
-                            <p class="point-name">Verification</p>
-                        </div>
+                    <hr class="progress-line" />
+                    <div class="progress-point flex-col">
+                        <span class="point-number">3</span>
+                        <p class="point-name">Password</p>
                     </div>
-
+                    <hr class="progress-line" />
+                    <div class="progress-point flex-col">
+                        <span class="point-number">4</span>
+                        <p class="point-name">Confirmation</p>
+                    </div>
+                    <hr class="progress-line" />
+                    <div class="progress-point flex-col">
+                        <span class="point-number">5</span>
+                        <p class="point-name">Verification</p>
+                    </div>
+                </div>
+                <form action="sign-up" method="post" id="signUpForm">
                     <!--1st page or sign up form-->
                     <div class="sign-up-p sign-up-p1 flex-col">
                         <!--email-->
@@ -170,13 +170,15 @@
                         <!--password-->
                         <div class="sign-up-input-div required-input-div flex-col">
                             <label for="password">Password:</label>
-                            <input type="password" id="password"  name="password" placeholder="Password" />
+                            <input type="password" id="password"  name="password" class="password-input" placeholder="Password" />
+                            <span class="password-eye"><i class="ri-eye-line"></i></span>
                         </div>
 
                         <!--confirm password-->
                         <div class="sign-up-input-div required-input-div flex-col">
                             <label for="password2">Password:</label>
-                            <input type="password" id="password2"  name="password2" placeholder="Confirm password" />
+                            <input type="password" id="password2"  name="password2" class="password-input" placeholder="Confirm password" />
+                            <span class="password-eye"><i class="ri-eye-line"></i></span>
                         </div>
 
                         <ul class="input-requirement">
@@ -196,27 +198,37 @@
                             <input class="sign-up-btn back-btn" type="button" value="Back" />
                         </div>
                     </div>
+                </form>
 
-                    <!--4th page or sign up form-->
-                    <div class="sign-up-p sign-up-p4 flex-col">
-                        <!--otp-->
-                        <div class="sign-up-input-div required-input-div flex-col">
-                            <label for="otp">OTP code:</label>
-                            <input type="text" id="otp"  name="otp" placeholder="enter the otp that send to ur email" />
-                        </div>
+                <!--4th page or sign up form-->
+                <div class="sign-up-p sign-up-p4 flex-col">
 
-                        <p class="invalid-msg"></p>
 
-                        <div class="sign-up-btn-div flex-col">
-                            <input class="sign-up-btn submit-btn" type="submit" value="Submit" disabled />
-                        </div>
+                    <div class="sign-up-btn-div flex-col">
+                        <input class="sign-up-btn submit-btn" type="submit" value="Submit" disabled />
+                    </div>
+                </div>
+
+                <!--5th page or sign up form-->
+                <div class="sign-up-p sign-up-p5 flex-col">
+                    <!--otp-->
+                    <div class="sign-up-input-div required-input-div flex-col">
+                        <label for="otp">OTP code:</label>
+                        <input type="text" id="otp"  name="otp" placeholder="enter the otp that send to ur email" />
                     </div>
 
-                    <!--back to home btn-->
-                    <a class="back-to-home-a" href="<%= webpath.getPageUrl("home")%>">Back to home page <i class="ri-arrow-go-back-line"></i></a>
+                    <p class="invalid-msg"></p>
+
+                    <div class="sign-up-btn-div flex-col">
+                        <input class="sign-up-btn submit-btn" type="submit" value="Submit" disabled />
+                    </div>
                 </div>
-            </section>
-        </form>
+
+                <!--back to home btn-->
+                <a class="back-to-home-a" href="<%= webpath.getPageUrl("home")%>">Back to home page <i class="ri-arrow-go-back-line"></i></a>
+            </div>
+        </section>
+
 
         <script src="./js/sign_up/sign_up.js"></script>
     </body>

@@ -31,6 +31,13 @@
     padding: 20px;
 }
 
+.sign-up-section .sign-up-div form {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
 /*logo div*/
 .sign-up-div .logo-div {
     position: absolute;
@@ -64,6 +71,7 @@
     align-items: center;
     max-width: 540px;
     padding: 0 0 40px;
+    user-select: none;
 }
 
 .form-progress-bar .progress-line {
@@ -129,6 +137,10 @@
     display: flex;
 }
 
+.sign-up-p .sign-up-input-div {
+    position: relative;
+}
+
 .sign-up-p .sign-up-input-div label{
     font-size: var(--font-size-s);
     color: var(--color-blue-2);
@@ -173,6 +185,28 @@
 
 .sign-up-p .sign-up-input-div input::placeholder{
     color: var(--color-text-light-1);
+}
+
+.sign-up-p .sign-up-input-div .password-eye {
+    padding: 5px 6px;
+    cursor: pointer;
+    width: fit-content;
+    height: fit-content;
+    position: absolute;
+    top: 40%;
+    right: 10px;
+    font-size: var(--font-size-l);
+    color: var(--color-text-light-1);
+}
+
+.sign-up-p .sign-up-input-div .password-eye:hover {
+    color: var(--color-text-light-3);
+}
+
+.sign-up-p .sign-up-input-div input[type=password]::-ms-reveal,
+.sign-up-p .sign-up-input-div input[type=password]::-ms-clear{
+    /*remove default show/hide password*/
+    display: none;
 }
 
 .sign-up-p .invalid-msg {
@@ -262,7 +296,7 @@
 }
 
 .term-acpt-label a{
-     color: var(--color-blue-3);
+    color: var(--color-blue-3);
 }
 
 .term-acpt-label a:hover{

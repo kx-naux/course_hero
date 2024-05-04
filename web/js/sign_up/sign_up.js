@@ -8,8 +8,10 @@ var nextBtns = document.querySelectorAll("input.next-btn");
 var backBtns = document.querySelectorAll("input.back-btn");
 var inputs = document.querySelectorAll("div.sign-up-p input");
 var selects = document.querySelectorAll("div.sign-up-p select");
-var errorMsgs = document.querySelectorAll("div.sign-up-p p.invalid-msg");
+var blurPasswordInputs = document.querySelectorAll("div.sign-up-p input.password-input");
+var passwordEyes = document.querySelectorAll("div.sign-up-p span.password-eye");
 
+var errorMsgs = document.querySelectorAll("div.sign-up-p p.invalid-msg");
 function showSignUpPage(n) {
 
     formProgress.value = n;
@@ -142,7 +144,7 @@ nextBtns[0].addEventListener('click', () => {
         gender.classList.add("invalid-input");
         return;
     }
-    
+
     // check date null check
     if (!dob.value) {
         // Handle gender not selected
@@ -194,8 +196,8 @@ const startDate = new Date(1900, 0, 1);
 const currentDate = new Date();
 const endDate = new Date(currentDate.getFullYear() - 3, currentDate.getMonth(), currentDate.getDate());
 var dobInput = document.querySelector("input#dob");
-dobInput.setAttribute("min", startDate.toISOString().slice(0,10));
-dobInput.setAttribute("max", endDate.toISOString().slice(0,10));
+dobInput.setAttribute("min", startDate.toISOString().slice(0, 10));
+dobInput.setAttribute("max", endDate.toISOString().slice(0, 10));
 
 // for postal code input field
 document.querySelector("input#postalCode").addEventListener('input', (event) => {
@@ -219,6 +221,26 @@ selects.forEach((select) => {
     select.addEventListener('blur', () => {
         select.classList.remove("invalid-input");
         removeErrorMsg();
+    });
+});
+
+
+// view and hide password
+passwordEyes.forEach((eye) => {
+    eye.addEventListener('click', () => {
+        // Get the input element associated with this eye icon
+        var passwordInput = eye.parentElement.querySelector('input');
+        var eyeIcon = eye.querySelector("i");
+        eyeIcon.classList = "";
+
+        // Toggle the type attribute between "password" and "text"
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            eyeIcon.classList.add("ri-eye-off-line");
+        } else {
+            passwordInput.type = "password";
+            eyeIcon.classList.add("ri-eye-line");
+        }
     });
 });
 
