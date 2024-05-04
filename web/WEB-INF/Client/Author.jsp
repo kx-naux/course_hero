@@ -8,10 +8,10 @@
 
 <jsp:useBean id="authorData" class="JPAEntity.Authors" scope="request" />
 <%List<Courses> authCourses = new ArrayList<Courses>(); %>
-<%authCourses = (List<Courses>)request.getAttribute("authorCourses"); %>
+<%authCourses = (List<Courses>) request.getAttribute("authorCourses"); %>
 <%List<SocialMediaLinks> socialMediaLinks = new ArrayList<SocialMediaLinks>();%>
-<%socialMediaLinks = (List<SocialMediaLinks>)request.getAttribute("socialMediaLinks");%>
-<%long numOfCoursesRec = ((Long)request.getAttribute("numberOfCourses")).longValue();%>
+<%socialMediaLinks = (List<SocialMediaLinks>) request.getAttribute("socialMediaLinks");%>
+<%long numOfCoursesRec = ((Long) request.getAttribute("numberOfCourses")).longValue();%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -22,7 +22,7 @@
         <link type="text/css" href="./css/author.css" rel="stylesheet" >
         <link type="text/css" href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
         <jsp:useBean id="webpath" class="module.WebPath" scope="application" />
-        
+
     </head>
     <body>
         <!--Toast message-->
@@ -57,11 +57,11 @@
 
                     <div class="author-courses flex-col">
 
-                        <h1 class="author-left-div-title">My courses (<%= numOfCoursesRec %>)</h1>
+                        <h1 class="author-left-div-title">My courses (<%= numOfCoursesRec%>)</h1>
 
                         <div class="course-div flex-row">
-                            <% for(Courses course:authCourses){ %>
-                            <div class="course-product" courseID="<%= course.getCourseId() %>" onclick="redirectToProductPage(this)">
+                            <% for (Courses course : authCourses) {%>
+                            <div class="course-product" courseID="<%= course.getCourseId()%>" onclick="redirectToProductPage(this)">
                                 <div class="course-product-card">
                                     <div class="product-card-top">
                                         <img src="./img/course/beginner_excel.jpg" alt="">
@@ -71,28 +71,28 @@
                                         </div>
                                     </div>
                                     <div class="product-card-bottom flex-col">
-                                        <h1 class="course-title"><%= course.getProductId().getProdName() %></h1>
-                                        <p class="course-category"><%= course.getCoursecatId().getCategoryName() %></p>
-                                        
+                                        <h1 class="course-title"><%= course.getProductId().getProdName()%></h1>
+                                        <p class="course-category"><%= course.getCoursecatId().getCategoryName()%></p>
+
                                         <% String authorsStr = ""; %>
-                                        <% for(AuthorContribution authContri: course.getAuthorContributionList()){ 
+                                        <% for (AuthorContribution authContri : course.getAuthorContributionList()) {
                                                 authorsStr = authContri.getAuthorId().getAuthorName() + ", ";
                                             }%>
-                                        <% authorsStr = authorsStr.substring(0, authorsStr.length() - 2); %>
-                                            
+                                        <% authorsStr = authorsStr.substring(0, authorsStr.length() - 2);%>
+
                                         <p class="course-author"><%= authorsStr%></p>
                                         <div class="course-review flex-row">
-                                            <p class="rating-digit"><%= course.getProductId().getAvgRating() %></p>
+                                            <p class="rating-digit"><%= course.getProductId().getAvgRating()%></p>
                                             <i class="ri-star-fill"></i>
                                             <p class="rating-number-field">(<span class="raing-number">2303</span>)</p>
                                         </div>
                                         <div class="course-label flex-row">
-                                            <p><%= course.getLengthHour() %> Hour(s)</p>
-                                            <p><%= course.getCourseLevel() %></p>
+                                            <p><%= course.getLengthHour()%> Hour(s)</p>
+                                            <p><%= course.getCourseLevel()%></p>
                                         </div>
                                         <div class="course-price-field flex-row">
-                                            <p class="course-price">RM <span><%= course.getProductId().getPrice() - course.getProductId().getDiscount()  %></span></p>                                      
-                                            <p class="course-normal-price">RM <span><%= course.getProductId().getPrice() %></span></p>
+                                            <p class="course-price">RM <span><%= course.getProductId().getPrice() - course.getProductId().getDiscount()%></span></p>                                      
+                                            <p class="course-normal-price">RM <span><%= course.getProductId().getPrice()%></span></p>
                                         </div>
                                         <div class="course-tag-field flex-row">
                                             <p class="course-tag tag-orange">Hot Sell</p>
@@ -103,20 +103,20 @@
                             </div>
                             <%}%>
 
-                            
+
 
 
                         </div>
-                        <% if(numOfCoursesRec != 0){ %>
-                        
-                        
+                        <% if (numOfCoursesRec != 0) { %>
+
+
                         <%}%>
                         <form id="authorForm">
                             <!--pagination, 20 course per page-->
                             <%
                                 long currentPage = 1;
                                 long dataPerPage = 4;
-                                long lastPage = ((numOfCoursesRec-1)/dataPerPage) + 1;
+                                long lastPage = ((numOfCoursesRec - 1) / dataPerPage) + 1;
                                 if (request.getParameter("p") != null) {
                                     currentPage = Integer.parseInt(request.getParameter("p"));
                                 }
@@ -163,36 +163,36 @@
                     </div>
 
                     <div class="author-link flex-col">
-                        <%for(SocialMediaLinks link:socialMediaLinks){
-                            if(link.getSocialmediaName().equalsIgnoreCase("LinkedIn")){%>
-                            <a href=<%= link.getDestLink() %> class="author-link-btn"><i class="ri-linkedin-box-fill"></i> LinkedIn</a>
-                            <% socialMediaLinks.remove(link); %>
-                            <%}%>
+                        <%for (SocialMediaLinks link : socialMediaLinks) {
+                                if (link.getSocialmediaName().equalsIgnoreCase("LinkedIn")) {%>
+                        <a href=<%= link.getDestLink()%> class="author-link-btn"><i class="ri-linkedin-box-fill"></i> LinkedIn</a>
+                        <% socialMediaLinks.remove(link); %>
                         <%}%>
-                        
-                        <%for(SocialMediaLinks link:socialMediaLinks){
-                            if(link.getSocialmediaName().equalsIgnoreCase("Youtube")){%>
-                            <a href=<%= link.getDestLink() %> class="author-link-btn"><i class="ri-linkedin-box-fill"></i> Youtube</a>
-                            <% socialMediaLinks.remove(link); %>
-                            <%}%>
                         <%}%>
-                        
-                        <%for(SocialMediaLinks link:socialMediaLinks){
-                            if(link.getSocialmediaName().equalsIgnoreCase("X")){%>
-                            <a href=<%= link.getDestLink() %> class="author-link-btn"><i class="ri-linkedin-box-fill"></i> X</a>
-                            <% socialMediaLinks.remove(link); %>
-                            <%}%>
+
+                        <%for (SocialMediaLinks link : socialMediaLinks) {
+                                if (link.getSocialmediaName().equalsIgnoreCase("Youtube")) {%>
+                        <a href=<%= link.getDestLink()%> class="author-link-btn"><i class="ri-linkedin-box-fill"></i> Youtube</a>
+                        <% socialMediaLinks.remove(link); %>
                         <%}%>
-                        
-                        <%for(SocialMediaLinks link:socialMediaLinks){
-                            if(link.getSocialmediaName().equalsIgnoreCase("Instagram")){%>
-                            <a href=<%= link.getDestLink() %> class="author-link-btn"><i class="ri-linkedin-box-fill"></i> Instagram</a>
-                            <% socialMediaLinks.remove(link); %>
-                            <%}%>
                         <%}%>
-                        
-                        <%for(SocialMediaLinks link:socialMediaLinks){%>
-                            <a href=<%= link.getDestLink() %> class="author-link-btn"><i class="ri-link"></i> <%= link.getSocialmediaName() %></a>
+
+                        <%for (SocialMediaLinks link : socialMediaLinks) {
+                                if (link.getSocialmediaName().equalsIgnoreCase("X")) {%>
+                        <a href=<%= link.getDestLink()%> class="author-link-btn"><i class="ri-linkedin-box-fill"></i> X</a>
+                        <% socialMediaLinks.remove(link); %>
+                        <%}%>
+                        <%}%>
+
+                        <%for (SocialMediaLinks link : socialMediaLinks) {
+                                if (link.getSocialmediaName().equalsIgnoreCase("Instagram")) {%>
+                        <a href=<%= link.getDestLink()%> class="author-link-btn"><i class="ri-linkedin-box-fill"></i> Instagram</a>
+                        <% socialMediaLinks.remove(link); %>
+                        <%}%>
+                        <%}%>
+
+                        <%for (SocialMediaLinks link : socialMediaLinks) {%>
+                        <a href=<%= link.getDestLink()%> class="author-link-btn"><i class="ri-link"></i> <%= link.getSocialmediaName()%></a>
                         <%}%>
                     </div>
 
@@ -202,6 +202,20 @@
         </section>
 
         <script src="./js/author/author.js"></script>
+
+        <!--join as author-->
+        <section class="section welcome-author-section">
+            <div class="welcome-author-div flex-row">
+                <div class="welcome-author-left flex-col">
+                    <img src="./img/author_page/join_author.png" alt="" />
+                </div>
+                <div class="welcome-author-right flex-col">
+                    <h1>Become an author</h1>
+                    <p>Authors from around the world teach millions of learners on Course Hero. We provide the tools and skills to teach what you love.</p>
+                    <a href="#">Start teaching today</a>
+                </div>
+            </div>
+        </section>
 
         <!--Footer import-->
         <%--<%@ include file="./Components/footer_wave.html" %>--%>  

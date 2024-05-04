@@ -26,6 +26,7 @@ public class WebPath {
         pageUrls.put("merchandise", "/merch");
         pageUrls.put("profile", "/profile");
         pageUrls.put("help", "/help");
+        pageUrls.put("promotion", "/promotion");
 
         //admin
         pageUrls.put("dashboard","/admin/dashboard");
