@@ -78,13 +78,13 @@ VALUES
     ('SM0000004', 'Priority Shipping', '1-2 Business Days', 'Priority shipping method for domestic delivery', 'USA, China', 25.00, 'Returns accepted within 30 days, free return shipping.'),
     ('SM0000005', 'Standard Shipping', '5-7 Business Days', 'Standard shipping method for domestic delivery', 'USA, SG', 15.00, 'Returns accepted within 45 days, customer pays return shipping.');
 
-INSERT INTO USERS (USER_ID, ACCOUNT_ID, DOB, ADDRESS_ID, USERTYPE, VALIDITY, DATE_JOINED, GENDER)
+INSERT INTO USERS (USER_ID, ACCOUNT_ID, DISPLAY_NAME, DOB, ADDRESS_ID, USERTYPE, VALIDITY, DATE_JOINED, GENDER)
 VALUES 
-    ('U00000001', 'AC0000001', '1990-05-15', 'BA0000001', 'Customer', '2024-12-31', '2024-04-15 08:30:00', 'Male'),
-    ('U00000002', 'AC0000002', '1985-09-20', 'BA0000002', 'Admin', '2025-12-31', '2024-04-15 09:15:00', 'Female'),
-    ('U00000003', 'AC0000003', '1998-03-10', 'BA0000003', 'Customer', '2023-12-31', '2024-04-15 10:00:00', 'Male'),
-    ('U00000004', 'AC0000004', '1976-11-28', 'BA0000004', 'Customer', '2024-12-31', '2024-04-15 10:45:00', 'Female'),
-    ('U00000005', 'AC0000005', '1995-07-02', 'BA0000005', 'Admin', '2025-12-31', '2024-04-15 11:30:00', 'Male');
+    ('U00000001', 'AC0000001', 'Jackson Wang', '1990-05-15', 'BA0000001', 'Customer', '2024-12-31', '2024-04-15 08:30:00', 'Male'),
+    ('U00000002', 'AC0000002', 'Pentamaster Manager', '1985-09-20', 'BA0000002', 'Admin', '2025-12-31', '2024-04-15 09:15:00', 'Female'),
+    ('U00000003', 'AC0000003', 'Mooiko Starbucks', '1998-03-10', 'BA0000003', 'Customer', '2023-12-31', '2024-04-15 10:00:00', 'Male'),
+    ('U00000004', 'AC0000004', 'MySoft bae', '1976-11-28', 'BA0000004', 'Customer', '2024-12-31', '2024-04-15 10:45:00', 'Female'),
+    ('U00000005', 'AC0000005', 'SEN Tenz', '1995-07-02', 'BA0000005', 'Admin', '2025-12-31', '2024-04-15 11:30:00', 'Male');
 
 INSERT INTO BANKCARDINFO (CARDINFOID, USER_ID, CARDTYPE, CARD_HOLDER_NAME, CARD_NO, EXPIRY_DATE, CVV)
 VALUES 
@@ -111,24 +111,24 @@ VALUES
     ('SL0000005', 'AU0000003', 'YouTube', 'https://www.youtube.com/em.Park'),
     ('SL0000006', 'AU0000005', 'YouTube', 'https://www.youtube.com/SaraKhan');
 
-INSERT INTO PRODUCT (PRODUCT_ID, PRODCAT_ID, PROD_NAME, PRICE, RATE_WEIGHTAGE, AVG_RATING, DISCOUNT, IMAGE_PATH, STATUS) 
+INSERT INTO PRODUCT (PRODUCT_ID, PRODCAT_ID, DESCRIPTION, PROD_NAME, PRICE, RATE_WEIGHTAGE, AVG_RATING, DISCOUNT, IMAGE_PATH, STATUS) 
 VALUES 
-    ('PR0000001', 'PC0000001', 'Algebra Part 1', 1500.0, 5, 4.5, 0.1, 'images/algebraP1.jpg','Active'),
-    ('PR0000002', 'PC0000001', 'Algebra Rocks Hoodie', 800.0, 4, 4.2, 0.05, 'images/algebraHoodie.jpg','Active'),
-    ('PR0000003', 'PC0000002', 'JavaScript', 100.0, 3, 4.0, 0.0, 'images/Javascript.jpg','Active'),
-    ('PR0000004', 'PC0000002', 'C++', 50.0, 2, 3.8, 0.0, 'images/c++.jpg','Active'),
-    ('PR0000005', 'PC0000003', 'I Love Bio Tshirt', 30.0, 1, 4.1, 0.0, 'images/bioShirt.jpg','Active'),
-    ('PR0000006', 'PC0000003', 'I Love Bio Cup', 25.0, 1, 2.0, 2, 'image/bioCup.jpg','Active'),
-    ('PR0000007', 'PC0000002', 'Java Hoodie', 99.0, 2, 4.0, 1.5, 'image/javaHoodie.jpg','Active'),
-    ('PR0000008', 'PC0000005', 'Physics Cap', 60.0, 3, 3.0, 0.0, 'image/physicsCap.jpg','Active');
+    ('PR0000001', 'PC0000001', 'Learn Algebra Now !!! fillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfill', 'Algebra Part 1', 1500.0, 5, 4.5, 0.1, 'images/algebraP1.jpg','Active'),
+    ('PR0000002', 'PC0000001', 'Algebra Rocks Hoodie !!! fillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfill', 'Algebra Rocks Hoodie', 800.0, 4, 4.2, 0.05, 'images/algebraHoodie.jpg','Active'),
+    ('PR0000003', 'PC0000002', 'JavaScript!!! fillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfill', 'JavaScript', 100.0, 3, 4.0, 0.0, 'images/Javascript.jpg','Active'),
+    ('PR0000004', 'PC0000002', 'Learn C+ Now !!! fillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfill', 'C++', 50.0, 2, 3.8, 0.0, 'images/c++.jpg','Active'),
+    ('PR0000005', 'PC0000003', 'I Love Bio Tshirt !!! fillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfill', 'I Love Bio Tshirt', 30.0, 1, 4.1, 0.0, 'images/bioShirt.jpg','Active'),
+    ('PR0000006', 'PC0000003', 'I Love Bio Cup !!! fillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfill', 'I Love Bio Cup', 25.0, 1, 2.0, 2, 'image/bioCup.jpg','Active'),
+    ('PR0000007', 'PC0000002', 'Java Hoodie !!! fillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfill', 'Java Hoodie', 99.0, 2, 4.0, 1.5, 'image/javaHoodie.jpg','Active'),
+    ('PR0000008', 'PC0000005', 'Buy Physics Cap Now !!! fillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfill', 'Physics Cap', 60.0, 3, 3.0, 0.0, 'image/physicsCap.jpg','Active');
 
-INSERT INTO MERCHANDISE (MERCH_ID, PRODUCT_ID, DIMENSION_H_CM, DIMENSION_W_CM, DIMENSION_L_CM, WEIGHT_KG, STOCK_BALANCE)
+INSERT INTO MERCHANDISE (MERCH_ID, PRODUCT_ID, MERCHCAT_ID,DIMENSION_H_CM, DIMENSION_W_CM, DIMENSION_L_CM, WEIGHT_KG, STOCK_BALANCE)
 VALUES 
-    ('M00000001', 'PR0000001', 10.5, 5.2, 15.3, 0.75, 100),
-    ('M00000002', 'PR0000003', 20.0, 12.5, 30.0, 1.25, 150),
-    ('M00000003', 'PR0000006', 15.0, 8.0, 25.0, 1.0, 120),
-    ('M00000004', 'PR0000007', 12.0, 6.5, 20.0, 0.9, 80),
-    ('M00000005', 'PR0000008', 18.0, 10.0, 28.0, 1.1, 200);
+    ('M00000001', 'PR0000001','MC0000001', 10.5, 5.2, 15.3, 0.75, 100),
+    ('M00000002', 'PR0000003','MC0000001', 20.0, 12.5, 30.0, 1.25, 150),
+    ('M00000003', 'PR0000006','MC0000002', 15.0, 8.0, 25.0, 1.0, 120),
+    ('M00000004', 'PR0000007','MC0000003', 12.0, 6.5, 20.0, 0.9, 80),
+    ('M00000005', 'PR0000008','MC0000001', 18.0, 10.0, 28.0, 1.1, 200);
 
 INSERT INTO COURSES (COURSE_ID, PRODUCT_ID, TOOLS_USED, COURSECAT_ID, LEARNING_OBJ,LENGTH_HOUR,COURSE_LEVEL,DATE_ADDED)
 VALUES 
@@ -177,11 +177,6 @@ VALUES
     ('R00000003', 'PR0000003', 'U00000001', 3, 'Average quality.', '2024-04-17 09:15:00', 3),
     ('R00000004', 'PR0000004', 'U00000003', 2, 'Poor packaging.', '2024-04-18 14:20:00', 1),
     ('R00000005', 'PR0000005', 'U00000005', 5, 'Outstanding experience!', '2024-04-19 13:00:00', 11);
-
-
-
-
-
 
 INSERT INTO SHIPPING (SHIPPING_ID, ADDRESS_ID, SHIPPING_DATE, EXPECTED_DELIVERY_DATE, SHIPPING_COST, TTL_WEIGHT_KG, DIMENSTION_CM_HxWxL, SHIPPING_NOTES)
 VALUES 

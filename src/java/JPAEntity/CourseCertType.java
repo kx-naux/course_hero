@@ -153,10 +153,5 @@ public class CourseCertType implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    
-
-   
-    
+    }    
 }

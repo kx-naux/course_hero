@@ -47,6 +47,11 @@ public class Users implements Serializable {
 
     @Basic(optional = false)
     @NotNull
+    @Size(min = 1, max = 30)
+    @Column(name = "DISPLAY_NAME")
+    private String displayName;
+    @Basic(optional = false)
+    @NotNull
     @Column(name = "DOB")
     @Temporal(TemporalType.DATE)
     private Date dob;
@@ -65,6 +70,8 @@ public class Users implements Serializable {
     @Size(min = 1, max = 20)
     @Column(name = "GENDER")
     private String gender;
+
+    
     @JoinTable(name = "PREFERRED_COURSE", joinColumns = {
         @JoinColumn(name = "USER_ID", referencedColumnName = "USER_ID")}, inverseJoinColumns = {
         @JoinColumn(name = "COURSECAT_ID", referencedColumnName = "COURSECAT_ID")})
@@ -289,13 +296,14 @@ public class Users implements Serializable {
         this.ratingsList = ratingsList;
     }
 
-    public Date getDob() {
-        return dob;
+    public String getDisplayName() {
+        return displayName;
     }
 
-    public void setDob(Date dob) {
-        this.dob = dob;
+    public void setDisplayName(String displayName) {
+        this.displayName = displayName;
     }
+
 
     public String getUsertype() {
         return usertype;
@@ -303,6 +311,14 @@ public class Users implements Serializable {
 
     public void setUsertype(String usertype) {
         this.usertype = usertype;
+    }
+
+    public Date getDob() {
+        return dob;
+    }
+
+    public void setDob(Date dob) {
+        this.dob = dob;
     }
 
     public String getGender() {

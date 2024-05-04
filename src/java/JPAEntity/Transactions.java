@@ -248,7 +248,7 @@ public class Transactions implements Serializable {
     public void setSubtotal(double subtotal) {
         this.subtotal = subtotal;
     }
-
+    
     public double getTax() {
         return tax;
     }
