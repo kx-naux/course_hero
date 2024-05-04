@@ -26,7 +26,7 @@
     justify-content: center;
     align-items: center;
     background-color: var(--color-white);
-    gap: 25px;
+    gap: 30px;
     padding: 20px;
 }
 
@@ -62,7 +62,7 @@
     justify-content: center;
     align-items: center;
     max-width: 480px;
-    padding: 10px 0 40px;
+    padding: 0 0 40px;
 }
 
 .form-progress-bar .progress-line {
@@ -116,6 +116,69 @@
 }
 
 /*sign up form input*/
+.sign-up-p {
+    width: 100%;
+    max-width: 600px;
+    gap: 15px;
+}
+
+.sign-up-p .sign-up-input-div label{
+    font-size: var(--font-size-s);
+    color: var(--color-blue-2);
+    font-weight: 500;
+    position: relative;
+    top: 10px;
+    margin: 0 0 0 7px;
+    padding: 0 5px;
+    background: var(--color-white);
+    width: fit-content;
+}
+
+.sign-up-p .sign-up-input-div.required-input-div label::after{
+    content: "*";
+    padding-left: 5px;
+    color: var(--color-text-error);
+}
+
+.sign-up-p .sign-up-input-div select,
+.sign-up-p .sign-up-input-div input{
+    padding: 15px 14px;
+    font-size: var(--font-size-xm);
+    border: 1px solid var(--color-light-grey-3);
+    border-radius: 4px;
+    background: var(--color-white);
+    transition: 0.2s all ease-in-out;
+}
+
+.sign-up-p .sign-up-input-div input#address1 {
+    margin-bottom: 8px;
+}
+
+.sign-up-p .sign-up-input-div select:focus,
+.sign-up-p .sign-up-input-div input:focus{
+    border: 1px solid var(--color-text-light-2);
+}
+
+.sign-up-p .sign-up-input-div input::placeholder{
+    color: var(--color-text-light-1);
+}
+
+.sign-up-p .invalid-msg {
+    padding: 10px 0;
+    text-align: center;
+    color: var(--color-text-error);
+}
+
+.sign-up-p .sign-up-btn-div {
+    align-items: center;
+    gap: 10px;
+}
+
+.sign-up-p .sign-up-btn {
+    width: 100%;
+    max-width: 400px;
+    height: 45px;
+}
 
 /*back to home btn*/
 .back-to-home-a {

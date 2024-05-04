@@ -63,13 +63,13 @@
                         <!--username-->
                         <div class="sign-up-input-div required-input-div flex-col">
                             <label for="username">Username:</label>
-                            <input type="text" id="username"  name="username" placeholder="only characters, digits, and the special symbols (!, #, _, .)" maxlength="25" />
+                            <input type="text" id="username"  name="username" placeholder="only characters, digits, and the special symbols (!, #, _, .)" maxlength="25" autocomplete="off" />
                         </div>
 
                         <!--display name-->
                         <div class="sign-up-input-div required-input-div flex-col">
                             <label for="name">Display Name:</label>
-                            <input type="text" id="name"  name="name" placeholder="name" maxlength="30" />
+                            <input type="text" id="name"  name="name" placeholder="name" maxlength="30" autocomplete="off"  />
                         </div>
 
                         <!--gender-->
@@ -82,9 +82,11 @@
                             </select>
                         </div>
 
+                         <p class="invalid-msg"></p>
+                        
                         <div class="sign-up-btn-div flex-col">
                             <input class="sign-up-btn next-btn" type="button" value="Next" />
-                            <input class="sign-up-btn back-btn" type="button" value="Sign In" />
+                            <P class="sign-in">Already have account? <a href="<%= webpath.getPageUrl("login")%>">Sign in now</a></p>
                         </div>
                     </div>
 
@@ -120,6 +122,8 @@
                             <label for="state">Country:</label>
                             <input type="text" id="country"  name="country" placeholder="country name" maxlength="40" />
                         </div>
+                        
+                        <p class="invalid-msg"></p>
 
                         <div class="sign-up-btn-div flex-col">
                             <input class="sign-up-btn next-btn" type="button" value="Next" />
@@ -149,10 +153,12 @@
                             <li><i class="ri-close-circle-line"></i> Include at least 1 symbol</li>
                             <li><i class="ri-close-circle-line"></i> Have a minimum length of 8</li>
                         </ul>
+                        
+                        <p class="invalid-msg"></p>
 
                         <div class="sign-up-btn-div flex-col">
                             <label for="termAgree"><input id="termAgree" name="termAgree" type="checkbox" />I agree to the <a>term & condition</a></label>
-                            <input class="sign-up-btn submit-btn" type="submit" value="Submit" />
+                            <input class="sign-up-btn submit-btn" type="submit" value="Submit" disabled />
                             <input class="sign-up-btn back-btn" type="button" value="Back" />
                         </div>
                     </div>
