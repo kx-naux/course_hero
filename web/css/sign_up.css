@@ -24,8 +24,9 @@
     border-radius: 4px;
     box-shadow: var(--box-shadow-1);
     justify-content: center;
+    align-items: center;
     background-color: var(--color-white);
-    gap: 10px;
+    gap: 25px;
     padding: 20px;
 }
 
@@ -43,6 +44,78 @@
 }
 
 /*title div*/
+.sign-up-title-div {
+    margin-top: 50px;
+}
+
+.sign-up-title-div h1{
+    color: var(--color-blue-1);
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+/*step progress bar*/
+.form-progress-bar {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    max-width: 480px;
+    padding: 10px 0 40px;
+}
+
+.form-progress-bar .progress-line {
+    height: 2px;
+    display: flex;
+    flex: 1 1 80px;
+    background-color: var(--color-light-grey-3);
+}
+
+.form-progress-bar .progress-point {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 1px solid var(--color-light-grey-3);
+    color: var(--color-text-light-1);
+    font-size: var(--font-size-xm);
+    font-weight: 400;
+}
+
+.form-progress-bar .progress-point span {
+    position: relative;
+}
+
+.form-progress-bar .progress-point p {
+    position: absolute;
+    top: 42px;
+    color: var(--color-text-light-1);
+    font-size: var(--font-size-s);
+    font-weight: 400;
+    width: 80px;
+    text-align: center;
+}
+
+.form-progress-bar .progress-point.current {
+    border: 2px solid var(--color-blue-3);
+}
+
+.form-progress-bar .progress-line.complete {
+    height: 3px;
+    background-color: var(--color-blue-3);
+}
+
+.form-progress-bar .progress-point.complete {
+    border: 2px solid var(--color-blue-3);
+    background-color: var(--color-blue-3);
+    color: var(--color-white);
+}
+
+/*sign up form input*/
 
 /*back to home btn*/
 .back-to-home-a {

@@ -69,7 +69,7 @@
                         <!--display name-->
                         <div class="sign-up-input-div required-input-div flex-col">
                             <label for="name">Display Name:</label>
-                            <input type="text" id="name"  name="name" placeholder="name" maxlength="50" />
+                            <input type="text" id="name"  name="name" placeholder="name" maxlength="30" />
                         </div>
 
                         <!--gender-->
