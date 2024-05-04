@@ -198,7 +198,6 @@ public class Promotions implements Serializable {
         return "JPAEntity.Promotions[ promotionId=" + promotionId + " ]";
     }
 
-
     public double getAmount() {
         return amount;
     }
@@ -214,5 +213,4 @@ public class Promotions implements Serializable {
     public void setStatus(String status) {
         this.status = status;
     }
-
 }

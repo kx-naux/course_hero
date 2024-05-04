@@ -127,6 +127,22 @@ public class Messages implements Serializable {
     public void setUserId(Users userId) {
         this.userId = userId;
     }
+    
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public String getDestination() {
+        return destination;
+    }
+
+    public void setDestination(String destination) {
+        this.destination = destination;
+    }  
 
     @Override
     public int hashCode() {
@@ -152,20 +168,4 @@ public class Messages implements Serializable {
     public String toString() {
         return "JPAEntity.Messages[ messageId=" + messageId + " ]";
     }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public String getDestination() {
-        return destination;
-    }
-
-    public void setDestination(String destination) {
-        this.destination = destination;
-    }  
 }

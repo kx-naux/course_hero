@@ -121,6 +121,15 @@ public class CourseCertType implements Serializable {
     public void setCourseId(Courses courseId) {
         this.courseId = courseId;
     }
+    
+    
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }   
 
     @Override
     public int hashCode() {
@@ -146,12 +155,7 @@ public class CourseCertType implements Serializable {
     public String toString() {
         return "JPAEntity.CourseCertType[ certtypeId=" + certtypeId + " ]";
     }
+ 
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }    
+   
 }

@@ -80,6 +80,15 @@ public class ProductCategory implements Serializable {
     public void setCategoryName(String categoryName) {
         this.categoryName = categoryName;
     }
+    
+    
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
 
     @XmlTransient
@@ -116,13 +125,5 @@ public class ProductCategory implements Serializable {
         return "JPAEntity.ProductCategory[ prodcatId=" + prodcatId + " ]";
     }
 
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
     
 }

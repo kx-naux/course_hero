@@ -69,6 +69,7 @@ public class Authors implements Serializable {
     @Basic(optional = false)
     @NotNull()
     @Column(name = "DATE_JOINED")
+    
     @Temporal(TemporalType.DATE)
     private Date dateJoined;
     @Basic(optional = false)
@@ -194,6 +195,10 @@ public class Authors implements Serializable {
         return "JPAEntity.Authors[ authorId=" + authorId + " ]";
     }
     
+    
+    
+    
+
     public String getNationality() {
         return nationality;
     }
@@ -210,6 +215,8 @@ public class Authors implements Serializable {
         this.institution = institution;
     }
 
+    
+
     public String getBiography() {
         return biography;
     }
@@ -217,6 +224,8 @@ public class Authors implements Serializable {
     public void setBiography(String biography) {
         this.biography = biography;
     }
+
+    
 
     public String getWebsite() {
         return website;

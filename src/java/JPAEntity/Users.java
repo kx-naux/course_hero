@@ -129,6 +129,16 @@ public class Users implements Serializable {
         this.dateJoined = dateJoined;
         this.gender = gender;
     }
+    
+    public Users(String displayName ,Date dob, String usertype, Date dateJoined, String gender, Accounts account, BillingAddress billAddress) {
+        this.displayName = displayName;
+        this.dob = dob;
+        this.usertype = usertype;
+        this.dateJoined = dateJoined;
+        this.gender = gender;
+        this.accountId = account;
+        this.addressId = billAddress;
+    }
 
     public String getUserId() {
         return userId;
@@ -136,6 +146,10 @@ public class Users implements Serializable {
 
     public void setUserId(String userId) {
         this.userId = userId;
+    }
+    
+    public void setUserId(long count){
+        this.userId = String.format("U%08d", count);
     }
 
 
@@ -305,13 +319,6 @@ public class Users implements Serializable {
     }
 
 
-    public String getUsertype() {
-        return usertype;
-    }
-
-    public void setUsertype(String usertype) {
-        this.usertype = usertype;
-    }
 
     public Date getDob() {
         return dob;
@@ -319,6 +326,14 @@ public class Users implements Serializable {
 
     public void setDob(Date dob) {
         this.dob = dob;
+    }
+
+    public String getUsertype() {
+        return usertype;
+    }
+
+    public void setUsertype(String usertype) {
+        this.usertype = usertype;
     }
 
     public String getGender() {

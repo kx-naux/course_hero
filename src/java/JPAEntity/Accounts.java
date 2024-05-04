@@ -29,12 +29,14 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Accounts.findBySaltedpassword", query = "SELECT a FROM Accounts a WHERE a.saltedpassword = :saltedpassword"),
     @NamedQuery(name = "Accounts.findBySalt", query = "SELECT a FROM Accounts a WHERE a.salt = :salt")})
 public class Accounts implements Serializable {
+    
 
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 25)
     @Column(name = "USERNAME")
     private String username;
+    // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
     // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
     // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
     // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
@@ -55,7 +57,7 @@ public class Accounts implements Serializable {
     private String saltedpassword;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 20)
+    @Size(min = 1, max = 64)
     @Column(name = "SALT")
     private String salt;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "accountId")
@@ -83,6 +85,11 @@ public class Accounts implements Serializable {
         this.saltedpassword = saltedpassword;
         this.salt = salt;
     }
+    
+    public Accounts(String username, String email){
+        this.username = username;
+        this.email = email;
+    }
 
     public String getAccountId() {
         return accountId;
@@ -91,7 +98,20 @@ public class Accounts implements Serializable {
     public void setAccountId(String accountId) {
         this.accountId = accountId;
     }
+    
+    
+    public void setAccountId(long count){
+        this.accountId = String.format("AC%07d", count);
+    }
 
+    public void setCustomSalt(){
+        this.salt = generateSaltInStr();
+    }
+    
+    public void setHashedPassword(String password) throws NoSuchAlgorithmException{
+        this.salt = generateSaltInStr();
+        this.saltedpassword = hashPassword(password,this.salt);
+    }
     
     private String generateSaltInStr() {
         SecureRandom secureRandom = new SecureRandom();
