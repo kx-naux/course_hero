@@ -1,6 +1,7 @@
 @import url('./root.css');
 
 .sign-up-section {
+    min-height: 100vh;
     height: 100%;
     width: 100%;
     justify-content: center;
@@ -117,9 +118,15 @@
 
 /*sign up form input*/
 .sign-up-p {
+    display: none;
     width: 100%;
     max-width: 600px;
     gap: 15px;
+    padding: 10px 0 20px;
+}
+
+.sign-up-p.active {
+    display: flex;
 }
 
 .sign-up-p .sign-up-input-div label{
@@ -150,6 +157,11 @@
     transition: 0.2s all ease-in-out;
 }
 
+.sign-up-p .sign-up-input-div input.invalid-input,
+.sign-up-p .sign-up-input-div select.invalid-input{
+    border: 1px solid var(--color-text-error);
+}
+
 .sign-up-p .sign-up-input-div input#address1 {
     margin-bottom: 8px;
 }
@@ -178,7 +190,86 @@
     width: 100%;
     max-width: 400px;
     height: 45px;
+    font-size: var(--font-size-xm);
+    font-weight: 600;
+    color: var(--color-text-light-2);
+    border: 1px solid var(--color-text-light-3);
+    background-color: var(--color-transparent);
+    transition: 0.3s all ease-in-out;
+    cursor: pointer;
 }
+
+.sign-up-p .sign-up-btn:hover {
+    background-color: var(--color-light-grey-2);
+}
+
+.sign-up-p .sign-up-btn.next-btn,
+.sign-up-p .sign-up-btn.submit-btn{
+    color: var(--color-white);
+    border: 1px solid var(--color-blue-2);
+    background-color: var(--color-blue-2);
+}
+
+.sign-up-p .sign-up-btn.next-btn:hover,
+.sign-up-p .sign-up-btn.submit-btn:hover{
+    border: 1px solid var(--color-blue-3);
+    background-color: var(--color-blue-3);
+}
+
+.sign-up-p .sign-up-btn.submit-btn:disabled{
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.sign-in-link {
+    font-size: var(--font-size-s);
+    font-weight: 400;
+    color: var(--color-text-light-2);
+}
+
+.sign-in-link a{
+    color: var(--color-blue-3);
+}
+
+.sign-in-link a:hover{
+    text-decoration: underline;
+}
+
+.input-requirement {
+    list-style: none;
+    width: fit-content;
+    align-self: center;
+}
+
+.input-requirement li{
+    font-size: var(--font-size-s);
+    font-weight: 400;
+    color: var(--color-text-light-2);
+}
+
+.input-requirement li:has(i.ri-checkbox-circle-fill){
+    color: var(--toast-color-success);
+}
+
+.term-acpt-label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    font-size: var(--font-size-s);
+    font-weight: 400;
+    color: var(--color-text-light-2);
+    user-select: none;
+}
+
+.term-acpt-label a{
+     color: var(--color-blue-3);
+}
+
+.term-acpt-label a:hover{
+    text-decoration: underline;
+}
+
 
 /*back to home btn*/
 .back-to-home-a {

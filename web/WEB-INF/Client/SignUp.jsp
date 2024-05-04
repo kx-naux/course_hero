@@ -86,7 +86,7 @@
                         
                         <div class="sign-up-btn-div flex-col">
                             <input class="sign-up-btn next-btn" type="button" value="Next" />
-                            <P class="sign-in">Already have account? <a href="<%= webpath.getPageUrl("login")%>">Sign in now</a></p>
+                            <P class="sign-in-link">Already have account? <a href="<%= webpath.getPageUrl("login")%>">Sign in now</a></p>
                         </div>
                     </div>
 
@@ -157,7 +157,7 @@
                         <p class="invalid-msg"></p>
 
                         <div class="sign-up-btn-div flex-col">
-                            <label for="termAgree"><input id="termAgree" name="termAgree" type="checkbox" />I agree to the <a>term & condition</a></label>
+                            <label for="termAgree" class="term-acpt-label"><input id="termAgree" name="termAgree" type="checkbox" />I agree to the <a>term & condition</a></label>
                             <input class="sign-up-btn submit-btn" type="submit" value="Submit" disabled />
                             <input class="sign-up-btn back-btn" type="button" value="Back" />
                         </div>
