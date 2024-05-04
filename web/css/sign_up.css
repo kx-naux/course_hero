@@ -176,7 +176,6 @@
 }
 
 .sign-up-p .invalid-msg {
-    padding: 10px 0;
     text-align: center;
     color: var(--color-text-error);
 }

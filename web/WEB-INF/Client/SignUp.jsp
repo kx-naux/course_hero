@@ -28,7 +28,7 @@
 
                     <!--hidden value for step count-->
                     <input type="number" min="1" max="4" id="formProgress" value="1" hidden />
-                    
+
                     <!--insert error message here if any-->
                     <input type="text"  id="errorInput" value="" hidden />
                     <span hidden id="errorMsg"></span>
@@ -86,8 +86,8 @@
                             </select>
                         </div>
 
-                         <p class="invalid-msg"></p>
-                        
+                        <p class="invalid-msg"></p>
+
                         <div class="sign-up-btn-div flex-col">
                             <input class="sign-up-btn next-btn" type="button" value="Next" />
                             <P class="sign-in-link">Already have account? <a href="<%= webpath.getPageUrl("login")%>">Sign in now</a></p>
@@ -126,7 +126,7 @@
                             <label for="state">Country:</label>
                             <input type="text" id="country"  name="country" placeholder="country name" maxlength="40" />
                         </div>
-                        
+
                         <p class="invalid-msg"></p>
 
                         <div class="sign-up-btn-div flex-col">
@@ -157,7 +157,7 @@
                             <li><i class="ri-close-circle-line"></i> Include at least 1 symbol</li>
                             <li><i class="ri-close-circle-line"></i> Have a minimum length of 8</li>
                         </ul>
-                        
+
                         <p class="invalid-msg"></p>
 
                         <div class="sign-up-btn-div flex-col">

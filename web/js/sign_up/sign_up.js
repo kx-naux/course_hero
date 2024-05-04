@@ -8,7 +8,7 @@ var nextBtns = document.querySelectorAll("input.next-btn");
 var backBtns = document.querySelectorAll("input.back-btn");
 var inputs = document.querySelectorAll("div.sign-up-p input");
 var selects = document.querySelectorAll("div.sign-up-p select");
-var errorMsgs = document.querySelectorAll("p.invalid-msg");
+var errorMsgs = document.querySelectorAll("div.sign-up-p p.invalid-msg");
 
 function showSignUpPage(n) {
 
@@ -68,8 +68,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
 // set error msg
 function showErrorMsg(msg) {
-    errorMsgs.forEach(msgBox => {
-        msgBox.innerText = msg;
+    errorMsgs.forEach(errorMsg => {
+        errorMsg.innerText = msg;
     });
 }
 
@@ -81,15 +81,14 @@ function removeErrorMsg() {
 
 // next button event handler
 nextBtns[0].addEventListener('click', () => {
-
     var email = document.querySelector("input#email");
     var username = document.querySelector("input#username");
     var name = document.querySelector("input#name");
-    var gender = document.querySelector("input#gender");
+    var gender = document.querySelector("select#gender");
 
     // Check if email input is not null and matches the regex pattern
     email.value = email.value.trim();
-    if (email === "") {
+    if (email.value === "") {
         // Handle empty email
         showErrorMsg("Please enter email address");
         email.classList.add("invalid-input");
@@ -100,6 +99,46 @@ nextBtns[0].addEventListener('click', () => {
         // Handle invalid email format
         showErrorMsg("Invalid email address");
         email.classList.add("invalid-input");
+        return;
+    }
+
+    // username null check and format check
+    username.value = username.value.trim();
+    if (username.value === "") {
+        // Handle empty email
+        showErrorMsg("Please enter username");
+        username.classList.add("invalid-input");
+        return;
+    }
+    const usernameRegex = /^[a-zA-Z0-9!#_]{8,}$/;
+    if (!usernameRegex.test(username.value)) {
+        // Handle invalid username format
+        showErrorMsg("Invalid username. Username must contain only letters, digits, or the following special symbols: !, #, _ and have a minimum length of 8 characters.");
+        username.classList.add("invalid-input");
+        return;
+    }
+
+    // check name null check and format check
+    name.value = name.value.trim();
+    if (name.value === "") {
+        // Handle empty email
+        showErrorMsg("Please enter name");
+        name.classList.add("invalid-input");
+        return;
+    }
+    const nameRegex = /^[a-zA-Z'-]+$/;
+    if (!nameRegex.test(name.value)) {
+        // Handle invalid name format
+        showErrorMsg("Invalid name. Name must contain only letters, apostrophes, or hyphens.");
+        name.classList.add("invalid-input");
+        return;
+    }
+
+    // gender null check
+    if (gender.value === "" || gender.value === "Select gender") {
+        // Handle gender not selected
+        showErrorMsg("Please select gender");
+        gender.classList.add("invalid-input");
         return;
     }
 
@@ -120,18 +159,40 @@ backBtns.forEach(btn => {
 
 // on submit validation check 
 
-// force input policy for certain input field
+// For the username input field
+document.querySelector("input#username").addEventListener('input', (event) => {
+    const inputValue = event.target.value;
+    const regex = /^[a-zA-Z0-9!#_.]*$/; // Regular expression to allow only characters, digits, and specified special symbols
+
+    if (!regex.test(inputValue)) {
+        event.target.value = inputValue.slice(0, -1); // Remove the last character if it doesn't match the criteria
+    }
+});
+
+// For the name input field
+document.querySelector("input#name").addEventListener('input', (event) => {
+    let inputValue = event.target.value;
+    const regex = /^[a-zA-Z' ,\-]*$/; // Regular expression to allow only characters, single quotes, commas, and hyphens
+
+    if (!regex.test(inputValue)) {
+        event.target.value = inputValue.slice(0, -1); // Remove the last character if it doesn't match the criteria
+    } else {
+        // Convert the input to title case
+        inputValue = inputValue.toLowerCase().replace(/\b\w/g, (char) => char.toUpperCase());
+        event.target.value = inputValue;
+    }
+});
 
 // input and select remove invalid while onclick
 inputs.forEach((input) => {
-    input.addEventListener('click', () => {
+    input.addEventListener('blur', () => {
         input.classList.remove("invalid-input");
         removeErrorMsg();
     });
 });
 
 selects.forEach((select) => {
-    select.addEventListener('click', () => {
+    select.addEventListener('blur', () => {
         select.classList.remove("invalid-input");
         removeErrorMsg();
     });
