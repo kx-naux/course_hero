@@ -1,12 +1,14 @@
-const signUpPages = document.querySelectorAll("div.sign-up-p");
-const formProgress = document.querySelector("input#formProgress");
-const progressPoints = document.querySelectorAll("div.progress-point");
-const progressLines = document.querySelectorAll("hr.progress-line");
-const nextBtns = document.querySelectorAll("input.next-btn");
-const backBtns = document.querySelectorAll("input.back-btn");
-const inputs = document.querySelectorAll("div.sign-up-p input");
-const selects = document.querySelectorAll("div.sign-up-p select");
-const errorMsgs = document.querySelectorAll("p.invalid-msg");
+var signUpPages = document.querySelectorAll("div.sign-up-p");
+var formProgress = document.querySelector("input#formProgress");
+var errorField = document.querySelector("input#errorInput");
+var errorMsg = document.querySelector("span#errorMsg");
+var progressPoints = document.querySelectorAll("div.progress-point");
+var progressLines = document.querySelectorAll("hr.progress-line");
+var nextBtns = document.querySelectorAll("input.next-btn");
+var backBtns = document.querySelectorAll("input.back-btn");
+var inputs = document.querySelectorAll("div.sign-up-p input");
+var selects = document.querySelectorAll("div.sign-up-p select");
+var errorMsgs = document.querySelectorAll("p.invalid-msg");
 
 function showSignUpPage(n) {
 
@@ -50,6 +52,18 @@ function showSignUpPage(n) {
 // document on load update the progress bar
 document.addEventListener("DOMContentLoaded", (event) => {
     showSignUpPage(formProgress.value);
+
+    if (errorField.value !== "") {
+        if (errorField.value !== "gender") {
+            document.querySelector("div.sign-up-p input#" + errorField.value).classList.add("invalid-input");
+        } else {
+            document.querySelector("div.sign-up-p select#" + errorField.value).classList.add("invalid-input");
+        }
+    }
+
+    if (errorMsg.innerText !== "") {
+        showErrorMsg(errorMsg.innerText);
+    }
 });
 
 // set error msg
@@ -75,15 +89,17 @@ nextBtns[0].addEventListener('click', () => {
 
     // Check if email input is not null and matches the regex pattern
     email.value = email.value.trim();
-    if (email === '') {
+    if (email === "") {
         // Handle empty email
-        showErrorMsg("Enter email address");
+        showErrorMsg("Please enter email address");
+        email.classList.add("invalid-input");
         return;
     }
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email.value)) {
         // Handle invalid email format
-        showErrorMsg("invalid email address");
+        showErrorMsg("Invalid email address");
+        email.classList.add("invalid-input");
         return;
     }
 

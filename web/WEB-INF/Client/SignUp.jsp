@@ -28,6 +28,10 @@
 
                     <!--hidden value for step count-->
                     <input type="number" min="1" max="4" id="formProgress" value="1" hidden />
+                    
+                    <!--insert error message here if any-->
+                    <input type="text"  id="errorInput" value="" hidden />
+                    <span hidden id="errorMsg"></span>
 
                     <!--step progress bar-->
                     <div class="form-progress-bar flex-row">
