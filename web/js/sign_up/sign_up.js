@@ -317,4 +317,73 @@ passwordInput.addEventListener('input', (event) => {
     updateRequirementIcons(event.target.value);
 });
 
+// otp field
+function handleOTPInput(inputElement) {
+    const maxLength = parseInt(inputElement.getAttribute('maxlength'));
+    let enteredValue = inputElement.value;
 
+    // Remove non-digit characters
+    enteredValue = enteredValue.replace(/\D/g, '');
+
+    // Limit entered value to maximum length
+    enteredValue = enteredValue.slice(0, maxLength);
+
+    inputElement.value = enteredValue;
+
+    if (enteredValue.length >= maxLength) {
+        // If current input is at max length, focus on the next input
+        const nextInput = inputElement.nextElementSibling;
+        if (nextInput) {
+            nextInput.focus();
+        }
+
+        // Check if all OTP input fields are filled
+        const allInputsFilled = Array.from(document.querySelectorAll('.otp')).every(input => input.value.length === maxLength);
+
+        // Enable submit button if all inputs are filled
+        if (allInputsFilled) {
+            document.querySelector('div.otp-submit-div .submit-btn').disabled = false;
+        }
+    } else {
+        // If any input field is not filled, disable the submit button
+        document.querySelector('div.otp-submit-div .submit-btn').disabled = true;
+    }
+}
+
+// Function to handle backspace key press
+function handleBackspace(inputElement) {
+    const previousInput = inputElement.previousElementSibling;
+    if (previousInput && inputElement.value === '') {
+        // If backspace is pressed and the current input is empty, focus on the previous input
+        previousInput.focus();
+    }
+}
+
+// Add event listeners to OTP input fields
+document.querySelectorAll('.otp').forEach(input => {
+    input.addEventListener('input', function () {
+        handleOTPInput(this);
+    });
+
+    input.addEventListener('keydown', function (event) {
+        if (event.key === 'Backspace') {
+            handleBackspace(this);
+        }
+    });
+});
+
+// otp onsubmit
+// Function to compile OTP code
+function compileOTPCode(event) {
+    const otpInputs = document.querySelectorAll('.otp');
+    let otpValue = '';
+
+    // Concatenate values of all OTP input fields
+    otpInputs.forEach(input => {
+        otpValue += input.value;
+    });
+
+    // Store compiled OTP value into hidden input field
+    const otpHiddenInput = document.getElementById('otp');
+    otpHiddenInput.value = otpValue;
+}

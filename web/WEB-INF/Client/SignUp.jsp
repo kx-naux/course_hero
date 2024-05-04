@@ -4,7 +4,7 @@
 <% String errMsg = (String) request.getAttribute("errMsg"); %>
 <jsp:useBean id="loginFormData" class="entity.LoginFormData" scope="request"/>
 <% if (pageNumber == null) {
-        pageNumber = "3";
+        pageNumber = "5";
     }
     if (errField == null) {
         errField = "";
@@ -200,29 +200,98 @@
                     </div>
                 </form>
 
-                <!--4th page or sign up form-->
-                <div class="sign-up-p sign-up-p4 flex-col">
+                <form action="sign-up" method="post">
+                    <!--4th page or sign up form-->
+                    <div class="sign-up-p sign-up-p4 flex-col">
+                        <div class="sign-up-view-div  flex-col">
+                            <h1 class="confirmation-title">Confirmation</h1>
+                            <p class="confirmation-sub-title">Before proceeding, please confirm the details you've just entered.</p>
+                        </div>
 
+                        <!--section 1-->
+                        <div class="sign-up-view-div  flex-col">
+                            <label>Email:</label>
+                            <input type="text" id="email" name="email" value="jarretlow@gmail.com" readonly/>
+                        </div>
 
-                    <div class="sign-up-btn-div flex-col">
-                        <input class="sign-up-btn submit-btn" type="submit" value="Submit" disabled />
+                        <div class="sign-up-view-div  flex-col">
+                            <label>Username:</label>
+                            <input type="text" id="username" name="username" value="kahxuan__" readonly/>
+                        </div>
+
+                        <div class="sign-up-view-div  flex-col">
+                            <label>Name:</label>
+                            <input type="text" id="name" name="name" value="Kah Xuan" readonly/>
+                        </div>
+
+                        <div class="sign-up-view-div  flex-col">
+                            <label>Gender:</label>
+                            <input type="text" id="gender" name="gender" value="Male" readonly/>
+                        </div>
+
+                        <div class="sign-up-view-div  flex-col">
+                            <label>Date of birth:</label>
+                            <input type="text" id="dob" name="dob" value="2004/1/1" readonly/>
+                        </div>
+
+                        <!--section 2-->
+                        <div class="sign-up-view-div flex-col">
+                            <label>Address:</label>
+                            <input type="text" id="address1" name="address1" value="123" readonly/>
+                            <input type="text" id="address2" name="address2" value="123" readonly/>
+                        </div>
+
+                        <div class="sign-up-view-div flex-col">
+                            <label>City:</label>
+                            <input type="text" id="city" name="city" value="Malaysia" readonly/>
+                        </div>
+
+                        <div class="sign-up-view-div flex-col">
+                            <label>Postal code:</label>
+                            <input type="text" id="postalCode" name="postalCode" value="11223" readonly/>
+                        </div>
+
+                        <div class="sign-up-view-div flex-col">
+                            <label>State:</label>
+                            <input type="text" id="state" name="state" value="Malaysia" readonly/>
+                        </div>
+
+                        <div class="sign-up-view-div flex-col">
+                            <label>Country:</label>
+                            <input type="text" id="country" name="country" value="Malaysia" readonly/>
+                        </div>
+
+                        <div class="sign-up-btn-div flex-col">
+                            <input class="sign-up-btn submit-btn" type="submit" value="Confirm" />
+                            <input class="sign-up-btn back-btn" type="submit" value="I want edit" />
+                        </div>
                     </div>
-                </div>
+                </form>
 
                 <!--5th page or sign up form-->
-                <div class="sign-up-p sign-up-p5 flex-col">
-                    <!--otp-->
-                    <div class="sign-up-input-div required-input-div flex-col">
-                        <label for="otp">OTP code:</label>
-                        <input type="text" id="otp"  name="otp" placeholder="enter the otp that send to ur email" />
-                    </div>
+                <form action="sign-up" method="post" onsubmit="compileOTPCode(event)">
+                    <div class="sign-up-p sign-up-p5 flex-col">
+                        <div class="sign-up-view-div  flex-col">
+                            <h1 class="confirmation-title">OTP Verification</h1>
+                            <p class="confirmation-sub-title">Code is sent to example@email.com, input the code received, and verify to complete the process.</p>
+                        </div>
 
-                    <p class="invalid-msg"></p>
+                        <div class="otp-field-div flex-row">
+                            <input type="text" id="otp1" class="otp" maxlength="1" autocomplete="off" />
+                            <input type="text" id="otp2" class="otp" maxlength="1" autocomplete="off" />
+                            <input type="text" id="otp3" class="otp" maxlength="1" autocomplete="off" />
+                            <input type="text" id="otp4" class="otp" maxlength="1" autocomplete="off" />
+                            <input type="text" id="otp5" class="otp" maxlength="1" autocomplete="off" />
+                            <input type="text" id="otp6" class="otp" maxlength="1" autocomplete="off" />
+                        </div>
 
-                    <div class="sign-up-btn-div flex-col">
-                        <input class="sign-up-btn submit-btn" type="submit" value="Submit" disabled />
+                        <input type="text" id="otp" name="otp" hidden />
+
+                        <div class="sign-up-btn-div otp-submit-div flex-col">
+                            <input class="sign-up-btn submit-btn" type="submit" value="Submit" disabled />
+                        </div>
                     </div>
-                </div>
+                </form>
 
                 <!--back to home btn-->
                 <a class="back-to-home-a" href="<%= webpath.getPageUrl("home")%>">Back to home page <i class="ri-arrow-go-back-line"></i></a>
