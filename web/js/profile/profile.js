@@ -283,7 +283,7 @@ var showOtpInput = document.getElementById("otpDiv");
 // show otp div
 function showOtpDiv() {
     if (showOtpInput.value === '1') {
-        formPage4.forEach(formPage=>{
+        formPage4.forEach(formPage => {
             formPage.style.display = "none";
         });
         otpForm.style.display = "flex";
@@ -291,3 +291,22 @@ function showOtpDiv() {
         otpForm.style.display = "none";
     }
 }
+
+var newEmailField = document.getElementById("newEmail");
+
+document.getElementById("changeEmailBtn").addEventListener('click', () => {
+    if (newEmailField.value === "") {
+        document.getElementById("changeEmail").innerText = "Please enter new email";
+        newEmailField.classList.add("invalid-input");
+        return;
+    }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(newEmailField.value)) {
+        // Handle invalid email format
+        document.getElementById("changeEmail").innerText = "Invalid email address";
+        newEmailField.classList.add("invalid-input");
+        return;
+    }
+
+    document.getElementById("changeEmailForm").submit();
+});

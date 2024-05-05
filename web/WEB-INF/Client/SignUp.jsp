@@ -175,7 +175,7 @@
 
                         <!--confirm password-->
                         <div class="sign-up-input-div required-input-div flex-col">
-                            <label for="password2">Password:</label>
+                            <label for="password2">Confirm Password:</label>
                             <input type="password" id="password2"  name="password2" class="password-input" placeholder="Confirm password" />
                             <span class="password-eye"><i class="ri-eye-line"></i></span>
                         </div>

@@ -184,12 +184,16 @@
                         <!--change email form-->
                         <form class="flex-col" id="changeEmailForm">
                             <div class="profile-right-page-content flex-col">
-
+                                
+                                <div class="profile-right-page-input flex-col">
+                                    <label for="email">New email:</label>
+                                    <input type="text" id="newEmail"  name="email" placeholder="example@email.com" maxlength="50" value=""/>
+                                </div>
 
                                 <p class="invalid-msg" id="changeEmail"></p>
 
                                 <div class="profile-right-page-submit flex-row">
-                                    <input type="submit" class="submit-btn form-4-submit" value="Change email" />
+                                    <input type="button" id="changeEmailBtn" class="submit-btn form-4-submit" value="Change email" />
                                 </div>
                             </div>
                         </form>
@@ -197,16 +201,17 @@
                         <!--change password form-->
                         <form class="flex-col profile-right-border-top" id="changePassowrdForm">
                             <div class="profile-right-page-content flex-col">
+                                
                                 <!--password-->
                                 <div class="profile-right-page-input flex-col">
-                                    <label for="password">Password:</label>
+                                    <label for="password">New Password:</label>
                                     <input type="password" id="passwordChange"  name="password" class="password-input" placeholder="Password" />
                                     <span class="password-eye"><i class="ri-eye-line"></i></span>
                                 </div>
 
                                 <!--confirm password-->
                                 <div class="profile-right-page-input flex-col">
-                                    <label for="password2">Password:</label>
+                                    <label for="password2">Confirm Password:</label>
                                     <input type="password" id="passwordChange2"  name="password2" class="password-input" placeholder="Confirm password" />
                                     <span class="password-eye"><i class="ri-eye-line"></i></span>
                                 </div>
