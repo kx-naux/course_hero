@@ -171,5 +171,7 @@ public class Ratings implements Serializable {
         this.comment = comment;
     }
 
+   
+
 
 }

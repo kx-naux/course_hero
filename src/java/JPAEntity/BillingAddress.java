@@ -177,9 +177,16 @@ public class BillingAddress implements Serializable {
         this.shippingList = shippingList;
     }
 
+   
+
+    public String getCity() {
+        return city;
+    }
+
     public void setCity(String city) {
         this.city = city;
     }
+
 
     public String getPostalcode() {
         return postalcode;
