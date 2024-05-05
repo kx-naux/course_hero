@@ -170,14 +170,16 @@
                         <!--password-->
                         <div class="sign-up-input-div required-input-div flex-col">
                             <label for="password">Password:</label>
-                            <input type="password" id="password"  name="password" class="password-input" placeholder="Password" />
+                            <input type="password" id="password"  name="password" class="password-input" placeholder="Password" value="${loginFormData.password}"/>
                             <span class="password-eye"><i class="ri-eye-line"></i></span>
                         </div>
 
                         <!--confirm password-->
                         <div class="sign-up-input-div required-input-div flex-col">
-                            <label for="password2">Confirm Password:</label>
-                            <input type="password" id="password2"  name="password2" class="password-input" placeholder="Confirm password" />
+
+                            <label for="password2">Confirm password:</label>
+                            <input type="password" id="password2"  name="password2" class="password-input" placeholder="Confirm password" value="${loginFormData.password}"/>
+
                             <span class="password-eye"><i class="ri-eye-line"></i></span>
                         </div>
 
@@ -270,7 +272,7 @@
                 </form>
 
                 <!--5th page or sign up form-->
-                <form action="sign-up" method="post" onsubmit="compileOTPCode(event)">
+                <form action="sign-up" method="post">
                     <div class="sign-up-p sign-up-p5 flex-col">
                         <div class="sign-up-view-div  flex-col">
                             <h1 class="confirmation-title">OTP Verification</h1>

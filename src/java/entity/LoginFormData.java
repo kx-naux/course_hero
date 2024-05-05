@@ -33,7 +33,7 @@ public class LoginFormData {
         return password;
     }
 
-    public void setPassword(String dobStr) {
+    public void setPassword(String password) {
         this.password = password;
     }
     

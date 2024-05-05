@@ -44,6 +44,11 @@ public class Promotions implements Serializable {
 
     @Basic(optional = false)
     @NotNull
+    @Size(min = 1, max = 10)
+    @Column(name = "PROMO_CODE")
+    private String promoCode;
+    @Basic(optional = false)
+    @NotNull
     @Column(name = "START_TIME")
     @Temporal(TemporalType.TIMESTAMP)
     private Date startTime;
@@ -78,6 +83,7 @@ public class Promotions implements Serializable {
     @Size(max = 300)
     @Column(name = "GEOGRAPHIC_RESTIRICTION")
     private String geographicRestiriction;
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -198,6 +204,15 @@ public class Promotions implements Serializable {
         return "JPAEntity.Promotions[ promotionId=" + promotionId + " ]";
     }
 
+    public String getPromoCode() {
+        return promoCode;
+    }
+
+    public void setPromoCode(String promoCode) {
+        this.promoCode = promoCode;
+    }
+
+
     public double getAmount() {
         return amount;
     }
@@ -206,6 +221,8 @@ public class Promotions implements Serializable {
         this.amount = amount;
     }
 
+   
+
     public String getStatus() {
         return status;
     }
@@ -213,4 +230,6 @@ public class Promotions implements Serializable {
     public void setStatus(String status) {
         this.status = status;
     }
+
+    
 }
