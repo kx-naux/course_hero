@@ -44,8 +44,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // check is otp field div
     var otp = document.querySelector("input#otpDiv").value;
-    if (n == 4) {
+    if (n == 4 && otp == 1) {
         showOtpDiv();
+    }
+    
+    var otpError = document.querySelector("input#otpDiv").value;
+    if (n == 4 && otp == 1 && otpError == 1) {
+        otpInvalid();
     }
 
 });

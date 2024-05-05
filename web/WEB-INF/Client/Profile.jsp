@@ -29,10 +29,12 @@
         <!--3 = Change photo-->
         <!--4 = Account security-->
         <!--5 = Close account-->
-        <input type="number" id="profilePage" value="3" min="1" max="5" hidden />
+        <input type="number" id="profilePage" value="1" min="1" max="5" hidden />
 
         <!--otp for page 4 put 1 into value-->
         <input type="number" id="otpDiv" value="0"  hidden />
+        <!--if otp error put 1-->
+        <input type="number" id="otpError" value="0"  hidden />
 
         <!--hidden input field to show success msg-->
         <input type="text" id="succssMsg" value="" hidden />
@@ -187,6 +189,7 @@
 
                                 <div class="profile-right-page-input flex-col">
                                     <label for="email">New email:</label>
+                                    <!--put invalid-input if error-->
                                     <input type="text" id="newEmail" class=""  name="email" placeholder="example@email.com" maxlength="50" value=""/>
                                 </div>
 
@@ -239,7 +242,7 @@
                                     <h1 class="confirmation-title">OTP Verification</h1>
                                     <p class="confirmation-sub-title">Code is sent to example@email.com, input the code received, and verify to complete the process.</p>
                                 </div>
-
+                                
                                 <div class="otp-field-div flex-row">
                                     <input type="text" id="otp1" name="otp1" class="otp" maxlength="1" autocomplete="off" />
                                     <input type="text" id="otp2" name="otp2" class="otp" maxlength="1" autocomplete="off" />
