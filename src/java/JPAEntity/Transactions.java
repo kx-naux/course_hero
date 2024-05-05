@@ -241,6 +241,8 @@ public class Transactions implements Serializable {
         return "JPAEntity.Transactions[ transactionId=" + transactionId + " ]";
     }
 
+   
+
     public double getSubtotal() {
         return subtotal;
     }
@@ -248,7 +250,7 @@ public class Transactions implements Serializable {
     public void setSubtotal(double subtotal) {
         this.subtotal = subtotal;
     }
-   
+
 
     public double getTax() {
         return tax;
@@ -258,6 +260,7 @@ public class Transactions implements Serializable {
         this.tax = tax;
     }
 
+   
     public double getTotal() {
         return total;
     }
@@ -273,5 +276,6 @@ public class Transactions implements Serializable {
     public void setStatus(String status) {
         this.status = status;
     }
+
 
 }

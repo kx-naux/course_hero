@@ -154,6 +154,7 @@ public class Ratings implements Serializable {
         return "JPAEntity.Ratings[ ratingId=" + ratingId + " ]";
     }
 
+
     public int getScore() {
         return score;
     }
@@ -169,5 +170,6 @@ public class Ratings implements Serializable {
     public void setComment(String comment) {
         this.comment = comment;
     }
+
 
 }

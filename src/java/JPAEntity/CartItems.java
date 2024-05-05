@@ -136,7 +136,5 @@ public class CartItems implements Serializable {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
-
-   
     
 }

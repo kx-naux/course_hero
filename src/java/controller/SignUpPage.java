@@ -5,12 +5,18 @@ import JPAEntity.BillingAddress;
 import JPAEntity.TablesRecordCounter;
 import JPAEntity.Users;
 import entity.LoginFormData;
+import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 import javax.annotation.Resource;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -20,6 +26,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.transaction.Status;
 import javax.transaction.SystemException;
 import javax.transaction.UserTransaction;
@@ -33,9 +40,6 @@ public class SignUpPage extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        // check is user login, if yes goto home page else sign up page
-        
         
         // Forward the request to login.jsp
         request.getRequestDispatcher("/WEB-INF/Client/SignUp.jsp").forward(request, response);
@@ -44,14 +48,10 @@ public class SignUpPage extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         java.text.SimpleDateFormat dateFormat = new java.text.SimpleDateFormat("yyyy-MM-dd");
+        HttpSession session = request.getSession();
         String formType = request.getParameter("formType");
         String userEdit = request.getParameter("userWantToEdit");
         String otp = null;
-        Date otpSendDate = new Date();
-        Date otpExpiryDate = new Date();
-        if(request.getAttribute("otpExpiryDate")!=null){
-            otpExpiryDate = (Date) request.getAttribute("otpExpiryDate");
-        }
         
         //form 1 submission proccess
         if(formType.equals("validateData")){
@@ -68,42 +68,56 @@ public class SignUpPage extends HttpServlet {
                 //send OTP
                 LoginFormData formData = getFormData(request, response);
                 otp = generateNumericOTP(6);
-                processSendOTP(otp,formData,otpSendDate,otpExpiryDate,request,response);
-                //need set otp to hidden form
+                Date otpExpiryDate = new Date();
+                processSendOTP(otp,formData,otpExpiryDate,request,response);
+                
+                session.setAttribute("signUpFormDetails",formData);
+                request.setAttribute("pageNumber", "5");
+                request.getRequestDispatcher("/WEB-INF/Client/SignUp.jsp").forward(request, response);
+                
+                
             }
         //form 3 submision process
         }else if(formType.equals("OTPForm")){
-            //expiry date need fix, need store in a place, not in a single reqeust
-            boolean isOTPMatch = false;
-            if(otpExpiryDate.compareTo(new Date()) > 0){
-                //expired already
-                //resend otp
-                LoginFormData formData = getFormData(request, response);
-                otp = generateNumericOTP(6);
-                processSendOTP(otp,formData,otpSendDate,otpExpiryDate,request,response);
-                
-            }else{
-                //get otp from form
-                isOTPMatch = checkIsOTPMatched(otp,request);
+            Date otpExpiryDate = (Date) session.getAttribute("otpExpiryDate");
+            otp = (String) session.getAttribute("LoginOtp");
+            
+            //check OTP expiry onot
+            boolean isCurrentOTPExpiry = false;
+            if(otpExpiryDate.compareTo(new Date())<0){
+                isCurrentOTPExpiry = true;
             }
             
-            if(isOTPMatch){
-                processDataForDatabaseAndSaveIt(request,response);
+            if(checkIsOTPMatched(otp,request)){
+                if(isCurrentOTPExpiry){
+                    request.setAttribute("loginFormData",getFormData(request,response));
+                    request.setAttribute("pageNumber","5");
+                    request.getRequestDispatcher("/WEB-INF/Client/SignUp.jsp").forward(request, response);
+                }else{
+                    processDataForDatabaseAndSaveIt(request,response);   
+                }
+            }else{
+                request.setAttribute("pageNumber","5");
+                request.getRequestDispatcher("/WEB-INF/Client/SignUp.jsp").forward(request, response);
             }
         }
+                          
+        // forward the request to SignUp.jsp complete section
+        //request.setAttribute("pageNumber", "4");
+        response.sendRedirect("home");
     }
     
-    private void processSendOTP(String otp, LoginFormData formData,Date otpSendDate,Date otpExpiryDate, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+    private void processSendOTP(String otp, LoginFormData formData,Date otpExpiryDate, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         try{
-            if(sendOTP(otp,formData.getEmail(),request,response)){
-                otpSendDate = new Date();
-                otpExpiryDate = new Date(otpSendDate.getTime() + 5 * 60 * 1000);
+            if(sendOTP(otp,formData.getEmail())){
+                Date otpSendDate = new Date();
+                otpExpiryDate.setTime(otpSendDate.getTime() + 5 * 60 * 1000);
             }else{
                 ErrorPage.forwardToServerErrorPage(request,response,"Server fails to send OTP. Please Try Again Later");
             }
-            request.setAttribute("otpExpiryTime",otpExpiryDate);
-            request.setAttribute("pageNumber", "5");
-            request.getRequestDispatcher("/WEB-INF/Client/SignUp.jsp").forward(request, response);
+            HttpSession session = request.getSession();
+            session.setAttribute("LoginOtp",otp);
+            session.setAttribute("otpExpiryDate",otpExpiryDate);
         }catch(Exception ex){
             ErrorPage.forwardToServerErrorPage(request,response,"Server fails to send OTP. Please Try Again Later");
         }
@@ -112,11 +126,14 @@ public class SignUpPage extends HttpServlet {
     
     private void processDataForDatabaseAndSaveIt(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
                 //create new accounts objct into databases
-        LoginFormData formData = (LoginFormData) request.getAttribute("loginFormData");
+        HttpSession session = request.getSession();
+        LoginFormData formData = (LoginFormData) session.getAttribute("signUpFormDetails");
+        String password = (String) session.getAttribute("SignUpPassword");
+        session.removeAttribute("SignUpPassword");
         Accounts newAcc = new Accounts();
         try{
             newAcc = new Accounts(formData.getUsername(),formData.getEmail());
-            newAcc.setHashedPassword(formData.getPassword());
+            newAcc.setHashedPassword(password);
             
         }catch(NoSuchAlgorithmException ex){
             ErrorPage.forwardToServerErrorPage(request,response,"Server Passoword Hashing Error. Please Try Again Later");
@@ -151,10 +168,6 @@ public class SignUpPage extends HttpServlet {
         
         //persist the records
         saveDataToDatabases(request, response, newAcc,newBillAddress, newUser,recordsCounterList);
-                  
-        // forward the request to SignUp.jsp complete section
-        //request.setAttribute("pageNumber", "4");
-        request.getRequestDispatcher("/WEB-INF/Client/Home.jsp").forward(request, response);
     }
     
     private boolean checkIsOTPMatched(String otp,HttpServletRequest request ){
@@ -175,13 +188,22 @@ public class SignUpPage extends HttpServlet {
         }
     }
     
-    private boolean sendOTP(String otp,String email, HttpServletRequest request, HttpServletResponse response ) throws IOException, InterruptedException{
-        // Execute Python script to send email
+    private boolean sendOTP(String otp,String email) throws IOException, InterruptedException{
+        // Get the directory of the current class file
+        String classFilePath = this.getClass().getProtectionDomain().getCodeSource().getLocation().getPath();
+        File classFile = new File(classFilePath);
+        String classDirectory = classFile.getParent();
+        classFile = new File(classDirectory);
+        String classTwoLevelUpDirectory = classFile.getParent();
+
+        // Concatenate the script file name to the class directory
+        String scriptPath = classTwoLevelUpDirectory + File.separator + "pythonSendOTP\\otp.py";
+        scriptPath = scriptPath.replace("%20", " ");
+        
         for(int i = 0; i<3;i++){
-            ProcessBuilder pb = new ProcessBuilder("python", "/Source Packages/pythonSendOTP/otp.py", email, otp);
+            ProcessBuilder pb = new ProcessBuilder("python ", scriptPath, otp , email);
             pb.redirectErrorStream(true);
             Process process = pb.start();
-            String test = "Command executed: " + pb.command();
         
         // Check if the email was sent successfully
             int exitCode = process.waitFor();
@@ -218,7 +240,14 @@ public class SignUpPage extends HttpServlet {
         formData.setPostalCode(request.getParameter("postalCode"));
         formData.setState(request.getParameter("state"));
         formData.setCountry(request.getParameter("country"));
-        formData.setPassword(request.getParameter("password"));
+        String password = request.getParameter("password");
+        
+        if(password!=null){
+            HttpSession session = request.getSession();
+            session.setAttribute("SignUpPassword",password);
+        }
+        
+        
         String dobStr = request.getParameter("dob");
         formData.setDobStr(dobStr);
         

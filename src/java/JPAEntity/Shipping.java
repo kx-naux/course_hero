@@ -199,4 +199,5 @@ public class Shipping implements Serializable {
     public String toString() {
         return "JPAEntity.Shipping[ shippingId=" + shippingId + " ]";
     }   
+
 }
