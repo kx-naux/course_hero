@@ -76,10 +76,9 @@ public class CartItems implements Serializable {
         return cartitemId;
     }
 
-    public void setCartitemId(String cartitemId) {
-        this.cartitemId = cartitemId;
+    public void setCartitemId(long count) {
+        this.cartitemId = String.format("CI%07d", count);
     }
-
 
     public Date getTimeAdded() {
         return timeAdded;
