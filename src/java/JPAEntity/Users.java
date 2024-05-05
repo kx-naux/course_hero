@@ -14,6 +14,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -70,9 +71,12 @@ public class Users implements Serializable {
     @Size(min = 1, max = 20)
     @Column(name = "GENDER")
     private String gender;
-    @Size(max = 100)
-    @Column(name = "IMG_URL")
-    private String imgUrl;
+    @Lob
+    @Column(name = "IMG_DATA")
+    private Serializable imgData;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "users")
+    private List<PreferredCourse> preferredCourseList;
+
 
     
     @JoinTable(name = "PREFERRED_COURSE", joinColumns = {
@@ -325,13 +329,7 @@ public class Users implements Serializable {
 
 
 
-    public String getImgUrl() {
-        return imgUrl;
-    }
-
-    public void setImgUrl(String imgUrl) {
-        this.imgUrl = imgUrl;
-    }
+   
 
     public Date getDob() {
         return dob;
@@ -349,12 +347,31 @@ public class Users implements Serializable {
         this.usertype = usertype;
     }
 
+   
+
     public String getGender() {
         return gender;
     }
 
     public void setGender(String gender) {
         this.gender = gender;
+    }
+
+    public Serializable getImgData() {
+        return imgData;
+    }
+
+    public void setImgData(Serializable imgData) {
+        this.imgData = imgData;
+    }
+
+    @XmlTransient
+    public List<PreferredCourse> getPreferredCourseList() {
+        return preferredCourseList;
+    }
+
+    public void setPreferredCourseList(List<PreferredCourse> preferredCourseList) {
+        this.preferredCourseList = preferredCourseList;
     }
 
 }

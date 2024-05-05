@@ -231,4 +231,5 @@ public class Courses implements Serializable {
         return "JPAEntity.Courses[ courseId=" + courseId + " ]";
     }
 
+
 }

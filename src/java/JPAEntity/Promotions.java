@@ -44,6 +44,16 @@ public class Promotions implements Serializable {
 
     @Basic(optional = false)
     @NotNull
+    @Size(min = 1, max = 100)
+    @Column(name = "PROMOTION_NAME")
+    private String promotionName;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 1000)
+    @Column(name = "PROMO_DESCRIPTION")
+    private String promoDescription;
+    @Basic(optional = false)
+    @NotNull()
     @Size(min = 1, max = 10)
     @Column(name = "PROMO_CODE")
     private String promoCode;
@@ -53,7 +63,7 @@ public class Promotions implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date startTime;
     @Basic(optional = false)
-    @NotNull()
+    @NotNull
     @Column(name = "END_TIME")
     @Temporal(TemporalType.TIMESTAMP)
     private Date endTime;
@@ -71,7 +81,7 @@ public class Promotions implements Serializable {
     @Column(name = "MIN_REQ")
     private double minReq;
     @Basic(optional = false)
-    @NotNull
+    @NotNull()
     @Size(min = 1, max = 30)
     @Column(name = "LEGAL_TNC")
     private String legalTnc;
@@ -213,6 +223,27 @@ public class Promotions implements Serializable {
     }
 
 
+    public String getPromotionName() {
+        return promotionName;
+    }
+
+    public void setPromotionName(String promotionName) {
+        this.promotionName = promotionName;
+    }
+
+   
+
+    public String getPromoDescription() {
+        return promoDescription;
+    }
+
+    public void setPromoDescription(String promoDescription) {
+        this.promoDescription = promoDescription;
+    }
+
+
+
+
     public double getAmount() {
         return amount;
     }
@@ -230,6 +261,8 @@ public class Promotions implements Serializable {
     public void setStatus(String status) {
         this.status = status;
     }
+
+   
 
     
 }

@@ -165,6 +165,8 @@ public class ShippingMethod implements Serializable {
         return "JPAEntity.ShippingMethod[ shippingMethodId=" + shippingMethodId + " ]";
     }
 
+  
+
     public String getDescription() {
         return description;
     }
@@ -172,5 +174,7 @@ public class ShippingMethod implements Serializable {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    
 
 }
