@@ -20,11 +20,7 @@ import javax.transaction.Status;
 import javax.transaction.SystemException;
 import javax.transaction.UserTransaction;
 
-/**
- *
- * @author wooyu
- */
-public class Cart extends HttpServlet {
+public class UpdateCart extends HttpServlet {
     @PersistenceContext EntityManager em;
     @Resource UserTransaction utx;
     
@@ -44,6 +40,8 @@ public class Cart extends HttpServlet {
         
         // Get JSON data
         String productID = jsonObject.get("productID").getAsString();
+        System.out.println(productID);
+        
         String userID = jsonObject.get("userID").getAsString();
         int quantity = jsonObject.get("quantity").getAsInt();
         String productType = jsonObject.get("productType").getAsString();
