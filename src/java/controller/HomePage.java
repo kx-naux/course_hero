@@ -5,6 +5,7 @@ import JPAEntity.Authors;
 import JPAEntity.CourseCategory;
 import JPAEntity.Courses;
 import JPAEntity.Product;
+import JPAEntity.Users;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.*;
@@ -27,6 +28,14 @@ public class HomePage extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {  
+        
+        Users userData = Login.checkRmbMeToken(request, em);
+        if(userData != null){
+            HttpSession session = request.getSession();
+            session.setAttribute("userData",userData);
+        }else{
+            //Statements
+        }
         
         CourseCategory programmingCat = null;
         CourseCategory designCat = null;
