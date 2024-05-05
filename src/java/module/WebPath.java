@@ -24,13 +24,17 @@ public class WebPath {
         pageUrls.put("wishlist", "/wishlist");
         pageUrls.put("merchandises", "/merchandises");
         pageUrls.put("merchandise", "/merch");
-        pageUrls.put("profile", "/profile");
         pageUrls.put("help", "/help");
         pageUrls.put("promotion", "/promotion");
+        pageUrls.put("profile", "/profile/edit-profile");
+        pageUrls.put("profile address", "/profile/edit-address");
+        pageUrls.put("profile photo", "/profile/edit-photo");
+        pageUrls.put("profile security", "/profile/edit-security");
+        pageUrls.put("profile close", "/profile/close-account");
 
         //admin
-        pageUrls.put("dashboard","/admin/dashboard");
-        pageUrls.put("manage-client","/admin/manage-client");
+        pageUrls.put("dashboard", "/admin/dashboard");
+        pageUrls.put("manage-client", "/admin/manage-client");
     }
 
     public String getPageUrl(String page) {
