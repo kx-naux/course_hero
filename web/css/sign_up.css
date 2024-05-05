@@ -232,6 +232,10 @@
     margin-top: 30px;
 }
 
+.sign-up-p .sign-up-btn.back-btn {
+    margin-top: 5px;
+}
+
 .sign-up-p .sign-up-btn:hover {
     background-color: var(--color-light-grey-2);
 }
@@ -370,6 +374,62 @@
     background-color: var(--color-sky-blue-1);
     border-bottom: 4px solid var(--color-blue-3);
 }
+
+.otp-field-div input.invalid-otp {
+    background-color: var(--color-text-error-bg);
+    border-bottom: 4px solid var(--tag-red-bg);
+}
+
+/*sign up success msg*/
+.sign-up-success-div {
+    padding: 10px 0 20px;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.sign-up-success-div .success-img {
+    width: 300px;
+}
+
+.sign-up-success-div .success-img img {
+    width: 100%;
+    object-fit: cover;
+}
+
+.sign-up-success-div  .success-title {
+    font-size: var(--font-size-l);
+    color: var(--color-blue-2);
+    font-weight: 700;
+}
+
+.sign-up-success-div  .success-p {
+    font-size: var(--font-size-xm);
+    color: var(--color-text-light-2);
+    font-weight: 400;
+}
+
+.sign-up-success-div .login-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 400px;
+    height: 45px;
+    font-size: var(--font-size-xm);
+    font-weight: 600;
+    color: var(--color-white);
+    background-color: var(--color-blue-1);
+    transition: 0.3s all ease-in-out;
+    cursor: pointer;
+    margin-top: 30px;
+}
+
+.sign-up-success-div .login-btn:hover{
+    background-color: var(--color-blue-2);
+}
+
 
 /*back to home btn*/
 .back-to-home-a {

@@ -39,7 +39,8 @@
                 </div>
 
                 <!--hidden value for step count-->
-                <input type="number" min="1" max="5" id="formProgress" value="<%= pageNumber%>" hidden />
+                <!--<input type="number" min="1" max="5" id="formProgress" value="<%= pageNumber%>" hidden />-->
+                <input type="number" min="1" max="5" id="formProgress" value="6" hidden />
 
                 <!--insert error message here if any-->
                 <% if (errField.equals("email&username")) { %>
@@ -111,7 +112,7 @@
 
                         <!--date of birth-->
                         <div class="sign-up-input-div required-input-div flex-col">
-                            <label for="name">Date of birth:</label>
+                            <label for="dob">Date of birth:</label>
                             <input type="date" id="dob"  name="dob" placeholder="Select date" value="${loginFormData.dobStr}"/>
                         </div>
 
@@ -140,7 +141,7 @@
 
                         <!--Postal Code-->
                         <div class="sign-up-input-div flex-col">
-                            <label for="postalCode">Postel code:</label>
+                            <label for="postalCode">Postal code:</label>
                             <input type="text" id="postalCode"  name="postalCode" placeholder="postal code" maxlength="9" value="${loginFormData.postalCode}"/>
                         </div>
 
@@ -175,8 +176,10 @@
 
                         <!--confirm password-->
                         <div class="sign-up-input-div required-input-div flex-col">
-                            <label for="password2">Password:</label>
+
+                            <label for="password2">Confirm password:</label>
                             <input type="password" id="password2"  name="password2" class="password-input" placeholder="Confirm password" value="${loginFormData.password}"/>
+
                             <span class="password-eye"><i class="ri-eye-line"></i></span>
                         </div>
 
@@ -259,7 +262,7 @@
                             <label>Country:</label>
                             <input type="text" id="country" name="country" value="${loginFormData.country}" readonly/>
                         </div>
-                            
+
                         <input type="text" name="formType" value="confirmSubmit" hidden/>
                         <div class="sign-up-btn-div flex-col">
                             <input class="sign-up-btn submit-btn" type="submit" value="Confirm" />
@@ -285,21 +288,35 @@
                             <input type="text" id="otp6" name="otp6" class="otp" maxlength="1" autocomplete="off" />
                         </div>
 
+                        <p class="invalid-msg"></p>
                         <input type="text" id="otp" name="otp" hidden />
                         <input type="text" name="formType" value="OTPForm" hidden/>
-                        
+
                         <div class="sign-up-btn-div otp-submit-div flex-col">
                             <input class="sign-up-btn submit-btn" type="submit" value="Submit" disabled />
                         </div>
                     </div>
                 </form>
 
+                <!--6th page successful message-->
+                <div class="sign-up-p sign-up-p6 sign-up-success-div flex-col">
+                    <img class="success-img" src="./img/sign_up/sign_up_success.png" alt="" draggable="false" />
+
+                    <div class="flex-col">
+                        <h1 class="success-title">Success</h1>
+                        <p class="success-p">Start exploring and making the most of your experience with us.</p>
+                        <p class="success-p">Feel free to reach out if you need any assistance. Happy exploring!</p>
+                    </div>
+
+                    <a class="login-btn" href="<%= webpath.getPageUrl("login")%>">Log in now</a>
+                </div>
+
                 <!--back to home btn-->
                 <a class="back-to-home-a" href="<%= webpath.getPageUrl("home")%>">Back to home page <i class="ri-arrow-go-back-line"></i></a>
             </div>
         </section>
 
-
+        <script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js"></script>
         <script src="./js/sign_up/sign_up.js"></script>
     </body>
 </html>

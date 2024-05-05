@@ -1,0 +1,317 @@
+@import url('./root.css');
+
+.profile-section {
+    background-color: var(--color-light-grey-1);
+}
+
+.profile-section .profile-div{
+    margin: 30px auto 40px;
+    background-color: var(--color-white);
+    max-width: 1150px;
+    min-height: 600px;
+}
+
+.profile-div > div {
+    width: 100%;
+    flex: 1 1 100px;
+    border: 1px solid var(--color-light-grey-3);
+}
+
+.profile-div > div:first-of-type {
+    border-right: none;
+}
+
+/*left div*/
+.profile-div .profile-div-left {
+    max-width: 250px;
+    min-width: 220px;
+    min-height: 100%;
+}
+
+.profile-div-left .profile-user-div {
+    padding: 20px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 10px;
+}
+
+.profile-div-left .profile-user-div img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border: 1px solid var(--color-light-grey-3);
+    border-radius: 50%;
+}
+
+.profile-div-left .profile-user-div h1 {
+    font-weight: 700;
+    font-size: var(--font-size-l);
+    color: var(--color-text-light-3);
+}
+
+.profile-div-left .profile-sidebar {
+    list-style: none;
+}
+
+.profile-div-left .profile-sidebar li a{
+    display: flex;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-weight: 400;
+    font-size: var(--font-size-xm);
+    color: var(--color-text-light-2);
+}
+
+.profile-div-left .profile-sidebar li.active a{
+    background-color: var(--color-text-light-2) !important;
+    color: var(--color-white) !important;
+}
+
+.profile-div-left .profile-sidebar li a:hover{
+    background-color: var(--color-light-grey-1);
+}
+
+/*right div*/
+.profile-right-page {
+    display: none;
+}
+
+.profile-right-page.active {
+    display: flex;
+}
+
+.profile-right-page .profile-right-border-top {
+    border-top: 1px solid var(--color-light-grey-3);
+}
+
+.profile-right-page div.profile-right-page-header {
+    padding: 25px;
+    border-bottom: 1px solid var(--color-light-grey-3);
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.profile-right-page div.profile-right-page-header h1{
+    font-weight: 700;
+    font-size: var(--font-size-xl);
+    color: var(--color-text-light-2);
+}
+
+.profile-right-page div.profile-right-page-header p{
+    font-weight: 400;
+    font-size: var(--font-size-s);
+    color: var(--color-text-light-3);
+}
+
+.profile-right-page .profile-right-page-content {
+    max-width: 700px;
+    width: 100%;
+    height: 100%;
+    margin: 20px auto;
+    gap: 16px;
+}
+
+.profile-right-page .profile-right-page-content .profile-right-page-input {
+    gap: 5px;
+    position: relative;
+}
+
+.profile-right-page .profile-right-page-content .profile-right-page-input.hide {
+    display: none;
+}
+
+.profile-right-page .profile-right-page-content .profile-right-page-input label {
+    font-weight: 700;
+    font-size: var(--font-size-s);
+    color: var(--color-text-light-2);
+}
+
+.profile-right-page .profile-right-page-content .profile-right-page-input input,
+.profile-right-page .profile-right-page-content .profile-right-page-input select{
+    font-weight: 400;
+    font-size: var(--font-size-xm);
+    color: var(--color-text-light-3);
+    padding: 8px 12px;
+    border: 1px solid var(--color-text-light-3);
+}
+
+.profile-right-page .profile-right-page-content .profile-right-page-input input.invalid-input,
+.profile-right-page .profile-right-page-content .profile-right-page-input select.invalid-input{
+    background-color: var(--color-text-error-bg);
+    border: 1px solid var(--color-text-error);
+}
+
+.profile-right-page .profile-right-page-content .profile-right-page-input input::placeholder{
+    color: var(--color-text-light-1);
+}
+
+.profile-right-page .profile-right-page-content .profile-right-page-input .password-eye {
+    padding: 5px 6px;
+    cursor: pointer;
+    width: fit-content;
+    height: fit-content;
+    position: absolute;
+    top: 40%;
+    right: 10px;
+    font-size: var(--font-size-l);
+    color: var(--color-text-light-1);
+}
+
+.profile-right-page .profile-right-page-content .profile-right-page-input .password-eye:hover {
+    color: var(--color-text-light-3);
+}
+
+.profile-right-page .profile-right-page-content .profile-right-page-input input[type=password]::-ms-reveal,
+.profile-right-page .profile-right-page-content .profile-right-page-input input[type=password]::-ms-clear{
+    /*remove default show/hide password*/
+    display: none;
+}
+
+.profile-right-page .profile-right-page-content .invalid-msg {
+    text-align: center;
+    color: var(--color-text-error);
+}
+
+.profile-right-page .profile-right-page-content .profile-right-page-submit {
+    margin-top: 20px;
+}
+
+.profile-right-page .profile-right-page-content .profile-right-page-submit .submit-btn {
+    font-weight: 700;
+    font-size: var(--font-size-xm);
+    color: var(--color-white);
+    background-color:  var(--color-text-light-3);
+    cursor: pointer;
+    padding: 10px 20px;
+    transition: 0.2s all ease-in-out;
+}
+
+.profile-right-page .profile-right-page-content .profile-right-page-submit .submit-btn:hover {
+    background-color:  var(--color-text-light-2);
+}
+.profile-right-page .profile-right-page-content .image-preview-div {
+    padding: 18px 12px;
+    border: 1px solid var(--color-text-light-3);
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-right-page .profile-right-page-content .image-preview-div img {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border: 1px solid var(--color-light-grey-3);
+    border-radius: 50%;
+}
+
+.profile-right-page .profile-right-page-content .image-input-label {
+    width: 100%;
+    cursor: pointer;
+}
+
+.profile-right-page .profile-right-page-content .image-input-label span{
+    width: 100%;
+    border: 1px solid var(--color-text-light-3);
+    padding: 12px 12px;
+}
+
+.profile-right-page .profile-right-page-content .image-input-label .file-value {
+    font-weight: 400;
+    font-size: var(--font-size-xm);
+    color: var(--color-text-light-3);
+}
+
+.profile-right-page .profile-right-page-content .image-input-label .upload-btn {
+    max-width: 130px;
+    border-left: none;
+}
+
+.profile-right-page .profile-right-page-content .image-input-label .upload-btn:hover {
+    background-color:  var(--color-light-grey-1);
+}
+
+.profile-right-page .profile-right-page-content .close-warning {
+    font-weight: 400;
+    font-size: var(--font-size-xm);
+    color: var(--color-text-light-3);
+}
+
+.profile-right-page .profile-right-page-content .close-warning span{
+    font-weight: 600;
+    font-size: var(--font-size-xm);
+    color: var(--color-text-error);
+}
+
+.input-requirement {
+    list-style: none;
+    width: fit-content;
+    align-self: center;
+}
+
+.input-requirement li{
+    font-size: var(--font-size-s);
+    font-weight: 400;
+    color: var(--color-text-light-2);
+}
+
+.input-requirement li:has(i.ri-checkbox-circle-fill){
+    color: var(--toast-color-success);
+}
+
+/*otp verification section*/
+
+.profile-right-page .profile-right-page-content .profile-right-page-submit:has(input#otpSubmitBtn) {
+    justify-content: center;
+}
+
+input#otpSubmitBtn {
+    padding: 10px 30px;
+}
+
+.sign-up-view-div {
+    position: relative;
+}
+
+.sign-up-view-div .confirmation-title {
+    text-align: center;
+    font-weight: 700;
+    font-size: var(--font-size-xl);
+    color: var(--color-text-light-2);
+}
+
+.sign-up-view-div .confirmation-sub-title {
+    text-align: center;
+    font-weight: 400;
+    font-size: var(--font-size-s);
+    color: var(--color-text-light-3);
+}
+
+.otp-field-div {
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0 15px;
+}
+
+.otp-field-div input{
+    text-align: center;
+    font-size: var(--font-size-l);
+    color: var(--color-text-light-3);
+    font-weight: 500;
+    background-color: var(--color-light-grey-0);
+    border-bottom: 4px solid var(--color-light-grey-2);
+    width: 40px;
+    height: 50px;
+}
+
+.otp-field-div input:focus {
+    background-color: var(--color-sky-blue-1);
+    border-bottom: 4px solid var(--color-blue-3);
+}
+
+.otp-field-div input.invalid-otp {
+    background-color: var(--color-text-error-bg);
+    border-bottom: 4px solid var(--tag-red-bg);
+}

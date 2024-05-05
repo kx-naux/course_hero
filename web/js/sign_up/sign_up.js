@@ -10,8 +10,8 @@ var inputs = document.querySelectorAll("div.sign-up-p input");
 var selects = document.querySelectorAll("div.sign-up-p select");
 var blurPasswordInputs = document.querySelectorAll("div.sign-up-p input.password-input");
 var passwordEyes = document.querySelectorAll("div.sign-up-p span.password-eye");
-
 var errorMsgs = document.querySelectorAll("div.sign-up-p p.invalid-msg");
+
 function showSignUpPage(n) {
 
     formProgress.value = n;
@@ -65,6 +65,52 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
     if (errorMsg.innerText !== "") {
         showErrorMsg(errorMsg.innerText);
+    }
+
+    if (formProgress.value == 5 && errorMsg.value !== "") {
+        otpInvalid();
+    }
+
+    if (formProgress.value == 6) {
+        const count = 200,
+                defaults = {
+                    origin: {y: 0.75}
+                };
+
+        function fire(particleRatio, opts) {
+            confetti(
+                    Object.assign({}, defaults, opts, {
+                        particleCount: Math.floor(count * particleRatio)
+                    })
+                    );
+        }
+
+        fire(0.25, {
+            spread: 56,
+            startVelocity: 55
+        });
+
+        fire(0.2, {
+            spread: 60
+        });
+
+        fire(0.35, {
+            spread: 120,
+            decay: 0.91,
+            scalar: 0.8
+        });
+
+        fire(0.1, {
+            spread: 180,
+            startVelocity: 25,
+            decay: 0.92,
+            scalar: 1.2
+        });
+
+        fire(0.1, {
+            spread: 120,
+            startVelocity: 45
+        });
     }
 });
 
@@ -366,6 +412,7 @@ document.querySelectorAll('.otp').forEach(input => {
     });
 
     input.addEventListener('keydown', function (event) {
+        removeotpInvalid();
         if (event.key === 'Backspace') {
             handleBackspace(this);
         }
@@ -386,4 +433,16 @@ function compileOTPCode(event) {
     // Store compiled OTP value into hidden input field
     const otpHiddenInput = document.getElementById('otp');
     otpHiddenInput.value = otpValue;
+}
+
+function otpInvalid() {
+    document.querySelectorAll('.otp').forEach(input => {
+        input.classList.add("invalid-otp");
+    });
+}
+
+function removeotpInvalid() {
+    document.querySelectorAll('.otp').forEach(input => {
+        input.classList.remove("invalid-otp");
+    });
 }
