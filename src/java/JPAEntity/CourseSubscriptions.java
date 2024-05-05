@@ -136,13 +136,6 @@ public class CourseSubscriptions implements Serializable {
         this.userId = userId;
     }
     
-    public String getProgress() {
-        return progress;
-    }
-
-    public void setProgress(String progress) {
-        this.progress = progress;
-    }  
 
     @Override
     public int hashCode() {
@@ -169,6 +162,14 @@ public class CourseSubscriptions implements Serializable {
         return "JPAEntity.CourseSubscriptions[ subscriptionsId=" + subscriptionsId + " ]";
     }
 
+
+    public String getProgress() {
+        return progress;
+    }
+
+    public void setProgress(String progress) {
+        this.progress = progress;
+    }
 
    
 

@@ -14,13 +14,13 @@ VALUES
     ('PM00005', 'Cash', 'MYR'),
     ('PM00006', 'TNG', 'MYR');
 
-INSERT INTO PROMOTIONS (PROMOTION_ID, START_TIME, END_TIME, PROMO_TYPE, AMOUNT, MIN_REQ, LEGAL_TNC, STATUS, GEOGRAPHIC_RESTIRICTION)
+INSERT INTO PROMOTIONS (PROMOTION_ID,PROMO_CODE, START_TIME, END_TIME, PROMO_TYPE, AMOUNT, MIN_REQ, LEGAL_TNC, STATUS, GEOGRAPHIC_RESTIRICTION)
 VALUES 
-    ('PO0000001', '2024-04-15 00:00:00', '2024-04-30 23:59:59', 'Discount', 20.0, 100.0, 'Terms and conditions apply', 'Active', 'USA, Canada'),
-    ('PO0000002', '2024-05-01 00:00:00', '2024-05-15 23:59:59', 'Buy One Get One', 0.0, 50.0, 'Terms and conditions apply', 'Inactive', 'UK, France'),
-    ('PO0000003', '2024-06-01 00:00:00', '2024-06-30 23:59:59', 'Free Shipping', 0.0, 75.0, 'Terms and conditions apply', 'Active', NULL),
-    ('PO0000004', '2024-07-01 00:00:00', '2024-07-31 23:59:59', 'Percentage Discount', 15.0, 80.0, 'Terms and conditions apply', 'Active', NULL),
-    ('PO0000005', '2024-08-01 00:00:00', '2024-08-15 23:59:59', 'Cashback', 10.0, 120.0, 'Terms and conditions apply', 'Inactive', 'Germany, Italy');
+    ('PO0000001', 'B102', '2024-04-15 00:00:00', '2024-04-30 23:59:59', 'Discount', 20.0, 100.0, 'Terms and conditions apply', 'Active', 'USA, Canada'),
+    ('PO0000002', 'CA', '2024-05-01 00:00:00', '2024-05-15 23:59:59', 'Buy One Get One', 0.0, 50.0, 'Terms and conditions apply', 'Inactive', 'UK, France'),
+    ('PO0000003', 'P9012', '2024-06-01 00:00:00', '2024-06-30 23:59:59', 'Free Shipping', 0.0, 75.0, 'Terms and conditions apply', 'Active', NULL),
+    ('PO0000004', 'P2741','2024-07-01 00:00:00', '2024-07-31 23:59:59', 'Percentage Discount', 15.0, 80.0, 'Terms and conditions apply', 'Active', NULL),
+    ('PO0000005', 'P231' ,'2024-08-01 00:00:00', '2024-08-15 23:59:59', 'Cashback', 10.0, 120.0, 'Terms and conditions apply', 'Inactive', 'Germany, Italy');
 
 INSERT INTO CHATROOMS (CHATROOM_ID, CHATROOM_TYPE, STATUS, REQ_TITLE, REQ_DESCRIPTION)
 VALUES 
@@ -30,37 +30,37 @@ VALUES
     ('CH0000004', 'Private', 'Active', 'Team Collaboration', 'Collaboration space for team members.'),
     ('CH0000005', 'Public', 'Inactive', 'Event Coordination', 'Planning and coordination of upcoming events.');
 
-INSERT INTO PRODUCT_CATEGORY (PRODCAT_ID, CATEGORY_NAME, DESCRIPTION)
+INSERT INTO PRODUCT_CATEGORY (PRODCAT_ID, CATEGORY_NAME, DESCRIPTION,IMG_URL)
 VALUES 
-    ('PC0000001', 'Books', 'Category for books.'),
-    ('PC0000002', 'Package', 'Category for packages.'),
-    ('PC0000003', 'Classes', 'Category for classes.'),
-    ('PC0000004', 'E-Books', 'Category for e-books.'),
-    ('PC0000005', 'Online Products', 'Category for online products');
+    ('PC0000001', 'Books', 'Category for books.',null),
+    ('PC0000002', 'Package', 'Category for packages.',null),
+    ('PC0000003', 'Classes', 'Category for classes.',''),
+    ('PC0000004', 'E-Books', 'Category for e-books.',''),
+    ('PC0000005', 'Online Products', 'Category for online products','');
 
-INSERT INTO COURSE_CATEGORY (COURSECAT_ID, CATEGORY_NAME, DESCRIPTION)
+INSERT INTO COURSE_CATEGORY (COURSECAT_ID, CATEGORY_NAME, DESCRIPTION,IMG_URL)
 VALUES 
-    ('CC0000001', 'Programming', 'Category for programming courses.'),
-    ('CC0000002', 'Business', 'Category for business-related courses.'),
-    ('CC0000003', 'Design', 'Category for design courses.'),
-    ('CC0000004', 'Language', 'Category for language learning courses.'),
-    ('CC0000005', 'Science', 'Category for science and technology courses.');
+    ('CC0000001', 'Programming', 'Category for programming courses.',null),
+    ('CC0000002', 'Business', 'Category for business-related courses.',''),
+    ('CC0000003', 'Design', 'Category for design courses.',''),
+    ('CC0000004', 'Language', 'Category for language learning courses.',''),
+    ('CC0000005', 'Science', 'Category for science and technology courses.','');
 
-INSERT INTO MERCH_CATEGORY (MERCHCAT_ID, CATEGORY_NAME, DESCRIPTION)
+INSERT INTO MERCH_CATEGORY (MERCHCAT_ID, CATEGORY_NAME, DESCRIPTION,IMG_URL)
 VALUES 
-    ('MC0000001', 'T-Shirts', 'Category for t-shirts.'),
-    ('MC0000002', 'Mugs', 'Category for mugs and cups.'),
-    ('MC0000003', 'Keychain', 'Category for keychains and souvenirs.'),
-    ('MC0000004', 'Accesories', 'Category for everyday accesories.'),
-    ('MC0000005', 'Stationaries', 'Category for stationaries.');
+    ('MC0000001', 'T-Shirts', 'Category for t-shirts.',''),
+    ('MC0000002', 'Mugs', 'Category for mugs and cups.',''),
+    ('MC0000003', 'Keychain', 'Category for keychains and souvenirs.',null),
+    ('MC0000004', 'Accesories', 'Category for everyday accesories.',''),
+    ('MC0000005', 'Stationaries', 'Category for stationaries.',null);
 
-INSERT INTO AUTHORS (AUTHOR_ID, AUTHOR_NAME, NATIONALITY, INSTITUTION, AWARDS_HONORS, BIOGRAPHY, DATE_JOINED,AUTHOR_POSITION, WEBSITE)
+INSERT INTO AUTHORS (AUTHOR_ID,IMG_URL, AUTHOR_NAME, NATIONALITY, INSTITUTION, AWARDS_HONORS, BIOGRAPHY, DATE_JOINED,AUTHOR_POSITION, WEBSITE)
 VALUES 
-    ('AU0000001', 'Lena Watson', 'American', 'Stanford University', 'Nobel Prize in Computer Science', 'Dr. Lena Watson is a renowned computer scientist at     Stanford University, known for her groundbreaking work in artificial intelligence and machine learning.', '2021-08-20', 'Manager At Mooiko',  'https://www.example.com/lenawatson'),
-    ('AU0000002', 'Max Chen', 'Chinese', 'Massachusetts Institute of Technology', 'Fields Medal in Mathematics', 'Dr. Max Chen is a brilliant mathematician at MIT, recognized for his contributions to number theory and algebraic geometry.', '2022-04-15', 'Manager At SiP', 'https://www.example.com/maxchen'),
-    ('AU0000003', 'Emily Park', 'British', 'University College London', 'Turing Award in Computer Science', 'Dr. Emily Park is a cybersecurity expert at UCL, renowned for her innovative algorithms and protocols that enhance online security.', '2023-11-28', 'Manager At MySoftware', 'https://www.example.com/emilypark'),
-    ('AU0000004', 'Alejandro Lopez', 'Mexican', 'California Institute of Technology', 'Breakthrough Prize in Physics', 'Dr. Alejandro Lopez is a theoretical physicist at Caltech, known for his groundbreaking research in quantum mechanics and string theory.', '2024-03-10', 'Manager At Pentamaster', 'https://www.example.com/alejandrolopez'),
-    ('AU0000005', 'Sara Khan', 'Indian', 'Harvard University', 'National Medal of Science', 'Dr. Sara Khan is a leading bioinformatician at Harvard, specializing in computational biology and genomics.', '1985-06-25', 'Manager At QuantumMetal', 'https://www.example.com/sarakhan');
+    ('AU0000001','', 'Lena Watson', 'American', 'Stanford University', 'Nobel Prize in Computer Science', 'Dr. Lena Watson is a renowned computer scientist at     Stanford University, known for her groundbreaking work in artificial intelligence and machine learning.', '2021-08-20', 'Manager At Mooiko',  'https://www.example.com/lenawatson'),
+    ('AU0000002','', 'Max Chen', 'Chinese', 'Massachusetts Institute of Technology', 'Fields Medal in Mathematics', 'Dr. Max Chen is a brilliant mathematician at MIT, recognized for his contributions to number theory and algebraic geometry.', '2022-04-15', 'Manager At SiP', 'https://www.example.com/maxchen'),
+    ('AU0000003','', 'Emily Park', 'British', 'University College London', 'Turing Award in Computer Science', 'Dr. Emily Park is a cybersecurity expert at UCL, renowned for her innovative algorithms and protocols that enhance online security.', '2023-11-28', 'Manager At MySoftware', 'https://www.example.com/emilypark'),
+    ('AU0000004',null, 'Alejandro Lopez', 'Mexican', 'California Institute of Technology', 'Breakthrough Prize in Physics', 'Dr. Alejandro Lopez is a theoretical physicist at Caltech, known for his groundbreaking research in quantum mechanics and string theory.', '2024-03-10', 'Manager At Pentamaster', 'https://www.example.com/alejandrolopez'),
+    ('AU0000005', '','Sara Khan', 'Indian', 'Harvard University', 'National Medal of Science', 'Dr. Sara Khan is a leading bioinformatician at Harvard, specializing in computational biology and genomics.', '1985-06-25', 'Manager At QuantumMetal', 'https://www.example.com/sarakhan');
 
 INSERT INTO ACCOUNTS (account_id, username, email, saltedpassword, salt)
 VALUES 
@@ -78,13 +78,13 @@ VALUES
     ('SM0000004', 'Priority Shipping', '1-2 Business Days', 'Priority shipping method for domestic delivery', 'USA, China', 25.00, 'Returns accepted within 30 days, free return shipping.'),
     ('SM0000005', 'Standard Shipping', '5-7 Business Days', 'Standard shipping method for domestic delivery', 'USA, SG', 15.00, 'Returns accepted within 45 days, customer pays return shipping.');
 
-INSERT INTO USERS (USER_ID, ACCOUNT_ID, DISPLAY_NAME, DOB, ADDRESS_ID, USERTYPE, VALIDITY, DATE_JOINED, GENDER)
+INSERT INTO USERS (USER_ID, ACCOUNT_ID, DISPLAY_NAME, DOB, ADDRESS_ID, USERTYPE, VALIDITY, DATE_JOINED, GENDER, IMG_URL)
 VALUES 
-    ('U00000001', 'AC0000001', 'Jackson Wang', '1990-05-15', 'BA0000001', 'Customer', '2024-12-31', '2024-04-15 08:30:00', 'Male'),
-    ('U00000002', 'AC0000002', 'Pentamaster Manager', '1985-09-20', 'BA0000002', 'Admin', '2025-12-31', '2024-04-15 09:15:00', 'Female'),
-    ('U00000003', 'AC0000003', 'Mooiko Starbucks', '1998-03-10', 'BA0000003', 'Customer', '2023-12-31', '2024-04-15 10:00:00', 'Male'),
-    ('U00000004', 'AC0000004', 'MySoft bae', '1976-11-28', 'BA0000004', 'Customer', '2024-12-31', '2024-04-15 10:45:00', 'Female'),
-    ('U00000005', 'AC0000005', 'SEN Tenz', '1995-07-02', 'BA0000005', 'Admin', '2025-12-31', '2024-04-15 11:30:00', 'Male');
+    ('U00000001', 'AC0000001', 'Jackson Wang', '1990-05-15', 'BA0000001', 'Customer', '2024-12-31', '2024-04-15 08:30:00', 'Male',null),
+    ('U00000002', 'AC0000002', 'Pentamaster Manager', '1985-09-20', 'BA0000002', 'Admin', '2025-12-31', '2024-04-15 09:15:00', 'Female',null),
+    ('U00000003', 'AC0000003', 'Mooiko Starbucks', '1998-03-10', 'BA0000003', 'Customer', '2023-12-31', '2024-04-15 10:00:00', 'Male',''),
+    ('U00000004', 'AC0000004', 'MySoft bae', '1976-11-28', 'BA0000004', 'Customer', '2024-12-31', '2024-04-15 10:45:00', 'Female',null),
+    ('U00000005', 'AC0000005', 'SEN Tenz', '1995-07-02', 'BA0000005', 'Admin', '2025-12-31', '2024-04-15 11:30:00', 'Male','');
 
 INSERT INTO BANKCARDINFO (CARDINFOID, USER_ID, CARDTYPE, CARD_HOLDER_NAME, CARD_NO, EXPIRY_DATE, CVV)
 VALUES 
@@ -111,16 +111,16 @@ VALUES
     ('SL0000005', 'AU0000003', 'YouTube', 'https://www.youtube.com/em.Park'),
     ('SL0000006', 'AU0000005', 'YouTube', 'https://www.youtube.com/SaraKhan');
 
-INSERT INTO PRODUCT (PRODUCT_ID, PRODCAT_ID, DESCRIPTION, PROD_NAME, PRICE, RATE_WEIGHTAGE, AVG_RATING, DISCOUNT, IMAGE_PATH, STATUS) 
+INSERT INTO PRODUCT (PRODUCT_ID, PRODCAT_ID, DESCRIPTION,IMG_URL, PROD_NAME, PRICE, RATE_WEIGHTAGE, AVG_RATING, DISCOUNT, IMAGE_PATH, STATUS) 
 VALUES 
-    ('PR0000001', 'PC0000001', 'Learn Algebra Now !!! fillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfill', 'Algebra Part 1', 1500.0, 5, 4.5, 0.1, 'images/algebraP1.jpg','Active'),
-    ('PR0000002', 'PC0000001', 'Algebra Rocks Hoodie !!! fillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfill', 'Algebra Rocks Hoodie', 800.0, 4, 4.2, 0.05, 'images/algebraHoodie.jpg','Active'),
-    ('PR0000003', 'PC0000002', 'JavaScript!!! fillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfill', 'JavaScript', 100.0, 3, 4.0, 0.0, 'images/Javascript.jpg','Active'),
-    ('PR0000004', 'PC0000002', 'Learn C+ Now !!! fillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfill', 'C++', 50.0, 2, 3.8, 0.0, 'images/c++.jpg','Active'),
-    ('PR0000005', 'PC0000003', 'I Love Bio Tshirt !!! fillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfill', 'I Love Bio Tshirt', 30.0, 1, 4.1, 0.0, 'images/bioShirt.jpg','Active'),
-    ('PR0000006', 'PC0000003', 'I Love Bio Cup !!! fillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfill', 'I Love Bio Cup', 25.0, 1, 2.0, 2, 'image/bioCup.jpg','Active'),
-    ('PR0000007', 'PC0000002', 'Java Hoodie !!! fillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfill', 'Java Hoodie', 99.0, 2, 4.0, 1.5, 'image/javaHoodie.jpg','Active'),
-    ('PR0000008', 'PC0000005', 'Buy Physics Cap Now !!! fillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfill', 'Physics Cap', 60.0, 3, 3.0, 0.0, 'image/physicsCap.jpg','Active');
+    ('PR0000001', 'PC0000001', 'Learn Algebra Now !!! fillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfill',null, 'Algebra Part 1', 1500.0, 5, 4.5, 0.1, 'images/algebraP1.jpg','Active'),
+    ('PR0000002', 'PC0000001', 'Algebra Rocks Hoodie !!! fillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfill','', 'Algebra Rocks Hoodie', 800.0, 4, 4.2, 0.05, 'images/algebraHoodie.jpg','Active'),
+    ('PR0000003', 'PC0000002', 'JavaScript!!! fillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfill','', 'JavaScript', 100.0, 3, 4.0, 0.0, 'images/Javascript.jpg','Active'),
+    ('PR0000004', 'PC0000002', 'Learn C+ Now !!! fillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfill','', 'C++', 50.0, 2, 3.8, 0.0, 'images/c++.jpg','Active'),
+    ('PR0000005', 'PC0000003', 'I Love Bio Tshirt !!! fillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfill','', 'I Love Bio Tshirt', 30.0, 1, 4.1, 0.0, 'images/bioShirt.jpg','Active'),
+    ('PR0000006', 'PC0000003', 'I Love Bio Cup !!! fillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfill',null, 'I Love Bio Cup', 25.0, 1, 2.0, 2, 'image/bioCup.jpg','Active'),
+    ('PR0000007', 'PC0000002', 'Java Hoodie !!! fillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfill','', 'Java Hoodie', 99.0, 2, 4.0, 1.5, 'image/javaHoodie.jpg','Active'),
+    ('PR0000008', 'PC0000005', 'Buy Physics Cap Now !!! fillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfill','', 'Physics Cap', 60.0, 3, 3.0, 0.0, 'image/physicsCap.jpg','Active');
 
 INSERT INTO MERCHANDISE (MERCH_ID, PRODUCT_ID, MERCHCAT_ID,DIMENSION_H_CM, DIMENSION_W_CM, DIMENSION_L_CM, WEIGHT_KG, STOCK_BALANCE)
 VALUES 

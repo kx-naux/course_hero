@@ -70,6 +70,9 @@ public class Users implements Serializable {
     @Size(min = 1, max = 20)
     @Column(name = "GENDER")
     private String gender;
+    @Size(max = 100)
+    @Column(name = "IMG_URL")
+    private String imgUrl;
 
     
     @JoinTable(name = "PREFERRED_COURSE", joinColumns = {
@@ -320,6 +323,16 @@ public class Users implements Serializable {
 
 
 
+
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
+    }
+
     public Date getDob() {
         return dob;
     }
@@ -343,5 +356,5 @@ public class Users implements Serializable {
     public void setGender(String gender) {
         this.gender = gender;
     }
-    
+
 }

@@ -39,32 +39,22 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "BillingAddress.findByCountry", query = "SELECT b FROM BillingAddress b WHERE b.country = :country")})
 public class BillingAddress implements Serializable {
 
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 50)
+    @Size(max = 50)
     @Column(name = "LINE_1")
     private String line1;
     @Size(max = 50)
     @Column(name = "LINE_2")
     private String line2;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 20)
+    @Size(max = 20)
     @Column(name = "CITY")
     private String city;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 20)
+    @Size(max = 20)
     @Column(name = "STATE_RESIDES")
     private String stateResides;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 9)
+    @Size(max = 9)
     @Column(name = "POSTALCODE")
     private String postalcode;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 40)
+    @Size(max = 40)
     @Column(name = "COUNTRY")
     private String country;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "addressId")
@@ -187,18 +177,10 @@ public class BillingAddress implements Serializable {
         this.shippingList = shippingList;
     }
 
-    
-    
-    public String getCity() {
-        return city;
-    }
-
     public void setCity(String city) {
         this.city = city;
     }
 
-   
-    
     public String getPostalcode() {
         return postalcode;
     }

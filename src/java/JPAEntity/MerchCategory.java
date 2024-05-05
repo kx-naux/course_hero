@@ -42,6 +42,9 @@ public class MerchCategory implements Serializable {
     @Size(max = 100)
     @Column(name = "DESCRIPTION")
     private String description;
+    @Size(max = 100)
+    @Column(name = "IMG_URL")
+    private String imgUrl;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "merchcatId")
     private List<Merchandise> merchandiseList;
 
@@ -81,13 +84,6 @@ public class MerchCategory implements Serializable {
         this.categoryName = categoryName;
     }
     
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
 
 
     @Override
@@ -124,5 +120,23 @@ public class MerchCategory implements Serializable {
     public void setMerchandiseList(List<Merchandise> merchandiseList) {
         this.merchandiseList = merchandiseList;
     }
-    
+
+
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
 }

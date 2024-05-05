@@ -43,6 +43,9 @@ public class CourseCategory implements Serializable {
     @Size(max = 100)
     @Column(name = "DESCRIPTION")
     private String description;
+    @Size(max = 100)
+    @Column(name = "IMG_URL")
+    private String imgUrl;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -128,7 +131,16 @@ public class CourseCategory implements Serializable {
         return "JPAEntity.CourseCategory[ coursecatId=" + coursecatId + " ]";
     }
 
-  
+
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
+    }
+
 
     public String getDescription() {
         return description;
@@ -137,5 +149,7 @@ public class CourseCategory implements Serializable {
     public void setDescription(String description) {
         this.description = description;
     }
+
+
     
 }

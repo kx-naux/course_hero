@@ -43,18 +43,21 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Authors.findByWebsite", query = "SELECT a FROM Authors a WHERE a.website = :website")})
 public class Authors implements Serializable {
 
+    @Size(max = 100)
+    @Column(name = "IMG_URL")
+    private String imgUrl;
     @Basic(optional = false)
-    @NotNull
+    @NotNull()
     @Size(min = 1, max = 30)
     @Column(name = "AUTHOR_NAME")
     private String authorName;
     @Basic(optional = false)
-    @NotNull()
+    @NotNull
     @Size(min = 1, max = 30)
     @Column(name = "NATIONALITY")
     private String nationality;
     @Basic(optional = false)
-    @NotNull
+    @NotNull()
     @Size(min = 1, max = 60)
     @Column(name = "INSTITUTION")
     private String institution;
@@ -67,9 +70,8 @@ public class Authors implements Serializable {
     @Column(name = "BIOGRAPHY")
     private String biography;
     @Basic(optional = false)
-    @NotNull()
+    @NotNull
     @Column(name = "DATE_JOINED")
-    
     @Temporal(TemporalType.DATE)
     private Date dateJoined;
     @Basic(optional = false)
@@ -199,6 +201,27 @@ public class Authors implements Serializable {
     
     
 
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
+    }
+
+    
+
+    public String getBiography() {
+        return biography;
+    }
+
+    public void setBiography(String biography) {
+        this.biography = biography;
+    }
+
+    
+
+   
     public String getNationality() {
         return nationality;
     }
@@ -215,18 +238,7 @@ public class Authors implements Serializable {
         this.institution = institution;
     }
 
-    
-
-    public String getBiography() {
-        return biography;
-    }
-
-    public void setBiography(String biography) {
-        this.biography = biography;
-    }
-
-    
-
+   
     public String getWebsite() {
         return website;
     }

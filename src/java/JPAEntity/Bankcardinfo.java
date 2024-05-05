@@ -155,6 +155,7 @@ public class Bankcardinfo implements Serializable {
         return "JPAEntity.Bankcardinfo[ cardinfoid=" + cardinfoid + " ]";
     }
 
+
     public String getCardtype() {
         return cardtype;
     }
@@ -163,8 +164,6 @@ public class Bankcardinfo implements Serializable {
         this.cardtype = cardtype;
     }
 
-    
-    
 
     public String getCvv() {
         return cvv;
