@@ -10,7 +10,7 @@ public class WebPath {
     public WebPath() {
         pageUrls = new HashMap<>();
 
-        //client
+        // learners
         pageUrls.put("login", "/login");
         pageUrls.put("logout", "/Logout");
         pageUrls.put("sign up", "/sign-up");
@@ -26,11 +26,11 @@ public class WebPath {
         pageUrls.put("merchandise", "/merch");
         pageUrls.put("help", "/help");
         pageUrls.put("promotion", "/promotion");
-        pageUrls.put("profile", "/profile/edit-profile");
-        pageUrls.put("profile address", "/profile/edit-address");
-        pageUrls.put("profile photo", "/profile/edit-photo");
-        pageUrls.put("profile security", "/profile/edit-security");
-        pageUrls.put("profile close", "/profile/close-account");
+        pageUrls.put("profile", "/edit-profile");
+        pageUrls.put("profile address", "/edit-address");
+        pageUrls.put("profile photo", "/edit-photo");
+        pageUrls.put("profile security", "/edit-security");
+        pageUrls.put("profile close", "/close-account");
 
         //admin
         pageUrls.put("dashboard", "/admin/dashboard");
