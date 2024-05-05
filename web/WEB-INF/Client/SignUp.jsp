@@ -112,7 +112,7 @@
                         <!--date of birth-->
                         <div class="sign-up-input-div required-input-div flex-col">
                             <label for="name">Date of birth:</label>
-                            <input type="date" id="dob"  name="dob" placeholder="Select date"/>
+                            <input type="date" id="dob"  name="dob" placeholder="Select date" value="${loginFormData.dobStr}"/>
                         </div>
 
                         <p class="invalid-msg"></p>
@@ -190,7 +190,7 @@
                         </ul>
 
                         <p class="invalid-msg"></p>
-
+                        <input type="text" name="formType" value="validateData" hidden/>
                         <div class="sign-up-btn-div flex-col">
                             <label for="termAgree" class="term-acpt-label"><input id="termAgree" name="termAgree" type="checkbox" />I agree to the <a>term & condition</a></label>
                             <input class="sign-up-btn submit-btn" type="submit" value="Submit" disabled />
@@ -210,59 +210,60 @@
                         <!--section 1-->
                         <div class="sign-up-view-div  flex-col">
                             <label>Email:</label>
-                            <input type="text" id="email" name="email" value="jarretlow@gmail.com" readonly/>
+                            <input type="text" id="email" name="email" value="${loginFormData.email}" readonly/>
                         </div>
 
                         <div class="sign-up-view-div  flex-col">
                             <label>Username:</label>
-                            <input type="text" id="username" name="username" value="kahxuan__" readonly/>
+                            <input type="text" id="username" name="username" value="${loginFormData.username}" readonly/>
                         </div>
 
                         <div class="sign-up-view-div  flex-col">
-                            <label>Name:</label>
-                            <input type="text" id="name" name="name" value="Kah Xuan" readonly/>
+                            <label>Display Name:</label>
+                            <input type="text" id="name" name="name" value="${loginFormData.displayName}" readonly/>
                         </div>
 
                         <div class="sign-up-view-div  flex-col">
                             <label>Gender:</label>
-                            <input type="text" id="gender" name="gender" value="Male" readonly/>
+                            <input type="text" id="gender" name="gender" value="${loginFormData.gender}" readonly/>
                         </div>
 
                         <div class="sign-up-view-div  flex-col">
                             <label>Date of birth:</label>
-                            <input type="text" id="dob" name="dob" value="2004/1/1" readonly/>
+                            <input type="text" id="dob" name="dob" value="${loginFormData.dobStr}" readonly/>
                         </div>
 
                         <!--section 2-->
                         <div class="sign-up-view-div flex-col">
                             <label>Address:</label>
-                            <input type="text" id="address1" name="address1" value="123" readonly/>
-                            <input type="text" id="address2" name="address2" value="123" readonly/>
+                            <input type="text" id="address1" name="address1" value="${loginFormData.addressLine1}" readonly/>
+                            <input type="text" id="address2" name="address2" value="${loginFormData.addressLine2}" readonly/>
                         </div>
 
                         <div class="sign-up-view-div flex-col">
                             <label>City:</label>
-                            <input type="text" id="city" name="city" value="Malaysia" readonly/>
+                            <input type="text" id="city" name="city" value="${loginFormData.city}" readonly/>
                         </div>
 
                         <div class="sign-up-view-div flex-col">
                             <label>Postal code:</label>
-                            <input type="text" id="postalCode" name="postalCode" value="11223" readonly/>
+                            <input type="text" id="postalCode" name="postalCode" value="${loginFormData.postalCode}" readonly/>
                         </div>
 
                         <div class="sign-up-view-div flex-col">
                             <label>State:</label>
-                            <input type="text" id="state" name="state" value="Malaysia" readonly/>
+                            <input type="text" id="state" name="state" value="${loginFormData.state}" readonly/>
                         </div>
 
                         <div class="sign-up-view-div flex-col">
                             <label>Country:</label>
-                            <input type="text" id="country" name="country" value="Malaysia" readonly/>
+                            <input type="text" id="country" name="country" value="${loginFormData.country}" readonly/>
                         </div>
-
+                            
+                        <input type="text" name="formType" value="confirmSubmit" hidden/>
                         <div class="sign-up-btn-div flex-col">
                             <input class="sign-up-btn submit-btn" type="submit" value="Confirm" />
-                            <input class="sign-up-btn back-btn" type="submit" value="I want edit" />
+                            <input class="sign-up-btn back-btn" name="userWantToEdit" type="submit" value="I want edit" />
                         </div>
                     </div>
                 </form>
@@ -276,16 +277,17 @@
                         </div>
 
                         <div class="otp-field-div flex-row">
-                            <input type="text" id="otp1" class="otp" maxlength="1" autocomplete="off" />
-                            <input type="text" id="otp2" class="otp" maxlength="1" autocomplete="off" />
-                            <input type="text" id="otp3" class="otp" maxlength="1" autocomplete="off" />
-                            <input type="text" id="otp4" class="otp" maxlength="1" autocomplete="off" />
-                            <input type="text" id="otp5" class="otp" maxlength="1" autocomplete="off" />
-                            <input type="text" id="otp6" class="otp" maxlength="1" autocomplete="off" />
+                            <input type="text" id="otp1" name="otp1" class="otp" maxlength="1" autocomplete="off" />
+                            <input type="text" id="otp2" name="otp2" class="otp" maxlength="1" autocomplete="off" />
+                            <input type="text" id="otp3" name="otp3" class="otp" maxlength="1" autocomplete="off" />
+                            <input type="text" id="otp4" name="otp4" class="otp" maxlength="1" autocomplete="off" />
+                            <input type="text" id="otp5" name="otp5" class="otp" maxlength="1" autocomplete="off" />
+                            <input type="text" id="otp6" name="otp6" class="otp" maxlength="1" autocomplete="off" />
                         </div>
 
                         <input type="text" id="otp" name="otp" hidden />
-
+                        <input type="text" name="formType" value="OTPForm" hidden/>
+                        
                         <div class="sign-up-btn-div otp-submit-div flex-col">
                             <input class="sign-up-btn submit-btn" type="submit" value="Submit" disabled />
                         </div>
