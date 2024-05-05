@@ -189,6 +189,7 @@
 
                 <div class="merch-category flex-col">
                     <div class="merch-category-title-div flex-row">
+                        <!--category name-->
                         <h1>Apparel</h1>
                         <p><i class="ri-add-fill"></i></p>
                     </div>
@@ -200,6 +201,11 @@
                             </div>
                             <div class="merch-item-info flex-col">
                                 <h1 class="merch-item-name">Course Hero X PRX T-shirt</h1>
+                                <div class="merch-review flex-row">
+                                    <p class="rating-digit">4.5</p>
+                                    <i class="ri-star-fill"></i>
+                                    <p class="rating-number-field">(<span class="raing-number">5</span>)</p>
+                                </div>
                                 <div class="merch-tag-field flex-row">
                                     <p class="merch-tag tag-orange">Hot Sell</p>
                                     <p class="merch-tag tag-yellow">New</p>
@@ -210,13 +216,84 @@
                                 </div>
                             </div>
                         </div>
-                        
+
+                        <div class="merch-list-item flex-col" merchID="M00000001">
+                            <div class="merch-item-img flex-col">
+                                <img src="./img/merchandise/hoodie.png" alt="" />
+                            </div>
+                            <div class="merch-item-info flex-col">
+                                <h1 class="merch-item-name">Course Hero X SEN Hoodie Course Hero X SEN Hoodie</h1>
+                                <div class="merch-review flex-row">
+                                    <p class="rating-digit">4.5</p>
+                                    <i class="ri-star-fill"></i>
+                                    <p class="rating-number-field">(<span class="raing-number">5</span>)</p>
+                                </div>
+                                <div class="merch-tag-field flex-row">
+                                    <p class="merch-tag tag-orange">Hot Sell</p>
+                                    <p class="merch-tag tag-yellow">New</p>
+                                </div>
+                                <div class="merch-price-field flex-row">
+                                    <p class="merch-price">RM <span>88.00</span></p>
+                                    <p class="merch-normal-price">RM <span>110.00</span></p>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="merch-list-item flex-col" merchID="M00000001">
                             <div class="merch-item-img flex-col">
                                 <img src="./img/merchandise/hoodie.png" alt="" />
                             </div>
                             <div class="merch-item-info flex-col">
                                 <h1 class="merch-item-name">Course Hero X SEN Hoodie</h1>
+                                <div class="merch-review flex-row">
+                                    <p class="rating-digit">4.5</p>
+                                    <i class="ri-star-fill"></i>
+                                    <p class="rating-number-field">(<span class="raing-number">5</span>)</p>
+                                </div>
+                                <div class="merch-tag-field flex-row">
+                                    <p class="merch-tag tag-orange">Hot Sell</p>
+                                    <p class="merch-tag tag-yellow">New</p>
+                                </div>
+                                <div class="merch-price-field flex-row">
+                                    <p class="merch-price">RM <span>88.00</span></p>
+                                    <p class="merch-normal-price">RM <span>110.00</span></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="merch-list-item flex-col" merchID="M00000001">
+                            <div class="merch-item-img flex-col">
+                                <img src="./img/merchandise/hoodie.png" alt="" />
+                            </div>
+                            <div class="merch-item-info flex-col">
+                                <h1 class="merch-item-name">Course Hero X SEN Hoodie</h1>
+                                <div class="merch-review flex-row">
+                                    <p class="rating-digit">4.5</p>
+                                    <i class="ri-star-fill"></i>
+                                    <p class="rating-number-field">(<span class="raing-number">5</span>)</p>
+                                </div>
+                                <div class="merch-tag-field flex-row">
+                                    <p class="merch-tag tag-orange">Hot Sell</p>
+                                    <p class="merch-tag tag-yellow">New</p>
+                                </div>
+                                <div class="merch-price-field flex-row">
+                                    <p class="merch-price">RM <span>88.00</span></p>
+                                    <p class="merch-normal-price">RM <span>110.00</span></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="merch-list-item flex-col" merchID="M00000001">
+                            <div class="merch-item-img flex-col">
+                                <img src="./img/merchandise/hoodie.png" alt="" />
+                            </div>
+                            <div class="merch-item-info flex-col">
+                                <h1 class="merch-item-name">Course Hero X SEN Hoodie</h1>
+                                <div class="merch-review flex-row">
+                                    <p class="rating-digit">4.5</p>
+                                    <i class="ri-star-fill"></i>
+                                    <p class="rating-number-field">(<span class="raing-number">5</span>)</p>
+                                </div>
                                 <div class="merch-tag-field flex-row">
                                     <p class="merch-tag tag-orange">Hot Sell</p>
                                     <p class="merch-tag tag-yellow">New</p>
@@ -244,6 +321,11 @@
                             </div>
                             <div class="merch-item-info flex-col">
                                 <h1 class="merch-item-name">Course Hero X LOL Mug</h1>
+                                <div class="merch-review flex-row">
+                                    <p class="rating-digit">4.5</p>
+                                    <i class="ri-star-fill"></i>
+                                    <p class="rating-number-field">(<span class="raing-number">5</span>)</p>
+                                </div>
                                 <div class="merch-tag-field flex-row">
                                     <p class="merch-tag tag-orange">Hot Sell</p>
                                     <p class="merch-tag tag-yellow">New</p>
@@ -254,7 +336,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                     </div>
                 </div>
 

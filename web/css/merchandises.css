@@ -3,7 +3,7 @@
 /*merch item display section*/
 .show-merch-section,
 .merch-list-section{
-    background-color: var(--color-light-grey-1);
+    background-color: var(--color-white);
 }
 
 .show-merch-div {
@@ -186,3 +186,199 @@
 }
 
 /*all merch section*/
+.merch-list-div {
+    padding: 70px 0;
+}
+
+.merch-list-div .merch-list-title {
+    font-weight: 600;
+    font-size: var(--font-size-l);
+    color: var(--color-blue-2);
+    margin-bottom: 30px;
+}
+
+.merch-list-div .merch-category {
+    border-top: 2px solid var(--color-light-grey-2);
+}
+
+.merch-list-div .merch-category:last-of-type {
+    border-bottom: 2px solid var(--color-light-grey-2);
+}
+
+.merch-list-div .merch-category-title-div {
+    padding: 30px 25px;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.merch-list-div .merch-category:hover .merch-category-title-div {
+    background-color: var(--color-light-grey-0);
+}
+
+.merch-list-div .merch-category-title-div h1{
+    font-weight: 600;
+    font-size: var(--font-size-xxl);
+    color: var(--color-blue-2);
+}
+
+.merch-list-div .merch-category-title-div p{
+    font-weight: 400;
+    font-size: var(--font-size-xxxl);
+    color: var(--color-text-light-2);
+}
+
+.merch-list-div .merch-category-item-list {
+    display: flex;
+    max-width: 100%;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 30px;
+    max-height: 0px;
+    overflow:  hidden;
+}
+
+.merch-list-div .merch-category-item-list.active {
+    max-height: 99999px;
+    padding: 10px 25px 40px;
+}
+
+/*merch item*/
+.merch-list-item {
+    cursor: pointer;
+    border-radius: 12px;
+    box-shadow: var(--box-shadow-1);
+    background-color: var(--color-white);
+    overflow: hidden;
+    padding: 20px;
+    width: 340px;
+    min-height: 420px;
+    border: 1px solid var(--color-light-grey-2);
+    transition: 0.1s all ease-in-out;
+    max-height: 100%;
+}
+
+.merch-list-item:hover {
+    transform: scale(1.01);
+    box-shadow: var(--box-shadow-0);
+}
+
+
+.merch-item-img {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.merch-item-img img {
+    height: 230px;
+    width: 260px;
+    object-fit: cover;
+}
+
+.merch-item-info {
+    height: 100%;
+    display: grid;
+}
+
+.merch-item-info .merch-item-name{
+    font-size: var(--font-size-m);
+    font-weight: 700;
+    color: var(--color-text-light-3);
+    padding: 6px 0 2px;
+}
+
+.merch-review {
+    padding: 18px 0 4px;
+    font-size: var(--font-size-s);
+    align-items: center;
+    gap: 6px;
+    align-self: flex-end;
+    max-height: 32px;
+}
+
+.merch-review .rating-digit {
+    color: var(--color-text-light-3);
+    font-weight: 500;
+}
+
+.merch-review i{
+    transform: translateY(-1px);
+    color: var(--rating-star-color);
+}
+
+.merch-review .rating-number-field{
+    font-size: var(--font-size-xs);
+    font-weight: 200;
+    color: var(--color-text-light-2);
+}
+
+
+.merch-tag-field {
+    gap: 10px;
+    align-items: center;
+    align-self: flex-end;
+    max-height: 32px;
+}
+
+.merch-tag-field .merch-tag{
+    font-weight: 600;
+    font-size: var(--font-size-xs);
+    background-color: var(--color-light-grey-2);
+    color: var(--color-text-light-2);
+    border-radius: 2px;
+    padding: 2px 8px;
+}
+
+.merch-price-field {
+    padding: 2px 0;
+    gap: 10px;
+    align-items: center;
+    align-self: flex-end;
+    max-height: 32px;
+}
+
+.merch-price-field .merch-price{
+    font-weight: 700;
+    font-size: var(--font-size-xm);
+    color: var(--color-text-light-3);
+}
+
+.merch-price-field .merch-normal-price{
+    font-weight: 300;
+    font-size: var(--font-size-s);
+    color: var(--color-text-light-2);
+    text-decoration: line-through;
+}
+
+
+/*Tag Design*/
+.merch-tag.tag-red {
+    background-color: var(--tag-red-bg);
+    color: var(--tag-red-color);
+}
+
+.merch-tag.tag-orange {
+    background-color: var(--tag-orange-bg);
+    color: var(--tag-orange-color);
+}
+
+.merch-tag.tag-yellow {
+    background-color: var(--tag-yellow-bg);
+    color: var(--tag-yellow-color);
+}
+
+.merch-tag.tag-green {
+    background-color: var(--tag-green-bg);
+    color: var(--tag-green-color);
+}
+
+.merch-tag.tag-blue {
+    background-color: var(--tag-blue-bg);
+    color: var(--tag-blue-color);
+}
+
+.merch-tag.tag-purple {
+    background-color: var(--tag-purple-bg);
+    color: var(--tag-purple-color);
+}
