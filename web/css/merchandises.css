@@ -212,7 +212,7 @@
     cursor: pointer;
 }
 
-.merch-list-div .merch-category:hover .merch-category-title-div {
+.merch-list-div .merch-category .merch-category-title-div:hover  {
     background-color: var(--color-light-grey-0);
 }
 
