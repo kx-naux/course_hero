@@ -232,6 +232,10 @@
     margin-top: 30px;
 }
 
+.sign-up-p .sign-up-btn.back-btn {
+    margin-top: 5px;
+}
+
 .sign-up-p .sign-up-btn:hover {
     background-color: var(--color-light-grey-2);
 }

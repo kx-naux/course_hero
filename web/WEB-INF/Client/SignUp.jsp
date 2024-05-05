@@ -111,7 +111,7 @@
 
                         <!--date of birth-->
                         <div class="sign-up-input-div required-input-div flex-col">
-                            <label for="name">Date of birth:</label>
+                            <label for="dob">Date of birth:</label>
                             <input type="date" id="dob"  name="dob" placeholder="Select date" value="${loginFormData.dobStr}"/>
                         </div>
 
@@ -140,7 +140,7 @@
 
                         <!--Postal Code-->
                         <div class="sign-up-input-div flex-col">
-                            <label for="postalCode">Postel code:</label>
+                            <label for="postalCode">Postal code:</label>
                             <input type="text" id="postalCode"  name="postalCode" placeholder="postal code" maxlength="9" value="${loginFormData.postalCode}"/>
                         </div>
 

@@ -29,10 +29,10 @@
         <!--3 = Change photo-->
         <!--4 = Account security-->
         <!--5 = Close account-->
-        <input type="number" value="1" min="1" max="5" hidden />
+        <input type="number" id="profilePage" value="2" min="1" max="5" hidden />
 
         <!--hidden input field to show success msg-->
-        <input type="text" value="" hidden />
+        <input type="text" id="succssMsg" value="" hidden />
 
         <section class="section profile-section">
             <div class="profile-div flex-row">
@@ -58,7 +58,7 @@
 
                     <!--edit profile-->
                     <div class="profile-right-page profile-right-page-1 flex-col">
-                        <form>
+                        <form class="flex-col" id="editProfileForm">
                             <div class="profile-right-page-header flex-col">
                                 <h1>User profile</h1>
                                 <p>Edit information about yourself</p>
@@ -67,7 +67,7 @@
                             <div class="profile-right-page-content flex-col">
                                 <div class="profile-right-page-input flex-col">
                                     <label for="name">Name:</label>
-                                    <input type="text" id="name" name="name" value="Kah Xuan" />
+                                    <input type="text" id="name" name="name" value="Kah Xuan"  placeholder="name" maxlength="30"  />
                                 </div>
 
                                 <div class="profile-right-page-input flex-col">
@@ -80,19 +80,61 @@
 
                                 <div class="profile-right-page-input flex-col">
                                     <label for="dob">Date of birth:</label>
-                                    <input type="date" id="dob"  name="dob" placeholder="Select date"/>
+                                    <input type="date" id="dob"  name="dob" value="2021-01-04" />
                                 </div>
 
                                 <p class="invalid-msg"></p>
 
-                                <div class="profile-right-page-submit">
-                                    <input type="submit" class="submit-btn" value="Save" />
+                                <div class="profile-right-page-submit flex-row">
+                                    <input type="button" class="submit-btn form-1-submit" value="Save" onclick="form1_submit()" />
                                 </div>
                             </div>
                         </form>
                     </div>
 
                     <!--edit address-->
+                    <div class="profile-right-page profile-right-page-2 flex-col">
+                        <form class="flex-col" id="editProfileForm">
+                            <div class="profile-right-page-header flex-col">
+                                <h1>Address</h1>
+                                <p>Edit information about your address</p>
+                            </div>
+
+                            <div class="profile-right-page-content flex-col">
+                                <div class="profile-right-page-input flex-col">
+                                    <label>Address:</label>
+                                    <input type="text" id="address1" name="address1" value="" placeholder="address line 1" maxlength="50" />
+                                    <input type="text" id="address2" name="address2" value="" placeholder="address line 2" maxlength="50" />
+                                </div>
+
+                                <div class="profile-right-page-input flex-col">
+                                    <label for="city">City:</label>
+                                    <input type="text" id="city" name="city" value="" placeholder="city name" maxlength="20" />
+                                </div>
+
+                                <div class="profile-right-page-input flex-col">
+                                    <label for="postalCode">Postal code:</label>
+                                    <input type="text" id="postalCode"  name="postalCode" placeholder="postal code" maxlength="9" value=""/>
+                                </div>
+
+                                <div class="profile-right-page-input flex-col">
+                                    <label for="state">State Resides:</label>
+                                    <input type="text" id="state"  name="state" placeholder="state name" maxlength="20" value=""/>
+                                </div>
+
+                                <div class="profile-right-page-input flex-col">
+                                    <label for="state">Country:</label>
+                                    <input type="text" id="country"  name="country" placeholder="country name" maxlength="40" value=""/>
+                                </div>
+
+                                <p class="invalid-msg"></p>
+
+                                <div class="profile-right-page-submit flex-row">
+                                    <input type="submit" class="submit-btn" value="Save" />
+                                </div>
+                            </div>
+                        </form>
+                    </div>
 
                     <!--edit photo-->
 

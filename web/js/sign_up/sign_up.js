@@ -10,8 +10,8 @@ var inputs = document.querySelectorAll("div.sign-up-p input");
 var selects = document.querySelectorAll("div.sign-up-p select");
 var blurPasswordInputs = document.querySelectorAll("div.sign-up-p input.password-input");
 var passwordEyes = document.querySelectorAll("div.sign-up-p span.password-eye");
-
 var errorMsgs = document.querySelectorAll("div.sign-up-p p.invalid-msg");
+
 function showSignUpPage(n) {
 
     formProgress.value = n;
