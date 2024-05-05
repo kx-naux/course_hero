@@ -1,6 +1,11 @@
 @import url('./root.css');
 
 /*merch item display section*/
+.show-merch-section,
+.merch-list-section{
+    background-color: var(--color-light-grey-1);
+}
+
 .show-merch-div {
     position: relative;
 }
@@ -28,7 +33,6 @@
     justify-content: center;
     cursor: pointer;
     transition: all .6s ease-in-out;
-
 }
 
 .show-merch-div .merch-pic-div button span{
@@ -181,3 +185,4 @@
     left: 70%;
 }
 
+/*all merch section*/
