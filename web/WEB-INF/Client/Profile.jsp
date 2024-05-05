@@ -29,7 +29,7 @@
         <!--3 = Change photo-->
         <!--4 = Account security-->
         <!--5 = Close account-->
-        <input type="number" id="profilePage" value="1" min="1" max="5" hidden />
+        <input type="number" id="profilePage" value="3" min="1" max="5" hidden />
 
         <!--otp for page 4 put 1 into value-->
         <input type="number" id="otpDiv" value="0"  hidden />
@@ -187,7 +187,7 @@
 
                                 <div class="profile-right-page-input flex-col">
                                     <label for="email">New email:</label>
-                                    <input type="text" id="newEmail"  name="email" placeholder="example@email.com" maxlength="50" value=""/>
+                                    <input type="text" id="newEmail" class=""  name="email" placeholder="example@email.com" maxlength="50" value=""/>
                                 </div>
 
                                 <p class="invalid-msg" id="changeEmail"></p>

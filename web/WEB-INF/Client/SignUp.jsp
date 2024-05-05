@@ -40,7 +40,7 @@
 
                 <!--hidden value for step count-->
                 <!--<input type="number" min="1" max="5" id="formProgress" value="<%= pageNumber%>" hidden />-->
-                <input type="number" min="1" max="5" id="formProgress" value="6" hidden />
+                <input type="number" min="1" max="5" id="formProgress" value="1" hidden />
 
                 <!--insert error message here if any-->
                 <% if (errField.equals("email&username")) { %>
