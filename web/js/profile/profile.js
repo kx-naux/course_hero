@@ -3,6 +3,7 @@ var profileSidebarLi = document.querySelectorAll("ul.profile-sidebar li");
 var errorMsgs = document.querySelectorAll("p.invalid-msg");
 var inputs = document.querySelectorAll("div.profile-right-page input");
 var selects = document.querySelectorAll("div.profile-right-page select");
+var passwordEyes = document.querySelectorAll("div.profile-right-page span.password-eye");
 
 // set error msg
 function showErrorMsg(msg) {
@@ -40,6 +41,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // show success msg base on the hidden value
     var n = document.querySelector("input#profilePage").value;
     showPage(n);
+
+    // check is otp field div
+    var otp = document.querySelector("input#otpDiv").value;
+    if (n == 4) {
+        showOtpDiv();
+    }
 
 });
 
@@ -142,7 +149,7 @@ document.getElementById('profilePic').addEventListener('change', function () {
 
     // show file name
     fileLabel.textContent = fileName;
-    
+
     // show preview
     reader.onload = function (e) {
         document.getElementById('profilePreview').src = e.target.result;
@@ -152,3 +159,135 @@ document.getElementById('profilePic').addEventListener('change', function () {
         reader.readAsDataURL(file);
     }
 });
+
+// view and hide password
+passwordEyes.forEach((eye) => {
+    eye.addEventListener('click', () => {
+        // Get the input element associated with this eye icon
+        var passwordInput = eye.parentElement.querySelector('input');
+        var eyeIcon = eye.querySelector("i");
+        eyeIcon.classList = "";
+
+        // Toggle the type attribute between "password" and "text"
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            eyeIcon.classList.add("ri-eye-off-line");
+        } else {
+            passwordInput.type = "password";
+            eyeIcon.classList.add("ri-eye-line");
+        }
+    });
+});
+
+document.querySelector("div.profile-right-page input.form-5-submit").addEventListener('click', () => {
+
+    var closeAccForm = document.getElementById("closeAccountForm");
+    var passwordField = document.getElementById("passwordCloseAcc");
+
+    if (passwordField.value === "") {
+        showErrorMsg("Please enter password");
+        passwordField.classList.add("invalid-input");
+        return;
+    }
+
+    closeAccForm.submit();
+
+});
+
+// able submit button
+const passwordInput = document.getElementById("passwordChange");
+const confirmPasswordInput = document.getElementById("passwordChange2");
+
+// Function to check if the password meets the requirements
+function isPasswordValid(password) {
+    // Define regular expressions for each requirement
+    const uppercaseRegex = /[A-Z]/;
+    const lowercaseRegex = /[a-z]/;
+    const digitRegex = /\d/;
+    const symbolRegex = /[$&+,:;=?@#|'<>.^*()%!-]/;
+    const lengthRequirement = password.length >= 8;
+
+    // Check if all requirements are met
+    return (
+            uppercaseRegex.test(password) &&
+            lowercaseRegex.test(password) &&
+            digitRegex.test(password) &&
+            symbolRegex.test(password) &&
+            lengthRequirement
+            );
+}
+
+// Function to update the icon based on whether each requirement is met
+function updateRequirementIcons(password) {
+    // Define regular expressions for each requirement
+    const requirements = [
+        /[A-Z]/, // Include at least 1 uppercase letter
+        /[a-z]/, // Include at least 1 lowercase letter
+        /\d/, // Include at least 1 digit
+        /[$&+,:;=?@#|'<>.^*()%!-]/, // Include at least 1 symbol
+        /.{8,}/  // Have a minimum length of 8
+    ];
+
+    const requirementListItems = document.querySelectorAll(".input-requirement li");
+
+    // Loop through each requirement and update the corresponding icon
+    requirements.forEach((regex, index) => {
+        const listItem = requirementListItems[index];
+        const icon = listItem.querySelector("i");
+        if (regex.test(password)) {
+            icon.classList.remove("ri-close-circle-line");
+            icon.classList.add("ri-checkbox-circle-fill");
+        } else {
+            icon.classList.remove("ri-checkbox-circle-fill");
+            icon.classList.add("ri-close-circle-line");
+        }
+    });
+}
+
+passwordInput.addEventListener('input', (event) => {
+    updateRequirementIcons(event.target.value);
+});
+
+// change password form submission
+document.getElementById("changePasswordBtn").addEventListener('click', () => {
+
+    if (passwordInput.value === "") {
+        document.getElementById("changePassword").innerText = "Please enter password";
+        passwordInput.classList.add("invalid-input");
+        return;
+    }
+    if (confirmPasswordInput.value === "") {
+        document.getElementById("changePassword").innerText = "Please enter password";
+        confirmPasswordInput.classList.add("invalid-input");
+        return;
+    }
+    if (!isPasswordValid(passwordInput.value)) {
+        document.getElementById("changePassword").innerText = "Password does not follow the requiremnet";
+        passwordInput.classList.add("invalid-input");
+        return;
+    }
+    if (passwordInput.value !== confirmPasswordInput.value) {
+        document.getElementById("changePassword").innerText = "Confirm password is not same with password";
+        passwordInput.classList.add("invalid-input");
+        confirmPasswordInput.classList.add("invalid-input");
+        return;
+    }
+
+    document.getElementById("changePassowrdForm").submit();
+});
+
+var otpForm = document.getElementById("otpForm");
+var formPage4 = document.querySelectorAll("div.profile-right-page-4 form");
+var showOtpInput = document.getElementById("otpDiv");
+
+// show otp div
+function showOtpDiv() {
+    if (showOtpInput.value === '1') {
+        formPage4.forEach(formPage=>{
+            formPage.style.display = "none";
+        });
+        otpForm.style.display = "flex";
+    } else {
+        otpForm.style.display = "none";
+    }
+}

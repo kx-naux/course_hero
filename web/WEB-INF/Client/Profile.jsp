@@ -29,7 +29,10 @@
         <!--3 = Change photo-->
         <!--4 = Account security-->
         <!--5 = Close account-->
-        <input type="number" id="profilePage" value="3" min="1" max="5" hidden />
+        <input type="number" id="profilePage" value="4" min="1" max="5" hidden />
+
+        <!--otp for page 4 put 1 into value-->
+        <input type="number" id="otpDiv" value="0"  hidden />
 
         <!--hidden input field to show success msg-->
         <input type="text" id="succssMsg" value="" hidden />
@@ -94,7 +97,7 @@
 
                     <!--edit address-->
                     <div class="profile-right-page profile-right-page-2 flex-col">
-                        <form class="flex-col" id="editProfileForm">
+                        <form class="flex-col" id="editAddressForm">
                             <div class="profile-right-page-header flex-col">
                                 <h1>Address</h1>
                                 <p>Edit information about your address</p>
@@ -138,7 +141,7 @@
 
                     <!--edit photo-->
                     <div class="profile-right-page profile-right-page-3 flex-col">
-                        <form class="flex-col" id="editProfileForm" action="storeImgData" method="POST" enctype="multipart/form-data">
+                        <form class="flex-col" id="editPhotoForm" action="storeImgData" method="POST" enctype="multipart/form-data">
                             <div class="profile-right-page-header flex-col">
                                 <h1>Profile photo</h1>
                                 <p>Add a nice photo of yourself for your profile</p>
@@ -161,6 +164,8 @@
                                     </label>
                                 </div>
 
+                                <p class="invalid-msg"></p>
+
                                 <div class="profile-right-page-submit flex-row">
                                     <input type="submit" class="submit-btn form-3-submit" value="Save" />
                                 </div>
@@ -169,8 +174,99 @@
                     </div>
 
                     <!--account security-->
+                    <div class="profile-right-page profile-right-page-4 flex-col">
+
+                        <div class="profile-right-page-header flex-col">
+                            <h1>Security</h1>
+                            <p>Edit your account settings and change your password here</p>
+                        </div>
+
+                        <!--change email form-->
+                        <form class="flex-col" id="changeEmailForm">
+                            <div class="profile-right-page-content flex-col">
+
+
+                                <p class="invalid-msg" id="changeEmail"></p>
+
+                                <div class="profile-right-page-submit flex-row">
+                                    <input type="submit" class="submit-btn form-4-submit" value="Change email" />
+                                </div>
+                            </div>
+                        </form>
+
+                        <!--change password form-->
+                        <form class="flex-col profile-right-border-top" id="changePassowrdForm">
+                            <div class="profile-right-page-content flex-col">
+                                <!--password-->
+                                <div class="profile-right-page-input flex-col">
+                                    <label for="password">Password:</label>
+                                    <input type="password" id="passwordChange"  name="password" class="password-input" placeholder="Password" />
+                                    <span class="password-eye"><i class="ri-eye-line"></i></span>
+                                </div>
+
+                                <!--confirm password-->
+                                <div class="profile-right-page-input flex-col">
+                                    <label for="password2">Password:</label>
+                                    <input type="password" id="passwordChange2"  name="password2" class="password-input" placeholder="Confirm password" />
+                                    <span class="password-eye"><i class="ri-eye-line"></i></span>
+                                </div>
+
+                                <ul class="input-requirement">
+                                    <li><i class="ri-close-circle-line"></i> Include at least 1 uppercase letter</li>
+                                    <li><i class="ri-close-circle-line"></i> Include at least 1 lowercase letter</li>
+                                    <li><i class="ri-close-circle-line"></i> Include at least 1 digit</li>
+                                    <li><i class="ri-close-circle-line"></i> Include at least 1 symbol</li>
+                                    <li><i class="ri-close-circle-line"></i> Have a minimum length of 8</li>
+                                </ul>
+
+                                <p class="invalid-msg" id="changePassword"></p>
+
+                                <div class="profile-right-page-submit flex-row">
+                                    <input type="button" id="changePasswordBtn" class="submit-btn form-4-submit" value="Change Password" />
+                                </div>
+                            </div>
+                        </form>
+
+                        <!--otp form-->
+                        <form class="flex-col" id="otpForm">
+                            <div class="profile-right-page-content flex-col">
+
+
+                                <p class="invalid-msg" id="otpVerify"></p>
+
+                                <div class="profile-right-page-submit flex-row">
+                                    <input type="submit" class="submit-btn form-4-submit" value="Submit" />
+                                </div>
+                            </div>
+                        </form>
+                    </div>
 
                     <!--close account-->
+                    <div class="profile-right-page profile-right-page-5 flex-col">
+                        <form class="flex-col" id="closeAccountForm">
+                            <div class="profile-right-page-header flex-col">
+                                <h1>Close Account</h1>
+                                <p>Close your account permanently</p>
+                            </div>
+
+                            <div class="profile-right-page-content flex-col">
+                                <p class="close-warning"><span><i class="ri-alert-line"></i> Warning:</span> If you close your account, you will will lose access forever.</p>
+
+                                <div class="profile-right-page-input flex-col">
+                                    <label for="password">Password:</label>
+                                    <!--add invalid-input to input class if error-->
+                                    <input type="password" id="passwordCloseAcc"  name="password" class="password-input" placeholder="Enter password to proceed to close account" />
+                                    <span class="password-eye"><i class="ri-eye-line"></i></span>
+                                </div>
+
+                                <p class="invalid-msg"></p>
+
+                                <div class="profile-right-page-submit flex-row">
+                                    <input type="button" class="submit-btn form-5-submit" value="Close account" />
+                                </div>
+                            </div>
+                        </form>
+                    </div>
 
                 </div>
 
