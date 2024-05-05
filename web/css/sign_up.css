@@ -375,6 +375,11 @@
     border-bottom: 4px solid var(--color-blue-3);
 }
 
+.otp-field-div input.invalid-otp {
+    background-color: var(--color-text-error-bg);
+    border-bottom: 4px solid var(--tag-red-bg);
+}
+
 /*back to home btn*/
 .back-to-home-a {
     position: absolute;

@@ -29,7 +29,7 @@
         <!--3 = Change photo-->
         <!--4 = Account security-->
         <!--5 = Close account-->
-        <input type="number" id="profilePage" value="4" min="1" max="5" hidden />
+        <input type="number" id="profilePage" value="1" min="1" max="5" hidden />
 
         <!--otp for page 4 put 1 into value-->
         <input type="number" id="otpDiv" value="0"  hidden />
@@ -184,7 +184,7 @@
                         <!--change email form-->
                         <form class="flex-col" id="changeEmailForm">
                             <div class="profile-right-page-content flex-col">
-                                
+
                                 <div class="profile-right-page-input flex-col">
                                     <label for="email">New email:</label>
                                     <input type="text" id="newEmail"  name="email" placeholder="example@email.com" maxlength="50" value=""/>
@@ -201,7 +201,7 @@
                         <!--change password form-->
                         <form class="flex-col profile-right-border-top" id="changePassowrdForm">
                             <div class="profile-right-page-content flex-col">
-                                
+
                                 <!--password-->
                                 <div class="profile-right-page-input flex-col">
                                     <label for="password">New Password:</label>
@@ -235,12 +235,26 @@
                         <!--otp form-->
                         <form class="flex-col" id="otpForm">
                             <div class="profile-right-page-content flex-col">
+                                <div class="sign-up-view-div  flex-col">
+                                    <h1 class="confirmation-title">OTP Verification</h1>
+                                    <p class="confirmation-sub-title">Code is sent to example@email.com, input the code received, and verify to complete the process.</p>
+                                </div>
 
+                                <div class="otp-field-div flex-row">
+                                    <input type="text" id="otp1" name="otp1" class="otp" maxlength="1" autocomplete="off" />
+                                    <input type="text" id="otp2" name="otp2" class="otp" maxlength="1" autocomplete="off" />
+                                    <input type="text" id="otp3" name="otp3" class="otp" maxlength="1" autocomplete="off" />
+                                    <input type="text" id="otp4" name="otp4" class="otp" maxlength="1" autocomplete="off" />
+                                    <input type="text" id="otp5" name="otp5" class="otp" maxlength="1" autocomplete="off" />
+                                    <input type="text" id="otp6" name="otp6" class="otp" maxlength="1" autocomplete="off" />
+                                </div>
+
+                                <input type="text" id="otp" name="otp" hidden />
 
                                 <p class="invalid-msg" id="otpVerify"></p>
 
                                 <div class="profile-right-page-submit flex-row">
-                                    <input type="submit" class="submit-btn form-4-submit" value="Submit" />
+                                    <input type="button" id="otpSubmitBtn" class="submit-btn form-4-submit" value="Submit" />
                                 </div>
                             </div>
                         </form>

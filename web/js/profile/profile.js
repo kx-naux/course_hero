@@ -310,3 +310,88 @@ document.getElementById("changeEmailBtn").addEventListener('click', () => {
 
     document.getElementById("changeEmailForm").submit();
 });
+
+// otp field
+function handleOTPInput(inputElement) {
+    const maxLength = parseInt(inputElement.getAttribute('maxlength'));
+    let enteredValue = inputElement.value;
+
+    // Remove non-digit characters
+    enteredValue = enteredValue.replace(/\D/g, '');
+
+    // Limit entered value to maximum length
+    enteredValue = enteredValue.slice(0, maxLength);
+
+    inputElement.value = enteredValue;
+
+    if (enteredValue.length >= maxLength) {
+        // If current input is at max length, focus on the next input
+        const nextInput = inputElement.nextElementSibling;
+        if (nextInput) {
+            nextInput.focus();
+        }
+
+        // Check if all OTP input fields are filled
+        const allInputsFilled = Array.from(document.querySelectorAll('.otp')).every(input => input.value.length === maxLength);
+    }
+}
+
+// Function to handle backspace key press
+function handleBackspace(inputElement) {
+    const previousInput = inputElement.previousElementSibling;
+    if (previousInput && inputElement.value === '') {
+        // If backspace is pressed and the current input is empty, focus on the previous input
+        previousInput.focus();
+    }
+}
+
+// Add event listeners to OTP input fields
+document.querySelectorAll('.otp').forEach(input => {
+    input.addEventListener('input', function () {
+        handleOTPInput(this);
+    });
+
+    input.addEventListener('keydown', function (event) {
+        removeotpInvalid();
+        if (event.key === 'Backspace') {
+            handleBackspace(this);
+        }
+    });
+});
+
+function otpInvalid() {
+    document.querySelectorAll('.otp').forEach(input => {
+        input.classList.add("invalid-otp");
+    });
+}
+
+function removeotpInvalid() {
+    document.querySelectorAll('.otp').forEach(input => {
+        input.classList.remove("invalid-otp");
+    });
+}
+
+// otp onsubmit
+document.getElementById("otpSubmitBtn").addEventListener('click', () => {
+
+    const otpInputs = document.querySelectorAll('.otp');
+    let otpValue = '';
+
+    // Concatenate values of all OTP input fields
+    otpInputs.forEach(input => {
+        otpValue += input.value;
+    });
+
+    // Store compiled OTP value into hidden input field
+    const otpHiddenInput = document.getElementById('otp');
+    otpHiddenInput.value = otpValue;
+
+    if (otpValue.length !== 6) {
+        // Handle invalid email format
+        document.getElementById("otpVerify").innerText = "invalid OTP code";
+        otpInvalid();
+        return;
+    }
+
+    document.getElementById("otpForm").submit();
+});

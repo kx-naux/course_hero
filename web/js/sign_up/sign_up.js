@@ -387,3 +387,15 @@ function compileOTPCode(event) {
     const otpHiddenInput = document.getElementById('otp');
     otpHiddenInput.value = otpValue;
 }
+
+function otpInvalid() {
+    document.querySelectorAll('.otp').forEach(input => {
+        input.classList.add("invalid-otp");
+    });
+}
+
+function removeotpInvalid() {
+    document.querySelectorAll('.otp').forEach(input => {
+        input.classList.remove("invalid-otp");
+    });
+}
