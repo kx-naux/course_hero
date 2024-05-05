@@ -22,9 +22,27 @@ public class LoginFormData {
     private String state;
     private String country;
     private Date dob;
+    private String dobStr;
+    private String password;
     
     public LoginFormData(){
         
+    }
+    
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String dobStr) {
+        this.password = password;
+    }
+    
+    public String getDobStr() {
+        return dobStr;
+    }
+
+    public void setDobStr(String dobStr) {
+        this.dobStr = dobStr;
     }
     
     public String getEmail() {
