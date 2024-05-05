@@ -29,7 +29,7 @@
         <!--3 = Change photo-->
         <!--4 = Account security-->
         <!--5 = Close account-->
-        <input type="number" id="profilePage" value="2" min="1" max="5" hidden />
+        <input type="number" id="profilePage" value="3" min="1" max="5" hidden />
 
         <!--hidden input field to show success msg-->
         <input type="text" id="succssMsg" value="" hidden />
@@ -137,6 +137,36 @@
                     </div>
 
                     <!--edit photo-->
+                    <div class="profile-right-page profile-right-page-3 flex-col">
+                        <form class="flex-col" id="editProfileForm" action="storeImgData" method="POST" enctype="multipart/form-data">
+                            <div class="profile-right-page-header flex-col">
+                                <h1>Profile photo</h1>
+                                <p>Add a nice photo of yourself for your profile</p>
+                            </div>
+
+                            <div class="profile-right-page-content flex-col">
+                                <div class="profile-right-page-input flex-col">
+                                    <label>Image Preview:</label>
+                                    <div class="image-preview-div flex-col">
+                                        <img id="profilePreview" src="./img/user/default.png" alt=""  />
+                                    </div>
+                                </div>
+
+                                <div class="profile-right-page-input flex-col">
+                                    <label>Add / Change Image:</label>
+                                    <input type="file" id="profilePic" name="profilePic" accept="image/*" hidden />
+                                    <label for="profilePic" class="image-input-label flex-row">
+                                        <span class="file-value">No file chosen</span>
+                                        <span class="upload-btn">Upload image</span>
+                                    </label>
+                                </div>
+
+                                <div class="profile-right-page-submit flex-row">
+                                    <input type="submit" class="submit-btn form-3-submit" value="Save" />
+                                </div>
+                            </div>
+                        </form>
+                    </div>
 
                     <!--account security-->
 

@@ -19,7 +19,7 @@ function removeErrorMsg() {
 
 // function change active page
 function showPage(n) {
-    var idx = parseInt(n-1);
+    var idx = parseInt(n - 1);
     for (let i = 0; i < profilePages.length; i++) {
         profilePages[i].classList.remove("active");
         profileSidebarLi[i].classList.remove("active");
@@ -96,7 +96,7 @@ function form1_submit() {
     var name = document.querySelector("input#name");
     var gender = document.querySelector("select#gender");
     var dob = document.querySelector("input#dob");
-    
+
     // check name null check and format check
     name.value = name.value.trim();
     if (name.value === "") {
@@ -128,6 +128,27 @@ function form1_submit() {
         dob.classList.add("invalid-input");
         return;
     }
-    
+
     document.querySelector("form#editProfileForm").submit();
 }
+
+// show file path on input
+document.getElementById('profilePic').addEventListener('change', function () {
+    var input = this;
+    var fileName = input.files[0].name;
+    var fileLabel = input.parentNode.querySelector("span.file-value");
+    var file = input.files[0];
+    var reader = new FileReader();
+
+    // show file name
+    fileLabel.textContent = fileName;
+    
+    // show preview
+    reader.onload = function (e) {
+        document.getElementById('profilePreview').src = e.target.result;
+    };
+
+    if (file) {
+        reader.readAsDataURL(file);
+    }
+});

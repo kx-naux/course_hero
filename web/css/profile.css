@@ -4,9 +4,10 @@
     background-color: var(--color-light-grey-1);
 }
 
-.profile-div{
+.profile-section .profile-div{
     margin: 30px auto 40px;
     background-color: var(--color-white);
+    max-width: 1150px;
 }
 
 .profile-div > div {
@@ -38,8 +39,8 @@
     width: 120px;
     height: 120px;
     object-fit: cover;
-     border: 1px solid var(--color-light-grey-3);
-     border-radius: 50%;
+    border: 1px solid var(--color-light-grey-3);
+    border-radius: 50%;
 }
 
 .profile-div-left .profile-user-div h1 {
@@ -128,7 +129,7 @@
 
 .profile-right-page .profile-right-page-content .profile-right-page-input input.invalid-input,
 .profile-right-page .profile-right-page-content .profile-right-page-input select.invalid-input{
-   background-color: var(--color-text-error-bg);
+    background-color: var(--color-text-error-bg);
     border: 1px solid var(--color-text-error);
 }
 
@@ -154,3 +155,44 @@
 .profile-right-page .profile-right-page-content .profile-right-page-submit .submit-btn:hover {
     background-color:  var(--color-text-light-2);
 }
+.profile-right-page .profile-right-page-content .image-preview-div {
+    padding: 12px 12px;
+    border: 1px solid var(--color-text-light-3);
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-right-page .profile-right-page-content .image-preview-div img {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border: 1px solid var(--color-light-grey-3);
+    border-radius: 50%;
+}
+
+.profile-right-page .profile-right-page-content .image-input-label {
+    width: 100%;
+    cursor: pointer;
+}
+
+.profile-right-page .profile-right-page-content .image-input-label span{
+    width: 100%;
+    border: 1px solid var(--color-text-light-3);
+    padding: 10px 12px;
+}
+
+.profile-right-page .profile-right-page-content .image-input-label .file-value {
+    font-weight: 400;
+    font-size: var(--font-size-s);
+    color: var(--color-text-light-3);
+}
+
+.profile-right-page .profile-right-page-content .image-input-label .upload-btn {
+    max-width: 130px;
+    border-left: none;
+}
+
+.profile-right-page .profile-right-page-content .image-input-label .upload-btn:hover {
+    background-color:  var(--color-light-grey-1);
+}
+
