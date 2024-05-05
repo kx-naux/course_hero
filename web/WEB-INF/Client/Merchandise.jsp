@@ -4,10 +4,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:useBean id="merchData" class="JPAEntity.Merchandise" scope="request"/>
 <jsp:useBean id="rateStats" class="entity.UserRatingStatistic" scope="request"/>
-<% String stockStatus = (String)request.getAttribute("stockStatus"); %>
-<% long ratingCount = ((Long)request.getAttribute("ratingCount")).longValue(); %>
-<% List<Ratings> ratingList = (List<Ratings>)request.getAttribute("ratingList"); %>
-<% long totalSold = ((Long)request.getAttribute("totalSold")).longValue(); %>
+<% String stockStatus = (String) request.getAttribute("stockStatus"); %>
+<% long ratingCount = ((Long) request.getAttribute("ratingCount")).longValue(); %>
+<% List<Ratings> ratingList = (List<Ratings>) request.getAttribute("ratingList"); %>
+<% long totalSold = ((Long) request.getAttribute("totalSold")).longValue();%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -55,8 +55,8 @@
                                     <i class="ri-star-fill"></i>
                                     <i class="ri-star-fill"></i>
                                 </div>
-                                <p><%= ratingCount %> Ratings</p>
-                                <p><%= totalSold %> Sold</p>
+                                <p><%= ratingCount%> Ratings</p>
+                                <p><%= totalSold%> Sold</p>
                             </div>
                         </div>
 
@@ -64,7 +64,7 @@
                         <div class="merch-price flex-row">
                             <p class="course-price">RM <span>${merchData.productId.price - merchData.productId.discount}</span></p>                                      
                             <p class="course-normal-price">RM <span>${merchData.productId.price}</span></p>
-                            <p class="course-offer"><%= String.format("%.2f", ((double)merchData.getProductId().getDiscount())/merchData.getProductId().getPrice()*100) %>% off</p>
+                            <p class="course-offer"><%= String.format("%.2f", ((double) merchData.getProductId().getDiscount()) / merchData.getProductId().getPrice() * 100)%>% off</p>
                         </div>
 
                         <!--merch tag field-->
@@ -91,9 +91,9 @@
 
                             <!--merch add to cart-->
                             <div class="merch-add-cart flex-col">
-                                <% if(stockStatus.equalsIgnoreCase("In Stock")){%>
+                                <% if (stockStatus.equalsIgnoreCase("In Stock")) {%>
                                 <button class="add-cart-btn">Add to cart</button>
-                                <% }else{ %>
+                                <% } else { %>
                                 <button class="add-cart-btn" disabled="true">Add to cart</button>
                                 <%}%>
                             </div>
@@ -102,7 +102,9 @@
                         <!--merch shop info-->
                         <div class="merch-shop-info">
                             <ul class="flex-col">
-                                <li><i class="ri-checkbox-circle-fill"></i> <%= stockStatus %></li>
+                                <li><i class="ri-checkbox-circle-fill"></i> <%= stockStatus%></li>
+                                <li><i class="ri-error-warning-fill"></i> Low stock level</li>
+                                <li><i class="ri-close-circle-fill"></i> Sold out</li>
                                 <li><i class="ri-truck-fill"></i> Delivery within 7 working days</li>
                             </ul>
                         </div>
@@ -145,19 +147,19 @@
                     <%
                         // Retrieve article content from the database
                         String descContent = merchData.getProductId().getDescription(); // Assume this method retrieves the article content from the database
-        
+
                         // Split the article content into paragraphs
                         String modifiedContent = descContent.replaceAll("\\\\n", "\n");
                         String[] paragraphs = modifiedContent.split("\\r?\\n"); // Splitting based on newline character
-        
+
                         // Display paragraphs in HTML
                         for (String paragraph : paragraphs) {
                     %>
-                    <p><%= paragraph %></p>
+                    <p><%= paragraph%></p>
                     <%
                         }
                     %>
-                    
+
                 </div>
 
                 <!--product warning-->
@@ -274,82 +276,85 @@
                         <p class="review-number">${rateStats.oneStarCounts}</p>
                     </div>
                 </div>
-
-                <form id="merchReview">
-                    <div class="merch-review-content flex-row">
-                    <% for(Ratings rating: ratingList){ %> 
-                        <div class="user-review flex-col">
-                            <div class="user-review-top flex-row">
-                                <div class="user-img">
-                                    <img src="./img/user/default.png" alt="" />
-                                </div>
-                                <div class="flex-col">
-                                    <p class="user-name"><%= rating.getUserId().getDisplayName() %></p>
-                                    <div class="review-top-bot flex-row">
-                                        <div class="rating-stars flex-row">
-                                            <% for(double i = 5; i>rating.getScore();i--){ %>
-                                                <% if(i == 0.5){ %>
-                                                    <i class="ri-star-half-fill"></i>
-                                                <%}else{%>
-                                                    <i class="ri-star-fill"></i>
+                <div class="merch-review-right flex-col">
+                    <form id="merchReview">
+                        <div class="merch-review-content flex-row">
+                            <% for (Ratings rating : ratingList) {%> 
+                            <div class="user-review flex-col">
+                                <div class="user-review-top flex-row">
+                                    <div class="user-img">
+                                        <img src="./img/user/default.png" alt="" />
+                                    </div>
+                                    <div class="flex-col">
+                                        <p class="user-name"><%= rating.getUserId().getDisplayName()%></p>
+                                        <div class="review-top-bot flex-row">
+                                            <div class="rating-stars flex-row">
+                                                <% for (double i = 5; i > rating.getScore(); i--) { %>
+                                                <% if (i == 0.5) { %>
+                                                <i class="ri-star-half-fill"></i>
+                                                <%} else {%>
+                                                <i class="ri-star-fill"></i>
                                                 <%}%>
-                                            <%}%>
+                                                <%}%>
+                                            </div>
+                                            <p class="review-date"><%= rating.getTimeRated()%></p>
                                         </div>
-                                        <p class="review-date"><%= rating.getTimeRated() %></p>
                                     </div>
                                 </div>
+                                <div class="user-review-bot flex-col">
+                                    <%String rateContent = rating.getComment();
+                                        String modifiedrateContent = rateContent.replaceAll("\\\\n", "\n");
+                                        String[] rateContentParagraphs = modifiedrateContent.split("\\r?\\n"); // Splitting based on newline character
+                                        // Display paragraphs in HTML
+                                        for (String paragraph : rateContentParagraphs) {
+                                    %>
+                                    <p><%= paragraph%></p>
+                                    <%}%>
+                                    <p>I have a B.S. in Computer Programming. My curriculum did not include Python, so I decided to give this a try. This course is amazing! I do not normally leave reviews, but I am very happy with the purchase.</p>
+                                </div>
                             </div>
-                            <div class="user-review-bot flex-col">
-                                <%String rateContent = rating.getComment(); 
-                                    String modifiedrateContent = rateContent.replaceAll("\\\\n", "\n");
-                                    String[] rateContentParagraphs = modifiedrateContent.split("\\r?\\n"); // Splitting based on newline character
-                                    // Display paragraphs in HTML
-                                    for (String paragraph : rateContentParagraphs) {
-                                %>
-                                    <p><%= paragraph %></p>
-                                <%}%>
-                                <p>I have a B.S. in Computer Programming. My curriculum did not include Python, so I decided to give this a try. This course is amazing! I do not normally leave reviews, but I am very happy with the purchase.</p>
-                            </div>
+                            <%}%>
+
+                           
+
                         </div>
-                    <%}%>
-
-                        <!--pagination, 20 course per page-->
-                        <%
-                            int currentPage = 1;
-                            int lastPage = 10;
-                            if (request.getParameter("p") != null) {
-                                currentPage = Integer.parseInt(request.getParameter("p"));
-                            }
-
-                            boolean previousAllow = currentPage > 1;
-                            boolean nextAllow = currentPage < lastPage;
-                        %>
-                        <input type="number" id="current_page" name="p" value="<%= currentPage%>" hidden />
-                        <div class="result-pagination-div flex-row">
-                            <p class="page-action-btn page-previous-btn <%= previousAllow ? "allow" : ""%>"><i class="ri-arrow-left-s-line"></i></p>
-                                <% if (currentPage - 1 != 0) { %>
-                            <p class="first-page-number page-number">1</p>
-                            <% }
-                                if (currentPage - 1 != 1 && currentPage - 1 != 2 && currentPage - 1 > 0) { %>
-                            <p class="number-dot">...</p>
-                            <% }
-                                if (currentPage - 1 > 1) {%>
-                            <p class="first-page-number page-number"><%= currentPage - 1%></p>
-                            <% }%>
-                            <p class="first-page-number page-number current-page"><%= currentPage%></p>
-                            <% if (currentPage + 1 < lastPage) {%>
-                            <p class="first-page-number page-number"><%= currentPage + 1%></p>
+                             <!--pagination, 20 course per page-->
                             <%
+                                int currentPage = 1;
+                                int lastPage = 10;
+                                if (request.getParameter("p") != null) {
+                                    currentPage = Integer.parseInt(request.getParameter("p"));
                                 }
-                                if (currentPage + 1 != lastPage && currentPage + 2 != lastPage && currentPage + 1 < lastPage) {
+
+                                boolean previousAllow = currentPage > 1;
+                                boolean nextAllow = currentPage < lastPage;
                             %>
-                            <p class="number-dot">...</p>
-                            <% }
-                                if (lastPage > 1 && currentPage != lastPage) {%>
-                            <p class="last-page-number page-number"><%= lastPage%></p>
-                            <% }%>
-                            <p class="page-action-btn page-next-btn <%= nextAllow ? "allow" : ""%>"><i class="ri-arrow-right-s-line"></i></p>
-                        </div>
+                            <input type="number" id="current_page" name="p" value="<%= currentPage%>" hidden />
+                            <div class="result-pagination-div flex-row">
+                                <p class="page-action-btn page-previous-btn <%= previousAllow ? "allow" : ""%>"><i class="ri-arrow-left-s-line"></i></p>
+                                    <% if (currentPage - 1 != 0) { %>
+                                <p class="first-page-number page-number">1</p>
+                                <% }
+                                    if (currentPage - 1 != 1 && currentPage - 1 != 2 && currentPage - 1 > 0) { %>
+                                <p class="number-dot">...</p>
+                                <% }
+                                    if (currentPage - 1 > 1) {%>
+                                <p class="first-page-number page-number"><%= currentPage - 1%></p>
+                                <% }%>
+                                <p class="first-page-number page-number current-page"><%= currentPage%></p>
+                                <% if (currentPage + 1 < lastPage) {%>
+                                <p class="first-page-number page-number"><%= currentPage + 1%></p>
+                                <%
+                                    }
+                                    if (currentPage + 1 != lastPage && currentPage + 2 != lastPage && currentPage + 1 < lastPage) {
+                                %>
+                                <p class="number-dot">...</p>
+                                <% }
+                                    if (lastPage > 1 && currentPage != lastPage) {%>
+                                <p class="last-page-number page-number"><%= lastPage%></p>
+                                <% }%>
+                                <p class="page-action-btn page-next-btn <%= nextAllow ? "allow" : ""%>"><i class="ri-arrow-right-s-line"></i></p>
+                            </div>
                     </form>
                 </div>
             </div>

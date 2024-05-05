@@ -49,7 +49,7 @@
     --color-blue-2: #273b91;
     --color-blue-3: #4059c2;
     --color-blue-4: #a5b5f5;
-       
+
     --color-navy-blue: #172988;
 
     --color-dark-blue-1: #111942;
@@ -76,12 +76,17 @@
     --toast-color-warning: #ffbb55;
     --toast-color-default: #c2c2c2;
 
+    --toast-color-error-1: #eb3645;
+    --toast-color-success-1: #47b524;
+    --toast-color-warning-1: #e6a037;
+    --toast-color-default-1: #949494;
+
     --color-transparent: rgba(0,0,0,0);
-    
+
     --color-text-error: #e31b1b;
 
     --rating-star-color: #cc9616;
-    
+
     --tag-red-color: #781212;
     --tag-red-bg: #ffc2c2;
     --tag-orange-color: #6e2f0d;
