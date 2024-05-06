@@ -46,8 +46,8 @@ public class UpdateCart extends HttpServlet {
         // Get JSON data
         String productID = jsonObject.get("productID").getAsString();
         String action = jsonObject.get("action").getAsString();
+        int quantity = jsonObject.get("quantity").getAsInt();
 //        String userID = jsonObject.get("userID").getAsString();
-//        int quantity = jsonObject.get("quantity").getAsInt();
 //        String productType = jsonObject.get("productType").getAsString();
 //        String actionType = jsonObject.get("actionType").getAsString();
 //        Date timeAdded = new Date();
@@ -95,7 +95,7 @@ public class UpdateCart extends HttpServlet {
         responseJson.addProperty("productCategory", "Microsoft Excel");
         responseJson.addProperty("productImgPath", "./img/course/beginner_excel.jpg");
         responseJson.addProperty("productPrice", 20.00);
-        responseJson.addProperty("productQty", 0);
+        responseJson.addProperty("productQty", quantity);
 
         // Convert JSON object to string
         String responseJsonString = responseJson.toString();
