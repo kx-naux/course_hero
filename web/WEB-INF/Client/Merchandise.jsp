@@ -62,8 +62,8 @@
 
                         <!--merch price-->
                         <div class="merch-price flex-row">
-                            <p class="course-price">RM <span>${merchData.productId.price - merchData.productId.discount}</span></p>                                      
-                            <p class="course-normal-price">RM <span>${merchData.productId.price}</span></p>
+                            <p class="course-price">RM <span><%= String.format("%.2f",merchData.getProductId().getPrice()-  merchData.getProductId().getDiscount() )%></span></p>                                      
+                            <p class="course-normal-price">RM <span><%= String.format("%.2f",merchData.getProductId().getPrice())%></span></p>
                             <p class="course-offer"><%= String.format("%.2f", ((double) merchData.getProductId().getDiscount()) / merchData.getProductId().getPrice() * 100)%>% off</p>
                         </div>
 
@@ -81,10 +81,8 @@
                             <div class="merch-qty flex-col">
                                 <label for="order_qty">Quantity: ${merchData.stockBalance}</label>
                                 <div class="flex-row">
-                                    <button id="order_qty_add" class="qty-btn add"><i class="ri-add-fill"></i></button>
-                                    <input type="text" id="order_qty" class="qty-input"  min="1" max="${merchData.stockBalance}" value="1" />
                                     <button id="order_qty_substract" class="qty-btn substract"><i class="ri-subtract-fill"></i></button>
-                                    <input type="text" id="order_qty" class="qty-input"  min="1" max="99" value="1" />
+                                    <input type="text" id="order_qty" class="qty-input"  min="1" max="${merchData.stockBalance}" value="1" />
                                     <button id="order_qty_add" class="qty-btn add"><i class="ri-add-fill"></i></button>
                                 </div>
                             </div>
@@ -278,6 +276,8 @@
                 </div>
                 <div class="merch-review-right flex-col">
                     <form id="merchReview">
+                        <input type="text" name="id" value="${param.id}" hidden />
+                        
                         <div class="merch-review-content flex-row">
                             <% for (Ratings rating : ratingList) {%> 
                             <div class="user-review flex-col">

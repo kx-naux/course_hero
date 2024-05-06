@@ -156,18 +156,29 @@
                         <!--cart list with items-->
                         <div class="cart-list-item flex-col <%= isCartEmpty ? "" : "active"%>" id="cartlistDiv">
 
-                            <div class="course-item flex-row">
+                            <div class="course-item flex-row" productid="CR0000003">
                                 <div class="course-item-img">
                                     <img src="./img/course/beginner_excel.jpg" alt="" draggable="false" />
                                 </div>
-                                <div class="course-item-info flex-col">
+                                <div class="course-item-info flex-col" >
                                     <h1 class="course-title">The Ultimate Excel Programming Course</h1>
                                     <p class="course-author">Woo Yu Beng, Snijders Wang</p>
                                     <p class="course-price">RM 58.00</p>
                                 </div>
                             </div>
 
-                            <div class="course-item flex-row">
+                            <div class="course-item flex-row" productid="CR0000003">
+                                <div class="course-item-img">
+                                    <img src="./img/course/beginner_excel.jpg" alt=""  draggable="false" />
+                                </div>
+                                <div class="course-item-info flex-col" productid="CR0000003">
+                                    <h1 class="course-title">The Ultimate Excel Programming Course</h1>
+                                    <p class="course-author">Woo Yu Beng, Snijders Wang</p>
+                                    <p class="course-price">RM 58.00</p>
+                                </div>
+                            </div>
+
+                            <div class="course-item flex-row" productid="CR0000003">
                                 <div class="course-item-img">
                                     <img src="./img/course/beginner_excel.jpg" alt=""  draggable="false" />
                                 </div>
@@ -178,18 +189,7 @@
                                 </div>
                             </div>
 
-                            <div class="course-item flex-row">
-                                <div class="course-item-img">
-                                    <img src="./img/course/beginner_excel.jpg" alt=""  draggable="false" />
-                                </div>
-                                <div class="course-item-info flex-col">
-                                    <h1 class="course-title">The Ultimate Excel Programming Course</h1>
-                                    <p class="course-author">Woo Yu Beng, Snijders Wang</p>
-                                    <p class="course-price">RM 58.00</p>
-                                </div>
-                            </div>
-
-                            <div class="course-item flex-row">
+                            <div class="course-item flex-row" productid="M00000002">
                                 <div class="course-item-img">
                                     <img src="./img/merchandise/prx_shirt.png" alt="" draggable="false" />
                                 </div>
@@ -198,7 +198,7 @@
                                     <p class="course-author">Collectible</p>
                                     <div class="flex-row">
                                         <p class="course-price">RM 58.00</p>
-                                        <p class="merch-qty">Qty: 1</p>
+                                        <p class="merch-qty">Qty: <span id="merch-span-qty">1</span></p>
                                     </div>
                                 </div>
                             </div>
