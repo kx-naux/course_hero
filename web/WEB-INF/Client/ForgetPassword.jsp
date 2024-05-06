@@ -31,7 +31,7 @@
                 <!--2 = otp-->
                 <!--3 = password-->
                 <!--4 = success-->
-                <input type="number" min="1" max="4" id="formProgress" value="2" hidden />
+                <input type="number" min="1" max="4" id="formProgress" value="1" hidden />
 
                 <!--insert error message here if any-->
                 <input type="text" id="errorInput" value="" hidden />
@@ -138,7 +138,7 @@
                         <p class="invalid-msg"></p>
                                                
                         <div class="forget-btn-div flex-col">
-                            <input class="forget-btn submit-btn" type="submit" value="Submit" disabled />
+                            <input class="forget-btn submit-btn" id="passwordSubmitBtn" type="submit" value="Submit" disabled />
                         </div>
                     </div>
                 </form>
