@@ -23,6 +23,11 @@
         <!-- Include the navigation bar -->
         <%@ include file="./Components/navbar.jsp" %>
 
+        <%            boolean isOwn = true; // set value to true if user already buy the course
+            boolean inCart = false;
+            boolean inWishlist = false;
+        %>
+
         <section class="section course-section" courseID="${param.id}">
             <div class="course-div flex-row">
 
@@ -160,9 +165,9 @@
                         <h1>Description</h1>
                         <p>Welcome to the 100 Days of Code - The Complete Python Pro Bootcamp, the only course you need to learn to code with Python. With over 500,000 5 STAR reviews and a 4.8 average, my courses are some of the HIGHEST RATED courses in the history of Udemy!  </p>
 
-                         <p>100 days, 1 hour per day, learn to build 1 project per day, this is how you master Python.</p>
+                        <p>100 days, 1 hour per day, learn to build 1 project per day, this is how you master Python.</p>
 
-                         <p>At 60+ hours, this Python course is without a doubt the most comprehensive Python course available anywhere online. Even if you have zero programming experience, this course will take you from beginner to professional.</p>
+                        <p>At 60+ hours, this Python course is without a doubt the most comprehensive Python course available anywhere online. Even if you have zero programming experience, this course will take you from beginner to professional.</p>
                     </div>
 
                     <!--Course target-->
@@ -345,12 +350,9 @@
                                 <p class="course-offer">50% off</p>
                             </div>
 
+                            <% if (!isOwn) {%>
                             <!--Course add to cart or wish list-->
                             <div class="sticky-div-cart flex-row">
-                                <%
-                                    boolean inCart = false;
-                                    boolean inWishlist = false;
-                                %>
                                 <button class="course-cart" status="<%= inCart ? "1" : "0"%>"><%= inWishlist ? "Go to cart" : "Add to cart"%></button>
                                 <button class="course-wish" status="<%= inWishlist ? "1" : "0"%>"><i class="ri-heart-line"></i></button>
                             </div>
@@ -360,6 +362,11 @@
                                 <p>30-Day Money-Back Guarantee</p>
                                 <p>Full Lifetime Access</p>
                             </div>
+                            <% } else {%>
+                            <div class="sticky-div-cart flex-row">
+                                <button class="course-review">Add review</button>
+                            </div>
+                            <% }%>
 
                             <!--share this course-->
                             <div class="sticky-div-share flex-col">
