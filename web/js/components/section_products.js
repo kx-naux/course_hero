@@ -39,8 +39,8 @@ function cartButtonClick(evt) {
         return response.json();
     }).then(responseData => {
         if (responseData.status === "success") {
-            var icon = evt.target.closest(".cart-Btn").querySelector("i");
-            var iconCode = Array.from(icon.classList)[0]; // Convert classList to an array
+            let icon = evt.target.closest(".cart-Btn").querySelector("i");
+            let iconCode = Array.from(icon.classList)[0]; // Convert classList to an array
 
             // update the the cart list
             if (responseData.action === "add") {
@@ -64,25 +64,28 @@ function cartButtonClick(evt) {
 
 // add item into cart list
 function addCartItem(data) {
-    var cartlistDiv = document.getElementById("cartlistDiv");
-    var cartlistLink = document.getElementById("cartlistLink");
-    var cartlistPrice = document.getElementById("cartlistPrice");
-    var cartEmpltyDiv = document.getElementById("cartlistEmpty");
-    var cartlistNumber = document.getElementById("cartlistNumber");
-    var cartlistItems = document.querySelectorAll("div#cartlistDiv div.course-item");
+    let cartlistDiv = document.getElementById("cartlistDiv");
+    let cartlistLink = document.getElementById("cartlistLink");
+    let cartlistPrice = document.getElementById("cartlistPrice");
+    let cartEmpltyDiv = document.getElementById("cartlistEmpty");
+    let cartlistNumber = document.getElementById("cartlistNumber");
+    let cartlistItems = document.querySelectorAll("div#cartlistDiv div.course-item");
 
     if (data.productType === "course") {
         // Create a new cart item element
-        var newItem = document.createElement("div");
+        let newItem = document.createElement("div");
+        let newItemPrice = data.productPrice.toFixed(2);
         newItem.classList.add("course-item", "flex-row");
+        newItem.setAttribute("productID", data.productID);
+        newItem.setAttribute("productType", data.productType);
         newItem.innerHTML = `
             <div class="course-item-img">
-                <img src="./img/course/beginner_excel.jpg" alt="" draggable="false" />
+                <img src="${data.productImgPath}" alt="" draggable="false" />
             </div>
             <div class="course-item-info flex-col">
-                <h1 class="course-title">The Ultimate Excel Programming Course</h1>
-                <p class="course-author">Woo Yu Beng, Snijders Wang</p>
-                <p class="course-price">RM 58.00</p>
+                <h1 class="course-title">${data.productName}</h1>
+                <p class="course-author">${data.productCategory}</p>
+                <p class="course-price">RM ${newItemPrice}</p>
             </div>
          `;
 
@@ -92,7 +95,9 @@ function addCartItem(data) {
         // udpate cart number
         cartlistNumber.innerText = parseInt(cartlistNumber.innerText) + 1;
     } else if (data.productType === "merchandise") {
-
+        
+        // check is merch exist in list
+        
     }
 
     // check list is empty before adding
@@ -109,11 +114,30 @@ function addCartItem(data) {
 
 // remove item from cart list
 function removeCartItem(data) {
-    if (data.productType === "course") {
+    let cartlistDiv = document.getElementById("cartlistDiv");
+    let cartlistLink = document.getElementById("cartlistLink");
+    let cartlistPrice = document.getElementById("cartlistPrice");
+    let cartEmpltyDiv = document.getElementById("cartlistEmpty");
+    let cartlistNumber = document.getElementById("cartlistNumber");
+    let cartlistItems = document.querySelectorAll("div#cartlistDiv div.course-item");
 
-    } else if (data.productType === "merchandise") {
+    let removeItem = cartlistDiv.querySelector(`div.course-item[productID='${data.productID}']`);
 
+    removeItem.remove();
+
+    // udpate cart number
+    cartlistNumber.innerText = parseInt(cartlistNumber.innerText) - 1;
+
+    // check list is empty before adding
+    if (cartlistItems.length < 1) {
+        cartlistDiv.classList.remove("active");
+        cartlistLink.classList.remove("active");
+        cartlistNumber.classList.remove("active");
+        cartEmpltyDiv.classList.add("active");
     }
+
+    // update price
+    cartlistPrice.innerText = (parseFloat(cartlistPrice.innerText) - data.productPrice).toFixed(2);
 }
 
 //Add to wishlist / remove from wishlist
