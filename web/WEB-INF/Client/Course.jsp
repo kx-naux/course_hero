@@ -350,7 +350,7 @@
                                     <label for="comment">Please share your opinion about the product</label>
                                     <textarea id="comment" name="comment" rows="5" cols="10" placeholder="Enter your review here"></textarea>
                                 </div>
-                                
+
                                 <p id="reviewInvalidMsg" class="invalid-msg"></p>
 
                                 <div class="add-review-submit">
@@ -503,7 +503,10 @@
 
                     </div>
 
-                    <div class="review-content-right flex-col">
+                    <div class="review-content-right flex-col" id="reviewsDiv">
+
+                        <!--record the last review in the list below-->
+                        <input type="text" id="lastRatingId" value="R00000008" hidden />
 
                         <div class="user-review flex-col">
                             <div class="user-review-top flex-row">
@@ -644,7 +647,7 @@
                             </div>
                         </div>
 
-                        <button class="show-more-btn">Show more reviews</button>
+                        <button class="show-more-btn" id="showMoreReviewBtn">Show more reviews</button>
                     </div>
                 </div>
 
