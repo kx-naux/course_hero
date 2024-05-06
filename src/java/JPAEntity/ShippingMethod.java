@@ -167,6 +167,7 @@ public class ShippingMethod implements Serializable {
 
   
 
+
     public String getDescription() {
         return description;
     }

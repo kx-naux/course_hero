@@ -145,13 +145,6 @@ public class CourseCategory implements Serializable {
 
 
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
 
     @XmlTransient
     public List<PreferredCourse> getPreferredCourseList() {
@@ -162,6 +155,17 @@ public class CourseCategory implements Serializable {
         this.preferredCourseList = preferredCourseList;
     }
 
+    
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    
 
     
 }

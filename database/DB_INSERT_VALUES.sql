@@ -107,20 +107,20 @@ VALUES
     ('SL0000001', 'AU0000001', 'Twitter', 'https://twitter.com/lenaWatson'),
     ('SL0000002', 'AU0000001', 'Facebook', 'https://www.facebook.com/lenaWatson2'),
     ('SL0000003', 'AU0000002', 'Instagram', 'https://www.instagram.com/ChenMax'),
-    ('SL0000004', 'AU0000002', 'LinkedIn', 'https://www.linkedin.com/in/MaxChen'),
+    ('SL0000004', 'AU0000002', 'LinkedIn', 'https://www.linkedin.com/in/MaxChen'),  
     ('SL0000005', 'AU0000003', 'YouTube', 'https://www.youtube.com/em.Park'),
     ('SL0000006', 'AU0000005', 'YouTube', 'https://www.youtube.com/SaraKhan');
 
-INSERT INTO PRODUCT (PRODUCT_ID, PRODCAT_ID, DESCRIPTION,IMG_URL, PROD_NAME, PRICE, RATE_WEIGHTAGE, AVG_RATING, DISCOUNT, IMAGE_PATH, STATUS) 
+INSERT INTO PRODUCT (PRODUCT_ID, PRODCAT_ID, DESCRIPTION, PROD_NAME, PRICE, RATE_WEIGHTAGE, AVG_RATING, DISCOUNT, IMAGE_PATH, STATUS) 
 VALUES 
-    ('PR0000001', 'PC0000001', 'Learn Algebra Now !!! fillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfill',null, 'Algebra Part 1', 1500.0, 5, 4.5, 0.1, 'images/algebraP1.jpg','Active'),
-    ('PR0000002', 'PC0000001', 'Algebra Rocks Hoodie !!! fillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfill','', 'Algebra Rocks Hoodie', 800.0, 4, 4.2, 0.05, 'images/algebraHoodie.jpg','Active'),
-    ('PR0000003', 'PC0000002', 'JavaScript!!! fillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfill','', 'JavaScript', 100.0, 3, 4.0, 0.0, 'images/Javascript.jpg','Active'),
-    ('PR0000004', 'PC0000002', 'Learn C+ Now !!! fillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfill','', 'C++', 50.0, 2, 3.8, 0.0, 'images/c++.jpg','Active'),
-    ('PR0000005', 'PC0000003', 'I Love Bio Tshirt !!! fillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfill','', 'I Love Bio Tshirt', 30.0, 1, 4.1, 0.0, 'images/bioShirt.jpg','Active'),
-    ('PR0000006', 'PC0000003', 'I Love Bio Cup !!! fillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfill',null, 'I Love Bio Cup', 25.0, 1, 2.0, 2, 'image/bioCup.jpg','Active'),
-    ('PR0000007', 'PC0000002', 'Java Hoodie !!! fillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfill','', 'Java Hoodie', 99.0, 2, 4.0, 1.5, 'image/javaHoodie.jpg','Active'),
-    ('PR0000008', 'PC0000005', 'Buy Physics Cap Now !!! fillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfill','', 'Physics Cap', 60.0, 3, 3.0, 0.0, 'image/physicsCap.jpg','Active');
+    ('PR0000001', 'PC0000001', 'Learn Algebra Now !!! fillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfill', 'Algebra Part 1', 1500.0, 5, 4.5, 0.1, 'images/algebraP1.jpg','Active'),
+    ('PR0000002', 'PC0000001', 'Algebra Rocks Hoodie !!! fillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfill', 'Algebra Rocks Hoodie', 800.0, 4, 4.2, 0.05, 'images/algebraHoodie.jpg','Active'),
+    ('PR0000003', 'PC0000002', 'JavaScript!!! fillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfill', 'JavaScript', 100.0, 3, 4.0, 0.0, 'images/Javascript.jpg','Active'),
+    ('PR0000004', 'PC0000002', 'Learn C+ Now !!! fillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfill', 'C++', 50.0, 2, 3.8, 0.0, 'images/c++.jpg','Active'),
+    ('PR0000005', 'PC0000003', 'I Love Bio Tshirt !!! fillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfill', 'I Love Bio Tshirt', 30.0, 1, 4.1, 0.0, 'images/bioShirt.jpg','Active'),
+    ('PR0000006', 'PC0000003', 'I Love Bio Cup !!! fillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfill', 'I Love Bio Cup', 25.0, 1, 2.0, 2, 'image/bioCup.jpg','Active'),
+    ('PR0000007', 'PC0000002', 'Java Hoodie !!! fillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfill', 'Java Hoodie', 99.0, 2, 4.0, 1.5, 'image/javaHoodie.jpg','Active'),
+    ('PR0000008', 'PC0000005', 'Buy Physics Cap Now !!! fillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfill', 'Physics Cap', 60.0, 3, 3.0, 0.0, 'image/physicsCap.jpg','Active');
 
 INSERT INTO MERCHANDISE (MERCH_ID, PRODUCT_ID, MERCHCAT_ID,DIMENSION_H_CM, DIMENSION_W_CM, DIMENSION_L_CM, WEIGHT_KG, STOCK_BALANCE)
 VALUES 

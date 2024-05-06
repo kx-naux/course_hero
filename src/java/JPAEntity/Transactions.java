@@ -253,7 +253,7 @@ public class Transactions implements Serializable {
 
 
   
-   
+
     public double getTax() {
         return tax;
     }
