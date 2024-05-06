@@ -51,7 +51,7 @@
                     <hr class="progress-line" />
                     <div class="progress-point flex-col">
                         <span class="point-number">3</span>
-                        <p class="point-name">New password</p>
+                        <p class="point-name">Set password</p>
                     </div>
                 </div>
 
@@ -68,7 +68,7 @@
                         <p class="invalid-msg"></p>
 
                         <div class="forget-btn-div flex-col">
-                            <input class="forget-btn next-btn" type="button" value="Next" />
+                            <input class="forget-btn next-btn" id="submitEmailBtn" type="button" value="Next" />
                             <P class="sign-in-link">Want to login? <a href="<%= webpath.getPageUrl("login")%>">Sign in now</a></p>
                         </div>
                     </div>
