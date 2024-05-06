@@ -364,6 +364,40 @@ passwordInput.addEventListener('input', (event) => {
 });
 
 // otp field
+// resend otp
+document.addEventListener("DOMContentLoaded", function () {
+    // Get the button and the form
+    var resendBtn = document.getElementById("resendBtn");
+
+    // Initial countdown time
+    var countdown = 60;
+
+    // Function to update countdown and enable button
+    function updateCountdown() {
+        if (countdown > 0) {
+            // Update countdown text
+            resendBtn.textContent = "Resend OTP (" + countdown + "s)";
+            // Decrement countdown
+            countdown--;
+            // Schedule next update after 1 second
+            setTimeout(updateCountdown, 1000);
+        } else {
+            // Enable button
+            resendBtn.textContent = "Resend OTP";
+            resendBtn.disabled = false;
+            resendBtn.classList.add("active");
+            // Reset countdown
+            countdown = 60;
+            resendBtn.addEventListener("click", () => {
+                document.getElementById("resendOTPForm").submit();
+            });
+        }
+    }
+
+    // Start countdown when page loads
+    updateCountdown();
+});
+
 function handleOTPInput(inputElement) {
     const maxLength = parseInt(inputElement.getAttribute('maxlength'));
     let enteredValue = inputElement.value;
