@@ -104,15 +104,17 @@
     if (typeof(Storage) !== "undefined") {
         // If we need to open the bar
         if(localStorage.getItem("theme") === "dark"){
-            // change background
+        // change background
         document.documentElement.style.setProperty('--color-background', '#181a1e');
         document.documentElement.style.setProperty('--color-white', '#363949');
         document.documentElement.style.setProperty('--color-dark', '#edeffd');
         document.documentElement.style.setProperty('--color-dark-variant', '#a3bdcc');
         document.documentElement.style.setProperty('--color-light', 'rgba(0,0,0,0.4)'); 
+        document.documentElement.style.setProperty('--filter', 'brightness(1.1)'); 
         
         // check the dark theme button
         document.getElementById("theme-checkbox").checked = true;
+        
         }
     }
 </script>

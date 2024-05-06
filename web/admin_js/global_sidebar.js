@@ -45,6 +45,7 @@ submenus.forEach(submenu => {
 //dropdown submenu js
 let mainMenu = document.querySelectorAll(".sub-menu-parent");
 for (var i = 0; i < mainMenu.length; i++) {
+    mainMenu[i].setAttribute("i", i.toString());
     mainMenu[i].addEventListener("click", function (e) {
         e.preventDefault();
         let submenu = this.nextElementSibling;
@@ -57,8 +58,15 @@ for (var i = 0; i < mainMenu.length; i++) {
         });
         //toggle the active classlist in submenu
         submenu.classList.toggle("active");
+        
+        //set index for the main menu in localStorage
+        var index = e.target.getAttribute("i");
+        localStorage.removeItem("indexOfSubmenu");
+        localStorage.setItem("indexOfSubmenu", index.toString());
         //if submenu active make the arrow go up
         if(submenu.classList.contains("active")){
+            //set localstorage for opened status
+            localStorage.setItem("submenuStatus", "opened");
             //change arrow style
             subMenuArrow.classList.add("ri-arrow-up-s-line");
             subMenuArrow.classList.remove("ri-arrow-down-s-line");
@@ -71,6 +79,7 @@ for (var i = 0; i < mainMenu.length; i++) {
             });
         }
         else{
+            localStorage.removeItem("submenuStatus");
             subMenuArrow.classList.add("ri-arrow-down-s-line");
             subMenuArrow.classList.remove("ri-arrow-up-s-line");
         }

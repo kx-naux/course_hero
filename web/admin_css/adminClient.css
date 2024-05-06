@@ -1,0 +1,59 @@
+/* google Poppins Font import */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('adminRoot.css');
+@import url('adminStyle.css');
+@import url('addNewItemButton.css');
+
+.main-content{
+    width: 96vw;
+    margin-right: 2vw;
+}
+
+.main-top{
+    display: flex;
+    justify-content: space-between;
+}
+
+.top{
+    display: flex;
+}
+
+.top-right{
+    right: 0;
+}
+
+.main-top-left{
+    display: flex;
+    gap: 1.5rem;
+}
+
+/*filter container*/
+.filter-flex-container{
+    display: flex;
+    
+}
+
+.search-container{
+    display: flex;
+    gap: 10px;
+    margin-top: 1rem;
+    justify-content: end;
+    width: 100%;
+}
+
+.bulk-action-container{
+    display: flex;
+    gap: 10px;
+    margin-top: 1rem;
+    justify-content: start;
+    width: auto;
+    margin-right: 30px;
+}
+
+.input-container select{
+    background: transparent;
+    margin-top: 5px;
+    cursor: pointer;
+    color: var(--color-dark);
+    width: 120px;
+}

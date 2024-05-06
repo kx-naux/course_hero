@@ -21,11 +21,6 @@
             <div class="main-content">
                 <h1>Dashboard</h1>
                 <div class="horizontal-line"></div>
-                
-                <div class="date">
-                    <input type="date">
-                </div>
-                
                 <div class="insights">
                     <div class="sales">
                         <i class="ri-bar-chart-grouped-line"></i>
