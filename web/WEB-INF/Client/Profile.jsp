@@ -283,7 +283,7 @@
                         </form>
 
                         <!--otp form-->
-                        <form class="flex-col" id="otpForm">
+                        <form class="flex-col" id="otpForm" style="display: none;">
                             <div class="profile-right-page-content flex-col">
                                 <div class="sign-up-view-div  flex-col">
                                     <h1 class="confirmation-title">OTP Verification</h1>
