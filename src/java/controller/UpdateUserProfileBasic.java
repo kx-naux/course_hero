@@ -32,6 +32,7 @@ public class UpdateUserProfileBasic extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         
         Users userDataSession = (Users) request.getSession().getAttribute("userData");
         Users userData = Login.checkRmbMeToken(request, em);
@@ -45,13 +46,14 @@ public class UpdateUserProfileBasic extends HttpServlet {
             session.setAttribute("pageToGoAfterLogin","update-user-pfp");
             response.sendRedirect("login");
             return;
+
         }
         // Forward the request to Profile.jsp edit basic profile section
         request.setAttribute("profilePageNumber", "1");
         request.getRequestDispatcher("/WEB-INF/Client/Profile.jsp").forward(request, response);
     }
 
-   
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

@@ -4,7 +4,9 @@
                 <div class="sidebar-top">
                     <!-- Logo side -->
                     <div class="logo"> 
-                        <img src = "../img/Logo.png">
+                        <a href="<%= webpath.getPageUrl("home") %>">
+                            <img src = "../img/Logo.png">
+                        </a>
                     </div>
                     <!-- close button for the sidebar -->
                     <div class="expand-btn">
@@ -47,22 +49,12 @@
                             <ul class="sub-menu">
                                 <li>
                                     <a href="<%= webpath.getPageUrl("manage-client") %>">
-                                        <h3>Search Client</h3>
+                                        <h3>Manage Client</h3>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#">
                                         <h3>Add New Client</h3>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <h3>Update Client</h3>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <h3>Delete Client</h3>
                                     </a>
                                 </li>
                             </ul>
@@ -77,22 +69,12 @@
                             <ul class="sub-menu">
                                 <li>
                                     <a href="#">
-                                        <h3>Search Product</h3>
+                                        <h3>Manage Product</h3>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#">
                                         <h3>Add New Product</h3>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <h3>Update Product</h3>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <h3>Delete Product</h3>
                                     </a>
                                 </li>
                             </ul>
@@ -107,22 +89,12 @@
                             <ul class="sub-menu">
                                 <li>
                                     <a href="#">
-                                        <h3>Search Staff</h3>
+                                        <h3>Manage Staff</h3>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#">
                                         <h3>Add New Staff</h3>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <h3>Update Staff</h3>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <h3>Delete Staff</h3>
                                     </a>
                                 </li>
                             </ul>
@@ -168,6 +140,14 @@
                     if(localStorage.getItem("sidebar") === "opened"){
                         // Open the bar
                         document.querySelector('.global-sidebar').classList.add('active');
+                    }
+                    
+                    if(localStorage.getItem("submenuStatus") === "opened"){
+                        let mainMenu = document.querySelectorAll(".sub-menu-parent");
+                        let indexOfSubmenu = Number(localStorage.getItem("indexOfSubmenu"));
+                        let subMenu = mainMenu[indexOfSubmenu].nextElementSibling;
+
+                        subMenu.classList.add("active");
                     }
                 }
             </script>

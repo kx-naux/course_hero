@@ -96,7 +96,7 @@
 
                                 </div>
                                 <div class="course-move-cart-div flex-col">
-                                    <button class="move-cart-btn" courseID="123123" onclick="moveTOCart(this)">Add to cart</button>
+                                    <button class="move-cart-btn" courseID="123124" onclick="moveToCart(event)">Add to cart</button>
                                 </div>
                             </div>
 
@@ -113,7 +113,7 @@
 
                                 </div>
                                 <div class="course-move-cart-div flex-col">
-                                    <button class="move-cart-btn" courseID="123123" onclick="moveTOCart(this)">Add to cart</button>
+                                    <button class="move-cart-btn" courseID="123125" onclick="moveToCart(event)">Add to cart</button>
                                 </div>
                             </div>
 
@@ -130,7 +130,7 @@
 
                                 </div>
                                 <div class="course-move-cart-div flex-col">
-                                    <button class="move-cart-btn" courseID="123123" onclick="moveTOCart(this)">Add to cart</button>
+                                    <button class="move-cart-btn" courseID="123126" onclick="moveToCart(event)">Add to cart</button>
                                 </div>
                             </div>
 

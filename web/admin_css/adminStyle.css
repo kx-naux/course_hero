@@ -54,24 +54,69 @@
     margin-top: 1.4rem;
 }
 
-.main-content .date{
+/*Start of Filter*/
+
+.input-container{
     display: inline-block;
     background: var(--color-light);
-    border-radius: var(--border-radius);
-    margin-top: 1rem;
-    padding: 0.5rem 1.6rem;
-    border-radius: 0.25em;
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius-1);
 }
 
-.main-content .date input[type="date"]{
+input:not([type=submit]):focus {
+  border-bottom: 2px solid var(--color-primary);
+  border-radius: 4px 4px 2px 2px;
+}
+
+
+.input-container.dark input:not([type=submit]):focus {
+  border-bottom: 2px solid #8c7f13;
+  border-radius: 4px 4px 2px 2px;
+}
+
+input:not([type=submit]){
     background: transparent;
+    padding: 5px;
+}
+
+.input-container.dark input:not([type=submit]){
+    filter: invert(1);
+}
+
+.filter-container{
+    display: flex;
+    gap: 10px;
+    margin-top: 1rem;
+    justify-content: start;
+    width: auto;
+    margin-right: 20px;
+}
+
+.submit-container{
+    margin: auto 0;
+}
+
+input.submit-button{
+    background: transparent;
+    color: var(--color-primary);
+    border: 1px solid var(--color-primary);
+    padding: 8px 18px 8px 18px;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: var(--border-radius-1);
+}
+
+input.submit-button:hover{
+    border-color: var(--color-dark);
     color: var(--color-dark);
 }
 
+/* content fot insights*/
 .main-content .insights{
     display: grid;
     grid-template-columns: repeat(3,1fr);
     gap: 1.6rem;
+    min-height: 265px; 
 }
 
 .main-content .insights > div {
@@ -174,7 +219,7 @@
 
 /* ======================== RECENT ORDERS ===================== */
 .main-content .recent-orders{
-    margin-top: 2rem;
+    margin-top: 2.5rem;
 }
 
 .main-content .recent-orders h2{
@@ -203,11 +248,10 @@
 
 .main-content .recent-orders table tbody td{
     height: 2.8rem;
-    border-radius: 1px solid var(--color-light);
     color: var(--color-dark-variant);
 }
 
-.main-content table tbody tr{
+.main-content .recent-orders table tbody tr{
     border: 2px solid var(--color-dark);
 }
 
@@ -232,20 +276,17 @@
 /* ======================== RIGHT ===================== */
 .right{
     margin-top: 1.4rem;
+    margin-right: 2vw;
 }
 
-.right .top{
+.top{
     display: flex;
     justify-content: end;
     gap: 2rem;
 }
 
-.right .top button{
-    display: none;
-}
 
-
-.right .top .profile{
+.profile{
     display: flex;
     gap: 1rem;
     text-align: right;
