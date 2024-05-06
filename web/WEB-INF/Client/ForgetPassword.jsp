@@ -31,10 +31,10 @@
                 <!--2 = otp-->
                 <!--3 = password-->
                 <!--4 = success-->
-                <input type="number" min="1" max="4" id="formProgress" value="1" hidden />
+                <input type="number" min="1" max="4" id="formProgress" value="2" hidden />
 
                 <!--insert error message here if any-->
-                <input type="text"  id="errorInput" value="" hidden />
+                <input type="text" id="errorInput" value="" hidden />
                 <span hidden id="errorMsg"></span>
 
                 <!--step progress bar-->
@@ -97,7 +97,7 @@
 
                         <div class="forget-btn-div otp-submit-div flex-col">
                             <input class="forget-btn submit-btn" type="submit" value="Submit" disabled />
-                            <span class="resend-otp">Resend OTP</span>
+                            <span class="resend-otp" id="resendBtn">Resend OTP</span>
                         </div>
                     </div>
                 </form>

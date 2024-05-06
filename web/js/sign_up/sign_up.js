@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
         showErrorMsg(errorMsg.innerText);
     }
 
-    if (formProgress.value == 5 && errorMsg.value !== "") {
+    if (formProgress.value == 5 && errorMsg.innerText !== "") {
         otpInvalid();
     }
 
