@@ -23,6 +23,14 @@
         <!-- Include the navigation bar -->
         <%@ include file="./Components/navbar.jsp" %>
 
+        <%            boolean isOwn = true; // set value to true if user already buy the course
+            boolean inCart = false;
+            boolean inWishlist = false;
+        %>
+
+        <!--put 1 to show add review form-->
+        <input type="number" id="addReviewStatus" value="1" />
+
         <section class="section course-section" courseID="${param.id}">
             <div class="course-div flex-row">
 
@@ -160,9 +168,9 @@
                         <h1>Description</h1>
                         <p>Welcome to the 100 Days of Code - The Complete Python Pro Bootcamp, the only course you need to learn to code with Python. With over 500,000 5 STAR reviews and a 4.8 average, my courses are some of the HIGHEST RATED courses in the history of Udemy!  </p>
 
-                         <p>100 days, 1 hour per day, learn to build 1 project per day, this is how you master Python.</p>
+                        <p>100 days, 1 hour per day, learn to build 1 project per day, this is how you master Python.</p>
 
-                         <p>At 60+ hours, this Python course is without a doubt the most comprehensive Python course available anywhere online. Even if you have zero programming experience, this course will take you from beginner to professional.</p>
+                        <p>At 60+ hours, this Python course is without a doubt the most comprehensive Python course available anywhere online. Even if you have zero programming experience, this course will take you from beginner to professional.</p>
                     </div>
 
                     <!--Course target-->
@@ -316,6 +324,41 @@
 
                         <button class="all-review-btn">Show all reviews</button>
 
+                        <div class="flex-col add-review-div" id="addReviewDiv">
+                            <form id="addReviewForm" class="flex-col">
+                                <div class="add-review-title">
+                                    <h1>Write a review</h1>
+                                </div>
+
+                                <div class="add-review-input flex-col">
+                                    <label>What is your rate</label>
+                                    <div class="review-rating">
+                                        <input value="5" name="rate" id="star5" type="radio">
+                                        <label title="text" for="star5"></label>
+                                        <input value="4" name="rate" id="star4" type="radio">
+                                        <label title="text" for="star4"></label>
+                                        <input value="3" name="rate" id="star3" type="radio">
+                                        <label title="text" for="star3"></label>
+                                        <input value="2" name="rate" id="star2" type="radio">
+                                        <label title="text" for="star2"></label>
+                                        <input value="1" name="rate" id="star1" type="radio">
+                                        <label title="text" for="star1"></label>
+                                    </div>
+                                </div>
+
+                                <div class="add-review-input flex-col">
+                                    <label for="comment">Please share your opinion about the product</label>
+                                    <textarea id="comment" name="comment" rows="5" cols="10" placeholder="Enter your review here"></textarea>
+                                </div>
+                                
+                                <p id="reviewInvalidMsg" class="invalid-msg"></p>
+
+                                <div class="add-review-submit">
+                                    <input type="button" id="addReviewBtn" value="Send review" />
+                                </div>
+                            </form>
+                        </div>
+
                     </div>
 
                     <!--More course form author-->
@@ -345,12 +388,9 @@
                                 <p class="course-offer">50% off</p>
                             </div>
 
+                            <% if (!isOwn) {%>
                             <!--Course add to cart or wish list-->
                             <div class="sticky-div-cart flex-row">
-                                <%
-                                    boolean inCart = false;
-                                    boolean inWishlist = false;
-                                %>
                                 <button class="course-cart" status="<%= inCart ? "1" : "0"%>"><%= inWishlist ? "Go to cart" : "Add to cart"%></button>
                                 <button class="course-wish" status="<%= inWishlist ? "1" : "0"%>"><i class="ri-heart-line"></i></button>
                             </div>
@@ -360,6 +400,7 @@
                                 <p>30-Day Money-Back Guarantee</p>
                                 <p>Full Lifetime Access</p>
                             </div>
+                            <% }%>
 
                             <!--share this course-->
                             <div class="sticky-div-share flex-col">

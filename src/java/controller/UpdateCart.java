@@ -83,12 +83,14 @@ public class UpdateCart extends HttpServlet {
         
         // response back to client
         JsonObject responseJson = new JsonObject();
+        responseJson.addProperty("status", "success"); 
         responseJson.addProperty("productId", productID); 
+        responseJson.addProperty("productType", "Course"); 
         responseJson.addProperty("productName", "The Ultimate Excel Programming"); 
         responseJson.addProperty("productCategory", "Microsoft Excel"); 
-        responseJson.addProperty("productCategory", "Microsoft Excel"); 
         responseJson.addProperty("prodctImgPath", "./img/course/beginner_excel.jpg"); 
-        responseJson.addProperty("prodctQty", "10.00"); 
+        responseJson.addProperty("prodctPrice", "10.00"); 
+        responseJson.addProperty("prodctQty", "0"); 
         
         // Convert JSON object to string
         String responseJsonString = responseJson.toString();

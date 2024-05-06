@@ -35,13 +35,13 @@
                     </div>
                 </a>
             </li>
-            <li>
+<!--            <li>
                 <a href="<%= webpath.getPageUrl("learning")%>">
                     <div class="nav-option">
                         <p>Learning</p>
                     </div>
                 </a>
-            </li>
+            </li>-->
             <li>
                 <a href="<%= webpath.getPageUrl("merchandises")%>">
                     <div class="nav-option">
@@ -58,6 +58,8 @@
         <!--JSP conditional rendering-->
         <c:choose>
             <c:when test="${not empty userData.accountId.username}">
+                
+                <span hidden id="isLogin"></span>
 
                 <%
                     int numberWishlist = 2;

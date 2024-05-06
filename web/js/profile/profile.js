@@ -43,13 +43,13 @@ document.addEventListener('DOMContentLoaded', () => {
     showPage(n);
 
     // check is otp field div
-    var otp = document.querySelector("input#otpDiv").value;
-    if (n == 4 && otp == 1) {
+    let otp = document.getElementById("otpDiv").value;
+    if (n === '4' && otp === '1') {
         showOtpDiv();
     }
     
-    var otpError = document.querySelector("input#otpDiv").value;
-    if (n == 4 && otp == 1 && otpError == 1) {
+    let otpError = document.getElementById("otpError").value;
+    if (n === '4' && otp === '1' && otpError === '1') {
         otpInvalid();
     }
 

@@ -1,14 +1,18 @@
 // cart button on click
-document.querySelector("button.course-cart").addEventListener('click', () => {
-    const id = document.querySelector("section.course-section").getAttribute("courseID");
-    console.log(id);
-});
+if (document.querySelector("button.course-cart") !== null) {
+    document.querySelector("button.course-cart").addEventListener('click', () => {
+        const id = document.querySelector("section.course-section").getAttribute("courseID");
+        console.log(id);
+    });
+}
 
 // wishlist button on click
-document.querySelector("button.course-wish").addEventListener('click', () => {
-    const id = document.querySelector("section.course-section").getAttribute("courseID");
-    console.log(id);
-});
+if (document.querySelector("button.course-wish") !== null) {
+    document.querySelector("button.course-wish").addEventListener('click', () => {
+        const id = document.querySelector("section.course-section").getAttribute("courseID");
+        console.log(id);
+    });
+}
 
 // click and copy link to clipboard
 document.querySelector("button.share-btn").addEventListener('click', () => {
@@ -37,9 +41,42 @@ document.querySelector("span.close-btn").addEventListener('click', () => {
     reviewSection.classList.remove('active');
 });
 
+// add review form validation check
+document.getElementById("addReviewBtn").addEventListener("click", () => {
+    const rating = document.querySelector('div.review-rating input[name="rate"]:checked');
+
+    if (rating === null) {
+        document.getElementById("reviewInvalidMsg").innerText = "Please select rate";
+        return;
+    }
+
+    const addReviewForm = document.getElementById("addReviewForm");
+    addReviewForm.submit();
+});
+
+// show / hide add review section
+document.addEventListener("DOMContentLoaded", (event) => {
+    const addReview = document.getElementById("addReviewStatus").value;
+    var addReviewDiv = document.getElementById("addReviewDiv");
+
+    if (addReview === "1") {
+        addReviewDiv.style.display = "flex";
+    } else {
+        addReviewDiv.style.display = "none";
+    }
+});
+
+// clear invalid msg after select rate
+const rateInputs = document.querySelectorAll('div.review-rating input[name="rate"]');
+rateInputs.forEach(input => {
+    input.addEventListener("change", () => {
+        document.getElementById("reviewInvalidMsg").innerText = "";
+    });
+});
+
 // show more reviews button
 document.querySelector("button.show-more-btn").addEventListener('click', () => {
 
-
+    // fetch more comment
 
 });

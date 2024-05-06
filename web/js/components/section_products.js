@@ -4,9 +4,18 @@ function redirectToProductPage(product) {
     window.location.href = "/course_hero/course?id=" + id;
 }
 
+function isLogin() {
+    return document.getElementById("isLogin") === null ? false : true;
+}
+
 //Add to cart / remove from cart
 function cartButtonClick(evt) {
     evt.stopPropagation();
+    
+    if (!isLogin()) {
+        toast_msg(TOAST_WARNING, "Alert", "Login before add to cart");
+        return;
+    }
 
     const courseID = evt.target.closest('.course-product').getAttribute('courseID');
     const url = '/course_hero/update-cart';
@@ -29,6 +38,7 @@ function cartButtonClick(evt) {
         return response.json();
     }).then(responseData => {
         console.log('Response from servlet:', responseData);
+        toast_msg(TOAST_SUCCESS, "Success", "Added to cart");
     }).catch(error => {
         console.error('Fetch error:', error);
     });
@@ -39,6 +49,11 @@ function cartButtonClick(evt) {
 //Add to wishlist / remove from wishlist
 function likeButtonClick(evt) {
     evt.stopPropagation();
+    
+    if (!isLogin()) {
+        toast_msg(TOAST_WARNING, "Alert", "Login before add to wishlist");
+        return;
+    }
 
     const courseID = evt.target.closest('.course-product').getAttribute('courseID');
     const url = '/course_hero/update-wishlist';
@@ -61,6 +76,7 @@ function likeButtonClick(evt) {
         return response.json();
     }).then(responseData => {
         console.log('Response from servlet:', responseData);
+        toast_msg(TOAST_SUCCESS, "Success", "Added to wishlist");
     }).catch(error => {
         console.error('Fetch error:', error);
     });
