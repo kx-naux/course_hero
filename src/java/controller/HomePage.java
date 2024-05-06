@@ -30,13 +30,19 @@ public class HomePage extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        
+        Users userDataSession = (Users) request.getSession().getAttribute("userData");
         Users userData = Login.checkRmbMeToken(request, em);
-        if (userData != null) {
+        //check has rmb token onot
+        if(userData != null){
             HttpSession session = request.getSession();
-            session.setAttribute("userData", userData);
-        } else {
-            CourseCategory programmingCat = null;
+            session.setAttribute("userData",userData);
+        //check has user logged in
+        }else if(userDataSession.getUserId() == null){
+            
+        }
+        
+        CourseCategory programmingCat = null;
             CourseCategory designCat = null;
 
             // To get all of the course category
@@ -116,7 +122,7 @@ public class HomePage extends HttpServlet {
                 authorContribution3.put(eachMainCourse.getCourseId(), author);
             }
             request.setAttribute("allAuthorContribution", authorContribution3);
-        }
+       
 
         // Forward the request to home.jsp
         request.getRequestDispatcher("/WEB-INF/Client/Home.jsp").forward(request, response);

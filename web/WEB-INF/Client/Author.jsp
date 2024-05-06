@@ -5,7 +5,7 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import="java.util.List, java.util.Map" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<jsp:useBean id="userData" class="JPAEntity.Users" scope="session" />
 <jsp:useBean id="authorData" class="JPAEntity.Authors" scope="request" />
 <%List<Courses> authCourses = new ArrayList<Courses>(); %>
 <%authCourses = (List<Courses>) request.getAttribute("authorCourses"); %>

@@ -41,6 +41,7 @@
         <%@ include file="./Components/navbar.jsp" %>
 
         <!-- Image Carousel -->
+        
         <section class="section slideshow-section flex-col">
             <div class="slideshow-frame">
                 <div id="first_slide" class="pic-show fade">

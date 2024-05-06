@@ -8,7 +8,7 @@
 <% long ratingCount = ((Long) request.getAttribute("ratingCount")).longValue(); %>
 <% List<Ratings> ratingList = (List<Ratings>) request.getAttribute("ratingList"); %>
 <% long totalSold = ((Long) request.getAttribute("totalSold")).longValue();%>
-
+<jsp:useBean id="userData" class="JPAEntity.Users" scope="session" />
 <!DOCTYPE html>
 <html lang="en">
     <head>
