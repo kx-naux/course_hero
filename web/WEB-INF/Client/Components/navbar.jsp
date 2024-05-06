@@ -35,13 +35,13 @@
                     </div>
                 </a>
             </li>
-            <li>
+<!--            <li>
                 <a href="<%= webpath.getPageUrl("learning")%>">
                     <div class="nav-option">
                         <p>Learning</p>
                     </div>
                 </a>
-            </li>
+            </li>-->
             <li>
                 <a href="<%= webpath.getPageUrl("merchandises")%>">
                     <div class="nav-option">
@@ -58,10 +58,12 @@
         <!--JSP conditional rendering-->
         <c:choose>
             <c:when test="${not empty userData.accountId.username}">
+                
+                <span hidden id="isLogin"></span>
 
                 <%
                     int numberWishlist = 2;
-                    int numberCart = 5;
+                    int numberCart = 4;
 
                     boolean isWishlistEmpty = numberWishlist <= 0;
                     boolean isCartEmpty = numberCart <= 0;
@@ -78,7 +80,7 @@
                         <input type="number" id="cartNumber" value="<%= numberWishlist%>" hidden />
 
                         <!-- wish list with items-->
-                        <div class="wish-list-item flex-col <%= isWishlistEmpty ? "" : "active"%>">
+                        <div class="wish-list-item flex-col <%= isWishlistEmpty ? "" : "active"%>" id="wishlistDiv">
 
                             <div class="flex-col">
                                 <div class="course-item flex-row">
@@ -132,11 +134,11 @@
                             </div>
 
                         </div>
-                        <div class="wish-list-bot flex-col  <%= isWishlistEmpty ? "" : "active"%>">
+                        <div class="wish-list-bot flex-col  <%= isWishlistEmpty ? "" : "active"%>" id="wishlistLink">
                             <a href="<%= webpath.getPageUrl("wishlist")%>">Go to wishlist</a>
                         </div>
                         <!-- wish list without items-->
-                        <div class="list-empty-div flex-col  <%= isWishlistEmpty ? "active" : ""%>">
+                        <div class="list-empty-div flex-col  <%= isWishlistEmpty ? "active" : ""%>" id="wishlistEmpty">
                             <p>Your wishlist is empty</p>
                             <a href="<%= webpath.getPageUrl("produsts")%>">Explore courses</a>
                         </div>
@@ -146,12 +148,12 @@
                     <a href="<%= webpath.getPageUrl("cart")%>">
                         <p class="nav-icon">
                             <i class="ri-shopping-cart-line"></i>
-                            <span class="nav-icon-number  <%= isCartEmpty ? "" : "active"%>"><%= numberCart%></span>
+                            <span class="nav-icon-number  <%= isCartEmpty ? "" : "active"%>" id="cartlistNumber"><%= numberCart%></span>
                         </P>
                     </a>
                     <div class="cart-list flex-col">
                         <!--cart list with items-->
-                        <div class="cart-list-item flex-col <%= isCartEmpty ? "" : "active"%>">
+                        <div class="cart-list-item flex-col <%= isCartEmpty ? "" : "active"%>" id="cartlistDiv">
 
                             <div class="course-item flex-row">
                                 <div class="course-item-img">
@@ -201,12 +203,12 @@
                             </div>
 
                         </div>
-                        <div class="cart-list-bot flex-col <%= isCartEmpty ? "" : "active"%>">
-                            <h1>Total: RM 128.80</h1>
+                        <div class="cart-list-bot flex-col <%= isCartEmpty ? "" : "active"%>" id="cartlistLink">
+                            <h1>Total: RM <span id="cartlistPrice">128.80</span></h1>
                             <a href="<%= webpath.getPageUrl("cart")%>">Go to cart</a>
                         </div>
                         <!--cart list without items-->
-                        <div class="list-empty-div flex-col <%= isCartEmpty ? "active" : ""%>">
+                        <div class="list-empty-div flex-col <%= isCartEmpty ? "active" : ""%>" id="cartlistEmpty">
                             <p>Your cart is empty</p>
                             <a href="<%= webpath.getPageUrl("home")%>">Keep shopping</a>
                         </div>

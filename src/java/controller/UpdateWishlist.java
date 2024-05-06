@@ -21,7 +21,7 @@ import javax.transaction.Status;
 import javax.transaction.SystemException;
 import javax.transaction.UserTransaction;
 
-public class UpdateCart extends HttpServlet {
+public class UpdateWishlist extends HttpServlet {
 
     @PersistenceContext
     EntityManager em;
@@ -90,12 +90,10 @@ public class UpdateCart extends HttpServlet {
         responseJson.addProperty("status", "success");
         responseJson.addProperty("action", action);
         responseJson.addProperty("productID", productID);
-        responseJson.addProperty("productType", "course");
         responseJson.addProperty("productName", "The Ultimate Excel Programming");
         responseJson.addProperty("productCategory", "Microsoft Excel");
         responseJson.addProperty("productImgPath", "./img/course/beginner_excel.jpg");
         responseJson.addProperty("productPrice", 20.00);
-        responseJson.addProperty("productQty", 0);
 
         // Convert JSON object to string
         String responseJsonString = responseJson.toString();

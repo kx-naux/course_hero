@@ -127,7 +127,6 @@
             </div>
         </form>
 
-        <script src="./js/search_result/search_result.js"></script>
         <script src="./js/promotion/promotion.js"></script>
 
         <!--Footer import-->

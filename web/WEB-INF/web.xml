@@ -40,6 +40,22 @@
         <servlet-name>Promotion</servlet-name>
         <servlet-class>controller.Promotion</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UpdateUserProfileBasic</servlet-name>
+        <servlet-class>controller.UpdateUserProfileBasic</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditUserAddress</servlet-name>
+        <servlet-class>controller.EditUserAddress</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ForgetPasswordPage</servlet-name>
+        <servlet-class>controller.ForgetPasswordPage</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateWishlist</servlet-name>
+        <servlet-class>controller.UpdateWishlist</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -79,6 +95,22 @@
     <servlet-mapping>
         <servlet-name>Promotion</servlet-name>
         <url-pattern>/promotion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateUserProfileBasic</servlet-name>
+        <url-pattern>/UpUserProfileBasic</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditUserAddress</servlet-name>
+        <url-pattern>/edit-user-address</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ForgetPasswordPage</servlet-name>
+        <url-pattern>/forget-pw</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateWishlist</servlet-name>
+        <url-pattern>/update-wishlist</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

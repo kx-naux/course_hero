@@ -476,7 +476,14 @@
     cursor: pointer;
 }
 
-.course-sticky-div .sticky-div-bot .sticky-div-cart .course-cart{
+
+.course-sticky-div .sticky-div-bot .sticky-div-cart .course-review-a  {
+    display: flex;
+    width: 100%;
+}
+
+.course-sticky-div .sticky-div-bot .sticky-div-cart .course-cart,
+.course-sticky-div .sticky-div-bot .sticky-div-cart .course-review{
     flex-grow: 1;
 }
 
@@ -681,7 +688,7 @@
 }
 
 .review-content-left .rating-count .review-number {
-     font-weight: 500;
+    font-weight: 500;
     font-size: var(--font-size-s);
     color: var(--color-text-light-2);
 }
@@ -694,7 +701,7 @@
     padding-right: 8px;
 }
 
-    .review-content-right .show-more-btn {
+.review-content-right .show-more-btn {
     width: 100%;
     min-height: 40px;
     font-weight: 600;
@@ -714,4 +721,101 @@
 .review-content-right .user-review {
     padding: 25px 0;
     max-width: 9999px;
+}
+
+/*add review*/
+.add-review-div {
+    margin-top: 40px;
+    padding: 30px 30px;
+    background-color: var(--color-light-grey-1);
+    border-radius: 4px;
+}
+
+.add-review-div form {
+    gap: 18px;
+}
+
+.add-review-div .add-review-title h1{
+    font-weight: 600;
+    font-size: var(--font-size-l);
+    color: var(--color-text-light-3);
+}
+
+.add-review-div .add-review-input {
+    gap: 6px;
+}
+
+.add-review-div .add-review-input label {
+    font-weight: 600;
+    font-size: var(--font-size-xm);
+    color: var(--color-text-light-2);
+}
+
+.add-review-div .add-review-input textarea {
+    font-weight: 400;
+    font-size: var(--font-size-xm);
+    color: var(--color-text-light-3);
+    padding: 10px;
+    border: 1px solid var(--color-text-light-2);
+    resize: none;
+}
+
+.add-review-div .add-review-input .review-rating{
+    width: fit-content;
+}
+
+.add-review-div .add-review-input .review-rating:not(:checked) > input  {
+    position: absolute;
+  appearance: none;
+}
+
+.add-review-div .add-review-input .review-rating:not(:checked) > label {
+  float: right;
+  cursor: pointer;
+  font-size: 28px;
+  color: #666;
+}
+
+.add-review-div .add-review-input .review-rating:not(:checked) > label:before {
+  content: '★';
+}
+
+.add-review-div .add-review-input .review-rating > input:checked + label:hover,
+.add-review-div .add-review-input .review-rating > input:checked + label:hover ~ label,
+.add-review-div .add-review-input .review-rating > input:checked ~ label:hover,
+.add-review-div .add-review-input .review-rating > input:checked ~ label:hover ~ label,
+.add-review-div .add-review-input .review-rating > label:hover ~ input:checked ~ label {
+  color: #e58e09;
+}
+
+.add-review-div .add-review-input .review-rating:not(:checked) > label:hover,
+.add-review-div .add-review-input .review-rating:not(:checked) > label:hover ~ label {
+  color: #ff9e0b;
+}
+
+.add-review-div .add-review-input .review-rating > input:checked ~ label {
+  color: #ffa723;
+}
+
+.add-review-div .invalid-msg{
+     text-align: center;
+    color: var(--color-text-error);
+}
+
+.add-review-div .add-review-submit input{
+    width: 100%;
+    height: 40px;
+    font-weight: 600;
+    font-size: var(--font-size-s);
+    color: var(--color-text-light-2);
+    background-color: var(--color-transparent);
+    border: 1px solid var(--color-text-light-3);
+    cursor: pointer;
+    transition: 0.2s all ease-in-out;
+    user-select: none;
+    max-width: 150px;
+}
+
+.add-review-div .add-review-submit input:hover{
+    background-color: var(--color-light-grey-2);
 }
