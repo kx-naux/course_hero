@@ -19,102 +19,105 @@ import javax.persistence.PersistenceContext;
 import javax.servlet.ServletConfig;
 
 public class HomePage extends HttpServlet {
-    @PersistenceContext EntityManager em;
-    
+
+    @PersistenceContext
+    EntityManager em;
+
     @Override
-    public void init(ServletConfig config) throws ServletException{
+    public void init(ServletConfig config) throws ServletException {
         super.init(config);
     }
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {  
-        
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         Users userData = Login.checkRmbMeToken(request, em);
-        if(userData != null){
+        if (userData != null) {
             HttpSession session = request.getSession();
-            session.setAttribute("userData",userData);
-        }else{
-            //Statements
-        }
-        
-        CourseCategory programmingCat = null;
-        CourseCategory designCat = null;
-        
-        // To get all of the course category
-        List<CourseCategory> courseCatList = em.createNamedQuery("CourseCategory.findAll").getResultList();
-        request.setAttribute("courseCategoryList", courseCatList);
-        
-        // To get total courses registered for each category
-        List<Integer> eachCourseCatRegistered = new ArrayList<>();
-        
-        for(CourseCategory course: courseCatList){
-            List<Courses> registeredCourse = em.createNamedQuery("Courses.findByCategoryId").setParameter("coursecatId", course).getResultList();
-            Integer currentActiveCourse = 0;
-            for(Courses eachCatCourse:registeredCourse){
-                if("Active".equals(eachCatCourse.getProductId().getStatus()))
-                    currentActiveCourse++;
+            session.setAttribute("userData", userData);
+        } else {
+            CourseCategory programmingCat = null;
+            CourseCategory designCat = null;
+
+            // To get all of the course category
+            List<CourseCategory> courseCatList = em.createNamedQuery("CourseCategory.findAll").getResultList();
+            request.setAttribute("courseCategoryList", courseCatList);
+
+            // To get total courses registered for each category
+            List<Integer> eachCourseCatRegistered = new ArrayList<>();
+
+            for (CourseCategory course : courseCatList) {
+                List<Courses> registeredCourse = em.createNamedQuery("Courses.findByCategoryId").setParameter("coursecatId", course).getResultList();
+                Integer currentActiveCourse = 0;
+                for (Courses eachCatCourse : registeredCourse) {
+                    if ("Active".equals(eachCatCourse.getProductId().getStatus())) {
+                        currentActiveCourse++;
+                    }
+                }
+                eachCourseCatRegistered.add(currentActiveCourse);
+
+                // Used for programming and design courses
+                if ("CC0000001".equals(course.getCoursecatId())) {
+                    programmingCat = course;
+                }
+                if ("CC0000003".equals(course.getCoursecatId())) {
+                    designCat = course;
+                }
             }
-            eachCourseCatRegistered.add(currentActiveCourse);
-            
-            // Used for programming and design courses
-            if ("CC0000001".equals(course.getCoursecatId()))
-                programmingCat = course;
-            if ("CC0000003".equals(course.getCoursecatId()))
-                designCat = course;
-        }
-        request.setAttribute("eachCourseCatRegistered", eachCourseCatRegistered);
-        
-        // To get one of top courses in Programming CC0000001
-        List<Courses> programmingCourses = em.createNamedQuery("Courses.findByCategoryId").setParameter("coursecatId", programmingCat).getResultList();
-        request.setAttribute("programmingCourse", programmingCourses);
-        
-        // To get the associated authors on each of the programming course
-        Map<String, List<Authors>> authorContribution1 = new HashMap<>();
-        for(Courses eachProgrammingCourse: programmingCourses){
-            List<AuthorContribution> rawAuthorContribution1 = em.createNamedQuery("AuthorContribution.findByCourseId").setParameter("courseId", eachProgrammingCourse).getResultList();
-            List<Authors> author = new ArrayList<>();
-            for(AuthorContribution eachRawAuthorContribution1: rawAuthorContribution1){
-                List<Authors> rawAuthor = em.createNamedQuery("Authors.findByAuthorId").setParameter("authorId", eachRawAuthorContribution1.getAuthorId().getAuthorId()).getResultList();
-                author.add(rawAuthor.get(0));
+            request.setAttribute("eachCourseCatRegistered", eachCourseCatRegistered);
+
+            // To get one of top courses in Programming CC0000001
+            List<Courses> programmingCourses = em.createNamedQuery("Courses.findByCategoryId").setParameter("coursecatId", programmingCat).getResultList();
+            request.setAttribute("programmingCourse", programmingCourses);
+
+            // To get the associated authors on each of the programming course
+            Map<String, List<Authors>> authorContribution1 = new HashMap<>();
+            for (Courses eachProgrammingCourse : programmingCourses) {
+                List<AuthorContribution> rawAuthorContribution1 = em.createNamedQuery("AuthorContribution.findByCourseId").setParameter("courseId", eachProgrammingCourse).getResultList();
+                List<Authors> author = new ArrayList<>();
+                for (AuthorContribution eachRawAuthorContribution1 : rawAuthorContribution1) {
+                    List<Authors> rawAuthor = em.createNamedQuery("Authors.findByAuthorId").setParameter("authorId", eachRawAuthorContribution1.getAuthorId().getAuthorId()).getResultList();
+                    author.add(rawAuthor.get(0));
+                }
+                authorContribution1.put(eachProgrammingCourse.getCourseId(), author);
             }
-            authorContribution1.put(eachProgrammingCourse.getCourseId(), author);
-        }
-        request.setAttribute("programmingAuthorContribution", authorContribution1);
-        
-        // To get one of top courses in Design CC0000003
-        List<Courses> designCourses = em.createNamedQuery("Courses.findByCategoryId").setParameter("coursecatId", designCat).getResultList();
-        request.setAttribute("designCourse", designCourses);
-        
-        // To get the associated authors on each of the design course
-        Map<String, List<Authors>> authorContribution2 = new HashMap<>();
-        for(Courses eachDesignCourses: designCourses){
-            List<AuthorContribution> rawAuthorContribution2 = em.createNamedQuery("AuthorContribution.findByCourseId").setParameter("courseId", eachDesignCourses).getResultList();
-            List<Authors> author = new ArrayList<>();
-            for(AuthorContribution eachRawAuthorContribution2: rawAuthorContribution2){
-                List<Authors> rawAuthor = em.createNamedQuery("Authors.findByAuthorId").setParameter("authorId", eachRawAuthorContribution2.getAuthorId().getAuthorId()).getResultList();
-                author.add(rawAuthor.get(0));
+            request.setAttribute("programmingAuthorContribution", authorContribution1);
+
+            // To get one of top courses in Design CC0000003
+            List<Courses> designCourses = em.createNamedQuery("Courses.findByCategoryId").setParameter("coursecatId", designCat).getResultList();
+            request.setAttribute("designCourse", designCourses);
+
+            // To get the associated authors on each of the design course
+            Map<String, List<Authors>> authorContribution2 = new HashMap<>();
+            for (Courses eachDesignCourses : designCourses) {
+                List<AuthorContribution> rawAuthorContribution2 = em.createNamedQuery("AuthorContribution.findByCourseId").setParameter("courseId", eachDesignCourses).getResultList();
+                List<Authors> author = new ArrayList<>();
+                for (AuthorContribution eachRawAuthorContribution2 : rawAuthorContribution2) {
+                    List<Authors> rawAuthor = em.createNamedQuery("Authors.findByAuthorId").setParameter("authorId", eachRawAuthorContribution2.getAuthorId().getAuthorId()).getResultList();
+                    author.add(rawAuthor.get(0));
+                }
+                authorContribution2.put(eachDesignCourses.getCourseId(), author);
             }
-            authorContribution2.put(eachDesignCourses.getCourseId(), author);
-        }
-        request.setAttribute("designAuthorContribution", authorContribution2);
-        
-        // To get the all of courses 
-        List<Courses> allCourses = em.createNamedQuery("Courses.findAll").getResultList();
-        request.setAttribute("allCourse", allCourses);
-        
-        // To get all of the associated authors
-        Map<String, List<Authors>> authorContribution3 = new HashMap<>();
-        for(Courses eachMainCourse: allCourses){
-            List<AuthorContribution> rawAuthorContribution3 = em.createNamedQuery("AuthorContribution.findByCourseId").setParameter("courseId", eachMainCourse).getResultList();
-            List<Authors> author = new ArrayList<>();
-            for(AuthorContribution eachRawAuthorContribution3: rawAuthorContribution3){
-                List<Authors> rawAuthor = em.createNamedQuery("Authors.findByAuthorId").setParameter("authorId", eachRawAuthorContribution3.getAuthorId().getAuthorId()).getResultList();
-                author.add(rawAuthor.get(0));
+            request.setAttribute("designAuthorContribution", authorContribution2);
+
+            // To get the all of courses 
+            List<Courses> allCourses = em.createNamedQuery("Courses.findAll").getResultList();
+            request.setAttribute("allCourse", allCourses);
+
+            // To get all of the associated authors
+            Map<String, List<Authors>> authorContribution3 = new HashMap<>();
+            for (Courses eachMainCourse : allCourses) {
+                List<AuthorContribution> rawAuthorContribution3 = em.createNamedQuery("AuthorContribution.findByCourseId").setParameter("courseId", eachMainCourse).getResultList();
+                List<Authors> author = new ArrayList<>();
+                for (AuthorContribution eachRawAuthorContribution3 : rawAuthorContribution3) {
+                    List<Authors> rawAuthor = em.createNamedQuery("Authors.findByAuthorId").setParameter("authorId", eachRawAuthorContribution3.getAuthorId().getAuthorId()).getResultList();
+                    author.add(rawAuthor.get(0));
+                }
+                authorContribution3.put(eachMainCourse.getCourseId(), author);
             }
-            authorContribution3.put(eachMainCourse.getCourseId(), author);
+            request.setAttribute("allAuthorContribution", authorContribution3);
         }
-        request.setAttribute("allAuthorContribution", authorContribution3);
-        
+
         // Forward the request to home.jsp
         request.getRequestDispatcher("/WEB-INF/Client/Home.jsp").forward(request, response);
     }

@@ -5,6 +5,7 @@
 package JPAEntity;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
@@ -39,7 +40,11 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Promotions.findByMinReq", query = "SELECT p FROM Promotions p WHERE p.minReq = :minReq"),
     @NamedQuery(name = "Promotions.findByLegalTnc", query = "SELECT p FROM Promotions p WHERE p.legalTnc = :legalTnc"),
     @NamedQuery(name = "Promotions.findByStatus", query = "SELECT p FROM Promotions p WHERE p.status = :status"),
-    @NamedQuery(name = "Promotions.findByGeographicRestiriction", query = "SELECT p FROM Promotions p WHERE p.geographicRestiriction = :geographicRestiriction")})
+    @NamedQuery(name = "Promotions.findByGeographicRestiriction", query = "SELECT p FROM Promotions p WHERE p.geographicRestiriction = :geographicRestiriction"),
+    @NamedQuery(name = "Promotions.countAll", query = "SELECT COUNT(p) FROM Promotions p"),
+    @NamedQuery(name = "Promotions.findAllByActive", query = "SELECT p FROM Promotions p WHERE p.status = :status"),
+    @NamedQuery(name = "Promotions.findAllSortByEndTimeAsc", query = "SELECT p FROM Promotions p ORDER BY p.endTime ASC")
+})
 public class Promotions implements Serializable {
 
     @Basic(optional = false)
@@ -134,6 +139,52 @@ public class Promotions implements Serializable {
         return startTime;
     }
 
+    public String getFormattedDate(Date dateTime) {
+        // Define the desired date format
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MMM-yyyy hh:mm a");
+
+        // Format the start time
+        String formattedStartTime = dateFormat.format(dateTime);
+
+        // Return the formatted start time
+        return formattedStartTime;
+    }
+
+    public static String calculateDuration(Date startDate, Date endDate) {
+        // Get today's date
+        Date today = new Date();
+
+        // Calculate the difference between start date and today
+        long diffStart = startDate.getTime() - today.getTime();
+        long daysStart = diffStart / (1000 * 60 * 60 * 24);
+
+        // Calculate the difference between end date and today
+        long diffEnd = endDate.getTime() - today.getTime();
+        long daysEnd = diffEnd / (1000 * 60 * 60 * 24);
+
+        // If the start date is in the future
+        if (daysStart > 0) {
+            if (daysStart == 1) {
+                return "Start soon";
+            } else {
+                return "Start in " + daysStart + " days";
+            }
+        } // If the end date is in the future
+        else if (daysEnd > 0) {
+            if (daysEnd == 1) {
+                return "End soon";
+            } else {
+                return "End in " + daysEnd + " days";
+            }
+        } // If the duration is 1 day or less
+        else if (daysEnd <= 0) {
+            return "Ended";
+        } // If the duration is 1 day or less
+        else {
+            return "Start soon";
+        }
+    }
+
     public void setStartTime(Date startTime) {
         this.startTime = startTime;
     }
@@ -154,7 +205,6 @@ public class Promotions implements Serializable {
         this.promoType = promoType;
     }
 
-
     public double getMinReq() {
         return minReq;
     }
@@ -170,7 +220,6 @@ public class Promotions implements Serializable {
     public void setLegalTnc(String legalTnc) {
         this.legalTnc = legalTnc;
     }
-
 
     public String getGeographicRestiriction() {
         return geographicRestiriction;
@@ -222,7 +271,6 @@ public class Promotions implements Serializable {
         this.promoCode = promoCode;
     }
 
-
     public String getPromotionName() {
         return promotionName;
     }
@@ -230,8 +278,6 @@ public class Promotions implements Serializable {
     public void setPromotionName(String promotionName) {
         this.promotionName = promotionName;
     }
-
-   
 
     public String getPromoDescription() {
         return promoDescription;
@@ -241,9 +287,6 @@ public class Promotions implements Serializable {
         this.promoDescription = promoDescription;
     }
 
-
-
-
     public double getAmount() {
         return amount;
     }
@@ -251,8 +294,6 @@ public class Promotions implements Serializable {
     public void setAmount(double amount) {
         this.amount = amount;
     }
-
-   
 
     public String getStatus() {
         return status;
@@ -262,7 +303,4 @@ public class Promotions implements Serializable {
         this.status = status;
     }
 
-   
-
-    
 }
