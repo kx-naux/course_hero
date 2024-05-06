@@ -34,7 +34,7 @@
     </servlet>
     <servlet>
         <servlet-name>Cart</servlet-name>
-        <servlet-class>controller.Cart</servlet-class>
+        <servlet-class>controller.UpdateCart</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Promotion</servlet-name>

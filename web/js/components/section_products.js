@@ -21,11 +21,10 @@ function cartButtonClick(evt) {
     const url = '/course_hero/update-cart';
     const courseID = evt.target.closest('.course-product').getAttribute('courseID');
     const action = evt.target.closest(".cart-Btn").getAttribute("status") === '0' ? "add" : "remove";
-
     const data = {
         productID: courseID,
         action: action,
-        quantitiy: 1
+        qty: 1
     };
 
     fetch(url, {
