@@ -38,8 +38,6 @@ public class HomePage extends HttpServlet {
             HttpSession session = request.getSession();
             session.setAttribute("userData",userData);
         //check has user logged in
-        }else if(userDataSession.getUserId() == null){
-            
         }
         
         CourseCategory programmingCat = null;
