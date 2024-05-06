@@ -35,7 +35,7 @@ function cartButtonClick(evt) {
         body: JSON.stringify(data)
     }).then(response => {
         if (!response.ok) {
-            toast_msg(TOAST_ERROR, "Network Issue", "Fail to add to cart");
+            toast_msg(TOAST_ERROR, "Network Issue", `Fail to ${action} to cart`);
         }
         return response.json();
     }).then(responseData => {
@@ -55,6 +55,8 @@ function cartButtonClick(evt) {
                 icon.classList = iconCode.replace("fill", "line");
                 evt.target.closest(".cart-Btn").setAttribute("status", "0");
             }
+        } else {
+            toast_msg(TOAST_ERROR, "Server Error", `Fail to ${action} to cart`);
         }
     }).catch(error => {
         console.error('Fetch error:', error);
@@ -68,7 +70,7 @@ function addCartItem(data) {
     let cartlistDiv = document.getElementById("cartlistDiv");
     let cartlistLink = document.getElementById("cartlistLink");
     let cartlistPrice = document.getElementById("cartlistPrice");
-    let cartEmpltyDiv = document.getElementById("cartlistEmpty");
+    let cartEmptyDiv = document.getElementById("cartlistEmpty");
     let cartlistNumber = document.getElementById("cartlistNumber");
     let cartlistItems = document.querySelectorAll("div#cartlistDiv div.course-item");
 
@@ -106,7 +108,7 @@ function addCartItem(data) {
         cartlistDiv.classList.add("active");
         cartlistLink.classList.add("active");
         cartlistNumber.classList.add("active");
-        cartEmpltyDiv.classList.remove("active");
+        cartEmptyDiv.classList.remove("active");
     }
 
     // update price
@@ -118,7 +120,7 @@ function removeCartItem(data) {
     let cartlistDiv = document.getElementById("cartlistDiv");
     let cartlistLink = document.getElementById("cartlistLink");
     let cartlistPrice = document.getElementById("cartlistPrice");
-    let cartEmpltyDiv = document.getElementById("cartlistEmpty");
+    let cartEmptyDiv = document.getElementById("cartlistEmpty");
     let cartlistNumber = document.getElementById("cartlistNumber");
     let cartlistItems = document.querySelectorAll("div#cartlistDiv div.course-item");
 
@@ -130,11 +132,11 @@ function removeCartItem(data) {
     cartlistNumber.innerText = parseInt(cartlistNumber.innerText) - 1;
 
     // check list is empty before adding
-    if (cartlistItems.length < 1) {
+    if (cartlistItems.length <= 1) {
         cartlistDiv.classList.remove("active");
         cartlistLink.classList.remove("active");
         cartlistNumber.classList.remove("active");
-        cartEmpltyDiv.classList.add("active");
+        cartEmptyDiv.classList.add("active");
     }
 
     // update price
@@ -166,7 +168,7 @@ function likeButtonClick(evt) {
         body: JSON.stringify(data)
     }).then(response => {
         if (!response.ok) {
-            toast_msg(TOAST_ERROR, "Network Issue", "Fail to add to wishlist");
+            toast_msg(TOAST_ERROR, "Network Issue", `Fail to ${action} to wishlist`);
         }
         return response.json();
     }).then(responseData => {
@@ -186,6 +188,8 @@ function likeButtonClick(evt) {
                 icon.classList = iconCode.replace("fill", "line");
                 evt.target.closest(".wish-Btn").setAttribute("status", "0");
             }
+        } else {
+            toast_msg(TOAST_ERROR, "Server Error", `Fail to ${action} to wishlist`);
         }
     }).catch(error => {
         console.error('Fetch error:', error);
@@ -195,12 +199,58 @@ function likeButtonClick(evt) {
 }
 
 function addWishItem(data) {
-    var wishlistDiv = document.getElementById("wishlistDiv");
-    var wishEmptyDiv = document.getElementById("wishlistEmpty");
+    let wishlistDiv = document.getElementById("wishlistDiv");
+    let wishEmptyDiv = document.getElementById("wishlistEmpty");
+    let wishlistLink = document.getElementById("wishlistLink");
+    let wishlistItems = document.querySelectorAll("divwishlistDiv div.course-item");
+
+    // Create a new cart item element
+    let newItem = document.createElement("div");
+    let newItemPrice = data.productPrice.toFixed(2);
+    newItem.classList.add("flex-col");
+    newItem.innerHTML = `
+            <div class="course-item flex-row">
+                <div class="course-item-img">
+                    <img src="${data.productImgPath}" alt=""  draggable="false"  />
+                </div>
+                <div class="course-item-info flex-col">
+                    <h1 class="course-title">${data.productName}</h1>
+                    <p class="course-author">${data.productCategory}</p>
+                    <p class="course-price">RM ${newItemPrice}</p>
+                </div>
+            </div>
+            <div class="course-move-cart-div flex-col">
+                <button class="move-cart-btn" courseID="${data.productID}" onclick="moveToCart(event)">Add to cart</button>
+            </div>
+         `;
+
+    // insert item
+    wishlistDiv.appendChild(newItem);
+
+    // check list is empty before adding
+    if (wishlistItems.length < 1) {
+        wishlistDiv.classList.add("active");
+        wishlistLink.classList.add("active");
+        wishEmptyDiv.classList.remove("active");
+    }
 }
 
 function removeWishItem(data) {
+    let wishlistDiv = document.getElementById("wishlistDiv");
+    let wishEmptyDiv = document.getElementById("wishlistEmpty");
+    let wishlistLink = document.getElementById("wishlistLink");
+    let wishlistItems = document.querySelectorAll("div#wishlistDiv div.flex-col");
 
+    let removeItem = wishlistDiv.querySelector(`div.flex-col:has(div.course-move-cart-div button.move-cart-btn[courseID="${data.productID}"])`);
+
+    removeItem.remove();
+
+    // check list is empty before adding
+    if (wishlistItems.length <= 1) {
+        wishlistDiv.classList.remove("active");
+        wishlistLink.classList.remove("active");
+        wishEmptyDiv.classList.add("active");
+    }
 }
 
 //Add scroll detect for the div
@@ -234,6 +284,42 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-function moveWishToCart() {
+// move item from wish to cart
+function moveToCart(evt) {
+    evt.stopPropagation();
 
+    const url = '/course_hero/update-cart';
+    const courseID = evt.target.closest('.move-cart-btn').getAttribute('courseID');
+    const data = {
+        productID: courseID,
+        action: "add",
+        qty: 1
+    };
+
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    }).then(response => {
+        if (!response.ok) {
+            toast_msg(TOAST_ERROR, "Network Issue", "Fail to move to cart");
+        }
+        return response.json();
+    }).then(responseData => {
+        if (responseData.status === "success") {
+            // update the the cart list
+            if (responseData.action === "add") {
+                addCartItem(responseData);
+                toast_msg(TOAST_SUCCESS, "Success", "Added to cart");
+            }
+        } else {
+            toast_msg(TOAST_ERROR, "Server Error", "Fail to move to cart");
+        }
+    }).catch(error => {
+        console.error('Fetch error:', error);
+    });
+
+    console.log("Move to Cart Clicked - Course ID:", courseID);
 }
