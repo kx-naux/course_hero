@@ -40,16 +40,20 @@
 
                 <!--hidden value for step count-->
                 <!--<input type="number" min="1" max="5" id="formProgress" value="<%= pageNumber%>" hidden />-->
-                <input type="number" min="1" max="5" id="formProgress" value="1" hidden />
+                <input type="number" min="1" max="6" id="formProgress" value="<%= pageNumber%>" hidden />
 
                 <!--insert error message here if any-->
                 <% if (errField.equals("email&username")) { %>
-                <input type="text"  id="errorInput" value="email" hidden />
-                <input type="text"  id="errorInput" value="username" hidden />
+                <input type="text'  id="errorInput" value="email" hidden />
+                <input type="text" id="errorInput" value="username" hidden />
                 <%} else {%>
                 <input type="text"  id="errorInput" value="<%= errField%>" hidden />
                 <%}%>
-                <span hidden id="errorMsg"><%= errMsg%></span>
+                <% if(errMsg.isEmpty()){ %>
+                    <span hidden id="errorMsg"></span>
+                <%}else{%>
+                    <span hidden id="errorMsg"><%= errMsg%></span>
+                <%}%>
 
 
                 <!--step progress bar-->
@@ -276,7 +280,7 @@
                     <div class="sign-up-p sign-up-p5 flex-col">
                         <div class="sign-up-view-div  flex-col">
                             <h1 class="confirmation-title">OTP Verification</h1>
-                            <p class="confirmation-sub-title">Code is sent to example@email.com, input the code received, and verify to complete the process.</p>
+                            <p class="confirmation-sub-title">Code is sent to ${loginFormData.email}, input the code received, and verify to complete the process.</p>
                         </div>
 
                         <div class="otp-field-div flex-row">
