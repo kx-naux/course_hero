@@ -95,9 +95,9 @@ function addCartItem(data) {
         // udpate cart number
         cartlistNumber.innerText = parseInt(cartlistNumber.innerText) + 1;
     } else if (data.productType === "merchandise") {
-        
+
         // check is merch exist in list
-        
+
     }
 
     // check list is empty before adding
@@ -169,8 +169,23 @@ function likeButtonClick(evt) {
         }
         return response.json();
     }).then(responseData => {
-        console.log('Response from servlet:', responseData);
-        toast_msg(TOAST_SUCCESS, "Success", "Added to wishlist");
+        if (responseData.status === "success") {
+            let icon = evt.target.closest(".wish-Btn").querySelector("i");
+            let iconCode = Array.from(icon.classList)[0]; // Convert classList to an array
+
+            // update the the cart list
+            if (responseData.action === "add") {
+                addWishItem(responseData);
+                toast_msg(TOAST_SUCCESS, "Success", "Added to wishlist");
+                icon.classList = iconCode.replace("line", "fill");
+                evt.target.closest(".cart-Btn").setAttribute("status", "1");
+            } else {
+                removeWishItem(responseData);
+                toast_msg(TOAST_SUCCESS, "Success", "Remove from wishlist");
+                icon.classList = iconCode.replace("fill", "line");
+                evt.target.closest(".cart-Btn").setAttribute("status", "0");
+            }
+        }
     }).catch(error => {
         console.error('Fetch error:', error);
     });
