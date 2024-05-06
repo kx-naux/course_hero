@@ -39,7 +39,6 @@
                 </div>
 
                 <!--hidden value for step count-->
-                <!--<input type="number" min="1" max="5" id="formProgress" value="<%= pageNumber%>" hidden />-->
                 <input type="number" min="1" max="6" id="formProgress" value="<%= pageNumber%>" hidden />
 
                 <!--insert error message here if any-->
@@ -49,10 +48,10 @@
                 <%} else {%>
                 <input type="text"  id="errorInput" value="<%= errField%>" hidden />
                 <%}%>
-                <% if(errMsg.isEmpty()){ %>
-                    <span hidden id="errorMsg"></span>
-                <%}else{%>
-                    <span hidden id="errorMsg"><%= errMsg%></span>
+                <% if (errMsg.isEmpty()) { %>
+                <span hidden id="errorMsg"></span>
+                <%} else {%>
+                <span hidden id="errorMsg"><%= errMsg%></span>
                 <%}%>
 
 
@@ -83,7 +82,7 @@
                         <p class="point-name">Verification</p>
                     </div>
                 </div>
-                
+
                 <form action="sign-up" method="post" id="signUpForm">
                     <!--1st page or sign up form-->
                     <div class="sign-up-p sign-up-p1 flex-col">
@@ -276,6 +275,11 @@
                     </div>
                 </form>
 
+                <!--form for resend otp-->
+                <form id="resendOTPForm" style="display: none;">
+                    <input type="text" name="purpose" value="resend OTP" />
+                </form>
+
                 <!--5th page or sign up form-->
                 <form action="sign-up" method="post">
                     <div class="sign-up-p sign-up-p5 flex-col">
@@ -299,6 +303,7 @@
 
                         <div class="sign-up-btn-div otp-submit-div flex-col">
                             <input class="sign-up-btn submit-btn" type="submit" value="Submit" disabled />
+                            <span class="resend-otp" id="resendBtn">Resend OTP</span>
                         </div>
                     </div>
                 </form>

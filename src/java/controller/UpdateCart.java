@@ -1,6 +1,8 @@
 package controller;
 
 import JPAEntity.CartItems;
+import JPAEntity.CourseCategory;
+import JPAEntity.Courses;
 import JPAEntity.Product;
 import JPAEntity.TablesRecordCounter;
 import JPAEntity.Users;
@@ -10,6 +12,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Date;
+import java.util.List;
 import javax.annotation.Resource;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -44,60 +47,69 @@ public class UpdateCart extends HttpServlet {
         JsonObject jsonObject = gson.fromJson(requestBody.toString(), JsonObject.class);
 
         // Get JSON data
-        String productID = jsonObject.get("productID").getAsString();
+        String courseID = jsonObject.get("productID").getAsString();
         String action = jsonObject.get("action").getAsString();
         int quantity = jsonObject.get("qty").getAsInt();
-        
-//        String userID = jsonObject.get("userID").getAsString();
-//        String productType = jsonObject.get("productType").getAsString();
-//        String actionType = jsonObject.get("actionType").getAsString();
-//        Date timeAdded = new Date();
-//        
-//        // process the data
-//               
-//        //Getting Counters for Cart Item
-//        TablesRecordCounter currentItemTableCounter = em.find(TablesRecordCounter.class, "TablesRecordCounter");
-//        
-//        //Saving into the database
-//        Product currentProduct = em.find(Product.class, productID);
-//        Users currentUser = em.find(Users.class, userID);
-//        
-//        CartItems newCartItem = new CartItems();
-//        
-//        newCartItem.setCartitemId(currentItemTableCounter.getCounter() + 1);
-//        newCartItem.setProductId(currentProduct);
-//        newCartItem.setUserId(currentUser);
-//        newCartItem.setQuantity(quantity);
-//        newCartItem.setTimeAdded(timeAdded);
-//        
-//        currentItemTableCounter.counterIncrementByOne();
-//        
-//        //Creating JSON data
-//        JsonObject newJsonObject = new JsonObject();
-//        newJsonObject.addProperty("ProductID", currentProduct.getProductId());
-//        newJsonObject.addProperty("ProductCategory", productType);
-//        if("Add".equals(actionType)){
-//            newJsonObject.addProperty("ProductName", currentProduct.getProdName());
-//            newJsonObject.addProperty("ProductPrice", currentProduct.getPrice());
-//            newJsonObject.addProperty("Quantity", quantity);
-//            newJsonObject.addProperty("ProductCategory", currentProduct.getProdcatId().getCategoryName());
-//            newJsonObject.addProperty("ProductImage", "TemporaryVar");
-//        }
-//        
-//        saveDataToDatabases(request, response, newCartItem, currentItemTableCounter, actionType);
+
+        // Get data from database
+        // Course
+        Courses currentCourse = em.find(Courses.class, courseID);
+        String productID = currentCourse.getProductId().getProductId();
+        String courseCatID = currentCourse.getCoursecatId().getCoursecatId();
+
+        // Product
+        Product currentProduct = em.find(Product.class, productID);
+        String productName = currentProduct.getProdName();
+        double productPrice = currentProduct.getPrice();
+        String productImgPath = currentProduct.getImagePath();
+        String productType = determineType(courseID);
+
+        // Course Category
+        CourseCategory currentCourseCat = em.find(CourseCategory.class, courseCatID);
+        String courseCategoryName = currentCourseCat.getCategoryName();
+
+        // Users
+        Users userData = (Users) request.getSession().getAttribute("userData");
+        String userID = userData.getUserId();
+
+        // Time
+        Date timeAdded = new Date();
+
+        //Getting Counters for Cart Item
+        TablesRecordCounter currentItemTableCounter = em.find(TablesRecordCounter.class, "CART_ITEMS");
+
+        //Saving into the database
+        Users currentUser = em.find(Users.class, userID);
+
+        CartItems newCartItem = new CartItems();
+
+        if ("add".equals(action)) {
+            newCartItem.setProductId(currentProduct);
+            newCartItem.setUserId(currentUser);
+            newCartItem.setQuantity(quantity);
+            newCartItem.setTimeAdded(timeAdded);
+            newCartItem.setCartitemId(currentItemTableCounter.getCounter() + 1);
+        } else if ("remove".equals(action)){
+            List<CartItems> currentCartItem = em.createNamedQuery("CartItems.findByUserIdProductId").setParameter("userId", currentUser).setParameter("productId", currentProduct).getResultList();
+            newCartItem = currentCartItem.get(0);
+        }
+
+        currentItemTableCounter.counterIncrementByOne();
 
         // response back to client
         JsonObject responseJson = new JsonObject();
-        responseJson.addProperty("status", "success");
+        responseJson.addProperty("productID", courseID);
         responseJson.addProperty("action", action);
-        responseJson.addProperty("productID", productID);
-        responseJson.addProperty("productType", "course");
-        responseJson.addProperty("productName", "The Ultimate Excel Programming");
-        responseJson.addProperty("productCategory", "Microsoft Excel");
-        responseJson.addProperty("productImgPath", "./img/course/beginner_excel.jpg");
-        responseJson.addProperty("productPrice", 20.00);
-        responseJson.addProperty("productQty", 1);
+        responseJson.addProperty("productName", productName);
+        responseJson.addProperty("quantity", quantity);
+        responseJson.addProperty("productCategory", courseCategoryName);
+        responseJson.addProperty("productImgPath", "./img/course/beginner_excel.jpg"); //Please change to productImgPath after inserting proper data
+        responseJson.addProperty("productPrice", productPrice);
+        responseJson.addProperty("productType", productType);
+        responseJson.addProperty("status", "success");
 
+        saveDataToDatabases(request, response, newCartItem, currentItemTableCounter, action);
+        
         // Convert JSON object to string
         String responseJsonString = responseJson.toString();
 
@@ -114,14 +126,15 @@ public class UpdateCart extends HttpServlet {
 
     public void saveDataToDatabases(HttpServletRequest request, HttpServletResponse response, CartItems newCartItem, TablesRecordCounter currentItemTableCounter, String actionType) throws ServletException, IOException {
         try {
-            if ("Add".equals(actionType)) {
+            if ("add".equals(actionType)) {
                 utx.begin();
                 em.persist(newCartItem);
                 em.merge(currentItemTableCounter);
                 utx.commit();
-            } else if ("Remove".equals(actionType)) {
+            } else if ("remove".equals(actionType)) {
                 utx.begin();
-                //WIP
+                CartItems currentCartItems = em.find(CartItems.class, newCartItem.getCartitemId());
+                em.remove(currentCartItems);
                 utx.commit();
             }
         } catch (Exception ex) {
@@ -141,4 +154,13 @@ public class UpdateCart extends HttpServlet {
         }
     }
 
+    public String determineType(String primaryKey) {
+        if (primaryKey.startsWith("C")) {
+            return "course";
+        } else if (primaryKey.startsWith("M")) {
+            return "merchandise";
+        } else {
+            return "Unknown";
+        }
+    }
 }

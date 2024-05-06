@@ -62,8 +62,8 @@
 
                         <!--merch price-->
                         <div class="merch-price flex-row">
-                            <p class="course-price">RM <span>${merchData.productId.price - merchData.productId.discount}</span></p>                                      
-                            <p class="course-normal-price">RM <span>${merchData.productId.price}</span></p>
+                            <p class="course-price">RM <span><%= String.format("%.2f",merchData.getProductId().getPrice()-  merchData.getProductId().getDiscount() )%></span></p>                                      
+                            <p class="course-normal-price">RM <span><%= String.format("%.2f",merchData.getProductId().getPrice())%></span></p>
                             <p class="course-offer"><%= String.format("%.2f", ((double) merchData.getProductId().getDiscount()) / merchData.getProductId().getPrice() * 100)%>% off</p>
                         </div>
 
@@ -260,6 +260,8 @@
                 </div>
                 <div class="merch-review-right flex-col">
                     <form id="merchReview">
+                        <input type="text" name="id" value="${param.id}" hidden />
+                        
                         <div class="merch-review-content flex-row">
                             <% for (Ratings rating : ratingList) {%> 
                             <div class="user-review flex-col">

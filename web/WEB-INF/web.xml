@@ -67,6 +67,14 @@
     <servlet>
         <servlet-name>UserDeleteAccount</servlet-name>
         <servlet-class>controller.UserDeleteAccount</servlet-class>
+
+        <servlet-name>SearchSuggestion</servlet-name>
+        <servlet-class>controller.SearchSuggestion</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GetCourseReview</servlet-name>
+        <servlet-class>controller.GetCourseReview</servlet-class>
+
     </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
@@ -135,6 +143,12 @@
     <servlet-mapping>
         <servlet-name>UserDeleteAccount</servlet-name>
         <url-pattern>/user-delete-account</url-pattern>
+        <servlet-name>SearchSuggestion</servlet-name>
+        <url-pattern>/search-suggest</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GetCourseReview</servlet-name>
+        <url-pattern>/get-course-review</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
