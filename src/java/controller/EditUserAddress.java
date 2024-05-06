@@ -34,12 +34,18 @@ public class EditUserAddress extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        Users userDataSession = (Users) request.getSession().getAttribute("userData");
         Users userData = Login.checkRmbMeToken(request, em);
+        //check has rmb token onot
         if(userData != null){
             HttpSession session = request.getSession();
             session.setAttribute("userData",userData);
-        }else{
-            //Statements
+        //check has user logged in
+        }else if(userDataSession.getUserId() == null){
+            HttpSession session = request.getSession();
+            session.setAttribute("pageToGoAfterLogin","update-user-pfp");
+            response.sendRedirect("login");
+            return;
         }
         // Forward the request to Profile.jsp edit basic profile section
         request.setAttribute("profilePageNumber", "2");

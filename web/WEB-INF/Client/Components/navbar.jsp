@@ -1,3 +1,4 @@
+<%@page import="java.util.Base64"%>
 <!-- Navigation Bar -->
 <nav class="nav-bar">
     <!-- Logo -->
@@ -216,13 +217,17 @@
                 </div>
                 <div class="relative flex-col nav-icon-div">
                     <a href="<%= webpath.getPageUrl("profile")%>">
-                        <p class="nav-icon"><img class="nav-profile-pic" src="./img/user/kx.png" alt=""  draggable="false" /></p>
+                        <%String base64Image = "";
+                          if(userData.getImgData()!=null){
+                            base64Image = Base64.getEncoder().encodeToString((byte[])userData.getImgData());
+                          }%>
+                        <p class="nav-icon"><img class="nav-profile-pic" src="data:image/jpeg;base64,<%= base64Image %>" onerror="this.src='./img/user/default.png';" alt=""  draggable="false" /></p>
                     </a>
                     <div class="profile-list flex-col">
 
                         <div class="user-info flex-row">
                             <div class="user-info-left flex-col">
-                                <img class="profile-list-pic" src="./img/user/kx.png" alt=""  draggable="false"  />
+                                <img class="profile-list-pic" src="data:image/jpeg;base64,<%= base64Image %>" onerror="this.src='./img/user/default.png';" alt=""  draggable="false"  />
                             </div>
                             <div class="user-info-right flex-col">
                                 <p class="username">${userData.accountId.username}</p>
