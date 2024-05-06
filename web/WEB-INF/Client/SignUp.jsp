@@ -79,6 +79,7 @@
                         <p class="point-name">Verification</p>
                     </div>
                 </div>
+                
                 <form action="sign-up" method="post" id="signUpForm">
                     <!--1st page or sign up form-->
                     <div class="sign-up-p sign-up-p1 flex-col">
