@@ -52,11 +52,8 @@ public class Product implements Serializable {
     @Size(min = 1, max = 1000)
     @Column(name = "DESCRIPTION")
     private String description;
-    @Size(max = 100)
-    @Column(name = "IMG_URL")
-    private String imgUrl;
     @Basic(optional = false)
-    @NotNull
+    @NotNull()
     @Column(name = "PRICE")
     private double price;
     @Basic(optional = false)
@@ -64,7 +61,7 @@ public class Product implements Serializable {
     @Column(name = "RATE_WEIGHTAGE")
     private int rateWeightage;
     @Basic(optional = false)
-    @NotNull()
+    @NotNull
     @Column(name = "AVG_RATING")
     private double avgRating;
     @Basic(optional = false)
@@ -237,21 +234,6 @@ public class Product implements Serializable {
     public void setRatingsList(List<Ratings> ratingsList) {
         this.ratingsList = ratingsList;
     }
-
-
-
-    public String getImgUrl() {
-        return imgUrl;
-    }
-
-    public void setImgUrl(String imgUrl) {
-        this.imgUrl = imgUrl;
-    }
-
-
-  
-
-
     public String getDescription() {
         return description;
     }
@@ -260,8 +242,6 @@ public class Product implements Serializable {
         this.description = description;
     }
 
-
-  
 
     public double getPrice() {
         return price;
@@ -272,6 +252,8 @@ public class Product implements Serializable {
     }
 
    
+
+
     public double getDiscount() {
         return discount;
     }
@@ -280,7 +262,6 @@ public class Product implements Serializable {
         this.discount = discount;
     }
 
-  
 
     public String getStatus() {
         return status;

@@ -50,7 +50,7 @@
         <input type="number" id="profilePage" value="<%= pageNumber %>" min="1" max="5" hidden />
 
         <!--otp for page 4 put 1 into value-->
-        <input type="number" id="otpDiv" value="0" hidden />
+        <input type="number" id="otpDiv" value="1" hidden />
         
         <!--if otp error put 1-->
         <input type="number" id="otpError" value="0"  hidden />
