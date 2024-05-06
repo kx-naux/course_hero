@@ -50,7 +50,7 @@ function cartButtonClick(evt) {
 function likeButtonClick(evt) {
     evt.stopPropagation();
     
-     if (!isLogin()) {
+    if (!isLogin()) {
         toast_msg(TOAST_WARNING, "Alert", "Login before add to wishlist");
         return;
     }
