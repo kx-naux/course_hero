@@ -1,15 +1,12 @@
 package controller;
 
 import JPAEntity.CartItems;
-import JPAEntity.Product;
 import JPAEntity.TablesRecordCounter;
-import JPAEntity.Users;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Date;
 import javax.annotation.Resource;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -46,8 +43,9 @@ public class UpdateWishlist extends HttpServlet {
         // Get JSON data
         String productID = jsonObject.get("productID").getAsString();
         String action = jsonObject.get("action").getAsString();
+        int quantity = jsonObject.get("qty").getAsInt();
+        
 //        String userID = jsonObject.get("userID").getAsString();
-//        int quantity = jsonObject.get("quantity").getAsInt();
 //        String productType = jsonObject.get("productType").getAsString();
 //        String actionType = jsonObject.get("actionType").getAsString();
 //        Date timeAdded = new Date();
@@ -90,10 +88,12 @@ public class UpdateWishlist extends HttpServlet {
         responseJson.addProperty("status", "success");
         responseJson.addProperty("action", action);
         responseJson.addProperty("productID", productID);
+        responseJson.addProperty("productType", "course");
         responseJson.addProperty("productName", "The Ultimate Excel Programming");
         responseJson.addProperty("productCategory", "Microsoft Excel");
         responseJson.addProperty("productImgPath", "./img/course/beginner_excel.jpg");
         responseJson.addProperty("productPrice", 20.00);
+        responseJson.addProperty("productQty", 1);
 
         // Convert JSON object to string
         String responseJsonString = responseJson.toString();
@@ -111,14 +111,14 @@ public class UpdateWishlist extends HttpServlet {
 
     public void saveDataToDatabases(HttpServletRequest request, HttpServletResponse response, CartItems newCartItem, TablesRecordCounter currentItemTableCounter, String actionType) throws ServletException, IOException {
         try {
-            if ("Add".equals(actionType)) {
+            if ("add".equals(actionType)) {
                 utx.begin();
                 em.persist(newCartItem);
                 em.merge(currentItemTableCounter);
                 utx.commit();
-            } else if ("Remove".equals(actionType)) {
+            } else if ("remove".equals(actionType)) {
                 utx.begin();
-                //WIP
+                em.remove(newCartItem);
                 utx.commit();
             }
         } catch (Exception ex) {
@@ -137,5 +137,4 @@ public class UpdateWishlist extends HttpServlet {
             ErrorPage.forwardToServerErrorPage(request, response, "Database Server Error. Please Try Again Later");
         }
     }
-
 }
