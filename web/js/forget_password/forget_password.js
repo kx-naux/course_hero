@@ -197,7 +197,6 @@ document.getElementById("submitEmailBtn").addEventListener("click", () => {
 document.addEventListener("DOMContentLoaded", function () {
     // Get the button and the form
     var resendBtn = document.getElementById("resendBtn");
-    var resendOTPForm = document.getElementById("resendOTPForm");
 
     // Initial countdown time
     var countdown = 60;
