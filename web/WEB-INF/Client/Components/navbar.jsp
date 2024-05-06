@@ -35,13 +35,13 @@
                     </div>
                 </a>
             </li>
-            <li>
+<!--            <li>
                 <a href="<%= webpath.getPageUrl("learning")%>">
                     <div class="nav-option">
                         <p>Learning</p>
                     </div>
                 </a>
-            </li>
+            </li>-->
             <li>
                 <a href="<%= webpath.getPageUrl("merchandises")%>">
                     <div class="nav-option">
