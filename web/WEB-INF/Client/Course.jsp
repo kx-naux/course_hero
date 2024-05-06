@@ -28,6 +28,9 @@
             boolean inWishlist = false;
         %>
 
+        <!--put 1 to show add review form-->
+        <input type="number" id="addReviewStatus" value="1" />
+
         <section class="section course-section" courseID="${param.id}">
             <div class="course-div flex-row">
 
@@ -321,6 +324,41 @@
 
                         <button class="all-review-btn">Show all reviews</button>
 
+                        <div class="flex-col add-review-div" id="addReviewDiv">
+                            <form id="addReviewForm" class="flex-col">
+                                <div class="add-review-title">
+                                    <h1>Write a review</h1>
+                                </div>
+
+                                <div class="add-review-input flex-col">
+                                    <label>What is your rate</label>
+                                    <div class="review-rating">
+                                        <input value="5" name="rate" id="star5" type="radio">
+                                        <label title="text" for="star5"></label>
+                                        <input value="4" name="rate" id="star4" type="radio">
+                                        <label title="text" for="star4"></label>
+                                        <input value="3" name="rate" id="star3" type="radio">
+                                        <label title="text" for="star3"></label>
+                                        <input value="2" name="rate" id="star2" type="radio">
+                                        <label title="text" for="star2"></label>
+                                        <input value="1" name="rate" id="star1" type="radio">
+                                        <label title="text" for="star1"></label>
+                                    </div>
+                                </div>
+
+                                <div class="add-review-input flex-col">
+                                    <label for="comment">Please share your opinion about the product</label>
+                                    <textarea id="comment" name="comment" rows="5" cols="10" placeholder="Enter your review here"></textarea>
+                                </div>
+                                
+                                <p id="reviewInvalidMsg" class="invalid-msg"></p>
+
+                                <div class="add-review-submit">
+                                    <input type="button" id="addReviewBtn" value="Send review" />
+                                </div>
+                            </form>
+                        </div>
+
                     </div>
 
                     <!--More course form author-->
@@ -361,10 +399,6 @@
                             <div class="sticky-div-info flex-col">
                                 <p>30-Day Money-Back Guarantee</p>
                                 <p>Full Lifetime Access</p>
-                            </div>
-                            <% } else {%>
-                            <div class="sticky-div-cart flex-row">
-                                <button class="course-review">Add review</button>
                             </div>
                             <% }%>
 
