@@ -36,6 +36,8 @@ public class MerchandisePage extends HttpServlet {
             stockStatus = "Discontinued";
         }else if(merchData.getStockBalance()>0){
             stockStatus = "In Stock";
+        }else if(merchData.getStockBalance()<10){
+            stockStatus = "Low Stock Balance";
         }else if(merchData.getStockBalance()<1){
             stockStatus = "Out of Stock";
         }

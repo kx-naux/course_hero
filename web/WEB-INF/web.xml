@@ -56,6 +56,18 @@
         <servlet-name>UpdateWishlist</servlet-name>
         <servlet-class>controller.UpdateWishlist</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>EditUserSecurity</servlet-name>
+        <servlet-class>controller.EditUserSecurity</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateUserPFP</servlet-name>
+        <servlet-class>controller.UpdateUserPFP</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UserDeleteAccount</servlet-name>
+        <servlet-class>controller.UserDeleteAccount</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -111,6 +123,18 @@
     <servlet-mapping>
         <servlet-name>UpdateWishlist</servlet-name>
         <url-pattern>/update-wishlist</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditUserSecurity</servlet-name>
+        <url-pattern>/edit-security</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateUserPFP</servlet-name>
+        <url-pattern>/update-user-pfp</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UserDeleteAccount</servlet-name>
+        <url-pattern>/user-delete-account</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

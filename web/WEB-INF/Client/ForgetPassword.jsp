@@ -1,5 +1,18 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
+<%String formPageNumber = (String)request.getAttribute("formPageNumber");
+  String errType = (String)request.getAttribute("errType");
+  String errMsg = (String)request.getAttribute("errMsg");
+    if(formPageNumber == null){
+        formPageNumber = "1";
+    }
+    if(errType == null){
+        errType = "";
+    }
+    if(errType == null){
+        errMsg = "";
+    }
+%>
+    
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -31,11 +44,13 @@
                 <!--2 = otp-->
                 <!--3 = password-->
                 <!--4 = success-->
-                <input type="number" min="1" max="4" id="formProgress" value="1" hidden />
-
-                <!--insert error message here if any-->
-                <input type="text" id="errorInput" value="" hidden />
-                <span hidden id="errorMsg"></span>
+                <input type="number" min="1" max="4" id="formProgress" value="<%= formPageNumber %>" hidden />
+             
+                <!--insert error message here if any (input tag id)--> 
+                <% if(errType != null && errMsg != null){%>
+                <input type="text" id="errorInput" value="<%= errType %>" hidden />
+                <span hidden id="errorMsg"><%=errMsg%></span>
+                <%}%>
 
                 <!--step progress bar-->
                 <div class="form-progress-bar flex-row">
@@ -56,26 +71,28 @@
                 </div>
 
                 <!--submit email-->
-                <form action="=" method="post" id="emailForm">
+                <form action="forget-pw" method="post" id="emailForm">
                     <!--1st page or sign up form-->
                     <div class="forget-p forget-p1 flex-col">
+                        
                         <!--email-->
                         <div class="forget-input-div required-input-div flex-col">
                             <label for="email">Email:</label>
-                            <input type="text" id="email"  name="email" placeholder="example@email.com" maxlength="50" value="${loginFormData.email}"/>
+                            <input type="text" id="email"  name="email" placeholder="example@email.com" maxlength="50" value=""/>
                         </div>
 
                         <p class="invalid-msg"></p>
 
                         <div class="forget-btn-div flex-col">
+                            <input type="text" id="formTypeEmai" name="formType" value="emailForm" hidden />
                             <input class="forget-btn next-btn" id="submitEmailBtn" type="button" value="Next" />
-                            <P class="sign-in-link">Want to login? <a href="<%= webpath.getPageUrl("login")%>">Sign in now</a></p>
+                            <p class="sign-in-link">Want to login? <a href="<%= webpath.getPageUrl("login")%>">Sign in now</a></p>
                         </div>
                     </div>
                 </form>
 
                 <!--submit otp-->
-                <form action="=" method="post" id="otpForm">
+                <form action="forget-pw" method="post" id="otpForm">
                     <div class="forget-p forget-p5 flex-col">
                         <div class="forget-view-div  flex-col">
                             <h1 class="confirmation-title">OTP Verification</h1>
@@ -96,6 +113,7 @@
                         <input type="text" name="formType" value="OTPForm" hidden/>
 
                         <div class="forget-btn-div otp-submit-div flex-col">
+                            <input type="text" id="formTypeOtp" name="formType" value="OTPForm" hidden />
                             <input class="forget-btn submit-btn" type="submit" value="Submit" disabled />
                             <span class="resend-otp" id="resendBtn">Resend OTP</span>
                         </div>
@@ -103,12 +121,13 @@
                 </form>
 
                 <!--form for resend otp-->
-                <form id="resendOTPForm" style="display: none;">
+                <form id="resendOTPForm" style="display: none;" action="forget-pw" method="post">
+                    <input type="text" id="formTypeResendOtp" name="formType" value="resendOTP" hidden />
                     <input type="text" name="purpose" value="resend OTP" />
                 </form>
 
                 <!--submit new password-->
-                <form action="=" method="post" id="passwordForm">
+                <form action="forget-pw" method="post" id="passwordForm">
                     <div class="forget-p forget-p3 flex-col">
                         <!--password-->
                         <div class="forget-input-div required-input-div flex-col">
@@ -138,6 +157,7 @@
                         <p class="invalid-msg"></p>
                                                
                         <div class="forget-btn-div flex-col">
+                            <input type="text" id="formTypePassword" name="formType" value="getPassword" hidden />
                             <input class="forget-btn submit-btn" id="passwordSubmitBtn" type="submit" value="Submit" disabled />
                         </div>
                     </div>
