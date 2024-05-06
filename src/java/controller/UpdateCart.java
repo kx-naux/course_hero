@@ -22,9 +22,12 @@ import javax.transaction.SystemException;
 import javax.transaction.UserTransaction;
 
 public class UpdateCart extends HttpServlet {
-    @PersistenceContext EntityManager em;
-    @Resource UserTransaction utx;
-    
+
+    @PersistenceContext
+    EntityManager em;
+    @Resource
+    UserTransaction utx;
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // retreive from js submission
@@ -35,13 +38,14 @@ public class UpdateCart extends HttpServlet {
         while ((line = reader.readLine()) != null) {
             requestBody.append(line);
         }
-        
+
         // Parse JSON string
         Gson gson = new Gson();
         JsonObject jsonObject = gson.fromJson(requestBody.toString(), JsonObject.class);
-        
+
         // Get JSON data
         String productID = jsonObject.get("productID").getAsString();
+        String action = jsonObject.get("action").getAsString();
 //        String userID = jsonObject.get("userID").getAsString();
 //        int quantity = jsonObject.get("quantity").getAsInt();
 //        String productType = jsonObject.get("productType").getAsString();
@@ -80,18 +84,19 @@ public class UpdateCart extends HttpServlet {
 //        }
 //        
 //        saveDataToDatabases(request, response, newCartItem, currentItemTableCounter, actionType);
-        
+
         // response back to client
         JsonObject responseJson = new JsonObject();
-        responseJson.addProperty("status", "success"); 
-        responseJson.addProperty("productId", productID); 
-        responseJson.addProperty("productType", "Course"); 
-        responseJson.addProperty("productName", "The Ultimate Excel Programming"); 
-        responseJson.addProperty("productCategory", "Microsoft Excel"); 
-        responseJson.addProperty("prodctImgPath", "./img/course/beginner_excel.jpg"); 
-        responseJson.addProperty("prodctPrice", "10.00"); 
-        responseJson.addProperty("prodctQty", "0"); 
-        
+        responseJson.addProperty("status", "success");
+        responseJson.addProperty("action", action);
+        responseJson.addProperty("productId", productID);
+        responseJson.addProperty("productType", "course");
+        responseJson.addProperty("productName", "The Ultimate Excel Programming");
+        responseJson.addProperty("productCategory", "Microsoft Excel");
+        responseJson.addProperty("productImgPath", "./img/course/beginner_excel.jpg");
+        responseJson.addProperty("productPrice", 20.00);
+        responseJson.addProperty("productQty", 0);
+
         // Convert JSON object to string
         String responseJsonString = responseJson.toString();
 
@@ -105,34 +110,34 @@ public class UpdateCart extends HttpServlet {
         out.print(responseJsonString);
         out.flush();
     }
-    
-    public void saveDataToDatabases(HttpServletRequest request, HttpServletResponse response, CartItems newCartItem, TablesRecordCounter currentItemTableCounter, String actionType) throws ServletException, IOException{
-        try{
-            if("Add".equals(actionType)){
+
+    public void saveDataToDatabases(HttpServletRequest request, HttpServletResponse response, CartItems newCartItem, TablesRecordCounter currentItemTableCounter, String actionType) throws ServletException, IOException {
+        try {
+            if ("Add".equals(actionType)) {
                 utx.begin();
                 em.persist(newCartItem);
                 em.merge(currentItemTableCounter);
                 utx.commit();
-            }else if("Remove".equals(actionType)){
-               utx.begin();
-               //WIP
-               utx.commit();
+            } else if ("Remove".equals(actionType)) {
+                utx.begin();
+                //WIP
+                utx.commit();
             }
-        }catch(Exception ex){
-            try{
+        } catch (Exception ex) {
+            try {
                 if (utx.getStatus() == Status.STATUS_ACTIVE) {
                     try {
                         utx.rollback();
-                    }catch (SystemException ex2) {
+                    } catch (SystemException ex2) {
                         //server error page
-                        ErrorPage.forwardToServerErrorPage(request,response,"Database Server Error. Please Try Again Later");
+                        ErrorPage.forwardToServerErrorPage(request, response, "Database Server Error. Please Try Again Later");
                     }
                 }
-            }catch (SystemException ex2){
-                ErrorPage.forwardToServerErrorPage(request,response,"Database Server Error. Please Try Again Later");
+            } catch (SystemException ex2) {
+                ErrorPage.forwardToServerErrorPage(request, response, "Database Server Error. Please Try Again Later");
             }
-            ErrorPage.forwardToServerErrorPage(request,response,"Database Server Error. Please Try Again Later");
+            ErrorPage.forwardToServerErrorPage(request, response, "Database Server Error. Please Try Again Later");
         }
     }
-    
+
 }
