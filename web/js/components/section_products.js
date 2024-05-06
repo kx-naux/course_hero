@@ -18,12 +18,14 @@ function cartButtonClick(evt) {
         return;
     }
 
-    const courseID = evt.target.closest('.course-product').getAttribute('courseID');
     const url = '/course_hero/update-cart';
-    const action = evt.target.closest(".cart-Btn").getAttribute("status") === '0' ? "Add" : "Remove";
+    const courseID = evt.target.closest('.course-product').getAttribute('courseID');
+    const action = evt.target.closest(".cart-Btn").getAttribute("status") === '0' ? "add" : "remove";
+
     const data = {
         productID: courseID,
-        action: action
+        action: action,
+        quantitiy: 1
     };
 
     fetch(url, {
@@ -149,11 +151,11 @@ function likeButtonClick(evt) {
         return;
     }
 
-    const courseID = evt.target.closest('.course-product').getAttribute('courseID');
+    const productID = evt.target.closest('.course-product').getAttribute('courseID');
     const url = '/course_hero/update-wishlist';
     const action = evt.target.closest(".wish-Btn").getAttribute("status") === "0" ? "add" : "remove";
     const data = {
-        productID: courseID,
+        productID: productID,
         action: action
     };
 
@@ -190,7 +192,7 @@ function likeButtonClick(evt) {
         console.error('Fetch error:', error);
     });
 
-    console.log("Like Clicked - Course ID:", courseID);
+    console.log("Like Clicked - Course ID:", productID);
 }
 
 function addWishItem(data) {
@@ -232,3 +234,7 @@ document.addEventListener("DOMContentLoaded", function () {
         icon.classList = iconCode.replace("line", "fill");
     });
 });
+
+function moveWishToCart() {
+
+}
