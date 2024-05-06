@@ -109,9 +109,11 @@ public class Login extends HttpServlet {
         
         //check is password valid onot
         if(hashedInputPassword.equals(accountRetrieved.getSaltedpassword())){
+            // valid password
             userData = getUserData(accountRetrieved);
             session.setAttribute("userData",userData);
             session.setAttribute("loginStatus","logined");
+            String pageToGo = (String) session.getAttribute("pageToGoAfterLogin");
             //check remember me
             if(rememberMe!=null){
                 setRmbMeToken(userData,response);
@@ -119,7 +121,14 @@ public class Login extends HttpServlet {
                 //remove token in cookie if exist
                 removeRmbMeTokenInCookie(request,response);
             }
-            response.sendRedirect("home");
+            
+            if(pageToGo != null){
+                response.sendRedirect(pageToGo);
+            }else{
+                response.sendRedirect("home");
+                return;
+            }
+
         }else{
             session.setAttribute("loginErrorMsg","Invalid Login Credentials");
             response.sendRedirect("login");

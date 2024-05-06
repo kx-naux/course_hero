@@ -4,36 +4,39 @@
  */
 package controller;
 
-import JPAEntity.TablesRecordCounter;
 import JPAEntity.Users;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import java.util.Date;
 import javax.annotation.Resource;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 import javax.transaction.Status;
 import javax.transaction.SystemException;
 import javax.transaction.UserTransaction;
 
 /**
  *
- * @author liang
+ * @author User
  */
-//url pattern "/UpUserProfileBasic"
-public class UpdateUserProfileBasic extends HttpServlet {
-    @PersistenceContext EntityManager em;
+//url "/update-user-pfp"
+@MultipartConfig
+public class UpdateUserPFP extends HttpServlet {
+
+   @PersistenceContext EntityManager em;
     @Resource UserTransaction utx;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        
         Users userDataSession = (Users) request.getSession().getAttribute("userData");
         Users userData = Login.checkRmbMeToken(request, em);
         //check has rmb token onot
@@ -46,50 +49,62 @@ public class UpdateUserProfileBasic extends HttpServlet {
             session.setAttribute("pageToGoAfterLogin","update-user-pfp");
             response.sendRedirect("login");
             return;
-
         }
+
         // Forward the request to Profile.jsp edit basic profile section
-        request.setAttribute("profilePageNumber", "1");
+        request.setAttribute("profilePageNumber", "3");
         request.getRequestDispatcher("/WEB-INF/Client/Profile.jsp").forward(request, response);
     }
 
-
+   
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        java.text.SimpleDateFormat dateFormat = new java.text.SimpleDateFormat("yyyy-MM-dd");
-        String newName = (String) request.getParameter("name");
-        String newGender = (String) request.getParameter("gender");
-        String dobStr = (String) request.getParameter("dob");
+        Part filePart = request.getPart("profilePic");
+        //String fileName = filePart.getSubmittedFileName();
         
-    //get Date in Date type
-        Date newDob = null;
-        if(dobStr != null){
-            try {
-                newDob = dateFormat.parse(dobStr);
-            } catch (java.text.ParseException e) {
-                ErrorPage.forwardToServerErrorPage(request,response,"Server Error - Pass Date data type error. Please Try Again Later");           
-            }
-        }
-        
-        //get user object
+        //get the user data
         HttpSession session = request.getSession();
         Users userData = (Users) session.getAttribute("userData");
+        byte[] imgData = null;
+        if (filePart.getSize()!= 0) {      
+            imgData = readFileData(filePart);
+            userData.setImgData(imgData);
+            
+            updateDataInDatabase(userData,request,response);
         
-        userData.setDisplayName(newName);
-        userData.setGender(newGender);
-        userData.setDob(newDob);
+            //update userdata in session
+            session.setAttribute("userData", userData);
         
-        updateDataInDatabase(userData,request,response);
+            //show success
+            request.setAttribute("successMsg", "User Profile Picture Updated");
+            request.setAttribute("profilePageNumber","3");
+            request.getRequestDispatcher("/WEB-INF/Client/Profile.jsp").forward(request, response);
+        } else {
+            //fail to save data
+            request.setAttribute("errMsg","Server fails to upload your files. Please try again.");
+            request.setAttribute("profilePageNumber","3");
+            request.getRequestDispatcher("/WEB-INF/Client/Profile.jsp").forward(request, response);
+        }
         
-        //update userdata in session
-        session.setAttribute("userData", userData);
         
-        //show success
-        request.setAttribute("successMsg", "User Profile Updated");
-        request.setAttribute("profilePageNumber","1");
-        request.getRequestDispatcher("/WEB-INF/Client/Profile.jsp").forward(request, response);
     }
+    
+    private byte[] readFileData(Part filePart) throws IOException {
+        try (InputStream inputStream = filePart.getInputStream()) {
+            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+
+            byte[] buffer = new byte[1096];
+            int bytesRead;
+
+            while ((bytesRead = inputStream.read(buffer)) != -1) {
+                outputStream.write(buffer, 0, bytesRead);
+            }
+
+            return outputStream.toByteArray();
+        }
+    }
+    
     
     private void updateDataInDatabase(Users newUserData, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         try{
@@ -112,7 +127,7 @@ public class UpdateUserProfileBasic extends HttpServlet {
             ErrorPage.forwardToServerErrorPage(request,response,"Database Server Error. Please Try Again Later");
         }
     }
-    
+
     /**
      * Returns a short description of the servlet.
      *

@@ -1,3 +1,4 @@
+<%@page import="java.util.Base64"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -9,8 +10,16 @@
     if(pageNumber == null){
         pageNumber = "1";
     }%>
+<% String errMsg = (String) request.getAttribute("errMsg"); %>
+<% String emailInput = (String) session.getAttribute("newEmailToChangeBuffer"); %>
+<% String otpForWhichForm = (String)request.getAttribute("otpForWhichForm"); 
+    if(otpForWhichForm == null){
+        otpForWhichForm = "";
+    }%>
+<% String otpErrMsg = (String) request.getAttribute("otpErrMsg"); %>
+
 <!DOCTYPE html>
-<html lang="en">
+    <html lang="en">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Course Hero | Profile</title>
@@ -60,7 +69,11 @@
                 <div class="profile-div-left flex-col">
 
                     <div class="profile-user-div flex-col">
-                        <img src="./img/user/default.png" alt=""  />
+                        <%String base64ImageData = "";
+                          if(userData.getImgData()!=null){
+                            base64ImageData = Base64.getEncoder().encodeToString((byte[])userData.getImgData());
+                          }%>
+                        <img src="data:image/jpeg;base64,<%= base64ImageData %>" onerror="this.src='./img/user/default.png';" alt=""  />
                         <h1 class="profile-username">${userData.accountId.username}</h1>
                     </div>
 
@@ -104,7 +117,8 @@
                                     
                                        <input type="date" id="dob"  name="dob" value="<%= formattedDate %>" />
                                 </div>
-
+                                        
+                                
                                 <p class="invalid-msg"></p>
 
                                 <div class="profile-right-page-submit flex-row">
@@ -160,7 +174,7 @@
 
                     <!--edit photo-->
                     <div class="profile-right-page profile-right-page-3 flex-col">
-                        <form class="flex-col" id="editPhotoForm" action="storeImgData" method="POST" enctype="multipart/form-data">
+                        <form class="flex-col" id="editPhotoForm" action="update-user-pfp" method="POST" enctype="multipart/form-data">
                             <div class="profile-right-page-header flex-col">
                                 <h1>Profile photo</h1>
                                 <p>Add a nice photo of yourself for your profile</p>
@@ -170,7 +184,9 @@
                                 <div class="profile-right-page-input flex-col">
                                     <label>Image Preview:</label>
                                     <div class="image-preview-div flex-col">
-                                        <img id="profilePreview" src="./img/user/default.png" alt=""  />
+                                        <img id="profilePreview" src="data:image/jpeg;base64,<%= base64ImageData %>" alt=""  onerror="this.src='./img/user/default.png';"/>
+                                           
+                                        
                                     </div>
                                 </div>
 
@@ -183,7 +199,11 @@
                                     </label>
                                 </div>
 
-                                <p class="invalid-msg"></p>
+                                <% if(otpErrMsg == null){ %>
+                                    <p class="invalid-msg"></p>
+                                <%}else{%>
+                                    <p class="invalid-msg"><%= otpErrMsg %></p>
+                                <%}%>
 
                                 <div class="profile-right-page-submit flex-row">
                                     <input type="submit" class="submit-btn form-3-submit" value="Save" />
@@ -201,25 +221,34 @@
                         </div>
 
                         <!--change email form-->
-                        <form class="flex-col" id="changeEmailForm">
+                        <form class="flex-col" id="changeEmailForm" method="post" action="edit-security">
                             <div class="profile-right-page-content flex-col">
 
                                 <div class="profile-right-page-input flex-col">
                                     <label for="email">New email:</label>
                                     <!--put invalid-input if error-->
-                                    <input type="text" id="newEmail" class=""  name="email" placeholder="example@email.com" maxlength="50" value=""/>
+                                    <% if(emailInput == null){ %>
+                                        <input type="text" id="newEmail" class=""  name="email" placeholder="example@email.com" maxlength="50" value="${userData.accountId.email}"/>
+                                    <%}else{%>
+                                    <input type="text" id="newEmail" class=""  name="email" placeholder="example@email.com" maxlength="50" value="<%= emailInput %>"/>
+                                    <%}%>
                                 </div>
 
-                                <p class="invalid-msg" id="changeEmail"></p>
+                                <% if(errMsg == null){ %>
+                                    <p class="invalid-msg" id="changeEmail"></p>
+                                <%}else{%>
+                                    <p class="invalid-msg" id="changeEmail"><%= errMsg %></p>
+                                <%}%>
 
                                 <div class="profile-right-page-submit flex-row">
+                                    <input type="text" id="formTypeChangeEmail" name="formType" value="ChangeEmail" hidden />
                                     <input type="button" id="changeEmailBtn" class="submit-btn form-4-submit" value="Change email" />
                                 </div>
                             </div>
                         </form>
 
                         <!--change password form-->
-                        <form class="flex-col profile-right-border-top" id="changePassowrdForm">
+                        <form class="flex-col profile-right-border-top" id="changePassowrdForm" method="post" action="edit-security">
                             <div class="profile-right-page-content flex-col">
 
                                 <!--password-->
@@ -247,7 +276,8 @@
                                 <p class="invalid-msg" id="changePassword"></p>
 
                                 <div class="profile-right-page-submit flex-row">
-                                    <input type="button" id="changePasswordBtn" class="submit-btn form-4-submit" value="Change Password" />
+                                    <input type="text" id="formTypeChangePassword" name="formType" value="ChangePassword" hidden />
+                                    <input type="button" id="changePasswordBtn"  class="submit-btn form-4-submit" value="Change Password" />
                                 </div>
                             </div>
                         </form>
@@ -270,10 +300,17 @@
                                 </div>
 
                                 <input type="text" id="otp" name="otp" hidden />
-
-                                <p class="invalid-msg" id="otpVerify"></p>
+                                
+                                <% if(otpErrMsg == null){ %>
+                                    <p class="invalid-msg" id="otpVerify"></p>
+                                <%}else{%>
+                                    <p class="invalid-msg" id="otpVerify"><%= otpErrMsg %></p>
+                                <%}%>
+                                
 
                                 <div class="profile-right-page-submit flex-row">
+                                    <input type="text" id="formTypeOTP" name="formType" value="OTPSubmission" hidden />
+                                    <input type="text" id="otpForWhichForm" name="otpForWhichForm" value="<%= otpForWhichForm %>" hidden />
                                     <input type="button" id="otpSubmitBtn" class="submit-btn form-4-submit" value="Submit" />
                                 </div>
                             </div>

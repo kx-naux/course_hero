@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // check is otp field div
     let otp = document.getElementById("otpDiv").value;
-    if (n === '4' && otp === '1') {
+    if (n === '4' && otp == '1') {
         showOtpDiv();
     }
     
