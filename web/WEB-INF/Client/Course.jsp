@@ -23,7 +23,7 @@
         <!-- Include the navigation bar -->
         <%@ include file="./Components/navbar.jsp" %>
 
-        <%            boolean isOwn = true; // set value to true if user already buy the course
+        <%            boolean isOwn = false; // set value to true if user already buy the course
             boolean inCart = false;
             boolean inWishlist = false;
         %>
