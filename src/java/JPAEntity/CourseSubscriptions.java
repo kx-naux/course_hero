@@ -164,6 +164,8 @@ public class CourseSubscriptions implements Serializable {
 
 
 
+   
+
     public String getProgress() {
         return progress;
     }

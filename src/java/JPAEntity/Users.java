@@ -331,6 +331,26 @@ public class Users implements Serializable {
 
    
 
+
+    public Serializable getImgData() {
+        return imgData;
+    }
+
+    public void setImgData(Serializable imgData) {
+        this.imgData = imgData;
+    }
+
+    @XmlTransient
+    public List<PreferredCourse> getPreferredCourseList() {
+        return preferredCourseList;
+    }
+
+    public void setPreferredCourseList(List<PreferredCourse> preferredCourseList) {
+        this.preferredCourseList = preferredCourseList;
+    }
+
+   
+
     public Date getDob() {
         return dob;
     }
@@ -355,23 +375,6 @@ public class Users implements Serializable {
 
     public void setGender(String gender) {
         this.gender = gender;
-    }
-
-    public Serializable getImgData() {
-        return imgData;
-    }
-
-    public void setImgData(Serializable imgData) {
-        this.imgData = imgData;
-    }
-
-    @XmlTransient
-    public List<PreferredCourse> getPreferredCourseList() {
-        return preferredCourseList;
-    }
-
-    public void setPreferredCourseList(List<PreferredCourse> preferredCourseList) {
-        this.preferredCourseList = preferredCourseList;
     }
 
 }
