@@ -63,13 +63,14 @@ public class EditUserSecurity extends HttpServlet {
         HttpSession session = request.getSession();
         
         String formType = request.getParameter("formType");
+        String test = "";
         if(formType.equals("ChangeEmail")){
             String newEmail = request.getParameter("email");
             
             //check duplicated email
             if(checkForDuplicatedEmail(newEmail)){
                 request.setAttribute("emailInput",newEmail);
-                request.setAttribute("errMsg","This email already exists in our databases");
+                request.setAttribute("emailErrMsg","This email already exists in our databases");
                 request.setAttribute("profilePageNumber", "4");
                 request.getRequestDispatcher("/WEB-INF/Client/Profile.jsp").forward(request, response);
             }
@@ -90,18 +91,18 @@ public class EditUserSecurity extends HttpServlet {
                 }else{
                     //show error
                     request.setAttribute("emailInput",newEmail);
-                    request.setAttribute("errMsg","Server Error Fail To Send OTP Please Try Again");
+                    request.setAttribute("emailErrMsg","Server Error Fail To Send OTP Please Try Again");
                     request.setAttribute("profilePageNumber", "4");
                     request.getRequestDispatcher("/WEB-INF/Client/Profile.jsp").forward(request, response);
                 }
             }catch(InterruptedException otpEx){
                 request.setAttribute("emailInput",newEmail);
-                request.setAttribute("errMsg","Server Error Fail To Send OTP Please Try Again");
+                request.setAttribute("emailErrMsg","Server Error Fail To Send OTP Please Try Again");
                 request.setAttribute("profilePageNumber", "4");
                 request.getRequestDispatcher("/WEB-INF/Client/Profile.jsp").forward(request, response);
             }catch(IOException otpIOExp){
                 request.setAttribute("emailInput",newEmail);
-                request.setAttribute("errMsg","Server Error Fail To Send OTP Please Try Again");
+                request.setAttribute("emailErrMsg","Server Error Fail To Send OTP Please Try Again");
                 request.setAttribute("profilePageNumber", "4");
                 request.getRequestDispatcher("/WEB-INF/Client/Profile.jsp").forward(request, response);
                 return;
@@ -109,10 +110,43 @@ public class EditUserSecurity extends HttpServlet {
             
         }else if(formType.equals("ChangePassword")){
             String password = request.getParameter("password");
+            Users userData = (Users) session.getAttribute("userData");
+            //send OTP
+            OtpSender otpSender = new OtpSender();
+            try{
+                if(otpSender.send(userData.getAccountId().getEmail())){ //if success
+                    //store OTP and data in session scope
+                    session.setAttribute("newPasswordToChangeBuffer",password);
+                    session.setAttribute("changeUserDataOtp", otpSender.getOtp());
+                    session.setAttribute("changeUserDataOtpExpTime",otpSender.getExpiryDate());
+                    //direct to OTP page
+                    request.setAttribute("otpForWhichForm","ChangePassword");
+                    request.setAttribute("showOTPForm","1");
+                    request.setAttribute("profilePageNumber", "4");
+                    request.getRequestDispatcher("/WEB-INF/Client/Profile.jsp").forward(request, response);
+                }else{
+                    //show error
+                    //request.setAttribute("emailInput",newEmail);
+                    request.setAttribute("passErrMsg","Server Error Fail To Send OTP Please Try Again");
+                    request.setAttribute("profilePageNumber", "4");
+                    request.getRequestDispatcher("/WEB-INF/Client/Profile.jsp").forward(request, response);
+                }
+            }catch(InterruptedException otpEx){
+                //request.setAttribute("emailInput",newEmail);
+                request.setAttribute("passErrMsg","Server Error Fail To Send OTP Please Try Again");
+                request.setAttribute("profilePageNumber", "4");
+                request.getRequestDispatcher("/WEB-INF/Client/Profile.jsp").forward(request, response);
+            }catch(IOException otpIOExp){
+                //request.setAttribute("emailInput",newEmail);
+                request.setAttribute("passErrMsg","Server Error Fail To Send OTP Please Try Again");
+                request.setAttribute("profilePageNumber", "4");
+                request.getRequestDispatcher("/WEB-INF/Client/Profile.jsp").forward(request, response);
+                return;
+            }
             
-        }else if(formType.equals("otpForm")){
+        }else if(formType.equals("OTPSubmission")){
             //get the opt and expiry date of the otp
-            String otpForWhichForm = (String) session.getAttribute("otpForWhichForm");
+            String otpForWhichForm = (String) request.getParameter("otpForWhichForm");
             String otp = (String) session.getAttribute("changeUserDataOtp");
             Date otpExpTime = (Date) session.getAttribute("changeUserDataOtpExpTime");
             String otpInput = request.getParameter("otp");
@@ -126,7 +160,7 @@ public class EditUserSecurity extends HttpServlet {
                     String newEmail = (String) session.getAttribute("newEmailToChangeBuffer");
                     Users userData = (Users) session.getAttribute("userData");
                     userData.getAccountId().setEmail(newEmail);
-                    updateDataInDatabase(userData,request,response);
+                    updateDataInDatabase(userData.getAccountId(),request,response);
                 
                     //update userdata in session
                     session.setAttribute("userData", userData);
@@ -136,16 +170,38 @@ public class EditUserSecurity extends HttpServlet {
                     request.setAttribute("profilePageNumber","4");
                     request.getRequestDispatcher("/WEB-INF/Client/Profile.jsp").forward(request, response);
                     return;
+                }else if(otpForWhichForm.equals("ChangePassword")){
+                    String password = (String) session.getAttribute("newPasswordToChangeBuffer");
+                    Users userData = (Users) session.getAttribute("userData");
+                    try{
+                        userData.getAccountId().setHashedPassword(password);
+                    }catch(Exception ex){
+                        request.setAttribute("passErrMsg","Server Error in hashing the variable");
+                        request.setAttribute("profilePageNumber", "4");
+                        request.getRequestDispatcher("/WEB-INF/Client/Profile.jsp").forward(request, response);
+                        return;
+                    }
+                    
+                    updateDataInDatabase(userData.getAccountId(),request,response);
+                    
+                    //update userdata in session
+                    session.setAttribute("userData", userData);
+                    session.removeAttribute("newEmailToChangeBuffer");
+                    request.setAttribute("successMsg", "Password Changed");
+                    request.setAttribute("showOTPForm","0");
+                    request.setAttribute("profilePageNumber","4");
+                    request.getRequestDispatcher("/WEB-INF/Client/Profile.jsp").forward(request, response);
+                    return;
                 }
             }else{
-                request.setAttribute("otpForWhichForm","ChangeEmail");
+                request.setAttribute("otpForWhichForm",otpForWhichForm);
                 request.setAttribute("otpErrMsg", "Invalid OTP");
                 request.setAttribute("showOTPForm","1");
                 request.setAttribute("profilePageNumber", "4");
                 request.getRequestDispatcher("/WEB-INF/Client/Profile.jsp").forward(request, response);
             }
             
-            
+                
       
             
             
@@ -156,10 +212,10 @@ public class EditUserSecurity extends HttpServlet {
         
     }
     
-    private void updateDataInDatabase(Users newUserData, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+    private void updateDataInDatabase(Accounts newAccData, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         try{
             utx.begin();
-            em.merge(newUserData);
+            em.merge(newAccData);
             utx.commit();
         }catch(Exception ex){
             try{
@@ -197,5 +253,5 @@ public class EditUserSecurity extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
+    
 }

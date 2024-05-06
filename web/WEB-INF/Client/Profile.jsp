@@ -11,12 +11,19 @@
         pageNumber = "1";
     }%>
 <% String errMsg = (String) request.getAttribute("errMsg"); %>
+<% String emailErrMsg = (String) request.getAttribute("emailErrMsg"); %>
+<% String deleteAccErrMsg = (String) request.getAttribute("deleteAccErrMsg"); %>
+<% String passErrMsg = (String) request.getAttribute("passErrMsg"); %>
 <% String emailInput = (String) session.getAttribute("newEmailToChangeBuffer"); %>
 <% String otpForWhichForm = (String)request.getAttribute("otpForWhichForm"); 
     if(otpForWhichForm == null){
         otpForWhichForm = "";
     }%>
 <% String otpErrMsg = (String) request.getAttribute("otpErrMsg"); %>
+<% String showOTPForm = (String)request.getAttribute("showOTPForm");
+    if(showOTPForm == null){
+        showOTPForm = "0";
+    }%>
 
 <!DOCTYPE html>
     <html lang="en">
@@ -50,7 +57,7 @@
         <input type="number" id="profilePage" value="<%= pageNumber %>" min="1" max="5" hidden />
 
         <!--otp for page 4 put 1 into value-->
-        <input type="number" id="otpDiv" value="1" hidden />
+        <input type="number" id="otpDiv" value="<%= showOTPForm %>" hidden />
         
         <!--if otp error put 1-->
         <input type="number" id="otpError" value="0"  hidden />
@@ -199,10 +206,10 @@
                                     </label>
                                 </div>
 
-                                <% if(otpErrMsg == null){ %>
+                                <% if(errMsg == null){ %>
                                     <p class="invalid-msg"></p>
                                 <%}else{%>
-                                    <p class="invalid-msg"><%= otpErrMsg %></p>
+                                    <p class="invalid-msg"><%= errMsg %></p>
                                 <%}%>
 
                                 <div class="profile-right-page-submit flex-row">
@@ -234,10 +241,10 @@
                                     <%}%>
                                 </div>
 
-                                <% if(errMsg == null){ %>
+                                <% if(emailErrMsg == null){ %>
                                     <p class="invalid-msg" id="changeEmail"></p>
                                 <%}else{%>
-                                    <p class="invalid-msg" id="changeEmail"><%= errMsg %></p>
+                                    <p class="invalid-msg" id="changeEmail"><%= emailErrMsg %></p>
                                 <%}%>
 
                                 <div class="profile-right-page-submit flex-row">
@@ -273,7 +280,11 @@
                                     <li><i class="ri-close-circle-line"></i> Have a minimum length of 8</li>
                                 </ul>
 
-                                <p class="invalid-msg" id="changePassword"></p>
+                                <% if(passErrMsg == null){ %>
+                                    <p class="invalid-msg" id="changePassword"></p>
+                                <%}else{%>
+                                    <p class="invalid-msg" id="changePassword"><%= passErrMsg %></p>
+                                <%}%>
 
                                 <div class="profile-right-page-submit flex-row">
                                     <input type="text" id="formTypeChangePassword" name="formType" value="ChangePassword" hidden />
@@ -283,7 +294,7 @@
                         </form>
 
                         <!--otp form-->
-                        <form class="flex-col" id="otpForm" style="display: none;">
+                        <form class="flex-col" id="otpForm" style="display: none;" method="post" action="edit-security">
                             <div class="profile-right-page-content flex-col">
                                 <div class="sign-up-view-div  flex-col">
                                     <h1 class="confirmation-title">OTP Verification</h1>
@@ -318,8 +329,8 @@
                     </div>
 
                     <!--close account-->
-                    <div class="profile-right-page profile-right-page-5 flex-col">
-                        <form class="flex-col" id="closeAccountForm">
+                    <div class="profile-right-page profile-right-page-5 flex-col" >
+                        <form class="flex-col" id="closeAccountForm" method="post" action="user-delete-account">
                             <div class="profile-right-page-header flex-col">
                                 <h1>Close Account</h1>
                                 <p>Close your account permanently</p>
@@ -334,8 +345,11 @@
                                     <input type="password" id="passwordCloseAcc"  name="password" class="password-input" placeholder="Enter password to proceed to close account" />
                                     <span class="password-eye"><i class="ri-eye-line"></i></span>
                                 </div>
-
-                                <p class="invalid-msg"></p>
+                                <% if(deleteAccErrMsg == null){ %>
+                                    <p class="invalid-msg"></p>
+                                <%}else{%>
+                                    <p class="invalid-msg"><%= deleteAccErrMsg %></p>
+                                <%}%>
 
                                 <div class="profile-right-page-submit flex-row">
                                     <input type="button" class="submit-btn form-5-submit" value="Close account" />

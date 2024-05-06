@@ -4,7 +4,7 @@
  */
 package controller;
 
-import JPAEntity.BillingAddress;
+import JPAEntity.Accounts;
 import JPAEntity.Users;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -23,13 +23,11 @@ import javax.transaction.UserTransaction;
 
 /**
  *
- * @author liang
+ * @author User
  */
-
-// url "/edit-user-address"
-public class EditUserAddress extends HttpServlet {
-
- @PersistenceContext EntityManager em;
+// url '/user-delete-account'
+public class UserDeleteAccount extends HttpServlet {
+    @PersistenceContext EntityManager em;
     @Resource UserTransaction utx;
 
     @Override
@@ -43,62 +41,50 @@ public class EditUserAddress extends HttpServlet {
         //check has user logged in
         }else if(userDataSession.getUserId() == null){
             HttpSession session = request.getSession();
-            session.setAttribute("pageToGoAfterLogin","edit-user-address");
+            session.setAttribute("pageToGoAfterLogin","user-delete-account");
             response.sendRedirect("login");
             return;
+
         }
         // Forward the request to Profile.jsp edit basic profile section
-        request.setAttribute("profilePageNumber", "2");
+        request.setAttribute("profilePageNumber", "5");
         request.getRequestDispatcher("/WEB-INF/Client/Profile.jsp").forward(request, response);
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String password = request.getParameter("password");
+        Users userData = (Users) request.getSession().getAttribute("userData");
+        String hashedInputPassword = "";
+        try{
+            hashedInputPassword = Accounts.hashPassword(password,userData.getAccountId().getSalt());
+        }catch(Exception ex){
+            request.setAttribute("deleteAccErrMsg","Server Error Please Try Again");
+            request.setAttribute("profilePageNumber", "5");
+            request.getRequestDispatcher("/WEB-INF/Client/Profile.jsp").forward(request, response);
+        }
         
-        String addLine1 = request.getParameter("address1");
-        String addLine2 = request.getParameter("address2");
-        String city = request.getParameter("city");
-        String postalCode = request.getParameter("postalCode");
-        String state = request.getParameter("state");
-        String country = request.getParameter("country");
-    
-        
-        //get user object
-        HttpSession session = request.getSession();
-        Users userData = (Users) session.getAttribute("userData");
-        BillingAddress newBillData = userData.getAddressId();
-        
-        newBillData.setLine1(addLine1);
-        newBillData.setLine2(addLine2);
-        newBillData.setCity(city);
-        newBillData.setPostalcode(postalCode);
-        newBillData.setStateResides(state);
-        newBillData.setCountry(country);
-        
-        updateDataInDatabase(newBillData,request,response);
-        
-        //update userdata in session
-        session.setAttribute("userData", userData);
-        
-        //show success
-        request.setAttribute("successMsg", "Billing Address Updated");
-        request.setAttribute("profilePageNumber","2");
-        request.getRequestDispatcher("/WEB-INF/Client/Profile.jsp").forward(request, response);
+        if(hashedInputPassword.equals(userData.getAccountId().getSaltedpassword())){
+            //proceed delete
+            request.getSession().removeAttribute("userData");
+            deleteDataInDatabase(userData,request,response);
+            request.setAttribute("successMsg","Account Deleted.");
+            request.setAttribute("profilePageNumber", "5");
+            request.getRequestDispatcher("/WEB-INF/Client/Profile.jsp").forward(request, response);
+        }else{
+            request.setAttribute("deleteAccErrMsg","Password does not match.");
+            request.setAttribute("profilePageNumber", "5");
+            request.getRequestDispatcher("/WEB-INF/Client/Profile.jsp").forward(request, response);
+        }
     }
     
-    private void updateDataInDatabase(BillingAddress newBillAddressData, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+    private void deleteDataInDatabase(Users newUserData, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         try{
             utx.begin();
-            em.merge(newBillAddressData);
+            Users userData = em.find(Users.class, newUserData.getUserId());
+            em.remove(userData);
             utx.commit();
         }catch(Exception ex){
             try{
@@ -116,7 +102,7 @@ public class EditUserAddress extends HttpServlet {
             ErrorPage.forwardToServerErrorPage(request,response,"Database Server Error. Please Try Again Later");
         }
     }
-    
+
     /**
      * Returns a short description of the servlet.
      *

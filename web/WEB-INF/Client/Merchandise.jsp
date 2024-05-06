@@ -89,7 +89,7 @@
 
                             <!--merch add to cart-->
                             <div class="merch-add-cart flex-col">
-                                <% if (stockStatus.equalsIgnoreCase("In Stock")) {%>
+                                <% if (stockStatus.equalsIgnoreCase("In Stock") || stockStatus.equalsIgnoreCase("Low Stock Balance")) {%>
                                 <button class="add-cart-btn">Add to cart</button>
                                 <% } else { %>
                                 <button class="add-cart-btn" disabled="true">Add to cart</button>
@@ -100,9 +100,15 @@
                         <!--merch shop info-->
                         <div class="merch-shop-info">
                             <ul class="flex-col">
-                                <li><i class="ri-checkbox-circle-fill"></i> <%= stockStatus%></li>
-                                <li><i class="ri-error-warning-fill"></i> Low stock level</li>
-                                <li><i class="ri-close-circle-fill"></i> Sold out</li>
+                                <%if(stockStatus.equals("In Stock")){%>
+                                    <li><i class="ri-checkbox-circle-fill"></i> In Stock</li>
+                                <%}else if(stockStatus.equals("Discontinued")){%>
+                                    <li><i class="ri-close-circle-fill"></i> Discontinued</li>
+                                <%}else if(stockStatus.equals("Out of Stock")){%>
+                                    <li><i class="ri-close-circle-fill"></i> Sold out</li>
+                                <%}else if(stockStatus.equals("Low Stock Balance")){%>
+                                    <li><i class="ri-error-warning-fill"></i> Low stock level</li>
+                                <%}%>
                                 <li><i class="ri-truck-fill"></i> Delivery within 7 working days</li>
                             </ul>
                         </div>
@@ -192,7 +198,7 @@
                                 <i class="ri-star-fill"></i>
                                 <i class="ri-star-fill"></i>
                             </div>
-                            <p class="review-number">70%</p>
+                            <p class="review-number">${rateStats.fiveStarCounts}</p>
                         </div>
                         <div class="rating-count flex-row">
                             <div class="rating-percentage-bar">
@@ -206,14 +212,21 @@
                                 <i class="ri-star-fill"></i>
                                 <i class="ri-star-line"></i>
                             </div>
-                            <p class="review-number">20%</p>
+                            <p class="review-number">${rateStats.fourStarCounts}</p>
                         </div>
-                        <p class="review-number">${rateStats.fiveStarCounts}</p>
-                    </div>
-                    <div class="rating-count flex-row">
-                        <div class="rating-percentage-bar">
-                            <span class="background-bar"></span>
-                            <span class="front-bar" style="width: 20%"></span>
+                        <div class="rating-count flex-row">
+                            <div class="rating-percentage-bar">
+                                <span class="background-bar"></span>
+                                <span class="front-bar" style="width: 4%"></span>
+                            </div>
+                            <div class="rating-stars flex-row">
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-line"></i>
+                                <i class="ri-star-line"></i>
+                            </div>
+                            <p class="review-number">${rateStats.threeStarCounts}</p>
                         </div>
                         <div class="rating-count flex-row">
                             <div class="rating-percentage-bar">
@@ -227,51 +240,22 @@
                                 <i class="ri-star-line"></i>
                                 <i class="ri-star-line"></i>
                             </div>
-                            <p class="review-number">1%</p>
+                            <p class="review-number">${rateStats.twoStarCounts}</p>
                         </div>
-                        <p class="review-number">${rateStats.fourStarCounts}</p>
-                    </div>
-                    <div class="rating-count flex-row">
-                        <div class="rating-percentage-bar">
-                            <span class="background-bar"></span>
-                            <span class="front-bar" style="width: 4%"></span>
+                        <div class="rating-count flex-row">
+                            <div class="rating-percentage-bar">
+                                <span class="background-bar"></span>
+                                <span class="front-bar"  style="width: 1%"></span>
+                            </div>
+                            <div class="rating-stars flex-row">
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-line"></i>
+                                <i class="ri-star-line"></i>
+                                <i class="ri-star-line"></i>
+                                <i class="ri-star-line"></i>
+                            </div>
+                            <p class="review-number">${rateStats.oneStarCounts}</p>
                         </div>
-                        <div class="rating-stars flex-row">
-                            <i class="ri-star-fill"></i>
-                            <i class="ri-star-fill"></i>
-                            <i class="ri-star-fill"></i>
-                            <i class="ri-star-line"></i>
-                            <i class="ri-star-line"></i>
-                        </div>
-                        <p class="review-number">${rateStats.threeStarCounts}</p>
-                    </div>
-                    <div class="rating-count flex-row">
-                        <div class="rating-percentage-bar">
-                            <span class="background-bar"></span>
-                            <span class="front-bar" style="width: 1%"></span>
-                        </div>
-                        <div class="rating-stars flex-row">
-                            <i class="ri-star-fill"></i>
-                            <i class="ri-star-fill"></i>
-                            <i class="ri-star-line"></i>
-                            <i class="ri-star-line"></i>
-                            <i class="ri-star-line"></i>
-                        </div>
-                        <p class="review-number">${rateStats.oneStarCounts}</p>
-                    </div>
-                    <div class="rating-count flex-row">
-                        <div class="rating-percentage-bar">
-                            <span class="background-bar"></span>
-                            <span class="front-bar"  style="width: 1%"></span>
-                        </div>
-                        <div class="rating-stars flex-row">
-                            <i class="ri-star-fill"></i>
-                            <i class="ri-star-line"></i>
-                            <i class="ri-star-line"></i>
-                            <i class="ri-star-line"></i>
-                            <i class="ri-star-line"></i>
-                        </div>
-                        <p class="review-number">${rateStats.oneStarCounts}</p>
                     </div>
                 </div>
                 <div class="merch-review-right flex-col">
@@ -289,12 +273,12 @@
                                         <p class="user-name"><%= rating.getUserId().getDisplayName()%></p>
                                         <div class="review-top-bot flex-row">
                                             <div class="rating-stars flex-row">
-                                                <% for (double i = 5; i > rating.getScore(); i--) { %>
-                                                <% if (i == 0.5) { %>
-                                                <i class="ri-star-half-fill"></i>
-                                                <%} else {%>
-                                                <i class="ri-star-fill"></i>
-                                                <%}%>
+                                                <% for (int i = rating.getScore(); i > 0; i--) { %>
+                                                <%      if (i == 0.5) { %>
+                                                            <i class="ri-star-half-fill"></i>
+                                                <%      } else {%>
+                                                            <i class="ri-star-fill"></i>
+                                                <%      }%>
                                                 <%}%>
                                             </div>
                                             <p class="review-date"><%= rating.getTimeRated()%></p>
