@@ -309,11 +309,32 @@ function moveToCart(evt) {
         return response.json();
     }).then(responseData => {
         if (responseData.status === "success") {
-            // update the the cart list
-            if (responseData.action === "add") {
-                addCartItem(responseData);
-                toast_msg(TOAST_SUCCESS, "Success", "Added to cart");
-            }
+            addCartItem(responseData);
+
+            const url = '/course_hero/update-wishlist';
+            const data = {
+                productID: courseID,
+                action: "remove"
+            };
+
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            }).then(response => {
+                return response.json();
+            }).then(responseData => {
+                if (responseData.status === "success") {
+                    removeWishItem(responseData);
+                    toast_msg(TOAST_SUCCESS, "Success", "Move to cart");
+                } else {
+                    toast_msg(TOAST_ERROR, "Server Error", "Fail to move to cart");
+                }
+            }).catch(error => {
+                console.error('Fetch error:', error);
+            });
         } else {
             toast_msg(TOAST_ERROR, "Server Error", "Fail to move to cart");
         }
