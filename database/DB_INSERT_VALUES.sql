@@ -14,13 +14,13 @@ VALUES
     ('PM00005', 'Cash', 'MYR'),
     ('PM00006', 'TNG', 'MYR');
 
-INSERT INTO PROMOTIONS (PROMOTION_ID,PROMO_CODE, START_TIME, END_TIME, PROMO_TYPE, AMOUNT, MIN_REQ, LEGAL_TNC, STATUS, GEOGRAPHIC_RESTIRICTION)
+INSERT INTO PROMOTIONS (PROMOTION_ID,PROMO_DESCRIPTION,PROMOTION_NAME,PROMO_CODE, START_TIME, END_TIME, PROMO_TYPE, AMOUNT, MIN_REQ, LEGAL_TNC, STATUS, GEOGRAPHIC_RESTIRICTION)
 VALUES 
-    ('PO0000001', 'B102', '2024-04-15 00:00:00', '2024-04-30 23:59:59', 'Discount', 20.0, 100.0, 'Terms and conditions apply', 'Active', 'USA, Canada'),
-    ('PO0000002', 'CA', '2024-05-01 00:00:00', '2024-05-15 23:59:59', 'Buy One Get One', 0.0, 50.0, 'Terms and conditions apply', 'Inactive', 'UK, France'),
-    ('PO0000003', 'P9012', '2024-06-01 00:00:00', '2024-06-30 23:59:59', 'Free Shipping', 0.0, 75.0, 'Terms and conditions apply', 'Active', NULL),
-    ('PO0000004', 'P2741','2024-07-01 00:00:00', '2024-07-31 23:59:59', 'Percentage Discount', 15.0, 80.0, 'Terms and conditions apply', 'Active', NULL),
-    ('PO0000005', 'P231' ,'2024-08-01 00:00:00', '2024-08-15 23:59:59', 'Cashback', 10.0, 120.0, 'Terms and conditions apply', 'Inactive', 'Germany, Italy');
+    ('PO0000001','Discount 2020' ,'Happy Discoutn Hour from now until november','B102', '2024-04-15 00:00:00', '2024-04-30 23:59:59', 'Discount', 20.0, 100.0, 'Terms and conditions apply', 'Active', 'USA, Canada'),
+    ('PO0000002','Buy 1 free 1 mayday', 'Happy buy one free one Hour from now until november','CA', '2024-05-01 00:00:00', '2024-05-15 23:59:59', 'Buy One Get One', 0.0, 50.0, 'Terms and conditions apply', 'Inactive', 'UK, France'),
+    ('PO0000003','extra free shipping', 'Happy free shipping day from now until november','P9012', '2024-06-01 00:00:00', '2024-06-30 23:59:59', 'Free Shipping', 0.0, 75.0, 'Terms and conditions apply', 'Active', NULL),
+    ('PO0000004','discount happy hour', 'Happy percentage discount from now until november','P2741','2024-07-01 00:00:00', '2024-07-31 23:59:59', 'Percentage Discount', 15.0, 80.0, 'Terms and conditions apply', 'Active', NULL),
+    ('PO0000005','limited cashback now', 'Happy cashbck period from now until november','P231' ,'2024-08-01 00:00:00', '2024-08-15 23:59:59', 'Cashback', 10.0, 120.0, 'Terms and conditions apply', 'Inactive', 'Germany, Italy');
 
 INSERT INTO CHATROOMS (CHATROOM_ID, CHATROOM_TYPE, STATUS, REQ_TITLE, REQ_DESCRIPTION)
 VALUES 
@@ -78,13 +78,13 @@ VALUES
     ('SM0000004', 'Priority Shipping', '1-2 Business Days', 'Priority shipping method for domestic delivery', 'USA, China', 25.00, 'Returns accepted within 30 days, free return shipping.'),
     ('SM0000005', 'Standard Shipping', '5-7 Business Days', 'Standard shipping method for domestic delivery', 'USA, SG', 15.00, 'Returns accepted within 45 days, customer pays return shipping.');
 
-INSERT INTO USERS (USER_ID, ACCOUNT_ID, DISPLAY_NAME, DOB, ADDRESS_ID, USERTYPE, VALIDITY, DATE_JOINED, GENDER, IMG_URL)
+INSERT INTO USERS (USER_ID, ACCOUNT_ID, DISPLAY_NAME, DOB, ADDRESS_ID, USERTYPE, VALIDITY, DATE_JOINED, GENDER, IMG_DATA)
 VALUES 
     ('U00000001', 'AC0000001', 'Jackson Wang', '1990-05-15', 'BA0000001', 'Customer', '2024-12-31', '2024-04-15 08:30:00', 'Male',null),
     ('U00000002', 'AC0000002', 'Pentamaster Manager', '1985-09-20', 'BA0000002', 'Admin', '2025-12-31', '2024-04-15 09:15:00', 'Female',null),
-    ('U00000003', 'AC0000003', 'Mooiko Starbucks', '1998-03-10', 'BA0000003', 'Customer', '2023-12-31', '2024-04-15 10:00:00', 'Male',''),
+    ('U00000003', 'AC0000003', 'Mooiko Starbucks', '1998-03-10', 'BA0000003', 'Customer', '2023-12-31', '2024-04-15 10:00:00', 'Male',NULL),
     ('U00000004', 'AC0000004', 'MySoft bae', '1976-11-28', 'BA0000004', 'Customer', '2024-12-31', '2024-04-15 10:45:00', 'Female',null),
-    ('U00000005', 'AC0000005', 'SEN Tenz', '1995-07-02', 'BA0000005', 'Admin', '2025-12-31', '2024-04-15 11:30:00', 'Male','');
+    ('U00000005', 'AC0000005', 'SEN Tenz', '1995-07-02', 'BA0000005', 'Admin', '2025-12-31', '2024-04-15 11:30:00', 'Male',null);
 
 INSERT INTO BANKCARDINFO (CARDINFOID, USER_ID, CARDTYPE, CARD_HOLDER_NAME, CARD_NO, EXPIRY_DATE, CVV)
 VALUES 
@@ -235,13 +235,13 @@ VALUES
     ('PY0000004', 'PM00002', 'TR0000004', '567890123456789', 'PayPal', 120.0, 'Failed', '2024-04-13 12:00:00'),
     ('PY0000005', 'PM00001', 'TR0000005', '345678901234567', 'Stripe', 90.0, 'Completed', '2024-04-13 08:00:00');
 
-INSERT INTO PREFERRED_COURSE (USER_ID, COURSECAT_ID)
+INSERT INTO PREFERRED_COURSE (USER_ID, COURSECAT_ID,TIME_ADDED)
 VALUES 
-    ('U00000001', 'CC0000003'),
-    ('U00000002', 'CC0000004'),
-    ('U00000003', 'CC0000003'),
-    ('U00000004', 'CC0000002'),
-    ('U00000005', 'CC0000001');
+    ('U00000001', 'CC0000003',NULL),
+    ('U00000002', 'CC0000004',NULL),
+    ('U00000003', 'CC0000003',NULL),
+    ('U00000004', 'CC0000002',NULL),
+    ('U00000005', 'CC0000001',NULL);
 
 INSERT INTO TABLES_RECORD_COUNTER (TB_NBAME,COUNTER)
 VALUES

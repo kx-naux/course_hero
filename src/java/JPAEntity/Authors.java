@@ -209,7 +209,29 @@ public class Authors implements Serializable {
         this.imgUrl = imgUrl;
     }
 
+   
+
     
+
+
+
+    public String getNationality() {
+        return nationality;
+    }
+
+    public void setNationality(String nationality) {
+        this.nationality = nationality;
+    }
+
+   
+    public String getInstitution() {
+        return institution;
+    }
+
+    public void setInstitution(String institution) {
+        this.institution = institution;
+    }
+
 
     public String getBiography() {
         return biography;
@@ -221,24 +243,6 @@ public class Authors implements Serializable {
 
     
 
-   
-    public String getNationality() {
-        return nationality;
-    }
-
-    public void setNationality(String nationality) {
-        this.nationality = nationality;
-    }
-
-    public String getInstitution() {
-        return institution;
-    }
-
-    public void setInstitution(String institution) {
-        this.institution = institution;
-    }
-
-   
     public String getWebsite() {
         return website;
     }

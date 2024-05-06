@@ -251,6 +251,7 @@ public class Product implements Serializable {
 
   
 
+
     public String getDescription() {
         return description;
     }
@@ -260,6 +261,8 @@ public class Product implements Serializable {
     }
 
 
+  
+
     public double getPrice() {
         return price;
     }
@@ -268,7 +271,7 @@ public class Product implements Serializable {
         this.price = price;
     }
 
-
+   
     public double getDiscount() {
         return discount;
     }

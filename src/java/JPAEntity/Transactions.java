@@ -252,6 +252,8 @@ public class Transactions implements Serializable {
     }
 
 
+  
+   
     public double getTax() {
         return tax;
     }
@@ -260,7 +262,7 @@ public class Transactions implements Serializable {
         this.tax = tax;
     }
 
-   
+
     public double getTotal() {
         return total;
     }
@@ -277,5 +279,6 @@ public class Transactions implements Serializable {
         this.status = status;
     }
 
+  
 
 }

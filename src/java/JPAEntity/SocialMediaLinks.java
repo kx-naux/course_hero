@@ -125,4 +125,5 @@ public class SocialMediaLinks implements Serializable {
         return "JPAEntity.SocialMediaLinks[ socialmedialinkId=" + socialmedialinkId + " ]";
     }
 
+
 }
