@@ -178,12 +178,12 @@ function likeButtonClick(evt) {
                 addWishItem(responseData);
                 toast_msg(TOAST_SUCCESS, "Success", "Added to wishlist");
                 icon.classList = iconCode.replace("line", "fill");
-                evt.target.closest(".cart-Btn").setAttribute("status", "1");
+                evt.target.closest(".wish-Btn").setAttribute("status", "1");
             } else {
                 removeWishItem(responseData);
                 toast_msg(TOAST_SUCCESS, "Success", "Remove from wishlist");
                 icon.classList = iconCode.replace("fill", "line");
-                evt.target.closest(".cart-Btn").setAttribute("status", "0");
+                evt.target.closest(".wish-Btn").setAttribute("status", "0");
             }
         }
     }).catch(error => {

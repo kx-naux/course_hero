@@ -48,6 +48,10 @@
         <servlet-name>ForgetPasswordPage</servlet-name>
         <servlet-class>controller.ForgetPasswordPage</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UpdateWishlist</servlet-name>
+        <servlet-class>controller.UpdateWishlist</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -91,10 +95,14 @@
     <servlet-mapping>
         <servlet-name>EditUserAddress</servlet-name>
         <url-pattern>/edit-user-address</url-pattern>
- </servlet-mapping>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ForgetPasswordPage</servlet-name>
         <url-pattern>/forget-pw</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateWishlist</servlet-name>
+        <url-pattern>/update-wishlist</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
