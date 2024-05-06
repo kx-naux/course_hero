@@ -26,8 +26,8 @@ public class WebPath {
         pageUrls.put("merchandise", "/merch");
         pageUrls.put("help", "/help");
         pageUrls.put("promotion", "/promotion");
-        pageUrls.put("profile", "/edit-profile");
-        pageUrls.put("profile address", "/edit-address");
+        pageUrls.put("profile", "/UpUserProfileBasic");
+        pageUrls.put("profile address", "/edit-user-address");
         pageUrls.put("profile photo", "/edit-photo");
         pageUrls.put("profile security", "/edit-security");
         pageUrls.put("profile close", "/close-account");

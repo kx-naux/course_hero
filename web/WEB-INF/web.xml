@@ -37,6 +37,14 @@
         <servlet-class>controller.UpdateCart</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>UpdateUserProfileBasic</servlet-name>
+        <servlet-class>controller.UpdateUserProfileBasic</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditUserAddress</servlet-name>
+        <servlet-class>controller.EditUserAddress</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>ForgetPasswordPage</servlet-name>
         <servlet-class>controller.ForgetPasswordPage</servlet-class>
     </servlet>
@@ -76,6 +84,14 @@
         <servlet-name>UpdateCart</servlet-name>
         <url-pattern>/update-cart</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateUserProfileBasic</servlet-name>
+        <url-pattern>/UpUserProfileBasic</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditUserAddress</servlet-name>
+        <url-pattern>/edit-user-address</url-pattern>
+ </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ForgetPasswordPage</servlet-name>
         <url-pattern>/forget-pw</url-pattern>
