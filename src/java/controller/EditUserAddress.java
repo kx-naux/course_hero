@@ -1,0 +1,124 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
+ */
+package controller;
+
+import JPAEntity.BillingAddress;
+import JPAEntity.Users;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Date;
+import javax.annotation.Resource;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.transaction.Status;
+import javax.transaction.SystemException;
+import javax.transaction.UserTransaction;
+
+/**
+ *
+ * @author liang
+ */
+
+// url "/edit-user-address"
+public class EditUserAddress extends HttpServlet {
+
+ @PersistenceContext EntityManager em;
+    @Resource UserTransaction utx;
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        Users userData = Login.checkRmbMeToken(request, em);
+        if(userData != null){
+            HttpSession session = request.getSession();
+            session.setAttribute("userData",userData);
+        }else{
+            //Statements
+        }
+        // Forward the request to Profile.jsp edit basic profile section
+        request.setAttribute("profilePageNumber", "2");
+        request.getRequestDispatcher("/WEB-INF/Client/Profile.jsp").forward(request, response);
+    }
+
+    /**
+     * Handles the HTTP <code>POST</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        
+        String addLine1 = request.getParameter("address1");
+        String addLine2 = request.getParameter("address2");
+        String city = request.getParameter("city");
+        String postalCode = request.getParameter("postalCode");
+        String state = request.getParameter("state");
+        String country = request.getParameter("country");
+    
+        
+        //get user object
+        HttpSession session = request.getSession();
+        Users userData = (Users) session.getAttribute("userData");
+        BillingAddress newBillData = userData.getAddressId();
+        
+        newBillData.setLine1(addLine1);
+        newBillData.setLine2(addLine2);
+        newBillData.setCity(city);
+        newBillData.setPostalcode(postalCode);
+        newBillData.setStateResides(state);
+        newBillData.setCountry(country);
+        
+        updateDataInDatabase(newBillData,request,response);
+        
+        //update userdata in session
+        session.setAttribute("userData", userData);
+        
+        //show success
+        request.setAttribute("successMsg", "Billing Address Updated");
+        request.setAttribute("profilePageNumber","2");
+        request.getRequestDispatcher("/WEB-INF/Client/Profile.jsp").forward(request, response);
+    }
+    
+    private void updateDataInDatabase(BillingAddress newBillAddressData, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+        try{
+            utx.begin();
+            em.merge(newBillAddressData);
+            utx.commit();
+        }catch(Exception ex){
+            try{
+            if (utx.getStatus() == Status.STATUS_ACTIVE) {
+                try {
+                    utx.rollback();
+                }catch (SystemException ex2) {
+                    //server error page
+                    ErrorPage.forwardToServerErrorPage(request,response,"Database Server Error. Please Try Again Later");
+                }
+            }
+            }catch (SystemException ex2){
+                ErrorPage.forwardToServerErrorPage(request,response,"Database Server Error. Please Try Again Later");
+            }
+            ErrorPage.forwardToServerErrorPage(request,response,"Database Server Error. Please Try Again Later");
+        }
+    }
+    
+    /**
+     * Returns a short description of the servlet.
+     *
+     * @return a String containing servlet description
+     */
+    @Override
+    public String getServletInfo() {
+        return "Short description";
+    }// </editor-fold>
+
+}

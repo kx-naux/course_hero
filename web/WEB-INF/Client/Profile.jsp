@@ -1,6 +1,14 @@
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<jsp:useBean id="userData" class="JPAEntity.Users" scope="session" />
+<% String successMsg = (String) request.getAttribute("successMsg"); %>
+<% SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd"); 
+   String formattedDate = simpleDateFormat.format(userData.getDob());%>
+<% String pageNumber = (String) request.getAttribute("profilePageNumber");
+    if(pageNumber == null){
+        pageNumber = "1";
+    }%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -11,6 +19,7 @@
         <link type="text/css" href="./css/profile.css" rel="stylesheet" >
         <link type="text/css" href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
         <jsp:useBean id="webpath" class="module.WebPath" scope="application" />
+        
     </head>
     <body>
 
@@ -29,7 +38,7 @@
         <!--3 = Change photo-->
         <!--4 = Account security-->
         <!--5 = Close account-->
-        <input type="number" id="profilePage" value="1" min="1" max="5" hidden />
+        <input type="number" id="profilePage" value="<%= pageNumber %>" min="1" max="5" hidden />
 
         <!--otp for page 4 put 1 into value-->
         <input type="number" id="otpDiv" value="0"  hidden />
@@ -37,7 +46,12 @@
         <input type="number" id="otpError" value="0"  hidden />
 
         <!--hidden input field to show success msg-->
-        <input type="text" id="succssMsg" value="" hidden />
+        <% if(successMsg == null){ %>
+            <input type="text" id="succssMsg" value="" hidden />
+        <%}else{%>
+            <input type="text" id="succssMsg" value="<%= successMsg %>" hidden />
+        <%}%>
+        
 
         <section class="section profile-section">
             <div class="profile-div flex-row">
@@ -46,7 +60,7 @@
 
                     <div class="profile-user-div flex-col">
                         <img src="./img/user/default.png" alt=""  />
-                        <h1 class="profile-username">Kah Xuan</h1>
+                        <h1 class="profile-username">${userData.accountId.username}</h1>
                     </div>
 
                     <ul class="profile-sidebar flex-col">
@@ -63,7 +77,7 @@
 
                     <!--edit profile-->
                     <div class="profile-right-page profile-right-page-1 flex-col">
-                        <form class="flex-col" id="editProfileForm">
+                        <form class="flex-col" id="editProfileForm" action="UpUserProfileBasic" method="post">
                             <div class="profile-right-page-header flex-col">
                                 <h1>User profile</h1>
                                 <p>Edit information about yourself</p>
@@ -72,20 +86,22 @@
                             <div class="profile-right-page-content flex-col">
                                 <div class="profile-right-page-input flex-col">
                                     <label for="name">Name:</label>
-                                    <input type="text" id="name" name="name" value="Kah Xuan"  placeholder="name" maxlength="30"  />
+                                    <input type="text" id="name" name="name" value="${userData.displayName}"  placeholder="name" maxlength="30"  />
                                 </div>
 
                                 <div class="profile-right-page-input flex-col">
                                     <label for="gender">Gender:</label>
                                     <select id="gender" name="gender">
-                                        <option value="female">Female</option>
-                                        <option value="male" selected>Male</option>
+                                        <option value="female" <%= (userData.getGender() != null && userData.getGender().equalsIgnoreCase("female")) ? "selected" : ""%> >Female</option>
+                                <option value="male" <%= (userData.getGender() != null && userData.getGender().equalsIgnoreCase("male")) ? "selected" : ""%>>Male</option>
                                     </select>
                                 </div>
 
                                 <div class="profile-right-page-input flex-col">
                                     <label for="dob">Date of birth:</label>
-                                    <input type="date" id="dob"  name="dob" value="2021-01-04" />
+                                    
+                                    
+                                       <input type="date" id="dob"  name="dob" value="<%= formattedDate %>" />
                                 </div>
 
                                 <p class="invalid-msg"></p>
@@ -99,7 +115,7 @@
 
                     <!--edit address-->
                     <div class="profile-right-page profile-right-page-2 flex-col">
-                        <form class="flex-col" id="editAddressForm">
+                        <form class="flex-col" id="editAddressForm" method="post" action="edit-user-address">
                             <div class="profile-right-page-header flex-col">
                                 <h1>Address</h1>
                                 <p>Edit information about your address</p>
@@ -108,28 +124,28 @@
                             <div class="profile-right-page-content flex-col">
                                 <div class="profile-right-page-input flex-col">
                                     <label>Address:</label>
-                                    <input type="text" id="address1" name="address1" value="" placeholder="address line 1" maxlength="50" />
-                                    <input type="text" id="address2" name="address2" value="" placeholder="address line 2" maxlength="50" />
+                                    <input type="text" id="address1" name="address1" value="${userData.addressId.line1}" placeholder="address line 1" maxlength="50" />
+                                    <input type="text" id="address2" name="address2" value="${userData.addressId.line2}" placeholder="address line 2" maxlength="50" />
                                 </div>
 
                                 <div class="profile-right-page-input flex-col">
                                     <label for="city">City:</label>
-                                    <input type="text" id="city" name="city" value="" placeholder="city name" maxlength="20" />
+                                    <input type="text" id="city" name="city" value="${userData.addressId.city}" placeholder="city name" maxlength="20" />
                                 </div>
 
                                 <div class="profile-right-page-input flex-col">
                                     <label for="postalCode">Postal code:</label>
-                                    <input type="text" id="postalCode"  name="postalCode" placeholder="postal code" maxlength="9" value=""/>
+                                    <input type="text" id="postalCode"  name="postalCode" placeholder="postal code" maxlength="9" value="${userData.addressId.postalcode}"/>
                                 </div>
 
                                 <div class="profile-right-page-input flex-col">
                                     <label for="state">State Resides:</label>
-                                    <input type="text" id="state"  name="state" placeholder="state name" maxlength="20" value=""/>
+                                    <input type="text" id="state"  name="state" placeholder="state name" maxlength="20" value="${userData.addressId.stateResides}"/>
                                 </div>
 
                                 <div class="profile-right-page-input flex-col">
                                     <label for="state">Country:</label>
-                                    <input type="text" id="country"  name="country" placeholder="country name" maxlength="40" value=""/>
+                                    <input type="text" id="country"  name="country" placeholder="country name" maxlength="40" value="${userData.addressId.country}"/>
                                 </div>
 
                                 <p class="invalid-msg"></p>

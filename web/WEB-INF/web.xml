@@ -36,6 +36,14 @@
         <servlet-name>UpdateCart</servlet-name>
         <servlet-class>controller.UpdateCart</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UpdateUserProfileBasic</servlet-name>
+        <servlet-class>controller.UpdateUserProfileBasic</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditUserAddress</servlet-name>
+        <servlet-class>controller.EditUserAddress</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -71,6 +79,14 @@
     <servlet-mapping>
         <servlet-name>UpdateCart</servlet-name>
         <url-pattern>/update-cart</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateUserProfileBasic</servlet-name>
+        <url-pattern>/UpUserProfileBasic</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditUserAddress</servlet-name>
+        <url-pattern>/edit-user-address</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

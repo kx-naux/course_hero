@@ -92,26 +92,29 @@ public class SignUpPage extends HttpServlet {
                 if(isCurrentOTPExpiry){
                     request.setAttribute("loginFormData",getFormData(request,response));
                     request.setAttribute("pageNumber","5");
+                    request.setAttribute("errMsg","This OTP code has expired.");
                     request.getRequestDispatcher("/WEB-INF/Client/SignUp.jsp").forward(request, response);
                 }else{
                     processDataForDatabaseAndSaveIt(request,response);   
                 }
             }else{
                 request.setAttribute("pageNumber","5");
+                request.setAttribute("errMsg","OTP Does not match.");
                 request.getRequestDispatcher("/WEB-INF/Client/SignUp.jsp").forward(request, response);
             }
         }
                           
         // forward the request to SignUp.jsp complete section
-        //request.setAttribute("pageNumber", "4");
-        response.sendRedirect("home");
+        request.setAttribute("pageNumber", "6");
+        request.getRequestDispatcher("/WEB-INF/Client/SignUp.jsp").forward(request, response);
+        //response.sendRedirect("home");
     }
     
     private void processSendOTP(String otp, LoginFormData formData,Date otpExpiryDate, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         try{
             if(sendOTP(otp,formData.getEmail())){
                 Date otpSendDate = new Date();
-                otpExpiryDate.setTime(otpSendDate.getTime() + 5 * 60 * 1000);
+                otpExpiryDate.setTime(otpSendDate.getTime() + (5*60*1000) );
             }else{
                 ErrorPage.forwardToServerErrorPage(request,response,"Server fails to send OTP. Please Try Again Later");
             }
@@ -253,11 +256,14 @@ public class SignUpPage extends HttpServlet {
         
         //get Date
         Date dob = null;
-        try {
-            dob = dateFormat.parse(dobStr);
-        } catch (java.text.ParseException e) {
-            ErrorPage.forwardToServerErrorPage(request,response,"Server Error - Pass Date data type error. Please Try Again Later");           
+        if(dobStr != null){
+            try {
+                dob = dateFormat.parse(dobStr);
+            } catch (java.text.ParseException e) {
+                ErrorPage.forwardToServerErrorPage(request,response,"Server Error - Pass Date data type error. Please Try Again Later");           
+            }
         }
+        
         
         formData.setDob(dob);
         
@@ -285,13 +291,9 @@ public class SignUpPage extends HttpServlet {
     }
     
     private void validateData(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-        
-
-        // get all of the data first
+                // get all of the data first
         LoginFormData formData = getFormData( request,  response);
-        
-       
-        
+
         request.setAttribute("loginFormData",formData);
         
         boolean duplicatedUsername = checkForDuplicatedUsername(formData.getUsername());
