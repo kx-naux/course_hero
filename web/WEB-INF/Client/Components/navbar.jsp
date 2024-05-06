@@ -58,6 +58,8 @@
         <!--JSP conditional rendering-->
         <c:choose>
             <c:when test="${not empty userData.accountId.username}">
+                
+                <span hidden id="isLogin"></span>
 
                 <%
                     int numberWishlist = 2;
