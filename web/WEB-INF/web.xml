@@ -56,6 +56,10 @@
         <servlet-name>UpdateWishlist</servlet-name>
         <servlet-class>controller.UpdateWishlist</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SearchSuggestion</servlet-name>
+        <servlet-class>controller.SearchSuggestion</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -111,6 +115,10 @@
     <servlet-mapping>
         <servlet-name>UpdateWishlist</servlet-name>
         <url-pattern>/update-wishlist</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SearchSuggestion</servlet-name>
+        <url-pattern>/search-suggest</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

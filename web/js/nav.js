@@ -76,36 +76,65 @@ document.addEventListener("click", (event) => {
 });
 
 const dummySearchSuggestion = {
-    'keyword' : ["Python","Java","C++"],
-    'course' : [
+    'keyword': ["Python", "Java", "C++"],
+    'course': [
         {
-            'courseID' : "1231231231",
-            'img' : "./img/course/beginner_excel.jpg",
-            'courseTitle' : "The Ultimate Course Programming",
-            'courseAuthor' : "Woo Yu Beng, Snijders"
+            'courseID': "1231231231",
+            'img': "./img/course/beginner_excel.jpg",
+            'courseTitle': "The Ultimate Course Programming",
+            'courseAuthor': "Woo Yu Beng, Snijders"
         },
         {
-            'courseID' : "1231231231",
-            'img' : "./img/course/beginner_excel.jpg",
-            'courseTitle' : "The Ultimate Course Programming",
-            'courseAuthor' : "Woo Yu Beng, Snijders"
+            'courseID': "1231231231",
+            'img': "./img/course/beginner_excel.jpg",
+            'courseTitle': "The Ultimate Course Programming",
+            'courseAuthor': "Woo Yu Beng, Snijders"
         },
         {
-            'courseID' : "1231231231",
-            'img' : "./img/course/beginner_excel.jpg",
-            'courseTitle' : "The Ultimate Course Programming",
-            'courseAuthor' : "Woo Yu Beng, Snijders"
+            'courseID': "1231231231",
+            'img': "./img/course/beginner_excel.jpg",
+            'courseTitle': "The Ultimate Course Programming",
+            'courseAuthor': "Woo Yu Beng, Snijders"
         }
     ]
 };
 
+const searchInputField = document.getElementById("nav-search-input");
+searchInputField.addEventListener("keyup", () => {
+    if (searchInputField.value.length === 0) {
+        document.querySelector("div.nav-search-result").innerHTML = "";
+    } else {
+        // get suggestino from server
+        const url = '/course_hero/search-suggest';
+        const keyword = searchInputField.value;
+        const data = {keyword: keyword};
+
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        }).then(response => {
+            if (!response.ok) {
+                return null;
+            }
+            return response.json();
+        }).then(responseData => {
+            insert_suggestion(responseData);
+        }).catch(error => {
+            console.error('Fetch error:', error);
+        });
+    }
+});
+
 // insert search suggestion record 
 function insert_suggestion(data) {
     let show_div = document.querySelector("div.nav-search-result");
-    
+
     // remove previous suggection
     show_div.innerHTML = "";
-    
+
     // Insert keyword suggestions
     data.keyword.forEach(keyword => {
         let suggestionLink = document.createElement("a");
@@ -119,7 +148,7 @@ function insert_suggestion(data) {
         suggestionLink.appendChild(suggestionQuery);
         show_div.appendChild(suggestionLink);
     });
-    
+
     // Insert course suggestions
     data.course.forEach(course => {
         let courseLink = document.createElement("a");
@@ -154,12 +183,6 @@ function search_suggestion_course_click(e) {
 // event handler for popular search suggestion
 function popular_search_click(e) {
     window.location.href = "/course_hero/search?query=" + e.innerText;
-}
-
-// move wishlist item to cart 
-function moveTOCart(e) {
-    const id = e.getAttribute("courseID");
-    
 }
 
 
