@@ -43,7 +43,6 @@ public class UpdateWishlist extends HttpServlet {
         // Get JSON data
         String productID = jsonObject.get("productID").getAsString();
         String action = jsonObject.get("action").getAsString();
-        int quantity = jsonObject.get("qty").getAsInt();
         
 //        String userID = jsonObject.get("userID").getAsString();
 //        String productType = jsonObject.get("productType").getAsString();
@@ -88,12 +87,10 @@ public class UpdateWishlist extends HttpServlet {
         responseJson.addProperty("status", "success");
         responseJson.addProperty("action", action);
         responseJson.addProperty("productID", productID);
-        responseJson.addProperty("productType", "course");
         responseJson.addProperty("productName", "The Ultimate Excel Programming");
         responseJson.addProperty("productCategory", "Microsoft Excel");
         responseJson.addProperty("productImgPath", "./img/course/beginner_excel.jpg");
         responseJson.addProperty("productPrice", 20.00);
-        responseJson.addProperty("productQty", 1);
 
         // Convert JSON object to string
         String responseJsonString = responseJson.toString();

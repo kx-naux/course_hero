@@ -29,7 +29,7 @@
         %>
 
         <!--put 1 to show add review form-->
-        <input type="number" id="addReviewStatus" value="1" />
+        <input type="number" id="addReviewStatus" value="1" hidden />
 
         <section class="section course-section" courseID="${param.id}">
             <div class="course-div flex-row">
