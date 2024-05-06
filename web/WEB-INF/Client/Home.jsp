@@ -104,7 +104,7 @@
                             if("Active".equals(eachAllCourse.getProductId().getStatus())){
                     %>
 
-                    <div class="course-product" courseID=<%=eachAllCourse.getCourseId() %> onclick="redirectToProductPage(this)">
+                    <div class="course-product" courseID="<%=eachAllCourse.getCourseId() %>" onclick="redirectToProductPage(this)">
                         <div class="course-product-card">
                             <div class="product-card-top">
                                 <img src="./img/course/beginner_excel.jpg" alt="">
