@@ -56,6 +56,22 @@
         <servlet-name>UpdateWishlist</servlet-name>
         <servlet-class>controller.UpdateWishlist</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UpdateUserProfileBasic</servlet-name>
+        <servlet-class>controller.UpdateUserProfileBasic</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditUserAddress</servlet-name>
+        <servlet-class>controller.EditUserAddress</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ForgetPasswordPage</servlet-name>
+        <servlet-class>controller.ForgetPasswordPage</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateWishlist</servlet-name>
+        <servlet-class>controller.UpdateWishlist</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>

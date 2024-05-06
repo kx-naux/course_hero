@@ -3,7 +3,6 @@ package controller;
 import JPAEntity.Promotions;
 import JPAEntity.Users;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
