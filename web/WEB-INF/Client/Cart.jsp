@@ -21,7 +21,7 @@
 
         <!-- Include the navigation bar -->
         <%@ include file="./Components/navbar.jsp" %>
-        
+
         <!--put error msg here to show the error msg-->
         <span id="errorMsg" hidden></span>
 
@@ -40,8 +40,9 @@
                             <h1 class="page-title">Shopping Cart</h1>
                         </div>
 
-                        <div class="flex-col"  id="cartCourseTitle"> 
-                            <p class="number-item"><span id="cartCourseNumber"><%= numberOfItemInCartCourse%></span> course in cart</p>
+                        <div class="number-item-div flex-row"  id="cartCourseTitle"> 
+                            <input type="checkbox" class="all-check-box" id="courseAllCheckbox" />
+                            <p class="number-item">Course in cart (<span id="cartCourseNumber"><%= numberOfItemInCartCourse%></span>)</p>
                         </div>
 
                         <!--course in cart-->
@@ -73,8 +74,8 @@
                                     <button type="button" class="move-btn">Move to Wish</button>
                                 </div>
                                 <div class="course-price-field flex-col">
-                                    <p class="course-price">RM 112.00</p>    
-                                    <p class="course-normal-price">RM 188.00</p>
+                                    <p class="course-price">RM <span class="span-price">112.00</span></p>    
+                                    <p class="course-normal-price">RM <span class="span-normal-price">188.00</span></p>
                                 </div>
                             </div>
 
@@ -104,8 +105,8 @@
                                     <button type="button" class="move-btn">Move to Wish</button>
                                 </div>
                                 <div class="course-price-field flex-col">
-                                    <p class="course-price">RM 112.00</p>    
-                                    <p class="course-normal-price">RM 188.00</p>
+                                    <p class="course-price">RM <span class="span-price">112.00</span></p>    
+                                    <p class="course-normal-price">RM <span class="span-normal-price">188.00</span></p>
                                 </div>
                             </div>
 
@@ -135,15 +136,16 @@
                                     <button type="button" class="move-btn">Move to Wish</button>
                                 </div>
                                 <div class="course-price-field flex-col">
-                                    <p class="course-price">RM 112.00</p>    
-                                    <p class="course-normal-price">RM 188.00</p>
+                                   <p class="course-price">RM <span class="span-price">112.00</span></p>    
+                                    <p class="course-normal-price">RM <span class="span-normal-price">188.00</span></p>
                                 </div>
                             </div>
 
                         </ul>
 
-                        <div class="flex-col" id="cartMerchTitle"> 
-                            <p class="number-item"><span id="cartMerchNumber"><%= numberOfItemInCartMerch%></span> merchandise in cart</p>
+                        <div class="number-item-div flex-row" id="cartMerchTitle"> 
+                            <input type="checkbox" class="all-check-box" id="merchAllCheckbox" />
+                            <p class="number-item">Merchandise in cart (<span id="cartMerchNumber"><%= numberOfItemInCartMerch%></span>)</p>
                         </div>
 
                         <ul class="course-list flex-col" id="cartMerchList">
@@ -173,8 +175,8 @@
                                     <button type="button" class="remove-btn">Remove</button>
                                 </div>
                                 <div class="course-price-field flex-col">
-                                    <p class="course-price">RM 112.00</p>    
-                                    <p class="course-normal-price">RM 188.00</p>
+                                    <p class="course-price">RM <span class="span-price">112.00</span></p>    
+                                    <p class="course-normal-price">RM <span class="span-normal-price">188.00</span></p>
                                 </div>
                             </div>
 
@@ -185,10 +187,10 @@
                     <div class="cart-div-right flex-col">
                         <div class="sticky-div flex-col">
                             <div class="cart-price flex-col">
-                                <h3 class="cart-price-title">Total (<span id="numberSelected">4</span> items):</h3>
-                                <h1 class="total-price">RM <span id="totalPrice">1234.00</span></h1>
-                                <h1 class="total-nornmal-price">RM <span id="totalNoramlPrice">1834.00</span></h1>
-                                <p class="discount-percentage"><span id="discount-percentage">40</span>% off</p>
+                                <h3 class="cart-price-title">Total (<span id="numberSelected">0</span> items):</h3>
+                                <h1 class="total-price">RM <span id="totalPrice">0.00</span></h1>
+                                <h1 class="total-nornmal-price">RM <span id="totalNormalPrice">0.00</span></h1>
+                                <p class="discount-percentage"><span id="discount-percentage">0</span>% off</p>
 
                                 <input type="submit" class="submit-btn" value="Checkout" />
                             </div>
