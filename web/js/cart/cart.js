@@ -6,6 +6,7 @@ const cartTitle = document.getElementById("cartCourseTitle");
 const cartList = document.getElementById("cartCourseList");
 const merchTitle = document.getElementById("cartMerchTitle");
 const merchList = document.getElementById("cartMerchList");
+const errorMsg = document.getElementById("errorMsg");
 
 // show or hide the div on load
 document.addEventListener('DOMContentLoaded', () => {
@@ -25,5 +26,9 @@ document.addEventListener('DOMContentLoaded', () => {
             merchTitle.style.display = "none";
             merchList.style.display = "none";
         }
+    }
+    
+    if (errorMsg.innerText !== "") {
+        toast_msg(TOAST_ERROR,"Error",errorMsg.innerText);
     }
 });

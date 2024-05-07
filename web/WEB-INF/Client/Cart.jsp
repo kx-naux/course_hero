@@ -21,6 +21,9 @@
 
         <!-- Include the navigation bar -->
         <%@ include file="./Components/navbar.jsp" %>
+        
+        <!--put error msg here to show the error msg-->
+        <span id="errorMsg" hidden></span>
 
         <%
             int numberOfItemInCartCourse = 3;
@@ -162,9 +165,9 @@
                                     </div>
                                 </div>
                                 <div class="march-qty flex-row">
-                                    <button class="qty-btn substract"><i class="ri-subtract-fill"></i></button>
-                                    <input type="text" class="merch-qty-input" value="1" />
-                                    <button class="qty-btn add"><i class="ri-add-fill"></i></button>
+                                    <button type="button" class="qty-btn substract"><i class="ri-subtract-fill"></i></button>
+                                    <input type="text" class="merch-qty-input" value="1" max="99" />
+                                    <button type="button" class="qty-btn add"><i class="ri-add-fill"></i></button>
                                 </div>
                                 <div class="course-button flex-col">
                                     <button type="button" class="remove-btn">Remove</button>
@@ -182,7 +185,7 @@
                     <div class="cart-div-right flex-col">
                         <div class="sticky-div flex-col">
                             <div class="cart-price flex-col">
-                                <h3>Total (<span id="numberSelected">0</span> items):</h3>
+                                <h3 class="cart-price-title">Total (<span id="numberSelected">4</span> items):</h3>
                                 <h1 class="total-price">RM <span id="totalPrice">1234.00</span></h1>
                                 <h1 class="total-nornmal-price">RM <span id="totalNoramlPrice">1834.00</span></h1>
                                 <p class="discount-percentage"><span id="discount-percentage">40</span>% off</p>
