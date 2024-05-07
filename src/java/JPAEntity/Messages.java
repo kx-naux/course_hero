@@ -94,6 +94,10 @@ public class Messages implements Serializable {
     public void setMessageId(String messageId) {
         this.messageId = messageId;
     }
+    
+    public void setMessageId(long count) {
+        this.messageId = String.format("MS%07d", count);
+    }
 
     public String getMessageType() {
         return messageType;
@@ -172,6 +176,7 @@ public class Messages implements Serializable {
         this.destination = destination;
     }
 
+   
   
 
 

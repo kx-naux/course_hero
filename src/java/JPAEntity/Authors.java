@@ -118,6 +118,11 @@ public class Authors implements Serializable {
     public void setAuthorId(String authorId) {
         this.authorId = authorId;
     }
+    
+    public void setauthorId(long count){
+        this.authorId = String.format("AU%07d", count);
+    }
+    
 
     public String getAuthorName() {
         return authorName;
@@ -216,7 +221,6 @@ public class Authors implements Serializable {
 
 
 
-
     public String getNationality() {
         return nationality;
     }
@@ -224,8 +228,6 @@ public class Authors implements Serializable {
     public void setNationality(String nationality) {
         this.nationality = nationality;
     }
-
-   
 
     public String getInstitution() {
         return institution;
@@ -242,6 +244,8 @@ public class Authors implements Serializable {
     public void setBiography(String biography) {
         this.biography = biography;
     }
+
+   
 
     public String getWebsite() {
         return website;

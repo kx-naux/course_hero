@@ -67,6 +67,10 @@ public class TngAccounts implements Serializable {
     public void setTngId(String tngId) {
         this.tngId = tngId;
     }
+    
+    public void setTngId(long count) {
+        this.tngId = String.format("TG%07d", count);
+    }
 
 
     public Users getUserId() {

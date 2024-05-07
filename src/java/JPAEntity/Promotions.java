@@ -134,6 +134,10 @@ public class Promotions implements Serializable {
     public void setPromotionId(String promotionId) {
         this.promotionId = promotionId;
     }
+    
+    public void setPromotionId(long count) {
+        this.promotionId = String.format("PO%07d", count);
+    }
 
     public Date getStartTime() {
         return startTime;
@@ -288,6 +292,8 @@ public class Promotions implements Serializable {
     }
 
 
+   
+
     public double getAmount() {
         return amount;
     }
@@ -296,6 +302,7 @@ public class Promotions implements Serializable {
         this.amount = amount;
     }
 
+    
 
     public String getStatus() {
         return status;
@@ -305,5 +312,6 @@ public class Promotions implements Serializable {
         this.status = status;
     }
 
+    
     
 }

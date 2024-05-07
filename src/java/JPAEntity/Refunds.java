@@ -74,6 +74,10 @@ public class Refunds implements Serializable {
     public void setRefundId(String refundId) {
         this.refundId = refundId;
     }
+    
+    public void setRefundId(long count) {
+        this.refundId = String.format("RF%07d", count);
+    }
 
     public String getRefundType() {
         return refundType;
@@ -117,6 +121,8 @@ public class Refunds implements Serializable {
         return "JPAEntity.Refunds[ refundId=" + refundId + " ]";
     }
 
+
+  
 
   
 

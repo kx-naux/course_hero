@@ -75,6 +75,10 @@ public class SocialMediaLinks implements Serializable {
     public void setSocialmedialinkId(String socialmedialinkId) {
         this.socialmedialinkId = socialmedialinkId;
     }
+    
+    public void setSocialmedialinkId(long count) {
+        this.socialmedialinkId = String.format("SL%07d", count);
+    }
 
     public String getSocialmediaName() {
         return socialmediaName;
@@ -124,6 +128,8 @@ public class SocialMediaLinks implements Serializable {
     public String toString() {
         return "JPAEntity.SocialMediaLinks[ socialmedialinkId=" + socialmedialinkId + " ]";
     }
+
+    
 
 
 

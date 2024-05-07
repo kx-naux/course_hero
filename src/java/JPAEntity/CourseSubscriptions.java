@@ -94,6 +94,10 @@ public class CourseSubscriptions implements Serializable {
     public void setSubscriptionsId(String subscriptionsId) {
         this.subscriptionsId = subscriptionsId;
     }
+    
+    public void setSubscriptionsId(long count) {
+        this.subscriptionsId = String.format("SU%07d", count);
+    }   
 
     public Date getSubscribeTime() {
         return subscribeTime;
@@ -166,6 +170,7 @@ public class CourseSubscriptions implements Serializable {
 
    
 
+
     public String getProgress() {
         return progress;
     }
@@ -174,7 +179,7 @@ public class CourseSubscriptions implements Serializable {
         this.progress = progress;
     }
 
-   
+    
 
 
 

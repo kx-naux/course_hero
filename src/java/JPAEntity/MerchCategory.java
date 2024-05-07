@@ -75,6 +75,10 @@ public class MerchCategory implements Serializable {
     public void setMerchcatId(String merchcatId) {
         this.merchcatId = merchcatId;
     }
+    
+    public void setMerchcatId(long count) {
+        this.merchcatId = String.format("MC%07d", count);
+    }
 
     public String getCategoryName() {
         return categoryName;
@@ -130,6 +134,7 @@ public class MerchCategory implements Serializable {
     public void setImgUrl(String imgUrl) {
         this.imgUrl = imgUrl;
     }
+
 
 
 
