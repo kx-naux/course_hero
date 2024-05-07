@@ -1,12 +1,19 @@
 package controller;
 
 import JPAEntity.CartItems;
+import JPAEntity.CourseCategory;
+import JPAEntity.Courses;
+import JPAEntity.MerchCategory;
+import JPAEntity.Merchandise;
+import JPAEntity.Product;
 import JPAEntity.TablesRecordCounter;
+import JPAEntity.Users;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Date;
 import javax.annotation.Resource;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -41,57 +48,95 @@ public class UpdateWishlist extends HttpServlet {
         JsonObject jsonObject = gson.fromJson(requestBody.toString(), JsonObject.class);
 
         // Get JSON data
-        String productID = jsonObject.get("productID").getAsString();
+        String courseOrmerchandiseID = jsonObject.get("productID").getAsString();
         String action = jsonObject.get("action").getAsString();
-        
-//        String userID = jsonObject.get("userID").getAsString();
-//        String productType = jsonObject.get("productType").getAsString();
-//        String actionType = jsonObject.get("actionType").getAsString();
-//        Date timeAdded = new Date();
-//        
-//        // process the data
-//               
-//        //Getting Counters for Cart Item
-//        TablesRecordCounter currentItemTableCounter = em.find(TablesRecordCounter.class, "TablesRecordCounter");
-//        
-//        //Saving into the database
-//        Product currentProduct = em.find(Product.class, productID);
-//        Users currentUser = em.find(Users.class, userID);
-//        
-//        CartItems newCartItem = new CartItems();
-//        
-//        newCartItem.setCartitemId(currentItemTableCounter.getCounter() + 1);
-//        newCartItem.setProductId(currentProduct);
-//        newCartItem.setUserId(currentUser);
-//        newCartItem.setQuantity(quantity);
-//        newCartItem.setTimeAdded(timeAdded);
-//        
-//        currentItemTableCounter.counterIncrementByOne();
-//        
-//        //Creating JSON data
-//        JsonObject newJsonObject = new JsonObject();
-//        newJsonObject.addProperty("ProductID", currentProduct.getProductId());
-//        newJsonObject.addProperty("ProductCategory", productType);
-//        if("Add".equals(actionType)){
-//            newJsonObject.addProperty("ProductName", currentProduct.getProdName());
-//            newJsonObject.addProperty("ProductPrice", currentProduct.getPrice());
-//            newJsonObject.addProperty("Quantity", quantity);
-//            newJsonObject.addProperty("ProductCategory", currentProduct.getProdcatId().getCategoryName());
-//            newJsonObject.addProperty("ProductImage", "TemporaryVar");
-//        }
-//        
-//        saveDataToDatabases(request, response, newCartItem, currentItemTableCounter, actionType);
 
+        // MAIN PROCESS
+        Users userData = (Users) request.getSession().getAttribute("userData");
+        String userID = userData.getUserId();
+
+        // Time
+        Date timeAdded = new Date();
+
+        Courses currentCourse;
+        String courseCatID;
+        CourseCategory currentCourseCat;
+        String courseCategoryName = "";
+
+        Merchandise currentMerchandise;
+        String merchCatID;
+        MerchCategory currentMerchCat;
+        String merchCategoryName = "";
+
+        Product currentProduct = new Product();
+        String productName = "";
+        double productPrice = 0.0;
+        String productImgPath = "";
+        String productID = "";
+
+        // Course or Merchandise
+        String productType = determineType(courseOrmerchandiseID);
+        if (productType.equals("course")) {
+            // Course
+            currentCourse = em.find(Courses.class, courseOrmerchandiseID);
+            productID = currentCourse.getProductId().getProductId();
+            courseCatID = currentCourse.getCoursecatId().getCoursecatId();
+
+            // Course Category
+            currentCourseCat = em.find(CourseCategory.class, courseCatID);
+            courseCategoryName = currentCourseCat.getCategoryName();
+
+            // Product
+            currentProduct = em.find(Product.class, productID);
+            productName = currentProduct.getProdName();
+            productPrice = currentProduct.getPrice();
+            productImgPath = currentProduct.getImagePath();
+        } else if (productType.equals("merchandise")) {
+            // Merchandise
+            currentMerchandise = em.find(Merchandise.class, courseOrmerchandiseID);
+            productID = currentMerchandise.getProductId().getProductId();
+            merchCatID = currentMerchandise.getMerchcatId().getMerchcatId();
+
+            // Merchandise Category
+            currentMerchCat = em.find(MerchCategory.class, merchCatID);
+            merchCategoryName = currentMerchCat.getCategoryName();
+
+            // Product
+            currentProduct = em.find(Product.class, productID);
+            productName = currentProduct.getProdName();
+            productPrice = currentProduct.getPrice();
+            productImgPath = currentProduct.getImagePath();
+        }
+
+        //Getting Counters for Cart Item
+        //TablesRecordCounter currentItemTableCounter = em.find(TablesRecordCounter.class, "CART_ITEMS");
+        
+        //Saving into the database
+        Users currentUser = em.find(Users.class, userID);
+        
+        /*Create the wishlist object, get it from zhan liang*/
+        
+        //currentItemTableCounter.counterIncrementByOne();
+        
         // response back to client
         JsonObject responseJson = new JsonObject();
-        responseJson.addProperty("status", "success");
+        responseJson.addProperty("productID", courseOrmerchandiseID);
         responseJson.addProperty("action", action);
-        responseJson.addProperty("productID", productID);
-        responseJson.addProperty("productName", "The Ultimate Excel Programming");
-        responseJson.addProperty("productCategory", "Microsoft Excel");
-        responseJson.addProperty("productImgPath", "./img/course/beginner_excel.jpg");
-        responseJson.addProperty("productPrice", 20.00);
+        responseJson.addProperty("productName", productName);
+        responseJson.addProperty("productImgPath", "./img/course/beginner_excel.jpg"); //Please change to productImgPath after inserting proper data
+        responseJson.addProperty("productPrice", productPrice);
+        responseJson.addProperty("productType", productType);
+        responseJson.addProperty("status", "success");
+        if (productType.equals("course")) {
+            responseJson.addProperty("productCategory", courseCategoryName);
+        } else if (productType.equals("merchandise")) {
+            responseJson.addProperty("productCategory", merchCategoryName);
+        }
 
+        //saveDataToDatabases(request, response, newCartItem, currentItemTableCounter, actionType);
+
+
+        // END OF MAIN PROCESS
         // Convert JSON object to string
         String responseJsonString = responseJson.toString();
 
@@ -132,6 +177,16 @@ public class UpdateWishlist extends HttpServlet {
                 ErrorPage.forwardToServerErrorPage(request, response, "Database Server Error. Please Try Again Later");
             }
             ErrorPage.forwardToServerErrorPage(request, response, "Database Server Error. Please Try Again Later");
+        }
+    }
+
+    public String determineType(String primaryKey) {
+        if (primaryKey.startsWith("C")) {
+            return "course";
+        } else if (primaryKey.startsWith("M")) {
+            return "merchandise";
+        } else {
+            return "Unknown";
         }
     }
 }
