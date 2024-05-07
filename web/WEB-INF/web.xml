@@ -57,8 +57,40 @@
         <servlet-class>controller.UpdateWishlist</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>EditUserSecurity</servlet-name>
+        <servlet-class>controller.EditUserSecurity</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateUserPFP</servlet-name>
+        <servlet-class>controller.UpdateUserPFP</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UserDeleteAccount</servlet-name>
+        <servlet-class>controller.UserDeleteAccount</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>SearchSuggestion</servlet-name>
         <servlet-class>controller.SearchSuggestion</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GetCourseReview</servlet-name>
+        <servlet-class>controller.GetCourseReview</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>WishlistPage</servlet-name>
+        <servlet-class>controller.WishlistPage</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminManageProduct</servlet-name>
+        <servlet-class>controller.AdminManageProduct</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminManageCourse</servlet-name>
+        <servlet-class>controller.AdminManageCourse</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminAddCourse</servlet-name>
+        <servlet-class>controller.AdminAddCourse</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
@@ -117,8 +149,28 @@
         <url-pattern>/update-wishlist</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>EditUserSecurity</servlet-name>
+        <url-pattern>/edit-security</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateUserPFP</servlet-name>
+        <url-pattern>/update-user-pfp</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UserDeleteAccount</servlet-name>
+        <url-pattern>/user-delete-account</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>SearchSuggestion</servlet-name>
         <url-pattern>/search-suggest</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GetCourseReview</servlet-name>
+        <url-pattern>/get-course-review</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>WishlistPage</servlet-name>
+        <url-pattern>/wishlist</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

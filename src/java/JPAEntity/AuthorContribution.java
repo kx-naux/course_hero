@@ -79,6 +79,10 @@ public class AuthorContribution implements Serializable {
     public void setContributionId(String contributionId) {
         this.contributionId = contributionId;
     }
+    
+    public void setContributionId(long count){
+        this.contributionId = String.format("ACN%06d", count);
+    }
 
     public Authors getAuthorId() {
         return authorId;

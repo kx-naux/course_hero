@@ -30,11 +30,13 @@ public class WebPath {
         pageUrls.put("profile address", "/edit-user-address");
         pageUrls.put("profile photo", "/update-user-pfp");
         pageUrls.put("profile security", "/edit-security");
-        pageUrls.put("profile close", "/close-account");
+        pageUrls.put("profile close", "/user-delete-account");
 
         //admin
         pageUrls.put("dashboard", "/admin/dashboard");
         pageUrls.put("manage-client", "/admin/manage-client");
+        pageUrls.put("manage-course", "/admin/manage-course");
+        pageUrls.put("add-course", "/admin/add-course");
     }
 
     public String getPageUrl(String page) {

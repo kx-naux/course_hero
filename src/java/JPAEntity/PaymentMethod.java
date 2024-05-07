@@ -75,6 +75,10 @@ public class PaymentMethod implements Serializable {
     public void setPaymentMethodId(String paymentMethodId) {
         this.paymentMethodId = paymentMethodId;
     }
+    
+    public void setPaymentMethodId(long count) {
+        this.paymentMethodId = String.format("PM%05d", count);
+    }
 
     public String getPaymentName() {
         return paymentName;

@@ -71,10 +71,12 @@ public class Users implements Serializable {
     @Size(min = 1, max = 20)
     @Column(name = "GENDER")
     private String gender;
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "userId")
+    private List<Wishlist> wishlistList;
     @Lob
     @Column(name = "IMG_DATA")
     private Serializable imgData;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "users")
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "users")
     private List<PreferredCourse> preferredCourseList;
 
 
@@ -84,25 +86,25 @@ public class Users implements Serializable {
         @JoinColumn(name = "COURSECAT_ID", referencedColumnName = "COURSECAT_ID")})
     @ManyToMany
     private List<CourseCategory> courseCategoryList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "userId")
     private List<CourseSubscriptions> courseSubscriptionsList;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "userId")
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "userId")
     private Bankcardinfo bankcardinfo;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "userId")
     private List<CartItems> cartItemsList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "userId")
     private List<Transactions> transactionsList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "userId")
     private List<CourseCertificates> courseCertificatesList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "userId")
     private List<Messages> messagesList;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "userId")
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "userId")
     private TngAccounts tngAccounts;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "users")
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "users")
     private List<UserChatrooms> userChatroomsList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "userId")
     private List<Ratings> ratingsList;
-    @OneToMany(mappedBy = "userId")
+    @OneToMany(mappedBy = "userId", orphanRemoval = true)
     private List<RememberMeToken> rememberMeTokenList;
 
     private static final long serialVersionUID = 1L;
@@ -116,10 +118,10 @@ public class Users implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date validity;
     @JoinColumn(name = "ACCOUNT_ID", referencedColumnName = "ACCOUNT_ID")
-    @OneToOne(optional = false)
+    @OneToOne(optional = false, orphanRemoval = true)
     private Accounts accountId;
     @JoinColumn(name = "ADDRESS_ID", referencedColumnName = "ADDRESS_ID")
-    @OneToOne(optional = false)
+    @OneToOne(optional = false, orphanRemoval = true)
     private BillingAddress addressId;
 
     public Users() {
@@ -351,6 +353,7 @@ public class Users implements Serializable {
 
    
 
+
     public Date getDob() {
         return dob;
     }
@@ -358,6 +361,8 @@ public class Users implements Serializable {
     public void setDob(Date dob) {
         this.dob = dob;
     }
+
+   
 
     public String getUsertype() {
         return usertype;
@@ -367,7 +372,6 @@ public class Users implements Serializable {
         this.usertype = usertype;
     }
 
-   
 
     public String getGender() {
         return gender;
@@ -375,6 +379,15 @@ public class Users implements Serializable {
 
     public void setGender(String gender) {
         this.gender = gender;
+    }
+
+    @XmlTransient
+    public List<Wishlist> getWishlistList() {
+        return wishlistList;
+    }
+
+    public void setWishlistList(List<Wishlist> wishlistList) {
+        this.wishlistList = wishlistList;
     }
 
 }

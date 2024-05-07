@@ -130,7 +130,10 @@ public class Transactions implements Serializable {
     public void setTransactionId(String transactionId) {
         this.transactionId = transactionId;
     }
-
+    
+    public void setRefundId(long count) {
+        this.transactionId = String.format("TR%07d", count);
+    }
 
     public double getPromoAmount() {
         return promoAmount;
@@ -254,6 +257,8 @@ public class Transactions implements Serializable {
 
   
 
+
+
     public double getTax() {
         return tax;
     }
@@ -262,6 +267,7 @@ public class Transactions implements Serializable {
         this.tax = tax;
     }
 
+    
 
     public double getTotal() {
         return total;
@@ -278,6 +284,8 @@ public class Transactions implements Serializable {
     public void setStatus(String status) {
         this.status = status;
     }
+
+    
 
   
 

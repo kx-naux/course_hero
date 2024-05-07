@@ -80,6 +80,10 @@ public class CourseCategory implements Serializable {
     public void setCoursecatId(String coursecatId) {
         this.coursecatId = coursecatId;
     }
+    
+    public void setCoursecatId(long count) {
+        this.coursecatId = String.format("CC%07d", count);
+    }   
 
     public String getCategoryName() {
         return categoryName;
@@ -156,6 +160,7 @@ public class CourseCategory implements Serializable {
     }
 
     
+
 
     public String getDescription() {
         return description;

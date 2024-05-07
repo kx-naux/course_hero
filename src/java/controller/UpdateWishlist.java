@@ -135,6 +135,7 @@ public class UpdateWishlist extends HttpServlet {
 
         //saveDataToDatabases(request, response, newCartItem, currentItemTableCounter, actionType);
 
+
         // END OF MAIN PROCESS
         // Convert JSON object to string
         String responseJsonString = responseJson.toString();

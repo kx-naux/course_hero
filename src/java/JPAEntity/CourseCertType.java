@@ -87,6 +87,10 @@ public class CourseCertType implements Serializable {
     public void setCerttypeId(String certtypeId) {
         this.certtypeId = certtypeId;
     }
+    
+    public void setCerttypeId(long count) {
+        this.certtypeId = String.format("CT%07d", count);
+    }   
 
 
     public String getIssuingAuthority() {
@@ -158,6 +162,8 @@ public class CourseCertType implements Serializable {
     public void setDescription(String description) {
         this.description = description;
     }
+
+
 
 
  

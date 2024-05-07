@@ -43,7 +43,7 @@ public class EditUserAddress extends HttpServlet {
         //check has user logged in
         }else if(userDataSession.getUserId() == null){
             HttpSession session = request.getSession();
-            session.setAttribute("pageToGoAfterLogin","update-user-pfp");
+            session.setAttribute("pageToGoAfterLogin","edit-user-address");
             response.sendRedirect("login");
             return;
         }

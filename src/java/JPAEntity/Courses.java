@@ -113,7 +113,11 @@ public class Courses implements Serializable {
     public void setCourseId(String courseId) {
         this.courseId = courseId;
     }
-
+    
+    public void setCourseId(long count) {
+        this.courseId = String.format("CR%07d", count);
+    }   
+    
     public String getToolsUsed() {
         return toolsUsed;
     }

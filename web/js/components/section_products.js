@@ -239,7 +239,7 @@ function removeWishItem(data) {
     let wishlistDiv = document.getElementById("wishlistDiv");
     let wishEmptyDiv = document.getElementById("wishlistEmpty");
     let wishlistLink = document.getElementById("wishlistLink");
-    let wishlistItems = document.querySelectorAll("div#wishlistDiv div.flex-col");
+    let wishlistItems = document.querySelectorAll("div#wishlistDiv div.course-item");
 
     let removeItem = wishlistDiv.querySelector(`div.flex-col:has(div.course-move-cart-div button.move-cart-btn[courseID="${data.productID}"])`);
 
@@ -284,63 +284,3 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-// move item from wish to cart
-function moveToCart(evt) {
-    evt.stopPropagation();
-
-    const url = '/course_hero/update-cart';
-    const courseID = evt.target.closest('.move-cart-btn').getAttribute('courseID');
-    const data = {
-        productID: courseID,
-        action: "add",
-        qty: 1
-    };
-
-    fetch(url, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-    }).then(response => {
-        if (!response.ok) {
-            toast_msg(TOAST_ERROR, "Network Issue", "Fail to move to cart");
-        }
-        return response.json();
-    }).then(responseData => {
-        if (responseData.status === "success") {
-            addCartItem(responseData);
-
-            const url = '/course_hero/update-wishlist';
-            const data = {
-                productID: courseID,
-                action: "remove"
-            };
-
-            fetch(url, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            }).then(response => {
-                return response.json();
-            }).then(responseData => {
-                if (responseData.status === "success") {
-                    removeWishItem(responseData);
-                    toast_msg(TOAST_SUCCESS, "Success", "Move to cart");
-                } else {
-                    toast_msg(TOAST_ERROR, "Server Error", "Fail to move to cart");
-                }
-            }).catch(error => {
-                console.error('Fetch error:', error);
-            });
-        } else {
-            toast_msg(TOAST_ERROR, "Server Error", "Fail to move to cart");
-        }
-    }).catch(error => {
-        console.error('Fetch error:', error);
-    });
-
-    console.log("Move to Cart Clicked - Course ID:", courseID);
-}

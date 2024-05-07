@@ -14,7 +14,7 @@ public class NewUserSurveyPage extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         // Forward the request to Merchandises.jsp
-        request.getRequestDispatcher("/WEB-INF/Client/NewUserSurvey.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/Client/DeleteAccountSuccess.jsp").forward(request, response);
     }
 
 }
