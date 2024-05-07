@@ -112,6 +112,10 @@
         <servlet-name>AdminAddStaffPage</servlet-name>
         <servlet-class>controller.AdminAddStaffPage</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SubmitCourseReview</servlet-name>
+        <servlet-class>controller.SubmitCourseReview</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -191,6 +195,10 @@
     <servlet-mapping>
         <servlet-name>WishlistPage</servlet-name>
         <url-pattern>/wishlist</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SubmitCourseReview</servlet-name>
+        <url-pattern>/submit-course-review</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>AdminDashboardPage</servlet-name>
