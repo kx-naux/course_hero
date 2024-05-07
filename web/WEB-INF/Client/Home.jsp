@@ -17,7 +17,7 @@
         <link type="text/css" href="./css/home.css" rel="stylesheet" >
         <link type="text/css" href="./css/components/section_product.css" rel="stylesheet" >
         <link type="text/css" href="./css/home/swiper-bundle.min.css" rel="stylesheet" >
-        <link type="text/css" href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
+        <!--<link type="text/css" href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">-->
         <script src="./js/components/section_products.js"></script> 
         <jsp:useBean id="webpath" class="module.WebPath" scope="application" />
         <jsp:useBean id="userData" class="JPAEntity.Users" scope="session" />

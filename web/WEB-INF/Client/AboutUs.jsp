@@ -11,7 +11,7 @@
         <link rel="icon" type="image/ico" href="./ico/Logo.ico">
         <link type="text/css" href="./css/style.css" rel="stylesheet" >
         <link type="text/css" href="./css/about_us.css" rel="stylesheet" >
-        <link type="text/css" href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet"> 
+        <!--<link type="text/css" href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">--> 
         <jsp:useBean id="webpath" class="module.WebPath" scope="application" />
         <jsp:useBean id="aboutUsStats" class="entity.AboutUsStats" scope="application"/>
     </head>
