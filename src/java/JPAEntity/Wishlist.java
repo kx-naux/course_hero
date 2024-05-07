@@ -31,7 +31,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Wishlist.findAll", query = "SELECT w FROM Wishlist w"),
     @NamedQuery(name = "Wishlist.findByWishlistId", query = "SELECT w FROM Wishlist w WHERE w.wishlistId = :wishlistId"),
-    @NamedQuery(name = "Wishlist.findByDateAdded", query = "SELECT w FROM Wishlist w WHERE w.dateAdded = :dateAdded")})
+    @NamedQuery(name = "Wishlist.findByDateAdded", query = "SELECT w FROM Wishlist w WHERE w.dateAdded = :dateAdded"),
+    @NamedQuery(name = "Wishlist.findByUserIdProductId", query = "SELECT w FROM Wishlist w WHERE w.userId = :userId AND w.productId = :productId")
+})
 public class Wishlist implements Serializable {
 
     @Basic(optional = false)
