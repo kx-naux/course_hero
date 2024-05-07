@@ -34,6 +34,12 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Wishlist.findByDateAdded", query = "SELECT w FROM Wishlist w WHERE w.dateAdded = :dateAdded")})
 public class Wishlist implements Serializable {
 
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "DATE_ADDED")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dateAdded;
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -41,11 +47,6 @@ public class Wishlist implements Serializable {
     @Size(min = 1, max = 9)
     @Column(name = "WISHLIST_ID")
     private String wishlistId;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "DATE_ADDED")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date dateAdded;
     @JoinColumn(name = "PRODUCT_ID", referencedColumnName = "PRODUCT_ID")
     @ManyToOne(optional = false)
     private Product productId;

@@ -16,6 +16,7 @@ public class UserRatingStatistic {
     private long threeStarCounts;
     private long twoStarCounts;
     private long oneStarCounts;
+    private long allStarCounts;
 
     // Constructor
     public UserRatingStatistic(long fiveStarCounts, long fourStarCounts, long threeStarCounts, long twoStarCounts, long oneStarCounts) {
@@ -24,6 +25,31 @@ public class UserRatingStatistic {
         this.threeStarCounts = threeStarCounts;
         this.twoStarCounts = twoStarCounts;
         this.oneStarCounts = oneStarCounts;
+        this.allStarCounts = getAllStarCounts();
+    }
+    
+    public long getAllStarCounts(){
+        return fiveStarCounts + fourStarCounts + threeStarCounts + twoStarCounts + oneStarCounts;
+    }
+    
+    public long getOneStarPercentage(){
+        return (oneStarCounts*100/allStarCounts);
+    }
+    
+    public long getTwoStarPercentage(){
+        return (twoStarCounts*100/allStarCounts);
+    }
+    
+    public long getThreeStarPercentage(){
+        return (threeStarCounts*100/allStarCounts);
+    }
+    
+    public long getFourStarPercentage(){
+        return (fourStarCounts*100/allStarCounts);
+    }
+    
+    public long getFiveStarPercentage(){
+        return (fiveStarCounts*100/allStarCounts);
     }
 
     // Getter and setter methods

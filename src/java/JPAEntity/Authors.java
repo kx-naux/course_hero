@@ -221,6 +221,7 @@ public class Authors implements Serializable {
 
 
 
+    
     public String getNationality() {
         return nationality;
     }
@@ -228,6 +229,8 @@ public class Authors implements Serializable {
     public void setNationality(String nationality) {
         this.nationality = nationality;
     }
+
+   
 
     public String getInstitution() {
         return institution;
@@ -237,6 +240,7 @@ public class Authors implements Serializable {
         this.institution = institution;
     }
 
+  
     public String getBiography() {
         return biography;
     }

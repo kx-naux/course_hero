@@ -354,6 +354,16 @@ public class Users implements Serializable {
    
 
 
+
+    @XmlTransient
+    public List<Wishlist> getWishlistList() {
+        return wishlistList;
+    }
+
+    public void setWishlistList(List<Wishlist> wishlistList) {
+        this.wishlistList = wishlistList;
+    }
+
     public Date getDob() {
         return dob;
     }
@@ -361,8 +371,6 @@ public class Users implements Serializable {
     public void setDob(Date dob) {
         this.dob = dob;
     }
-
-   
 
     public String getUsertype() {
         return usertype;
@@ -372,6 +380,7 @@ public class Users implements Serializable {
         this.usertype = usertype;
     }
 
+   
 
     public String getGender() {
         return gender;
@@ -379,15 +388,6 @@ public class Users implements Serializable {
 
     public void setGender(String gender) {
         this.gender = gender;
-    }
-
-    @XmlTransient
-    public List<Wishlist> getWishlistList() {
-        return wishlistList;
-    }
-
-    public void setWishlistList(List<Wishlist> wishlistList) {
-        this.wishlistList = wishlistList;
     }
 
 }

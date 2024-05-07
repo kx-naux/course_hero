@@ -162,6 +162,8 @@ public class CourseCategory implements Serializable {
     
 
 
+ 
+
     public String getDescription() {
         return description;
     }
@@ -170,6 +172,7 @@ public class CourseCategory implements Serializable {
         this.description = description;
     }
 
+  
     
 
     

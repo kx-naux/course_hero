@@ -24,7 +24,19 @@ public class SingleCoursePage extends HttpServlet {
             
             // Forward the request to error page
             request.getRequestDispatcher("/WEB-INF/Client/NotFoundError.jsp").forward(request, response);
+        }else{
+            //check course id in databases onot
         }
+        
+        //if got pass data to jsp 
+        
+        //check can add to cart onot
+        
+        //pass rating to jsp
+        
+        
+        
+        
 
         // Forward the request to Course.jsp
         request.getRequestDispatcher("/WEB-INF/Client/Course.jsp").forward(request, response);
