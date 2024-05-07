@@ -93,7 +93,7 @@
   filter: var(--filter);
 }
 
-/* edi item div in each tr */
+/* edit item div in each tr */
 .edit-status{
     height: 200px;
     transition: height 0.3s ease;
@@ -149,6 +149,28 @@
     border-color: #FFF !important;
 }
 
+/*filter container*/
+.filter-flex-container{
+    display: flex;
+    
+}
+
+.search-container{
+    display: flex;
+    gap: 10px;
+    margin-top: 1rem;
+    justify-content: end;
+    width: 100%;
+}
+
+.bulk-action-container{
+    display: flex;
+    gap: 10px;
+    margin-top: 1rem;
+    justify-content: start;
+    width: auto;
+    margin-right: 30px;
+}
 
 /* Custom Checkbox */
 .control {
@@ -201,7 +223,7 @@
   font-size: 14px;
   color: #fff !important;
   position: absolute;
-  left: 2px;
+  left: 1px;
   display: none;
 }
 

@@ -1,0 +1,76 @@
+.add-items-container{
+    display: flex;
+    gap: 40px;
+}
+
+.add-items-container .add-items{
+    display: block;
+    width: 80%
+}
+
+.add-items-container .add-items.select{
+    width: 20%;
+}
+
+.add-items-container .add-items .update-container{
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.add-items-container .add-items .update-container .input-container{
+    width: 100% !important;
+}
+
+.add-items-container .add-items .update-container .input-container input:not([type=radio]){
+    width: 100% !important
+}
+
+.add-items-container .add-items .update-container .input-container select{
+    width: 100% !important
+}
+
+.add-items-container .add-items .update-container .input-container textarea{
+    width: 100% !important
+}
+
+.add-items-container .add-items .update-container label{
+    margin-bottom: 10px;
+    width: 100%;
+    font-size: 14px;
+}
+
+.add-items-container .add-items .update-container .input-radio label{
+    margin-bottom: 0px !important;
+}
+
+.add-items-container .update-container.submit{
+    display: flex;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.add-items-container .update-container-number{
+    margin-top: 40px;
+    display: flex;
+    gap: 40px;
+}
+
+.add-items-container .update-container-number .update-container{
+    width: 25%;
+}
+
+.input-radio{
+    display: flex;
+    gap: 20px;
+}
+
+.submit-container.update input{
+    background: var(--color-primary);
+    color: #FFF !important;
+}
+
+.submit-container.update input:hover{
+    border-color: #FFF !important;
+}
+

@@ -80,6 +80,18 @@
         <servlet-name>WishlistPage</servlet-name>
         <servlet-class>controller.WishlistPage</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AdminManageProduct</servlet-name>
+        <servlet-class>controller.AdminManageProduct</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminManageCourse</servlet-name>
+        <servlet-class>controller.AdminManageCourse</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminAddCourse</servlet-name>
+        <servlet-class>controller.AdminAddCourse</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
