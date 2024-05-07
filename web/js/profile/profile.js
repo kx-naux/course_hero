@@ -4,6 +4,7 @@ var errorMsgs = document.querySelectorAll("p.invalid-msg");
 var inputs = document.querySelectorAll("div.profile-right-page input");
 var selects = document.querySelectorAll("div.profile-right-page select");
 var passwordEyes = document.querySelectorAll("div.profile-right-page span.password-eye");
+var profileConfirmationDiv = document.querySelectorAll("div.profile-right-page div.confirmation-div");
 
 // set error msg
 function showErrorMsg(msg) {
@@ -32,6 +33,11 @@ function showPage(n) {
 
 document.addEventListener('DOMContentLoaded', () => {
 
+    // hide all confirmation div
+    profileConfirmationDiv.forEach(div => {
+        div.style.display = "none";
+    });
+
     // show corresponding page to user base on hidden value
     var successMsg = document.querySelector("input#succssMsg").value;
     if (successMsg !== null && successMsg !== "") {
@@ -47,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (n === '4' && otp === '1') {
         showOtpDiv();
     }
-    
+
     let otpError = document.getElementById("otpError").value;
     if (n === '4' && otp === '1' && otpError === '1') {
         otpInvalid();
@@ -103,8 +109,18 @@ document.querySelector("input#postalCode").addEventListener('input', (event) => 
     }
 });
 
-// validation
+
 function form1_submit() {
+    document.querySelector("form#editProfileForm").submit();
+}
+
+function form1_back() {
+    document.querySelector("form#editProfileForm div.profile-edit-div").style.display = "flex";
+    document.querySelector("form#editProfileForm div.confirmation-div").style.display = "none";
+}
+
+// validation
+function form1_confirm() {
     var name = document.querySelector("input#name");
     var gender = document.querySelector("select#gender");
     var dob = document.querySelector("input#dob");
@@ -141,7 +157,38 @@ function form1_submit() {
         return;
     }
 
-    document.querySelector("form#editProfileForm").submit();
+    document.querySelector("form#editProfileForm div.profile-edit-div").style.display = "none";
+    document.querySelector("form#editProfileForm div.confirmation-div").style.display = "flex";
+
+    let genderValue = gender.value.toLowerCase().split(' ').map(function (word) {
+        return word.charAt(0).toUpperCase() + word.slice(1);
+    }).join(' ');
+
+    document.querySelector("input#nameC").value = name.value;
+    document.querySelector("input#genderC").value = genderValue;
+    document.querySelector("input#dobC").value = dob.value;
+}
+
+function form2_submit() {
+    document.querySelector("form#editAddressForm").submit();
+}
+
+function form2_back() {
+    document.querySelector("form#editAddressForm div.profile-edit-div").style.display = "flex";
+    document.querySelector("form#editAddressForm div.confirmation-div").style.display = "none";
+}
+
+function form2_confirm() {
+    document.querySelector("form#editAddressForm div.profile-edit-div").style.display = "none";
+    document.querySelector("form#editAddressForm div.confirmation-div").style.display = "flex";
+
+    // copy value
+    document.getElementById("address1C").value = document.getElementById("address1").value;
+    document.getElementById("address2C").value = document.getElementById("address2").value;
+    document.getElementById("cityC").value = document.getElementById("city").value;
+    document.getElementById("postalCodeC").value = document.getElementById("postalCode").value;
+    document.getElementById("stateC").value = document.getElementById("state").value;
+    document.getElementById("countryC").value = document.getElementById("country").value;
 }
 
 // show file path on input

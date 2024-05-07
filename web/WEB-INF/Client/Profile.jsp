@@ -4,10 +4,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:useBean id="userData" class="JPAEntity.Users" scope="session" />
 <% String successMsg = (String) request.getAttribute("successMsg"); %>
-<% SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd"); 
-   String formattedDate = simpleDateFormat.format(userData.getDob());%>
+<% SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+    String formattedDate = simpleDateFormat.format(userData.getDob());%>
 <% String pageNumber = (String) request.getAttribute("profilePageNumber");
-    if(pageNumber == null){
+    if (pageNumber == null) {
         pageNumber = "1";
     }%>
 <% String errMsg = (String) request.getAttribute("errMsg"); %>
@@ -15,18 +15,18 @@
 <% String deleteAccErrMsg = (String) request.getAttribute("deleteAccErrMsg"); %>
 <% String passErrMsg = (String) request.getAttribute("passErrMsg"); %>
 <% String emailInput = (String) session.getAttribute("newEmailToChangeBuffer"); %>
-<% String otpForWhichForm = (String)request.getAttribute("otpForWhichForm"); 
-    if(otpForWhichForm == null){
+<% String otpForWhichForm = (String) request.getAttribute("otpForWhichForm");
+    if (otpForWhichForm == null) {
         otpForWhichForm = "";
     }%>
 <% String otpErrMsg = (String) request.getAttribute("otpErrMsg"); %>
-<% String showOTPForm = (String)request.getAttribute("showOTPForm");
-    if(showOTPForm == null){
+<% String showOTPForm = (String) request.getAttribute("showOTPForm");
+    if (showOTPForm == null) {
         showOTPForm = "0";
     }%>
 
 <!DOCTYPE html>
-    <html lang="en">
+<html lang="en">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Course Hero | Profile</title>
@@ -35,7 +35,7 @@
         <link type="text/css" href="./css/profile.css" rel="stylesheet" >
         <link type="text/css" href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
         <jsp:useBean id="webpath" class="module.WebPath" scope="application" />
-        
+
     </head>
     <body>
 
@@ -54,21 +54,21 @@
         <!--3 = Change photo-->
         <!--4 = Account security-->
         <!--5 = Close account-->
-        <input type="number" id="profilePage" value="<%= pageNumber %>" min="1" max="5" hidden />
+        <input type="number" id="profilePage" value="<%= pageNumber%>" min="1" max="5" hidden />
 
         <!--otp for page 4 put 1 into value-->
-        <input type="number" id="otpDiv" value="<%= showOTPForm %>" hidden />
-        
+        <input type="number" id="otpDiv" value="<%= showOTPForm%>" hidden />
+
         <!--if otp error put 1-->
         <input type="number" id="otpError" value="0"  hidden />
 
         <!--hidden input field to show success msg-->
-        <% if(successMsg == null){ %>
-            <input type="text" id="succssMsg" value="" hidden />
-        <%}else{%>
-            <input type="text" id="succssMsg" value="<%= successMsg %>" hidden />
+        <% if (successMsg == null) { %>
+        <input type="text" id="succssMsg" value="" hidden />
+        <%} else {%>
+        <input type="text" id="succssMsg" value="<%= successMsg%>" hidden />
         <%}%>
-        
+
 
         <section class="section profile-section">
             <div class="profile-div flex-row">
@@ -77,10 +77,10 @@
 
                     <div class="profile-user-div flex-col">
                         <%String base64ImageData = "";
-                          if(userData.getImgData()!=null){
-                            base64ImageData = Base64.getEncoder().encodeToString((byte[])userData.getImgData());
-                          }%>
-                        <img src="data:image/jpeg;base64,<%= base64ImageData %>" onerror="this.src='./img/user/default.png';" alt=""  />
+                            if (userData.getImgData() != null) {
+                                base64ImageData = Base64.getEncoder().encodeToString((byte[]) userData.getImgData());
+                            }%>
+                        <img src="data:image/jpeg;base64,<%= base64ImageData%>" onerror="this.src='./img/user/default.png';" alt=""  />
                         <h1 class="profile-username">${userData.accountId.username}</h1>
                     </div>
 
@@ -104,7 +104,8 @@
                                 <p>Edit information about yourself</p>
                             </div>
 
-                            <div class="profile-right-page-content flex-col">
+                            <!--input form-->
+                            <div class="profile-right-page-content flex-col profile-edit-div">
                                 <div class="profile-right-page-input flex-col">
                                     <label for="name">Name:</label>
                                     <input type="text" id="name" name="name" value="${userData.displayName}"  placeholder="name" maxlength="30"  />
@@ -114,22 +115,49 @@
                                     <label for="gender">Gender:</label>
                                     <select id="gender" name="gender">
                                         <option value="female" <%= (userData.getGender() != null && userData.getGender().equalsIgnoreCase("female")) ? "selected" : ""%> >Female</option>
-                                <option value="male" <%= (userData.getGender() != null && userData.getGender().equalsIgnoreCase("male")) ? "selected" : ""%>>Male</option>
+                                        <option value="male" <%= (userData.getGender() != null && userData.getGender().equalsIgnoreCase("male")) ? "selected" : ""%>>Male</option>
                                     </select>
                                 </div>
 
                                 <div class="profile-right-page-input flex-col">
                                     <label for="dob">Date of birth:</label>
-                                    
-                                    
-                                       <input type="date" id="dob"  name="dob" value="<%= formattedDate %>" />
+
+
+                                    <input type="date" id="dob"  name="dob" value="<%= formattedDate%>" />
                                 </div>
-                                        
-                                
+
+
                                 <p class="invalid-msg"></p>
 
                                 <div class="profile-right-page-submit flex-row">
-                                    <input type="button" class="submit-btn form-1-submit" value="Save" onclick="form1_submit()" />
+                                    <input type="button" class="submit-btn form-1-submit" value="Save" onclick="form1_confirm()" />
+                                </div>
+                            </div>
+
+                            <!--confirmation-->
+                            <div class="profile-right-page-content flex-col confirmation-div">
+                                <p>Please review the details below before saving your changes:</p>
+
+                                <div class="profile-right-page-input flex-col">
+                                    <label for="name">Name:</label>
+                                    <input type="text" id="nameC" name="nameC" value="" readonly  />
+                                </div>
+
+                                <div class="profile-right-page-input flex-col">
+                                    <label for="gender">Gender:</label>
+                                    <input type="text" id="genderC" name="genderC" value="" readonly  />
+                                </div>
+
+                                <div class="profile-right-page-input flex-col">
+                                    <label for="dob">Date of birth:</label>
+                                    <input type="text" id="dobC"  name="dobC" value="" readonly />
+                                </div>
+
+                                <p>Are you sure you want to save these changes?</p>
+
+                                <div class="profile-right-page-submit flex-row">
+                                    <input type="button" class="submit-btn form-1-submit" value="Confirm" onclick="form1_submit()" />
+                                    <input type="button" class="submit-btn form-1-submit back-btn" value="Back" onclick="form1_back()" />
                                 </div>
                             </div>
                         </form>
@@ -143,7 +171,8 @@
                                 <p>Edit information about your address</p>
                             </div>
 
-                            <div class="profile-right-page-content flex-col">
+                            <!--input form-->
+                            <div class="profile-right-page-content flex-col profile-edit-div">
                                 <div class="profile-right-page-input flex-col">
                                     <label>Address:</label>
                                     <input type="text" id="address1" name="address1" value="${userData.addressId.line1}" placeholder="address line 1" maxlength="50" />
@@ -173,7 +202,45 @@
                                 <p class="invalid-msg"></p>
 
                                 <div class="profile-right-page-submit flex-row">
-                                    <input type="submit" class="submit-btn" value="Save" />
+                                    <input type="button" class="submit-btn" value="Save" onclick="form2_confirm()" />
+                                </div>
+                            </div>
+
+                            <!--confirmation div-->
+                            <div class="profile-right-page-content flex-col confirmation-div">
+                                 <p>Please review the details below before saving your changes:</p>
+                                
+                                <div class="profile-right-page-input flex-col">
+                                    <label>Address:</label>
+                                    <input type="text" id="address1C" name="address1C" value="" readonly />
+                                    <input type="text" id="address2C" name="address2C" value="" readonly />
+                                </div>
+
+                                <div class="profile-right-page-input flex-col">
+                                    <label for="city">City:</label>
+                                    <input type="text" id="cityC" name="cityC" value="" readonly />
+                                </div>
+
+                                <div class="profile-right-page-input flex-col">
+                                    <label for="postalCode">Postal code:</label>
+                                    <input type="text" id="postalCodeC"  name="postalCodeC" value="" readonly/>
+                                </div>
+
+                                <div class="profile-right-page-input flex-col">
+                                    <label for="state">State Resides:</label>
+                                    <input type="text" id="stateC"  name="stateC"  value="" readonly/>
+                                </div>
+
+                                <div class="profile-right-page-input flex-col">
+                                    <label for="state">Country:</label>
+                                    <input type="text" id="countryC"  name="countryC" value="" readonly/>
+                                </div>
+                                
+                                <p>Are you sure you want to save these changes?</p>
+
+                                <div class="profile-right-page-submit flex-row">
+                                    <input type="button" class="submit-btn" value="Confirm" onclick="form2_submit()" />
+                                    <input type="button" class="submit-btn form-1-submit back-btn" value="Back" onclick="form2_back()" />
                                 </div>
                             </div>
                         </form>
@@ -191,9 +258,9 @@
                                 <div class="profile-right-page-input flex-col">
                                     <label>Image Preview:</label>
                                     <div class="image-preview-div flex-col">
-                                        <img id="profilePreview" src="data:image/jpeg;base64,<%= base64ImageData %>" alt=""  onerror="this.src='./img/user/default.png';"/>
-                                           
-                                        
+                                        <img id="profilePreview" src="data:image/jpeg;base64,<%= base64ImageData%>" alt=""  onerror="this.src='./img/user/default.png';"/>
+
+
                                     </div>
                                 </div>
 
@@ -206,10 +273,10 @@
                                     </label>
                                 </div>
 
-                                <% if(errMsg == null){ %>
-                                    <p class="invalid-msg"></p>
-                                <%}else{%>
-                                    <p class="invalid-msg"><%= errMsg %></p>
+                                <% if (errMsg == null) { %>
+                                <p class="invalid-msg"></p>
+                                <%} else {%>
+                                <p class="invalid-msg"><%= errMsg%></p>
                                 <%}%>
 
                                 <div class="profile-right-page-submit flex-row">
@@ -234,17 +301,17 @@
                                 <div class="profile-right-page-input flex-col">
                                     <label for="email">New email:</label>
                                     <!--put invalid-input if error-->
-                                    <% if(emailInput == null){ %>
-                                        <input type="text" id="newEmail" class=""  name="email" placeholder="example@email.com" maxlength="50" value="${userData.accountId.email}"/>
-                                    <%}else{%>
-                                    <input type="text" id="newEmail" class=""  name="email" placeholder="example@email.com" maxlength="50" value="<%= emailInput %>"/>
+                                    <% if (emailInput == null) { %>
+                                    <input type="text" id="newEmail" class=""  name="email" placeholder="example@email.com" maxlength="50" value="${userData.accountId.email}"/>
+                                    <%} else {%>
+                                    <input type="text" id="newEmail" class=""  name="email" placeholder="example@email.com" maxlength="50" value="<%= emailInput%>"/>
                                     <%}%>
                                 </div>
 
-                                <% if(emailErrMsg == null){ %>
-                                    <p class="invalid-msg" id="changeEmail"></p>
-                                <%}else{%>
-                                    <p class="invalid-msg" id="changeEmail"><%= emailErrMsg %></p>
+                                <% if (emailErrMsg == null) { %>
+                                <p class="invalid-msg" id="changeEmail"></p>
+                                <%} else {%>
+                                <p class="invalid-msg" id="changeEmail"><%= emailErrMsg%></p>
                                 <%}%>
 
                                 <div class="profile-right-page-submit flex-row">
@@ -280,10 +347,10 @@
                                     <li><i class="ri-close-circle-line"></i> Have a minimum length of 8</li>
                                 </ul>
 
-                                <% if(passErrMsg == null){ %>
-                                    <p class="invalid-msg" id="changePassword"></p>
-                                <%}else{%>
-                                    <p class="invalid-msg" id="changePassword"><%= passErrMsg %></p>
+                                <% if (passErrMsg == null) { %>
+                                <p class="invalid-msg" id="changePassword"></p>
+                                <%} else {%>
+                                <p class="invalid-msg" id="changePassword"><%= passErrMsg%></p>
                                 <%}%>
 
                                 <div class="profile-right-page-submit flex-row">
@@ -300,7 +367,7 @@
                                     <h1 class="confirmation-title">OTP Verification</h1>
                                     <p class="confirmation-sub-title">Code is sent to example@email.com, input the code received, and verify to complete the process.</p>
                                 </div>
-                                
+
                                 <div class="otp-field-div flex-row">
                                     <input type="text" id="otp1" name="otp1" class="otp" maxlength="1" autocomplete="off" />
                                     <input type="text" id="otp2" name="otp2" class="otp" maxlength="1" autocomplete="off" />
@@ -311,17 +378,17 @@
                                 </div>
 
                                 <input type="text" id="otp" name="otp" hidden />
-                                
-                                <% if(otpErrMsg == null){ %>
-                                    <p class="invalid-msg" id="otpVerify"></p>
-                                <%}else{%>
-                                    <p class="invalid-msg" id="otpVerify"><%= otpErrMsg %></p>
+
+                                <% if (otpErrMsg == null) { %>
+                                <p class="invalid-msg" id="otpVerify"></p>
+                                <%} else {%>
+                                <p class="invalid-msg" id="otpVerify"><%= otpErrMsg%></p>
                                 <%}%>
-                                
+
 
                                 <div class="profile-right-page-submit flex-row">
                                     <input type="text" id="formTypeOTP" name="formType" value="OTPSubmission" hidden />
-                                    <input type="text" id="otpForWhichForm" name="otpForWhichForm" value="<%= otpForWhichForm %>" hidden />
+                                    <input type="text" id="otpForWhichForm" name="otpForWhichForm" value="<%= otpForWhichForm%>" hidden />
                                     <input type="button" id="otpSubmitBtn" class="submit-btn form-4-submit" value="Submit" />
                                 </div>
                             </div>
@@ -345,10 +412,10 @@
                                     <input type="password" id="passwordCloseAcc"  name="password" class="password-input" placeholder="Enter password to proceed to close account" />
                                     <span class="password-eye"><i class="ri-eye-line"></i></span>
                                 </div>
-                                <% if(deleteAccErrMsg == null){ %>
-                                    <p class="invalid-msg"></p>
-                                <%}else{%>
-                                    <p class="invalid-msg"><%= deleteAccErrMsg %></p>
+                                <% if (deleteAccErrMsg == null) { %>
+                                <p class="invalid-msg"></p>
+                                <%} else {%>
+                                <p class="invalid-msg"><%= deleteAccErrMsg%></p>
                                 <%}%>
 
                                 <div class="profile-right-page-submit flex-row">
