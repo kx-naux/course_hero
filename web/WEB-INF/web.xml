@@ -116,6 +116,10 @@
         <servlet-name>SubmitCourseReview</servlet-name>
         <servlet-class>controller.SubmitCourseReview</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CartPage</servlet-name>
+        <servlet-class>controller.CartPage</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -231,6 +235,10 @@
     <servlet-mapping>
         <servlet-name>AdminAddStaffPage</servlet-name>
         <url-pattern>/AdminAddStaffPage</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CartPage</servlet-name>
+        <url-pattern>/cart</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
