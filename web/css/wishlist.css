@@ -1,1 +1,66 @@
 @import url('./root.css');
+
+.wishlist-section {
+    min-height: 95vh;
+}
+
+.wishlist-section > .wishlist-div {
+    padding: 20px 10px;
+    max-width: 900px;
+}
+
+.wishlist-div .page-title{
+    font-weight: 600;
+    font-size: var(--font-size-4xl);
+    color: var(--color-blue-2);
+}
+
+.wishlist-div .number-item{
+    margin-top: 10px;
+    font-weight: 500;
+    font-size: var(--font-size-m);
+    color: var(--color-text-light-3);
+}
+
+/*empty wishlist*/
+.wishlist-section div.empty-div {
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    gap: 30px;
+}
+
+.wishlist-section div.empty-div img {
+    width: 300px;
+}
+
+.wishlist-section div.empty-div h1 {
+    font-weight: 700;
+    font-size: var(--font-size-xxxl);
+    color: var(--color-blue-2);
+}
+
+.wishlist-section div.empty-div p{
+    max-width: 600px;
+    text-align: center;
+    font-weight: 400;
+    font-size: var(--font-size-m);
+    color: var(--color-text-light-1);
+}
+
+.wishlist-section div.empty-div a {
+    margin-top: 20px;
+    font-weight: 600;
+    font-size: var(--font-size-xm);
+    color: var(--color-text-light-1);
+    border: 1px solid var(--color-text-light-1);
+    padding: 14px 20px;
+    border-radius: 40px;
+    transition: 0.2s all ease-in-out;
+}
+
+.wishlist-section div.empty-div a:hover {
+    background-color: var(--color-light-grey-1);
+    color: var(--color-text-light-3);
+    border: 1px solid var(--color-text-light-3);
+}
