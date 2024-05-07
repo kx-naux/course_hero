@@ -81,16 +81,36 @@
         <servlet-class>controller.WishlistPage</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>AdminManageProduct</servlet-name>
-        <servlet-class>controller.AdminManageProduct</servlet-class>
+        <servlet-name>AdminDashboardPage</servlet-name>
+        <servlet-class>controller.AdminDashboardPage</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>AdminManageCourse</servlet-name>
-        <servlet-class>controller.AdminManageCourse</servlet-class>
+        <servlet-name>AdminManageCoursePage</servlet-name>
+        <servlet-class>controller.AdminManageCoursePage</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>AdminAddCourse</servlet-name>
-        <servlet-class>controller.AdminAddCourse</servlet-class>
+        <servlet-name>AdminAddCoursePage</servlet-name>
+        <servlet-class>controller.AdminAddCoursePage</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminManageCustomerPage</servlet-name>
+        <servlet-class>controller.AdminManageCustomerPage</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminManageOrderPage</servlet-name>
+        <servlet-class>controller.AdminManageOrderPage</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminManageContractEntriesPage</servlet-name>
+        <servlet-class>controller.AdminManageContractEntriesPage</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminManageStaffPage</servlet-name>
+        <servlet-class>controller.AdminManageStaffPage</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminAddStaffPage</servlet-name>
+        <servlet-class>controller.AdminAddStaffPage</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
@@ -171,6 +191,38 @@
     <servlet-mapping>
         <servlet-name>WishlistPage</servlet-name>
         <url-pattern>/wishlist</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminDashboardPage</servlet-name>
+        <url-pattern>/AdminDashboardPage</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminManageCoursePage</servlet-name>
+        <url-pattern>/AdminManageCoursePage</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminAddCoursePage</servlet-name>
+        <url-pattern>/AdminAddCoursePage</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminManageCustomerPage</servlet-name>
+        <url-pattern>/AdminManageCustomerPage</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminManageOrderPage</servlet-name>
+        <url-pattern>/AdminManageOrderPage</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminManageContractEntriesPage</servlet-name>
+        <url-pattern>/AdminManageContractEntriesPage</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminManageStaffPage</servlet-name>
+        <url-pattern>/AdminManageStaffPage</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminAddStaffPage</servlet-name>
+        <url-pattern>/AdminAddStaffPage</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

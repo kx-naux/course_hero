@@ -25,8 +25,7 @@
 
 /*filter container*/
 .filter-flex-container{
-    display: flex;
-    
+    display: flex; 
 }
 
 .search-container{
@@ -35,21 +34,4 @@
     margin-top: 1rem;
     justify-content: end;
     width: 100%;
-}
-
-.bulk-action-container{
-    display: flex;
-    gap: 10px;
-    margin-top: 1rem;
-    justify-content: start;
-    width: auto;
-    margin-right: 30px;
-}
-
-.input-container select{
-    background: transparent;
-    margin-top: 5px;
-    cursor: pointer;
-    color: var(--color-dark);
-    width: 120px;
 }

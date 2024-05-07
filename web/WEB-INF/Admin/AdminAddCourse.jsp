@@ -160,5 +160,6 @@
                 }
             </script>
             <script type="text/javascript" src="../admin_js/sweetalert2.all.js"></script>
+            <script type="text/javascript" src="../admin_js/adminAdd.js"></script>
     </body>
 </html>
