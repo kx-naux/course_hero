@@ -35,6 +35,8 @@ public class WebPath {
         //admin
         pageUrls.put("dashboard", "/admin/dashboard");
         pageUrls.put("manage-client", "/admin/manage-client");
+        pageUrls.put("manage-course", "/admin/manage-course");
+        pageUrls.put("add-course", "/admin/add-course");
     }
 
     public String getPageUrl(String page) {

@@ -42,19 +42,19 @@
                         </li>
                         <li>
                             <a class="sub-menu-parent" href="#">
-                                <i class="ri-user-line"></i>
-                                <h3 class="nav-item">Client</h3>
+                                <i class="ri-group-2-line"></i>
+                                <h3 class="nav-item">Users</h3>
                                 <i class="arrow ri-arrow-down-s-line"></i>
                             </a>
                             <ul class="sub-menu">
                                 <li>
                                     <a href="<%= webpath.getPageUrl("manage-client") %>">
-                                        <h3>Manage Client</h3>
+                                        <h3>Manage Users</h3>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#">
-                                        <h3>Add New Client</h3>
+                                        <h3>Add Users</h3>
                                     </a>
                                 </li>
                             </ul>
@@ -62,19 +62,19 @@
                         </li>
                         <li>
                             <a class="sub-menu-parent" href="#">
-                                <i class="ri-box-3-line"></i>
-                                <h3 class="nav-item">Product</h3>
+                                <i class="ri-graduation-cap-line"></i>
+                                <h3 class="nav-item">Course</h3>
                                 <i class="arrow ri-arrow-down-s-line"></i>
                             </a>
                             <ul class="sub-menu">
                                 <li>
-                                    <a href="#">
-                                        <h3>Manage Product</h3>
+                                    <a href="<%= webpath.getPageUrl("manage-course") %>">
+                                        <h3>Manage Course</h3>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#">
-                                        <h3>Add New Product</h3>
+                                    <a href="<%= webpath.getPageUrl("add-course") %>">
+                                        <h3>Add Course</h3>
                                     </a>
                                 </li>
                             </ul>
@@ -146,8 +146,11 @@
                         let mainMenu = document.querySelectorAll(".sub-menu-parent");
                         let indexOfSubmenu = Number(localStorage.getItem("indexOfSubmenu"));
                         let subMenu = mainMenu[indexOfSubmenu].nextElementSibling;
-
+                        let subMenuArrow = mainMenu[indexOfSubmenu].querySelector(".arrow");
+                        
                         subMenu.classList.add("active");
+                        subMenuArrow.classList.add("ri-arrow-up-s-line");
+                        subMenuArrow.classList.remove("ri-arrow-down-s-line");
                     }
                 }
             </script>
