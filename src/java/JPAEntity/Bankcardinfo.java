@@ -95,6 +95,10 @@ public class Bankcardinfo implements Serializable {
     public void setCardinfoid(String cardinfoid) {
         this.cardinfoid = cardinfoid;
     }
+    
+    public void setCardinfoid(long count){
+        this.cardinfoid = String.format("BC%07d", count);
+    }
 
 
     public String getCardHolderName() {

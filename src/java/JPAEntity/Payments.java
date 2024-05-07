@@ -101,6 +101,10 @@ public class Payments implements Serializable {
     public void setPaymentId(String paymentId) {
         this.paymentId = paymentId;
     }
+    
+    public void setPaymentId(long count) {
+        this.paymentId = String.format("PY%07d", count);
+    }
 
     public String getAccountNumber() {
         return accountNumber;
@@ -169,6 +173,7 @@ public class Payments implements Serializable {
     }
 
 
+
     public double getAmount() {
         return amount;
     }
@@ -184,6 +189,8 @@ public class Payments implements Serializable {
     public void setStatus(String status) {
         this.status = status;
     }  
+
+  
 
    
 }

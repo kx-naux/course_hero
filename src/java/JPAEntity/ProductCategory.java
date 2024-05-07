@@ -75,6 +75,10 @@ public class ProductCategory implements Serializable {
     public void setProdcatId(String prodcatId) {
         this.prodcatId = prodcatId;
     }
+    
+    public void setProdcatId(long count) {
+        this.prodcatId = String.format("PC%07d", count);
+    }
 
     public String getCategoryName() {
         return categoryName;
@@ -133,6 +137,8 @@ public class ProductCategory implements Serializable {
 
 
 
+   
+
     public String getDescription() {
         return description;
     }
@@ -140,6 +146,8 @@ public class ProductCategory implements Serializable {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    
 
 
 

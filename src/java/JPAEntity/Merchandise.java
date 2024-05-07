@@ -99,6 +99,10 @@ public class Merchandise implements Serializable {
     public void setMerchId(String merchId) {
         this.merchId = merchId;
     }
+    
+    public void setMerchId(long count) {
+        this.merchId = String.format("M%08d", count);
+    }
 
     public double getDimensionHCm() {
         return dimensionHCm;
@@ -180,6 +184,8 @@ public class Merchandise implements Serializable {
     public String toString() {
         return "JPAEntity.Merchandise[ merchId=" + merchId + " ]";
     }
+
+   
 
    
     

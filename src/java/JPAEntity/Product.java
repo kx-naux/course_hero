@@ -75,6 +75,8 @@ public class Product implements Serializable {
     @Column(name = "STATUS")
     private String status;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "productId")
+    private List<Wishlist> wishlistList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "productId")
     private List<CartItems> cartItemsList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "product")
     private List<Orders> ordersList;
@@ -117,6 +119,10 @@ public class Product implements Serializable {
 
     public void setProductId(String productId) {
         this.productId = productId;
+    }
+    
+    public void setProductId(long count) {
+        this.productId = String.format("PR%07d", count);
     }
 
     public String getProdName() {
@@ -234,6 +240,8 @@ public class Product implements Serializable {
     public void setRatingsList(List<Ratings> ratingsList) {
         this.ratingsList = ratingsList;
     }
+   
+
     public String getDescription() {
         return description;
     }
@@ -241,6 +249,8 @@ public class Product implements Serializable {
     public void setDescription(String description) {
         this.description = description;
     }
+
+   
 
 
     public double getPrice() {
@@ -251,7 +261,6 @@ public class Product implements Serializable {
         this.price = price;
     }
 
-   
 
 
     public double getDiscount() {
@@ -269,6 +278,15 @@ public class Product implements Serializable {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    @XmlTransient
+    public List<Wishlist> getWishlistList() {
+        return wishlistList;
+    }
+
+    public void setWishlistList(List<Wishlist> wishlistList) {
+        this.wishlistList = wishlistList;
     }
     
 }

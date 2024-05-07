@@ -95,6 +95,10 @@ public class Ratings implements Serializable {
     public void setRatingId(String ratingId) {
         this.ratingId = ratingId;
     }
+    
+    public void setRatingId(long count) {
+        this.ratingId = String.format("R%08d", count);
+    }
 
 
     public Date getTimeRated() {
@@ -170,6 +174,8 @@ public class Ratings implements Serializable {
     public void setComment(String comment) {
         this.comment = comment;
     }
+
+   
 
    
 

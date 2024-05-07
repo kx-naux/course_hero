@@ -83,6 +83,10 @@ public class CourseCertificates implements Serializable {
     public void setCertificateId(String certificateId) {
         this.certificateId = certificateId;
     }
+    
+    public void setCertificateId(long count) {
+        this.certificateId = String.format("C%08d", count);
+    }   
 
     public Date getTimeIssued() {
         return timeIssued;
@@ -148,6 +152,8 @@ public class CourseCertificates implements Serializable {
     public String toString() {
         return "JPAEntity.CourseCertificates[ certificateId=" + certificateId + " ]";
     }
+
+   
 
    
 

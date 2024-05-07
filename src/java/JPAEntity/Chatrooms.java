@@ -91,6 +91,10 @@ public class Chatrooms implements Serializable {
     public void setChatroomId(String chatroomId) {
         this.chatroomId = chatroomId;
     }
+    
+    public void setChatroomId(long count) {
+        this.chatroomId = String.format("CH%07d", count);
+    }   
 
     public String getChatroomType() {
         return chatroomType;
@@ -171,6 +175,7 @@ public class Chatrooms implements Serializable {
     public void setStatus(String status) {
         this.status = status;
     } 
+
 
 
     
