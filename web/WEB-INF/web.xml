@@ -76,6 +76,10 @@
         <servlet-name>GetCourseReview</servlet-name>
         <servlet-class>controller.GetCourseReview</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>WishlistPage</servlet-name>
+        <servlet-class>controller.WishlistPage</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -151,6 +155,10 @@
     <servlet-mapping>
         <servlet-name>GetCourseReview</servlet-name>
         <url-pattern>/get-course-review</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>WishlistPage</servlet-name>
+        <url-pattern>/wishlist</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
