@@ -79,6 +79,8 @@
     <servlet>
         <servlet-name>WishlistPage</servlet-name>
         <servlet-class>controller.WishlistPage</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>AdminManageProduct</servlet-name>
         <servlet-class>controller.AdminManageProduct</servlet-class>
     </servlet>
