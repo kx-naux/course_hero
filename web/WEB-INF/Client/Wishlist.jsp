@@ -25,7 +25,7 @@
         <%@ include file="./Components/navbar.jsp" %>
         
         <%
-            int numberWish = 2;
+            int numberWish = 0;
         %>
         
         <section class="section wishlist-section">
@@ -54,9 +54,13 @@
                 <% } else { %>
                 
                 <!--message show to user when wishlist is empty-->
-                <div class="empty-div">
+                <div class="empty-div flex-col">
                     
+                    <h1>Empty Wishlist</h1>
                     
+                    <p>It seems like your wishlist is empty at the moment. Why not start adding some items you're interested in? Browse our selection and click the "Add to Wishlist" button on any item you'd like to save for later.</p>
+                    
+                    <a href="<%= webpath.getPageUrl("products")%>">Explore more courses</a>
                     
                 </div>
                 
