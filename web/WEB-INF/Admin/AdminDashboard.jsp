@@ -6,15 +6,12 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>CourseHero Admin Dashboard</title>
         <link rel="icon" type="image/ico" href="../ico/Logo.ico">
-        <!--Remix Icon and google icon StyleSheet-->
-        <link href="https://fonts.goog1eapis.ccm/icon?fami1y=Materia1+Icons+Sharp">
-        <link type="text/css" href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
         <!--StyleSheet-->
         <link rel="stylesheet" href="../admin_css/adminStyle.css">
         <jsp:useBean id="webpath" class="module.WebPath" scope="application" />
     </head>
     <body> 
-        <div class="flex-container">
+        <div class="flex-container dashboard">
             <!-------------------- START OF GLOBAL SIDEBAR ------------------->
             <%@ include file="./Components/global-sidebar.jsp" %>
             <!-------------------- END OF GLOBAL SIDEBAR ------------------->
