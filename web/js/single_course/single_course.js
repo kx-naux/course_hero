@@ -284,11 +284,13 @@ document.querySelector("button.show-more-btn").addEventListener('click', () => {
     // fetch more comment
     const courseID = document.querySelector("section.course-section").getAttribute("courseID");
     const lastID = document.getElementById("lastRatingId").value;
+    const submitCount = document.getElementById("submitCount").value;
 
     const url = '/course_hero/get-course-review';
     const data = {
         courseID: courseID,
-        lastID: lastID
+        lastID: lastID,
+        submitCount: parseInt(submitCount)
     };
 
     fetch(url, {
@@ -303,8 +305,10 @@ document.querySelector("button.show-more-btn").addEventListener('click', () => {
         }
         return response.json();
     }).then(responseData => {
+        console.log(responseData);
         if (responseData.status === "success") {
             insertReview(responseData);
+            document.getElementById("submitCount").value = responseData.submitCount;
             console.log(responseData);
         } else {
             toast_msg(TOAST_ERROR, "Server Error", `Cannot load more review`);

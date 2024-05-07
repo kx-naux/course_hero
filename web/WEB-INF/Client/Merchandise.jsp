@@ -294,7 +294,6 @@
                                     %>
                                     <p><%= paragraph%></p>
                                     <%}%>
-                                    <p>I have a B.S. in Computer Programming. My curriculum did not include Python, so I decided to give this a try. This course is amazing! I do not normally leave reviews, but I am very happy with the purchase.</p>
                                 </div>
                             </div>
                             <%}%>
