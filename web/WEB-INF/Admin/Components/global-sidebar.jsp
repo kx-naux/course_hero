@@ -19,13 +19,13 @@
                     <ul>
                         <li>
                             <a href="<%= webpath.getPageUrl("dashboard") %>">
-                                <i class="ri-home-line"></i>
+                                <i class="ri-dashboard-2-line"></i>
                                 <h3 class="nav-item">Dashboard</h3>
                             </a>
                             <span class="tooltip">Dashboard</span>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="<%= webpath.getPageUrl("manage-order") %>">
                                 <i class="ri-file-list-3-line"></i>
                                 <h3 class="nav-item">Orders</h3>
                             </a>
@@ -33,32 +33,40 @@
                             <span class="tooltip">Manage Orders</span>
                         </li>
                         <li>
-                            <a href="#">
-                                <i class="ri-file-line"></i>
+                            <a href="<%= webpath.getPageUrl("manage-contract-entries") %>">
+                                <i class="ri-contract-line"></i>
                                 <h3 class="nav-item">Contract Entries</h3>
                             </a>
 
                             <span class="tooltip">Contract Entries</span>
                         </li>
                         <li>
-                            <a class="sub-menu-parent" href="#">
+                            <a href="<%= webpath.getPageUrl("manage-customer") %>">
                                 <i class="ri-group-2-line"></i>
-                                <h3 class="nav-item">Users</h3>
+                                <h3 class="nav-item">Customers</h3>
+                            </a>
+
+                            <span class="tooltip">Manage Customers</span>
+                        </li>
+                        <li>
+                            <a class="sub-menu-parent" href="#">
+                                <i class="ri-t-shirt-2-line"></i>
+                                <h3 class="nav-item">Merch</h3>
                                 <i class="arrow ri-arrow-down-s-line"></i>
                             </a>
                             <ul class="sub-menu">
                                 <li>
-                                    <a href="<%= webpath.getPageUrl("manage-client") %>">
-                                        <h3>Manage Users</h3>
+                                    <a href="<%= webpath.getPageUrl("manage-merch")%>">
+                                        <h3>Manage Merch</h3>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#">
-                                        <h3>Add Users</h3>
+                                    <a href="<%= webpath.getPageUrl("add-merch")%>">
+                                        <h3>Add Merch</h3>
                                     </a>
                                 </li>
                             </ul>
-                            <span class="tooltip">Manage Client</span>
+                            <span class="tooltip">Merchandise</span>
                         </li>
                         <li>
                             <a class="sub-menu-parent" href="#">
@@ -78,7 +86,7 @@
                                     </a>
                                 </li>
                             </ul>
-                            <span class="tooltip">Manage Product</span>
+                            <span class="tooltip">Course</span>
                         </li>
                         <li>
                             <a class="sub-menu-parent" href="#">
@@ -88,7 +96,7 @@
                             </a>
                             <ul class="sub-menu">
                                 <li>
-                                    <a href="#">
+                                    <a href="<%= webpath.getPageUrl("manage-staff") %>">
                                         <h3>Manage Staff</h3>
                                     </a>
                                 </li>
@@ -98,7 +106,7 @@
                                     </a>
                                 </li>
                             </ul>
-                            <span class="tooltip">Manage Staff</span>
+                            <span class="tooltip">Staff</span>
                         </li>
                         <li>
                             <a href="#">
@@ -110,14 +118,14 @@
                         </li>
                         <li>
                             <a href="#">
-                                <i class="ri-folder-chart-line"></i>
+                                <i class="ri-donut-chart-fill"></i>
                                 <h3 class="nav-item">Report</h3>
                             </a>
-                            <span class="tooltip">Report</span>
+                            <span class="tooltip">Report Generation</span>
                         </li>
                         <li>
                             <a href="#">
-                                <i class="ri-settings-2-line"></i>
+                                <i class="ri-settings-5-line"></i>
                                 <h3 class="nav-item">Settings</h3>
                             </a>
                             <span class="tooltip">Settings</span>
