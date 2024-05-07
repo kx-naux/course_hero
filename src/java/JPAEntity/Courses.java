@@ -13,6 +13,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -35,7 +36,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Courses.findAll", query = "SELECT c FROM Courses c"),
     @NamedQuery(name = "Courses.findByCourseId", query = "SELECT c FROM Courses c WHERE c.courseId = :courseId"),
-    @NamedQuery(name = "Courses.findByToolsUsed", query = "SELECT c FROM Courses c WHERE c.toolsUsed = :toolsUsed"),
+    @NamedQuery(name = "Courses.findBySyllabus", query = "SELECT c FROM Courses c WHERE c.syllabus = :syllabus"),
     @NamedQuery(name = "Courses.findByLearningObj", query = "SELECT c FROM Courses c WHERE c.learningObj = :learningObj"),
     @NamedQuery(name = "Courses.findByLengthHour", query = "SELECT c FROM Courses c WHERE c.lengthHour = :lengthHour"),
     @NamedQuery(name = "Courses.findByCourseLevel", query = "SELECT c FROM Courses c WHERE c.courseLevel = :courseLevel"),
@@ -46,8 +47,8 @@ public class Courses implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 100)
-    @Column(name = "TOOLS_USED")
-    private String toolsUsed;
+    @Column(name = "SYLLABUS")
+    private String syllabus;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
@@ -64,9 +65,23 @@ public class Courses implements Serializable {
     private String courseLevel;
     @Basic(optional = false)
     @NotNull
+    @Size(min = 1, max = 500)
+    @Column(name = "REQUIREMENTS")
+    private String requirements;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 500)
+    @Column(name = "DETAILED_DESC")
+    private String detailedDesc;
+    @Basic(optional = false)
+    @NotNull
     @Column(name = "DATE_ADDED")
     @Temporal(TemporalType.DATE)
     private Date dateAdded;
+    @Lob
+    @Column(name = "VIDEO_DATA")
+    private Serializable videoData;
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "courseId")
     private List<CourseSubscriptions> courseSubscriptionsList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "courseId")
@@ -97,9 +112,9 @@ public class Courses implements Serializable {
         this.courseId = courseId;
     }
 
-    public Courses(String courseId, String toolsUsed, String learningObj, double lengthHour, String courseLevel, Date dateAdded) {
+    public Courses(String courseId, String syllabus, String learningObj, double lengthHour, String courseLevel, Date dateAdded) {
         this.courseId = courseId;
-        this.toolsUsed = toolsUsed;
+        this.syllabus = syllabus;
         this.learningObj = learningObj;
         this.lengthHour = lengthHour;
         this.courseLevel = courseLevel;
@@ -117,14 +132,6 @@ public class Courses implements Serializable {
     public void setCourseId(long count) {
         this.courseId = String.format("CR%07d", count);
     }   
-    
-    public String getToolsUsed() {
-        return toolsUsed;
-    }
-
-    public void setToolsUsed(String toolsUsed) {
-        this.toolsUsed = toolsUsed;
-    }
 
     public String getLearningObj() {
         return learningObj;
@@ -233,6 +240,41 @@ public class Courses implements Serializable {
     @Override
     public String toString() {
         return "JPAEntity.Courses[ courseId=" + courseId + " ]";
+    }
+
+    public String getSyllabus() {
+        return syllabus;
+    }
+
+    public void setSyllabus(String syllabus) {
+        this.syllabus = syllabus;
+    }
+
+   
+    public String getRequirements() {
+        return requirements;
+    }
+
+    public void setRequirements(String requirements) {
+        this.requirements = requirements;
+    }
+
+    public String getDetailedDesc() {
+        return detailedDesc;
+    }
+
+    public void setDetailedDesc(String detailedDesc) {
+        this.detailedDesc = detailedDesc;
+    }
+
+    
+
+    public Serializable getVideoData() {
+        return videoData;
+    }
+
+    public void setVideoData(Serializable videoData) {
+        this.videoData = videoData;
     }
 
 

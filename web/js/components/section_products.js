@@ -168,7 +168,7 @@ function likeButtonClick(evt) {
         body: JSON.stringify(data)
     }).then(response => {
         if (!response.ok) {
-            toast_msg(TOAST_ERROR, "Network Issue", `Fail to ${action} to wishlist`);
+            toast_msg(TOAST_ERROR, "Network Issue", `Fail to ${action} wishlist`);
         }
         return response.json();
     }).then(responseData => {
@@ -189,7 +189,7 @@ function likeButtonClick(evt) {
                 evt.target.closest(".wish-Btn").setAttribute("status", "0");
             }
         } else {
-            toast_msg(TOAST_ERROR, "Server Error", `Fail to ${action} to wishlist`);
+            toast_msg(TOAST_ERROR, "Server Error", `Fail to ${action} wishlist`);
         }
     }).catch(error => {
         console.error('Fetch error:', error);

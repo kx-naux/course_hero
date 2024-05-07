@@ -17,7 +17,7 @@
         <link rel="icon" type="image/ico" href="./ico/Logo.ico">
         <link type="text/css" href="./css/style.css" rel="stylesheet" >
         <link type="text/css" href="./css/merchandise.css" rel="stylesheet" >
-        <link type="text/css" href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
+        <!--<link type="text/css" href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">-->
         <jsp:useBean id="webpath" class="module.WebPath" scope="application" />
     </head>
     <body>
@@ -189,7 +189,7 @@
                         <div class="rating-count flex-row">
                             <div class="rating-percentage-bar flex-col">
                                 <span class="background-bar"></span>
-                                <span class="front-bar" style="width: 70%"></span>
+                                <span class="front-bar" style="width: <%= rateStats.getFiveStarPercentage() %>%"></span>
                             </div>
                             <div class="rating-stars flex-row">
                                 <i class="ri-star-fill"></i>
@@ -203,7 +203,7 @@
                         <div class="rating-count flex-row">
                             <div class="rating-percentage-bar">
                                 <span class="background-bar"></span>
-                                <span class="front-bar" style="width: 20%"></span>
+                                <span class="front-bar" style="width: <%= rateStats.getFourStarPercentage() %>%"></span>
                             </div>
                             <div class="rating-stars flex-row">
                                 <i class="ri-star-fill"></i>
@@ -217,7 +217,7 @@
                         <div class="rating-count flex-row">
                             <div class="rating-percentage-bar">
                                 <span class="background-bar"></span>
-                                <span class="front-bar" style="width: 4%"></span>
+                                <span class="front-bar" style="width: <%= rateStats.getThreeStarPercentage() %>%"></span>
                             </div>
                             <div class="rating-stars flex-row">
                                 <i class="ri-star-fill"></i>
@@ -231,7 +231,7 @@
                         <div class="rating-count flex-row">
                             <div class="rating-percentage-bar">
                                 <span class="background-bar"></span>
-                                <span class="front-bar" style="width: 1%"></span>
+                                <span class="front-bar" style="width: <%= rateStats.getTwoStarPercentage() %>%"></span>
                             </div>
                             <div class="rating-stars flex-row">
                                 <i class="ri-star-fill"></i>
@@ -245,7 +245,7 @@
                         <div class="rating-count flex-row">
                             <div class="rating-percentage-bar">
                                 <span class="background-bar"></span>
-                                <span class="front-bar"  style="width: 1%"></span>
+                                <span class="front-bar"  style="width: <%= rateStats.getOneStarPercentage() %>%"></span>
                             </div>
                             <div class="rating-stars flex-row">
                                 <i class="ri-star-fill"></i>
@@ -304,12 +304,13 @@
                         </div>
                              <!--pagination, 20 course per page-->
                             <%
-                                int currentPage = 1;
-                                int lastPage = 10;
+                                long currentPage = 1;
+                                long dataPerPage = 2;
+                                long lastPage = ((ratingCount - 1) / dataPerPage) + 1;
                                 if (request.getParameter("p") != null) {
                                     currentPage = Integer.parseInt(request.getParameter("p"));
                                 }
-
+                                
                                 boolean previousAllow = currentPage > 1;
                                 boolean nextAllow = currentPage < lastPage;
                             %>

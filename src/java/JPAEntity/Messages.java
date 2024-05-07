@@ -176,8 +176,4 @@ public class Messages implements Serializable {
         this.destination = destination;
     }
 
-   
-  
-
-
 }

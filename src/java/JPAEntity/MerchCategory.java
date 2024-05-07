@@ -146,8 +146,5 @@ public class MerchCategory implements Serializable {
         this.description = description;
     }
 
-  
-
-  
-
+   
 }

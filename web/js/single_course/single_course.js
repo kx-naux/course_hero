@@ -21,6 +21,7 @@ if (cartBtn !== null) {
             const data = {
                 productID: courseId,
                 action: "add",
+                qty: 1
             };
 
             fetch(url, {

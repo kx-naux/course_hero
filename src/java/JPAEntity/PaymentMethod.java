@@ -130,6 +130,5 @@ public class PaymentMethod implements Serializable {
         return "JPAEntity.PaymentMethod[ paymentMethodId=" + paymentMethodId + " ]";
     }
 
-   
 
 }

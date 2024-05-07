@@ -167,10 +167,6 @@ public class CourseSubscriptions implements Serializable {
     }
 
 
-
-   
-
-
     public String getProgress() {
         return progress;
     }
@@ -179,10 +175,5 @@ public class CourseSubscriptions implements Serializable {
         this.progress = progress;
     }
 
-    
-
-
-
    
-
 }
