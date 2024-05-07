@@ -1,5 +1,7 @@
 package controller;
 
+import JPAEntity.AuthorContribution;
+import JPAEntity.Courses;
 import JPAEntity.Merchandise;
 import JPAEntity.Ratings;
 import entity.UserRatingStatistic;
@@ -45,14 +47,33 @@ public class MerchandisePage extends HttpServlet {
         request.setAttribute("stockStatus",stockStatus);
         
         
-        //get number of ratings and top latest 3 ratings
+        //get number of ratings
         Query getRateCountQuery = em.createNamedQuery("Ratings.findRatingCountByProdId").setParameter("productId",merchData.getProductId());
         long ratingCount = (long)getRateCountQuery.getSingleResult();
         request.setAttribute("ratingCount",ratingCount);
         
+        //pass rating data to jsp based on pagination
+        //get number of courses recorded
+        int reqPage = 1;
+        int maxDataInPage=2;
+        long lastPage = (ratingCount-1)/Long.parseLong(String.valueOf(maxDataInPage)) + 1;
+        if (request.getParameter("p") != null) {
+            reqPage = Integer.parseInt(request.getParameter("p"));
+            if(reqPage > lastPage){
+                goToCustomErrorPage(request,response,"Invalid URL");
+                }
+            }
+
+        int offset = (reqPage-1)*maxDataInPage;
+
         Query getRatings = em.createNamedQuery("Ratings.findRatingByProdIdSortDescPriKey").setParameter("productId",merchData.getProductId());
+        getRatings.setFirstResult(offset);
+        getRatings.setMaxResults(maxDataInPage);
         List<Ratings> ratingsList = getRatings.getResultList();
         request.setAttribute("ratingList", ratingsList);
+        //Query getRatings = em.createNamedQuery("Ratings.findRatingByProdIdSortDescPriKey").setParameter("productId",merchData.getProductId());
+        //List<Ratings> ratingsList = getRatings.getResultList();
+        //request.setAttribute("ratingList", ratingsList);
         
         //get rating statistic
         List<Long> starCountsAsc = new ArrayList<>();
@@ -65,9 +86,9 @@ public class MerchandisePage extends HttpServlet {
             getRatingStatsBasedOnStarQuery.getSingleResult();
             result = new Long((long)getRatingStatsBasedOnStarQuery.getSingleResult());
             starCountsAsc.add(result);
-        }
+        }  
         
-        UserRatingStatistic rateStats = new UserRatingStatistic(starCountsAsc.get(0),starCountsAsc.get(1),starCountsAsc.get(2),starCountsAsc.get(3),starCountsAsc.get(4));
+        UserRatingStatistic rateStats = new UserRatingStatistic(starCountsAsc.get(4),starCountsAsc.get(3),starCountsAsc.get(2),starCountsAsc.get(1),starCountsAsc.get(0));
         request.setAttribute("rateStats", rateStats);
         
         //get number of sold
@@ -88,5 +109,14 @@ public class MerchandisePage extends HttpServlet {
             
         // Forward the request to error page
         request.getRequestDispatcher("/WEB-INF/Client/NotFoundError.jsp").forward(request, response);
+    }
+    
+    private void goToCustomErrorPage(HttpServletRequest request, HttpServletResponse response, String errorMessage) throws ServletException, IOException{
+        HttpSession session = request.getSession();
+        session.setAttribute("errorMessage", errorMessage);
+        session.setAttribute("errorDetail", "Your search has ventured beyond the known universe.");    
+        
+        // Forward the request to  error page
+        request.getRequestDispatcher("/WEB-INF/Client/CustomError.jsp").forward(request, response);
     }
 }
