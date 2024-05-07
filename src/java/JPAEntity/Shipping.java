@@ -109,6 +109,10 @@ public class Shipping implements Serializable {
     public void setShippingId(String shippingId) {
         this.shippingId = shippingId;
     }
+    
+    public void setShippingId(long count) {
+        this.shippingId = String.format("SH%07d", count);
+    }
 
     public Date getShippingDate() {
         return shippingDate;
@@ -199,6 +203,8 @@ public class Shipping implements Serializable {
     public String toString() {
         return "JPAEntity.Shipping[ shippingId=" + shippingId + " ]";
     }   
+
+   
 
     
 

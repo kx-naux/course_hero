@@ -104,6 +104,10 @@ public class ShippingMethod implements Serializable {
     public void setShippingType(String shippingType) {
         this.shippingType = shippingType;
     }
+    
+    public void setShippingMethodId(long count) {
+        this.shippingMethodId = String.format("SM%07d", count);
+    }
 
     public String getDeliverySpeed() {
         return deliverySpeed;
@@ -168,6 +172,7 @@ public class ShippingMethod implements Serializable {
   
 
 
+    
     public String getDescription() {
         return description;
     }
@@ -176,6 +181,7 @@ public class ShippingMethod implements Serializable {
         this.description = description;
     }
 
+    
     
 
 }
