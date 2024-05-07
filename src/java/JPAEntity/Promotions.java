@@ -302,8 +302,6 @@ public class Promotions implements Serializable {
         this.amount = amount;
     }
 
-    
-
     public String getStatus() {
         return status;
     }
@@ -312,6 +310,5 @@ public class Promotions implements Serializable {
         this.status = status;
     }
 
-    
     
 }

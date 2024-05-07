@@ -240,7 +240,16 @@ public class Product implements Serializable {
     public void setRatingsList(List<Ratings> ratingsList) {
         this.ratingsList = ratingsList;
     }
-   
+    @XmlTransient
+    public List<Wishlist> getWishlistList() {
+        return wishlistList;
+    }
+    public void setWishlistList(List<Wishlist> wishlistList) {
+        this.wishlistList = wishlistList;
+    }
+
+
+
 
     public String getDescription() {
         return description;
@@ -249,8 +258,6 @@ public class Product implements Serializable {
     public void setDescription(String description) {
         this.description = description;
     }
-
-   
 
 
     public double getPrice() {
@@ -262,7 +269,6 @@ public class Product implements Serializable {
     }
 
 
-
     public double getDiscount() {
         return discount;
     }
@@ -271,22 +277,12 @@ public class Product implements Serializable {
         this.discount = discount;
     }
 
-
     public String getStatus() {
         return status;
     }
 
     public void setStatus(String status) {
         this.status = status;
-    }
-
-    @XmlTransient
-    public List<Wishlist> getWishlistList() {
-        return wishlistList;
-    }
-
-    public void setWishlistList(List<Wishlist> wishlistList) {
-        this.wishlistList = wishlistList;
     }
     
 }

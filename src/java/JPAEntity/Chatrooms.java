@@ -168,6 +168,8 @@ public class Chatrooms implements Serializable {
     
 
 
+ 
+
     public String getStatus() {
         return status;
     }
@@ -176,6 +178,7 @@ public class Chatrooms implements Serializable {
         this.status = status;
     } 
 
+   
 
 
     

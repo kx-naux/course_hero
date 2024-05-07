@@ -130,13 +130,13 @@ VALUES
     ('M00000004', 'PR0000007','MC0000003', 12.0, 6.5, 20.0, 0.9, 80),
     ('M00000005', 'PR0000008','MC0000001', 18.0, 10.0, 28.0, 1.1, 200);
 
-INSERT INTO COURSES (COURSE_ID, PRODUCT_ID, TOOLS_USED, COURSECAT_ID, LEARNING_OBJ,LENGTH_HOUR,COURSE_LEVEL,DATE_ADDED)
+INSERT INTO COURSES (COURSE_ID, PRODUCT_ID, SYLLABUS, COURSECAT_ID, LEARNING_OBJ,LENGTH_HOUR,COURSE_LEVEL,REQUIREMENTS,DETAILED_DESC,DATE_ADDED,VIDEO_DATA)
 VALUES 
-    ('CR0000001', 'PR0000003', 'IDE, Terminal', 'CC0000001', 'Learn programming fundamentals',9,'Beginner','2024-04-15 10:30:00'),
-    ('CR0000002', 'PR0000006', 'Text Editor, Web Browser', 'CC0000001', 'Introduction to HTML and CSS',9.5,'Intermediate','2024-04-15 10:30:00'),
-    ('CR0000003', 'PR0000004', 'Programming IDE, Database Management System', 'CC0000001', 'Database design and SQL queries',10,'Advance','2024-04-15 10:30:00'),
-    ('CR0000004', 'PR0000001', 'Word Processor, Spreadsheet', 'CC0000004', 'Introduction to Microsoft Office applications',3,'Diploma Holder','2024-04-15 10:30:00'),
-    ('CR0000005', 'PR0000005', 'Code Editor, Compiler', 'CC0000003', 'Advanced programming concepts',38,'Beginner','2024-04-15 10:30:00');
+    ('CR0000001', 'PR0000003', 'IDE, Terminal', 'CC0000001', 'Learn programming fundamentals',9,'Beginner','Diploma in CS\nDiploma in Accounting','Detail Description of IDE,Termianl Learning','2024-04-15 10:30:00',null),
+    ('CR0000002', 'PR0000006', 'Text Editor, Web Browser', 'CC0000001', 'Introduction to HTML and CSS',9.5,'Intermediate','Diploma in CS\nDiploma in Accounting','Detail Description of IDE,Termianl Learning','2024-04-15 10:30:00',null),
+    ('CR0000003', 'PR0000004', 'Programming IDE, Database Management System', 'CC0000001', 'Database design and SQL queries',10,'Advance','Diploma in CS\nDiploma in Accounting','Detail Description of IDE,Termianl Learning','2024-04-15 10:30:00',null),
+    ('CR0000004', 'PR0000001', 'Word Processor, Spreadsheet', 'CC0000004', 'Introduction to Microsoft Office applications',3,'Diploma Holder','Diploma in CS\nDiploma in Accounting','Detail Description of IDE,Termianl Learning','2024-04-15 10:30:00',null),
+    ('CR0000005', 'PR0000005', 'Code Editor, Compiler', 'CC0000003', 'Advanced programming concepts',38,'Beginner','Diploma in CS\nDiploma in Accounting','Detail Description of IDE,Termianl Learning','2024-04-15 10:30:00',null);
 
 INSERT INTO COURSE_SUBSCRIPTIONS (SUBSCRIPTIONS_ID, COURSE_ID, USER_ID, SUBSCRIBE_TIME, START_TIME, PROGRESS, FINISH_TIME)
 VALUES 
