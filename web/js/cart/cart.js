@@ -126,10 +126,42 @@ function selectItem() {
 }
 
 // control for qty
+document.querySelectorAll('.merch-qty').forEach(function (container) {
+    const input = container.querySelector('.merch-qty-input');
+    const subtractButton = container.querySelector('.substract');
+    const addButton = container.querySelector('.add');
+    const checkbox = container.closest('.course-item').querySelector('.cart-check');
 
-// increase qty
+    subtractButton.addEventListener('click', function () {
+        decrementValue(input);
+        if (checkbox.checked) {
+            selectItem();
+        }
+    });
 
-// udpate price
+    addButton.addEventListener('click', function () {
+        incrementValue(input);
+        if (checkbox.checked) {
+            selectItem();
+        }
+    });
+});
+
+function incrementValue(input) {
+    let value = parseInt(input.value, 10);
+    value = isNaN(value) ? 1 : value;
+    value = value < 99 ? value + 1 : 99;
+    input.value = value;
+}
+
+function decrementValue(input) {
+    let value = parseInt(input.value, 10);
+    value = isNaN(value) ? 1 : value;
+    value = value > 1 ? value - 1 : 1;
+    input.value = value;
+}
+
+// update qty
 
 // remove from cart
 
