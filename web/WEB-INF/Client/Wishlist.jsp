@@ -24,7 +24,7 @@
         <%@ include file="./Components/navbar.jsp" %>
 
         <%
-            int numberOfItemInWish = 2;
+            int numberOfItemInWish = 3;
         %>
 
         <section class="section wishlist-section">
@@ -49,6 +49,7 @@
                         <div class="course-detail flex-col">
                             <h3 class="course-title">The Ultimate Excel Programming Course</h3>
                             <p class="course-author">By Woo Yu Beng, Snijders Wang</p>
+                            <p class="course-category">Microsoft Excel</p>
                             <div class="course-review flex-row">
                                 <p class="rating-digit">4.2</p>
                                 <i class="ri-star-fill"></i>
@@ -63,7 +64,7 @@
                             <button type="button" class="remove-btn">Remove</button>
                             <button type="button" class="move-btn">Move to Cart</button>
                         </div>
-                        <div class="course-price flex-col">
+                        <div class="course-price-field flex-col">
                             <p class="course-price">RM 112.00</p>    
                             <p class="course-normal-price">RM 188.00</p>
                         </div>
@@ -76,6 +77,7 @@
                         <div class="course-detail flex-col">
                             <h3 class="course-title">The Ultimate Excel Programming Course</h3>
                             <p class="course-author">By Woo Yu Beng, Snijders Wang</p>
+                            <p class="course-category">Microsoft Excel</p>
                             <div class="course-review flex-row">
                                 <p class="rating-digit">4.2</p>
                                 <i class="ri-star-fill"></i>
@@ -90,7 +92,35 @@
                             <button type="button" class="remove-btn">Remove</button>
                             <button type="button" class="move-btn">Move to Cart</button>
                         </div>
-                        <div class="course-price flex-col">
+                        <div class="course-price-field flex-col">
+                            <p class="course-price">RM 112.00</p>    
+                            <p class="course-normal-price">RM 188.00</p>
+                        </div>
+                    </div>
+                    
+                    <div class="course-item flex-row" courseID="CR0000003">
+                        <div class="course-img flex-col">
+                            <img src="./img/course/beginner_excel.jpg" alt="" />
+                        </div>
+                        <div class="course-detail flex-col">
+                            <h3 class="course-title">The Ultimate Excel Programming Course</h3>
+                            <p class="course-author">By Woo Yu Beng, Snijders Wang</p>
+                            <p class="course-category">Microsoft Excel</p>
+                            <div class="course-review flex-row">
+                                <p class="rating-digit">4.2</p>
+                                <i class="ri-star-fill"></i>
+                                <p class="rating-number-field">(<span class="raing-number">123</span>)</p>
+                            </div>
+                            <div class="course-label flex-row">
+                                <p>27 Hours</p>
+                                <p>All level</p>
+                            </div>
+                        </div>
+                        <div class="course-button flex-col">
+                            <button type="button" class="remove-btn">Remove</button>
+                            <button type="button" class="move-btn">Move to Cart</button>
+                        </div>
+                        <div class="course-price-field flex-col">
                             <p class="course-price">RM 112.00</p>    
                             <p class="course-normal-price">RM 188.00</p>
                         </div>
