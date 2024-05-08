@@ -54,8 +54,6 @@ removeBtns.forEach(remove => {
 });
 
 function removeWishItem(data) {
-    updateWishItemNumber();
-
     let wishlistDiv = document.getElementById("wishlistDiv");
     let wishEmptyDiv = document.getElementById("wishlistEmpty");
     let wishlistLink = document.getElementById("wishlistLink");
@@ -79,6 +77,8 @@ function removeWishItem(data) {
         wishContent.style.display = "none";
         wishEmpty.style.display = "flex";
     }
+    
+    updateWishItemNumber();
 }
 
 // event listener for move to cart
@@ -200,4 +200,15 @@ function updateWishItemNumber() {
 
     itemNumber.innerText = count;
     noun.innerText = count > 1 ? "courses" : "course";
+
+    const wishContent = document.querySelector("div.wishlist-div");
+    const wishEmpty = document.querySelector("div.empty-div");
+        
+    if (count < 1) {
+        wishContent.style.display = "none";
+        wishEmpty.style.display = "flex";
+    } else {
+        wishContent.style.display = "flex";
+        wishEmpty.style.display = "none";
+    }
 }

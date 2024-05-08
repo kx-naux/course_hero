@@ -31,7 +31,6 @@
         <%@ include file="./Components/navbar.jsp" %>
 
         <section class="section wishlist-section">
-            <%if (totalWishlistItems != 0) {%>
             <div class="wishlist-div flex-col" id="wishContent">
 
                 <!--title-->
@@ -98,7 +97,6 @@
                 </ul>
 
             </div>
-            <%} else {%>
 
             <!--message show to user when wishlist is empty-->
             <div class="empty-div flex-col">
@@ -107,7 +105,6 @@
                 <p>It seems like your wishlist is empty at the moment. Why not start adding some items you're interested in?</p>
                 <a href="<%= webpath.getPageUrl("products")%>">Explore more courses</a>
             </div>
-            <%}%>
         </section>
 
         <script src="./js/wishlist/wishlist.js"></script>
