@@ -173,6 +173,7 @@ public class ShippingMethod implements Serializable {
 
 
 
+
     public String getDescription() {
         return description;
     }
@@ -181,8 +182,6 @@ public class ShippingMethod implements Serializable {
         this.description = description;
     }
 
-   
-    
     
 
 }

@@ -158,8 +158,6 @@ public class Messages implements Serializable {
         return "JPAEntity.Messages[ messageId=" + messageId + " ]";
     }
 
-
-
     public String getContent() {
         return content;
     }

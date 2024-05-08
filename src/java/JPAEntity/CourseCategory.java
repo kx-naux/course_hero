@@ -46,6 +46,8 @@ public class CourseCategory implements Serializable {
     @Size(max = 100)
     @Column(name = "IMG_URL")
     private String imgUrl;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "coursecatId")
+    private List<Keyword> keywordList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "courseCategory")
     private List<PreferredCourse> preferredCourseList;
 
@@ -162,14 +164,22 @@ public class CourseCategory implements Serializable {
     
 
 
- 
-
     public String getDescription() {
         return description;
     }
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+
+    @XmlTransient
+    public List<Keyword> getKeywordList() {
+        return keywordList;
+    }
+
+    public void setKeywordList(List<Keyword> keywordList) {
+        this.keywordList = keywordList;
     }
 
   
