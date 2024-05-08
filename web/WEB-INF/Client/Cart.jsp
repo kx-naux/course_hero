@@ -166,7 +166,7 @@
                                         <p class="rating-number-field">(<span class="raing-number">123</span>)</p>
                                     </div>
                                 </div>
-                                <div class="merch-qty flex-row">
+                                <div class="merch-qty-input-div flex-row">
                                     <button type="button" class="qty-btn substract"><i class="ri-subtract-fill"></i></button>
                                     <input type="text" class="merch-qty-input" value="1" max="99" />
                                     <button type="button" class="qty-btn add"><i class="ri-add-fill"></i></button>

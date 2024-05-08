@@ -110,7 +110,7 @@
     text-decoration: underline;
 }
 
-.course-item .merch-qty {
+.course-item .merch-qty-input-div  {
     min-width: 100px;
     max-width: 100px;
     align-items:  center;
@@ -119,7 +119,7 @@
     height: 100%;
 }
 
-.course-item .merch-qty input{
+.course-item .merch-qty-input-div  input{
     min-width: 40px;
     max-width: 40px;
     height: 100%;
@@ -128,7 +128,7 @@
     border-bottom: 1px solid var(--color-light-grey-3);
 }
 
-.course-item .merch-qty .qty-btn{
+.course-item .merch-qty-input-div  .qty-btn{
     border: 1px solid var(--color-light-grey-3);
     background-color: var(--color-white);
     padding: 4px 8px;
@@ -136,7 +136,7 @@
     cursor: pointer;
 }
 
-.course-item .merch-qty .qty-btn:hover{
+.course-item .merch-qty-input-div  .qty-btn:hover{
     background-color: var(--color-light-grey-2);
 }
 

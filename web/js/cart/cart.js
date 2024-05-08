@@ -87,7 +87,10 @@ function selectItem() {
     selectedMerchs.forEach(item => {
 
         // get qty
-        let qty = parseInt(item.querySelector("input.merch-qty-input").value);
+        let qty = 0;
+        if (!isNaN(parseInt(item.querySelector("input.merch-qty-input").value))) {
+            qty = parseInt(item.querySelector("input.merch-qty-input").value);
+        }
 
         // Update total price
         price = price + (parseFloat(item.querySelector("span.span-price").innerText) * qty);
@@ -126,7 +129,7 @@ function selectItem() {
 }
 
 // control for qty
-document.querySelectorAll('.merch-qty').forEach(function (container) {
+document.querySelectorAll('.merch-qty-input-div ').forEach(function (container) {
     const input = container.querySelector('.merch-qty-input');
     const subtractButton = container.querySelector('.substract');
     const addButton = container.querySelector('.add');
@@ -137,6 +140,7 @@ document.querySelectorAll('.merch-qty').forEach(function (container) {
         if (checkbox.checked) {
             selectItem();
         }
+        updateQty(container);
     });
 
     addButton.addEventListener('click', function () {
@@ -144,6 +148,36 @@ document.querySelectorAll('.merch-qty').forEach(function (container) {
         if (checkbox.checked) {
             selectItem();
         }
+        updateQty(container);
+    });
+
+    input.addEventListener('input', function () {
+        let value = input.value.trim(); // Trim leading and trailing whitespaces
+        let max = parseInt(input.getAttribute('max')) || 99; // Default max value to 99 if not specified
+
+        // Ensure the value is within the range of 1 to max or is an empty string
+        if (value === "") {
+            // Allow empty input
+        } else {
+            value = parseInt(value);
+            if (isNaN(value) || value < 1) {
+                input.value = 1;
+            } else if (value > max) {
+                input.value = max;
+            }
+        }
+
+        if (checkbox.checked) {
+            selectItem();
+        }
+    });
+
+    input.addEventListener('blur', () => {
+        if (input.value.trim() === "") {
+            input.value = 1;
+        }
+        selectItem();
+        updateQty(container);
     });
 });
 
@@ -162,6 +196,11 @@ function decrementValue(input) {
 }
 
 // update qty
+function updateQty(container) {
+    let cartId = container.closest('.course-item').getAttribute("courseID");
+    let qty = parseInt(container.querySelector('.merch-qty-input').value);
+
+}
 
 // remove from cart
 
