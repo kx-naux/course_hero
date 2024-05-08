@@ -185,6 +185,4 @@ public class Merchandise implements Serializable {
     public String toString() {
         return "JPAEntity.Merchandise[ merchId=" + merchId + " ]";
     }
-
-  
 }
