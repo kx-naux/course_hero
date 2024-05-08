@@ -299,6 +299,9 @@
                         </div>
 
                     </div>
+                    
+                    <!--payment input here-->
+                    
 
                     <div class="flex-col confirma-store-div">
                         <label for="storingPayment"><input type="checkbox" id="storingPayment" name="storingPayment" value="storingPayment">Store this payment detail to use at next time</label>

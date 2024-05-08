@@ -29,7 +29,7 @@
 .title-div  .cancel-btn {
     border: 1px solid var(--color-text-light-2);
     font-weight: 600;
-    font-size: var(--font-size-m);
+    font-size: var(--font-size-s);
     color: var(--color-text-light-1);
     padding: 10px 30px;
     height: 100%;
