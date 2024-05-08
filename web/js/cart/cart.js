@@ -259,11 +259,11 @@ function removeFromCart(btn) {
     }).then(responseData => {
         if (responseData.status === "success") {
             toast_msg(TOAST_SUCCESS, "Success", "Remove from cart");
-            
+
             let removeItem = btn.closest('.course-item');
             removeItem.remove();
-            
-            selectItem()
+            updateItemNumber();
+            selectItem();
         } else {
             toast_msg(TOAST_ERROR, "Server Error", `Fail to remove from cart`);
         }
@@ -283,4 +283,12 @@ document.querySelectorAll("div.course-button .move-btn").forEach(btn => {
 
 function moveToWish(btn) {
 
+}
+
+function updateItemNumber() {
+    let courseField = document.getElementById("cartCourseNumber");
+    courseField.innerText = document.querySelectorAll("ul#cartCourseList div.course-item").length;
+
+    let merchField = document.getElementById("cartMerchNumber");
+    merchField.innerText = document.querySelectorAll("ul#cartMerchList div.course-item").length;;
 }
