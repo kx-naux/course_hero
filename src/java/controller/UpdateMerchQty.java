@@ -50,7 +50,7 @@ public class UpdateMerchQty extends HttpServlet {
 
         // Create the response JSON object
         JsonObject responseObject = new JsonObject();
-        responseObject.addProperty("staus", "success");
+        responseObject.addProperty("status", "success");
 
         // Convert JSON object to string
         String responseJsonString = responseObject.toString();

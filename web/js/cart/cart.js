@@ -204,7 +204,7 @@ function updateQty(container) {
         cartID: cartId,
         qty: qty
     };
-    
+
     fetch(url, {
         method: 'POST',
         headers: {
@@ -218,18 +218,69 @@ function updateQty(container) {
         return response.json();
     }).then(responseData => {
         if (responseData.status === "success") {
-               // toast_msg(TOAST_SUCCESS, "Success", "Update quantity");
+            // toast_msg(TOAST_SUCCESS, "Success", "Update quantity");
         } else {
             toast_msg(TOAST_ERROR, "Server Error", `Fail to update quantity`);
         }
     }).catch(error => {
         console.error('Fetch error:', error);
     });
-    
+
     console.log("update merch qty: " + cartId + " " + qty);
 }
 
 // remove from cart
+document.querySelectorAll("div.course-button .remove-btn").forEach(btn => {
+    btn.addEventListener('click', () => {
+        removeFromCart(btn);
+    });
+});
+
+function removeFromCart(btn) {
+    const url = '/course_hero/update-cart';
+    const courseID = btn.closest('.course-item').getAttribute('courseID');
+    const data = {
+        productID: courseID,
+        action: "remove",
+        qty: 1
+    };
+
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    }).then(response => {
+        if (!response.ok) {
+            toast_msg(TOAST_ERROR, "Network Issue", `Fail to remove from cart`);
+        }
+        return response.json();
+    }).then(responseData => {
+        if (responseData.status === "success") {
+            toast_msg(TOAST_SUCCESS, "Success", "Remove from cart");
+            
+            let removeItem = btn.closest('.course-item');
+            removeItem.remove();
+            
+            selectItem()
+        } else {
+            toast_msg(TOAST_ERROR, "Server Error", `Fail to remove from cart`);
+        }
+    }).catch(error => {
+        console.error('Fetch error:', error);
+    });
+
+    console.log("remove from cart: " + courseID);
+}
 
 // move to wishlist
+document.querySelectorAll("div.course-button .move-btn").forEach(btn => {
+    btn.addEventListener('click', () => {
+        moveToWish(btn);
+    });
+});
 
+function moveToWish(btn) {
+
+}
