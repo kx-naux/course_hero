@@ -32,11 +32,8 @@ VALUES
 
 INSERT INTO PRODUCT_CATEGORY (PRODCAT_ID, CATEGORY_NAME, DESCRIPTION,IMG_URL)
 VALUES 
-    ('PC0000001', 'Books', 'Category for books.',null),
-    ('PC0000002', 'Package', 'Category for packages.',null),
-    ('PC0000003', 'Classes', 'Category for classes.',''),
-    ('PC0000004', 'E-Books', 'Category for e-books.',''),
-    ('PC0000005', 'Online Products', 'Category for online products','');
+    ('PC0000001', 'Courses', 'Category for books.',null),
+    ('PC0000002', 'Merchandise', 'Category for merchandise.',null);
 
 INSERT INTO COURSE_CATEGORY (COURSECAT_ID, CATEGORY_NAME, DESCRIPTION,IMG_URL)
 VALUES 
@@ -115,27 +112,29 @@ INSERT INTO PRODUCT (PRODUCT_ID, PRODCAT_ID, DESCRIPTION, PROD_NAME, PRICE, RATE
 VALUES 
     ('PR0000001', 'PC0000001', 'Learn Algebra Now !!! fillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfill', 'Algebra Part 1', 1500.0, 5, 4.5, 0.1, 'images/algebraP1.jpg','Active'),
     ('PR0000002', 'PC0000001', 'Algebra Rocks Hoodie !!! fillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfill', 'Algebra Rocks Hoodie', 800.0, 4, 4.2, 0.05, 'images/algebraHoodie.jpg','Active'),
-    ('PR0000003', 'PC0000002', 'JavaScript!!! fillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfill', 'JavaScript', 100.0, 3, 4.0, 0.0, 'images/Javascript.jpg','Active'),
-    ('PR0000004', 'PC0000002', 'Learn C+ Now !!! fillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfill', 'C++', 50.0, 2, 3.8, 0.0, 'images/c++.jpg','Active'),
-    ('PR0000005', 'PC0000003', 'I Love Bio Tshirt !!! fillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfill', 'I Love Bio Tshirt', 30.0, 1, 4.1, 0.0, 'images/bioShirt.jpg','Active'),
-    ('PR0000006', 'PC0000003', 'I Love Bio Cup !!! fillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfill', 'I Love Bio Cup', 25.0, 1, 2.0, 2, 'image/bioCup.jpg','Active'),
+    ('PR0000003', 'PC0000001', 'JavaScript!!! fillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfill', 'JavaScript', 100.0, 3, 4.0, 0.0, 'images/Javascript.jpg','Active'),
+    ('PR0000004', 'PC0000001', 'Learn C+ Now !!! fillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfill', 'C++', 50.0, 2, 3.8, 0.0, 'images/c++.jpg','Active'),
+    ('PR0000005', 'PC0000001', 'I Love Bio Tshirt !!! fillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfill', 'I Love Bio Tshirt', 30.0, 1, 4.1, 0.0, 'images/bioShirt.jpg','Active'),
+    ('PR0000006', 'PC0000002', 'I Love Bio Cup !!! fillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfill', 'I Love Bio Cup', 25.0, 1, 2.0, 2, 'image/bioCup.jpg','Active'),
     ('PR0000007', 'PC0000002', 'Java Hoodie !!! fillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfill', 'Java Hoodie', 99.0, 2, 4.0, 1.5, 'image/javaHoodie.jpg','Active'),
-    ('PR0000008', 'PC0000005', 'Buy Physics Cap Now !!! fillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfill', 'Physics Cap', 60.0, 3, 3.0, 0.0, 'image/physicsCap.jpg','Active');
+    ('PR0000008', 'PC0000002', 'Buy Physics Cap Now !!! fillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfill', 'Physics Cap', 60.0, 3, 3.0, 0.0, 'image/physicsCap.jpg','Active'),
+    ('PR0000009', 'PC0000002', 'Buy Physics Shirts Now fillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfill', 'Physics Shirt', 60.0, 3, 3.0, 0.0, 'image/physicsCap.jpg','Active'),
+    ('PR0000010', 'PC0000002', 'Buy Physics laptop cover Now !!! fillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfillfill', 'Physics Laptop', 60.0, 3, 3.0, 0.0, 'image/physicsCap.jpg','Active');
 
 INSERT INTO MERCHANDISE (MERCH_ID, PRODUCT_ID, MERCHCAT_ID,DIMENSION_H_CM, DIMENSION_W_CM, DIMENSION_L_CM, WEIGHT_KG, STOCK_BALANCE)
 VALUES 
-    ('M00000001', 'PR0000001','MC0000001', 10.5, 5.2, 15.3, 0.75, 100),
-    ('M00000002', 'PR0000003','MC0000001', 20.0, 12.5, 30.0, 1.25, 150),
-    ('M00000003', 'PR0000006','MC0000002', 15.0, 8.0, 25.0, 1.0, 120),
-    ('M00000004', 'PR0000007','MC0000003', 12.0, 6.5, 20.0, 0.9, 80),
-    ('M00000005', 'PR0000008','MC0000001', 18.0, 10.0, 28.0, 1.1, 200);
+    ('M00000001', 'PR0000006','MC0000001', 10.5, 5.2, 15.3, 0.75, 100),
+    ('M00000002', 'PR0000007','MC0000001', 20.0, 12.5, 30.0, 1.25, 150),
+    ('M00000003', 'PR0000008','MC0000002', 15.0, 8.0, 25.0, 1.0, 120),
+    ('M00000004', 'PR0000009','MC0000003', 12.0, 6.5, 20.0, 0.9, 80),
+    ('M00000005', 'PR0000010','MC0000001', 18.0, 10.0, 28.0, 1.1, 200);
 
 INSERT INTO COURSES (COURSE_ID, PRODUCT_ID, SYLLABUS, COURSECAT_ID, LEARNING_OBJ,LENGTH_HOUR,COURSE_LEVEL,REQUIREMENTS,DETAILED_DESC,DATE_ADDED,VIDEO_DATA)
 VALUES 
-    ('CR0000001', 'PR0000003', 'IDE, Terminal', 'CC0000001', 'Learn programming fundamentals',9,'Beginner','Diploma in CS\nDiploma in Accounting','Detail Description of IDE,Termianl Learning','2024-04-15 10:30:00',null),
-    ('CR0000002', 'PR0000006', 'Text Editor, Web Browser', 'CC0000001', 'Introduction to HTML and CSS',9.5,'Intermediate','Diploma in CS\nDiploma in Accounting','Detail Description of IDE,Termianl Learning','2024-04-15 10:30:00',null),
-    ('CR0000003', 'PR0000004', 'Programming IDE, Database Management System', 'CC0000001', 'Database design and SQL queries',10,'Advance','Diploma in CS\nDiploma in Accounting','Detail Description of IDE,Termianl Learning','2024-04-15 10:30:00',null),
-    ('CR0000004', 'PR0000001', 'Word Processor, Spreadsheet', 'CC0000004', 'Introduction to Microsoft Office applications',3,'Diploma Holder','Diploma in CS\nDiploma in Accounting','Detail Description of IDE,Termianl Learning','2024-04-15 10:30:00',null),
+    ('CR0000001', 'PR0000001', 'IDE, Terminal', 'CC0000001', 'Learn programming fundamentals',9,'Beginner','Diploma in CS\nDiploma in Accounting','Detail Description of IDE,Termianl Learning','2024-04-15 10:30:00',null),
+    ('CR0000002', 'PR0000002', 'Text Editor, Web Browser', 'CC0000001', 'Introduction to HTML and CSS',9.5,'Intermediate','Diploma in CS\nDiploma in Accounting','Detail Description of IDE,Termianl Learning','2024-04-15 10:30:00',null),
+    ('CR0000003', 'PR0000003', 'Programming IDE, Database Management System', 'CC0000001', 'Database design and SQL queries',10,'Advance','Diploma in CS\nDiploma in Accounting','Detail Description of IDE,Termianl Learning','2024-04-15 10:30:00',null),
+    ('CR0000004', 'PR0000004', 'Word Processor, Spreadsheet', 'CC0000004', 'Introduction to Microsoft Office applications',3,'Diploma Holder','Diploma in CS\nDiploma in Accounting','Detail Description of IDE,Termianl Learning','2024-04-15 10:30:00',null),
     ('CR0000005', 'PR0000005', 'Code Editor, Compiler', 'CC0000003', 'Advanced programming concepts',38,'Beginner','Diploma in CS\nDiploma in Accounting','Detail Description of IDE,Termianl Learning','2024-04-15 10:30:00',null);
 
 INSERT INTO COURSE_SUBSCRIPTIONS (SUBSCRIPTIONS_ID, COURSE_ID, USER_ID, SUBSCRIBE_TIME, START_TIME, PROGRESS, FINISH_TIME)
