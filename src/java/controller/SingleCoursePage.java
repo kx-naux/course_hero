@@ -120,6 +120,17 @@ public class SingleCoursePage extends HttpServlet {
             }
             //check is inWhishlist
             request.setAttribute("inWishlist",false);
+            
+            //chek is isReviewed
+            Query qryReview = em.createNamedQuery("Ratings.findByProdIdAndUser");
+            qryReview.setParameter("productId", courseRetrieved.getProductId());
+            qryReview.setParameter("userId", userData);
+            List<Ratings> ratings = qryReview.getResultList();
+            if(ratings.isEmpty()){
+                request.setAttribute("isReviewed",false);
+            }else{
+                request.setAttribute("isReviewed",true);
+            }
         }
         
         
@@ -138,7 +149,6 @@ public class SingleCoursePage extends HttpServlet {
         
         UserRatingStatistic rateStats = new UserRatingStatistic(starCountsAsc.get(4),starCountsAsc.get(3),starCountsAsc.get(2),starCountsAsc.get(1),starCountsAsc.get(0));
         request.setAttribute("rateStats", rateStats);
-        request.setAttribute("isOwn",true);
         // Forward the request to Course.jsp
         request.getRequestDispatcher("/WEB-INF/Client/Course.jsp").forward(request, response);
     }
