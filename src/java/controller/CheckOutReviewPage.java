@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.transaction.UserTransaction;
 
-public class CheckOutPage extends HttpServlet {
+public class CheckOutReviewPage extends HttpServlet {
 
     @PersistenceContext
     EntityManager em;
@@ -32,7 +32,7 @@ public class CheckOutPage extends HttpServlet {
         }
 
         // Forward the request to Merchandises.jsp
-        request.getRequestDispatcher("/WEB-INF/Client/CheckOut.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/Client/CheckOutReview.jsp").forward(request, response);
     }
 
 }

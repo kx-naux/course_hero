@@ -169,8 +169,12 @@
         <servlet-class>controller.CheckOutPage</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>Payment</servlet-name>
-        <servlet-class>controller.Payment</servlet-class>
+        <servlet-name>PaymentPage</servlet-name>
+        <servlet-class>controller.PaymentPage</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CheckOutReviewPage</servlet-name>
+        <servlet-class>controller.CheckOutReviewPage</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
@@ -305,8 +309,12 @@
         <url-pattern>/check-out</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>Payment</servlet-name>
+        <servlet-name>PaymentPage</servlet-name>
         <url-pattern>/payment</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CheckOutReviewPage</servlet-name>
+        <url-pattern>/check-out-review</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
