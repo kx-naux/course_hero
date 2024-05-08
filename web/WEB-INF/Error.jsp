@@ -5,7 +5,7 @@
 <html lang="en">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="icon" type="image/ico" href="./ico/Logo.ico">
+        <link rel="icon" type="image/ico" href=${companyLogo}>
         <link type="text/css" href="./css/style.css" rel="stylesheet" >
         <link type="text/css" href="./css/error.css" rel="stylesheet" >
         <title>Error ${param.code}</title>

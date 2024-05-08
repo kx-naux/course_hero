@@ -189,11 +189,12 @@
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    margin-top: 10px;
+    margin: 10px 0;
 }
 
 .course-div-left .course-syllabus-list .syllabus-item-right  {
     gap: 5px;
+    justify-content: center;
 }
 
 .course-div-left .course-syllabus-list .syllabus-item-right h1 {
@@ -275,6 +276,15 @@
     font-size: var(--font-size-s);
     color: var(--color-text-light-2);
     text-align: center;
+}
+
+.course-div-left .course-rating-div.inactive > div, 
+.course-div-left .course-rating-div.inactive > button{
+    display: none;
+}
+
+.course-div-left .course-rating-div.inactive > div:has(form#addReviewForm){
+    display: flex;
 }
 
 .course-div-left .course-rating-div .course-overall-rating {

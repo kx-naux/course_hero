@@ -3,7 +3,7 @@
 <nav class="nav-bar">
     <!-- Logo -->
     <div class="nav-logo-div">
-        <a href="<%= webpath.getPageUrl("home")%>"><img class="nav-logo" src="./img/Logo.png" alt="Course Hero" /></a>
+        <a href="<%= webpath.getPageUrl("home")%>"><img class="nav-logo" src=${companyLogo} alt=${companyName} /></a>
     </div>
     <!--Nav options-->
     <div class="nav-option-div">
@@ -156,7 +156,7 @@
                         <!--cart list with items-->
                         <div class="cart-list-item flex-col <%= isCartEmpty ? "" : "active"%>" id="cartlistDiv">
 
-                            <div class="course-item flex-row" productid="CR0000003">
+                            <div class="course-item flex-row" productid="CR0000001">
                                 <div class="course-item-img">
                                     <img src="./img/course/beginner_excel.jpg" alt="" draggable="false" />
                                 </div>

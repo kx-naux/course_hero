@@ -25,8 +25,8 @@
 <html lang="en">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Course Hero | Course</title>
-        <link rel="icon" type="image/ico" href="./ico/Logo.ico">
+        <title>${companyName} | Course</title>
+        <link rel="icon" type="image/ico" href=${companyIcon}>
         <link type="text/css" href="./css/style.css" rel="stylesheet" >
         <link type="text/css" href="./css/course.css" rel="stylesheet" >
         <!--<link type="text/css" href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">-->
@@ -136,9 +136,9 @@
                                <div class="syllabus-item-left flex-col">
                                     <div class="section-number"><%= count++ %></div>
                                 </div>
-                                <div class="syllabus-item-right">
-                                    <!--<h1 class="section-title">Introduction to Python</h1>-->
-                                    <p class="section-desc"><%= paragraph %></p>
+                                <div class="syllabus-item-right flex-col">
+                                    <h1 class="section-title"><%= paragraph %></h1>
+                                    <!--<p class="section-desc">Introduction to Python</p>-->
                                 </div>
                             </div>
                             <%}%>
@@ -212,7 +212,7 @@
                         if(ratingCount == 0){ 
                         showRating = " inactive";%>
                     <%}%>
-                    <div class="course-rating-div flex-col<%= showRating %>" id="rating-div">
+                    <div class="course-rating-div flex-col <%= showRating %>" id="rating-div">
                         <div class="course-overall-rating flex-row">
                             <p class="course-overall-rate"><i class="ri-star-fill"></i> ${courseData.productId.avgRating} course rating</p>
                             <p class="course-overall-rate"><%= ratingCount%> ratings</p>
@@ -266,6 +266,8 @@
                         </div>
 
                         <button class="all-review-btn">Show all reviews</button>
+                        
+                        <!--add review form-->
                         <div class="flex-col add-review-div" id="addReviewDiv">
                             <form id="addReviewForm" class="flex-col" method="post" action="submit-course-review">
                                 <div class="add-review-title">

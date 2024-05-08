@@ -15,8 +15,8 @@
 <html lang="en">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Course Hero | Cart</title>
-        <link rel="icon" type="image/ico" href="./ico/Logo.ico">
+        <title>${companyName} | Cart</title>
+        <link rel="icon" type="image/ico" href=${companyIcon}>
         <link type="text/css" href="./css/style.css" rel="stylesheet" >
         <link type="text/css" href="./css/cart.css" rel="stylesheet" >
         <jsp:useBean id="webpath" class="module.WebPath" scope="application" />
@@ -47,11 +47,12 @@
 
                         <div class="number-item-div flex-row"  id="cartCourseTitle"> 
                             <input type="checkbox" class="all-check-box" id="courseAllCheckbox" />
-                            <p class="number-item">Course in cart (<span id="cartCourseNumber"><%= numberOfItemInCartCourse%></span>)</p>
+                            <p class="number-item"><span id="cartCourseNumberNoun">Course</span> in cart (<span id="cartCourseNumber"><%= numberOfItemInCartCourse%></span>)</p>
                         </div>
                         
                         <!--course in cart-->
                         <ul class="course-list flex-col" id="cartCourseList">
+
                             <% for(Courses course:courseList){ %>
                                 <%
                                     String catId = "";
@@ -62,6 +63,7 @@
                                     }
                                 %>
                             <div class="course-item flex-row" courseID="<%= course.getCourseId() %>">
+
                                 <div class="course-check flex-col">
                                     <input type="checkbox" class="cart-check" id="cartItemId" name="cartItemId" value="<%= catId %>" />
                                 </div>
@@ -102,7 +104,7 @@
 
                         <div class="number-item-div flex-row" id="cartMerchTitle"> 
                             <input type="checkbox" class="all-check-box" id="merchAllCheckbox" />
-                            <p class="number-item">Merchandise in cart (<span id="cartMerchNumber"><%= numberOfItemInCartMerch%></span>)</p>
+                            <p class="number-item"><span id="cartMerchNumberNoun">Merchandise</span> in cart (<span id="cartMerchNumber"><%= numberOfItemInCartMerch%></span>)</p>
                         </div>
 
                         <ul class="course-list flex-col" id="cartMerchList">

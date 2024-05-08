@@ -9,8 +9,8 @@
 <html lang="en">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Course Hero | Wishlist</title>
-        <link rel="icon" type="image/ico" href="./ico/Logo.ico">
+        <title>${companyName} | Wishlist</title>
+        <link rel="icon" type="image/ico" href=${companyIcon}>
         <link type="text/css" href="./css/style.css" rel="stylesheet" >
         <link type="text/css" href="./css/wishlist.css" rel="stylesheet" >
         <jsp:useBean id="webpath" class="module.WebPath" scope="application" />
@@ -31,7 +31,6 @@
         <%@ include file="./Components/navbar.jsp" %>
 
         <section class="section wishlist-section">
-            <%if (totalWishlistItems != 0) {%>
             <div class="wishlist-div flex-col" id="wishContent">
 
                 <!--title-->
@@ -40,7 +39,7 @@
                 </div>
 
                 <div class="flex-col"> 
-                    <p class="number-item"><span id="wishNumber"><%= totalWishlistItems%></span> <%= (totalWishlistItems > 1) ? "courses" : "course"%> in wishlist</p>
+                    <p class="number-item"><span id="wishNumber"><%= totalWishlistItems%></span> <span id="wishNumberNoun"><%= (totalWishlistItems > 1) ? "courses" : "course"%></span> in wishlist</p>
                 </div>
 
                 <!--course in wishlist-->
@@ -98,7 +97,6 @@
                 </ul>
 
             </div>
-            <%} else {%>
 
             <!--message show to user when wishlist is empty-->
             <div class="empty-div flex-col">
@@ -107,7 +105,6 @@
                 <p>It seems like your wishlist is empty at the moment. Why not start adding some items you're interested in?</p>
                 <a href="<%= webpath.getPageUrl("products")%>">Explore more courses</a>
             </div>
-            <%}%>
         </section>
 
         <script src="./js/wishlist/wishlist.js"></script>
