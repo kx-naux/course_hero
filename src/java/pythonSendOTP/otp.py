@@ -26,7 +26,7 @@ class OTP:
             <a href="" style="font-size:1.4em;color: #273b91;text-decoration:none;font-weight:600">Course Hero</a>
         </div>
         <p style="font-size:1.1em">Hi,</p>
-        <p>Use the following OTP to complete your Sign Up procedures. OTP is valid
+        <p>Use the following OTP to complete your related Procedures. OTP is valid
             for 5 minutes</p>
         <h2
             style="background: #273b91;margin: 0 auto;width: max-content;padding: 0 10px;color: #fff;border-radius: 4px;">
