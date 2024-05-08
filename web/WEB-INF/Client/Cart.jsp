@@ -1,6 +1,16 @@
+<%@page import="JPAEntity.AuthorContribution"%>
+<%@page import="JPAEntity.CartItems"%>
+<%@page import="JPAEntity.Merchandise"%>
+<%@page import="JPAEntity.Courses"%>
+<%@page import="java.util.List"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
+<jsp:useBean id="userData" class="JPAEntity.Users" scope="session" />
+<% List<Courses> courseList = (List<Courses>) request.getAttribute("courseList"); %>
+<% List<Merchandise> merchandiseList = (List<Merchandise>) request.getAttribute("merchandiseList"); %>
+<% List<CartItems> cartItems = (List<CartItems>)request.getAttribute("cartItems"); %>
+<% int numberOfItemInCartCourse = ((Integer) request.getAttribute("numberOfCourse")).intValue();%>
+<% int numberOfItemInCartMerch = ((Integer) request.getAttribute("numberOfMerch")).intValue();%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -10,7 +20,7 @@
         <link type="text/css" href="./css/style.css" rel="stylesheet" >
         <link type="text/css" href="./css/cart.css" rel="stylesheet" >
         <jsp:useBean id="webpath" class="module.WebPath" scope="application" />
-        <jsp:useBean id="userData" class="JPAEntity.Users" scope="session" />
+
     </head>
     <body>
         <!--Toast message-->
@@ -24,11 +34,6 @@
 
         <!--put error msg here to show the error msg-->
         <span id="errorMsg" hidden></span>
-
-        <%
-            int numberOfItemInCartCourse = 3;
-            int numberOfItemInCartMerch = 1;
-        %>
 
         <form>
             <section class="section cart-section">
@@ -44,29 +49,45 @@
                             <input type="checkbox" class="all-check-box" id="courseAllCheckbox" />
                             <p class="number-item"><span id="cartCourseNumberNoun">Course</span> in cart (<span id="cartCourseNumber"><%= numberOfItemInCartCourse%></span>)</p>
                         </div>
-
+                        
                         <!--course in cart-->
                         <ul class="course-list flex-col" id="cartCourseList">
 
-                            <div class="course-item flex-row" courseID="CR0000001">
+                            <% for(Courses course:courseList){ %>
+                                <%
+                                    String catId = "";
+                                    for(CartItems item: cartItems){
+                                        if(item.getProductId().getProdName().equals(course.getProductId().getProductId())){
+                                            catId = item.getCartitemId();
+                                        }
+                                    }
+                                %>
+                            <div class="course-item flex-row" courseID="<%= course.getCourseId() %>">
+
                                 <div class="course-check flex-col">
-                                    <input type="checkbox" class="cart-check" id="cartItemId" name="cartItemId" value="CR0000001" />
+                                    <input type="checkbox" class="cart-check" id="cartItemId" name="cartItemId" value="<%= catId %>" />
                                 </div>
                                 <div class="course-img flex-col">
-                                    <img src="./img/course/beginner_excel.jpg" alt="" />
+                                    <img src="<%= course.getProductId().getImagePath() %>" onerror="this.src='./img/course/beginner_excel.jpg';" alt="" />
                                 </div>
                                 <div class="course-detail flex-col">
-                                    <h3 class="course-title">The Ultimate Excel Programming Course</h3>
-                                    <p class="course-author">By Woo Yu Beng, Snijders Wang</p>
-                                    <p class="course-category">Microsoft Excel</p>
-                                    <div class="course-review flex-row">
+                                    <h3 class="course-title"><%= course.getProductId().getProdName() %></h3>
+                                    <% String authorsStr = ""; %>
+                                        <% for (AuthorContribution authContri : course.getAuthorContributionList()) {
+                                                authorsStr = authContri.getAuthorId().getAuthorName() + ", ";
+                                            }%>
+                                        <% authorsStr = authorsStr.substring(0, authorsStr.length() - 2);%>
+                                    <p class="course-author"><%= authorsStr%></p>
+                                    <p class="course-category"><%= course.getCoursecatId().getCategoryName() %></p>
+                                    <!--<div class="course-review flex-row">
                                         <p class="rating-digit">4.2</p>
                                         <i class="ri-star-fill"></i>
                                         <p class="rating-number-field">(<span class="raing-number">123</span>)</p>
-                                    </div>
+                                    </div>-->
+                                    
                                     <div class="course-label flex-row">
-                                        <p>27 Hours</p>
-                                        <p>All level</p>
+                                        <p><%= course.getLengthHour()%> Hour(s)</p>
+                                        <p><%= course.getCourseLevel()%></p>
                                     </div>
                                 </div>
                                 <div class="course-button flex-col">
@@ -74,73 +95,11 @@
                                     <button type="button" class="move-btn">Move to Wish</button>
                                 </div>
                                 <div class="course-price-field flex-col">
-                                    <p class="course-price">RM <span class="span-price">112.00</span></p>    
-                                    <p class="course-normal-price">RM <span class="span-normal-price">188.00</span></p>
+                                    <p class="course-price">RM <span class="span-price"><%= course.getProductId().getPrice() - course.getProductId().getDiscount()%></span></p>    
+                                    <p class="course-normal-price">RM <span class="span-normal-price"><%= course.getProductId().getPrice()%></span></p>
                                 </div>
                             </div>
-
-                            <div class="course-item flex-row" courseID="CR0000002">
-                                <div class="course-check flex-col">
-                                    <input type="checkbox" class="cart-check" id="cartItemId" name="cartItemId" value="CI0000012" />
-                                </div>
-                                <div class="course-img flex-col">
-                                    <img src="./img/course/beginner_excel.jpg" alt="" />
-                                </div>
-                                <div class="course-detail flex-col">
-                                    <h3 class="course-title">The Ultimate Excel Programming Course</h3>
-                                    <p class="course-author">By Woo Yu Beng, Snijders Wang</p>
-                                    <p class="course-category">Microsoft Excel</p>
-                                    <div class="course-review flex-row">
-                                        <p class="rating-digit">4.2</p>
-                                        <i class="ri-star-fill"></i>
-                                        <p class="rating-number-field">(<span class="raing-number">123</span>)</p>
-                                    </div>
-                                    <div class="course-label flex-row">
-                                        <p>27 Hours</p>
-                                        <p>All level</p>
-                                    </div>
-                                </div>
-                                <div class="course-button flex-col">
-                                    <button type="button" class="remove-btn">Remove</button>
-                                    <button type="button" class="move-btn">Move to Wish</button>
-                                </div>
-                                <div class="course-price-field flex-col">
-                                    <p class="course-price">RM <span class="span-price">112.00</span></p>    
-                                    <p class="course-normal-price">RM <span class="span-normal-price">188.00</span></p>
-                                </div>
-                            </div>
-
-                            <div class="course-item flex-row" courseID="CR0000003">
-                                <div class="course-check flex-col">
-                                    <input type="checkbox" class="cart-check" id="cartItemId" name="cartItemId" value="CI0000012" />
-                                </div>
-                                <div class="course-img flex-col">
-                                    <img src="./img/course/beginner_excel.jpg" alt="" />
-                                </div>
-                                <div class="course-detail flex-col">
-                                    <h3 class="course-title">The Ultimate Excel Programming Course</h3>
-                                    <p class="course-author">By Woo Yu Beng, Snijders Wang</p>
-                                    <p class="course-category">Microsoft Excel</p>
-                                    <div class="course-review flex-row">
-                                        <p class="rating-digit">4.2</p>
-                                        <i class="ri-star-fill"></i>
-                                        <p class="rating-number-field">(<span class="raing-number">123</span>)</p>
-                                    </div>
-                                    <div class="course-label flex-row">
-                                        <p>27 Hours</p>
-                                        <p>All level</p>
-                                    </div>
-                                </div>
-                                <div class="course-button flex-col">
-                                    <button type="button" class="remove-btn">Remove</button>
-                                    <button type="button" class="move-btn">Move to Wish</button>
-                                </div>
-                                <div class="course-price-field flex-col">
-                                   <p class="course-price">RM <span class="span-price">112.00</span></p>    
-                                    <p class="course-normal-price">RM <span class="span-normal-price">188.00</span></p>
-                                </div>
-                            </div>
-
+                            <%}%>
                         </ul>
 
                         <div class="number-item-div flex-row" id="cartMerchTitle"> 
@@ -149,37 +108,45 @@
                         </div>
 
                         <ul class="course-list flex-col" id="cartMerchList">
-
-                            <div class="course-item flex-row" courseID="M00000001">
+                            <% for(Merchandise merch : merchandiseList){ %>
+                                <%
+                                    CartItems cartItem = new CartItems();
+                                    for(CartItems item: cartItems){
+                                        if(item.getProductId().getProductId().equals(merch.getProductId().getProductId())){
+                                            cartItem = item;
+                                        }
+                                    }
+                                %>
+                            <div class="course-item flex-row" courseID="<%= merch.getMerchId() %>">
                                 <div class="course-check flex-col">
-                                    <input type="checkbox" class="cart-check" id="cartItemId" name="cartItemId" value="CI0000012" />
+                                    <input type="checkbox" class="cart-check" id="cartItemId" name="cartItemId" value="<%= cartItem.getCartitemId() %>" />
                                 </div>
                                 <div class="course-img flex-col">
-                                    <img src="./img/merchandise/prx_shirt.png" alt="" />
+                                    <img src="<%= merch.getProductId().getImagePath() %>" onerror="this.src='./img/course/beginner_excel.jpg';" alt="" />
                                 </div>
                                 <div class="course-detail flex-col">
-                                    <h3 class="course-title">Course Hero X PRX T-shirt</h3>
-                                    <p class="course-category">Collectible</p>
+                                    <h3 class="course-title"><%= merch.getProductId().getProdName() %></h3>
+                                    <p class="course-category"><%= merch.getMerchcatId().getCategoryName() %></p>
                                     <div class="course-review flex-row">
-                                        <p class="rating-digit">4.2</p>
+                                        <!--<p class="rating-digit">4.2</p>
                                         <i class="ri-star-fill"></i>
-                                        <p class="rating-number-field">(<span class="raing-number">123</span>)</p>
+                                        <p class="rating-number-field">(<span class="raing-number">123</span>)</p>-->
                                     </div>
                                 </div>
                                 <div class="merch-qty-input-div flex-row">
                                     <button type="button" class="qty-btn substract"><i class="ri-subtract-fill"></i></button>
-                                    <input type="text" class="merch-qty-input" value="1" max="99" />
+                                    <input type="text" class="merch-qty-input" value="<%= cartItem.getQuantity() %>" max="<%= merch.getStockBalance() %>" />
                                     <button type="button" class="qty-btn add"><i class="ri-add-fill"></i></button>
                                 </div>
                                 <div class="course-button flex-col">
                                     <button type="button" class="remove-btn">Remove</button>
                                 </div>
                                 <div class="course-price-field flex-col">
-                                    <p class="course-price">RM <span class="span-price">112.00</span></p>    
-                                    <p class="course-normal-price">RM <span class="span-normal-price">188.00</span></p>
+                                    <p class="course-price">RM <span class="span-price"><%= merch.getProductId().getPrice() - merch.getProductId().getDiscount()%></span></p>    
+                                    <p class="course-normal-price">RM <span class="span-normal-price"><%= merch.getProductId().getPrice()%></span></p>
                                 </div>
                             </div>
-
+                            <%}%>
                         </ul>
 
                     </div>
