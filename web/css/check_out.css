@@ -1,0 +1,29 @@
+@import url('./root.css');
+
+/*title section*/
+.title-section {
+    background-color: var(--color-white);
+    padding: 30px;
+}
+
+.title-div {
+   align-items: center;
+}
+
+.title-div .title-logo {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+}
+
+.title-div .title {
+    margin: 40px;
+    padding: 0 40px;
+    font-weight: 500;
+    font-size: var(--font-size-7xl);
+    color: var(--color-navy-blue);
+}
+
+.content-section {
+    background-color: var(--color-light-grey-1);
+}
