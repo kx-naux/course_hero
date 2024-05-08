@@ -33,7 +33,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Merchandise.findByDimensionLCm", query = "SELECT m FROM Merchandise m WHERE m.dimensionLCm = :dimensionLCm"),
     @NamedQuery(name = "Merchandise.findByWeightKg", query = "SELECT m FROM Merchandise m WHERE m.weightKg = :weightKg"),
     @NamedQuery(name = "Merchandise.findByStockBalance", query = "SELECT m FROM Merchandise m WHERE m.stockBalance = :stockBalance"),
-    @NamedQuery(name = "Merchandise.findByMerchCatId", query = "SELECT m FROM Merchandise m WHERE m.merchcatId = :merchcatId")
+    @NamedQuery(name = "Merchandise.findByMerchCatId", query = "SELECT m FROM Merchandise m WHERE m.merchcatId = :merchcatId"),
+    @NamedQuery(name = "Merchandise.findByProductId", query = "SELECT m FROM Merchandise m WHERE m.productId = :productId")
 })
 public class Merchandise implements Serializable {
 
