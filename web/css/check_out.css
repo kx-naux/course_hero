@@ -3,27 +3,126 @@
 /*title section*/
 .title-section {
     background-color: var(--color-white);
-    padding: 30px;
+    padding: 25px;
 }
 
 .title-div {
-   align-items: center;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .title-div .title-logo {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     object-fit: cover;
 }
 
 .title-div .title {
-    margin: 40px;
-    padding: 0 40px;
-    font-weight: 500;
-    font-size: var(--font-size-7xl);
+    margin: 0 20px;
+    padding: 0 20px;
+    font-weight: 700;
+    font-size: var(--font-size-xxl);
     color: var(--color-navy-blue);
+    border-left: 3px solid var(--color-navy-blue);
+}
+
+.title-div  .cancel-btn {
+    border: 1px solid var(--color-text-light-2);
+    font-weight: 600;
+    font-size: var(--font-size-m);
+    color: var(--color-text-light-1);
+    padding: 10px 30px;
+    height: 100%;
+}
+
+.title-div  .cancel-btn:hover {
+    color: var(--color-text-light-2);
+    background-color: var(--color-light-grey-2);
 }
 
 .content-section {
     background-color: var(--color-light-grey-1);
+    padding: 30px 20px;
+    gap: 20px;
+    min-height: 100vh;
 }
+
+.content-section .content-div {
+    background-color: var(--color-white);
+    border: 1px solid var(--color-light-grey-2);
+    padding: 25PX;
+    width: 100%;
+    gap: 20px;
+}
+
+.content-section .invalid-msg{
+    color: var(--color-text-error);
+}
+
+.content-section .content-div .div-title {
+    font-weight: 600;
+    font-size: var(--font-size-m);
+    color: var(--color-blue-1);
+}
+
+.content-section .content-div .div-title i {
+    font-weight: 400;
+    font-size: var(--font-size-l);
+    margin-right: 8px;
+}
+
+/*shipping method*/
+.shipping-method-div {
+    gap: 20px;
+    max-width: 100%;
+    min-width: 700px;
+    flex-wrap: wrap;
+}
+
+.shipping-method-div .shipping-method{
+    border-radius: 10px;
+    background-color: var(--color-light-grey-2);
+    cursor: pointer;
+    position: relative;
+    width: 215px;
+}
+
+.shipping-method:has(input:checked) {
+    border: 2px solid var(--color-text-light-2);
+}
+
+.shipping-method .selected-icon {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.shipping-method:has(input:checked) .selected-icon {
+    display: block;
+}
+
+.shipping-method-div .shipping-method .shipping-method-top{
+    padding: 10PX;
+    height: 100%;
+}
+
+.shipping-method-div .shipping-method .shipping-method-bot{
+    background-color: var(--color-white-transparent-05);
+    padding: 10PX;
+}
+
+
+/*address*/
+
+
+/*items*/
+.item-div .item-img {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+}
+
+/*promo code*/
+
+/*payment*/

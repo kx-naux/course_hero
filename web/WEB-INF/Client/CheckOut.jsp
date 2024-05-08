@@ -17,25 +17,298 @@
         <!--To top button-->
         <%@ include file="./Components/to_top_button.html" %>
         <script src="./js/components/to_top.js"></script>
-        
+
         <!--to show a toast error message--> 
         <span id="errorMsg" hidden=""></span>
-        
+
         <!--title section-->
         <section class="section title-section">
             <div class="title-div flex-row">
-                <img class="title-logo" src="${companyLogo}" alt="" />
-                <h1 class="title">Check Out</h1>
-            </div>
-        </section>
-        
-        <section class="section content-section">
-            <div class="ship-div flex-col">
-                
+                <div class="flex-row">
+                    <img class="title-logo" src="${companyLogo}" alt="" />
+                    <h1 class="title">Check Out</h1>
+                </div>
+                <a class="cancel-btn" href="<%= webpath.getPageUrl("cart")%>">Cancel</a>
             </div>
         </section>
 
+        <form id="checkOutForm">
+            <input type="text" id="fromAction" name="formAction" hidden />
+            <section class="section content-section flex-col">
+
+                <!--render this div (ship-div) if need shipping-->
+                <div class="content-div ship-div flex-col">
+                    <h1 class="div-title"><i class="ri-truck-line"></i> Shipping & Delivery Address</h1>
+
+                    <!--choose shipping method-->
+                    <div class="shipping-method-div flex-row">
+
+                        <div class="shipping-method flex-col">
+                            <input type="radio" id="standardShipping" name="shippingMethod" value="SM0000001" checked hidden />
+                            <span class="selected-icon"><i class="ri-check-fill"></i></span>
+                            <div class="shipping-method-top flex-col">
+                                <h1 class="method-title">Standard Shipping</h1>
+                                <p class="method-desc">5-7 Business Days</p>
+                            </div>
+                            <div class="shipping-method-bot flex-col">  
+                                <p class="method-rate">RM 10</p>
+                            </div> 
+                        </div>
+
+                        <div class="shipping-method flex-col">
+                            <input type="radio" id="standardShipping" name="shippingMethod" value="SM0000002" hidden />
+                            <span class="selected-icon"><i class="ri-check-fill"></i></span>
+                            <div class="shipping-method-top flex-col">
+                                <h1 class="method-title">Standard Shipping</h1>
+                                <p class="method-desc">5-7 Business Days</p>
+                            </div>
+                            <div class="shipping-method-bot flex-col">  
+                                <p class="method-rate">RM 10</p>
+                            </div> 
+                        </div>
+
+                        <div class="shipping-method flex-col">
+                            <input type="radio" id="standardShipping" name="shippingMethod" value="SM0000003" hidden />
+                            <span class="selected-icon"><i class="ri-check-fill"></i></span>
+                            <div class="shipping-method-top flex-col">
+                                <h1 class="method-title">Standard Shipping</h1>
+                                <p class="method-desc">5-7 Business Days</p>
+                            </div>
+                            <div class="shipping-method-bot flex-col">  
+                                <p class="method-rate">RM 10</p>
+                            </div> 
+                        </div>
+
+                        <div class="shipping-method flex-col">
+                            <input type="radio" id="standardShipping" name="shippingMethod" value="SM0000002" hidden />
+                            <span class="selected-icon"><i class="ri-check-fill"></i></span>
+                            <div class="shipping-method-top flex-col">
+                                <h1 class="method-title">Standard Shipping</h1>
+                                <p class="method-desc">5-7 Business Days</p>
+                            </div>
+                            <div class="shipping-method-bot flex-col">  
+                                <p class="method-rate">RM 10</p>
+                            </div> 
+                        </div>
+
+                        <div class="shipping-method flex-col">
+                            <input type="radio" id="standardShipping" name="shippingMethod" value="SM0000003" hidden />
+                            <span class="selected-icon"><i class="ri-check-fill"></i></span>
+                            <div class="shipping-method-top flex-col">
+                                <h1 class="method-title">Standard Shipping</h1>
+                                <p class="method-desc">5-7 Business Days</p>
+                            </div>
+                            <div class="shipping-method-bot flex-col">  
+                                <p class="method-rate">RM 10</p>
+                            </div> 
+                        </div>
+
+                    </div>
+
+                    <!--if got stored address show here-->
+                    <div class="stored-address-div flex-row">
+                        <div class="current-address address-div ">
+                            <input type="radio"  id="currentAddress" name="storedAddress" value="storedAddress" checked hidden />
+                            <span class="selected-icon"><i class="ri-check-fill"></i></span>
+                            <div class="text-input-div address-input-div flex-col">
+                                <label>Address:</label>
+                                <input type="text"  value="${userData.addressId.line1}" readonly />
+                                <input type="text"  value="${userData.addressId.line2}" readonly />
+                            </div>
+
+                            <div class="text-input-div address-input-div flex-col">
+                                <label for="city">City:</label>
+                                <input type="text"  value="${userData.addressId.city}" readonly />
+                            </div>
+
+                            <div class="text-input-div address-input-div flex-col">
+                                <label for="postalCode">Postal code:</label>
+                                <input type="text" value="${userData.addressId.postalcode}" readonly/>
+                            </div>
+
+                            <div class="text-input-div address-input-div flex-col">
+                                <label for="state">State Resides:</label>
+                                <input type="text"  value="${userData.addressId.stateResides}" readonly/>
+                            </div>
+
+                            <div class="text-input-div address-input-div flex-col">
+                                <label for="state">Country:</label>
+                                <input type="text" value="${userData.addressId.country}" readonly/>
+                            </div>
+                        </div>
+
+                        <div class="new-address address-div ">
+                            <input type="radio"  id="addAddress" name="storedAddress" value="newAddress" hidden/>
+                            <span class="selected-icon"><i class="ri-check-fill"></i></span>
+                            <div class="text-input-div address-input-div flex-col">
+                                <label>Address:</label>
+                                <input type="text" class="address-1" name="address1" value="" placeholder="address line 1" maxlength="50" />
+                                <input type="text" class="address-2"  name="address2" value="" placeholder="address line 2" maxlength="50" />
+                            </div>
+
+                            <div class="text-input-div address-input-div flex-col">
+                                <label for="city">City:</label>
+                                <input type="text" class="city"  name="city" value="" placeholder="city name" maxlength="20" />
+                            </div>
+
+                            <div class="text-input-div address-input-div flex-col">
+                                <label for="postalCode">Postal code:</label>
+                                <input type="text" class="postal-code" name="postalCode" placeholder="postal code" maxlength="9" value="" />
+                            </div>
+
+                            <div class="text-input-div address-input-div flex-col">
+                                <label for="state">State Resides:</label>
+                                <input type="text" class="state"  name="state" placeholder="state name" maxlength="20" value=""/>
+                            </div>
+
+                            <div class="text-input-div address-input-div flex-col">
+                                <label for="state">Country:</label>
+                                <input type="text" class="country"  name="country" placeholder="country name" maxlength="40" value=""/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--if no address/does not have full address show this-->
+                    <div class="unstored-address-div flex-col">
+                        <input type="radio" id="current-address" name="storedAddress" value="newAddress" hidden checked />
+                        <div class="text-input-div address-input-div flex-col">
+                            <label>Address:</label>
+                            <input type="text" class="address-1" name="address1" value="" placeholder="address line 1" maxlength="50" />
+                            <input type="text" class="address-2"  name="address2" value="" placeholder="address line 2" maxlength="50" />
+                        </div>
+
+                        <div class="text-input-div address-input-div flex-col">
+                            <label for="city">City:</label>
+                            <input type="text" class="city"  name="city" value="" placeholder="city name" maxlength="20" />
+                        </div>
+
+                        <div class="text-input-div address-input-div flex-col">
+                            <label for="postalCode">Postal code:</label>
+                            <input type="text" class="postal-code" name="postalCode" placeholder="postal code" maxlength="9" value="" />
+                        </div>
+
+                        <div class="text-input-div address-input-div flex-col">
+                            <label for="state">State Resides:</label>
+                            <input type="text" class="state"  name="state" placeholder="state name" maxlength="20" value=""/>
+                        </div>
+
+                        <div class="text-input-div address-input-div flex-col">
+                            <label for="state">Country:</label>
+                            <input type="text" class="country"  name="country" placeholder="country name" maxlength="40" value=""/>
+                        </div>
+                    </div>
+
+                    <div class="flex-col confirma-store-div">
+                        <label for="storingAddress"><input type="checkbox" id="storingAddress" name="storingAddress" value="storingAddress">Store this address to use at next time</label>
+                    </div>
+
+                    <p class="invalid-msg"></p>
+
+                </div>
+
+                <div class="content-div item-div flex-col">
+                    <h1 class="div-title"><i class="ri-shopping-basket-2-line"></i> Products Ordered</h1>
+
+                    table to show selected products
+                    <table id="itemsTable">
+                        <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th>Unit Price</th>
+                                <th>Qty</th>
+                                <th>Sub Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="flex-row">
+                                        <img class="item-img" src="./img/course/beginner_excel.jpg" alt="" />
+                                        <p>The Ultimate Excel Programming Course<p>
+                                    </div>
+                                </td>
+                                <td>Rm 112.00</td>
+                                <td>1</td>
+                                <td>Rm 112.00</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="flex-row">
+                                        <img class="item-img" src="./img/course/beginner_excel.jpg" alt="" />
+                                        <p>The Ultimate Excel Programming Course<p>
+                                    </div>
+                                </td>
+                                <td>Rm 112.00</td>
+                                <td>1</td>
+                                <td>Rm 112.00</td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="3">Order Total (2 item):</td>
+                                <td>Rm 224.00</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+
+                <div class="content-div promo-div flex-col">
+                    <h1 class="div-title"><i class="ri-coupon-2-line"></i> Voucher / Promo Code</h1>
+
+                    <div class="flex-row">
+                        <input type="text" id="promo" name="promo" placeholder="Enter promo code here" value="" maxlength="9" />
+                        <input type="button" value="Apply" />
+                    </div>
+
+                    <!--after promo apply show info here-->
+                    <div class="flex-col">
+                        <p class="promo-name">Promo Name: Hapyy Happy Happy</p>
+                        <p class="promo-desc">Promo Description: Hapyy Happy Happy</p>
+                        <p class="promo-end"><i class="ri-timer-line"></i> End at 2024-09-15</p>
+                    </div>
+
+                    <p class="invalid-msg"></p>
+                </div>
+
+                <div class="content-div payment-div flex-col">
+                    <h1 class="div-title"><i class="ri-wallet-line"></i> Payment</h1>
+                    
+                    
+                    <!--show total--> 
+                    <div class="total-div flex-col">
+                        <div class="total-row flex-row">
+                            <h2 class="total-row-th">Items Total: </h2>
+                            <h3 class="total-row-td">RM 224.00</h3>
+                        </div>
+                        <div class="total-row flex-row">
+                            <h2 class="total-row-th">Items Discount: </h2>
+                            <h3 class="total-row-td">- RM 50.00</h3>
+                        </div>
+                        <div class="total-row flex-row">
+                            <h2 class="total-row-th">Promo Discount: </h2>
+                            <h3 class="total-row-td">- RM 20.00</h3>
+                        </div>
+                        <div class="total-row flex-row">
+                            <h2 class="total-row-th">Shipping Fee: </h2>
+                            <h3 class="total-row-td">RM 25.00</h3>
+                        </div>
+                        <div class="total-row flex-row">
+                            <h2 class="total-row-th">Tax (6%): </h2>
+                            <h3 class="total-row-td">RM 11.00</h3>
+                        </div>
+                        <div class="total-row flex-row">
+                            <h2 class="total-row-th">Total Payment: </h2>
+                            <h3 class="total-row-td">RM 375.00</h3>
+                        </div>
+                        
+                        <input type="button" value="Place Order" />
+                    </div>
+                </div>
+
+            </section>
+        </form>
+
         <script src="./js/check_out/check_out.js"></script>
-        
+
     </body>
 </html>
