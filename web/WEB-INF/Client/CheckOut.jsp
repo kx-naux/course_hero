@@ -223,6 +223,7 @@
                             <tr>
                                 <td>
                                     <div class="flex-row">
+                                        <input type="text" name="cartItem" value="C0001" hidden />
                                         <img class="item-img" src="./img/course/beginner_excel.jpg" alt="" />
                                         <p>The Ultimate Excel Programming Course<p>
                                     </div>
@@ -234,6 +235,7 @@
                             <tr>
                                 <td>
                                     <div class="flex-row">
+                                        <input type="text" name="cartItem" value="C0002" hidden />
                                         <img class="item-img" src="./img/course/beginner_excel.jpg" alt="" />
                                         <p>The Ultimate Excel Programming Course<p>
                                     </div>
@@ -271,9 +273,37 @@
                 </div>
 
                 <div class="content-div payment-div flex-col">
-                    <h1 class="div-title"><i class="ri-wallet-line"></i> Payment</h1>
-                    
-                    
+                    <h1 class="div-title"><i class="ri-money-dollar-box-line"></i> Payment</h1>
+
+                    <div class="payment-method-div flex-row">
+
+                        <div class="payment-method flex-col">
+                            <input type="radio" id="cardMethod" name="paymentMethod" value="card" hidden />
+                            <span class="selected-icon"><i class="ri-check-fill"></i></span>
+                            <p class="payment-method-icon"><i class="ri-bank-card-line"></i></p>
+                            <p class="payment-method-name">Card</p>
+                        </div>
+
+                        <div class="payment-method flex-col">
+                            <input type="radio" id="cardMethod" name="paymentMethod" value="bank" hidden />
+                            <span class="selected-icon"><i class="ri-check-fill"></i></span>
+                            <p class="payment-method-icon"><i class="ri-bank-fill"></i></p>
+                            <p class="payment-method-name">Bank</p>
+                        </div>
+
+                        <div class="payment-method flex-col">
+                            <input type="radio" id="cardMethod" name="paymentMethod" value="tng" hidden />
+                            <span class="selected-icon"><i class="ri-check-fill"></i></span>
+                            <p class="payment-method-icon"><i class="ri-wallet-line"></i></p>
+                            <p class="payment-method-name">TNG E-wallet</p>
+                        </div>
+
+                    </div>
+
+                    <div class="flex-col confirma-store-div">
+                        <label for="storingPayment"><input type="checkbox" id="storingPayment" name="storingPayment" value="storingPayment">Store this payment detail to use at next time</label>
+                    </div>
+
                     <!--show total--> 
                     <div class="total-div flex-col">
                         <div class="total-row flex-row">
@@ -300,7 +330,7 @@
                             <h2 class="total-row-th">Total Payment: </h2>
                             <h3 class="total-row-td">RM 375.00</h3>
                         </div>
-                        
+
                         <input type="button" value="Place Order" />
                     </div>
                 </div>
