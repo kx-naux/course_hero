@@ -16,7 +16,9 @@
 <% int totalLearners = ((Integer) request.getAttribute("totalLearners")).intValue();%>
 <% boolean isOwn = ((Boolean) request.getAttribute("isOwn")).booleanValue();%>
 <% boolean inCart = ((Boolean) request.getAttribute("inCart")).booleanValue();%>
+<% boolean isReviewed = ((Boolean) request.getAttribute("isReviewed")).booleanValue();%>
 <% boolean inWishlist = ((Boolean) request.getAttribute("inWishlist")).booleanValue();%>
+<% String reviewError = (String)request.getAttribute("reviewError"); %>
 
 
 <!DOCTYPE html>
@@ -47,9 +49,9 @@
         %>
 
         <!--put 1 to show add review form-->
-        <%String showAddReview = "1";
-            if(userData.getUserId() == null || !isOwn){
-            showAddReview = "0";
+        <%String showAddReview = "0";
+            if(userData.getUserId() != null && isOwn && !isReviewed){
+            showAddReview = "1";
         }%>
         <input type="number" id="addReviewStatus" value="<%= showAddReview %>" hidden />
 
@@ -206,7 +208,11 @@
                     </div>
 
                     <!--Course rating-->
-                    <div class="course-rating-div flex-col" id="rating-div">
+                    <% String showRating = "";
+                        if(ratingCount == 0){ 
+                        showRating = " inactive";%>
+                    <%}%>
+                    <div class="course-rating-div flex-col<%= showRating %>" id="rating-div">
                         <div class="course-overall-rating flex-row">
                             <p class="course-overall-rate"><i class="ri-star-fill"></i> ${courseData.productId.avgRating} course rating</p>
                             <p class="course-overall-rate"><%= ratingCount%> ratings</p>
@@ -260,9 +266,8 @@
                         </div>
 
                         <button class="all-review-btn">Show all reviews</button>
-
                         <div class="flex-col add-review-div" id="addReviewDiv">
-                            <form id="addReviewForm" class="flex-col">
+                            <form id="addReviewForm" class="flex-col" method="post" action="submit-course-review">
                                 <div class="add-review-title">
                                     <h1>Write a review</h1>
                                 </div>
@@ -287,17 +292,23 @@
                                     <label for="comment">Please share your opinion about the product</label>
                                     <textarea id="comment" name="comment" rows="5" cols="10" placeholder="Enter your review here"></textarea>
                                 </div>
+                                <% if(reviewError!=null){%>
+                                    <p id="reviewInvalidMsg" class="invalid-msg"><%= reviewError %></p>
+                                <%}else{%>
+                                    <p id="reviewInvalidMsg" class="invalid-msg"></p>
+                                <%}%>
 
-                                <p id="reviewInvalidMsg" class="invalid-msg"></p>
 
                                 <div class="add-review-submit">
+                                    <input type="text" id="productIdToReview" name="productIdToReview" value="${courseData.productId.productId}" hidden />
+                                    <input type="text" id="courseIdToReview" name="courseIdToReview" value="${courseData.courseId}" hidden />
                                     <input type="button" id="addReviewBtn" value="Send review" />
                                 </div>
                             </form>
                         </div>
 
                     </div>
-
+                                   
                     <!--More course form author-->
 
                 </div>
@@ -360,14 +371,14 @@
 
             </div>
         </section>
-
+        <%if(rateStats.getAllStarCounts()>0){%>
         <section class="section all-review-section">
             <div class="all-review-div flex-col">
 
                 <!--title and close btn-->
                 <div class="all-review-top flex-row">
-                    <p class="course-overall-rate"><i class="ri-star-fill"></i> 4.7 course rating</p>
-                    <p class="course-overall-rate">258 ratings</p>
+                    <p class="course-overall-rate"><i class="ri-star-fill"></i> ${courseData.productId.avgRating} course rating</p>
+                    <p class="course-overall-rate">${rateStats.allStarCounts} ratings</p>
                     <span class="close-btn"><i class="ri-close-line"></i></span>
                 </div>
 
@@ -599,7 +610,7 @@
 
             </div>
         </section>
-
+        <%}%>
         <script src="./js/single_course/single_course.js"></script>
 
         <!--Footer import-->
