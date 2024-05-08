@@ -164,35 +164,17 @@
 
                     <div class="author-link flex-col">
                         <%for (SocialMediaLinks link : socialMediaLinks) {
-                                if (link.getSocialmediaName().equalsIgnoreCase("LinkedIn")) {%>
-                        <a href=<%= link.getDestLink()%> class="author-link-btn"><i class="ri-linkedin-box-fill"></i> LinkedIn</a>
-                        <% socialMediaLinks.remove(link); %>
-                        <%}%>
-                        <%}%>
-
-                        <%for (SocialMediaLinks link : socialMediaLinks) {
-                                if (link.getSocialmediaName().equalsIgnoreCase("Youtube")) {%>
+                            if (link.getSocialmediaName().equalsIgnoreCase("LinkedIn")) {%>
+                                <a href=<%= link.getDestLink()%> class="author-link-btn"><i class="ri-linkedin-box-fill"></i> LinkedIn</a>
+                        <%}else if (link.getSocialmediaName().equalsIgnoreCase("Youtube")) {%>
                         <a href=<%= link.getDestLink()%> class="author-link-btn"><i class="ri-linkedin-box-fill"></i> Youtube</a>
-                        <% socialMediaLinks.remove(link); %>
-                        <%}%>
-                        <%}%>
-
-                        <%for (SocialMediaLinks link : socialMediaLinks) {
-                                if (link.getSocialmediaName().equalsIgnoreCase("X")) {%>
+                        <%}else if (link.getSocialmediaName().equalsIgnoreCase("X")) {%>
                         <a href=<%= link.getDestLink()%> class="author-link-btn"><i class="ri-linkedin-box-fill"></i> X</a>
-                        <% socialMediaLinks.remove(link); %>
-                        <%}%>
-                        <%}%>
-
-                        <%for (SocialMediaLinks link : socialMediaLinks) {
-                                if (link.getSocialmediaName().equalsIgnoreCase("Instagram")) {%>
+                        <%}else if (link.getSocialmediaName().equalsIgnoreCase("Instagram")) {%>
                         <a href=<%= link.getDestLink()%> class="author-link-btn"><i class="ri-linkedin-box-fill"></i> Instagram</a>
-                        <% socialMediaLinks.remove(link); %>
+                        <%}else{%>
+                            <a href=<%= link.getDestLink()%> class="author-link-btn"><i class="ri-link"></i> <%= link.getSocialmediaName()%></a>
                         <%}%>
-                        <%}%>
-
-                        <%for (SocialMediaLinks link : socialMediaLinks) {%>
-                        <a href=<%= link.getDestLink()%> class="author-link-btn"><i class="ri-link"></i> <%= link.getSocialmediaName()%></a>
                         <%}%>
                     </div>
 
