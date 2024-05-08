@@ -164,6 +164,14 @@
         <servlet-class>controller.LoadInitServlet</servlet-class>
         <load-on-startup>0</load-on-startup>
     </servlet>
+    <servlet>
+        <servlet-name>CheckOutPage</servlet-name>
+        <servlet-class>controller.CheckOutPage</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Payment</servlet-name>
+        <servlet-class>controller.Payment</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -291,6 +299,14 @@
     <servlet-mapping>
         <servlet-name>LoadInitServlet</servlet-name>
         <url-pattern>/LoadInitServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CheckOutPage</servlet-name>
+        <url-pattern>/check-out</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Payment</servlet-name>
+        <url-pattern>/payment</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
