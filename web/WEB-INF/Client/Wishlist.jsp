@@ -40,7 +40,7 @@
                 </div>
 
                 <div class="flex-col"> 
-                    <p class="number-item"><span id="wishNumber"><%= totalWishlistItems%></span> <%= (totalWishlistItems > 1) ? "courses" : "course"%> in wishlist</p>
+                    <p class="number-item"><span id="wishNumber"><%= totalWishlistItems%></span> <span id="wishNumberNoun"><%= (totalWishlistItems > 1) ? "courses" : "course"%></span> in wishlist</p>
                 </div>
 
                 <!--course in wishlist-->

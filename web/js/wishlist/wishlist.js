@@ -54,6 +54,8 @@ removeBtns.forEach(remove => {
 });
 
 function removeWishItem(data) {
+    updateWishItemNumber();
+
     let wishlistDiv = document.getElementById("wishlistDiv");
     let wishEmptyDiv = document.getElementById("wishlistEmpty");
     let wishlistLink = document.getElementById("wishlistLink");
@@ -189,4 +191,13 @@ function addCartItem(data) {
 
     // update price
     cartlistPrice.innerText = (parseFloat(cartlistPrice.innerText) + data.productPrice).toFixed(2);
+}
+
+function updateWishItemNumber() {
+    let itemNumber = document.getElementById("wishNumber");
+    let count = document.querySelectorAll("ul#courseList div.course-item").length;
+    let noun = document.getElementById("wishNumberNoun");
+
+    itemNumber.innerText = count;
+    noun.innerText = count > 1 ? "courses" : "course";
 }

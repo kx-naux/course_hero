@@ -156,7 +156,7 @@
                         <!--cart list with items-->
                         <div class="cart-list-item flex-col <%= isCartEmpty ? "" : "active"%>" id="cartlistDiv">
 
-                            <div class="course-item flex-row" productid="CR0000003">
+                            <div class="course-item flex-row" productid="CR0000001">
                                 <div class="course-item-img">
                                     <img src="./img/course/beginner_excel.jpg" alt="" draggable="false" />
                                 </div>

@@ -42,7 +42,7 @@
 
                         <div class="number-item-div flex-row"  id="cartCourseTitle"> 
                             <input type="checkbox" class="all-check-box" id="courseAllCheckbox" />
-                            <p class="number-item">Course in cart (<span id="cartCourseNumber"><%= numberOfItemInCartCourse%></span>)</p>
+                            <p class="number-item"><span id="cartCourseNumberNoun">Course</span> in cart (<span id="cartCourseNumber"><%= numberOfItemInCartCourse%></span>)</p>
                         </div>
 
                         <!--course in cart-->
@@ -50,7 +50,7 @@
 
                             <div class="course-item flex-row" courseID="CR0000001">
                                 <div class="course-check flex-col">
-                                    <input type="checkbox" class="cart-check" id="cartItemId" name="cartItemId" value="CI0000012" />
+                                    <input type="checkbox" class="cart-check" id="cartItemId" name="cartItemId" value="CR0000001" />
                                 </div>
                                 <div class="course-img flex-col">
                                     <img src="./img/course/beginner_excel.jpg" alt="" />
@@ -145,7 +145,7 @@
 
                         <div class="number-item-div flex-row" id="cartMerchTitle"> 
                             <input type="checkbox" class="all-check-box" id="merchAllCheckbox" />
-                            <p class="number-item">Merchandise in cart (<span id="cartMerchNumber"><%= numberOfItemInCartMerch%></span>)</p>
+                            <p class="number-item"><span id="cartMerchNumberNoun">Merchandise</span> in cart (<span id="cartMerchNumber"><%= numberOfItemInCartMerch%></span>)</p>
                         </div>
 
                         <ul class="course-list flex-col" id="cartMerchList">
