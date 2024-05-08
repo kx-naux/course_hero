@@ -1,0 +1,296 @@
+@import url('../root.css');
+
+.course-section-div {
+    padding: 35px 14px 50px;
+}
+
+/*Section Title*/
+.course-section-title {
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px;
+}
+
+.course-section-title h1 {
+    color: var(--color-blue-1);
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+}
+
+.course-section-title a {
+    color: var(--color-text-light-1);
+    font-size: var(--font-size-s);
+    transition: 0.2s all ease;
+}
+
+.course-section-title a:hover {
+    color: var(--color-blue-2);
+    text-decoration: underline;
+}
+
+/*Courses row*/
+.courses {
+    display:grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    padding: 8px 0;
+    gap: 18px;
+    flex-wrap: nowrap;
+    width: 100%;
+    max-width: 100%;
+    justify-content: start;
+    overflow-y: visible;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+}
+
+.products-container {
+    margin-left: 50px;
+}
+
+
+/*div scroll bar style*/
+.courses::-webkit-scrollbar {
+    width: 12px;               /* width of the entire scrollbar */
+}
+
+.courses::-webkit-scrollbar-track {
+    background: var(--scroll-bar-track-color);
+}
+
+.courses::-webkit-scrollbar-thumb {
+    background-color: var(--color-light-grey-2);
+    border-radius: 20px;
+    border: 3px solid var(--scroll-bar-track-color);
+}
+
+.courses::-webkit-scrollbar-thumb:hover{
+    background-color: var(--color-light-grey-3);
+}
+
+/*Product Card*/
+.course-product {
+    scroll-snap-align: start;
+    min-width: 280px;
+    min-height: 380px;
+    max-width: 280px;
+    max-height: 380px;
+    position: relative;
+    cursor: pointer;
+}
+
+.course-product-card {
+    width: 100%;
+    height: 100%;
+}
+
+.product-card-top {
+    position: relative;
+    align-items: center;
+}
+
+.product-card-top img {
+    width: 100%;
+    border: 1px solid var(--color-light-grey-3);
+    transition: 0.3s all ease-in-out;
+    align-self: center;
+}
+
+.action-btn-field {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    background: linear-gradient(to bottom, var(--color-black-transparent-06) 0%, var(--color-black-transparent-04) 50%,  var(--color-black-transparent-06) 100%);
+    cursor: default;
+    transition: 0.2s all ease-in-out;
+}
+
+.course-product:hover  .action-btn-field,
+.action-btn-field:hover {
+    display: flex;
+}
+
+.action-btn-field button{
+    font-size: var(--font-size-xxl);
+    padding: 5px 12px;
+    border-radius: 50%;
+    color: var(--color-white);
+    background: var(--color-transparent);
+    border: 2px solid var(--color-white);
+    box-shadow: var(--box-shadow-white-0);
+    cursor: pointer;
+    transition: 0.1s all ease-in-out;
+}
+
+.action-btn-field button:hover {
+    color: var(--color-black);
+    background: var(--color-white);
+}
+
+.action-btn-field button::after {
+    width: 100%;
+    position: absolute;
+    font-size: 15px;
+    color: var(--color-white);
+    text-shadow: var(--text-shadow-1);
+    opacity: 0;
+    visibility: hidden;
+    transition: .2s ease-in-out;
+    top: 85%;
+    right: 0;
+}
+
+.action-btn-field button:hover::after {
+    visibility: visible;
+    opacity: 1;
+    top: 75%;
+}
+
+.cart-Btn[status="0"]::after {
+    content: 'Add to cart';
+}
+
+.cart-Btn[status="1"]::after {
+    content: 'Remove from cart';
+}
+
+.wish-Btn[status="0"]::after {
+    content: 'Add to wishlist';
+}
+
+.wish-Btn[status="1"]::after {
+    content: 'Remove from wishlist';
+}
+
+.course-title {
+    font-size: var(--font-size-xm);
+    font-weight: 700;
+    color: var(--color-text-light-3);
+    padding: 6px 0 2px;
+}
+
+.course-category {
+    font-size: var(--font-size-s);
+    font-weight: 400;
+    color: var(--color-text-light-2);
+    padding: 0 0 2px 0;
+}
+
+.course-author {
+    padding: 0 10px 8px 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-wrap: nowrap;
+    text-overflow: ellipsis;
+    font-size: var(--font-size-xs);
+    font-weight: 300;
+    color: var(--color-text-light-1);
+}
+
+.course-review {
+    font-size: var(--font-size-s);
+    align-items: center;
+    gap: 6px;
+}
+
+.course-review .rating-digit {
+    color: var(--color-text-light-3);
+    font-weight: 500;
+}
+
+.course-review i{
+    transform: translateY(-1px);
+    color: var(--color-blue-3);
+}
+
+.course-review .rating-number-field{
+    font-size: var(--font-size-xs);
+    font-weight: 200;
+    color: var(--color-text-light-2);
+}
+
+.course-label {
+    align-items: center;
+    font-size: var(--font-size-s);
+    font-weight: 400;
+    color: var(--color-text-light-1);
+}
+
+.course-label p::after {
+    content: "Â·";
+    margin: 0 4px;
+}
+
+.course-label p:last-of-type::after {
+    content: "";
+}
+
+.course-price-field {
+    padding: 14px 0 4px;
+    gap: 10px;
+    align-items: center;
+}
+
+.course-price-field .course-price{
+    font-weight: 700;
+    font-size: var(--font-size-xm);
+    color: var(--color-text-light-3);
+}
+
+.course-price-field .course-normal-price{
+    font-weight: 300;
+    font-size: var(--font-size-s);
+    color: var(--color-text-light-2);
+    text-decoration: line-through;
+}
+
+.course-tag-field {
+    padding: 2px 0;
+    gap: 10px;
+    align-items: center;
+}
+
+.course-tag-field .course-tag{
+    font-weight: 600;
+    font-size: var(--font-size-xs);
+    background-color: var(--color-light-grey-2);
+    color: var(--color-text-light-2);
+    border-radius: 2px;
+    padding: 2px 8px;
+}
+
+/*Tag Design*/
+.course-tag.tag-red {
+    background-color: var(--tag-red-bg);
+    color: var(--tag-red-color);
+}
+
+.course-tag.tag-orange {
+    background-color: var(--tag-orange-bg);
+    color: var(--tag-orange-color);
+}
+
+.course-tag.tag-yellow {
+    background-color: var(--tag-yellow-bg);
+    color: var(--tag-yellow-color);
+}
+
+.course-tag.tag-green {
+    background-color: var(--tag-green-bg);
+    color: var(--tag-green-color);
+}
+
+.course-tag.tag-blue {
+    background-color: var(--tag-blue-bg);
+    color: var(--tag-blue-color);
+}
+
+.course-tag.tag-purple {
+    background-color: var(--tag-purple-bg);
+    color: var(--tag-purple-color);
+}
