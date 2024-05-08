@@ -17,6 +17,7 @@ public class UserRatingStatistic {
     private long twoStarCounts;
     private long oneStarCounts;
     private long allStarCounts;
+    private double avgRating;
 
     // Constructor
     public UserRatingStatistic(long fiveStarCounts, long fourStarCounts, long threeStarCounts, long twoStarCounts, long oneStarCounts) {
@@ -26,6 +27,12 @@ public class UserRatingStatistic {
         this.twoStarCounts = twoStarCounts;
         this.oneStarCounts = oneStarCounts;
         this.allStarCounts = getAllStarCounts();
+        this.avgRating = (fiveStarCounts*5 + fourStarCounts*4 +threeStarCounts*3+twoStarCounts*2+oneStarCounts)/(double)this.allStarCounts;
+        String test = "";
+    }
+    
+    public double getAvgRating(){
+        return avgRating;
     }
     
     public long getAllStarCounts(){
