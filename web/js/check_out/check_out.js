@@ -29,7 +29,6 @@ paymentRadios.forEach(paymentMethod => {
         const radioButton = this.querySelector('input[type="radio"]');
         radioButton.checked = true;
         
-        submitForm("payment method change");
 
     });
 });

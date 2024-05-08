@@ -301,7 +301,20 @@
                     </div>
                     
                     <!--payment input here-->
+                    <div class="payment-method-input payment-card flex-col">
+                        <!--if got stored record render this div-->
+                        
+                        
+                        
+                    </div>
                     
+                    <div class="payment-method-input payment-bank flex-col">
+                        
+                    </div>
+                    
+                    <div class="payment-method-input payment-tng flex-col">
+                        
+                    </div>
 
                     <div class="flex-col confirma-store-div">
                         <label for="storingPayment"><input type="checkbox" id="storingPayment" name="storingPayment" value="storingPayment">Store this payment detail to use at next time</label>
