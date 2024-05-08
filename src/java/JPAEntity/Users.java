@@ -364,6 +364,8 @@ public class Users implements Serializable {
         this.wishlistList = wishlistList;
     }
 
+
+
     public Date getDob() {
         return dob;
     }
@@ -371,6 +373,8 @@ public class Users implements Serializable {
     public void setDob(Date dob) {
         this.dob = dob;
     }
+
+   
 
     public String getUsertype() {
         return usertype;
@@ -380,7 +384,6 @@ public class Users implements Serializable {
         this.usertype = usertype;
     }
 
-   
 
     public String getGender() {
         return gender;

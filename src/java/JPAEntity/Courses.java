@@ -244,21 +244,6 @@ public class Courses implements Serializable {
         return "JPAEntity.Courses[ courseId=" + courseId + " ]";
     }
 
-    public String getSyllabus() {
-        return syllabus;
-    }
-
-    public void setSyllabus(String syllabus) {
-        this.syllabus = syllabus;
-    }
-
-    public String getRequirements() {
-        return requirements;
-    }
-
-    public void setRequirements(String requirements) {
-        this.requirements = requirements;
-    }
 
     public String getDetailedDesc() {
         return detailedDesc;
@@ -276,4 +261,19 @@ public class Courses implements Serializable {
         this.videoData = videoData;
     }
 
+    public String getSyllabus() {
+        return syllabus;
+    }
+
+    public void setSyllabus(String syllabus) {
+        this.syllabus = syllabus;
+    }
+
+    public String getRequirements() {
+        return requirements;
+    }
+
+    public void setRequirements(String requirements) {
+        this.requirements = requirements;
+    }
 }

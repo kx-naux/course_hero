@@ -130,5 +130,4 @@ public class Wishlist implements Serializable {
     public String toString() {
         return "JPAEntity.Wishlist[ wishlistId=" + wishlistId + " ]";
     }
-    
 }

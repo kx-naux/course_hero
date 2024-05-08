@@ -137,8 +137,6 @@ public class ProductCategory implements Serializable {
 
 
 
-
-
     public String getDescription() {
         return description;
     }
@@ -146,6 +144,8 @@ public class ProductCategory implements Serializable {
     public void setDescription(String description) {
         this.description = description;
     }
+
+
 
     
 }

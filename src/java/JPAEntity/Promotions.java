@@ -292,8 +292,6 @@ public class Promotions implements Serializable {
     }
 
 
-   
-
     public double getAmount() {
         return amount;
     }
@@ -301,6 +299,7 @@ public class Promotions implements Serializable {
     public void setAmount(double amount) {
         this.amount = amount;
     }
+
 
     public String getStatus() {
         return status;
@@ -310,5 +309,6 @@ public class Promotions implements Serializable {
         this.status = status;
     }
 
+   
     
 }
