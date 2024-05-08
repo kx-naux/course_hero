@@ -5,8 +5,8 @@
 <html lang="en">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Course Hero | Cart</title>
-        <link rel="icon" type="image/ico" href="./ico/Logo.ico">
+        <title>${companyName} | Cart</title>
+        <link rel="icon" type="image/ico" href=${companyIcon}>
         <link type="text/css" href="./css/style.css" rel="stylesheet" >
         <link type="text/css" href="./css/cart.css" rel="stylesheet" >
         <jsp:useBean id="webpath" class="module.WebPath" scope="application" />

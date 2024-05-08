@@ -1,5 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="4.0" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd">
+    <context-param>
+        <description>Stores the name of the company</description>
+        <param-name>companyName</param-name>
+        <param-value>Course Hero</param-value>
+    </context-param>
+    <context-param>
+        <description>Stores company copyright information</description>
+        <param-name>copyright</param-name>
+        <param-value>2024 Course Hero Inc. All rights reserved.</param-value>
+    </context-param>
+    <context-param>
+        <description>Stores company main headquarter</description>
+        <param-name>contactLocation</param-name>
+        <param-value>Jln Tun Razak, Imbi, 55100 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur</param-value>
+    </context-param>
+    <context-param>
+        <description>Stores company main phone number</description>
+        <param-name>contactNo</param-name>
+        <param-value>(+60) 11-1760 8595</param-value>
+    </context-param>
+    <context-param>
+        <description>Stores company sales email</description>
+        <param-name>contactEmail</param-name>
+        <param-value>sales@coursehero.com</param-value>
+    </context-param>
+    <context-param>
+        <description>Stores the path of the company logo</description>
+        <param-name>companyLogo</param-name>
+        <param-value>./img/Logo.png</param-value>
+    </context-param>
+    <context-param>
+        <description>Stores the icon of the company</description>
+        <param-name>companyIcon</param-name>
+        <param-value>./ico/Logo.ico</param-value>
+    </context-param>
     <servlet>
         <servlet-name>Login</servlet-name>
         <servlet-class>controller.Login</servlet-class>
@@ -124,6 +159,11 @@
         <servlet-name>UpdateMerchQty</servlet-name>
         <servlet-class>controller.UpdateMerchQty</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LoadInitServlet</servlet-name>
+        <servlet-class>controller.LoadInitServlet</servlet-class>
+        <load-on-startup>0</load-on-startup>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -247,6 +287,10 @@
     <servlet-mapping>
         <servlet-name>UpdateMerchQty</servlet-name>
         <url-pattern>/update-merch-qty</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoadInitServlet</servlet-name>
+        <url-pattern>/LoadInitServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

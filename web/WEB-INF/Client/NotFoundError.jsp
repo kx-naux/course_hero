@@ -5,15 +5,15 @@
 <html lang="en">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="icon" type="image/ico" href="./ico/Logo.ico">
+        <link rel="icon" type="image/ico" href=${companyIcon}>
         <link type="text/css" href="./css/style.css" rel="stylesheet" >
         <link type="text/css" href="./css/error.css" rel="stylesheet" >
-        <title>Course Hero | Not Found</title>
+        <title>${companyName} | Not Found</title>
         <jsp:useBean id="webpath" class="module.WebPath" scope="application" />
     </head>
     <body>
         <!--logo-->
-        <a href="<%= webpath.getPageUrl("home")%>"><img class="nav-logo" src="./img/Logo.png" alt="Course Hero" /></a>
+        <a href="<%= webpath.getPageUrl("home")%>"><img class="nav-logo" src=${companyLogo} alt=${companyIcon} /></a>
         <div class="error-content-div flex-row">
             <!--error message-->
             <div class="error-content-left flex-col">

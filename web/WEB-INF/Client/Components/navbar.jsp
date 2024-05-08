@@ -3,7 +3,7 @@
 <nav class="nav-bar">
     <!-- Logo -->
     <div class="nav-logo-div">
-        <a href="<%= webpath.getPageUrl("home")%>"><img class="nav-logo" src="./img/Logo.png" alt="Course Hero" /></a>
+        <a href="<%= webpath.getPageUrl("home")%>"><img class="nav-logo" src=${companyLogo} alt=${companyName} /></a>
     </div>
     <!--Nav options-->
     <div class="nav-option-div">

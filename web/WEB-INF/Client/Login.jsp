@@ -4,8 +4,8 @@
 <html lang="en">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Course Hero | Login</title>
-        <link rel="icon" type="image/ico" href="./ico/Logo.ico">
+        <title>${companyName} | Login</title>
+        <link rel="icon" type="image/ico" href=${companyIcon}>
         <link type="text/css" href="./css/style.css" rel="stylesheet" >
         <link type="text/css" href="./css/login.css" rel="stylesheet" >
         <!--<link type="text/css" href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">-->
@@ -17,7 +17,7 @@
             <div class="login-div flex-row">
                 <div class="login-panel login-left flex-col">
                     <div class="login-left-row-1">
-                        <a href="<%= webpath.getPageUrl("home")%>"><img class="login-logo" src="./img/Logo.png" alt="Course Hero" /></a>
+                        <a href="<%= webpath.getPageUrl("home")%>"><img class="login-logo" src=${companyLogo} alt=${companyName} /></a>
                     </div>
                     <form action="Login" method="post">
                         <div class="login-form-div flex-col">
