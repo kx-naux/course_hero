@@ -32,7 +32,7 @@ public class WishlistPage extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Users userData = Login.checkRmbMeToken(request, em);
+        Users userData = (Users) request.getSession().getAttribute("userData");
         if (userData != null) {
             HttpSession session = request.getSession();
             session.setAttribute("userData", userData);
