@@ -226,7 +226,7 @@
                                 <div class="user-review-top flex-row">
                                     <%String base64ImageData = "";
                                         if (rating.getUserId().getImgData() != null) {
-                                        base64ImageData = Base64.getEncoder().encodeToString((byte[]) userData.getImgData());
+                                        base64ImageData = Base64.getEncoder().encodeToString((byte[]) rating.getUserId().getImgData());
                                     }%>
                                     <div class="user-img">
                                         <img src="data:image/jpeg;base64,<%= base64ImageData%>" onerror="this.src='./img/user/default.png';" alt="" />
