@@ -120,6 +120,10 @@
         <servlet-name>CartPage</servlet-name>
         <servlet-class>controller.CartPage</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UpdateMerchQty</servlet-name>
+        <servlet-class>controller.UpdateMerchQty</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -239,6 +243,10 @@
     <servlet-mapping>
         <servlet-name>CartPage</servlet-name>
         <url-pattern>/cart</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateMerchQty</servlet-name>
+        <url-pattern>/update-merch-qty</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

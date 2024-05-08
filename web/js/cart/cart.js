@@ -197,9 +197,36 @@ function decrementValue(input) {
 
 // update qty
 function updateQty(container) {
-    let cartId = container.closest('.course-item').getAttribute("courseID");
-    let qty = parseInt(container.querySelector('.merch-qty-input').value);
-
+    const url = '/course_hero/update-merch-qty';
+    const cartId = container.closest('.course-item').getAttribute("courseID");
+    const qty = parseInt(container.querySelector('.merch-qty-input').value);
+    const data = {
+        cartID: cartId,
+        qty: qty
+    };
+    
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    }).then(response => {
+        if (!response.ok) {
+            toast_msg(TOAST_ERROR, "Network Issue", `Fail to update quantity`);
+        }
+        return response.json();
+    }).then(responseData => {
+        if (responseData.status === "success") {
+               // toast_msg(TOAST_SUCCESS, "Success", "Update quantity");
+        } else {
+            toast_msg(TOAST_ERROR, "Server Error", `Fail to update quantity`);
+        }
+    }).catch(error => {
+        console.error('Fetch error:', error);
+    });
+    
+    console.log("update merch qty: " + cartId + " " + qty);
 }
 
 // remove from cart
