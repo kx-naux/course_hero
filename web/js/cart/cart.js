@@ -262,9 +262,9 @@ function removeFromCart(btn) {
 
             let removeItem = btn.closest('.course-item');
             removeItem.remove();
-            updateItemNumber();
-            selectItem();
             removeCartItem(responseData);
+            selectItem();
+            updateItemNumber();
         } else {
             toast_msg(TOAST_ERROR, "Server Error", `Fail to remove from cart`);
         }
@@ -361,9 +361,9 @@ function moveToWish(btn) {
 
             let removeItem = btn.closest('.course-item');
             removeItem.remove();
+            addWishItem(responseData);
             updateItemNumber();
             selectItem();
-            addWishItem(responseData);
             toast_msg(TOAST_SUCCESS, "Success", "Added to wishlist");
         } else {
             toast_msg(TOAST_ERROR, "Server Error", `Fail to add wishlist`);
@@ -424,4 +424,33 @@ function updateItemNumber() {
     let merchNoun = document.getElementById("cartMerchNumberNoun");
     merchField.innerText = merchCount;
     merchNoun.innerText = merchCount > 1 ? "Merchandises" : "Merchandise";
+
+    if (courseCount + merchCount < 1) {
+        // whole cart zero
+        cartContent.style.display = "none";
+        cartEmpty.style.display = "flex";
+    } else {
+        cartContent.style.display = "flex";
+        cartEmpty.style.display = "none";
+
+        if (courseCount < 1) {
+            // course zero
+            cartTitle.style.display = "none";
+            cartList.style.display = "none";
+        } else {
+            // course display
+            cartTitle.style.display = "flex";
+            cartList.style.display = "flex";
+        }
+
+        if (merchCount < 1) {
+            // hide merch
+            merchTitle.style.display = "none";
+            merchList.style.display = "none";
+        } else {
+            // show merch
+            merchTitle.style.display = "flex";
+            merchList.style.display = "flex";
+        }
+    }
 }
