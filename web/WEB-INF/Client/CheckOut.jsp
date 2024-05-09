@@ -145,7 +145,7 @@
                             </div>
                         </div>
 
-                        <div class="new-address address-div flex-col ">
+                        <div class="new-address address-div check-address  flex-col ">
                             <input type="radio"  id="addAddress" name="storedAddress" value="newAddress" hidden/>
                             <span class="selected-icon"><i class="ri-check-fill"></i></span>
 
@@ -182,7 +182,7 @@
 
                     <!--if no address/does not have full address show this-->
                     <% if (false) { %>
-                    <div class="unstored-address-div address-div flex-col">
+                    <div class="unstored-address-div address-div check-address  flex-col">
                         <input type="radio" id="current-address" name="storedAddress" value="newAddress" hidden checked />
                         <p class="address-div-title">Enter New Address</p>
 
@@ -351,7 +351,7 @@
 
                     <div class="payment-method-input payment-bank flex-col">
 
-                        <label class="storedDetailLabel"  for="storedBank"><input type="checkbox" id="storedBank" name="storedBank" value="storedBank">  Bank Name - Acc No.</label>
+                        <label class="storedDetailLabel"  for="storedBank"><input type="checkbox" id="storedBank" name="storedBank" value="storedBank"> <i class="ri-bank-line"></i> Bank Name - Acc No.</label>
 
 
                         <div class="payment-input-div text-input-div required-input-field  flex-col">

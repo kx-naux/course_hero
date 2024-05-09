@@ -1,3 +1,17 @@
+// show success or errorMsg
+document.addEventListener("DOMContentLoaded", () => {
+
+    const errorMsg = document.getElementById("errorMsg");
+    if (errorMsg !== null && errorMsg.innerText !== "") {
+        toast_msg(TOAST_ERROR, "Error", errorMsg.innerText);
+    }
+
+    const successMsg = document.getElementById("successMsg");
+    if (successMsg !== null && successMsg.innerText !== "") {
+        toast_msg(TOAST_SUCCESS, "Sucessful", successMsg.innerText);
+    }
+});
+
 // submit form when need refresh
 function submitForm(action) {
     const form = document.getElementById("checkOutForm");
@@ -23,6 +37,19 @@ shippingRadios.forEach(shippingMethod => {
 
 // listener for address
 if (document.querySelector(".stored-address-div") !== null) {
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const confirmStoreDiv = document.querySelector("div.ship-div div.confirma-store-div");
+        const confirmStoreBox = confirmStoreDiv.querySelector('input[type="checkbox"]');
+        confirmStoreBox.checked = false;
+
+        if (document.querySelector("div.current-address input[type='radio']:checked") !== null) {
+            confirmStoreDiv.style.display = "none";
+        } else {
+            confirmStoreDiv.style.display = "flex";
+        }
+    });
+
     const addressRadios = document.querySelectorAll('div.address-div');
 
     addressRadios.forEach(addressDiv => {
@@ -31,6 +58,15 @@ if (document.querySelector(".stored-address-div") !== null) {
             const radioButton = this.querySelector('input[type="radio"]');
             radioButton.checked = true;
 
+            const confirmStoreDiv = document.querySelector("div.ship-div div.confirma-store-div");
+            const confirmStoreBox = confirmStoreDiv.querySelector('input[type="checkbox"]');
+            confirmStoreBox.checked = false;
+
+            if (document.querySelector("div.current-address input[type='radio']:checked") !== null) {
+                confirmStoreDiv.style.display = "none";
+            } else {
+                confirmStoreDiv.style.display = "flex";
+            }
         });
     });
 }
@@ -240,7 +276,29 @@ document.getElementById("placeOrderBtn").addEventListener("click", () => {
 
 function submitCheckoutForm() {
 
+    // address
+    const addressDiv = document.querySelector(".check-address");
+    const addressRadio = addressDiv.querySelector("input[type='radio']");
+    const addressInvalidMsg = document.querySelector(".ship-div p.invalid-msg");
+
+    if (addressRadio.checked) {
+
+    }
+
+    // payment
+
     const form = document.getElementById("checkOutForm");
     form.submit();
 }
 
+// listener for remove invalid class 
+const addressDiv = document.querySelector(".check-address");
+if (addressDiv !== null) {
+    const inputFields = addressDiv.querySelectorAll("input[type='text']");
+    inputFields.forEach(input => {
+        input.addEventListener('blur', () => {
+            input.classList.remove("invalid-input");
+            document.querySelector(".ship-div p.invalid-msg").innerText = "";
+        });
+    });
+}
