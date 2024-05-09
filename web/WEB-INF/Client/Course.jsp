@@ -18,7 +18,8 @@
 <% boolean inCart = ((Boolean) request.getAttribute("inCart")).booleanValue();%>
 <% boolean isReviewed = ((Boolean) request.getAttribute("isReviewed")).booleanValue();%>
 <% boolean inWishlist = ((Boolean) request.getAttribute("inWishlist")).booleanValue();%>
-<% String reviewError = (String)request.getAttribute("reviewError"); %>
+<% String reviewError = (String) request.getAttribute("reviewError");
+    %>
 
 
 <!DOCTYPE html>
@@ -44,16 +45,16 @@
 
         <%  //already set on head
             //boolean isOwn = false; // set value to true if user already buy the course
-           // boolean inCart = false;
+            // boolean inCart = false;
             //boolean inWishlist = false;
         %>
 
         <!--put 1 to show add review form-->
         <%String showAddReview = "0";
-            if(userData.getDateJoined() != null && isOwn && !isReviewed){
-            showAddReview = "1";
-        }%>
-        <input type="number" id="addReviewStatus" value="<%= showAddReview %>" hidden />
+            if (userData.getDateJoined() != null && isOwn && !isReviewed) {
+                showAddReview = "1";
+            }%>
+        <input type="number" id="addReviewStatus" value="<%= showAddReview%>" hidden />
 
         <section class="section course-section" courseID="${param.id}">
             <div class="course-div flex-row">
@@ -73,23 +74,24 @@
                         <div class="course-rating flex-row">
                             <p class="rating-digit">${courseData.productId.avgRating}</p>
                             <div class="flex-row">
-                                <%  double score = courseData.getProductId().getAvgRating();
-                                    for(int i = 0;i<5;i++){
-                                        if(score >= 1){ %>
-                                            <i class="ri-star-fill"></i>
-                                        <%}else if(score>0){%>
-                                            <i class="ri-star-half-fill"></i>
-                                        <%}else{%>
-                                            <i class="ri-star-line"></i>
-                                        <%}%>
-                                    <%}%>
+                                <%
+                                    double score = courseData.getProductId().getAvgRating();
+                                    for (int i = 0; i < 5; i++) {
+                                       if (score >= i + 1) { %>
+                                <i class="ri-star-fill"></i>
+                                <% } else if (score > i) { %>
+                                <i class="ri-star-half-fill"></i>
+                                <% } else { %>
+                                <i class="ri-star-line"></i>
+                                <% } %>
+                                <% }%>
                             </div>
                             <p class="rating-number-field"><a href="#rating-div">(<span class="raing-number"><%= ratingCount%></span> ratings)</a></p>
-                            <p class="course-sell"><%= totalLearners %> students</p>
+                            <p class="course-sell"><%= totalLearners%> students</p>
                         </div>
-                            <%LocalDateTime currentDateTime = LocalDateTime.now();
-                                DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-                                String currentDateTimeString = currentDateTime.format(dateTimeFormatter);%>
+                        <%LocalDateTime currentDateTime = LocalDateTime.now();
+                            DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                            String currentDateTimeString = currentDateTime.format(dateTimeFormatter);%>
                         <p class="course-update-date"><i class="ri-information-line"></i> Last updated <%= currentDateTimeString%></p>
                     </div>
 
@@ -99,20 +101,20 @@
                         <div class="course-learn-point">
                             <ul class="course-learn-point-list flex-row">
                                 <%String whatToLearnContent = courseData.getLearningObj();
-                                        String modifiedLearnContent = whatToLearnContent.replaceAll("\\\\n", "\n");
-                                        String[] learnContentPoints = modifiedLearnContent.split("\\r?\\n"); // Splitting based on newline character
-                                        // Display paragraphs in HTML
-                                        for (String paragraph : learnContentPoints) {
-                                    %>
-                                    <li>
+                                    String modifiedLearnContent = whatToLearnContent.replaceAll("\\\\n", "\n");
+                                    String[] learnContentPoints = modifiedLearnContent.split("\\r?\\n"); // Splitting based on newline character
+                                    // Display paragraphs in HTML
+                                    for (String paragraph : learnContentPoints) {
+                                %>
+                                <li>
                                     <div class="flex-row">
                                         <p><i class="ri-check-line"></i></p>
                                         <div>
                                             <span><%= paragraph%></span>
                                         </div>
                                     </div>
-                                    </li>
-                                    <%}%>
+                                </li>
+                                <%}%>
                             </ul>
                         </div>   
                     </div>
@@ -131,13 +133,13 @@
                                 int count = 1;
                                 // Display paragraphs in HTML
                                 for (String paragraph : sysContentPoints) {
-                                    %>
+                            %>
                             <div class="syllabus-item flex-row">
-                               <div class="syllabus-item-left flex-col">
-                                    <div class="section-number"><%= count++ %></div>
+                                <div class="syllabus-item-left flex-col">
+                                    <div class="section-number"><%= count++%></div>
                                 </div>
                                 <div class="syllabus-item-right flex-col">
-                                    <h1 class="section-title"><%= paragraph %></h1>
+                                    <h1 class="section-title"><%= paragraph%></h1>
                                     <!--<p class="section-desc">Introduction to Python</p>-->
                                 </div>
                             </div>
@@ -154,9 +156,9 @@
                                 String[] requiContentPoints = modifiedrquiContent.split("\\r?\\n"); // Splitting based on newline character
                                 // Display paragraphs in HTML
                                 for (String paragraph : requiContentPoints) {
-                                    %>
-                            <li><%= paragraph %></li>
-                            <%}%>
+                            %>
+                            <li><%= paragraph%></li>
+                                <%}%>
                         </ul>
                     </div>
 
@@ -164,13 +166,13 @@
                     <div class="course-desc-div flex-col">
                         <h1>Description</h1>
                         <%String descContent = courseData.getDetailedDesc();
-                                String modifiedDescContent = descContent.replaceAll("\\\\n", "\n");
-                                String[] descContentPoints = modifiedDescContent.split("\\r?\\n"); // Splitting based on newline character
-                                // Display paragraphs in HTML
-                                for (String paragraph : descContentPoints) {
-                                    %>
-                                    <p> <%= paragraph%></p>
-                            <%}%>
+                            String modifiedDescContent = descContent.replaceAll("\\\\n", "\n");
+                            String[] descContentPoints = modifiedDescContent.split("\\r?\\n"); // Splitting based on newline character
+                            // Display paragraphs in HTML
+                            for (String paragraph : descContentPoints) {
+                        %>
+                        <p> <%= paragraph%></p>
+                        <%}%>
                     </div>
 
                     <!--Course target-->
@@ -189,57 +191,57 @@
                         <h1>Author</h1>
 
                         <div class="author-list flex-row">
-                            <% for(Authors auth: authorList){ %>
+                            <% for (Authors auth : authorList) {%>
                             <a href="<%= webpath.getPageUrl("author")%>?id=<%= auth.getAuthorId()%>">
                                 <div class="author-item flex-col">
                                     <div class="author-img">
                                         <img src="./img/author/angelayu.jpg" alt=""/>
                                     </div>
                                     <div class="author-info flex-col">
-                                        <h1 class="author-name"><%= auth.getAuthorName() %></h1>
-                                        <p class="author-position"><%= auth.getAuthorPosition() %></p>
+                                        <h1 class="author-name"><%= auth.getAuthorName()%></h1>
+                                        <p class="author-position"><%= auth.getAuthorPosition()%></p>
                                     </div>
                                 </div>
                             </a>
                             <%}%>
-                            
+
                         </div>
 
                     </div>
 
                     <!--Course rating-->
                     <% String showRating = "";
-                        if(ratingCount == 0){ 
-                        showRating = " inactive";%>
+                        if (ratingCount == 0) {
+                            showRating = " inactive";%>
                     <%}%>
-                    <div class="course-rating-div flex-col <%= showRating %>" id="rating-div">
+                    <div class="course-rating-div flex-col <%= showRating%>" id="rating-div">
                         <div class="course-overall-rating flex-row">
                             <p class="course-overall-rate"><i class="ri-star-fill"></i> ${courseData.productId.avgRating} course rating</p>
                             <p class="course-overall-rate"><%= ratingCount%> ratings</p>
                         </div>
 
                         <div class="course-review flex-row">
-                            <% for(int i = 0;i<4 && i<ratingList.size();i++){ 
-                                Ratings rating = ratingList.get(i);
-                                %>
+                            <% for (int i = 0; i < 4 && i < ratingList.size(); i++) {
+                                    Ratings rating = ratingList.get(i);
+                            %>
                             <div class="user-review flex-col">
                                 <div class="user-review-top flex-row">
                                     <%String base64ImageData = "";
                                         if (rating.getUserId().getImgData() != null) {
-                                        base64ImageData = Base64.getEncoder().encodeToString((byte[]) rating.getUserId().getImgData());
-                                    }%>
+                                            base64ImageData = Base64.getEncoder().encodeToString((byte[]) rating.getUserId().getImgData());
+                                        }%>
                                     <div class="user-img">
                                         <img src="data:image/jpeg;base64,<%= base64ImageData%>" onerror="this.src='./img/user/default.png';" alt="" />
                                     </div>
                                     <div class="flex-col">
-                                        <p class="user-name"><%= rating.getUserId().getDisplayName() %></p>
+                                        <p class="user-name"><%= rating.getUserId().getDisplayName()%></p>
                                         <div class="review-top-bot flex-row">
                                             <div class="rating-stars flex-row">
-                                                <% for(int z = rating.getScore(); z > 0; z--) { %>
+                                                <% for (int z = rating.getScore(); z > 0; z--) { %>
                                                 <%      if (z == 0.5) { %>
-                                                            <i class="ri-star-half-fill"></i>
+                                                <i class="ri-star-half-fill"></i>
                                                 <%      } else {%>
-                                                            <i class="ri-star-fill"></i>
+                                                <i class="ri-star-fill"></i>
                                                 <%      }%>
                                                 <%}%>
                                             </div>
@@ -266,7 +268,7 @@
                         </div>
 
                         <button class="all-review-btn">Show all reviews</button>
-                        
+
                         <!--add review form-->
                         <div class="flex-col add-review-div" id="addReviewDiv">
                             <form id="addReviewForm" class="flex-col" method="post" action="submit-course-review">
@@ -294,10 +296,10 @@
                                     <label for="comment">Please share your opinion about the product</label>
                                     <textarea id="comment" name="comment" rows="5" cols="10" placeholder="Enter your review here"></textarea>
                                 </div>
-                                <% if(reviewError!=null){%>
-                                    <p id="reviewInvalidMsg" class="invalid-msg"><%= reviewError %></p>
-                                <%}else{%>
-                                    <p id="reviewInvalidMsg" class="invalid-msg"></p>
+                                <% if (reviewError != null) {%>
+                                <p id="reviewInvalidMsg" class="invalid-msg"><%= reviewError%></p>
+                                <%} else {%>
+                                <p id="reviewInvalidMsg" class="invalid-msg"></p>
                                 <%}%>
 
 
@@ -310,7 +312,7 @@
                         </div>
 
                     </div>
-                                   
+
                     <!--More course form author-->
 
                 </div>
@@ -321,14 +323,14 @@
                         <!--Course Preview Video-->
                         <div class="sticky-div-video">
                             <%  String base64StringVideoData = "";
-                                if(courseData.getVideoData()!=null){
-                                base64StringVideoData = java.util.Base64.getEncoder().encodeToString((byte[])courseData.getVideoData());
-                                } 
+                                if (courseData.getVideoData() != null) {
+                                    base64StringVideoData = java.util.Base64.getEncoder().encodeToString((byte[]) courseData.getVideoData());
+                                }
                             %>
-             <%--               <video controls>
-                                <source src="data:video/mp4;base64,<%= base64StringVideoData %>" onerror="this.src='./video/course/python_course.mp4';" type="video/mp4">
-                            </video> --%>
-             <img src="./img/course/beginner_excel.jpg" alt="" />
+                            <%--               <video controls>
+                                               <source src="data:video/mp4;base64,<%= base64StringVideoData %>" onerror="this.src='./video/course/python_course.mp4';" type="video/mp4">
+                                           </video> --%>
+                            <img src="./img/course/beginner_excel.jpg" alt="" />
                         </div>
 
                         <div class="sticky-div-bot flex-col">
@@ -339,11 +341,11 @@
 
                             <!--Course Price-->
                             <div class="sticky-div-price flex-row">
-                                <p class="course-price">RM <span><%= String.format("%.2f",courseData.getProductId().getPrice() - courseData.getProductId().getDiscount() ) %></span></p>                                      
-                                <p class="course-normal-price">RM <span><%= String.format("%.2f",courseData.getProductId().getPrice())%></span></p>
-                                <% double disPercent = (courseData.getProductId().getDiscount())/(courseData.getProductId().getPrice())*100;
-                                    if(disPercent > 0){%>
-                                    <p class="course-offer"><%= String.format("%.0f", disPercent) %>% off</p>
+                                <p class="course-price">RM <span><%= String.format("%.2f", courseData.getProductId().getPrice() - courseData.getProductId().getDiscount())%></span></p>                                      
+                                <p class="course-normal-price">RM <span><%= String.format("%.2f", courseData.getProductId().getPrice())%></span></p>
+                                <% double disPercent = (courseData.getProductId().getDiscount()) / (courseData.getProductId().getPrice()) * 100;
+                                    if (disPercent > 0) {%>
+                                <p class="course-offer"><%= String.format("%.0f", disPercent)%>% off</p>
                                 <%}%>
                             </div>
 
@@ -374,7 +376,7 @@
 
             </div>
         </section>
-        <%if(rateStats.getAllStarCounts()>0){%>
+        <%if (rateStats.getAllStarCounts() > 0) {%>
         <section class="section all-review-section">
             <div class="all-review-div flex-col">
 
@@ -392,7 +394,7 @@
                         <div class="rating-count flex-row">
                             <div class="rating-percentage-bar flex-col">
                                 <span class="background-bar"></span>
-                                <span class="front-bar" style="width: <%= rateStats.getFiveStarPercentage() %>%"></span>
+                                <span class="front-bar" style="width: <%= rateStats.getFiveStarPercentage()%>%"></span>
                             </div>
                             <div class="rating-stars flex-row">
                                 <i class="ri-star-fill"></i>
@@ -406,7 +408,7 @@
                         <div class="rating-count flex-row">
                             <div class="rating-percentage-bar">
                                 <span class="background-bar"></span>
-                                <span class="front-bar" style="width: <%= rateStats.getFourStarPercentage() %>%"></span>
+                                <span class="front-bar" style="width: <%= rateStats.getFourStarPercentage()%>%"></span>
                             </div>
                             <div class="rating-stars flex-row">
                                 <i class="ri-star-fill"></i>
@@ -420,7 +422,7 @@
                         <div class="rating-count flex-row">
                             <div class="rating-percentage-bar">
                                 <span class="background-bar"></span>
-                                <span class="front-bar" style="width: <%= rateStats.getThreeStarPercentage() %>%"></span>
+                                <span class="front-bar" style="width: <%= rateStats.getThreeStarPercentage()%>%"></span>
                             </div>
                             <div class="rating-stars flex-row">
                                 <i class="ri-star-fill"></i>
@@ -434,7 +436,7 @@
                         <div class="rating-count flex-row">
                             <div class="rating-percentage-bar">
                                 <span class="background-bar"></span>
-                                <span class="front-bar" style="width: <%= rateStats.getTwoStarPercentage() %>%"></span>
+                                <span class="front-bar" style="width: <%= rateStats.getTwoStarPercentage()%>%"></span>
                             </div>
                             <div class="rating-stars flex-row">
                                 <i class="ri-star-fill"></i>
@@ -448,7 +450,7 @@
                         <div class="rating-count flex-row">
                             <div class="rating-percentage-bar">
                                 <span class="background-bar"></span>
-                                <span class="front-bar"  style="width: <%= rateStats.getOneStarPercentage() %>%"></span>
+                                <span class="front-bar"  style="width: <%= rateStats.getOneStarPercentage()%>%"></span>
                             </div>
                             <div class="rating-stars flex-row">
                                 <i class="ri-star-fill"></i>
