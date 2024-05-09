@@ -121,6 +121,7 @@ searchInputField.addEventListener("keyup", () => {
             }
             return response.json();
         }).then(responseData => {
+            console.log(responseData)
             insert_suggestion(responseData);
         }).catch(error => {
             console.error('Fetch error:', error);
@@ -316,3 +317,31 @@ function removeWishItem(data) {
         wishEmptyDiv.classList.add("active");
     }
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+    let cartlistDiv = document.getElementById("cartlistDiv");
+    let cartlistLink = document.getElementById("cartlistLink");
+    let cartEmptyDiv = document.getElementById("cartlistEmpty");
+    let cartlistNumber = document.getElementById("cartlistNumber");
+    let cartlistItems = document.querySelectorAll("div#cartlistDiv div.course-item");
+    
+    // check list is empty before adding
+    if (cartlistItems.length < 1) {
+        cartlistDiv.classList.remove("active");
+        cartlistLink.classList.remove("active");
+        cartlistNumber.classList.remove("active");
+        cartEmptyDiv.classList.add("active");
+    }
+    
+    let wishlistDiv = document.getElementById("wishlistDiv");
+    let wishEmptyDiv = document.getElementById("wishlistEmpty");
+    let wishlistLink = document.getElementById("wishlistLink");
+    let wishlistItems = document.querySelectorAll("div#wishlistDiv div.course-item");
+
+    // check list is empty before adding
+    if (wishlistItems.length <= 1) {
+        wishlistDiv.classList.remove("active");
+        wishlistLink.classList.remove("active");
+        wishEmptyDiv.classList.add("active");
+    }
+});

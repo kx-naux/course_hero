@@ -58,6 +58,7 @@
         <script src="./js/components/to_top.js"></script>
 
         <!--to show a toast error message--> 
+
         <% if(errMsg == null){ %>
             <span id="errorMsg" hidden></span>
         <%}else{%>
@@ -181,7 +182,7 @@
                             </div>
 
                             <div class="text-input-div address-input-div flex-col">
-                                <label for="state">State Resides:</label>
+                                <label for="state">State resides:</label>
                                 <input type="text"  value="${userData.addressId.stateResides}" readonly/>
                             </div>
 
@@ -191,66 +192,68 @@
                             </div>
                         </div>
 
-                        <div class="new-address address-div flex-col ">
+                        <div class="new-address address-div check-address  flex-col ">
                             <input type="radio"  id="addAddress" name="storedAddress" value="newAddress" hidden/>
                             <span class="selected-icon"><i class="ri-check-fill"></i></span>
 
                             <p class="address-div-title">New Address</p>
 
-                            <div class="text-input-div address-input-div flex-col">
+                            <div class="text-input-div  required-input-field  address-input-div flex-col">
                                 <label>Address:</label>
                                 <input type="text" class="address-row-1 address-1" name="address1" value="" placeholder="address line 1" maxlength="50" />
                                 <input type="text" class="address-2"  name="address2" value="" placeholder="address line 2" maxlength="50" />
                             </div>
 
-                            <div class="text-input-div address-input-div flex-col">
+                            <div class="text-input-div required-input-field  address-input-div flex-col">
                                 <label for="city">City:</label>
                                 <input type="text" class="city"  name="city" value="" placeholder="city name" maxlength="20" />
                             </div>
 
-                            <div class="text-input-div address-input-div flex-col">
+                            <div class="text-input-div  required-input-field address-input-div flex-col">
                                 <label for="postalCode">Postal code:</label>
                                 <input type="text" class="postal-code" name="postalCode" placeholder="postal code" maxlength="9" value="" />
                             </div>
 
-                            <div class="text-input-div address-input-div flex-col">
-                                <label for="state">State Resides:</label>
+                            <div class="text-input-div  required-input-field address-input-div flex-col">
+                                <label for="state">State resides:</label>
                                 <input type="text" class="state"  name="state" placeholder="state name" maxlength="20" value=""/>
                             </div>
 
-                            <div class="text-input-div address-input-div flex-col">
+                            <div class="text-input-div  required-input-field address-input-div flex-col">
                                 <label for="state">Country:</label>
                                 <input type="text" class="country"  name="country" placeholder="country name" maxlength="40" value=""/>
                             </div>
                         </div>
                     </div>
+
                     <% } else { %>
-                    <div class="unstored-address-div address-div flex-col">
+                    <div class="unstored-address-div address-div check-address  flex-col">
                         <input type="radio" id="current-address" name="storedAddress" value="newAddress" hidden checked />
                         <p class="address-div-title">Enter New Address</p>
 
                         <div class="text-input-div address-input-div flex-col">
+
                             <label>Address:</label>
                             <input type="text" class="address-1 address-row-1" name="address1" value="" placeholder="address line 1" maxlength="50" />
                             <input type="text" class="address-2"  name="address2" value="" placeholder="address line 2" maxlength="50" />
                         </div>
 
-                        <div class="text-input-div address-input-div flex-col">
+                        <div class="text-input-div  required-input-field address-input-div flex-col">
                             <label for="city">City:</label>
                             <input type="text" class="city"  name="city" value="" placeholder="city name" maxlength="20" />
                         </div>
 
-                        <div class="text-input-div address-input-div flex-col">
+                        <div class="text-input-div  required-input-field address-input-div flex-col">
                             <label for="postalCode">Postal code:</label>
                             <input type="text" class="postal-code" name="postalCode" placeholder="postal code" maxlength="9" value="" />
                         </div>
 
-                        <div class="text-input-div address-input-div flex-col">
-                            <label for="state">State Resides:</label>
+                        <div class="text-input-div  required-input-field address-input-div flex-col">
+                            <label for="state">State resides:</label>
                             <input type="text" class="state"  name="state" placeholder="state name" maxlength="20" value=""/>
                         </div>
 
-                        <div class="text-input-div address-input-div flex-col">
+                        <div class="text-input-div  required-input-field address-input-div flex-col">
                             <label for="state">Country:</label>
                             <input type="text" class="country"  name="country" placeholder="country name" maxlength="40" value=""/>
                         </div>
@@ -308,7 +311,9 @@
                     <h1 class="div-title"><i class="ri-coupon-2-line"></i> Voucher / Promo Code</h1>
 
                     <div class="promo-input-div flex-row">
-                        <input type="text" id="promo" name="promo" placeholder="Enter promo code here" value="<%= promoApplied.getEndTime() == null ? "":promoApplied.getPromoCode() %>" maxlength="9" />
+
+                        <input type="text" id="promo" name="promo" class="" placeholder="Enter promo code here" value="<%= promoApplied.getEndTime() == null ? "":promoApplied.getPromoCode() %>" maxlength="9" />
+
                         <input type="button" id="promoApply" value="Apply" />
                     </div>
 
@@ -335,14 +340,14 @@
                         </div>
 
                         <div class="payment-method flex-col">
-                            <input type="radio" id="cardMethod" name="paymentMethod" value="bank" hidden />
+                            <input type="radio" id="bankMethod" name="paymentMethod" value="bank" hidden />
                             <span class="selected-icon"><i class="ri-check-fill"></i></span>
                             <p class="payment-method-icon"><i class="ri-bank-fill"></i></p>
                             <p class="payment-method-name">Bank</p>
                         </div>
 
                         <div class="payment-method flex-col">
-                            <input type="radio" id="cardMethod" name="paymentMethod" value="tng" hidden />
+                            <input type="radio" id="tngMethod" name="paymentMethod" value="tng" hidden />
                             <span class="selected-icon"><i class="ri-check-fill"></i></span>
                             <p class="payment-method-icon"><i class="ri-wallet-line"></i></p>
                             <p class="payment-method-name">TNG E-wallet</p>
@@ -355,31 +360,39 @@
                         <!--if got stored record render this div-->
                         <!--in span put last 4 digits-->
                         <!--in span first put first 4 digit-->
+
                         <label class="storedDetailLabel" for="storedCard">
                             <input type="checkbox" id="storedCard" name="storedCard" value="storedCard"> 
-                            <img class="credit-logo" src="./img/check_out/visa.png" alt=""> 
+                            <img class="credit-logo" id="cardLogo" src="./img/check_out/visa.png" alt=""> 
                             <span id="storedCardNo" first="<%= userBankCard == null ? "" : userBankCard.getCardNo().substring(0, 4) %>" ><%= userBankCard == null ? "" : "*****" + userBankCard.getCardNo().substring(userBankCard.getCardNo().length()-4) %></span> </label>
 
                         <div class="payment-input-div text-input-div required-input-field  flex-col">
                             <label for="cardHolder">Card Holder:</label>
-                            <input type="text"  id="cardHolder" name="cardHolder" placeholder="Holders name" maxlength="45" value="<%= userBankCard == null? "" : userBankCard.getCardHolderName() %>"/>
+                            <input type="text"  id="cardHolder" class="" name="cardHolder" placeholder="Holders name" maxlength="45" value="<%= userBankCard == null? "" : userBankCard.getCardHolderName() %>"/>
+
                         </div>
 
                         <div class="payment-input-div text-input-div required-input-field  flex-col">
                             <label for="cardNo">Card No.:</label>
-                            <input type="text" id="cardNo"  name="cardNo" placeholder="Enter card number (16 digits)" maxlength="16" value="<%= userBankCard == null? "" : userBankCard.getCardNo() %>"/>
+
+                            <input type="text" id="cardNo"  name="cardNo" class="" placeholder="Enter card number (16 digits)" maxlength="16" value="<%= userBankCard == null? "" : userBankCard.getCardNo() %>"/>
+
                         </div>
 
                         <div class="payment-card-detail-row flex-row">
 
                             <div class="payment-input-div text-input-div  required-input-field flex-col">
                                 <label for="expDate">Exp Date:</label>
-                                <input type="text" id="expDate"  name="expDate" placeholder="MM/YY" maxlength="5" value="<%= userBankCard == null? "" : userBankCard.getExpiryDate() %>"/>
+
+                                <input type="text" id="expDate" class="" name="expDate" placeholder="MM/YY" maxlength="5" value="<%= userBankCard == null? "" : userBankCard.getExpiryDate() %>"/>
+
                             </div>
 
                             <div class="payment-input-div text-input-div required-input-field  flex-col">
                                 <label for="ccv">CCV:</label>
-                                <input type="text" id="ccv"  name="ccv" placeholder="ccv" maxlength="3" value="<%= userBankCard == null? "" : userBankCard.getCvv()%>"/>
+
+                                <input type="text" id="ccv" class="" name="ccv" placeholder="ccv" maxlength="3" value="<%= userBankCard == null? "" : userBankCard.getCvv()%>"/>
+
                             </div>
 
                         </div>
@@ -390,9 +403,13 @@
                         <label class="storedDetailLabel"  for="storedBank">
                             <input type="checkbox" id="storedBank" name="storedBank" value="storedBank">  Bank Name - Acc No.</label>
 
+                        <label class="storedDetailLabel"  for="storedBank"><input type="checkbox" id="storedBank" name="storedBank" value="storedBank"> <i class="ri-bank-line"></i> Bank Name - Acc No.</label>
+
+
                         <div class="payment-input-div text-input-div required-input-field  flex-col">
                             <label for="bank">Bank:</label>
-                            <select id="bank" name="bank">
+
+                            <select id="bank" name="bank" class="">
                                 <% if(userOBankInfo != null){ %>
                                     <option selected hidden>Select a bank</option>
                                     <% for(OnlineBankingInfo info : oBankNameList ){ 
@@ -408,18 +425,21 @@
                                     <option value="<%= info.getOnlineBankingId() %>"><%= info.getBankName()%></option>
                                     <%}%>
                                 <%}%>
+
                             </select>
                         </div>
 
                         <!--<div class="payment-input-div text-input-div  required-input-field flex-col">
                             <label for="bankAccNo">Account No.:</label>
-                            <input type="text" id="bankAccNo" name="bankAccNo" placeholder="Bank account no" maxlength="12" value=""/>
+
+                            <input type="text" id="bankAccNo" class="" name="bankAccNo" placeholder="Bank account no" maxlength="12" value=""/>
                         </div>-->
+
 
 
                         <div class="payment-input-div text-input-div flex-col">
                             <label for="bankRemark">Remark:</label>
-                            <input type="text" id="bankRemark" name="bankRemark" placeholder="Enter remark here" maxlength="80" value=""/>
+                            <input type="text" id="bankRemark" class=""  name="bankRemark" placeholder="Enter remark here" maxlength="80" value=""/>
                         </div>
 
 
@@ -427,6 +447,7 @@
 
                     <div class="payment-method-input payment-tng flex-col">
                         <!--if got stored record render this div-->
+
                         <label class="storedDetailLabel"  for="storedTng">
                             <input type="checkbox" id="storedTng" name="storedTng" value="storedTng"> 
                             <img class="tng-logo" src="./img/check_out/tng.png" alt=""/> Touch N' Go
@@ -434,12 +455,13 @@
 
                         <div class="payment-input-div text-input-div required-input-field flex-col">
                             <label for="tngPhoneNo">Phone No.:</label>
-                            <input type="text" id="tngPhoneNo" name="tngPhoneNo" placeholder="Enter phone no." maxlength="<%= userTng == null ? "" : userTng.getPhoneno() %>" value=""/>
+                            <input type="text" id="tngPhoneNo" class="" name="tngPhoneNo" placeholder="Enter phone no." maxlength="<%= userTng == null ? "" : userTng.getPhoneno() %>" value=""/>
+
                         </div>
 
                         <div class="payment-input-div text-input-div flex-col">
                             <label for="tngRemark">Remark:</label>
-                            <input type="text" id="tngRemark" name="tngRemark" placeholder="Enter remark here" maxlength="80" value=""/>
+                            <input type="text" id="tngRemark" class=""  name="tngRemark" placeholder="Enter remark here" maxlength="80" value=""/>
                         </div>
 
                     </div>

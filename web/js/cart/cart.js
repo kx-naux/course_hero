@@ -201,7 +201,7 @@ function updateQty(container) {
     const cartId = container.closest('.course-item').getAttribute("courseID");
     const qty = parseInt(container.querySelector('.merch-qty-input').value);
     const data = {
-        cartID: cartId,
+        productID: cartId,
         qty: qty
     };
 

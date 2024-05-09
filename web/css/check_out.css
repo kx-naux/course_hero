@@ -24,6 +24,7 @@
     font-size: var(--font-size-xxl);
     color: var(--color-navy-blue);
     border-left: 3px solid var(--color-navy-blue);
+    user-select: none;
 }
 
 .title-div  .cancel-btn {
@@ -108,6 +109,7 @@
     margin-bottom: 5px;
 }
 
+input#promo.invalid-input,
 .content-section .content-div .text-input-div input.invalid-input,
 .content-section .content-div .text-input-div select.invalid-input{
     background-color: var(--color-text-error-bg);
@@ -116,6 +118,12 @@
 
 .content-section .content-div .text-input-div input::placeholder{
     color: var(--color-text-light-1);
+}
+
+.content-section .content-div .text-input-div.required-input-field label::after{
+    content: "*";
+    padding-left: 5px;
+    color: var(--color-text-error);
 }
 
 /*shipping method*/
@@ -398,7 +406,7 @@ table#itemsTable tbody td:first-of-type div {
 .payment-method-div .payment-method{
     border-radius: 10px;
     padding: 14px 20px;
-    border: 2px solid var(--color-light-grey-1);
+    border: 2px solid var(--color-light-grey-2);
     cursor: pointer;
     position: relative;
     width: 215px;
@@ -431,7 +439,7 @@ table#itemsTable tbody td:first-of-type div {
 
 .payment-method .payment-method-icon{
     font-weight: 400;
-    font-size: var(--font-size-xl);
+    font-size: var(--font-size-xxl);
     color: var(--color-text-light-2);
 }
 
@@ -470,6 +478,7 @@ table#itemsTable tbody td:first-of-type div {
     display: flex;
     align-items: center;
     gap: 8px;
+    user-select: none;
 }
 
 .tng-logo {
@@ -541,4 +550,84 @@ table#itemsTable tbody td:first-of-type div {
 
 .total-div input#placeOrderBtn:hover {
     background-color: var(--color-blue-3);
+}
+
+/*check our review*/
+.shipping-type-div {
+    margin-bottom: 30px;
+}
+
+.review-btn-row {
+    gap: 15px;
+}
+
+.total-div input#cofirmOrderBtn{
+    width: 100%;
+    padding: 15px 30px;
+    font-weight: 600;
+    font-size: var(--font-size-xm);
+    color: var(--color-white);
+    background-color: var(--color-blue-2);
+    cursor: pointer;
+    margin: 10px 0;
+}
+
+.total-div input#cofirmOrderBtn:hover {
+    background-color: var(--color-blue-3);
+}
+
+.total-div input#backOrderBtn{
+    padding: 15px 30px;
+    font-weight: 600;
+    font-size: var(--font-size-xm);
+    color: var(--color-text-light-2);
+    background-color: var(--color-white);
+    border: 1px solid var(--color-text-light-2);
+    cursor: pointer;
+    margin: 10px 0;
+}
+
+.total-div input#backOrderBtn:hover {
+    background-color: var(--color-light-grey-2);
+}
+
+/*checkout review success*/
+.content-section .content-div.success-div  {
+    padding: 40px;
+    gap: 40px;
+    text-align: center;
+}
+
+.content-section .content-div.success-div .success-img {
+    width: 300px;
+    margin: 0 auto;
+}
+
+.content-section .content-div.success-div a {
+    padding: 15px 30px;
+    font-weight: 600;
+    font-size: var(--font-size-xm);
+    color: var(--color-text-light-2);
+    background-color: var(--color-white);
+    border: 1px solid var(--color-text-light-2);
+    cursor: pointer;
+    margin: 10px auto;
+    max-width: 200px;
+    border-radius: 30px;
+}
+
+.content-section .content-div.success-div a:hover {
+    background-color: var(--color-light-grey-2);
+}
+
+.content-section .content-div.success-div h1 {
+  font-weight: 600;
+    font-size: var(--font-size-xl);
+    color: var(--color-blue-1);
+}
+
+.content-section .content-div.success-div p{
+   font-weight: 400;
+    font-size: var(--font-size-xm);
+    color: var(--color-text-light-2);
 }

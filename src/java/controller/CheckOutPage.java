@@ -32,6 +32,7 @@ public class CheckOutPage extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         HttpSession session = request.getSession();
         List<CartItems> checkingOutCartItemList = (List<CartItems>) session.getAttribute("checkingOutCartItemList");
         if(checkingOutCartItemList == null){
@@ -93,6 +94,7 @@ public class CheckOutPage extends HttpServlet {
         session.setAttribute("paymentTax",String.format("%.2f",paymentTax));
         
         // Forward the request to CheckOut.jsp
+
         request.getRequestDispatcher("/WEB-INF/Client/CheckOut.jsp").forward(request, response);
     }
     

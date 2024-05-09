@@ -15,4 +15,3 @@ public class AdminManageCustomerPage extends HttpServlet {
         request.getRequestDispatcher("/WEB-INF/Admin/AdminManageCustomer.jsp").forward(request, response);
     }
 }
-

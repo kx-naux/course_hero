@@ -20,10 +20,12 @@
                 <div class="main-top">
                     <div class="main-top-left">
                         <h1>Manage Staff</h1>
+                        <a href="<%= webpath.getPageUrl("add-staff") %>">
                         <button type="button" class="add-button products">
                             <span class="add-button__text">Add Staff</span>
                             <span class="add-button__icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke="currentColor" height="24" fill="none" class="svg"><line y2="19" y1="5" x2="12" x1="12"></line><line y2="12" y1="12" x2="19" x1="5"></line></svg></span>
                         </button>
+                        </a>
                     </div>                    
                     <div class="top">
                         <!-- include dark theme toggler -->
@@ -191,8 +193,8 @@
                                        KahXuan
                                    </td>
                                    <td>Pentamaster Manager</td>
-                                   <td>UK</td>
                                    <td>lowkx-pm22@student.tarc.edu.my</td>
+                                   <td>UK</td>
                                    <td>Male</td>
                                    <td>12-12-2012</td>
                                    <td>12-12-2012</td>

@@ -4,8 +4,13 @@
  */
 package controller;
 
+import JPAEntity.Keyword;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -17,6 +22,9 @@ import javax.servlet.http.HttpServletResponse;
  * @author wooyu
  */
 public class LoadInitServlet extends HttpServlet {
+    
+    @PersistenceContext
+    EntityManager em;
 
     @Override
     public void init() throws ServletException {
@@ -51,6 +59,10 @@ public class LoadInitServlet extends HttpServlet {
         if (context.getInitParameter("companyIcon") != null) {
             companyIcon = context.getInitParameter("companyIcon");
         }
+        
+        Query query = em.createNamedQuery("Keyword.findAll");
+        query.setMaxResults(5);
+        List<Keyword> allKeywords = query.getResultList();
 
         context.setAttribute("companyName", companyName);
         context.setAttribute("copyright", copyright);
@@ -59,6 +71,7 @@ public class LoadInitServlet extends HttpServlet {
         context.setAttribute("contactEmail", contactEmail);
         context.setAttribute("companyLogo", companyLogo);
         context.setAttribute("companyIcon", companyLogo);
+        context.setAttribute("allKeywords", allKeywords);
     }
 
 }

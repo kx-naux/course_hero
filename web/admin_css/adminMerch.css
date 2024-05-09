@@ -1,0 +1,52 @@
+@import url('adminStyle.css');
+@import url('addNewItemButton.css');
+
+/* Add New Item Button CSS - Product Nia */
+.add-button.products{
+    width: 170px !important;
+}
+
+.add-button.products .add-button__icon {
+    transform: translateX(129px) !important;
+}
+
+.add-button.products:hover .add-button__icon {
+    width: 168px !important;
+    transform: translateX(0) !important;
+}
+
+/* End of Add New Item CSS */
+
+.main-content{
+    width: 96vw;
+}
+
+.main-top{
+    display: flex;
+    justify-content: space-between;
+}
+
+.top{
+    display: flex;
+}
+
+.top-right{
+    right: 0;
+}
+
+.main-top-left{
+    display: flex;
+    gap: 1.5rem;
+}
+
+/* Custom Table CSS - Course */
+.product-table thead th i.ri-image-line{
+    font-size: 24px;
+}
+
+/* End Custom Table CSS */
+
+/* Change according to needed edit input */
+.edit-items-container .edit-items {
+    grid-template-columns: auto auto auto auto auto !important; 
+}

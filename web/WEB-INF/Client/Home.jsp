@@ -25,8 +25,10 @@
         <jsp:useBean id="eachCourseCatRegistered" class="List<Integer>" scope="request" />
         <jsp:useBean id="programmingCourse" class="List<JPAEntity.Courses>" scope="request" />
         <jsp:useBean id="programmingAuthorContribution" class="Map<String, List<JPAEntity.Authors>>" scope="request" />
+        <jsp:useBean id="programmingItemStatus" class="Map<String, List<Integer>>" scope="request" />
         <jsp:useBean id="designCourse" class="List<JPAEntity.Courses>" scope="request" />
         <jsp:useBean id="designAuthorContribution" class="Map<String, List<JPAEntity.Authors>>" scope="request" />
+        <jsp:useBean id="designItemStatus" class="Map<String, List<Integer>>" scope="request" />
         <jsp:useBean id="allCourse" class="List<JPAEntity.Courses>" scope="request" />
         <jsp:useBean id="allAuthorContribution" class="Map<String, List<JPAEntity.Authors>>" scope="request" />
     </head>
@@ -41,7 +43,7 @@
         <%@ include file="./Components/navbar.jsp" %>
 
         <!-- Image Carousel -->
-        
+
         <section class="section slideshow-section flex-col">
             <div class="slideshow-frame">
                 <div id="first_slide" class="pic-show fade">
@@ -97,14 +99,14 @@
                     <a href="#"><p>View More</p></a>
                 </div>
                 <div class="courses flex-row">
-                    
-                    <%  
+
+                    <%
                         int allCounter = 0;
-                        for(Courses eachAllCourse: allCourse) {
-                            if("Active".equals(eachAllCourse.getProductId().getStatus())){
+                        for (Courses eachAllCourse : allCourse) {
+                            if ("Active".equals(eachAllCourse.getProductId().getStatus())) {
                     %>
 
-                    <div class="course-product" courseID="<%=eachAllCourse.getCourseId() %>" onclick="redirectToProductPage(this)">
+                    <div class="course-product" courseID="<%=eachAllCourse.getCourseId()%>" onclick="redirectToProductPage(this)">
                         <div class="course-product-card">
                             <div class="product-card-top">
                                 <img src="./img/course/beginner_excel.jpg" alt="">
@@ -114,37 +116,36 @@
                                 </div>
                             </div>
                             <div class="product-card-bottom flex-col">
-                                <h1 class="course-title"><%=eachAllCourse.getProductId().getProdName() %></h1>
+                                <h1 class="course-title"><%=eachAllCourse.getProductId().getProdName()%></h1>
                                 <p class="course-category"><%=eachAllCourse.getCoursecatId().getCategoryName()%></p>
-                                                                <p class="course-category">Design</p>
                                 <%
                                     List<Authors> currentAuthors = allAuthorContribution.get(eachAllCourse.getCourseId());
                                     String concatAuthors = "";
-                                    for(int i=0; i<currentAuthors.size(); i++){
+                                    for (int i = 0; i < currentAuthors.size(); i++) {
                                         concatAuthors += currentAuthors.get(i).getAuthorName();
-                                        if(i<currentAuthors.size()-1){
-                                        concatAuthors += ", ";
+                                        if (i < currentAuthors.size() - 1) {
+                                            concatAuthors += ", ";
                                         }
                                     }
                                 %>
-                                <p class="course-author"><%=concatAuthors %></p>
+                                <p class="course-author"><%=concatAuthors%></p>
                                 <div class="course-review flex-row">
-                                    <p class="rating-digit"><%=String.format("%.2f",eachAllCourse.getProductId().getAvgRating())%></p>
+                                    <p class="rating-digit"><%=String.format("%.1f", eachAllCourse.getProductId().getAvgRating())%></p>
                                     <i class="ri-star-fill"></i>
                                     <p class="rating-number-field">(<span class="raing-number"><%=eachAllCourse.getProductId().getRateWeightage()%></span>)</p>
                                 </div>
                                 <div class="course-label flex-row">
-                                    <p><%=String.format("%.2f",eachAllCourse.getLengthHour())%> Hours</p>
+                                    <p><%=String.format("%.2f", eachAllCourse.getLengthHour())%> Hours</p>
                                     <p><%=eachAllCourse.getCourseLevel()%></p>
                                 </div>
                                 <div class="course-price-field flex-row">
                                     <%
                                         double originalPrice = eachAllCourse.getProductId().getPrice();
-                                        double discountedPrice = (100-eachAllCourse.getProductId().getDiscount())/100*(eachAllCourse.getProductId().getPrice());
+                                        double discountedPrice = (100 - eachAllCourse.getProductId().getDiscount()) / 100 * (eachAllCourse.getProductId().getPrice());
                                     %>
-                                    <p class="course-price">RM <span><%=String.format("%.2f",(originalPrice==discountedPrice)?originalPrice:discountedPrice)%></span></p>                                      
-                                    <%if (originalPrice!=discountedPrice){%>
-                                        <p class="course-normal-price">RM <span><%=String.format("%.2f",originalPrice)%></span></p>
+                                    <p class="course-price">RM <span><%=String.format("%.2f", (originalPrice == discountedPrice) ? originalPrice : discountedPrice)%></span></p>                                      
+                                    <%if (originalPrice != discountedPrice) {%>
+                                    <p class="course-normal-price">RM <span><%=String.format("%.2f", originalPrice)%></span></p>
                                     <%}%>
                                 </div>
                                 <div class="course-tag-field flex-row">
@@ -152,7 +153,7 @@
                                     <%
                                         long difference = new Date().getTime() - eachAllCourse.getDateAdded().getTime();
                                         long millisecondsInMonth = 30L * 24 * 60 * 60 * 1000;
-                                        if (difference < millisecondsInMonth){
+                                        if (difference < millisecondsInMonth) {
                                     %>
                                     <p class="course-tag tag-yellow">New Course</p>
                                     <%}%>
@@ -160,8 +161,10 @@
                             </div>
                         </div>
                     </div>
-                    
-                    <% }allCounter++;} %>
+
+                    <% }
+                            allCounter++;
+                        } %>
 
                 </div>
             </div>
@@ -215,53 +218,56 @@
                     <a href="#"><p>View More</p></a>
                 </div>
                 <div class="courses flex-row">
-                    
-                    <%  
+
+                    <%
                         int designCounter = 0;
-                        for(Courses design: designCourse) {
-                            if("Active".equals(design.getProductId().getStatus())){
+                        for (Courses design : designCourse) {
+                            if ("Active".equals(design.getProductId().getStatus())) {
                     %>
 
-                    <div class="course-product" courseID=<%=design.getCourseId() %> onclick="redirectToProductPage(this)">
+                    <div class="course-product" courseID=<%=design.getCourseId()%> onclick="redirectToProductPage(this)">
                         <div class="course-product-card">
                             <div class="product-card-top">
                                 <img src="./img/course/beginner_excel.jpg" alt="">
+                                <%
+                                    List<Integer> designCurrentStatus = designItemStatus.get(design.getCourseId());
+                                %>
                                 <div class="action-btn-field flex-row">
-                                    <button class="cart-Btn" status="0" onclick="cartButtonClick(event)"><i class="ri-shopping-cart-line"></i></button>
-                                    <button class="wish-Btn" status="0" onclick="likeButtonClick(event)"><i class="ri-heart-line"></i></button>
+                                    <button class="cart-Btn" status=<%=designCurrentStatus.get(0)%> onclick="cartButtonClick(event)"><i class="ri-shopping-cart-line"></i></button>
+                                    <button class="wish-Btn" status=<%=designCurrentStatus.get(1)%> onclick="likeButtonClick(event)"><i class="ri-heart-line"></i></button>
                                 </div>
                             </div>
                             <div class="product-card-bottom flex-col">
-                                <h1 class="course-title"><%=design.getProductId().getProdName() %></h1>
+                                <h1 class="course-title"><%=design.getProductId().getProdName()%></h1>
                                 <p class="course-category">Design</p>
                                 <%
                                     List<Authors> currentAuthors = designAuthorContribution.get(design.getCourseId());
                                     String concatAuthors = "";
-                                    for(int i=0; i<currentAuthors.size(); i++){
+                                    for (int i = 0; i < currentAuthors.size(); i++) {
                                         concatAuthors += currentAuthors.get(i).getAuthorName();
-                                        if(i<currentAuthors.size()-1){
-                                        concatAuthors += ", ";
+                                        if (i < currentAuthors.size() - 1) {
+                                            concatAuthors += ", ";
                                         }
                                     }
                                 %>
-                                <p class="course-author"><%=concatAuthors %></p>
+                                <p class="course-author"><%=concatAuthors%></p>
                                 <div class="course-review flex-row">
-                                    <p class="rating-digit"><%=String.format("%.2f",design.getProductId().getAvgRating())%></p>
+                                    <p class="rating-digit"><%=String.format("%.1f", design.getProductId().getAvgRating())%></p>
                                     <i class="ri-star-fill"></i>
                                     <p class="rating-number-field">(<span class="raing-number"><%=design.getProductId().getRateWeightage()%></span>)</p>
                                 </div>
                                 <div class="course-label flex-row">
-                                    <p><%=String.format("%.2f",design.getLengthHour())%> Hours</p>
+                                    <p><%=String.format("%.2f", design.getLengthHour())%> Hours</p>
                                     <p><%=design.getCourseLevel()%></p>
                                 </div>
                                 <div class="course-price-field flex-row">
                                     <%
                                         double originalPrice = design.getProductId().getPrice();
-                                        double discountedPrice = (100-design.getProductId().getDiscount())/100*(design.getProductId().getPrice());
+                                        double discountedPrice = (100 - design.getProductId().getDiscount()) / 100 * (design.getProductId().getPrice());
                                     %>
-                                    <p class="course-price">RM <span><%=String.format("%.2f",(originalPrice==discountedPrice)?originalPrice:discountedPrice)%></span></p>                                      
-                                    <%if (originalPrice!=discountedPrice){%>
-                                        <p class="course-normal-price">RM <span><%=String.format("%.2f",originalPrice)%></span></p>
+                                    <p class="course-price">RM <span><%=String.format("%.2f", (originalPrice == discountedPrice) ? originalPrice : discountedPrice)%></span></p>                                      
+                                    <%if (originalPrice != discountedPrice) {%>
+                                    <p class="course-normal-price">RM <span><%=String.format("%.2f", originalPrice)%></span></p>
                                     <%}%>
                                 </div>
                                 <div class="course-tag-field flex-row">
@@ -269,7 +275,7 @@
                                     <%
                                         long difference = new Date().getTime() - design.getDateAdded().getTime();
                                         long millisecondsInMonth = 30L * 24 * 60 * 60 * 1000;
-                                        if (difference < millisecondsInMonth){
+                                        if (difference < millisecondsInMonth) {
                                     %>
                                     <p class="course-tag tag-yellow">New Course</p>
                                     <%}%>
@@ -277,8 +283,10 @@
                             </div>
                         </div>
                     </div>
-                    
-                    <% }designCounter++;} %>
+
+                    <% }
+                            designCounter++;
+                        } %>
 
                 </div>
             </div>
@@ -310,61 +318,64 @@
                     <a href="#"><p>View More</p></a>
                 </div>
                 <div class="courses flex-row">
-                    
-                    <%  
+
+                    <%
                         int programmingCounter = 0;
-                        for(Courses programming: programmingCourse) {
-                            if("Active".equals(programming.getProductId().getStatus())){
+                        for (Courses programming : programmingCourse) {
+                            if ("Active".equals(programming.getProductId().getStatus())) {
                     %>
 
-                    <div class="course-product" courseID=<%=programming.getCourseId() %> onclick="redirectToProductPage(this)">
+                    <div class="course-product" courseID=<%=programming.getCourseId()%> onclick="redirectToProductPage(this)">
                         <div class="course-product-card">
                             <div class="product-card-top">
                                 <img src="./img/course/beginner_excel.jpg" alt="">
+                                <%
+                                    List<Integer> programmingCurrentStatus = programmingItemStatus.get(programming.getCourseId());
+                                %>
                                 <div class="action-btn-field flex-row">
-                                    <button class="cart-Btn" status="0" onclick="cartButtonClick(event)"><i class="ri-shopping-cart-line"></i></button>
-                                    <button class="wish-Btn" status="0" onclick="likeButtonClick(event)"><i class="ri-heart-line"></i></button>
+                                    <button class="cart-Btn" status=<%=programmingCurrentStatus.get(0)%> onclick="cartButtonClick(event)"><i class="ri-shopping-cart-line"></i></button>
+                                    <button class="wish-Btn" status=<%=programmingCurrentStatus.get(1)%> onclick="likeButtonClick(event)"><i class="ri-heart-line"></i></button>
                                 </div>
                             </div>
                             <div class="product-card-bottom flex-col">
-                                <h1 class="course-title"><%=programming.getProductId().getProdName() %></h1>
+                                <h1 class="course-title"><%=programming.getProductId().getProdName()%></h1>
                                 <p class="course-category">Programming</p>
                                 <%
                                     List<Authors> currentAuthors = programmingAuthorContribution.get(programming.getCourseId());
                                     String concatAuthors = "";
-                                    for(int i=0; i<currentAuthors.size(); i++){
+                                    for (int i = 0; i < currentAuthors.size(); i++) {
                                         concatAuthors += currentAuthors.get(i).getAuthorName();
-                                        if(i<currentAuthors.size()-1){
-                                        concatAuthors += ", ";
+                                        if (i < currentAuthors.size() - 1) {
+                                            concatAuthors += ", ";
                                         }
                                     }
                                 %>
-                                    <p class="course-author"><%=concatAuthors %></p>
+                                <p class="course-author"><%=concatAuthors%></p>
                                 <div class="course-review flex-row">
-                                    <p class="rating-digit"><%=String.format("%.2f",programming.getProductId().getAvgRating())%></p>
+                                    <p class="rating-digit"><%=String.format("%.1f", programming.getProductId().getAvgRating())%></p>
                                     <i class="ri-star-fill"></i>
                                     <p class="rating-number-field">(<span class="raing-number"><%=programming.getProductId().getRateWeightage()%></span>)</p>
                                 </div>
                                 <div class="course-label flex-row">
-                                    <p><%=String.format("%.2f",programming.getLengthHour())%> Hours</p>
+                                    <p><%=String.format("%.2f", programming.getLengthHour())%> Hours</p>
                                     <p><%=programming.getCourseLevel()%></p>
                                 </div>
                                 <div class="course-price-field flex-row">
                                     <%
                                         double originalPrice = programming.getProductId().getPrice();
-                                        double discountedPrice = (100-programming.getProductId().getDiscount())/100*(programming.getProductId().getPrice());
+                                        double discountedPrice = (100 - programming.getProductId().getDiscount()) / 100 * (programming.getProductId().getPrice());
                                     %>
-                                        <p class="course-price">RM <span><%=String.format("%.2f",(originalPrice==discountedPrice)?originalPrice:discountedPrice)%></span></p>
-                                        <%if (originalPrice!=discountedPrice){%>
-                                            <p class="course-normal-price">RM <span><%=String.format("%.2f",originalPrice)%></span></p>
-                                        <%}%>
+                                    <p class="course-price">RM <span><%=String.format("%.2f", (originalPrice == discountedPrice) ? originalPrice : discountedPrice)%></span></p>
+                                    <%if (originalPrice != discountedPrice) {%>
+                                    <p class="course-normal-price">RM <span><%=String.format("%.2f", originalPrice)%></span></p>
+                                    <%}%>
                                 </div>
                                 <div class="course-tag-field flex-row">
                                     <p class="course-tag tag-orange">Hot Sell</p>
                                     <%
                                         long difference = new Date().getTime() - programming.getDateAdded().getTime();
                                         long millisecondsInMonth = 30L * 24 * 60 * 60 * 1000;
-                                        if (difference < millisecondsInMonth){
+                                        if (difference < millisecondsInMonth) {
                                     %>
                                     <p class="course-tag tag-yellow">New Course</p>
                                     <%}%>
@@ -372,8 +383,10 @@
                             </div>
                         </div>
                     </div>
-                    
-                    <% }programmingCounter++;} %>
+
+                    <% }
+                            programmingCounter++;
+                        } %>
 
                 </div>
             </div>
@@ -442,28 +455,29 @@
                     <h1>Explore More Courses</h1>
                 </div>
                 <div class="category-div-bot">
-                     <%
-                         int courseCatCounter =0;
-                         for(CourseCategory course: courseCategoryList){                         
-                            String qtyMsg="New Course Coming Soon";
-                            if(eachCourseCatRegistered.get(courseCatCounter)>1){
-                                qtyMsg=" Courses";
-                            } else if(eachCourseCatRegistered.get(courseCatCounter)==1){
-                                qtyMsg=" Course";
+                    <%
+                        int courseCatCounter = 0;
+                        for (CourseCategory course : courseCategoryList) {
+                            String qtyMsg = "New Course Coming Soon";
+                            if (eachCourseCatRegistered.get(courseCatCounter) > 1) {
+                                qtyMsg = " Courses";
+                            } else if (eachCourseCatRegistered.get(courseCatCounter) == 1) {
+                                qtyMsg = " Course";
                             }
-                     %>
+                    %>
                     <a href="#">
                         <div class="category-card  flex-row">
                             <div class="category-card-left">
                                 <img src="./img/categories/math.png" alt="Mathematics" />
                             </div>
                             <div class="category-card-right flex-col">
-                                <h1 class="category-name"><%= course.getCategoryName() %></h1>
-                                <p class="category-course-qty"><span><%= (eachCourseCatRegistered.get(courseCatCounter)>0)?eachCourseCatRegistered.get(courseCatCounter):"" %></span><%=qtyMsg%></p>
+                                <h1 class="category-name"><%= course.getCategoryName()%></h1>
+                                <p class="category-course-qty"><span><%= (eachCourseCatRegistered.get(courseCatCounter) > 0) ? eachCourseCatRegistered.get(courseCatCounter) : ""%></span><%=qtyMsg%></p>
                             </div>
                         </div>
                     </a>
-                    <%  courseCatCounter++;}%>
+                    <%  courseCatCounter++;
+                        }%>
                 </div>
             </div>
         </section>

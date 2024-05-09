@@ -1,0 +1,37 @@
+@import url('adminStyle.css');
+@import url('addNewItemButton.css');
+
+.main-content{
+    width: 96vw;
+}
+
+.main-top{
+    display: flex;
+    justify-content: space-between;
+}
+
+.top{
+    display: flex;
+}
+
+.top-right{
+    right: 0;
+}
+
+.main-top-left{
+    display: flex;
+    gap: 1.5rem;
+}
+
+/*filter container*/
+.filter-flex-container{
+    display: flex; 
+}
+
+.search-container{
+    display: flex;
+    gap: 10px;
+    margin-top: 1rem;
+    justify-content: end;
+    width: 100%;
+}
