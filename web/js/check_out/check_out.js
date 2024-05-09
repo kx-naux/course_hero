@@ -116,7 +116,7 @@ paymentRadios.forEach(paymentMethod => {
 });
 
 
-document.addEventListener("DOMContentLoaded",()=>{
+document.addEventListener("DOMContentLoaded", () => {
     document.querySelector("div.payment-div div.confirma-store-div").style.display = "none";
 });
 
@@ -154,6 +154,8 @@ function showPaymentInputDiv() {
 
     document.getElementById("storingPayment").checked = false;
     document.querySelector("div.payment-div  div.confirma-store-div").style.display = "flex";
+
+    document.querySelector(".payment-div p.invalid-msg").innerText = "";
 }
 
 // credit card listener
@@ -287,11 +289,71 @@ function submitCheckoutForm() {
     const addressInvalidMsg = document.querySelector(".ship-div p.invalid-msg");
 
     if (addressRadio.checked) {
-        
+        const addressLine = addressDiv.querySelector(".address-1");
+        if (addressLine.value === "") {
+            addressLine.focus();
+            addressInvalidMsg.innerText = "Please enter address";
+            addressLine.classList.add("invalid-input");
+            return;
+        }
+
+        const addressCity = addressDiv.querySelector(".city");
+        if (addressCity.value === "") {
+            addressCity.focus();
+            addressInvalidMsg.innerText = "Please enter city";
+            addressCity.classList.add("invalid-input");
+            return;
+        }
+
+        const addressPostalCode = addressDiv.querySelector(".postal-code");
+        if (addressPostalCode.value === "") {
+            addressPostalCode.focus();
+            addressInvalidMsg.innerText = "Please enter postal code";
+            addressPostalCode.classList.add("invalid-input");
+            return;
+        }
+
+        const addressState = addressDiv.querySelector(".state");
+        if (addressState.value === "") {
+            addressState.focus();
+            addressInvalidMsg.innerText = "Please enter state";
+            addressState.classList.add("invalid-input");
+            return;
+        }
+
+        const addressCountry = addressDiv.querySelector(".country");
+        if (addressCountry.value === "") {
+            addressCountry.focus();
+            addressInvalidMsg.innerText = "Please enter country";
+            addressCountry.classList.add("invalid-input");
+            return;
+        }
     }
 
     // payment
+    const payRadio = document.querySelector(".payment-div input[type='radio']:checked");
+    const payInvalidMsg = document.querySelector(".payment-div p.invalid-msg");
+    if (payRadio === null) {
+        payInvalidMsg.innerText = "Please select a payment method";
+        return;
+    }
 
+    const payCardDiv = document.querySelector(".payment-div .payment-card");
+    if (document.querySelector(".payment-method-div input#cardMethod:checked") !== null) {
+        
+    }
+
+    const payBankDiv = document.querySelector(".payment-div .payment-bank");
+    if (document.querySelector(".payment-method-div input#bankMethod:checked") !== null) {
+        
+    }
+
+    const payTngDiv = document.querySelector(".payment-div .payment-tng");
+    if (document.querySelector(".payment-method-div input#tngMethod:checked") !== null) {
+        
+    }
+
+    // submit form
     const form = document.getElementById("checkOutForm");
     form.submit();
 }

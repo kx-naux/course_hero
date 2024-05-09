@@ -301,14 +301,14 @@
                         </div>
 
                         <div class="payment-method flex-col">
-                            <input type="radio" id="cardMethod" name="paymentMethod" value="bank" hidden />
+                            <input type="radio" id="bankMethod" name="paymentMethod" value="bank" hidden />
                             <span class="selected-icon"><i class="ri-check-fill"></i></span>
                             <p class="payment-method-icon"><i class="ri-bank-fill"></i></p>
                             <p class="payment-method-name">Bank</p>
                         </div>
 
                         <div class="payment-method flex-col">
-                            <input type="radio" id="cardMethod" name="paymentMethod" value="tng" hidden />
+                            <input type="radio" id="tngMethod" name="paymentMethod" value="tng" hidden />
                             <span class="selected-icon"><i class="ri-check-fill"></i></span>
                             <p class="payment-method-icon"><i class="ri-wallet-line"></i></p>
                             <p class="payment-method-name">TNG E-wallet</p>
