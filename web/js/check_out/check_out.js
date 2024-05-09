@@ -13,11 +13,12 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // submit form when need refresh
-function submitForm(action) {
+function submitForm(purpose,action) {
     const form = document.getElementById("checkOutForm");
     const formAction = document.getElementById("fromAction");
 
-    formAction.value = action;
+    formAction.value = purpose;
+    form.action = action;
     form.submit();
 }
 
@@ -30,7 +31,7 @@ shippingRadios.forEach(shippingMethod => {
         const radioButton = this.querySelector('input[type="radio"]');
         radioButton.checked = true;
 
-        submitForm("shipping method change");
+        submitForm("shipping method change","cout-ship-meth-chg");
 
     });
 });
@@ -532,6 +533,20 @@ function isValidCCV(ccv) {
     return true;
 }
 
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Target the button by its ID
+    const button = document.getElementById('promoApply');
+
+    // Add a click event listener to the button
+    button.addEventListener('click', function() {
+        // Call the function when the button is clicked
+        submitForm("checkout-apply-promo","check-out-apply-promo");
+    });
+});
+
+
 function isValidBankAccountNumber(accountNo) {
     // Remove any whitespace from the account number
     accountNo = accountNo.replace(/\s/g, '');
@@ -582,3 +597,4 @@ paymentInputs.forEach(input => {
         document.querySelector(".payment-div p.invalid-msg").innerText = "";
     });
 });
+

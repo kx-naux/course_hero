@@ -40,7 +40,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Payments implements Serializable {
 
     @Basic(optional = false)
-    @NotNull
     @Size(min = 1, max = 15)
     @Column(name = "ACCOUNT_NUMBER")
     private String accountNumber;

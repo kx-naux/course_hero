@@ -60,7 +60,10 @@ public class Login extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {  
+        HttpSession session = request.getSession();
+        session.removeAttribute("pageToGoAfterLogin");
 
         // Forward the request to home.jsp
         //request.getRequestDispatcher("/WEB-INF/Client/Login.jsp").forward(request, response);

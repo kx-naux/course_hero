@@ -35,6 +35,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Promotions.findByPromotionId", query = "SELECT p FROM Promotions p WHERE p.promotionId = :promotionId"),
     @NamedQuery(name = "Promotions.findByStartTime", query = "SELECT p FROM Promotions p WHERE p.startTime = :startTime"),
     @NamedQuery(name = "Promotions.findByEndTime", query = "SELECT p FROM Promotions p WHERE p.endTime = :endTime"),
+    @NamedQuery(name = "Promotions.findByPromoCode", query = "SELECT p FROM Promotions p WHERE p.promoCode = :promoCode"),
     @NamedQuery(name = "Promotions.findByPromoType", query = "SELECT p FROM Promotions p WHERE p.promoType = :promoType"),
     @NamedQuery(name = "Promotions.findByAmount", query = "SELECT p FROM Promotions p WHERE p.amount = :amount"),
     @NamedQuery(name = "Promotions.findByMinReq", query = "SELECT p FROM Promotions p WHERE p.minReq = :minReq"),
@@ -308,6 +309,14 @@ public class Promotions implements Serializable {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+    
+    public String getEndDateStr(){
+        String dateFormatPattern = "dd-MM-yyyy hh:mm a z";  // Pattern for date format "31-12-2023"
+
+        // Create a SimpleDateFormat object with the specified pattern
+        SimpleDateFormat dateFormat = new SimpleDateFormat(dateFormatPattern);
+        return dateFormat.format(this.endTime);
     }
 
    

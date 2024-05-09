@@ -3,6 +3,7 @@ package controller;
 import JPAEntity.CartItems;
 import JPAEntity.Courses;
 import JPAEntity.Merchandise;
+import JPAEntity.ShippingMethod;
 import JPAEntity.Users;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
@@ -106,6 +107,31 @@ public class CartPage extends HttpServlet {
                 cartItemList.add(item);
             }
             session.setAttribute("checkingOutCartItemList", cartItemList);
+            
+            //get all shipping method
+            Query query = em.createNamedQuery("ShippingMethod.findAll");
+            List<ShippingMethod> shipMethodList = query.getResultList();
+            session.setAttribute("shipMethodList", shipMethodList);
+            //set the default selected shipping method
+            session.setAttribute("selectedShipping",shipMethodList.get(0));
+            
+            
+            //initialize the session variable
+            double itemsSubtotal = 0;
+            double itemsTotalDiscount = 0;
+            double promoDiscount = 0;
+            double shippingDiscount = 0;
+            double shippingCharges = 0;
+            double paymentTotal = 0;
+            double itemsTotalAfterDiscount = 0;
+            
+            session.setAttribute("itemsSubtotal",itemsSubtotal);
+            session.setAttribute("itemsTotalDiscount",itemsTotalDiscount);
+            session.setAttribute("itemsTotalAfterDiscount",itemsTotalAfterDiscount);
+            session.setAttribute("promoDiscount",promoDiscount);
+            session.setAttribute("shippingDiscount",shippingDiscount);
+            session.setAttribute("shippingCharges",shippingCharges);
+            session.setAttribute("paymentTotal",paymentTotal);
             response.sendRedirect("check-out");
         }else{
             request.setAttribute("errMsg","No cart items were selected.");
