@@ -375,11 +375,120 @@ table#itemsTable tbody td:first-of-type div {
 }
 
 .promo-div  .promo-end{
-font-weight: 400;
+    font-weight: 400;
     font-size: var(--font-size-s);
     color: var(--color-text-light-1);
 }
 
 /*payment*/
+.payment-method-div {
+    gap: 20px;
+    max-width: 100%;
+    min-width: 400px;
+    flex-wrap: wrap;
+    margin: 10px 0;
+}
+
+.payment-method-div .payment-method{
+    border-radius: 10px;
+    padding: 14px 20px;
+    border: 2px solid var(--color-light-grey-1);
+    cursor: pointer;
+    position: relative;
+    width: 215px;
+    gap: 8px;
+    user-select: none;
+}
+
+.payment-method:has(input:checked) {
+    border: 2px solid var(--color-blue-2);
+    background-color: var(--color-sky-blue-1);
+}
+
+.payment-method .selected-icon {
+    display: none;
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    color: var(--color-white);
+    background-color: var(--color-blue-2);
+    border-radius: 50%;
+    padding: 3px;
+    justify-content: center;
+    align-items: center;
+    font-size: var(--font-size-xs);
+}
+
+.payment-method:has(input:checked) .selected-icon {
+    display: flex;
+}
+
+.payment-method .payment-method-icon{
+      font-weight: 400;
+    font-size: var(--font-size-xl);
+    color: var(--color-text-light-2);
+}
+
+.payment-method:has(input:checked)  .payment-method-icon{
+    color: var(--color-blue-2);
+}
+
+.payment-method .payment-method-name{
+      font-weight: 500;
+    font-size: var(--font-size-xm);
+    color: var(--color-text-light-1);
+}
+
+.payment-method:has(input:checked)  .payment-method-name{
+    color: var(--color-blue-3);
+}
 
 /*total*/
+.total-div {
+    margin: 0 0 0 auto;
+    gap: 6px;
+    max-width: 600px;
+}
+
+.total-row  {
+    align-items: center;
+    justify-content: space-between;
+    min-width: 320px;
+}
+
+.total-row .total-row-th{
+    font-weight: 400;
+    font-size: var(--font-size-s);
+    color: var(--color-text-light-1);
+}
+
+
+.total-row .total-row-td {
+    font-weight: 500;
+    font-size: var(--font-size-xm);
+    color:var(--color-text-light-2);
+}
+
+.total-row-overall .total-row-th {
+ font-size: var(--font-size-xm);
+}
+
+.total-row-overall .total-row-td {
+    font-weight: 600;
+ font-size: var(--font-size-l);
+ color: var(--color-blue-2);
+}
+
+.total-div input#placeOrderBtn {
+    padding: 15px 30px;
+    font-weight: 600;
+    font-size: var(--font-size-xm);
+    color: var(--color-white);
+    background-color: var(--color-blue-2);
+    cursor: pointer;
+    margin: 10px 0;
+}
+
+.total-div input#placeOrderBtn:hover {
+    background-color: var(--color-blue-3);
+}

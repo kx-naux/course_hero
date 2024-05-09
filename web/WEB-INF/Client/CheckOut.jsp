@@ -401,7 +401,7 @@
                     <p class="invalid-msg"></p>
 
                     <!--show total--> 
-                    <div class="total-div flex-col">
+                    <div class="total-div flex-col">                        
                         <div class="total-row flex-row">
                             <h2 class="total-row-th">Items Total: </h2>
                             <h3 class="total-row-td">RM 224.00</h3>
@@ -426,12 +426,12 @@
                             <h2 class="total-row-th">Tax (6%): </h2>
                             <h3 class="total-row-td">RM 11.00</h3>
                         </div>
-                        <div class="total-row flex-row">
+                        <div class="total-row total-row-overall flex-row">
                             <h2 class="total-row-th">Total Payment: </h2>
                             <h3 class="total-row-td">RM 375.00</h3>
                         </div>
 
-                        <input type="button" value="Place Order" />
+                        <input type="button" id="placeOrderBtn" value="Place Order" />
                     </div>
                 </div>
 

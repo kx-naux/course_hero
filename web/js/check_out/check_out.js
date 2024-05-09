@@ -45,8 +45,12 @@ paymentRadios.forEach(paymentMethod => {
         const radioButton = this.querySelector('input[type="radio"]');
         radioButton.checked = true;
 
+        showPaymentInputDiv();
 
     });
 });
 
+function showPaymentInputDiv() {
+    const paymentRadios = document.querySelectorAll('div.payment-method');
+}
 
