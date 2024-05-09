@@ -77,6 +77,8 @@ function removeWishItem(data) {
         wishContent.style.display = "none";
         wishEmpty.style.display = "flex";
     }
+    
+    updateWishItemNumber();
 }
 
 // event listener for move to cart
@@ -189,4 +191,24 @@ function addCartItem(data) {
 
     // update price
     cartlistPrice.innerText = (parseFloat(cartlistPrice.innerText) + data.productPrice).toFixed(2);
+}
+
+function updateWishItemNumber() {
+    let itemNumber = document.getElementById("wishNumber");
+    let count = document.querySelectorAll("ul#courseList div.course-item").length;
+    let noun = document.getElementById("wishNumberNoun");
+
+    itemNumber.innerText = count;
+    noun.innerText = count > 1 ? "courses" : "course";
+
+    const wishContent = document.querySelector("div.wishlist-div");
+    const wishEmpty = document.querySelector("div.empty-div");
+        
+    if (count < 1) {
+        wishContent.style.display = "none";
+        wishEmpty.style.display = "flex";
+    } else {
+        wishContent.style.display = "flex";
+        wishEmpty.style.display = "none";
+    }
 }

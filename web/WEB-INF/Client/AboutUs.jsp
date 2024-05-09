@@ -7,8 +7,8 @@
 <html lang="en">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Course Hero | About Us</title>
-        <link rel="icon" type="image/ico" href="./ico/Logo.ico">
+        <title>${companyName} | About Us</title>
+        <link rel="icon" type="image/ico" href=${companyIcon}>
         <link type="text/css" href="./css/style.css" rel="stylesheet" >
         <link type="text/css" href="./css/about_us.css" rel="stylesheet" >
         <!--<link type="text/css" href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">--> 
@@ -371,13 +371,13 @@
                         <!--phone number-->
                         <div class="contact-info flex-col">
                             <h1>Call Us <i class="ri-phone-fill"></i></h1>
-                            <p>(+60) 11-1760 8595</p>
+                            <p>${contactNo}</p>
                         </div>
 
                         <!--email-->
                         <div class="contact-info flex-col">
                             <h1>Send Email <i class="ri-mail-fill"></i></h1>
-                            <p>hello@coursehero.com</p>
+                            <p>${contactEmail}</p>
                         </div>
 
                         <!--social media icon-->

@@ -32,17 +32,17 @@
             <!--contact div-->
             <div class="flex-col">
                 <p class="footer-list-title">Contact</p>
-                <p class="footer-contact"><a href="https://maps.app.goo.gl/HvkXdPKRUdNbj6Lh8" target="_blank">Jln Tun Razak, Imbi, 55100 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur</a></p>  
-                <p class="footer-contact"><a href="tel:+601117608595" target="_blank"><i class="ri-phone-line"></i>(+60) 11-1760 8595</a></p>
-                <p class="footer-contact"><a href="mailto:sales@coursehero.com" target="_blank"><i class="ri-mail-line"></i>sales@coursehero.com</a></p>
+                <p class="footer-contact"><a href="https://maps.app.goo.gl/HvkXdPKRUdNbj6Lh8" target="_blank">${contactLocation}</a></p>  
+                <p class="footer-contact"><a href="tel:+601117608595" target="_blank"><i class="ri-phone-line"></i>${contactNo}</a></p>
+                <p class="footer-contact"><a href="mailto:sales@coursehero.com" target="_blank"><i class="ri-mail-line"></i>${contactEmail}</a></p>
             </div>
         </div>
         <hr class="footer-divider" />
         <div class="footer-bot flex-row">
             <!--logo and copyright div-->
             <div class="footer-bot-left flex-row">
-                <a href="<%= webpath.getPageUrl("home") %>"><img class="footer-logo" src="./img/Logo.png" alt="Course Hero" /></a>
-                <p>@2024 Course Hero Inc. All right reserved.</p>
+                <a href="<%= webpath.getPageUrl("home") %>"><img class="footer-logo" src=${companyLogo} alt=${companyName} /></a>
+                <p>${copyright}</p>
             </div>
             <!--social media div-->
             <div class="footer-bot-right flex-row">

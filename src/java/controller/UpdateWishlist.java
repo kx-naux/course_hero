@@ -1,6 +1,6 @@
 package controller;
 
-import JPAEntity.CartItems;
+import JPAEntity.Wishlist;
 import JPAEntity.CourseCategory;
 import JPAEntity.Courses;
 import JPAEntity.MerchCategory;
@@ -14,6 +14,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Date;
+import java.util.List;
 import javax.annotation.Resource;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -109,15 +110,25 @@ public class UpdateWishlist extends HttpServlet {
         }
 
         //Getting Counters for Cart Item
-        //TablesRecordCounter currentItemTableCounter = em.find(TablesRecordCounter.class, "CART_ITEMS");
-        
+        TablesRecordCounter currentItemTableCounter = em.find(TablesRecordCounter.class, "WISHLIST");
+
         //Saving into the database
         Users currentUser = em.find(Users.class, userID);
-        
-        /*Create the wishlist object, get it from zhan liang*/
-        
-        //currentItemTableCounter.counterIncrementByOne();
-        
+
+        Wishlist newWishlist = new Wishlist();
+
+        if ("add".equals(action)) {
+            newWishlist.setProductId(currentProduct);
+            newWishlist.setUserId(currentUser);
+            newWishlist.setDateAdded(timeAdded);
+            newWishlist.setWishlistId(currentItemTableCounter.getCounter() + 1);
+        } else if ("remove".equals(action)) {
+            List<Wishlist> currentWishlist = em.createNamedQuery("Wishlist.findByUserIdProductId").setParameter("userId", currentUser).setParameter("productId", currentProduct).getResultList();
+            newWishlist = currentWishlist.get(0);
+        }
+
+        currentItemTableCounter.counterIncrementByOne();
+
         // response back to client
         JsonObject responseJson = new JsonObject();
         responseJson.addProperty("productID", courseOrmerchandiseID);
@@ -133,9 +144,7 @@ public class UpdateWishlist extends HttpServlet {
             responseJson.addProperty("productCategory", merchCategoryName);
         }
 
-        //saveDataToDatabases(request, response, newCartItem, currentItemTableCounter, actionType);
-
-
+        saveDataToDatabases(request, response, newWishlist, currentItemTableCounter, action);
         // END OF MAIN PROCESS
         // Convert JSON object to string
         String responseJsonString = responseJson.toString();
@@ -151,16 +160,17 @@ public class UpdateWishlist extends HttpServlet {
         out.flush();
     }
 
-    public void saveDataToDatabases(HttpServletRequest request, HttpServletResponse response, CartItems newCartItem, TablesRecordCounter currentItemTableCounter, String actionType) throws ServletException, IOException {
+    public void saveDataToDatabases(HttpServletRequest request, HttpServletResponse response, Wishlist newWishlist, TablesRecordCounter currentItemTableCounter, String actionType) throws ServletException, IOException {
         try {
             if ("add".equals(actionType)) {
                 utx.begin();
-                em.persist(newCartItem);
+                em.persist(newWishlist);
                 em.merge(currentItemTableCounter);
                 utx.commit();
             } else if ("remove".equals(actionType)) {
                 utx.begin();
-                em.remove(newCartItem);
+                Wishlist currentWishlist = em.find(Wishlist.class, newWishlist.getWishlistId());
+                em.remove(currentWishlist);
                 utx.commit();
             }
         } catch (Exception ex) {

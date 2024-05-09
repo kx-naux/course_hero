@@ -1,0 +1,184 @@
+<%@page import="JPAEntity.AuthorContribution"%>
+<%@page import="JPAEntity.CartItems"%>
+<%@page import="JPAEntity.Merchandise"%>
+<%@page import="JPAEntity.Courses"%>
+<%@page import="java.util.List"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<jsp:useBean id="userData" class="JPAEntity.Users" scope="session" />
+<% List<Courses> courseList = (List<Courses>) request.getAttribute("courseList"); %>
+<% List<Merchandise> merchandiseList = (List<Merchandise>) request.getAttribute("merchandiseList"); %>
+<% List<CartItems> cartItems = (List<CartItems>)request.getAttribute("cartItems"); %>
+<% int numberOfItemInCartCourse = ((Integer) request.getAttribute("numberOfCourse")).intValue();%>
+<% int numberOfItemInCartMerch = ((Integer) request.getAttribute("numberOfMerch")).intValue();%>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>${companyName} | Cart</title>
+        <link rel="icon" type="image/ico" href=${companyIcon}>
+        <link type="text/css" href="./css/style.css" rel="stylesheet" >
+        <link type="text/css" href="./css/cart.css" rel="stylesheet" >
+        <jsp:useBean id="webpath" class="module.WebPath" scope="application" />
+
+    </head>
+    <body>
+        <!--Toast message-->
+        <%@ include file="./Components/toast_msg.html" %>
+
+        <!--To top button-->
+        <%@ include file="./Components/to_top_button.html" %>
+
+        <!-- Include the navigation bar -->
+        <%@ include file="./Components/navbar.jsp" %>
+
+        <!--put error msg here to show the error msg-->
+        <span id="errorMsg" hidden></span>
+
+        <form>
+            <section class="section cart-section">
+                <div class="cart-div flex-row" id="cartContent">
+                    <div class="cart-div-left flex-col">
+
+                        <!--title-->
+                        <div class="flex-col">
+                            <h1 class="page-title">Shopping Cart</h1>
+                        </div>
+
+                        <div class="number-item-div flex-row"  id="cartCourseTitle"> 
+                            <input type="checkbox" class="all-check-box" id="courseAllCheckbox" />
+                            <p class="number-item"><span id="cartCourseNumberNoun">Course</span> in cart (<span id="cartCourseNumber"><%= numberOfItemInCartCourse%></span>)</p>
+                        </div>
+                        
+                        <!--course in cart-->
+                        <ul class="course-list flex-col" id="cartCourseList">
+
+                            <% for(Courses course:courseList){ %>
+                                <%
+                                    String catId = "";
+                                    for(CartItems item: cartItems){
+                                        if(item.getProductId().getProdName().equals(course.getProductId().getProductId())){
+                                            catId = item.getCartitemId();
+                                        }
+                                    }
+                                %>
+                            <div class="course-item flex-row" courseID="<%= course.getCourseId() %>">
+
+                                <div class="course-check flex-col">
+                                    <input type="checkbox" class="cart-check" id="cartItemId" name="cartItemId" value="<%= catId %>" />
+                                </div>
+                                <div class="course-img flex-col">
+                                    <img src="<%= course.getProductId().getImagePath() %>" onerror="this.src='./img/course/beginner_excel.jpg';" alt="" />
+                                </div>
+                                <div class="course-detail flex-col">
+                                    <h3 class="course-title"><%= course.getProductId().getProdName() %></h3>
+                                    <% String authorsStr = ""; %>
+                                        <% for (AuthorContribution authContri : course.getAuthorContributionList()) {
+                                                authorsStr = authContri.getAuthorId().getAuthorName() + ", ";
+                                            }%>
+                                        <% authorsStr = authorsStr.substring(0, authorsStr.length() - 2);%>
+                                    <p class="course-author"><%= authorsStr%></p>
+                                    <p class="course-category"><%= course.getCoursecatId().getCategoryName() %></p>
+                                    <!--<div class="course-review flex-row">
+                                        <p class="rating-digit">4.2</p>
+                                        <i class="ri-star-fill"></i>
+                                        <p class="rating-number-field">(<span class="raing-number">123</span>)</p>
+                                    </div>-->
+                                    
+                                    <div class="course-label flex-row">
+                                        <p><%= course.getLengthHour()%> Hour(s)</p>
+                                        <p><%= course.getCourseLevel()%></p>
+                                    </div>
+                                </div>
+                                <div class="course-button flex-col">
+                                    <button type="button" class="remove-btn">Remove</button>
+                                    <button type="button" class="move-btn">Move to Wish</button>
+                                </div>
+                                <div class="course-price-field flex-col">
+                                    <p class="course-price">RM <span class="span-price"><%= course.getProductId().getPrice() - course.getProductId().getDiscount()%></span></p>    
+                                    <p class="course-normal-price">RM <span class="span-normal-price"><%= course.getProductId().getPrice()%></span></p>
+                                </div>
+                            </div>
+                            <%}%>
+                        </ul>
+
+                        <div class="number-item-div flex-row" id="cartMerchTitle"> 
+                            <input type="checkbox" class="all-check-box" id="merchAllCheckbox" />
+                            <p class="number-item"><span id="cartMerchNumberNoun">Merchandise</span> in cart (<span id="cartMerchNumber"><%= numberOfItemInCartMerch%></span>)</p>
+                        </div>
+
+                        <ul class="course-list flex-col" id="cartMerchList">
+                            <% for(Merchandise merch : merchandiseList){ %>
+                                <%
+                                    CartItems cartItem = new CartItems();
+                                    for(CartItems item: cartItems){
+                                        if(item.getProductId().getProductId().equals(merch.getProductId().getProductId())){
+                                            cartItem = item;
+                                        }
+                                    }
+                                %>
+                            <div class="course-item flex-row" courseID="<%= merch.getMerchId() %>">
+                                <div class="course-check flex-col">
+                                    <input type="checkbox" class="cart-check" id="cartItemId" name="cartItemId" value="<%= cartItem.getCartitemId() %>" />
+                                </div>
+                                <div class="course-img flex-col">
+                                    <img src="<%= merch.getProductId().getImagePath() %>" onerror="this.src='./img/course/beginner_excel.jpg';" alt="" />
+                                </div>
+                                <div class="course-detail flex-col">
+                                    <h3 class="course-title"><%= merch.getProductId().getProdName() %></h3>
+                                    <p class="course-category"><%= merch.getMerchcatId().getCategoryName() %></p>
+                                    <div class="course-review flex-row">
+                                        <!--<p class="rating-digit">4.2</p>
+                                        <i class="ri-star-fill"></i>
+                                        <p class="rating-number-field">(<span class="raing-number">123</span>)</p>-->
+                                    </div>
+                                </div>
+                                <div class="merch-qty-input-div flex-row">
+                                    <button type="button" class="qty-btn substract"><i class="ri-subtract-fill"></i></button>
+                                    <input type="text" class="merch-qty-input" value="<%= cartItem.getQuantity() %>" max="<%= merch.getStockBalance() %>" />
+                                    <button type="button" class="qty-btn add"><i class="ri-add-fill"></i></button>
+                                </div>
+                                <div class="course-button flex-col">
+                                    <button type="button" class="remove-btn">Remove</button>
+                                </div>
+                                <div class="course-price-field flex-col">
+                                    <p class="course-price">RM <span class="span-price"><%= merch.getProductId().getPrice() - merch.getProductId().getDiscount()%></span></p>    
+                                    <p class="course-normal-price">RM <span class="span-normal-price"><%= merch.getProductId().getPrice()%></span></p>
+                                </div>
+                            </div>
+                            <%}%>
+                        </ul>
+
+                    </div>
+
+                    <div class="cart-div-right flex-col">
+                        <div class="sticky-div flex-col">
+                            <div class="cart-price flex-col">
+                                <h3 class="cart-price-title">Total (<span id="numberSelected">0</span> items):</h3>
+                                <h1 class="total-price">RM <span id="totalPrice">0.00</span></h1>
+                                <h1 class="total-nornmal-price">RM <span id="totalNormalPrice">0.00</span></h1>
+                                <p class="discount-percentage"><span id="discount-percentage">0</span>% off</p>
+
+                                <input type="submit" class="submit-btn" value="Checkout" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--message show to user when cart is empty-->
+                <div class="empty-div flex-col">
+                    <img src="./img/cart_wish/empty_cart.png" alt="" />
+                    <h1>Your Cart is Empty</h1>
+                    <p>It looks like your cart is currently empty. Don't worry, there's plenty to explore and add to your cart! Browse our selection and add any item you'd like to purchase.</p>
+                    <a href="<%= webpath.getPageUrl("products")%>">Explore more courses</a>
+                </div>
+            </section>
+        </form>
+
+        <script src="./js/cart/cart.js"></script>
+
+        <!--Footer import-->
+        <%--<%@ include file="./Components/footer_wave.html" %>--%>  
+        <%@ include file="./Components/footer.jsp" %> 
+    </body>
+</html>

@@ -41,7 +41,9 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Courses.findByLengthHour", query = "SELECT c FROM Courses c WHERE c.lengthHour = :lengthHour"),
     @NamedQuery(name = "Courses.findByCourseLevel", query = "SELECT c FROM Courses c WHERE c.courseLevel = :courseLevel"),
     @NamedQuery(name = "Courses.findByDateAdded", query = "SELECT c FROM Courses c WHERE c.dateAdded = :dateAdded"),
-    @NamedQuery(name = "Courses.findByCategoryId", query = "SELECT c FROM Courses c WHERE c.coursecatId = :coursecatId")})
+    @NamedQuery(name = "Courses.findByCategoryId", query = "SELECT c FROM Courses c WHERE c.coursecatId = :coursecatId"),
+    @NamedQuery(name = "Courses.findByProductId", query = "SELECT c FROM Courses c WHERE c.productId = :productId")
+})
 public class Courses implements Serializable {
 
     @Basic(optional = false)
@@ -128,10 +130,10 @@ public class Courses implements Serializable {
     public void setCourseId(String courseId) {
         this.courseId = courseId;
     }
-    
+
     public void setCourseId(long count) {
         this.courseId = String.format("CR%07d", count);
-    }   
+    }
 
     public String getLearningObj() {
         return learningObj;
@@ -217,7 +219,7 @@ public class Courses implements Serializable {
         this.authorContributionList = authorContributionList;
     }
 
-        @Override
+    @Override
     public int hashCode() {
         int hash = 0;
         hash += (courseId != null ? courseId.hashCode() : 0);
@@ -242,22 +244,6 @@ public class Courses implements Serializable {
         return "JPAEntity.Courses[ courseId=" + courseId + " ]";
     }
 
-    public String getSyllabus() {
-        return syllabus;
-    }
-
-    public void setSyllabus(String syllabus) {
-        this.syllabus = syllabus;
-    }
-
-   
-    public String getRequirements() {
-        return requirements;
-    }
-
-    public void setRequirements(String requirements) {
-        this.requirements = requirements;
-    }
 
     public String getDetailedDesc() {
         return detailedDesc;
@@ -267,8 +253,6 @@ public class Courses implements Serializable {
         this.detailedDesc = detailedDesc;
     }
 
-    
-
     public Serializable getVideoData() {
         return videoData;
     }
@@ -277,5 +261,19 @@ public class Courses implements Serializable {
         this.videoData = videoData;
     }
 
+    public String getSyllabus() {
+        return syllabus;
+    }
 
+    public void setSyllabus(String syllabus) {
+        this.syllabus = syllabus;
+    }
+
+    public String getRequirements() {
+        return requirements;
+    }
+
+    public void setRequirements(String requirements) {
+        this.requirements = requirements;
+    }
 }

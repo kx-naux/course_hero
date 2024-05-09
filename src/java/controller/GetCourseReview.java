@@ -1,7 +1,9 @@
 package controller;
 
 import JPAEntity.CartItems;
+import JPAEntity.Courses;
 import JPAEntity.Product;
+import JPAEntity.Ratings;
 import JPAEntity.TablesRecordCounter;
 import JPAEntity.Users;
 import com.google.gson.Gson;
@@ -10,10 +12,14 @@ import com.google.gson.JsonObject;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Base64;
 import java.util.Date;
+import java.util.List;
 import javax.annotation.Resource;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -47,6 +53,47 @@ public class GetCourseReview extends HttpServlet {
         // Get JSON data
         String courseID = jsonObject.get("courseID").getAsString();
         String lastID = jsonObject.get("lastID").getAsString();
+        int submitCount = jsonObject.get("submitCount").getAsInt();
+        Courses courseRetrieved = em.find(Courses.class, courseID);
+        //set offset limit  
+        int offset = submitCount * 5;
+        int maxDataInPage = 5;
+        
+        //get rating count
+        Query getRateCountQuery = em.createNamedQuery("Ratings.findRatingCountByProdId").setParameter("productId",courseRetrieved.getProductId());
+        long ratingCount = (long)getRateCountQuery.getSingleResult();
+        
+        //find max submitCount
+        long lastPage = (ratingCount-1)/Long.parseLong(String.valueOf(maxDataInPage));
+        
+        //Query getRatings = em.createNamedQuery("Ratings.findRatingByCourseIdSortDescPriKey").setParameter("productId",courseRetrieved.getProductId());
+        //getRatings.setMaxResults(maxDataInPage);
+        //getRatings.setFirstResult(offset);
+        //List<Ratings> ratingsList = getRatings.getResultList();
+        //JsonArray reviews = new JsonArray();
+        
+        
+        //String base64ImageData = "";
+                                        
+        
+        //String pattern = "yyyy-MM-dd HH:mm:ss";
+        //SimpleDateFormat dateFormatter = new SimpleDateFormat(pattern);
+        //for(Ratings rating: ratingsList){
+        //    JsonObject review = new JsonObject();
+        //    Users user = rating.getUserId();
+        //    review.addProperty("userName", user.getDisplayName());
+        //    review.addProperty("rating", rating.getScore());
+        //    review.addProperty("ratingDate", dateFormatter.format(rating.getTimeRated()));
+        //    review.addProperty("comments", rating.getComment());
+        //    if (user.getImgData() != null) {
+        //        base64ImageData = Base64.getEncoder().encodeToString((byte[])user.getImgData());
+        //    }else{
+        //        base64ImageData = "./img/user/default.png";
+        //    }
+        //    review.addProperty("userImgPath", base64ImageData);
+        //    reviews.add(review);
+        //}
+        
         
         JsonArray reviews = new JsonArray();
         for (int i = 0; i < 3; i++) {
@@ -63,7 +110,15 @@ public class GetCourseReview extends HttpServlet {
         JsonObject responseObject = new JsonObject();
         responseObject.addProperty("status", "success");
         responseObject.add("reviews", reviews);
-        responseObject.addProperty("isMore", true);
+        
+        //if end need put false
+        boolean thisIsLastPage = false;
+        if(thisIsLastPage){
+            responseObject.addProperty("isMore", false);
+        }else{
+            responseObject.addProperty("isMore", true);
+        }
+        responseObject.addProperty("submitCount",submitCount+1);
         
         // Convert JSON object to string
         String responseJsonString = responseObject.toString();

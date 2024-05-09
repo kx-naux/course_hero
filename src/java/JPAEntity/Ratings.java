@@ -31,6 +31,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Ratings.findAll", query = "SELECT r FROM Ratings r"),
     @NamedQuery(name = "Ratings.findByRatingId", query = "SELECT r FROM Ratings r WHERE r.ratingId = :ratingId"),
+    @NamedQuery(name = "Ratings.findByProdIdAndUser", query = "SELECT r FROM Ratings r WHERE r.productId = :productId AND r.userId = :userId"),
     @NamedQuery(name = "Ratings.findByScore", query = "SELECT r FROM Ratings r WHERE r.score = :score"),
     @NamedQuery(name = "Ratings.findByComment", query = "SELECT r FROM Ratings r WHERE r.comment = :comment"),
     @NamedQuery(name = "Ratings.findByTimeRated", query = "SELECT r FROM Ratings r WHERE r.timeRated = :timeRated"),
@@ -86,6 +87,15 @@ public class Ratings implements Serializable {
         this.comment = comment;
         this.timeRated = timeRated;
         this.totalVote = totalVote;
+    }
+    
+    public Ratings(int score, String comment, Date timeRated, int totalVote, Product prodId, Users userId) {
+        this.score = score;
+        this.comment = comment;
+        this.timeRated = timeRated;
+        this.totalVote = totalVote;
+        this.productId = prodId;
+        this.userId = userId;
     }
 
     public String getRatingId() {
@@ -174,10 +184,5 @@ public class Ratings implements Serializable {
     public void setComment(String comment) {
         this.comment = comment;
     }
-
-   
-
-   
-
 
 }

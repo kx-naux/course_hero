@@ -118,8 +118,6 @@ public class RememberMeToken implements Serializable {
         return "JPAEntity.RememberMeToken[ token=" + token + " ]";
     }
 
- 
-
 
 
 }

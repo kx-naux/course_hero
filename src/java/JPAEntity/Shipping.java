@@ -204,6 +204,4 @@ public class Shipping implements Serializable {
         return "JPAEntity.Shipping[ shippingId=" + shippingId + " ]";
     }   
 
-    
-
 }

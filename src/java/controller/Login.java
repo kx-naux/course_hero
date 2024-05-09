@@ -198,7 +198,7 @@ public class Login extends HttpServlet {
     private Users getUserData(Accounts accountID){
         Query query = em.createNamedQuery("Users.findByAccountId").setParameter("accountId",accountID);
         List<Users> users = query.getResultList();     
-        return users.get(0);
+            return users.get(0);
     }
     
     private void setRmbMeToken(Users user,HttpServletResponse response){

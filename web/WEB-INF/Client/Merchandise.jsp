@@ -13,8 +13,8 @@
 <html lang="en">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Course Hero | Merchandise</title>
-        <link rel="icon" type="image/ico" href="./ico/Logo.ico">
+        <title>${companyName} | Merchandise</title>
+        <link rel="icon" type="image/ico" href=${companyIcon}>
         <link type="text/css" href="./css/style.css" rel="stylesheet" >
         <link type="text/css" href="./css/merchandise.css" rel="stylesheet" >
         <!--<link type="text/css" href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">-->
@@ -294,7 +294,6 @@
                                     %>
                                     <p><%= paragraph%></p>
                                     <%}%>
-                                    <p>I have a B.S. in Computer Programming. My curriculum did not include Python, so I decided to give this a try. This course is amazing! I do not normally leave reviews, but I am very happy with the purchase.</p>
                                 </div>
                             </div>
                             <%}%>

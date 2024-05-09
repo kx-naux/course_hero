@@ -214,14 +214,7 @@ public class Authors implements Serializable {
         this.imgUrl = imgUrl;
     }
 
-   
-
-    
-
-
-
-
-    
+  
     public String getNationality() {
         return nationality;
     }
@@ -240,7 +233,6 @@ public class Authors implements Serializable {
         this.institution = institution;
     }
 
-  
     public String getBiography() {
         return biography;
     }
@@ -248,8 +240,6 @@ public class Authors implements Serializable {
     public void setBiography(String biography) {
         this.biography = biography;
     }
-
-   
 
     public String getWebsite() {
         return website;
