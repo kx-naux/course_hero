@@ -28,28 +28,38 @@ public class Promotion extends HttpServlet {
         if (userData != null) {
             HttpSession session = request.getSession();
             session.setAttribute("userData", userData);
+            Login.getUserWishlist(request, em, userData);
+            Login.getUserCart(request, em, userData);
         } else {
-            Long count = em.createNamedQuery("Promotions.countAll", Long.class).getSingleResult();
-            request.setAttribute("numberOfPromotions", count);
 
-            int reqPage = 1;
-            int maxDataInPage = 4;
-            long lastPage = (count - 1) / Long.parseLong(String.valueOf(maxDataInPage)) + 1;
-            if (request.getParameter("p") != null) {
-                reqPage = Integer.parseInt(request.getParameter("p"));
-                if (reqPage > lastPage) {
-                    goToCustomErrorPage(request, response, "Invalid URL");
-                }
-            }
-
-            int offset = (reqPage - 1) * maxDataInPage;
-
-            Query query = em.createNamedQuery("Promotions.findAllSortByEndTimeAsc");
-            query.setFirstResult(offset);
-            query.setMaxResults(maxDataInPage);
-            List<Promotions> promotions = query.getResultList();
-            request.setAttribute("promotions", promotions);
         }
+        
+        Users userDataSession = (Users) request.getSession().getAttribute("userData");
+        if (userDataSession != null) {
+            Login.getUserWishlist(request, em, userDataSession);
+            Login.getUserCart(request, em, userDataSession);
+        }
+
+        Long count = em.createNamedQuery("Promotions.countAll", Long.class).getSingleResult();
+        request.setAttribute("numberOfPromotions", count);
+
+        int reqPage = 1;
+        int maxDataInPage = 4;
+        long lastPage = (count - 1) / Long.parseLong(String.valueOf(maxDataInPage)) + 1;
+        if (request.getParameter("p") != null) {
+            reqPage = Integer.parseInt(request.getParameter("p"));
+            if (reqPage > lastPage) {
+                goToCustomErrorPage(request, response, "Invalid URL");
+            }
+        }
+
+        int offset = (reqPage - 1) * maxDataInPage;
+
+        Query query = em.createNamedQuery("Promotions.findAllSortByEndTimeAsc");
+        query.setFirstResult(offset);
+        query.setMaxResults(maxDataInPage);
+        List<Promotions> promotions = query.getResultList();
+        request.setAttribute("promotions", promotions);
 
         // Forward the request to Promotion.jsp
         request.getRequestDispatcher("/WEB-INF/Client/Promotion.jsp").forward(request, response);

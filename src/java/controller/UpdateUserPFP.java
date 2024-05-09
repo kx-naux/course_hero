@@ -32,23 +32,32 @@ import javax.transaction.UserTransaction;
 @MultipartConfig
 public class UpdateUserPFP extends HttpServlet {
 
-   @PersistenceContext EntityManager em;
-    @Resource UserTransaction utx;
+    @PersistenceContext
+    EntityManager em;
+    @Resource
+    UserTransaction utx;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Users userDataSession = (Users) request.getSession().getAttribute("userData");
         Users userData = Login.checkRmbMeToken(request, em);
         //check has rmb token onot
-        if(userData != null){
+        if (userData != null) {
             HttpSession session = request.getSession();
-            session.setAttribute("userData",userData);
-        //check has user logged in
-        }else if(userDataSession.getUserId() == null){
+            session.setAttribute("userData", userData);
+            Login.getUserWishlist(request, em, userData);
+            Login.getUserCart(request, em, userData);
+            //check has user logged in
+        } else if (userDataSession.getUserId() == null) {
             HttpSession session = request.getSession();
-            session.setAttribute("pageToGoAfterLogin","update-user-pfp");
+            session.setAttribute("pageToGoAfterLogin", "update-user-pfp");
             response.sendRedirect("login");
             return;
+        }
+        
+        if (userDataSession != null) {
+            Login.getUserWishlist(request, em, userDataSession);
+            Login.getUserCart(request, em, userDataSession);
         }
 
         // Forward the request to Profile.jsp edit basic profile section
@@ -56,40 +65,38 @@ public class UpdateUserPFP extends HttpServlet {
         request.getRequestDispatcher("/WEB-INF/Client/Profile.jsp").forward(request, response);
     }
 
-   
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         Part filePart = request.getPart("profilePic");
         //String fileName = filePart.getSubmittedFileName();
-        
+
         //get the user data
         HttpSession session = request.getSession();
         Users userData = (Users) session.getAttribute("userData");
         byte[] imgData = null;
-        if (filePart.getSize()!= 0) {      
+        if (filePart.getSize() != 0) {
             imgData = readFileData(filePart);
             userData.setImgData(imgData);
-            
-            updateDataInDatabase(userData,request,response);
-        
+
+            updateDataInDatabase(userData, request, response);
+
             //update userdata in session
             session.setAttribute("userData", userData);
-        
+
             //show success
             request.setAttribute("successMsg", "User Profile Picture Updated");
-            request.setAttribute("profilePageNumber","3");
+            request.setAttribute("profilePageNumber", "3");
             request.getRequestDispatcher("/WEB-INF/Client/Profile.jsp").forward(request, response);
         } else {
             //fail to save data
-            request.setAttribute("errMsg","Server fails to upload your files. Please try again.");
-            request.setAttribute("profilePageNumber","3");
+            request.setAttribute("errMsg", "Server fails to upload your files. Please try again.");
+            request.setAttribute("profilePageNumber", "3");
             request.getRequestDispatcher("/WEB-INF/Client/Profile.jsp").forward(request, response);
         }
-        
-        
+
     }
-    
+
     private byte[] readFileData(Part filePart) throws IOException {
         try (InputStream inputStream = filePart.getInputStream()) {
             ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
@@ -104,27 +111,26 @@ public class UpdateUserPFP extends HttpServlet {
             return outputStream.toByteArray();
         }
     }
-    
-    
-    private void updateDataInDatabase(Users newUserData, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-        try{
+
+    private void updateDataInDatabase(Users newUserData, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        try {
             utx.begin();
             em.merge(newUserData);
             utx.commit();
-        }catch(Exception ex){
-            try{
-            if (utx.getStatus() == Status.STATUS_ACTIVE) {
-                try {
-                    utx.rollback();
-                }catch (SystemException ex2) {
-                    //server error page
-                    ErrorPage.forwardToServerErrorPage(request,response,"Database Server Error. Please Try Again Later");
+        } catch (Exception ex) {
+            try {
+                if (utx.getStatus() == Status.STATUS_ACTIVE) {
+                    try {
+                        utx.rollback();
+                    } catch (SystemException ex2) {
+                        //server error page
+                        ErrorPage.forwardToServerErrorPage(request, response, "Database Server Error. Please Try Again Later");
+                    }
                 }
+            } catch (SystemException ex2) {
+                ErrorPage.forwardToServerErrorPage(request, response, "Database Server Error. Please Try Again Later");
             }
-            }catch (SystemException ex2){
-                ErrorPage.forwardToServerErrorPage(request,response,"Database Server Error. Please Try Again Later");
-            }
-            ErrorPage.forwardToServerErrorPage(request,response,"Database Server Error. Please Try Again Later");
+            ErrorPage.forwardToServerErrorPage(request, response, "Database Server Error. Please Try Again Later");
         }
     }
 
