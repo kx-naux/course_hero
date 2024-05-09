@@ -323,24 +323,24 @@
                         <!--in span first put first 4 digit-->
                         <label for="storedCard"><input type="checkbox" id="storedCard" name="storedCard" value="storedCard"> <img src="" alt=""> <span id="storedCardNo" first="4536" >*4561</span> - Yu Beng's card</label>
 
-                        <div class="payment-input-div required-input-field  flex-col">
+                        <div class="payment-input-div text-input-div required-input-field  flex-col">
                             <label for="cardHolder">Card Holder:</label>
                             <input type="text"  id="cardHolder" name="cardHolder" placeholder="Holders name" maxlength="45" value=""/>
                         </div>
 
-                        <div class="payment-input-div required-input-field  flex-col">
+                        <div class="payment-input-div text-input-div required-input-field  flex-col">
                             <label for="cardNo">Card No.:</label>
                             <input type="text" id="cardNo"  name="cardNo" placeholder="Enter card number (16 digits)" maxlength="16" value=""/>
                         </div>
 
                         <div class="flex-row">
 
-                            <div class="payment-input-div  required-input-field flex-col">
+                            <div class="payment-input-div text-input-div  required-input-field flex-col">
                                 <label for="expDate">Exp Date:</label>
                                 <input type="text" id="expDate"  name="expDate" placeholder="MM/YY" maxlength="5" value=""/>
                             </div>
 
-                            <div class="payment-input-div required-input-field  flex-col">
+                            <div class="payment-input-div text-input-div required-input-field  flex-col">
                                 <label for="ccv">CCV:</label>
                                 <input type="text" id="ccv"  name="ccv" placeholder="ccv" maxlength="3" value=""/>
                             </div>
@@ -351,7 +351,7 @@
 
                     <div class="payment-method-input payment-bank flex-col">
 
-                        <div class="payment-input-div required-input-field  flex-col">
+                        <div class="payment-input-div text-input-div required-input-field  flex-col">
                             <label for="bank">Bank:</label>
                             <select id="bank" name="bank">
                                 <option selected hidden>Select a bank</option>
@@ -363,13 +363,13 @@
                             </select>
                         </div>
 
-                        <div class="payment-input-div  required-input-field flex-col">
+                        <div class="payment-input-div text-input-div  required-input-field flex-col">
                             <label for="bankAccNo">Account No.:</label>
                             <input type="text" id="bankAccNo" name="bankAccNo" placeholder="Bank account no" maxlength="12" value=""/>
                         </div>
 
 
-                        <div class="payment-input-div flex-col">
+                        <div class="payment-input-div text-input-div flex-col">
                             <label for="bankRemark">Remark:</label>
                             <input type="text" id="bankRemark" name="bankRemark" placeholder="Enter remark here" maxlength="80" value=""/>
                         </div>
@@ -381,12 +381,12 @@
                         <!--if got stored record render this div-->
                         <label for="storedBank"><input type="checkbox" id="storedBank" name="storedBank" value="storedBank"> <img src="" alt=""/> 016-765 1234</label>
 
-                        <div class="payment-input-div required-input-field flex-col">
+                        <div class="payment-input-div text-input-div required-input-field flex-col">
                             <label for="tngPhoneNo">Phone No.:</label>
                             <input type="text" id="tngPhoneNo" name="tngPhoneNo" placeholder="Enter phone no." maxlength="15" value=""/>
                         </div>
 
-                        <div class="payment-input-div flex-col">
+                        <div class="payment-input-div text-input-div flex-col">
                             <label for="tngRemark">Remark:</label>
                             <input type="text" id="tngRemark" name="tngRemark" placeholder="Enter remark here" maxlength="80" value=""/>
                         </div>
@@ -399,6 +399,8 @@
 
                     <!--invalid msg for payment-->
                     <p class="invalid-msg"></p>
+                    
+                    <hr class="total-div-divider"/>
 
                     <!--show total--> 
                     <div class="total-div flex-col">                        

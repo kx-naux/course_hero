@@ -278,7 +278,7 @@
     text-align: center;
 }
 
-.course-div-left .course-rating-div.inactive > div, 
+.course-div-left .course-rating-div.inactive > div,
 .course-div-left .course-rating-div.inactive > button{
     display: none;
 }
@@ -342,6 +342,7 @@
 .user-review .user-review-top .user-img img,
 .review-content-right .user-review .user-review-top .user-img img {
     width: 100%;
+    border-radius: 50%;
     object-fit: cover;
 }
 
@@ -776,18 +777,18 @@
 
 .add-review-div .add-review-input .review-rating:not(:checked) > input  {
     position: absolute;
-  appearance: none;
+    appearance: none;
 }
 
 .add-review-div .add-review-input .review-rating:not(:checked) > label {
-  float: right;
-  cursor: pointer;
-  font-size: 28px;
-  color: #666;
+    float: right;
+    cursor: pointer;
+    font-size: 28px;
+    color: #666;
 }
 
 .add-review-div .add-review-input .review-rating:not(:checked) > label:before {
-  content: '★';
+    content: '★';
 }
 
 .add-review-div .add-review-input .review-rating > input:checked + label:hover,
@@ -795,20 +796,20 @@
 .add-review-div .add-review-input .review-rating > input:checked ~ label:hover,
 .add-review-div .add-review-input .review-rating > input:checked ~ label:hover ~ label,
 .add-review-div .add-review-input .review-rating > label:hover ~ input:checked ~ label {
-  color: #e58e09;
+    color: #e58e09;
 }
 
 .add-review-div .add-review-input .review-rating:not(:checked) > label:hover,
 .add-review-div .add-review-input .review-rating:not(:checked) > label:hover ~ label {
-  color: #ff9e0b;
+    color: #ff9e0b;
 }
 
 .add-review-div .add-review-input .review-rating > input:checked ~ label {
-  color: #ffa723;
+    color: #ffa723;
 }
 
 .add-review-div .invalid-msg{
-     text-align: center;
+    text-align: center;
     color: var(--color-text-error);
 }
 

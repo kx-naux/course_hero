@@ -53,6 +53,7 @@
     padding: 25PX;
     width: 100%;
     gap: 20px;
+    overflow: hidden;
 }
 
 .content-section .content-div .confirma-store-div {
@@ -122,6 +123,7 @@
     min-width: 700px;
     flex-wrap: wrap;
     margin: 10px 0;
+    justify-content: center;
 }
 
 .shipping-method-div .shipping-method{
@@ -387,6 +389,8 @@ table#itemsTable tbody td:first-of-type div {
     min-width: 400px;
     flex-wrap: wrap;
     margin: 10px 0;
+    justify-content: center;
+    align-items: center;
 }
 
 .payment-method-div .payment-method{
@@ -443,7 +447,21 @@ table#itemsTable tbody td:first-of-type div {
     color: var(--color-blue-3);
 }
 
+.payment-method-input {
+    margin: 0 auto;
+    min-width: 500px;
+    gap: 15px;
+    padding: 20px 0;
+}
+
 /*total*/
+.total-div-divider {
+        height: 1px;
+    background-color: var(--color-light-grey-2);
+    width: 100vw;
+    margin: 0 -10vw;
+}
+
 .total-div {
     margin: 0 0 0 auto;
     gap: 6px;
@@ -453,7 +471,7 @@ table#itemsTable tbody td:first-of-type div {
 .total-row  {
     align-items: center;
     justify-content: space-between;
-    min-width: 320px;
+    min-width: 380px;
 }
 
 .total-row .total-row-th{

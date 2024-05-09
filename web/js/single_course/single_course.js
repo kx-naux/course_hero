@@ -241,9 +241,11 @@ document.querySelector("button.all-review-btn").addEventListener('click', () => 
 });
 
 // close button for all review section
-document.querySelector("span.close-btn").addEventListener('click', () => {
-    reviewSection.classList.remove('active');
-});
+if (document.querySelector("span.close-btn") !== null) {
+    document.querySelector("span.close-btn").addEventListener('click', () => {
+        reviewSection.classList.remove('active');
+    });
+}
 
 // add review form validation check
 document.getElementById("addReviewBtn").addEventListener("click", () => {
@@ -279,45 +281,47 @@ rateInputs.forEach(input => {
 });
 
 // show more reviews button
-document.querySelector("button.show-more-btn").addEventListener('click', () => {
+if (document.querySelector("button.show-more-btn") !== null) {
+    document.querySelector("button.show-more-btn").addEventListener('click', () => {
 
-    // fetch more comment
-    const courseID = document.querySelector("section.course-section").getAttribute("courseID");
-    const lastID = document.getElementById("lastRatingId").value;
-    const submitCount = document.getElementById("submitCount").value;
+        // fetch more comment
+        const courseID = document.querySelector("section.course-section").getAttribute("courseID");
+        const lastID = document.getElementById("lastRatingId").value;
+        const submitCount = document.getElementById("submitCount").value;
 
-    const url = '/course_hero/get-course-review';
-    const data = {
-        courseID: courseID,
-        lastID: lastID,
-        submitCount: parseInt(submitCount)
-    };
+        const url = '/course_hero/get-course-review';
+        const data = {
+            courseID: courseID,
+            lastID: lastID,
+            submitCount: parseInt(submitCount)
+        };
 
-    fetch(url, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-    }).then(response => {
-        if (!response.ok) {
-            toast_msg(TOAST_ERROR, "Network Issue", `Cannot load more review`);
-        }
-        return response.json();
-    }).then(responseData => {
-        console.log(responseData);
-        if (responseData.status === "success") {
-            insertReview(responseData);
-            document.getElementById("submitCount").value = responseData.submitCount;
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        }).then(response => {
+            if (!response.ok) {
+                toast_msg(TOAST_ERROR, "Network Issue", `Cannot load more review`);
+            }
+            return response.json();
+        }).then(responseData => {
             console.log(responseData);
-        } else {
-            toast_msg(TOAST_ERROR, "Server Error", `Cannot load more review`);
-        }
-    }).catch(error => {
-        console.error('Fetch error:', error);
-    });
+            if (responseData.status === "success") {
+                insertReview(responseData);
+                document.getElementById("submitCount").value = responseData.submitCount;
+                console.log(responseData);
+            } else {
+                toast_msg(TOAST_ERROR, "Server Error", `Cannot load more review`);
+            }
+        }).catch(error => {
+            console.error('Fetch error:', error);
+        });
 
-});
+    });
+}
 
 function insertReview(data) {
     let reviewsDiv = document.getElementById("reviewsDiv");
