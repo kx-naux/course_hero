@@ -8,10 +8,11 @@
 <jsp:useBean id="userData" class="JPAEntity.Users" scope="session" />
 <% List<Courses> courseList = (List<Courses>) request.getAttribute("courseList"); %>
 <% List<Merchandise> merchandiseList = (List<Merchandise>) request.getAttribute("merchandiseList"); %>
-<% List<CartItems> cartItems = (List<CartItems>)request.getAttribute("cartItems"); %>
+<% List<CartItems> cartItems = (List<CartItems>) request.getAttribute("cartItems"); %>
 <% int numberOfItemInCartCourse = ((Integer) request.getAttribute("numberOfCourse")).intValue();%>
 <% int numberOfItemInCartMerch = ((Integer) request.getAttribute("numberOfMerch")).intValue();%>
-<% String errMsg = (String) request.getAttribute("errMsg"); %>
+<% String errMsg = (String) request.getAttribute("errMsg");
+%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -35,9 +36,9 @@
 
         <!--put error msg here to show the error msg-->
         <% if (errMsg == null) { %>
-            <span id="errorMsg" hidden></span>
+        <span id="errorMsg" hidden></span>
         <%} else {%>
-            <span id="errorMsg" hidden><%= errMsg %></span>
+        <span id="errorMsg" hidden><%= errMsg%></span>
         <%}%>
 
         <form method="post" action="cart">
@@ -54,42 +55,42 @@
                             <input type="checkbox" class="all-check-box" id="courseAllCheckbox" />
                             <p class="number-item"><span id="cartCourseNumberNoun">Course</span> in cart (<span id="cartCourseNumber"><%= numberOfItemInCartCourse%></span>)</p>
                         </div>
-                        
+
                         <!--course in cart-->
                         <ul class="course-list flex-col" id="cartCourseList">
 
-                            <% for(Courses course:courseList){ %>
-                                <%
-                                    String catId = "";
-                                    for(CartItems item: cartItems){
-                                        if(item.getProductId().getProductId().equals(course.getProductId().getProductId())){
-                                            catId = item.getCartitemId();
-                                        }
+                            <% for (Courses course : courseList) { %>
+                            <%
+                                String catId = "";
+                                for (CartItems item : cartItems) {
+                                    if (item.getProductId().getProductId().equals(course.getProductId().getProductId())) {
+                                        catId = item.getCartitemId();
                                     }
-                                %>
-                            <div class="course-item flex-row" courseID="<%= course.getCourseId() %>">
+                                }
+                            %>
+                            <div class="course-item flex-row" courseID="<%= course.getCourseId()%>">
 
                                 <div class="course-check flex-col">
-                                    <input type="checkbox" class="cart-check" id="cartItemId" name="cartItemId" value="<%= catId %>" />
+                                    <input type="checkbox" class="cart-check" id="cartItemId" name="cartItemId" value="<%= catId%>" />
                                 </div>
                                 <div class="course-img flex-col">
-                                    <img src="<%= course.getProductId().getImagePath() %>" onerror="this.src='./img/course/beginner_excel.jpg';" alt="" />
+                                    <img src="<%= course.getProductId().getImagePath()%>" onerror="this.src='./img/course/beginner_excel.jpg';" alt="" />
                                 </div>
                                 <div class="course-detail flex-col">
-                                    <h3 class="course-title"><%= course.getProductId().getProdName() %></h3>
+                                    <h3 class="course-title"><%= course.getProductId().getProdName()%></h3>
                                     <% String authorsStr = ""; %>
-                                        <% for (AuthorContribution authContri : course.getAuthorContributionList()) {
-                                                authorsStr = authContri.getAuthorId().getAuthorName() + ", ";
-                                            }%>
-                                        <% authorsStr = authorsStr.substring(0, authorsStr.length() - 2);%>
+                                    <% for (AuthorContribution authContri : course.getAuthorContributionList()) {
+                                            authorsStr = authContri.getAuthorId().getAuthorName() + ", ";
+                                        }%>
+                                    <% authorsStr = authorsStr.substring(0, authorsStr.length() - 2);%>
                                     <p class="course-author"><%= authorsStr%></p>
-                                    <p class="course-category"><%= course.getCoursecatId().getCategoryName() %></p>
+                                    <p class="course-category"><%= course.getCoursecatId().getCategoryName()%></p>
                                     <!--<div class="course-review flex-row">
                                         <p class="rating-digit">4.2</p>
                                         <i class="ri-star-fill"></i>
                                         <p class="rating-number-field">(<span class="raing-number">123</span>)</p>
                                     </div>-->
-                                    
+
                                     <div class="course-label flex-row">
                                         <p><%= course.getLengthHour()%> Hour(s)</p>
                                         <p><%= course.getCourseLevel()%></p>
@@ -100,8 +101,14 @@
                                     <button type="button" class="move-btn">Move to Wish</button>
                                 </div>
                                 <div class="course-price-field flex-col">
-                                    <p class="course-price">RM <span class="span-price"><%= course.getProductId().getPrice() - course.getProductId().getDiscount()%></span></p>    
-                                    <p class="course-normal-price">RM <span class="span-normal-price"><%= course.getProductId().getPrice()%></span></p>
+                                    <%
+                                        double originalPrice = course.getProductId().getPrice();
+                                        double discountedPrice = (100 - course.getProductId().getDiscount()) / 100 * (course.getProductId().getPrice());
+                                    %>
+                                    <p class="course-price">RM <span class="span-price"><%=String.format("%.2f", (originalPrice == discountedPrice) ? originalPrice : discountedPrice)%></span></p>    
+                                        <%if (originalPrice != discountedPrice) {%>
+                                    <p class="course-normal-price">RM <span class="span-normal-price"><%=String.format("%.2f", originalPrice)%></span></p>
+                                        <%}%>
                                 </div>
                             </div>
                             <%}%>
@@ -113,25 +120,25 @@
                         </div>
 
                         <ul class="course-list flex-col" id="cartMerchList">
-                            <% for(Merchandise merch : merchandiseList){ %>
-                                <%
-                                    CartItems cartItem = new CartItems();
-                                    for(CartItems item: cartItems){
-                                        if(item.getProductId().getProductId().equals(merch.getProductId().getProductId())){
-                                            cartItem = item;
-                                        }
+                            <% for (Merchandise merch : merchandiseList) { %>
+                            <%
+                                CartItems cartItem = new CartItems();
+                                for (CartItems item : cartItems) {
+                                    if (item.getProductId().getProductId().equals(merch.getProductId().getProductId())) {
+                                        cartItem = item;
                                     }
-                                %>
-                            <div class="course-item flex-row" courseID="<%= merch.getMerchId() %>">
+                                }
+                            %>
+                            <div class="course-item flex-row" courseID="<%= merch.getMerchId()%>">
                                 <div class="course-check flex-col">
-                                    <input type="checkbox" class="cart-check" id="cartItemId" name="cartItemId" value="<%= cartItem.getCartitemId() %>" />
+                                    <input type="checkbox" class="cart-check" id="cartItemId" name="cartItemId" value="<%= cartItem.getCartitemId()%>" />
                                 </div>
                                 <div class="course-img flex-col">
-                                    <img src="<%= merch.getProductId().getImagePath() %>" onerror="this.src='./img/course/beginner_excel.jpg';" alt="" />
+                                    <img src="<%= merch.getProductId().getImagePath()%>" onerror="this.src='./img/course/beginner_excel.jpg';" alt="" />
                                 </div>
                                 <div class="course-detail flex-col">
-                                    <h3 class="course-title"><%= merch.getProductId().getProdName() %></h3>
-                                    <p class="course-category"><%= merch.getMerchcatId().getCategoryName() %></p>
+                                    <h3 class="course-title"><%= merch.getProductId().getProdName()%></h3>
+                                    <p class="course-category"><%= merch.getMerchcatId().getCategoryName()%></p>
                                     <div class="course-review flex-row">
                                         <!--<p class="rating-digit">4.2</p>
                                         <i class="ri-star-fill"></i>
@@ -140,15 +147,21 @@
                                 </div>
                                 <div class="merch-qty-input-div flex-row">
                                     <button type="button" class="qty-btn substract"><i class="ri-subtract-fill"></i></button>
-                                    <input type="text" class="merch-qty-input" value="<%= cartItem.getQuantity() %>" max="<%= merch.getStockBalance() %>" />
+                                    <input type="text" class="merch-qty-input" value="<%= cartItem.getQuantity()%>" max="<%= merch.getStockBalance()%>" />
                                     <button type="button" class="qty-btn add"><i class="ri-add-fill"></i></button>
                                 </div>
                                 <div class="course-button flex-col">
                                     <button type="button" class="remove-btn">Remove</button>
                                 </div>
                                 <div class="course-price-field flex-col">
-                                    <p class="course-price">RM <span class="span-price"><%= merch.getProductId().getPrice() - merch.getProductId().getDiscount()%></span></p>    
-                                    <p class="course-normal-price">RM <span class="span-normal-price"><%= merch.getProductId().getPrice()%></span></p>
+                                    <%
+                                        double originalPrice = merch.getProductId().getPrice();
+                                        double discountedPrice = (100 - merch.getProductId().getDiscount()) / 100 * (merch.getProductId().getPrice());
+                                    %>
+                                    <p class="course-price">RM <span class="span-price"><%=String.format("%.2f", (originalPrice == discountedPrice) ? originalPrice : discountedPrice)%></span></p>    
+                                        <%if (originalPrice != discountedPrice) {%>
+                                    <p class="course-normal-price">RM <span class="span-normal-price"><%=String.format("%.2f", originalPrice)%></span></p>
+                                        <%}%>
                                 </div>
                             </div>
                             <%}%>

@@ -2,6 +2,7 @@ package controller;
 
 import JPAEntity.CartItems;
 import JPAEntity.Product;
+import JPAEntity.Merchandise;
 import JPAEntity.TablesRecordCounter;
 import JPAEntity.Users;
 import com.google.gson.Gson;
@@ -11,6 +12,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Date;
+import java.util.List;
 import javax.annotation.Resource;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -45,9 +47,23 @@ public class UpdateMerchQty extends HttpServlet {
         JsonObject jsonObject = gson.fromJson(requestBody.toString(), JsonObject.class);
 
         // Get JSON data
-        String cartID = jsonObject.get("cartID").getAsString();
+        String merchID = jsonObject.get("productID").getAsString();
         int qty = jsonObject.get("qty").getAsInt();
 
+        // Get User data
+        Users userData = (Users) request.getSession().getAttribute("userData");
+
+        // Get the product object
+        Merchandise currentMerch = em.find(Merchandise.class, merchID);
+        Product currentProduct = currentMerch.getProductId();
+
+        List<CartItems> cartItems = em.createNamedQuery("CartItems.findByUserIdProductId").setParameter("userId", userData).setParameter("productId", currentProduct).getResultList();
+        CartItems currentCartItems = cartItems.get(0);
+        currentCartItems.setQuantity(qty);
+
+        // Save to database
+        saveDataToDatabases(request, response, currentCartItems);
+        
         // Create the response JSON object
         JsonObject responseObject = new JsonObject();
         responseObject.addProperty("status", "success");
@@ -64,5 +80,27 @@ public class UpdateMerchQty extends HttpServlet {
         PrintWriter out = response.getWriter();
         out.print(responseJsonString);
         out.flush();
+    }
+
+    public void saveDataToDatabases(HttpServletRequest request, HttpServletResponse response, CartItems updatedCartItems) throws ServletException, IOException {
+        try {
+            utx.begin();
+            em.merge(updatedCartItems);
+            utx.commit();
+        } catch (Exception ex) {
+            try {
+                if (utx.getStatus() == Status.STATUS_ACTIVE) {
+                    try {
+                        utx.rollback();
+                    } catch (SystemException ex2) {
+                        //server error page
+                        ErrorPage.forwardToServerErrorPage(request, response, "Database Server Error. Please Try Again Later");
+                    }
+                }
+            } catch (SystemException ex2) {
+                ErrorPage.forwardToServerErrorPage(request, response, "Database Server Error. Please Try Again Later");
+            }
+            ErrorPage.forwardToServerErrorPage(request, response, "Database Server Error. Please Try Again Later");
+        }
     }
 }

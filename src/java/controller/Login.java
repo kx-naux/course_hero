@@ -269,10 +269,8 @@ public class Login extends HttpServlet {
     public static void getUserCart(HttpServletRequest request, EntityManager em, Users currentUser){
         HttpSession session = request.getSession();
         List<CartItems> userCartItems = em.createNamedQuery("CartItems.findByUserId").setParameter("userId", currentUser).getResultList();
-        List<Courses> userCoursesCart = new ArrayList<>();
-        List<Merchandise> userMerchandise = new ArrayList<>();
         
-        //To get the course in the cart
+        //To get the course & merch in the cart
         Map<CartItems, Courses> userCartCourse = new HashMap<>();
         Map<CartItems, Merchandise> userCartMerch = new HashMap<>();
         double userCartTotal = 0;
@@ -280,13 +278,13 @@ public class Login extends HttpServlet {
         for(CartItems currentCart: userCartItems){
             userCartTotal += currentCart.getProductId().getPrice() * currentCart.getQuantity();
             List<Courses> courseExist = em.createNamedQuery("Courses.findByProductId").setParameter("productId", currentCart.getProductId()).getResultList();
-            if (courseExist != null){
+            if (!courseExist.isEmpty()){
                 userCartCourse.put(currentCart, courseExist.get(0));
                 continue;
             }
             
             List<Merchandise> merchExist = em.createNamedQuery("Merchandise.findByProductId").setParameter("productId", currentCart.getProductId()).getResultList();
-            if (merchExist != null){
+            if (!merchExist.isEmpty()){
                 userCartMerch.put(currentCart, merchExist.get(0));
             }
         }

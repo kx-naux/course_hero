@@ -121,6 +121,7 @@ searchInputField.addEventListener("keyup", () => {
             }
             return response.json();
         }).then(responseData => {
+            console.log(responseData)
             insert_suggestion(responseData);
         }).catch(error => {
             console.error('Fetch error:', error);

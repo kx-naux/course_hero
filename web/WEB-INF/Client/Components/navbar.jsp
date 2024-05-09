@@ -1,3 +1,4 @@
+<%@page import="JPAEntity.Keyword"%>
 <%@page import="JPAEntity.Merchandise"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="JPAEntity.CartItems"%>
@@ -9,6 +10,7 @@
 <jsp:useBean id="userCartItems" class="List<JPAEntity.CartItems>" scope="session" />
 <jsp:useBean id="userCartCourse" class="Map<JPAEntity.CartItems, JPAEntity.Courses>" scope="session" />
 <jsp:useBean id="userCartMerch" class="Map<JPAEntity.CartItems, JPAEntity.Merchandise>" scope="session" />
+<jsp:useBean id="allKeywords" class="List<JPAEntity.Keyword>" scope="application" />
 <%double userCartTotal = ((Double) session.getAttribute("userCartTotal")).doubleValue();%>
 <!-- Navigation Bar -->
 <nav class="nav-bar">
@@ -153,16 +155,16 @@
                                 </div>
                             </div>
                             <%} else if (currentMerch != null) {%>
-                            <div class="course-item flex-row" productid=<%=currentMerch.getMerchId() %>>
+                            <div class="course-item flex-row" productid=<%=currentMerch.getMerchId()%>>
                                 <div class="course-item-img">
                                     <img src="./img/merchandise/prx_shirt.png" alt="" draggable="false" />
                                 </div>
                                 <div class="course-item-info flex-col">
                                     <h1 class="course-title"><%=currentMerch.getProductId().getProdName()%></h1>
-                                    <p class="course-author"><%=currentMerch.getMerchcatId().getCategoryName() %></p>
+                                    <p class="course-author"><%=currentMerch.getMerchcatId().getCategoryName()%></p>
                                     <div class="flex-row">
                                         <p class="course-price">RM <%=String.format("%.2f", currentMerch.getProductId().getPrice())%></p>
-                                        <p class="merch-qty">Qty: <span id="merch-span-qty"><%= currentCart.getQuantity() %></span></p>
+                                        <p class="merch-qty">Qty: <span id="merch-span-qty"><%= currentCart.getQuantity()%></span></p>
                                     </div>
                                 </div>
                             </div>
@@ -292,11 +294,9 @@
             <div class="nav-popular-search flex-col">
                 <h1>Popular searches</h1>
                 <ul class="flex-row">
-                    <li><a onclick="popular_search_click(this)">Data Science</a></li>
-                    <li><a onclick="popular_search_click(this)">Python</a></li>
-                    <li><a onclick="popular_search_click(this)">Software Engineering</a></li>
-                    <li><a onclick="popular_search_click(this)">Java Swing</a></li>
-                    <li><a onclick="popular_search_click(this)">Web Development</a></li>
+                    <%for (Keyword eachKeyword : allKeywords) {%>
+                    <li><a onclick="popular_search_click(this)"><%=eachKeyword.getKeyword()%></a></li>
+                        <%}%>
                 </ul>
             </div>
         </div>
