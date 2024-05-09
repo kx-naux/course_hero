@@ -139,6 +139,6 @@ public class CartItems implements Serializable {
         this.quantity = quantity;
     }
 
-
+  
     
 }

@@ -269,6 +269,8 @@ public class Courses implements Serializable {
         this.syllabus = syllabus;
     }
 
+   
+
     public String getRequirements() {
         return requirements;
     }
@@ -276,5 +278,6 @@ public class Courses implements Serializable {
     public void setRequirements(String requirements) {
         this.requirements = requirements;
     }
+
 
 }

@@ -1,5 +1,6 @@
 package controller;
 
+import JPAEntity.BillingAddress;
 import JPAEntity.CartItems;
 import JPAEntity.Courses;
 import JPAEntity.Merchandise;
@@ -108,13 +109,42 @@ public class CartPage extends HttpServlet {
             }
             session.setAttribute("checkingOutCartItemList", cartItemList);
             
-            //get all shipping method
-            Query query = em.createNamedQuery("ShippingMethod.findAll");
-            List<ShippingMethod> shipMethodList = query.getResultList();
-            session.setAttribute("shipMethodList", shipMethodList);
-            //set the default selected shipping method
-            session.setAttribute("selectedShipping",shipMethodList.get(0));
+            //check need shipping onot
+            List<Merchandise> merchandiseList = new ArrayList<Merchandise>();
+            for(CartItems item:cartItemList){
+                Query qry = em.createNamedQuery("Merchandise.findByProductId");
+                qry.setParameter("productId", item.getProductId());
+                if(!qry.getResultList().isEmpty()){
+                    merchandiseList.addAll(qry.getResultList());
+                }
+            }
             
+            if(!merchandiseList.isEmpty()){
+                //get all shipping method
+                Query query = em.createNamedQuery("ShippingMethod.findAll");
+                List<ShippingMethod> shipMethodList = query.getResultList();
+                session.setAttribute("shipMethodList", shipMethodList);
+                //set the default selected shipping method
+                session.setAttribute("selectedShipping",shipMethodList.get(0));
+            
+                //set default selected address
+                BillingAddress userAddress = ((Users)session.getAttribute("userData")).getAddressId();
+                if (!userAddress.getCity().isEmpty() && !userAddress.getCountry().isEmpty() && !userAddress.getLine1().isEmpty() && !userAddress.getPostalcode().isEmpty() && !userAddress.getStateResides().isEmpty()) {
+                    session.setAttribute("selectedBillingInfo","storedAddress");
+                }else{
+                    session.setAttribute("selectedBillingInfo","newAddress");
+                }
+                session.setAttribute("checkOutNeedShipping",true);
+            }else{
+                session.setAttribute("checkOutNeedShipping",false);
+            }
+            
+            //set default selectedpamentmethod
+            session.setAttribute("selectedPaymentMethod","");
+            
+            //set default checkboxes value
+            session.setAttribute("chooseToUpdateBillAddress",false);
+            session.setAttribute("chooseToUpdateStoredPayment",false);
             
             //initialize the session variable
             double itemsSubtotal = 0;
@@ -132,6 +162,10 @@ public class CartPage extends HttpServlet {
             session.setAttribute("shippingDiscount",shippingDiscount);
             session.setAttribute("shippingCharges",shippingCharges);
             session.setAttribute("paymentTotal",paymentTotal);
+            
+            session.removeAttribute("errMsg");
+            session.removeAttribute("successMsg");
+            
             response.sendRedirect("check-out");
         }else{
             request.setAttribute("errMsg","No cart items were selected.");

@@ -42,6 +42,8 @@
         <%}%>
 
         <form method="post" action="cart">
+            <input type="text" name="numberOfItemInCartCourse" value="<%= numberOfItemInCartCourse %>" hidden />
+            <input type="text" name="numberOfItemInCartMerch" value="<%= numberOfItemInCartMerch %>" hidden />
             <section class="section cart-section">
                 <div class="cart-div flex-row" id="cartContent">
                     <div class="cart-div-left flex-col">
@@ -80,7 +82,7 @@
                                     <h3 class="course-title"><%= course.getProductId().getProdName()%></h3>
                                     <% String authorsStr = ""; %>
                                     <% for (AuthorContribution authContri : course.getAuthorContributionList()) {
-                                            authorsStr = authContri.getAuthorId().getAuthorName() + ", ";
+                                            authorsStr = authorsStr + authContri.getAuthorId().getAuthorName() + ", ";
                                         }%>
                                     <% authorsStr = authorsStr.substring(0, authorsStr.length() - 2);%>
                                     <p class="course-author"><%= authorsStr%></p>
