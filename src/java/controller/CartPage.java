@@ -37,6 +37,8 @@ public class CartPage extends HttpServlet {
         if(userDataRmbMe != null){
             HttpSession session = request.getSession();
             session.setAttribute("userData",userDataRmbMe);
+            Login.getUserWishlist(request, em, userDataRmbMe);
+            Login.getUserCart(request, em, userDataRmbMe);
         //check has user logged in
         }else if(userDataSession.getUserId() == null){
             HttpSession session = request.getSession();
@@ -45,6 +47,12 @@ public class CartPage extends HttpServlet {
             return;
 
         }
+        
+        if (userDataSession != null) {
+            Login.getUserWishlist(request, em, userDataSession);
+            Login.getUserCart(request, em, userDataSession);
+        }
+        
         //get all cart items by userId
         Query qry = em.createNamedQuery("CartItems.findByUserId");
         qry.setParameter("userId",userDataSession);

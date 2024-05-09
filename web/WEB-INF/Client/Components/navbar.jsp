@@ -1,4 +1,15 @@
+<%@page import="JPAEntity.Merchandise"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="JPAEntity.CartItems"%>
+<%@page import="java.util.Map"%>
+<%@page import="JPAEntity.Courses"%>
+<%@page import="java.util.List"%>
 <%@page import="java.util.Base64"%>
+<jsp:useBean id="courseWishlist" class="List<JPAEntity.Courses>" scope="session" />
+<jsp:useBean id="userCartItems" class="List<JPAEntity.CartItems>" scope="session" />
+<jsp:useBean id="userCartCourse" class="Map<JPAEntity.CartItems, JPAEntity.Courses>" scope="session" />
+<jsp:useBean id="userCartMerch" class="Map<JPAEntity.CartItems, JPAEntity.Merchandise>" scope="session" />
+<%double userCartTotal = ((Double) session.getAttribute("userCartTotal")).doubleValue();%>
 <!-- Navigation Bar -->
 <nav class="nav-bar">
     <!-- Logo -->
@@ -36,13 +47,13 @@
                     </div>
                 </a>
             </li>
-<!--            <li>
-                <a href="<%= webpath.getPageUrl("learning")%>">
-                    <div class="nav-option">
-                        <p>Learning</p>
-                    </div>
-                </a>
-            </li>-->
+            <!--            <li>
+                            <a href="<%= webpath.getPageUrl("learning")%>">
+                                <div class="nav-option">
+                                    <p>Learning</p>
+                                </div>
+                            </a>
+                        </li>-->
             <li>
                 <a href="<%= webpath.getPageUrl("merchandises")%>">
                     <div class="nav-option">
@@ -59,12 +70,12 @@
         <!--JSP conditional rendering-->
         <c:choose>
             <c:when test="${not empty userData.accountId.username}">
-                
+
                 <span hidden id="isLogin"></span>
 
                 <%
-                    int numberWishlist = 2;
-                    int numberCart = 4;
+                    int numberWishlist = courseWishlist.size();
+                    int numberCart = userCartItems.size();
 
                     boolean isWishlistEmpty = numberWishlist <= 0;
                     boolean isCartEmpty = numberCart <= 0;
@@ -83,58 +94,27 @@
                         <!-- wish list with items-->
                         <div class="wish-list-item flex-col <%= isWishlistEmpty ? "" : "active"%>" id="wishlistDiv">
 
+                            <% for (Courses currentCourse : courseWishlist) {%>
                             <div class="flex-col">
                                 <div class="course-item flex-row">
                                     <div class="course-item-img">
                                         <img src="./img/course/beginner_excel.jpg" alt=""  draggable="false" />
                                     </div>
                                     <div class="course-item-info flex-col">
-                                        <h1 class="course-title">The Ultimate Excel Programming Course</h1>
-                                        <p class="course-author">Woo Yu Beng, Snijders Wang</p>
-                                        <p class="course-price">RM 58.00</p>
+                                        <h1 class="course-title"><%=currentCourse.getProductId().getProdName()%></h1>
+                                        <p class="course-author"><%=currentCourse.getCoursecatId().getCategoryName()%></p>
+                                        <p class="course-price">RM <%=String.format("%.2f", currentCourse.getProductId().getPrice())%></p>
                                     </div>
 
                                 </div>
                                 <div class="course-move-cart-div flex-col">
-                                    <button class="move-cart-btn" courseID="CR0000001" onclick="moveToCart(event)">Add to cart</button>
+                                    <button class="move-cart-btn" courseID=<%=currentCourse.getCourseId()%> onclick="moveToCart(event)">Add to cart</button>
                                 </div>
                             </div>
-
-                            <div class="flex-col">
-                                <div class="course-item flex-row">
-                                    <div class="course-item-img">
-                                        <img src="./img/course/beginner_excel.jpg" alt=""  draggable="false" />
-                                    </div>
-                                    <div class="course-item-info flex-col">
-                                        <h1 class="course-title">The Ultimate Excel Programming Course</h1>
-                                        <p class="course-author">Woo Yu Beng, Snijders Wang</p>
-                                        <p class="course-price">RM 58.00</p>
-                                    </div>
-
-                                </div>
-                                <div class="course-move-cart-div flex-col">
-                                    <button class="move-cart-btn" courseID="CR0000002" onclick="moveToCart(event)">Add to cart</button>
-                                </div>
-                            </div>
-
-                            <div class="flex-col">
-                                <div class="course-item flex-row">
-                                    <div class="course-item-img">
-                                        <img src="./img/course/beginner_excel.jpg" alt=""  draggable="false"  />
-                                    </div>
-                                    <div class="course-item-info flex-col">
-                                        <h1 class="course-title">The Ultimate Excel Programming Course</h1>
-                                        <p class="course-author">Woo Yu Beng, Snijders Wang</p>
-                                        <p class="course-price">RM 58.00</p>
-                                    </div>
-
-                                </div>
-                                <div class="course-move-cart-div flex-col">
-                                    <button class="move-cart-btn" courseID="CR0000003" onclick="moveToCart(event)">Add to cart</button>
-                                </div>
-                            </div>
+                            <%}%>
 
                         </div>
+
                         <div class="wish-list-bot flex-col  <%= isWishlistEmpty ? "" : "active"%>" id="wishlistLink">
                             <a href="<%= webpath.getPageUrl("wishlist")%>">Go to wishlist</a>
                         </div>
@@ -156,56 +136,43 @@
                         <!--cart list with items-->
                         <div class="cart-list-item flex-col <%= isCartEmpty ? "" : "active"%>" id="cartlistDiv">
 
-                            <div class="course-item flex-row" productid="CR0000001">
+                            <% for (CartItems currentCart : userCartItems) {
+                                    Courses currentCourse = userCartCourse.get(currentCart);
+                                    Merchandise currentMerch = userCartMerch.get(currentCart);
+
+                                    if (currentCourse != null) {
+                            %>
+                            <div class="course-item flex-row" productid=<%=currentCourse.getCourseId()%>>
                                 <div class="course-item-img">
                                     <img src="./img/course/beginner_excel.jpg" alt="" draggable="false" />
                                 </div>
                                 <div class="course-item-info flex-col" >
-                                    <h1 class="course-title">The Ultimate Excel Programming Course</h1>
-                                    <p class="course-author">Woo Yu Beng, Snijders Wang</p>
-                                    <p class="course-price">RM 58.00</p>
+                                    <h1 class="course-title"><%=currentCourse.getProductId().getProdName()%></h1>
+                                    <p class="course-author"><%=currentCourse.getCoursecatId().getCategoryName()%></p>
+                                    <p class="course-price">RM <%=String.format("%.2f", currentCourse.getProductId().getPrice())%></p>
                                 </div>
                             </div>
-
-                            <div class="course-item flex-row" productid="CR0000003">
-                                <div class="course-item-img">
-                                    <img src="./img/course/beginner_excel.jpg" alt=""  draggable="false" />
-                                </div>
-                                <div class="course-item-info flex-col" productid="CR0000003">
-                                    <h1 class="course-title">The Ultimate Excel Programming Course</h1>
-                                    <p class="course-author">Woo Yu Beng, Snijders Wang</p>
-                                    <p class="course-price">RM 58.00</p>
-                                </div>
-                            </div>
-
-                            <div class="course-item flex-row" productid="CR0000003">
-                                <div class="course-item-img">
-                                    <img src="./img/course/beginner_excel.jpg" alt=""  draggable="false" />
-                                </div>
-                                <div class="course-item-info flex-col">
-                                    <h1 class="course-title">The Ultimate Excel Programming Course</h1>
-                                    <p class="course-author">Woo Yu Beng, Snijders Wang</p>
-                                    <p class="course-price">RM 58.00</p>
-                                </div>
-                            </div>
-
-                            <div class="course-item flex-row" productid="M00000002">
+                            <%} else if (currentMerch != null) {%>
+                            <div class="course-item flex-row" productid=<%=currentMerch.getMerchId() %>>
                                 <div class="course-item-img">
                                     <img src="./img/merchandise/prx_shirt.png" alt="" draggable="false" />
                                 </div>
                                 <div class="course-item-info flex-col">
-                                    <h1 class="course-title">Course Hero X PRX T-shirt</h1>
-                                    <p class="course-author">Collectible</p>
+                                    <h1 class="course-title"><%=currentMerch.getProductId().getProdName()%></h1>
+                                    <p class="course-author"><%=currentMerch.getMerchcatId().getCategoryName() %></p>
                                     <div class="flex-row">
-                                        <p class="course-price">RM 58.00</p>
-                                        <p class="merch-qty">Qty: <span id="merch-span-qty">1</span></p>
+                                        <p class="course-price">RM <%=String.format("%.2f", currentMerch.getProductId().getPrice())%></p>
+                                        <p class="merch-qty">Qty: <span id="merch-span-qty"><%= currentCart.getQuantity() %></span></p>
                                     </div>
                                 </div>
                             </div>
+                            <%}%>
+
+                            <%}%>
 
                         </div>
                         <div class="cart-list-bot flex-col <%= isCartEmpty ? "" : "active"%>" id="cartlistLink">
-                            <h1>Total: RM <span id="cartlistPrice">128.80</span></h1>
+                            <h1>Total: RM <span id="cartlistPrice"><%=String.format("%.2f", userCartTotal)%></span></h1>
                             <a href="<%= webpath.getPageUrl("cart")%>">Go to cart</a>
                         </div>
                         <!--cart list without items-->
@@ -218,16 +185,16 @@
                 <div class="relative flex-col nav-icon-div">
                     <a href="<%= webpath.getPageUrl("profile")%>">
                         <%String base64Image = "";
-                          if(userData.getImgData()!=null){
-                            base64Image = Base64.getEncoder().encodeToString((byte[])userData.getImgData());
-                          }%>
-                        <p class="nav-icon"><img class="nav-profile-pic" src="data:image/jpeg;base64,<%= base64Image %>" onerror="this.src='./img/user/default.png';" alt=""  draggable="false" /></p>
+                            if (userData.getImgData() != null) {
+                                base64Image = Base64.getEncoder().encodeToString((byte[]) userData.getImgData());
+                            }%>
+                        <p class="nav-icon"><img class="nav-profile-pic" src="data:image/jpeg;base64,<%= base64Image%>" onerror="this.src='./img/user/default.png';" alt=""  draggable="false" /></p>
                     </a>
                     <div class="profile-list flex-col">
 
                         <div class="user-info flex-row">
                             <div class="user-info-left flex-col">
-                                <img class="profile-list-pic" src="data:image/jpeg;base64,<%= base64Image %>" onerror="this.src='./img/user/default.png';" alt=""  draggable="false"  />
+                                <img class="profile-list-pic" src="data:image/jpeg;base64,<%= base64Image%>" onerror="this.src='./img/user/default.png';" alt=""  draggable="false"  />
                             </div>
                             <div class="user-info-right flex-col">
                                 <p class="username">${userData.accountId.username}</p>

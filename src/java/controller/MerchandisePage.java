@@ -4,6 +4,7 @@ import JPAEntity.AuthorContribution;
 import JPAEntity.Courses;
 import JPAEntity.Merchandise;
 import JPAEntity.Ratings;
+import JPAEntity.Users;
 import entity.UserRatingStatistic;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -23,6 +24,19 @@ public class MerchandisePage extends HttpServlet {
     
    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        
+        Users userDataSession = (Users) request.getSession().getAttribute("userData");
+        Users userData = Login.checkRmbMeToken(request, em);
+
+        if (userData != null) {
+            Login.getUserWishlist(request, em, userData);
+            Login.getUserCart(request, em, userData);
+        }
+        if (userDataSession != null) {
+            Login.getUserWishlist(request, em, userDataSession);
+            Login.getUserCart(request, em, userDataSession);
+        }
+        
         String id = request.getParameter("id");
         if (id == null) {
             goToNotFoundErrorPage(request,response);

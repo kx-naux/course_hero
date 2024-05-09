@@ -38,6 +38,8 @@ public class UserDeleteAccount extends HttpServlet {
         if(userData != null){
             HttpSession session = request.getSession();
             session.setAttribute("userData",userData);
+            Login.getUserWishlist(request, em, userData);
+            Login.getUserCart(request, em, userData);
         //check has user logged in
         }else if(userDataSession.getUserId() == null){
             HttpSession session = request.getSession();
@@ -46,6 +48,12 @@ public class UserDeleteAccount extends HttpServlet {
             return;
 
         }
+
+        if (userDataSession != null) {
+            Login.getUserWishlist(request, em, userDataSession);
+            Login.getUserCart(request, em, userDataSession);
+        }
+        
         // Forward the request to Profile.jsp edit basic profile section
         request.setAttribute("profilePageNumber", "5");
         request.getRequestDispatcher("/WEB-INF/Client/Profile.jsp").forward(request, response);

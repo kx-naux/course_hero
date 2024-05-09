@@ -7,6 +7,7 @@ package controller;
 import JPAEntity.Authors;
 import JPAEntity.CourseSubscriptions;
 import JPAEntity.Courses;
+import JPAEntity.Users;
 import entity.AboutUsStats;
 import entity.CourseCategory;
 import java.io.IOException;
@@ -27,10 +28,12 @@ import javax.servlet.http.HttpServletResponse;
  * @author User
  */
 public class AboutUs extends HttpServlet {
-    @PersistenceContext EntityManager em;
-    
+
+    @PersistenceContext
+    EntityManager em;
+
     @Override
-    public void init(ServletConfig config) throws ServletException{
+    public void init(ServletConfig config) throws ServletException {
         super.init(config);
         ServletContext context = getServletContext();
         AboutUsStats aboutUsStats = getAboutUsStats();
@@ -47,8 +50,19 @@ public class AboutUs extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {  
-        
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        Users userDataSession = (Users) request.getSession().getAttribute("userData");
+        Users userData = Login.checkRmbMeToken(request, em);
+
+        if (userData != null) {
+            Login.getUserWishlist(request, em, userData);
+            Login.getUserCart(request, em, userData);
+        }
+        if (userDataSession != null) {
+            Login.getUserWishlist(request, em, userDataSession);
+            Login.getUserCart(request, em, userDataSession);
+        }
+
         // Forward the request to AboutUs.jsp
         request.getRequestDispatcher("/WEB-INF/Client/AboutUs.jsp").forward(request, response);
     }
@@ -64,25 +78,23 @@ public class AboutUs extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
     }
-    
-    private AboutUsStats getAboutUsStats(){
+
+    private AboutUsStats getAboutUsStats() {
         List<CourseSubscriptions> courseSubsList = em.createNamedQuery("CourseSubscriptions.findAll").getResultList();
         List<Authors> authorsList = em.createNamedQuery("Authors.findAll").getResultList();
         List<Courses> coursesList = em.createNamedQuery("Courses.findAll").getResultList();
         List<CourseCategory> categoryList = em.createNamedQuery("CourseCategory.findAll").getResultList();
-        
+
         AboutUsStats stats = new AboutUsStats();
-        
-        stats.addStatistic("Learners",courseSubsList.size());
-        stats.addStatistic("Authors",authorsList.size());
-        stats.addStatistic("Courses",coursesList.size());
-        stats.addStatistic("Categories",categoryList.size());
-        
+
+        stats.addStatistic("Learners", courseSubsList.size());
+        stats.addStatistic("Authors", authorsList.size());
+        stats.addStatistic("Courses", coursesList.size());
+        stats.addStatistic("Categories", categoryList.size());
+
         return stats;
     }
-
-   
 
 }
