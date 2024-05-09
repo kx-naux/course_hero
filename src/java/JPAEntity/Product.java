@@ -249,6 +249,8 @@ public class Product implements Serializable {
     }
 
 
+
+
     public String getDescription() {
         return description;
     }
@@ -267,6 +269,7 @@ public class Product implements Serializable {
     }
 
 
+
     public double getDiscount() {
         return discount;
     }
@@ -274,6 +277,7 @@ public class Product implements Serializable {
     public void setDiscount(double discount) {
         this.discount = discount;
     }
+
 
 
     public String getStatus() {

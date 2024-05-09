@@ -137,6 +137,7 @@ public class MerchCategory implements Serializable {
 
 
 
+
     public String getDescription() {
         return description;
     }
@@ -144,7 +145,6 @@ public class MerchCategory implements Serializable {
     public void setDescription(String description) {
         this.description = description;
     }
-
 
    
 }

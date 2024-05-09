@@ -292,6 +292,7 @@ public class Promotions implements Serializable {
     }
 
 
+
     public double getAmount() {
         return amount;
     }
