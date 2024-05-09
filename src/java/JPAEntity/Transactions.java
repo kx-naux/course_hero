@@ -50,10 +50,9 @@ public class Transactions implements Serializable {
     @NotNull
     @Column(name = "SUBTOTAL")
     private double subtotal;
-    @Basic(optional = false)
-    @NotNull()
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "PROMO_AMOUNT")
-    private double promoAmount;
+    private Double promoAmount;
     @Basic(optional = false)
     @NotNull
     @Column(name = "TAX")
@@ -63,10 +62,8 @@ public class Transactions implements Serializable {
     @Size(min = 1, max = 30)
     @Column(name = "TRANSACTION_TYPE")
     private String transactionType;
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "TRANSACTION_FEE")
-    private double transactionFee;
+    private Double transactionFee;
     @Basic(optional = false)
     @NotNull
     @Column(name = "TOTAL")
@@ -92,7 +89,7 @@ public class Transactions implements Serializable {
     @ManyToOne
     private Promotions promotionId;
     @JoinColumn(name = "SHIPPING_ID", referencedColumnName = "SHIPPING_ID")
-    @ManyToOne(optional = false)
+    @ManyToOne
     private Shipping shippingId;
     @JoinColumn(name = "USER_ID", referencedColumnName = "USER_ID")
     @ManyToOne(optional = false)
@@ -258,12 +255,21 @@ public class Transactions implements Serializable {
   
 
 
+    public void setPromoAmount(Double promoAmount) {
+        this.promoAmount = promoAmount;
+    }
+
     public double getTax() {
         return tax;
     }
 
     public void setTax(double tax) {
         this.tax = tax;
+    }
+
+
+    public void setTransactionFee(Double transactionFee) {
+        this.transactionFee = transactionFee;
     }
 
     public double getTotal() {
@@ -281,5 +287,7 @@ public class Transactions implements Serializable {
     public void setStatus(String status) {
         this.status = status;
     }
+
+   
 
 }

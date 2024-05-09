@@ -39,8 +39,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Payments.findByDateIssued", query = "SELECT p FROM Payments p WHERE p.dateIssued = :dateIssued")})
 public class Payments implements Serializable {
 
-    @Basic(optional = false)
-    @Size(min = 1, max = 15)
+    @Size(max = 15)
     @Column(name = "ACCOUNT_NUMBER")
     private String accountNumber;
     @Basic(optional = false)
@@ -173,7 +172,6 @@ public class Payments implements Serializable {
 
 
 
-
     public double getAmount() {
         return amount;
     }
@@ -189,6 +187,7 @@ public class Payments implements Serializable {
     public void setStatus(String status) {
         this.status = status;
     }  
+
 
 
 }

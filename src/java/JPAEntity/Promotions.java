@@ -292,8 +292,15 @@ public class Promotions implements Serializable {
     public void setPromoDescription(String promoDescription) {
         this.promoDescription = promoDescription;
     }
+    public String getEndDateStr(){
+        String dateFormatPattern = "dd-MM-yyyy hh:mm a z";  // Pattern for date format "31-12-2023"
+        
+        // Create a SimpleDateFormat object with the specified pattern
+        SimpleDateFormat dateFormat = new SimpleDateFormat(dateFormatPattern);
+        return dateFormat.format(this.endTime);
+    }
 
-
+   
 
     public double getAmount() {
         return amount;
@@ -303,6 +310,7 @@ public class Promotions implements Serializable {
         this.amount = amount;
     }
 
+    
 
     public String getStatus() {
         return status;
@@ -311,14 +319,8 @@ public class Promotions implements Serializable {
     public void setStatus(String status) {
         this.status = status;
     }
-    
-    public String getEndDateStr(){
-        String dateFormatPattern = "dd-MM-yyyy hh:mm a z";  // Pattern for date format "31-12-2023"
 
-        // Create a SimpleDateFormat object with the specified pattern
-        SimpleDateFormat dateFormat = new SimpleDateFormat(dateFormatPattern);
-        return dateFormat.format(this.endTime);
-    }
+   
 
    
     

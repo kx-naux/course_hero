@@ -180,7 +180,6 @@ public class BillingAddress implements Serializable {
    
 
  
-
     public String getCity() {
         return city;
     }
@@ -189,7 +188,7 @@ public class BillingAddress implements Serializable {
         this.city = city;
     }
 
-   
+
     public String getPostalcode() {
         return postalcode;
     }

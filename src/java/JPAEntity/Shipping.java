@@ -66,9 +66,7 @@ public class Shipping implements Serializable {
     @Size(min = 1, max = 20)
     @Column(name = "DIMENSTION_CM_HXWXL")
     private String dimenstionCmHxwxl;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 200)
+    @Size(max = 200)
     @Column(name = "SHIPPING_NOTES")
     private String shippingNotes;
 
@@ -203,5 +201,7 @@ public class Shipping implements Serializable {
     public String toString() {
         return "JPAEntity.Shipping[ shippingId=" + shippingId + " ]";
     }   
+
+   
 
 }

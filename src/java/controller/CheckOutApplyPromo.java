@@ -61,6 +61,8 @@ public class CheckOutApplyPromo extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
+        
+        //-------------------------------------------------------------------------------
         //store billing address option    
         String selectedBillingAddress = request.getParameter("storedAddress");
         if(selectedBillingAddress!=null){
@@ -69,14 +71,29 @@ public class CheckOutApplyPromo extends HttpServlet {
         if(selectedBillingAddress!=null && selectedBillingAddress.equals("newAddress")){
             //store new billing address
             String addLine1 = request.getParameter("address1");
+            if(addLine1 == null){
+                addLine1 = "";
+            }
             String addLine2 = request.getParameter("address2");
             if(addLine2 == null){
                 addLine2 = "";
             }
             String city = request.getParameter("city");
+            if(city == null){
+                city = "";
+            }
             String postalCode = request.getParameter("postalCode");
+            if(postalCode == null){
+                postalCode = "";
+            }
             String state = request.getParameter("state");
+            if(state == null){
+                state = "";
+            }
             String country = request.getParameter("country");
+            if(country == null){
+                country = "";
+            }
             BillingAddress newBillData = new BillingAddress(addLine1,city,state,postalCode,country);
             newBillData.setLine2(addLine2);
             session.setAttribute("userInputBillAddressCheckout",newBillData);
@@ -91,6 +108,9 @@ public class CheckOutApplyPromo extends HttpServlet {
         
         //get selected payment method
         String selectedPaymentMethod = request.getParameter("paymentMethod");
+        if(selectedPaymentMethod == null){
+            selectedPaymentMethod = "";
+        }
         session.setAttribute("selectedPaymentMethod", selectedPaymentMethod);
         //store selected payment details
         if(selectedPaymentMethod.equals("card")){
@@ -151,7 +171,7 @@ public class CheckOutApplyPromo extends HttpServlet {
         }else{
             session.setAttribute("chooseToUpdateStoredPayment", true);
         }
-        
+        //-------------------------------------------------------------------------------
         
         session.removeAttribute("errMsg");
         session.removeAttribute("successMsg");

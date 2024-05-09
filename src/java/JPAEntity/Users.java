@@ -370,6 +370,17 @@ public class Users implements Serializable {
 
    
 
+
+    @XmlTransient
+    public List<UserOnlineBankingInfo> getUserOnlineBankingInfoList() {
+        return userOnlineBankingInfoList;
+    }
+
+    public void setUserOnlineBankingInfoList(List<UserOnlineBankingInfo> userOnlineBankingInfoList) {
+        this.userOnlineBankingInfoList = userOnlineBankingInfoList;
+    }
+
+   
     public Date getDob() {
         return dob;
     }
@@ -377,7 +388,6 @@ public class Users implements Serializable {
     public void setDob(Date dob) {
         this.dob = dob;
     }
-
 
     public String getUsertype() {
         return usertype;
@@ -387,7 +397,7 @@ public class Users implements Serializable {
         this.usertype = usertype;
     }
 
-
+    
 
     public String getGender() {
         return gender;
@@ -395,15 +405,6 @@ public class Users implements Serializable {
 
     public void setGender(String gender) {
         this.gender = gender;
-    }
-
-    @XmlTransient
-    public List<UserOnlineBankingInfo> getUserOnlineBankingInfoList() {
-        return userOnlineBankingInfoList;
-    }
-
-    public void setUserOnlineBankingInfoList(List<UserOnlineBankingInfo> userOnlineBankingInfoList) {
-        this.userOnlineBankingInfoList = userOnlineBankingInfoList;
     }
 
 }

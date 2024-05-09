@@ -35,13 +35,17 @@
 <% String promoDiscount = (String) session.getAttribute("promoDiscount");%>
 <% String paymentTotal = (String) session.getAttribute("paymentTotal");%>
 <% String paymentTax = (String) session.getAttribute("paymentTax");%>
+
+<% String selectedBillingInfo = (String) session.getAttribute("selectedBillingInfo"); %>
+<% BillingAddress userInputBillAddressCheckout = (BillingAddress)session.getAttribute("userInputBillAddressCheckout"); %>
+<% boolean chooseToUpdateBillAddress = ((Boolean) session.getAttribute("chooseToUpdateBillAddress")).booleanValue();%>
 <% String selectedPaymentMethod = (String) session.getAttribute("selectedPaymentMethod");%>
-<% boolean chooseToUpdateStoredPayment = ((Boolean) request.getAttribute("chooseToUpdateStoredPayment")).booleanValue();%>
-<% boolean isReviewed = ((Boolean) request.getAttribute("isReviewed")).booleanValue();%>
-<% String chooseToUpdateBillAddress = (String) session.getAttribute("chooseToUpdateBillAddress");%>
+<% boolean chooseToUpdateStoredPayment = ((Boolean) session.getAttribute("chooseToUpdateStoredPayment")).booleanValue();%>
+<% boolean checkOutNeedShipping = ((Boolean) session.getAttribute("checkOutNeedShipping")).booleanValue();%>
 
 <jsp:useBean id="selectedShipping" class="JPAEntity.ShippingMethod" scope="session" />
 <jsp:useBean id="promoApplied" class="JPAEntity.Promotions" scope="session" />
+
 <html lang="en">
     <head>
         
@@ -93,6 +97,8 @@
             <section class="section content-section flex-col">
 
                 <!--render this div (ship-div) if need shipping-->
+                
+                    <%if(checkOutNeedShipping){%>
                 <div class="content-div ship-div flex-col">
                     <h1 class="div-title"><i class="ri-truck-line"></i> Shipping & Delivery Address</h1>
 
@@ -163,7 +169,7 @@
                     <div class="stored-address-div flex-row">
 
                         <div class="current-address address-div flex-col">
-                            <input type="radio"  id="currentAddress" name="storedAddress" value="storedAddress" checked hidden />
+                            <input type="radio"  id="currentAddress" name="storedAddress" value="storedAddress" <%= selectedBillingInfo.equals("storedAddress")? "checked":"" %> hidden />
                             <span class="selected-icon"><i class="ri-check-fill"></i></span>
 
                             <p class="address-div-title">Default Address</p>
@@ -196,35 +202,35 @@
                         </div>
 
                         <div class="new-address address-div check-address  flex-col ">
-                            <input type="radio"  id="addAddress" name="storedAddress" value="newAddress" hidden/>
+                            <input type="radio"  id="addAddress" name="storedAddress" value="newAddress" <%= selectedBillingInfo.equals("newAddress")? "checked":"" %> hidden/>
                             <span class="selected-icon"><i class="ri-check-fill"></i></span>
 
                             <p class="address-div-title">New Address</p>
 
                             <div class="text-input-div  required-input-field  address-input-div flex-col">
                                 <label>Address:</label>
-                                <input type="text" class="address-row-1 address-1" name="address1" value="" placeholder="address line 1" maxlength="50" />
-                                <input type="text" class="address-2"  name="address2" value="" placeholder="address line 2" maxlength="50" />
+                                <input type="text" class="address-row-1 address-1" name="address1" value="<%= userInputBillAddressCheckout == null?"":userInputBillAddressCheckout.getLine1() %>" placeholder="address line 1" maxlength="50" />
+                                <input type="text" class="address-2"  name="address2" value="<%= userInputBillAddressCheckout == null?"":userInputBillAddressCheckout.getLine2() %>" placeholder="address line 2" maxlength="50" />
                             </div>
 
                             <div class="text-input-div required-input-field  address-input-div flex-col">
                                 <label for="city">City:</label>
-                                <input type="text" class="city"  name="city" value="" placeholder="city name" maxlength="20" />
+                                <input type="text" class="city"  name="city" value="<%= userInputBillAddressCheckout == null?"":userInputBillAddressCheckout.getCity() %>" placeholder="city name" maxlength="20" />
                             </div>
 
                             <div class="text-input-div  required-input-field address-input-div flex-col">
                                 <label for="postalCode">Postal code:</label>
-                                <input type="text" class="postal-code" name="postalCode" placeholder="postal code" maxlength="9" value="" />
+                                <input type="text" class="postal-code" name="postalCode" placeholder="postal code" maxlength="9" value="<%= userInputBillAddressCheckout == null?"":userInputBillAddressCheckout.getPostalcode() %>" />
                             </div>
 
                             <div class="text-input-div  required-input-field address-input-div flex-col">
                                 <label for="state">State resides:</label>
-                                <input type="text" class="state"  name="state" placeholder="state name" maxlength="20" value=""/>
+                                <input type="text" class="state"  name="state" placeholder="state name" maxlength="20" value="<%= userInputBillAddressCheckout == null?"":userInputBillAddressCheckout.getStateResides()%>"/>
                             </div>
 
                             <div class="text-input-div  required-input-field address-input-div flex-col">
                                 <label for="state">Country:</label>
-                                <input type="text" class="country"  name="country" placeholder="country name" maxlength="40" value=""/>
+                                <input type="text" class="country"  name="country" placeholder="country name" maxlength="40" value="<%= userInputBillAddressCheckout == null?"":userInputBillAddressCheckout.getCountry() %>"/>
                             </div>
                         </div>
                     </div>
@@ -237,40 +243,42 @@
                         <div class="text-input-div address-input-div flex-col">
 
                             <label>Address:</label>
-                            <input type="text" class="address-1 address-row-1" name="address1" value="" placeholder="address line 1" maxlength="50" />
-                            <input type="text" class="address-2"  name="address2" value="" placeholder="address line 2" maxlength="50" />
+                            <input type="text" class="address-1 address-row-1" name="address1" value="<%= userInputBillAddressCheckout == null?"":userInputBillAddressCheckout.getLine1() %>" placeholder="address line 1" maxlength="50" />
+                            <input type="text" class="address-2"  name="address2" value="<%= userInputBillAddressCheckout == null?"":userInputBillAddressCheckout.getLine2()%>" placeholder="address line 2" maxlength="50" />
                         </div>
 
                         <div class="text-input-div  required-input-field address-input-div flex-col">
                             <label for="city">City:</label>
-                            <input type="text" class="city"  name="city" value="" placeholder="city name" maxlength="20" />
+                            <input type="text" class="city"  name="city" value="<%= userInputBillAddressCheckout == null?"":userInputBillAddressCheckout.getCity()%>" placeholder="city name" maxlength="20" />
                         </div>
 
                         <div class="text-input-div  required-input-field address-input-div flex-col">
                             <label for="postalCode">Postal code:</label>
-                            <input type="text" class="postal-code" name="postalCode" placeholder="postal code" maxlength="9" value="" />
+                            <input type="text" class="postal-code" name="postalCode" placeholder="postal code" maxlength="9" value="<%= userInputBillAddressCheckout == null?"":userInputBillAddressCheckout.getPostalcode()%>" />
                         </div>
 
                         <div class="text-input-div  required-input-field address-input-div flex-col">
                             <label for="state">State resides:</label>
-                            <input type="text" class="state"  name="state" placeholder="state name" maxlength="20" value=""/>
+                            <input type="text" class="state"  name="state" placeholder="state name" maxlength="20" value="<%= userInputBillAddressCheckout == null?"":userInputBillAddressCheckout.getStateResides() %>"/>
                         </div>
 
                         <div class="text-input-div  required-input-field address-input-div flex-col">
                             <label for="state">Country:</label>
-                            <input type="text" class="country"  name="country" placeholder="country name" maxlength="40" value=""/>
+                            <input type="text" class="country"  name="country" placeholder="country name" maxlength="40" value="<%= userInputBillAddressCheckout == null?"":userInputBillAddressCheckout.getCountry() %>"/>
                         </div>
                     </div>
 
 
                     <% }%>
                     <div class="flex-col confirma-store-div">
-                        <label for="storingAddress"><input type="checkbox" id="storingAddress" name="storingAddress" value="storingAddress"> Store this address to use at next time</label>
+                        <label for="storingAddress"><input type="checkbox" id="storingAddress" name="storingAddress" value="storingAddress" <%=chooseToUpdateBillAddress?"checked":""%> > Store this address to use at next time</label>
                     </div>
 
                     <p class="invalid-msg"></p>
 
                 </div>
+                <%}%>
+
 
                 <div class="content-div item-div flex-col">
                     <h1 class="div-title"><i class="ri-shopping-basket-2-line"></i> Products Ordered</h1>
@@ -324,7 +332,7 @@
                     <div class="promo-detail flex-col">
                         <p class="promo-name"><%= promoApplied.getEndTime() == null ? "":promoApplied.getPromotionName()%></p>
                         <p class="promo-desc"><%= promoApplied.getEndTime() == null ? "":promoApplied.getPromoDescription()%></p>
-                        <p class="promo-end"><i class="ri-timer-line"></i> Ends at <%= promoApplied.getEndTime() == null ? "":promoApplied.getEndDateStr()%></p>
+                        <p class="promo-end"><i class="ri-timer-line"></i><%= promoApplied.getEndTime() == null ? "":"Ends at"+promoApplied.getEndDateStr()%></p>
                     </div>
 
                     <p class="invalid-msg"></p>
@@ -336,21 +344,21 @@
                     <div class="payment-method-div flex-row">
 
                         <div class="payment-method flex-col">
-                            <input type="radio" id="cardMethod" selected name="paymentMethod" value="card" hidden />
+                            <input type="radio" id="cardMethod" selected name="paymentMethod" value="card" hidden <%= selectedPaymentMethod.equals("card")?"checked":"" %> />
                             <span class="selected-icon"><i class="ri-check-fill"></i></span>
                             <p class="payment-method-icon"><i class="ri-bank-card-line"></i></p>
                             <p class="payment-method-name">Card</p>
                         </div>
 
                         <div class="payment-method flex-col">
-                            <input type="radio" id="bankMethod" name="paymentMethod" value="bank" hidden />
+                            <input type="radio" id="bankMethod" name="paymentMethod" value="bank" hidden <%= selectedPaymentMethod.equals("bank")?"checked":"" %> />
                             <span class="selected-icon"><i class="ri-check-fill"></i></span>
                             <p class="payment-method-icon"><i class="ri-bank-fill"></i></p>
                             <p class="payment-method-name">Bank</p>
                         </div>
 
                         <div class="payment-method flex-col">
-                            <input type="radio" id="tngMethod" name="paymentMethod" value="tng" hidden />
+                            <input type="radio" id="tngMethod" name="paymentMethod" value="tng" hidden <%= selectedPaymentMethod.equals("tng")?"checked":"" %> />
                             <span class="selected-icon"><i class="ri-check-fill"></i></span>
                             <p class="payment-method-icon"><i class="ri-wallet-line"></i></p>
                             <p class="payment-method-name">TNG E-wallet</p>
@@ -469,7 +477,7 @@
                     </div>
 
                     <div class="flex-col confirma-store-div">
-                        <label for="storingPayment"><input type="checkbox" id="storingPayment" name="storingPayment" value="storingPayment"> Store this payment detail to use at next time</label>
+                        <label for="storingPayment"><input type="checkbox" id="storingPayment" name="storingPayment" <%=chooseToUpdateStoredPayment?"checked":""%> value="storingPayment" /> Store this payment detail to use at next time</label>
                     </div>
 
                     <!--invalid msg for payment-->
