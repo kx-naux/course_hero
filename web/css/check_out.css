@@ -503,10 +503,16 @@ table#itemsTable tbody td:first-of-type div {
     margin: 0 -10vw;
 }
 
+.total-div-small-divider {
+    height: 1px;
+    background-color: var(--color-light-grey-2);
+    width: 100vw;
+}
+
 .total-div {
     margin: 0 0 0 auto;
     gap: 6px;
-    max-width: 600px;
+    max-width: 450px;
 }
 
 .total-row  {
