@@ -149,7 +149,7 @@
                             <label>Payment method:</label>
                             <input type="text" value="" readonly />
                         </div>
-                        
+
                         <!--credit card-->
                         <div class="payment-input-div text-input-div   flex-col">
                             <label for="cardHolder">Card Holder:</label>
@@ -174,7 +174,7 @@
                             </div>
 
                         </div>
-                        
+
                         <!--bank-->
                         <div class="payment-input-div text-input-div  flex-col">
                             <label for="bank">Bank:</label>
@@ -191,9 +191,18 @@
                             <label for="bankRemark">Remark:</label>
                             <input type="text" value="" readonly/>
                         </div>
-                        
+
                         <!--tng-->
-                        
+                        <div class="payment-input-div text-input-div  flex-col">
+                            <label for="tngPhoneNo">Phone No.:</label>
+                            <input type="text" value="" readonly/>
+                        </div>
+
+                        <div class="payment-input-div text-input-div flex-col">
+                            <label for="tngRemark">Remark:</label>
+                            <input type="text" value="" readonly/>
+                        </div>
+
                     </div>
 
                     <hr class="total-div-divider"/>
