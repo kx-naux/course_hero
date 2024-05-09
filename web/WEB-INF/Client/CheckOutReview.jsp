@@ -42,6 +42,7 @@
                         <div class="text-input-div shipping-type-div  address-input-div flex-col">
                             <label>Type:</label>
                             <input type="text" value="Standard Shipping" maxlength="50" readonly />
+                            <input type="text" value="" name="selectedShippngId" hidden />
                         </div>
 
                         <p class="address-div-title">Delivery Address</p>
