@@ -24,9 +24,6 @@ import javax.servlet.http.HttpSession;
 public class Merchandises extends HttpServlet {
     @PersistenceContext EntityManager em;
 
-    @PersistenceContext
-    private EntityManager em;
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
