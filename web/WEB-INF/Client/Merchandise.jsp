@@ -179,7 +179,7 @@
             </div>
 
             <!--user review-->
-            <div class="merch-review merch-bot-div flex-row">
+            <div class="merch-review merch-bot-div flex-row" size="<%= ratingList.size() %>">
                 <div class="merch-review-left flex-col">
 
                     <h1 class="merch-bot-div-title">User Review</h1>
@@ -299,7 +299,7 @@
                             <%}%>
 
                            
-
+                            
                         </div>
                              <!--pagination, 20 course per page-->
                             <%
