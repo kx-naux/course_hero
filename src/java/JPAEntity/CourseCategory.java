@@ -164,13 +164,6 @@ public class CourseCategory implements Serializable {
     
 
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
 
 
     @XmlTransient
@@ -182,8 +175,14 @@ public class CourseCategory implements Serializable {
         this.keywordList = keywordList;
     }
 
-  
-    
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     
 }

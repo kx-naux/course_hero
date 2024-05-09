@@ -26,9 +26,18 @@ public class EditProfilePage extends HttpServlet {
         if(userData != null){
             HttpSession session = request.getSession();
             session.setAttribute("userData",userData);
+            Login.getUserWishlist(request, em, userData);
+            Login.getUserCart(request, em, userData);
         }else{
             //Statements
         }
+        
+        Users userDataSession = (Users) request.getSession().getAttribute("userData");
+        if (userDataSession != null) {
+            Login.getUserWishlist(request, em, userDataSession);
+            Login.getUserCart(request, em, userDataSession);
+        }
+        
         // Forward the request to Profile.jsp edit basic profile section
         request.setAttribute("profilePageNumber", "1");
         request.getRequestDispatcher("/WEB-INF/Client/Profile.jsp").forward(request, response);

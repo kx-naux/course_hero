@@ -158,6 +158,7 @@ public class Messages implements Serializable {
         return "JPAEntity.Messages[ messageId=" + messageId + " ]";
     }
 
+
     public String getContent() {
         return content;
     }
@@ -173,5 +174,7 @@ public class Messages implements Serializable {
     public void setDestination(String destination) {
         this.destination = destination;
     }
+
+  
 
 }

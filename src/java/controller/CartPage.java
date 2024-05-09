@@ -4,6 +4,10 @@ import JPAEntity.CartItems;
 import JPAEntity.Courses;
 import JPAEntity.Merchandise;
 import JPAEntity.Users;
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -37,6 +41,8 @@ public class CartPage extends HttpServlet {
         if(userDataRmbMe != null){
             HttpSession session = request.getSession();
             session.setAttribute("userData",userDataRmbMe);
+            Login.getUserWishlist(request, em, userDataRmbMe);
+            Login.getUserCart(request, em, userDataRmbMe);
         //check has user logged in
         }else if(userDataSession.getUserId() == null){
             HttpSession session = request.getSession();
@@ -45,6 +51,12 @@ public class CartPage extends HttpServlet {
             return;
 
         }
+        
+        if (userDataSession != null) {
+            Login.getUserWishlist(request, em, userDataSession);
+            Login.getUserCart(request, em, userDataSession);
+        }
+        
         //get all cart items by userId
         Query qry = em.createNamedQuery("CartItems.findByUserId");
         qry.setParameter("userId",userDataSession);
@@ -80,5 +92,26 @@ public class CartPage extends HttpServlet {
         request.getRequestDispatcher("/WEB-INF/Client/Cart.jsp").forward(request, response);
     }
 
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String[] checkingOutcartItemIds = request.getParameterValues("cartItemId");
+        
+        // Check if there were any items selected to check out
+        HttpSession session = request.getSession();
+        if (checkingOutcartItemIds != null) {
+            //store cart items in session
+            List<CartItems> cartItemList = new ArrayList<CartItems>();
+                for(String checkOutItemId : checkingOutcartItemIds){
+                CartItems item = em.find(CartItems.class, checkOutItemId);
+                cartItemList.add(item);
+            }
+            session.setAttribute("checkingOutCartItemList", cartItemList);
+            response.sendRedirect("check-out");
+        }else{
+            request.setAttribute("errMsg","No cart items were selected.");
+            doGet(request,response);
+        }
+    }
+    
     
 }

@@ -257,6 +257,7 @@ public class Transactions implements Serializable {
 
   
 
+
     public double getTax() {
         return tax;
     }
@@ -264,7 +265,6 @@ public class Transactions implements Serializable {
     public void setTax(double tax) {
         this.tax = tax;
     }
-
 
     public double getTotal() {
         return total;

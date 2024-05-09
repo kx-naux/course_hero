@@ -36,11 +36,19 @@ public class WishlistPage extends HttpServlet {
         if (userData != null) {
             HttpSession session = request.getSession();
             session.setAttribute("userData", userData);
+            Login.getUserWishlist(request, em, userData);
+            Login.getUserCart(request, em, userData);
         } else {
             HttpSession session = request.getSession();
             session.setAttribute("pageToGoAfterLogin", "wishlist");
             response.sendRedirect("login");
             return;
+        }
+        
+        Users userDataSession = (Users) request.getSession().getAttribute("userData");
+        if (userDataSession != null) {
+            Login.getUserWishlist(request, em, userDataSession);
+            Login.getUserCart(request, em, userDataSession);
         }
 
         // Get number of items in the wishlist

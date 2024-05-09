@@ -40,22 +40,37 @@ public class UserRatingStatistic {
     }
     
     public long getOneStarPercentage(){
+        if(allStarCounts == 0){
+            return 0;
+        }
         return (oneStarCounts*100/allStarCounts);
     }
     
     public long getTwoStarPercentage(){
+        if(allStarCounts == 0){
+            return 0;
+        }
         return (twoStarCounts*100/allStarCounts);
     }
     
     public long getThreeStarPercentage(){
+        if(allStarCounts == 0){
+            return 0;
+        }
         return (threeStarCounts*100/allStarCounts);
     }
     
     public long getFourStarPercentage(){
+        if(allStarCounts == 0){
+            return 0;
+        }
         return (fourStarCounts*100/allStarCounts);
     }
     
     public long getFiveStarPercentage(){
+        if(allStarCounts == 0){
+            return 0;
+        }
         return (fiveStarCounts*100/allStarCounts);
     }
 

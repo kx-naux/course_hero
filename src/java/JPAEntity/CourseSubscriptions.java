@@ -177,5 +177,4 @@ public class CourseSubscriptions implements Serializable {
         this.progress = progress;
     }
 
-   
 }
