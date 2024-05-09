@@ -321,7 +321,7 @@
                         <!--if got stored record render this div-->
                         <!--in span put last 4 digits-->
                         <!--in span first put first 4 digit-->
-                        <label class="storedDetailLabel" for="storedCard"><input type="checkbox" id="storedCard" name="storedCard" value="storedCard"> <img class="credit-logo" src="./img/check_out/visa.png" alt=""> <span id="storedCardNo" first="4536" >*****4561</span> - Yu Beng's card</label>
+                        <label class="storedDetailLabel" for="storedCard"><input type="checkbox" id="storedCard" name="storedCard" value="storedCard"> <img class="credit-logo" id="cardLogo" src="./img/check_out/visa.png" alt=""> <span id="storedCardNo" first="4536" >*****4561</span> - Yu Beng's card</label>
 
                         <div class="payment-input-div text-input-div required-input-field  flex-col">
                             <label for="cardHolder">Card Holder:</label>

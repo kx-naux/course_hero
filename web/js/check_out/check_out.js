@@ -95,16 +95,85 @@ function showPaymentInputDiv() {
             selectedIndex = index;
         }
     });
-    
-    paymentInputDiv[selectedIndex].style.display = "flex";
-    
-    let checkbox = paymentInputDiv[selectedIndex].querySelector("input[type='checkbox']");
-    if (checkbox !== null) {
-        checkbox.checked = false;
+
+    if (selectedIndex >= 0) {
+
+        paymentInputDiv[selectedIndex].style.display = "flex";
+
+        let checkbox = paymentInputDiv[selectedIndex].querySelector("input[type='checkbox']");
+        if (checkbox !== null) {
+            checkbox.checked = false;
+        }
     }
-    
+
     document.getElementById("storingPayment").checked = false;
 }
+
+// credit card listener
+const logo = {
+    'visa': "./img/check_out/visa.png",
+    'master': "./img/check_out/master.png",
+    'american': "./img/check_out/american.png"
+};
+
+document.addEventListener("DOMContentLoaded", () => {
+    const first4No = document.getElementById("storedCardNo").getAttribute("first");
+    const cardLogo = document.getElementById("cardLogo");
+
+    // Get the first digit of the credit card number
+    const firstDigit = first4No.charAt(0);
+
+    // Determine the card type based on the first digit
+    let cardType;
+    if (firstDigit === '4') {
+        cardType = 'visa';
+    } else if (firstDigit === '5') {
+        cardType = 'master';
+    } else if (firstDigit === '3') {
+        cardType = 'american';
+    } else {
+        cardType = 'visa';
+    }
+
+    // Set the src attribute of cardLogo based on the card type
+    cardLogo.src = logo[cardType];
+});
+
+document.getElementById("cardHolder").addEventListener("input", function(event) {
+    const inputText = event.target.value;
+    const titleCaseText = toTitleCase(inputText);    
+    const validatedText = titleCaseText.replace(/[^a-zA-Z\s]/g, ''); // Remove any characters that are not letters or whitespace
+    event.target.value = validatedText;
+});
+
+function toTitleCase(str) {
+    return str.replace(/\b\w+/g, function(txt) {
+        return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+    });
+}
+
+document.getElementById("cardNo").addEventListener("input", function(event) {
+    const inputText = event.target.value;
+    const digitsOnlyText = inputText.replace(/\D/g, ''); // Replace any non-digit characters with an empty string
+    event.target.value = digitsOnlyText;
+});
+
+document.getElementById("expDate").addEventListener("input", function(event) {
+ const inputText = event.target.value;
+    
+    // Remove any non-digit characters
+    const cleanedInput = inputText.replace(/\D/g, '');
+    
+    // Format the input as MM/YY
+    const formattedInput = cleanedInput.replace(/^(\d{2})(\d{0,2})$/, '$1/$2');
+    
+    // Update the input field with the formatted value
+    event.target.value = formattedInput;
+});
+
+// bank listener
+
+// tng e-wallet listener
 
 // form submission
 document.getElementById("placeOrderBtn").addEventListener("click", () => {

@@ -404,7 +404,7 @@ table#itemsTable tbody td:first-of-type div {
 .payment-method-div .payment-method{
     border-radius: 10px;
     padding: 14px 20px;
-    border: 2px solid var(--color-light-grey-1);
+    border: 2px solid var(--color-light-grey-2);
     cursor: pointer;
     position: relative;
     width: 215px;
