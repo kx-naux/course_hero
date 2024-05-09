@@ -24,6 +24,7 @@
     font-size: var(--font-size-xxl);
     color: var(--color-navy-blue);
     border-left: 3px solid var(--color-navy-blue);
+    user-select: none;
 }
 
 .title-div  .cancel-btn {
@@ -476,6 +477,7 @@ table#itemsTable tbody td:first-of-type div {
     display: flex;
     align-items: center;
     gap: 8px;
+    user-select: none;
 }
 
 .tng-logo {

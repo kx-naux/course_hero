@@ -171,6 +171,12 @@ document.getElementById("expDate").addEventListener("input", function(event) {
     event.target.value = formattedInput;
 });
 
+document.getElementById("ccv").addEventListener("input", function(event) {
+    const inputText = event.target.value;
+    const digitsOnlyText = inputText.replace(/\D/g, ''); // Replace any non-digit characters with an empty string
+    event.target.value = digitsOnlyText;
+});
+
 // bank listener
 
 // tng e-wallet listener

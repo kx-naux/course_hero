@@ -20,7 +20,7 @@
 
         <!--to show a toast error message--> 
         <span id="errorMsg" hidden></span>
-        
+
         <!--to show like promo code apply successfully-->
         <span id="successMsg" hidden></span>
 
@@ -185,7 +185,7 @@
                     <div class="unstored-address-div address-div flex-col">
                         <input type="radio" id="current-address" name="storedAddress" value="newAddress" hidden checked />
                         <p class="address-div-title">Enter New Address</p>
-                        
+
                         <div class="text-input-div  required-input-field address-input-div flex-col">
                             <label>Address:</label>
                             <input type="text" class="address-1 address-row-1" name="address1" value="" placeholder="address line 1" maxlength="50" />
@@ -351,6 +351,9 @@
 
                     <div class="payment-method-input payment-bank flex-col">
 
+                        <label class="storedDetailLabel"  for="storedBank"><input type="checkbox" id="storedBank" name="storedBank" value="storedBank">  Bank Name - Acc No.</label>
+
+
                         <div class="payment-input-div text-input-div required-input-field  flex-col">
                             <label for="bank">Bank:</label>
                             <select id="bank" name="bank">
@@ -379,7 +382,7 @@
 
                     <div class="payment-method-input payment-tng flex-col">
                         <!--if got stored record render this div-->
-                        <label class="storedDetailLabel"  for="storedBank"><input type="checkbox" id="storedBank" name="storedBank" value="storedBank"> <img class="tng-logo" src="./img/check_out/tng.png" alt=""/> 016-765 1234</label>
+                        <label class="storedDetailLabel"  for="storedTng"><input type="checkbox" id="storedTng" name="storedTng" value="storedTng"> <img class="tng-logo" src="./img/check_out/tng.png" alt=""/> 016-765 1234</label>
 
                         <div class="payment-input-div text-input-div required-input-field flex-col">
                             <label for="tngPhoneNo">Phone No.:</label>
@@ -399,7 +402,7 @@
 
                     <!--invalid msg for payment-->
                     <p class="invalid-msg"></p>
-                    
+
                     <hr class="total-div-divider"/>
 
                     <!--show total--> 
