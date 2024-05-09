@@ -52,5 +52,17 @@ paymentRadios.forEach(paymentMethod => {
 
 function showPaymentInputDiv() {
     const paymentRadios = document.querySelectorAll('div.payment-method');
+    
+}
+
+// form submission
+document.getElementById("placeOrderBtn").addEventListener("click",()=>{
+    submitCheckoutForm();
+});
+
+function submitCheckoutForm() {
+    
+    const form = document.getElementById("checkOutForm");
+       form.submit();
 }
 

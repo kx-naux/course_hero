@@ -3,8 +3,8 @@
 <html lang="en">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>${companyName} | Wishlist</title>
-        <link rel="icon" type="image/ico" href=${companyIcon}>
+        <title>${companyName} | Checkout</title>
+        <link rel="icon" type="image/ico" href="${companyIcon}">
         <link type="text/css" href="./css/style.css" rel="stylesheet" >
         <link type="text/css" href="./css/check_out.css" rel="stylesheet" >
         <jsp:useBean id="webpath" class="module.WebPath" scope="application" />
