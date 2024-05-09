@@ -6,12 +6,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.*;
 import java.io.IOException;
 
-@WebServlet(name = "Admin Manage Customer", urlPatterns = {"/admin/manage-customer"})
-public class AdminManageCustomerPage extends HttpServlet {
+@WebServlet(name = "Admin Report", urlPatterns = {"/admin/report"})
+public class AdminReportPage extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {  
         // Forward the request to home.jsp
-        request.getRequestDispatcher("/WEB-INF/Admin/AdminManageCustomer.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/Admin/AdminReport.jsp").forward(request, response);
     }
 }
+

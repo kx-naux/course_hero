@@ -46,7 +46,7 @@
 
 /* End Custom Table CSS */
 
+/* Change according to needed edit input */
 .edit-items-container .edit-items {
     grid-template-columns: auto auto auto auto auto !important; 
 }
-

@@ -1,0 +1,81 @@
+@import url('adminStyle.css');
+@import url('addNewItemButton.css');
+
+.main-content{
+    width: 96vw;
+}
+
+.main-top{
+    display: flex;
+    justify-content: space-between;
+}
+
+.top{
+    display: flex;
+}
+
+.top-right{
+    right: 0;
+}
+
+.main-top-left{
+    display: flex;
+    gap: 1.5rem;
+}
+
+/*filter container*/
+.filter-flex-container{
+    display: flex;
+}
+
+/* Report CSS Starts Here */
+.report-container{
+    display: flex !important;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    gap: 20px !important;
+}
+
+.report-container.number > div{
+    width: 24%;
+}
+
+.report-container.graph > div{
+    width: 49%;
+}
+
+.report-container.ranking > div{
+    width: 24%;
+}
+.report-container.ranking{
+    margin-bottom: 20px;
+}
+
+.report-container.graph canvas{
+    display: flex;
+    width: fit-content;
+}
+
+.report-container .top-report .ranking img{
+    width: 100px !important;
+    margin: auto 0;
+}
+
+.report-container .ranking{
+    min-height: 100px;
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+
+.report-container .ranking h3{
+    margin: auto 0;
+}
+
+.report-container .ranking > div{
+    margin: auto 0;
+}
+
+.report-container .graph h2{
+    margin-bottom: 20px;
+}

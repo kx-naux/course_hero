@@ -32,14 +32,14 @@
 
                             <span class="tooltip">Manage Orders</span>
                         </li>
-                        <li>
-                            <a href="<%= webpath.getPageUrl("manage-contract-entries") %>">
+                        <!-- <li>
+                            <a href="#">
                                 <i class="ri-contract-line"></i>
                                 <h3 class="nav-item">Contract Entries</h3>
                             </a>
 
                             <span class="tooltip">Contract Entries</span>
-                        </li>
+                        </li> -->
                         <li>
                             <a href="<%= webpath.getPageUrl("manage-customer") %>">
                                 <i class="ri-group-2-line"></i>
@@ -101,34 +101,34 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#">
+                                    <a href="<%= webpath.getPageUrl("add-staff") %>">
                                         <h3>Add New Staff</h3>
                                     </a>
                                 </li>
                             </ul>
                             <span class="tooltip">Staff</span>
                         </li>
-                        <li>
+                        <!-- <li>
                             <a href="#">
                                 <i class="ri-chat-1-line"></i>
                                 <h3 class="nav-item">Messages</h3>
                                 <span class="message-count">26</span>
                             </a>
                             <span class="tooltip">Messages</span>
-                        </li>
+                        </li> -->
                         <li>
-                            <a href="#">
+                            <a href="<%= webpath.getPageUrl("report") %>">
                                 <i class="ri-donut-chart-fill"></i>
                                 <h3 class="nav-item">Report</h3>
                             </a>
                             <span class="tooltip">Report Generation</span>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="<%= webpath.getPageUrl("setting") %>">
                                 <i class="ri-settings-5-line"></i>
-                                <h3 class="nav-item">Settings</h3>
+                                <h3 class="nav-item">Setting</h3>
                             </a>
-                            <span class="tooltip">Settings</span>
+                            <span class="tooltip">Setting</span>
                         </li>
                         <li class="logout">
                             <a href="#">
