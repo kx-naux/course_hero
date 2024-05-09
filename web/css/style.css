@@ -530,6 +530,7 @@ a:has(.nav-option):hover + .nav-option-dropdown,
     cursor: pointer;
     border-radius: 4px;
     transition: 0.3s all ease-in-out;
+    text-transform: capitalize;
 }
 
 .nav-search .nav-search-div .nav-popular-search ul li a:hover{
