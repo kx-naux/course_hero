@@ -483,3 +483,20 @@
     justify-self: center;
 }
 
+/*no found div*/
+.no-found-div {
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.no-found-div img {
+    width: 350px;
+}
+
+.no-found-div p {
+   font-weight: 500;
+    font-size: var(--font-size-xm);
+    color: var(--color-text-light-1);
+}

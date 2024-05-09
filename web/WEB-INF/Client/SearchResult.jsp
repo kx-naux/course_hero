@@ -336,6 +336,10 @@
                             </div>
                         </div>
 
+                        <div class="no-found-div flex-col">
+                            <img src="./img/search_result/search.png" alt="" />
+                            <p>No results found for your search. <br>Please try again with different keywords.</p>
+                        </div>
 
                     </div>
                 </div>
