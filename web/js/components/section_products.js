@@ -49,11 +49,13 @@ function cartButtonClick(evt) {
                 toast_msg(TOAST_SUCCESS, "Success", "Added to cart");
                 icon.classList = iconCode.replace("line", "fill");
                 evt.target.closest(".cart-Btn").setAttribute("status", "1");
+                cardButtonStatusUpdate(courseID, "cart", "1");
             } else {
                 removeCartItem(responseData);
                 toast_msg(TOAST_SUCCESS, "Success", "Remove from cart");
                 icon.classList = iconCode.replace("fill", "line");
                 evt.target.closest(".cart-Btn").setAttribute("status", "0");
+                cardButtonStatusUpdate(courseID, "cart", "0");
             }
         } else {
             toast_msg(TOAST_ERROR, "Server Error", `Fail to ${action} to cart`);
@@ -182,11 +184,13 @@ function likeButtonClick(evt) {
                 toast_msg(TOAST_SUCCESS, "Success", "Added to wishlist");
                 icon.classList = iconCode.replace("line", "fill");
                 evt.target.closest(".wish-Btn").setAttribute("status", "1");
+                cardButtonStatusUpdate(productID, "wish", "1");
             } else {
                 removeWishItem(responseData);
                 toast_msg(TOAST_SUCCESS, "Success", "Remove from wishlist");
                 icon.classList = iconCode.replace("fill", "line");
                 evt.target.closest(".wish-Btn").setAttribute("status", "0");
+                cardButtonStatusUpdate(productID, "wish", "0");
             }
         } else {
             toast_msg(TOAST_ERROR, "Server Error", `Fail to ${action} wishlist`);
@@ -284,3 +288,31 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+function cardButtonStatusUpdate(id, btn, status) {
+    const cards = document.querySelectorAll(`.course-product[courseid="${id}"]`);
+
+    cards.forEach(card => {
+
+        let cartBtn = card.querySelector("button.cart-Btn");
+        let wishBtn = card.querySelector("button.wish-Btn");
+        let targetBtn;
+
+        if (btn === "cart") {
+            targetBtn = cartBtn;
+        } else if (btn === "wish") {
+            targetBtn = wishBtn;
+        }
+
+        targetBtn.setAttribute("status", status);
+
+        let icon = targetBtn.querySelector("i");
+        let iconCode = Array.from(icon.classList)[0]; // Convert classList to an array
+
+        if (status === "1") {
+            icon.classList = iconCode.replace("line", "fill");
+        } else {
+            icon.classList = iconCode.replace("fill", "line");
+        }
+
+    });
+}
