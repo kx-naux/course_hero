@@ -31,8 +31,6 @@ if (document.querySelector(".stored-address-div") !== null) {
             const radioButton = this.querySelector('input[type="radio"]');
             radioButton.checked = true;
 
-            console.log("onclick");
-
         });
     });
 }
@@ -52,6 +50,7 @@ paymentRadios.forEach(paymentMethod => {
 
 function showPaymentInputDiv() {
     const paymentRadios = document.querySelectorAll('div.payment-method');
+    const paymentInputDiv =  document.querySelectorAll('div.payment-method-input');
     
 }
 

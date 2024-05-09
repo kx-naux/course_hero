@@ -118,6 +118,12 @@
     color: var(--color-text-light-1);
 }
 
+.content-section .content-div .text-input-div.required-input-field label::after{
+    content: "*";
+    padding-left: 5px;
+    color: var(--color-text-error);
+}
+
 /*shipping method*/
 .shipping-method-div {
     gap: 20px;
@@ -431,7 +437,7 @@ table#itemsTable tbody td:first-of-type div {
 
 .payment-method .payment-method-icon{
     font-weight: 400;
-    font-size: var(--font-size-xl);
+    font-size: var(--font-size-xxl);
     color: var(--color-text-light-2);
 }
 
