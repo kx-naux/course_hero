@@ -152,6 +152,8 @@ function addCartItem(data) {
 
         // update price
         cartlistPrice.innerText = (parseFloat(cartlistPrice.innerText) + (data.productPrice * data.quantity)).toFixed(2);
+
+        document.getElementById("stockLvl").innerText = parseInt(document.getElementById("stockLvl").innerText) - data.quantity;
     }
 
     // check list is empty before adding
