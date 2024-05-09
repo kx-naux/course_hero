@@ -590,3 +590,44 @@ table#itemsTable tbody td:first-of-type div {
 .total-div input#backOrderBtn:hover {
     background-color: var(--color-light-grey-2);
 }
+
+/*checkout review success*/
+.content-section .content-div.success-div  {
+    padding: 40px;
+    gap: 40px;
+    text-align: center;
+}
+
+.content-section .content-div.success-div .success-img {
+    width: 300px;
+    margin: 0 auto;
+}
+
+.content-section .content-div.success-div a {
+    padding: 15px 30px;
+    font-weight: 600;
+    font-size: var(--font-size-xm);
+    color: var(--color-text-light-2);
+    background-color: var(--color-white);
+    border: 1px solid var(--color-text-light-2);
+    cursor: pointer;
+    margin: 10px auto;
+    max-width: 200px;
+    border-radius: 30px;
+}
+
+.content-section .content-div.success-div a:hover {
+    background-color: var(--color-light-grey-2);
+}
+
+.content-section .content-div.success-div h1 {
+  font-weight: 600;
+    font-size: var(--font-size-xl);
+    color: var(--color-blue-1);
+}
+
+.content-section .content-div.success-div p{
+   font-weight: 400;
+    font-size: var(--font-size-xm);
+    color: var(--color-text-light-2);
+}
