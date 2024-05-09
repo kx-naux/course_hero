@@ -151,28 +151,28 @@
 
                             <p class="address-div-title">New Address</p>
 
-                            <div class="text-input-div address-input-div flex-col">
+                            <div class="text-input-div  required-input-field  address-input-div flex-col">
                                 <label>Address:</label>
                                 <input type="text" class="address-row-1 address-1" name="address1" value="" placeholder="address line 1" maxlength="50" />
                                 <input type="text" class="address-2"  name="address2" value="" placeholder="address line 2" maxlength="50" />
                             </div>
 
-                            <div class="text-input-div address-input-div flex-col">
+                            <div class="text-input-div required-input-field  address-input-div flex-col">
                                 <label for="city">City:</label>
                                 <input type="text" class="city"  name="city" value="" placeholder="city name" maxlength="20" />
                             </div>
 
-                            <div class="text-input-div address-input-div flex-col">
+                            <div class="text-input-div  required-input-field address-input-div flex-col">
                                 <label for="postalCode">Postal code:</label>
                                 <input type="text" class="postal-code" name="postalCode" placeholder="postal code" maxlength="9" value="" />
                             </div>
 
-                            <div class="text-input-div address-input-div flex-col">
+                            <div class="text-input-div  required-input-field address-input-div flex-col">
                                 <label for="state">State Resides:</label>
                                 <input type="text" class="state"  name="state" placeholder="state name" maxlength="20" value=""/>
                             </div>
 
-                            <div class="text-input-div address-input-div flex-col">
+                            <div class="text-input-div  required-input-field address-input-div flex-col">
                                 <label for="state">Country:</label>
                                 <input type="text" class="country"  name="country" placeholder="country name" maxlength="40" value=""/>
                             </div>
@@ -186,28 +186,28 @@
                         <input type="radio" id="current-address" name="storedAddress" value="newAddress" hidden checked />
                         <p class="address-div-title">Enter New Address</p>
                         
-                        <div class="text-input-div address-input-div flex-col">
+                        <div class="text-input-div  required-input-field address-input-div flex-col">
                             <label>Address:</label>
                             <input type="text" class="address-1 address-row-1" name="address1" value="" placeholder="address line 1" maxlength="50" />
                             <input type="text" class="address-2"  name="address2" value="" placeholder="address line 2" maxlength="50" />
                         </div>
 
-                        <div class="text-input-div address-input-div flex-col">
+                        <div class="text-input-div  required-input-field address-input-div flex-col">
                             <label for="city">City:</label>
                             <input type="text" class="city"  name="city" value="" placeholder="city name" maxlength="20" />
                         </div>
 
-                        <div class="text-input-div address-input-div flex-col">
+                        <div class="text-input-div  required-input-field address-input-div flex-col">
                             <label for="postalCode">Postal code:</label>
                             <input type="text" class="postal-code" name="postalCode" placeholder="postal code" maxlength="9" value="" />
                         </div>
 
-                        <div class="text-input-div address-input-div flex-col">
+                        <div class="text-input-div  required-input-field address-input-div flex-col">
                             <label for="state">State Resides:</label>
                             <input type="text" class="state"  name="state" placeholder="state name" maxlength="20" value=""/>
                         </div>
 
-                        <div class="text-input-div address-input-div flex-col">
+                        <div class="text-input-div  required-input-field address-input-div flex-col">
                             <label for="state">Country:</label>
                             <input type="text" class="country"  name="country" placeholder="country name" maxlength="40" value=""/>
                         </div>
