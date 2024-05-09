@@ -93,10 +93,6 @@
         <servlet-class>controller.AdminAddCoursePage</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>AdminManageCustomerPage</servlet-name>
-        <servlet-class>controller.AdminManageCustomerPage</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>AdminManageOrderPage</servlet-name>
         <servlet-class>controller.AdminManageOrderPage</servlet-class>
     </servlet>
@@ -111,6 +107,26 @@
     <servlet>
         <servlet-name>AdminAddStaffPage</servlet-name>
         <servlet-class>controller.AdminAddStaffPage</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminManageMerchPage</servlet-name>
+        <servlet-class>controller.AdminManageMerchPage</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminAddMerchPage</servlet-name>
+        <servlet-class>controller.AdminAddMerchPage</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminManageCustomerPage</servlet-name>
+        <servlet-class>controller.AdminManageCustomerPage</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminSettingPage</servlet-name>
+        <servlet-class>controller.AdminSettingPage</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminReportPage</servlet-name>
+        <servlet-class>controller.AdminReportPage</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
@@ -205,10 +221,6 @@
         <url-pattern>/AdminAddCoursePage</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>AdminManageCustomerPage</servlet-name>
-        <url-pattern>/AdminManageCustomerPage</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>AdminManageOrderPage</servlet-name>
         <url-pattern>/AdminManageOrderPage</url-pattern>
     </servlet-mapping>
@@ -223,6 +235,26 @@
     <servlet-mapping>
         <servlet-name>AdminAddStaffPage</servlet-name>
         <url-pattern>/AdminAddStaffPage</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminManageMerchPage</servlet-name>
+        <url-pattern>/AdminManageMerchPage</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminAddMerchPage</servlet-name>
+        <url-pattern>/AdminAddMerchPage</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminManageCustomerPage</servlet-name>
+        <url-pattern>/AdminManageCustomerPage</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminSettingPage</servlet-name>
+        <url-pattern>/AdminSettingPage</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminReportPage</servlet-name>
+        <url-pattern>/AdminReportPage</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

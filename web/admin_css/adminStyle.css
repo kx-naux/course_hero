@@ -139,14 +139,14 @@ input.submit-button:hover{
 
 
 /* content fot insights*/
-.main-content .insights{
+.insights{
     display: grid;
     grid-template-columns: repeat(3,1fr);
     gap: 1.6rem;
     min-height: 265px; 
 }
 
-.main-content .insights > div {
+.insights > div {
     background: var(--color-white);
     padding: var(--card-padding);
     border-radius: var(--card-border-radius);
@@ -155,11 +155,11 @@ input.submit-button:hover{
     transition: all 300ms ease;
 }
 
-.main-content .insights > div:hover{
+.insights > div:hover{
     box-shadow: none;
 }
 
-.main-content .insights > div i{
+.insights > div i{
     background: var(--color-primary);
     padding: 0.5rem;
     border-radius: 50%;
@@ -167,38 +167,38 @@ input.submit-button:hover{
     font-size: 2rem;
 }
 
-.main-content .insights > div.expenses i{
+.insights > div.expenses i{
     background: var(--color-danger);
 }
 
-.main-content .insights > div.income i{
+.insights > div.income i{
     background: var(--color-success);
 }
 
-.main-content .insights > div .middle{
+.insights > div .middle{
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-.main-content .insights h3{
+.insights h3{
     margin: 1rem 0 0.6rem;
     font-size: 1rem; 
 }
 
-.main-content .insights .progress{
+.insights .progress{
     position: relative;
     width: 92px;
     height: 92px;
     border-radius: 50%;
 }
 
-.main-content .insights svg{
+.insights svg{
     width: 7rem;
     height: 7rem;
 }
 
-.main-content .insights svg circle{
+.insights svg circle{
     fill: none;
     stroke: var(--color-primary);
     stroke-width: 14;
@@ -208,22 +208,22 @@ input.submit-button:hover{
     stroke-dashoffset: 92;
 }
 
-.main-content .insights .sales svg circle {
+.insights .sales svg circle {
     stroke-dashoffset: 0;
     stroke-dasharray: 180;
 }
 
-.main-content .insights .expenses svg circle {
+.insights .expenses svg circle {
     stroke-dashoffset: 10;
     stroke-dasharray: 80;
 }
 
-.main-content .insights .income svg circle {
+.insights .income svg circle {
     stroke-dashoffset: 35;
     stroke-dasharray: 110;
 }
 
-.main-content .insights .progress .number{
+.insights .progress .number{
     position: absolute;
     top:0;
     left: 0;
@@ -239,7 +239,7 @@ input.submit-button:hover{
     letter-spacing: 1px;
 }
 
-.main-content .insights small{
+.insights small{
     margin-top: 1.6rem;
     display: block;
 }

@@ -4,10 +4,10 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Manage Staff</title>
+        <title>Manage Merch</title>
         <link rel="icon" type="image/ico" href="../ico/Logo.ico">
         <!--StyleSheet-->
-        <link href="../admin_css/adminStaff.css" rel="stylesheet">
+        <link href="../admin_css/adminCourse.css" rel="stylesheet">
         <link href="../admin_css/adminTable.css" rel="stylesheet">
         <jsp:useBean id="webpath" class="module.WebPath" scope="application" />
     </head>
@@ -19,13 +19,11 @@
             <div class="main-content">
                 <div class="main-top">
                     <div class="main-top-left">
-                        <h1>Manage Staff</h1>
-                        <a href="<%= webpath.getPageUrl("add-staff") %>">
+                        <h1>Manage Merch</h1>
                         <button type="button" class="add-button products">
-                            <span class="add-button__text">Add Staff</span>
+                            <span class="add-button__text">Add Merch</span>
                             <span class="add-button__icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke="currentColor" height="24" fill="none" class="svg"><line y2="19" y1="5" x2="12" x1="12"></line><line y2="12" y1="12" x2="19" x1="5"></line></svg></span>
                         </button>
-                        </a>
                     </div>                    
                     <div class="top">
                         <!-- include dark theme toggler -->
@@ -56,21 +54,14 @@
                     </div>
                 </div>
                 <div class="filter-container">
-                    <div class="input-container">
+                    <div class="input-container" title="Date added">
                         <input type="date">
                     </div>
                     <div class="input-container">
                         <select>
-                            <option value="-1">Country</option>
-                            <option value="web">UK</option>
-                            <option value="graphic">Malaysia</option>
-                        </select>
-                    </div>
-                    <div class="input-container">
-                        <select>
-                            <option value="-1">Gender</option>
-                            <option value="edit">Male</option>
-                            <option value="delete">Female</option>
+                            <option value="-1">Merch Category</option>
+                            <option value="web">T-Shirts</option>
+                            <option value="graphic">Mugs</option>
                         </select>
                     </div>
                     <div class="submit-container">
@@ -124,47 +115,36 @@
                                        </label>
                                    </th>
                                    <th scope="col">
-                                       Account ID
+                                       <i class="ri-image-line"></i>
+                                   </th>
+                                   <th scope="col">
+                                       Merch ID
                                        <div class="sort-by-container">
                                            <i class="ri-arrow-drop-up-fill"></i>
                                            <i class="ri-arrow-drop-down-fill"></i>
                                        </div>
                                    </th>
                                    <th scope="col">
-                                       User ID
+                                       Merch Name
                                        <div class="sort-by-container">
                                            <i class="ri-arrow-drop-up-fill"></i>
                                            <i class="ri-arrow-drop-down-fill"></i>
                                        </div>
                                    </th>
                                    <th scope="col">
-                                       Name
+                                       Merch Category
                                    </th>
                                    <th scope="col">
-                                       Role
+                                       Description
                                    </th>
                                    <th scope="col">
-                                       Email
+                                       Price
                                    </th>
                                    <th scope="col">
-                                       Country
+                                       Stock
                                    </th>
                                    <th scope="col">
-                                       Gender
-                                   </th>
-                                   <th scope="col">
-                                       Birth Date
-                                       <div class="sort-by-container">
-                                           <i class="ri-arrow-drop-up-fill"></i>
-                                           <i class="ri-arrow-drop-down-fill"></i>
-                                       </div>
-                                   </th>
-                                   <th scope="col">
-                                       Date Joined
-                                       <div class="sort-by-container">
-                                           <i class="ri-arrow-drop-up-fill"></i>
-                                           <i class="ri-arrow-drop-down-fill"></i>
-                                       </div>
+                                       Date Added
                                    </th>
                                </tr>
                            </thead>
@@ -179,7 +159,7 @@
                                        </label>
                                    </th>
                                    <td>
-                                       AC00000002
+                                       1392
                                        <div class="row-actions">
                                            <a class="row-actions-edit">Edit</a>
                                            |
@@ -187,17 +167,14 @@
                                        </div>
                                    </td>
                                    <td>
-                                       U000000002
+                                       James Yates
                                    </td>
                                    <td>
-                                       KahXuan
+                                       Web Designer
+                                       <small class="d-block">Far far away, behind the word mountains</small>
                                    </td>
-                                   <td>Pentamaster Manager</td>
-                                   <td>lowkx-pm22@student.tarc.edu.my</td>
-                                   <td>UK</td>
-                                   <td>Male</td>
-                                   <td>12-12-2012</td>
-                                   <td>12-12-2012</td>
+                                   <td>+63 983 0962 971</td>
+                                   <td>NY University</td>
                                    <!---------------------- Edit Item ----------------------------------->
                                    <td class="edit-items-container">
                                        <form>
@@ -205,35 +182,33 @@
                                             <div class="edit-items"> 
                                           
                                                <div class="update-container">
-                                                   <label>Name</label>
+                                                   <label>Merch Name</label>
                                                     <div class="input-container">
-                                                        <input type="text" name="name" placeholder="Name..." >
+                                                        <input type="text" name="name" placeholder="Merch Name" >
                                                     </div>
                                                </div>
                                                <div class="update-container">
-                                               <label>Role</label>
+                                               <label>Merch Category</label>
                                                <div class="input-container">
-                                                   <input type="text" name="occupation" placeholder="Occupation..." >
+                                                   <select>
+                                                       <option value="-1">Merch Category</option>
+                                                       <option value="web">T-Shirts</option>
+                                                       <option value="graphic">Mugs</option>
+                                                   </select>
                                                </div>
                                                </div>
                                                <div class="update-container">
-                                               <label>Email</label>
+                                               <label>Price</label>
                                                <div class="input-container">
-                                                   <input type="email" name="name" placeholder="Contact..." >
+                                                   <input type="number" name="name" placeholder="Price" >
                                                </div>
                                                </div>
                                                <div class="update-container">
-                                               <label>Country</label>
+                                               <label>Stock</label>
                                                <div class="input-container">
-                                                   <input type="text" name="name" placeholder="Education..." >
+                                                   <input type="number" name="name" placeholder="Stock" >
                                                </div>
                                                </div>
-                                                <div class="update-container">
-                                                    <label>Birth Date</label>
-                                                    <div class="input-container">
-                                                        <input type="date" name="name" placeholder="Education..." >
-                                                    </div>
-                                                </div>
                                             </div>
                                            <div class="update-container submit">
                                                <div class="submit-container update">
@@ -245,6 +220,157 @@
                                            </div>
                                         </form>
                                    </td>
+                               </tr>
+                               
+                               <tr>
+                                   <th scope="row">
+                                       <label class="control control--checkbox">
+                                           <input type="checkbox" />
+                                           <div class="control__indicator">
+                                               <i class="ri-check-line"></i>
+                                           </div>
+                                       </label>
+                                   </th>
+                                   <td>
+                                       4616
+                                       <div class="row-actions">
+                                           <a class="row-actions-edit">Edit</a>
+                                           |
+                                           <a class="row-actions-delete">Delete</a>
+                                       </div>
+                                   </td>
+                                   <td>Matthew Wasil</td>
+                                   <td>
+                                       Graphic Designer
+                                       <small class="d-block">Far far away, behind the word mountains</small>
+                                   </td>
+                                   <td>+02 020 3994 929</td>
+                                   <td>London College</td>
+                               </tr>
+                               <tr>
+                                   <th scope="row">
+                                       <label class="control control--checkbox">
+                                           <input type="checkbox" />
+                                           <div class="control__indicator">
+                                               <i class="ri-check-line"></i>
+                                           </div>
+                                       </label>
+                                   </th>
+                                   <td>
+                                       9841
+                                       <div class="row-actions">
+                                           <a class="row-actions-edit">Edit</a>
+                                           |
+                                           <a class="row-actions-delete">Delete</a>
+                                       </div>
+                                   </td>
+                                   <td>Sampson Murphy</td>
+                                   <td>
+                                       Mobile Dev
+                                       <small class="d-block">Far far away, behind the word mountains</small>
+                                   </td>
+                                   <td>+01 352 1125 0192</td>
+                                   <td>Senior High</td>
+                               </tr>
+                               <tr>
+                                   <th scope="row">
+                                       <label class="control control--checkbox">
+                                           <input type="checkbox" />
+                                           <div class="control__indicator">
+                                               <i class="ri-check-line"></i>
+                                           </div>
+                                       </label>
+                                   </th>
+                                   <td>
+                                       9548
+                                       <div class="row-actions">
+                                           <a class="row-actions-edit">Edit</a>
+                                           |
+                                           <a class="row-actions-delete">Delete</a>
+                                       </div>
+                                   </td>
+                                   <td>Gaspar Semenov</td>
+                                   <td>
+                                       Illustrator
+                                       <small class="d-block">Far far away, behind the word mountains</small>
+                                   </td>
+                                   <td>+92 020 3994 929</td>
+                                   <td>College</td>
+                               </tr>
+                               <tr>
+                                   <th scope="row">
+                                       <label class="control control--checkbox">
+                                           <input type="checkbox" />
+                                           <div class="control__indicator">
+                                               <i class="ri-check-line"></i>
+                                           </div>
+                                       </label>
+                                   </th>
+                                   <td>
+                                       4616
+                                       <div class="row-actions">
+                                           <a class="row-actions-edit">Edit</a>
+                                           |
+                                           <a class="row-actions-delete">Delete</a>
+                                       </div>
+                                   </td>
+                                   <td>Matthew Wasil</td>
+                                   <td>
+                                       Graphic Designer
+                                       <small class="d-block">Far far away, behind the word mountains</small>
+                                   </td>
+                                   <td>+02 020 3994 929</td>
+                                   <td>London College</td>
+                               </tr>
+                               <tr>
+                                   <th scope="row">
+                                       <label class="control control--checkbox">
+                                           <input type="checkbox" />
+                                           <div class="control__indicator">
+                                               <i class="ri-check-line"></i>
+                                           </div>
+                                       </label>
+                                   </th>
+                                   <td>
+                                       9841
+                                       <div class="row-actions">
+                                           <a class="row-actions-edit">Edit</a>
+                                           |
+                                           <a class="row-actions-delete">Delete</a>
+                                       </div>
+                                   </td>
+                                   <td>Sampson Murphy</td>
+                                   <td>
+                                       Mobile Dev
+                                       <small class="d-block">Far far away, behind the word mountains</small>
+                                   </td>
+                                   <td>+01 352 1125 0192</td>
+                                   <td>Senior High</td>
+                               </tr>
+                               <tr>
+                                   <th scope="row">
+                                       <label class="control control--checkbox">
+                                           <input type="checkbox" />
+                                           <div class="control__indicator">
+                                               <i class="ri-check-line"></i>
+                                           </div>
+                                       </label>
+                                   </th>
+                                   <td>
+                                       9548
+                                       <div class="row-actions">
+                                           <a class="row-actions-edit">Edit</a>
+                                           |
+                                           <a class="row-actions-delete">Delete</a>
+                                       </div>
+                                   </td>
+                                   <td>Gaspar Semenov</td>
+                                   <td>
+                                       Illustrator
+                                       <small class="d-block">Far far away, behind the word mountains</small>
+                                   </td>
+                                   <td>+92 020 3994 929</td>
+                                   <td>College</td>
                                </tr>
                            </tbody>
                            <tfoot>
@@ -258,48 +384,22 @@
                                        </label>
                                    </th>
                                    <th scope="col">
-                                       Account ID
+                                       Client ID
                                        <div class="sort-by-container">
                                            <i class="ri-arrow-drop-up-fill"></i>
                                            <i class="ri-arrow-drop-down-fill"></i>
                                        </div>
                                    </th>
                                    <th scope="col">
-                                       User ID
+                                       Name
                                        <div class="sort-by-container">
                                            <i class="ri-arrow-drop-up-fill"></i>
                                            <i class="ri-arrow-drop-down-fill"></i>
                                        </div>
                                    </th>
-                                   <th scope="col">
-                                       Username
-                                   </th>
-                                   <th scope="col">
-                                       Role
-                                   </th>
-                                   <th scope="col">
-                                       Email
-                                   </th>
-                                   <th scope="col">
-                                       Country
-                                   </th>
-                                   <th scope="col">
-                                       Gender
-                                   </th>
-                                   <th scope="col">
-                                       Birth Date
-                                       <div class="sort-by-container">
-                                           <i class="ri-arrow-drop-up-fill"></i>
-                                           <i class="ri-arrow-drop-down-fill"></i>
-                                       </div>
-                                   </th>
-                                   <th scope="col">
-                                       Date Joined
-                                       <div class="sort-by-container">
-                                           <i class="ri-arrow-drop-up-fill"></i>
-                                           <i class="ri-arrow-drop-down-fill"></i>
-                                       </div>
-                                   </th>
+                                   <th scope="col">Occupation</th>
+                                   <th scope="col">Contact</th>
+                                   <th scope="col">Education</th>
                                </tr>
                            </tfoot>
                        </table>
