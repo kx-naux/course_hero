@@ -35,7 +35,10 @@
 <% String promoDiscount = (String) session.getAttribute("promoDiscount");%>
 <% String paymentTotal = (String) session.getAttribute("paymentTotal");%>
 <% String paymentTax = (String) session.getAttribute("paymentTax");%>
-
+<% String selectedPaymentMethod = (String) session.getAttribute("selectedPaymentMethod");%>
+<% boolean chooseToUpdateStoredPayment = ((Boolean) request.getAttribute("chooseToUpdateStoredPayment")).booleanValue();%>
+<% boolean isReviewed = ((Boolean) request.getAttribute("isReviewed")).booleanValue();%>
+<% String chooseToUpdateBillAddress = (String) session.getAttribute("chooseToUpdateBillAddress");%>
 
 <jsp:useBean id="selectedShipping" class="JPAEntity.ShippingMethod" scope="session" />
 <jsp:useBean id="promoApplied" class="JPAEntity.Promotions" scope="session" />
@@ -333,7 +336,7 @@
                     <div class="payment-method-div flex-row">
 
                         <div class="payment-method flex-col">
-                            <input type="radio" id="cardMethod" name="paymentMethod" value="card" hidden />
+                            <input type="radio" id="cardMethod" selected name="paymentMethod" value="card" hidden />
                             <span class="selected-icon"><i class="ri-check-fill"></i></span>
                             <p class="payment-method-icon"><i class="ri-bank-card-line"></i></p>
                             <p class="payment-method-name">Card</p>
@@ -401,24 +404,25 @@
 
                     <div class="payment-method-input payment-bank flex-col">
 
+
                         <!--<label class="storedDetailLabel"  for="storedBank"><input type="checkbox" id="storedBank" name="storedBank" value="storedBank"> <i class="ri-bank-line"></i> Bank Name - Acc No.</label>-->
 
 
                         <div class="payment-input-div text-input-div required-input-field  flex-col">
                             <label for="bank">Bank:</label>
 
-                            <select id="bank" name="bank" class="">
+                            <select id="bank" name="selectedBank" class="">
                                 <% if(userOBankInfo != null){ %>
                                     <option selected hidden>Select a bank</option>
                                     <% for(OnlineBankingInfo info : oBankNameList ){ 
                                         if(userOBankInfo.getOnlineBankingId().getOnlineBankingId().equals(info.getOnlineBankingId())){%>
-                                            <option selected value="<%= info.getOnlineBankingId() %>"><%= info.getBankName()%></option>
+                                            <option value="<%= info.getOnlineBankingId() %>"><%= info.getBankName()%></option>
                                         <%}else{%>
                                             <option value="<%= info.getOnlineBankingId() %>"><%= info.getBankName()%></option>
                                         <%}%>
                                     <%}%>
                                 <%}else{%>
-                                    <option selected hidden>Select a bank</option>
+                                    <option selected hidden value="">Select a bank</option>
                                     <% for(OnlineBankingInfo info:oBankNameList ){ %>
                                     <option value="<%= info.getOnlineBankingId() %>"><%= info.getBankName()%></option>
                                     <%}%>

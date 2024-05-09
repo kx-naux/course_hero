@@ -98,7 +98,25 @@ public class CheckOutPage extends HttpServlet {
         request.getRequestDispatcher("/WEB-INF/Client/CheckOut.jsp").forward(request, response);
     }
     
-     public static double roundUpToTwoDecimalPlaces(double value) {
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        //get selected shipping method
+        
+        //get billing address
+        
+        //get selected payment method
+        
+        //get item list
+        
+        //get applied promo
+        
+        //show total
+    }
+    
+    
+    
+    public static double roundUpToTwoDecimalPlaces(double value) {
         value *= 100;
         double roundedValue = Math.ceil(value);
         roundedValue /= 100;
