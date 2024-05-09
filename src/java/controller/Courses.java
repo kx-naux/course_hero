@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 @WebServlet(name = "Courses", urlPatterns = {"/courses"})
-
 public class Courses extends HttpServlet {
     @PersistenceContext EntityManager em;
     

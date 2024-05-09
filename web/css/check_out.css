@@ -428,7 +428,7 @@ table#itemsTable tbody td:first-of-type div {
 }
 
 .payment-method .payment-method-icon{
-      font-weight: 400;
+    font-weight: 400;
     font-size: var(--font-size-xl);
     color: var(--color-text-light-2);
 }
@@ -438,7 +438,7 @@ table#itemsTable tbody td:first-of-type div {
 }
 
 .payment-method .payment-method-name{
-      font-weight: 500;
+    font-weight: 500;
     font-size: var(--font-size-xm);
     color: var(--color-text-light-1);
 }
@@ -454,9 +454,22 @@ table#itemsTable tbody td:first-of-type div {
     padding: 20px 0;
 }
 
+.payment-card-detail-row {
+    gap: 10px;
+}
+
+.payment-card-detail-row .payment-input-div {
+    width: 100%;
+}
+
+.storedDetailLabel {
+    width: fit-content;
+    cursor: pointer;
+}
+
 /*total*/
 .total-div-divider {
-        height: 1px;
+    height: 1px;
     background-color: var(--color-light-grey-2);
     width: 100vw;
     margin: 0 -10vw;
@@ -488,13 +501,13 @@ table#itemsTable tbody td:first-of-type div {
 }
 
 .total-row-overall .total-row-th {
- font-size: var(--font-size-xm);
+    font-size: var(--font-size-xm);
 }
 
 .total-row-overall .total-row-td {
     font-weight: 600;
- font-size: var(--font-size-l);
- color: var(--color-blue-2);
+    font-size: var(--font-size-l);
+    color: var(--color-blue-2);
 }
 
 .total-div input#placeOrderBtn {

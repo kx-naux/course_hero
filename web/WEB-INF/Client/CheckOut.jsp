@@ -321,7 +321,7 @@
                         <!--if got stored record render this div-->
                         <!--in span put last 4 digits-->
                         <!--in span first put first 4 digit-->
-                        <label for="storedCard"><input type="checkbox" id="storedCard" name="storedCard" value="storedCard"> <img src="" alt=""> <span id="storedCardNo" first="4536" >*4561</span> - Yu Beng's card</label>
+                        <label class="storedDetailLabel" for="storedCard"><input type="checkbox" id="storedCard" name="storedCard" value="storedCard"> <img src="" alt=""> <span id="storedCardNo" first="4536" >*4561</span> - Yu Beng's card</label>
 
                         <div class="payment-input-div text-input-div required-input-field  flex-col">
                             <label for="cardHolder">Card Holder:</label>
@@ -333,7 +333,7 @@
                             <input type="text" id="cardNo"  name="cardNo" placeholder="Enter card number (16 digits)" maxlength="16" value=""/>
                         </div>
 
-                        <div class="flex-row">
+                        <div class="payment-card-detail-row flex-row">
 
                             <div class="payment-input-div text-input-div  required-input-field flex-col">
                                 <label for="expDate">Exp Date:</label>
@@ -379,7 +379,7 @@
 
                     <div class="payment-method-input payment-tng flex-col">
                         <!--if got stored record render this div-->
-                        <label for="storedBank"><input type="checkbox" id="storedBank" name="storedBank" value="storedBank"> <img src="" alt=""/> 016-765 1234</label>
+                        <label class="storedDetailLabel"  for="storedBank"><input type="checkbox" id="storedBank" name="storedBank" value="storedBank"> <img src="" alt=""/> 016-765 1234</label>
 
                         <div class="payment-input-div text-input-div required-input-field flex-col">
                             <label for="tngPhoneNo">Phone No.:</label>
