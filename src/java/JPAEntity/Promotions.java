@@ -44,7 +44,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Promotions.findByGeographicRestiriction", query = "SELECT p FROM Promotions p WHERE p.geographicRestiriction = :geographicRestiriction"),
     @NamedQuery(name = "Promotions.countAll", query = "SELECT COUNT(p) FROM Promotions p"),
     @NamedQuery(name = "Promotions.findAllByActive", query = "SELECT p FROM Promotions p WHERE p.status = :status"),
-    @NamedQuery(name = "Promotions.findAllSortByEndTimeAsc", query = "SELECT p FROM Promotions p ORDER BY p.endTime ASC")
+    @NamedQuery(name = "Promotions.findAllSortByEndTimeAsc", query = "SELECT p FROM Promotions p ORDER BY p.endTime ASC"),
+    @NamedQuery(name = "Promotions.findAllSortByEndTimeAscActive", query = "SELECT p FROM Promotions p WHERE p.status = :active ORDER BY p.endTime ASC"),
 })
 public class Promotions implements Serializable {
 
