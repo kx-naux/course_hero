@@ -135,7 +135,7 @@
                             </div>
 
                             <div class="text-input-div address-input-div flex-col">
-                                <label for="state">State Resides:</label>
+                                <label for="state">State resides:</label>
                                 <input type="text"  value="${userData.addressId.stateResides}" readonly/>
                             </div>
 
@@ -168,7 +168,7 @@
                             </div>
 
                             <div class="text-input-div  required-input-field address-input-div flex-col">
-                                <label for="state">State Resides:</label>
+                                <label for="state">State resides:</label>
                                 <input type="text" class="state"  name="state" placeholder="state name" maxlength="20" value=""/>
                             </div>
 
@@ -203,7 +203,7 @@
                         </div>
 
                         <div class="text-input-div  required-input-field address-input-div flex-col">
-                            <label for="state">State Resides:</label>
+                            <label for="state">State resides:</label>
                             <input type="text" class="state"  name="state" placeholder="state name" maxlength="20" value=""/>
                         </div>
 

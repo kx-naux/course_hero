@@ -556,3 +556,37 @@ table#itemsTable tbody td:first-of-type div {
 .shipping-type-div {
     margin-bottom: 30px;
 }
+
+.review-btn-row {
+    gap: 15px;
+}
+
+.total-div input#cofirmOrderBtn{
+    width: 100%;
+    padding: 15px 30px;
+    font-weight: 600;
+    font-size: var(--font-size-xm);
+    color: var(--color-white);
+    background-color: var(--color-blue-2);
+    cursor: pointer;
+    margin: 10px 0;
+}
+
+.total-div input#cofirmOrderBtn:hover {
+    background-color: var(--color-blue-3);
+}
+
+.total-div input#backOrderBtn{
+    padding: 15px 30px;
+    font-weight: 600;
+    font-size: var(--font-size-xm);
+    color: var(--color-text-light-2);
+    background-color: var(--color-white);
+    border: 1px solid var(--color-text-light-2);
+    cursor: pointer;
+    margin: 10px 0;
+}
+
+.total-div input#backOrderBtn:hover {
+    background-color: var(--color-light-grey-2);
+}

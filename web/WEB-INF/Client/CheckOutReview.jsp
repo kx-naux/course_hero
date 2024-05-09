@@ -32,10 +32,10 @@
         <form id="checkOutReviewForm">
             <input type="text" id="fromAction" name="formAction" hidden />
             <section class="section content-section flex-col">
-                
+
                 <div class="content-div ship-div flex-col">
                     <h1 class="div-title"><i class="ri-truck-line"></i> Shipping & Delivery Address</h1>
-                                       
+
                     <div class="unstored-address-div address-div check-address  flex-col">
                         <p class="address-div-title">Shipping</p>
 
@@ -43,7 +43,7 @@
                             <label>Type:</label>
                             <input type="text" value="Standard Shipping" maxlength="50" readonly />
                         </div>
-                        
+
                         <p class="address-div-title">Delivery Address</p>
 
                         <div class="text-input-div   address-input-div flex-col">
@@ -73,7 +73,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="content-div item-div flex-col">
                     <h1 class="div-title"><i class="ri-shopping-basket-2-line"></i> Products Ordered</h1>
 
@@ -121,8 +121,8 @@
                         </tfoot>
                     </table>
                 </div>
-                
-                 <div class="content-div promo-div flex-col">
+
+                <div class="content-div promo-div flex-col">
                     <h1 class="div-title"><i class="ri-coupon-2-line"></i> Voucher / Promo Code</h1>
 
                     <div class="promo-input-div flex-row">
@@ -138,11 +138,108 @@
 
                     <p class="invalid-msg"></p>
                 </div>
-                
-                
-                
+
+                <div class="content-div payment-div flex-col">
+                    <h1 class="div-title"><i class="ri-money-dollar-box-line"></i> Payment</h1>
+
+                    <div class="unstored-address-div address-div check-address  flex-col">
+                        <p class="address-div-title">Payment Detail</p>
+
+                        <div class="text-input-div  flex-col">
+                            <label>Payment method:</label>
+                            <input type="text" value="" readonly />
+                        </div>
+                        
+                        <!--credit card-->
+                        <div class="payment-input-div text-input-div   flex-col">
+                            <label for="cardHolder">Card Holder:</label>
+                            <input type="text"  value="" readonly/>
+                        </div>
+
+                        <div class="payment-input-div text-input-div   flex-col">
+                            <label for="cardNo">Card No.:</label>
+                            <input type="text"  class=""  value="" readonly/>
+                        </div>
+
+                        <div class="payment-card-detail-row flex-row">
+
+                            <div class="payment-input-div text-input-div   flex-col">
+                                <label for="expDate">Exp Date:</label>
+                                <input type="text"  value="" readonly/>
+                            </div>
+
+                            <div class="payment-input-div text-input-div   flex-col">
+                                <label for="ccv">CCV:</label>
+                                <input type="text" value="" readonly/>
+                            </div>
+
+                        </div>
+                        
+                        <!--bank-->
+                        <div class="payment-input-div text-input-div  flex-col">
+                            <label for="bank">Bank:</label>
+                            <input type="text" value="" readonly/>
+                        </div>
+
+                        <div class="payment-input-div text-input-div  flex-col">
+                            <label for="bankAccNo">Account No.:</label>
+                            <input type="text"  value="" readonly/>
+                        </div>
+
+
+                        <div class="payment-input-div text-input-div flex-col">
+                            <label for="bankRemark">Remark:</label>
+                            <input type="text" value="" readonly/>
+                        </div>
+                        
+                        <!--tng-->
+                        
+                    </div>
+
+                    <hr class="total-div-divider"/>
+
+                    <!--show total--> 
+                    <div class="total-div flex-col">                        
+                        <div class="total-row flex-row">
+                            <h2 class="total-row-th">Items Total: </h2>
+                            <h3 class="total-row-td">RM 224.00</h3>
+                        </div>
+                        <div class="total-row flex-row">
+                            <h2 class="total-row-th">Items Discount: </h2>
+                            <h3 class="total-row-td">- RM 50.00</h3>
+                        </div>
+                        <div class="total-row flex-row">
+                            <h2 class="total-row-th">Promo Discount: </h2>
+                            <h3 class="total-row-td">- RM 20.00</h3>
+                        </div>
+                        <div class="total-row flex-row">
+                            <h2 class="total-row-th">Shipping Fee: </h2>
+                            <h3 class="total-row-td">RM 25.00</h3>
+                        </div>
+                        <div class="total-row flex-row">
+                            <h2 class="total-row-th">Shipping Discount: </h2>
+                            <h3 class="total-row-td">- RM 5.00</h3>
+                        </div>
+                        <div class="total-row flex-row">
+                            <h2 class="total-row-th">Tax (6%): </h2>
+                            <h3 class="total-row-td">RM 11.00</h3>
+                        </div>
+                        <div class="total-row total-row-overall flex-row">
+                            <h2 class="total-row-th">Total Payment: </h2>
+                            <h3 class="total-row-td">RM 375.00</h3>
+                        </div>
+
+                        <div class="flex-row review-btn-row">
+                            <input type="button" id="backOrderBtn" value="Back" onclick="submitForm('back')" />
+                            <input type="button" id="cofirmOrderBtn" value="Confirm Order" onclick="submitForm('confirm')" />
+                        </div>
+                    </div>
+                </div>
+
             </section>
         </form>
+
+        <script src="./js/check_out/check_out_review.js"></script>
 
     </body>
 </html>
