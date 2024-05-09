@@ -50,7 +50,7 @@
 
         <!--put 1 to show add review form-->
         <%String showAddReview = "0";
-            if(userData.getUserId() != null && isOwn && !isReviewed){
+            if(userData.getDateJoined() != null && isOwn && !isReviewed){
             showAddReview = "1";
         }%>
         <input type="number" id="addReviewStatus" value="<%= showAddReview %>" hidden />
