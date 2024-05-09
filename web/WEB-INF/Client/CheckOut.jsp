@@ -117,7 +117,7 @@
 
                             <div class="text-input-div address-input-div flex-col">
                                 <label>Address:</label>
-                                <input type="text"  value="${userData.addressId.line1}" readonly />
+                                <input type="text"  class="address-row-1" value="${userData.addressId.line1}" readonly />
                                 <input type="text"  value="${userData.addressId.line2}" readonly />
                             </div>
 
@@ -150,7 +150,7 @@
 
                             <div class="text-input-div address-input-div flex-col">
                                 <label>Address:</label>
-                                <input type="text" class="address-1" name="address1" value="" placeholder="address line 1" maxlength="50" />
+                                <input type="text" class="address-row-1 address-1" name="address1" value="" placeholder="address line 1" maxlength="50" />
                                 <input type="text" class="address-2"  name="address2" value="" placeholder="address line 2" maxlength="50" />
                             </div>
 
@@ -185,7 +185,7 @@
                         
                         <div class="text-input-div address-input-div flex-col">
                             <label>Address:</label>
-                            <input type="text" class="address-1" name="address1" value="" placeholder="address line 1" maxlength="50" />
+                            <input type="text" class="address-1 address-row-1" name="address1" value="" placeholder="address line 1" maxlength="50" />
                             <input type="text" class="address-2"  name="address2" value="" placeholder="address line 2" maxlength="50" />
                         </div>
 
@@ -241,9 +241,9 @@
                                         <p>The Ultimate Excel Programming Course<p>
                                     </div>
                                 </td>
-                                <td>Rm 112.00</td>
+                                <td>RM 112.00</td>
                                 <td>1</td>
-                                <td>Rm 112.00</td>
+                                <td>RM 112.00</td>
                             </tr>
                             <tr>
                                 <td>
@@ -253,15 +253,15 @@
                                         <p>The Ultimate Excel Programming Course<p>
                                     </div>
                                 </td>
-                                <td>Rm 112.00</td>
+                                <td>RM 112.00</td>
                                 <td>1</td>
-                                <td>Rm 112.00</td>
+                                <td>RM 112.00</td>
                             </tr>
                         </tbody>
                         <tfoot>
                             <tr>
                                 <td colspan="3">Order Total (2 item):</td>
-                                <td>Rm 224.00</td>
+                                <td>RM 224.00</td>
                             </tr>
                         </tfoot>
                     </table>

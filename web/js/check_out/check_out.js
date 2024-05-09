@@ -22,7 +22,7 @@ shippingRadios.forEach(shippingMethod => {
 });
 
 // listener for address
-if (document.querySelector("stored-address-div") !== null) {
+if (document.querySelector(".stored-address-div") !== null) {
     const addressRadios = document.querySelectorAll('div.address-div');
 
     addressRadios.forEach(addressDiv => {
