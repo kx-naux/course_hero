@@ -339,23 +339,221 @@ function submitCheckoutForm() {
     }
 
     const payCardDiv = document.querySelector(".payment-div .payment-card");
-    if (document.querySelector(".payment-method-div input#cardMethod:checked") !== null) {
-        
+    const useStoredCard = document.querySelector(".payment-div input#storedCard:checked");
+    if (document.querySelector(".payment-method-div input#cardMethod:checked") !== null && useStoredCard === null) {
+        const cardHolder = payCardDiv.querySelector("#cardHolder");
+        if (cardHolder.value === "") {
+            cardHolder.focus();
+            payInvalidMsg.innerText = "Please enter card holder name";
+            cardHolder.classList.add("invalid-input");
+            return;
+        }
+
+        const cardNumber = payCardDiv.querySelector("#cardNo");
+        if (cardNumber.value === "") {
+            cardNumber.focus();
+            payInvalidMsg.innerText = "Please enter card no.";
+            cardNumber.classList.add("invalid-input");
+            return;
+        }
+
+        const cardNumberInput = document.getElementById("cardNo");
+        const cardNumberValue = cardNumberInput.value.replace(/\s/g, ''); // Remove whitespace if any
+        const cardNumberRegex = /^[0-9]{16}$/; // Regex to match 16 digits
+        if (!cardNumberRegex.test(cardNumberValue)) {
+            cardNumberInput.focus();
+            payInvalidMsg.innerText = "Please enter a valid 16-digit card number";
+            cardNumberInput.classList.add("invalid-input");
+            return;
+        }
+        if (!isValidCardNumber(cardNumberValue)) {
+            // 4556737586899855 valid number
+            cardNumberInput.focus();
+            payInvalidMsg.innerText = "Please enter a valid card number";
+            cardNumberInput.classList.add("invalid-input");
+            return;
+        }
+
+        const expDateInput = document.getElementById("expDate");
+        const expDateValue = expDateInput.value;
+        if (expDateValue === "") {
+            expDateInput.focus();
+            payInvalidMsg.innerText = "Please enter expiration date";
+            expDateInput.classList.add("invalid-input");
+            return;
+        }
+        if (!isValidExpDate(expDateValue)) {
+            expDateInput.focus();
+            payInvalidMsg.innerText = "Please enter a valid expiration date in the format MM/YY";
+            expDateInput.classList.add("invalid-input");
+            return;
+        }
+
+        const ccvInput = document.getElementById("ccv");
+        const ccvValue = ccvInput.value;
+        if (ccvValue === "") {
+            ccvInput.focus();
+            payInvalidMsg.innerText = "Please enter ccv";
+            ccvInput.classList.add("invalid-input");
+            return;
+        }
+        if (!isValidCCV(ccvValue)) {
+            ccvInput.focus();
+            payInvalidMsg.innerText = "Please enter a valid CCV consisting of 3 digits.";
+            ccvInput.classList.add("invalid-input");
+            return;
+        }
+
     }
 
     const payBankDiv = document.querySelector(".payment-div .payment-bank");
-    if (document.querySelector(".payment-method-div input#bankMethod:checked") !== null) {
-        
+    const useStoredBank = document.querySelector(".payment-div input#storedBank:checked");
+    if (document.querySelector(".payment-method-div input#bankMethod:checked") !== null && useStoredBank === null) {
+        const bankSelect = document.getElementById("bank");
+        const selectedBank = bankSelect.value;
+        if (selectedBank === "Select a bank") {
+            bankSelect.focus();
+            payInvalidMsg.innerText = "Please select a bank.";
+            bankSelect.classList.add("invalid-input");
+            return;
+        }
+
+        const bankAccNoInput = document.getElementById("bankAccNo");
+        const bankAccNoValue = bankAccNoInput.value;
+        if (bankAccNoValue === "") {
+            bankAccNoInput.focus();
+            payInvalidMsg.innerText = "Please enter account number";
+            bankAccNoInput.classList.add("invalid-input");
+            return;
+        }
+        if (!isValidBankAccountNumber(bankAccNoValue)) {
+            bankAccNoInput.focus();
+            payInvalidMsg.innerText = "Please enter a valid 12-digit bank account number.";
+            bankAccNoInput.classList.add("invalid-input");
+            return;
+        }
     }
 
     const payTngDiv = document.querySelector(".payment-div .payment-tng");
-    if (document.querySelector(".payment-method-div input#tngMethod:checked") !== null) {
-        
+    const useStoredTng = document.querySelector(".payment-div input#storedTng:checked");
+    if (document.querySelector(".payment-method-div input#tngMethod:checked") !== null && useStoredTng === null) {
+        const tngPhoneNoInput = document.getElementById("tngPhoneNo");
+        const tngPhoneNoValue = tngPhoneNoInput.value;
+        if (tngPhoneNoValue === "") {
+            tngPhoneNoInput.focus();
+            payInvalidMsg.innerText = "Please enter phone number";
+            tngPhoneNoInput.classList.add("invalid-input");
+            return;
+        }
+        if (!isValidMalaysianPhoneNumber(tngPhoneNoValue)) {
+            tngPhoneNoInput.focus();
+            payInvalidMsg.innerText = "Please enter a valid Malaysian phone number.";
+            tngPhoneNoInput.classList.add("invalid-input");
+            return;
+        }
     }
 
     // submit form
     const form = document.getElementById("checkOutForm");
     form.submit();
+}
+
+function isValidCardNumber(cardNumber) {
+    // Remove any whitespace from the card number
+    cardNumber = cardNumber.replace(/\s/g, '');
+
+    // Check if the card number is composed entirely of digits
+    if (!/^\d+$/.test(cardNumber)) {
+        return false;
+    }
+
+    // Check if the card number length is valid (16 digits)
+    if (cardNumber.length !== 16) {
+        return false;
+    }
+
+    // Apply the Luhn algorithm
+    let sum = 0;
+    let shouldDouble = false;
+    for (let i = cardNumber.length - 1; i >= 0; i--) {
+        let digit = parseInt(cardNumber.charAt(i), 10);
+
+        if (shouldDouble) {
+            digit *= 2;
+            if (digit > 9) {
+                digit -= 9;
+            }
+        }
+
+        sum += digit;
+        shouldDouble = !shouldDouble;
+    }
+
+    return (sum % 10) === 0;
+}
+
+function isValidExpDate(expDate) {
+    // Remove any whitespace from the expiration date
+    expDate = expDate.replace(/\s/g, '');
+
+    // Check if the expiration date matches the MM/YY format
+    if (!/^\d{2}\/\d{2}$/.test(expDate)) {
+        return false;
+    }
+
+    // Extract month and year parts
+    const [month, year] = expDate.split('/');
+    const currentYear = new Date().getFullYear() % 100; // Get last two digits of current year
+
+    // Check if month and year are valid
+    if (
+            isNaN(parseInt(month, 10)) ||
+            isNaN(parseInt(year, 10)) ||
+            parseInt(month, 10) < 1 ||
+            parseInt(month, 10) > 12 ||
+            parseInt(year, 10) < currentYear ||
+            (parseInt(year, 10) === currentYear && parseInt(month, 10) < new Date().getMonth() + 1)
+            ) {
+        return false;
+    }
+
+    return true;
+}
+
+function isValidCCV(ccv) {
+    // Remove any whitespace from the CCV
+    ccv = ccv.replace(/\s/g, '');
+
+    // Check if the CCV consists only of digits and has a length of 3
+    if (!/^\d{3}$/.test(ccv)) {
+        return false;
+    }
+
+    return true;
+}
+
+function isValidBankAccountNumber(accountNo) {
+    // Remove any whitespace from the account number
+    accountNo = accountNo.replace(/\s/g, '');
+
+    // Check if the account number consists only of digits and has a length of 12
+    if (!/^\d{8,12}$/.test(accountNo)) {
+        return false;
+    }
+
+    return true;
+}
+
+function isValidMalaysianPhoneNumber(phoneNo) {
+    // Remove any whitespace from the phone number
+    phoneNo = phoneNo.replace(/\s/g, '');
+
+    // Check if the phone number matches the Malaysian format (e.g., +60XXXXXXXXX)
+    if (!/^(\+?6?0)-?1\d{8}$/.test(phoneNo)) {
+        return false;
+    }
+
+    return true;
 }
 
 // listener for remove invalid class for address
