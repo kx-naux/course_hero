@@ -106,10 +106,15 @@
                     </div>
 
                     <!--if got stored address show here-->
+                    <% if (true) { %>
                     <div class="stored-address-div flex-row">
-                        <div class="current-address address-div ">
+
+                        <div class="current-address address-div flex-col">
                             <input type="radio"  id="currentAddress" name="storedAddress" value="storedAddress" checked hidden />
                             <span class="selected-icon"><i class="ri-check-fill"></i></span>
+
+                            <p class="address-div-title">Default Address</p>
+
                             <div class="text-input-div address-input-div flex-col">
                                 <label>Address:</label>
                                 <input type="text"  value="${userData.addressId.line1}" readonly />
@@ -137,9 +142,12 @@
                             </div>
                         </div>
 
-                        <div class="new-address address-div ">
+                        <div class="new-address address-div flex-col ">
                             <input type="radio"  id="addAddress" name="storedAddress" value="newAddress" hidden/>
                             <span class="selected-icon"><i class="ri-check-fill"></i></span>
+
+                            <p class="address-div-title">New Address</p>
+
                             <div class="text-input-div address-input-div flex-col">
                                 <label>Address:</label>
                                 <input type="text" class="address-1" name="address1" value="" placeholder="address line 1" maxlength="50" />
@@ -167,10 +175,14 @@
                             </div>
                         </div>
                     </div>
+                    <% } %>
 
                     <!--if no address/does not have full address show this-->
-                    <div class="unstored-address-div flex-col">
+                    <% if (false) { %>
+                    <div class="unstored-address-div address-div flex-col">
                         <input type="radio" id="current-address" name="storedAddress" value="newAddress" hidden checked />
+                        <p class="address-div-title">Enter New Address</p>
+                        
                         <div class="text-input-div address-input-div flex-col">
                             <label>Address:</label>
                             <input type="text" class="address-1" name="address1" value="" placeholder="address line 1" maxlength="50" />
@@ -197,6 +209,7 @@
                             <input type="text" class="country"  name="country" placeholder="country name" maxlength="40" value=""/>
                         </div>
                     </div>
+                    <% }%>
 
                     <div class="flex-col confirma-store-div">
                         <label for="storingAddress"><input type="checkbox" id="storingAddress" name="storingAddress" value="storingAddress"> Store this address to use at next time</label>
@@ -364,17 +377,17 @@
                     <div class="payment-method-input payment-tng flex-col">
                         <!--if got stored record render this div-->
                         <label for="storedBank"><input type="checkbox" id="storedBank" name="storedBank" value="storedBank"> <img src="" alt=""/> 016-765 1234</label>
-                    
+
                         <div class="payment-input-div required-input-field flex-col">
                             <label for="tngPhoneNo">Phone No.:</label>
                             <input type="text" id="tngPhoneNo" name="tngPhoneNo" placeholder="Enter phone no." maxlength="15" value=""/>
                         </div>
-                        
+
                         <div class="payment-input-div flex-col">
                             <label for="tngRemark">Remark:</label>
                             <input type="text" id="tngRemark" name="tngRemark" placeholder="Enter remark here" maxlength="80" value=""/>
                         </div>
-                        
+
                     </div>
 
                     <div class="flex-col confirma-store-div">
