@@ -38,7 +38,9 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Product.findByAvgRating", query = "SELECT p FROM Product p WHERE p.avgRating = :avgRating"),
     @NamedQuery(name = "Product.findByDiscount", query = "SELECT p FROM Product p WHERE p.discount = :discount"),
     @NamedQuery(name = "Product.findByImagePath", query = "SELECT p FROM Product p WHERE p.imagePath = :imagePath"),
-    @NamedQuery(name = "Product.findByStatus", query = "SELECT p FROM Product p WHERE p.status = :status")})
+    @NamedQuery(name = "Product.findByStatus", query = "SELECT p FROM Product p WHERE p.status = :status"),
+    @NamedQuery(name = "Product.findByProdNameFilter", query = "SELECT p FROM Product p WHERE LOWER(p.prodName) LIKE LOWER(CONCAT('%',:prodName,'%'))")
+})
 
 public class Product implements Serializable {
 
@@ -120,7 +122,7 @@ public class Product implements Serializable {
     public void setProductId(String productId) {
         this.productId = productId;
     }
-    
+
     public void setProductId(long count) {
         this.productId = String.format("PR%07d", count);
     }
@@ -132,7 +134,6 @@ public class Product implements Serializable {
     public void setProdName(String prodName) {
         this.prodName = prodName;
     }
-
 
     public int getRateWeightage() {
         return rateWeightage;
@@ -150,7 +151,6 @@ public class Product implements Serializable {
         this.avgRating = avgRating;
     }
 
-
     public String getImagePath() {
         return imagePath;
     }
@@ -158,7 +158,6 @@ public class Product implements Serializable {
     public void setImagePath(String imagePath) {
         this.imagePath = imagePath;
     }
-
 
     public ProductCategory getProdcatId() {
         return prodcatId;
@@ -202,9 +201,6 @@ public class Product implements Serializable {
         return "JPAEntity.Product[ productId=" + productId + " ]";
     }
 
-   
-
-
     @XmlTransient
     public List<CartItems> getCartItemsList() {
         return cartItemsList;
@@ -240,16 +236,15 @@ public class Product implements Serializable {
     public void setRatingsList(List<Ratings> ratingsList) {
         this.ratingsList = ratingsList;
     }
+
     @XmlTransient
     public List<Wishlist> getWishlistList() {
         return wishlistList;
     }
+
     public void setWishlistList(List<Wishlist> wishlistList) {
         this.wishlistList = wishlistList;
     }
-
-
-
 
     public String getDescription() {
         return description;
@@ -259,7 +254,6 @@ public class Product implements Serializable {
         this.description = description;
     }
 
-
     public double getPrice() {
         return price;
     }
@@ -267,8 +261,6 @@ public class Product implements Serializable {
     public void setPrice(double price) {
         this.price = price;
     }
-
-
 
     public double getDiscount() {
         return discount;
@@ -278,8 +270,6 @@ public class Product implements Serializable {
         this.discount = discount;
     }
 
-
-
     public String getStatus() {
         return status;
     }
@@ -287,5 +277,5 @@ public class Product implements Serializable {
     public void setStatus(String status) {
         this.status = status;
     }
-    
+
 }

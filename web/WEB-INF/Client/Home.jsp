@@ -130,7 +130,7 @@
                                 %>
                                 <p class="course-author"><%=concatAuthors%></p>
                                 <div class="course-review flex-row">
-                                    <p class="rating-digit"><%=String.format("%.2f", eachAllCourse.getProductId().getAvgRating())%></p>
+                                    <p class="rating-digit"><%=String.format("%.1f", eachAllCourse.getProductId().getAvgRating())%></p>
                                     <i class="ri-star-fill"></i>
                                     <p class="rating-number-field">(<span class="raing-number"><%=eachAllCourse.getProductId().getRateWeightage()%></span>)</p>
                                 </div>
@@ -252,7 +252,7 @@
                                 %>
                                 <p class="course-author"><%=concatAuthors%></p>
                                 <div class="course-review flex-row">
-                                    <p class="rating-digit"><%=String.format("%.2f", design.getProductId().getAvgRating())%></p>
+                                    <p class="rating-digit"><%=String.format("%.1f", design.getProductId().getAvgRating())%></p>
                                     <i class="ri-star-fill"></i>
                                     <p class="rating-number-field">(<span class="raing-number"><%=design.getProductId().getRateWeightage()%></span>)</p>
                                 </div>
@@ -352,7 +352,7 @@
                                 %>
                                 <p class="course-author"><%=concatAuthors%></p>
                                 <div class="course-review flex-row">
-                                    <p class="rating-digit"><%=String.format("%.2f", programming.getProductId().getAvgRating())%></p>
+                                    <p class="rating-digit"><%=String.format("%.1f", programming.getProductId().getAvgRating())%></p>
                                     <i class="ri-star-fill"></i>
                                     <p class="rating-number-field">(<span class="raing-number"><%=programming.getProductId().getRateWeightage()%></span>)</p>
                                 </div>
