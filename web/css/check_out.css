@@ -64,6 +64,8 @@
     color: var(--color-text-light-2);
     user-select: none;
     text-align: center;
+    width: fit-content;
+    margin: 0 auto;
 }
 
 .content-section .invalid-msg{
@@ -465,6 +467,23 @@ table#itemsTable tbody td:first-of-type div {
 .storedDetailLabel {
     width: fit-content;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.tng-logo {
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+}
+
+.credit-logo {
+    width: 50px;
+    height: 30px;
+    object-fit: cover;
+    border: 1px solid var(--color-light-grey-3);
+    border-radius: 4px
 }
 
 /*total*/
