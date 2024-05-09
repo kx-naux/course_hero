@@ -293,7 +293,7 @@ table#itemsTable tfoot td:first-of-type{
 table#itemsTable tfoot td:last-of-type{
     font-weight: 600;
     font-size: var(--font-size-l);
-    color: var(--color-blue-1);
+    color: var(--color-blue-2);
 }
 
 table#itemsTable tr td:last-of-type{
@@ -325,5 +325,61 @@ table#itemsTable tbody td:first-of-type div {
 }
 
 /*promo code*/
+.promo-input-div {
+    margin: 0 auto;
+    max-width: 500px;
+    height: 50px;
+}
+
+.promo-input-div input#promo {
+    width: 100%;
+    flex: 1 1 100px;
+    border: 1px solid var(--color-text-light-1);
+    padding: 5px 10px;
+    font-weight: 600;
+    font-size: var(--font-size-m);
+    color: var(--color-text-light-3);
+    letter-spacing: 5px;
+    text-align: center;
+}
+
+.promo-input-div input#promo::placeholder {
+    font-weight: 300;
+    font-size: var(--font-size-xm);
+    color: var(--color-text-light-1);
+    letter-spacing: 0px;
+}
+
+.promo-input-div input#promoApply{
+    width: 100px;
+    font-weight: 500;
+    font-size: var(--font-size-s);
+    color: var(--color-white);
+    background-color: var(--color-blue-2);
+    cursor: pointer;
+}
+
+.promo-input-div input#promoApply:hover{
+    background-color: var(--color-blue-3);
+}
+
+.promo-div .promo-detail{
+    gap: 5px;
+}
+
+.promo-div  .promo-name,
+.promo-div  .promo-desc{
+    font-weight: 500;
+    font-size: var(--font-size-xm);
+    color: var(--color-text-light-2);
+}
+
+.promo-div  .promo-end{
+font-weight: 400;
+    font-size: var(--font-size-s);
+    color: var(--color-text-light-1);
+}
 
 /*payment*/
+
+/*total*/

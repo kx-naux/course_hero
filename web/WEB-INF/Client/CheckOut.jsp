@@ -19,14 +19,17 @@
         <script src="./js/components/to_top.js"></script>
 
         <!--to show a toast error message--> 
-        <span id="errorMsg" hidden=""></span>
+        <span id="errorMsg" hidden></span>
+        
+        <!--to show like promo code apply successfully-->
+        <span id="successMsg" hidden></span>
 
         <!--title section-->
         <section class="section title-section">
             <div class="title-div flex-row">
                 <div class="flex-row">
                     <img class="title-logo" src="${companyLogo}" alt="" />
-                    <h1 class="title">Check Out</h1>
+                    <h1 class="title">Checkout</h1>
                 </div>
                 <a class="cancel-btn" href="<%= webpath.getPageUrl("cart")%>">Cancel</a>
             </div>
@@ -270,13 +273,13 @@
                 <div class="content-div promo-div flex-col">
                     <h1 class="div-title"><i class="ri-coupon-2-line"></i> Voucher / Promo Code</h1>
 
-                    <div class="flex-row">
+                    <div class="promo-input-div flex-row">
                         <input type="text" id="promo" name="promo" placeholder="Enter promo code here" value="" maxlength="9" />
-                        <input type="button" value="Apply" />
+                        <input type="button" id="promoApply" value="Apply" />
                     </div>
 
                     <!--after promo apply show info here-->
-                    <div class="flex-col">
+                    <div class="promo-detail flex-col">
                         <p class="promo-name">Promo Name: Hapyy Happy Happy</p>
                         <p class="promo-desc">Promo Description: Hapyy Happy Happy</p>
                         <p class="promo-end"><i class="ri-timer-line"></i> End at 2024-09-15</p>
