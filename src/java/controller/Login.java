@@ -113,6 +113,8 @@ public class Login extends HttpServlet {
             userData = getUserData(accountRetrieved);
             session.setAttribute("userData",userData);
             session.setAttribute("loginStatus","logined");
+            //if at the same session second user login, we must clear the 1st user checkingOutCartItems
+            session.removeAttribute("checkingOutCartItemList");
             String pageToGo = (String) session.getAttribute("pageToGoAfterLogin");
             //check remember me
             if(rememberMe!=null){

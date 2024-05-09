@@ -71,6 +71,8 @@ public class Users implements Serializable {
     @Size(min = 1, max = 20)
     @Column(name = "GENDER")
     private String gender;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
+    private List<UserOnlineBankingInfo> userOnlineBankingInfoList;
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "userId")
     private List<Wishlist> wishlistList;
     @Lob
@@ -366,6 +368,8 @@ public class Users implements Serializable {
 
 
 
+   
+
     public Date getDob() {
         return dob;
     }
@@ -374,7 +378,6 @@ public class Users implements Serializable {
         this.dob = dob;
     }
 
-   
 
     public String getUsertype() {
         return usertype;
@@ -385,12 +388,22 @@ public class Users implements Serializable {
     }
 
 
+
     public String getGender() {
         return gender;
     }
 
     public void setGender(String gender) {
         this.gender = gender;
+    }
+
+    @XmlTransient
+    public List<UserOnlineBankingInfo> getUserOnlineBankingInfoList() {
+        return userOnlineBankingInfoList;
+    }
+
+    public void setUserOnlineBankingInfoList(List<UserOnlineBankingInfo> userOnlineBankingInfoList) {
+        this.userOnlineBankingInfoList = userOnlineBankingInfoList;
     }
 
 }

@@ -276,4 +276,5 @@ public class Courses implements Serializable {
     public void setRequirements(String requirements) {
         this.requirements = requirements;
     }
+
 }

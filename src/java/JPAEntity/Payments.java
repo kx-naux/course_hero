@@ -174,6 +174,7 @@ public class Payments implements Serializable {
 
 
 
+
     public double getAmount() {
         return amount;
     }
@@ -190,7 +191,5 @@ public class Payments implements Serializable {
         this.status = status;
     }  
 
-   
 
-   
 }

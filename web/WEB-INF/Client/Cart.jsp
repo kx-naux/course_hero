@@ -11,6 +11,7 @@
 <% List<CartItems> cartItems = (List<CartItems>)request.getAttribute("cartItems"); %>
 <% int numberOfItemInCartCourse = ((Integer) request.getAttribute("numberOfCourse")).intValue();%>
 <% int numberOfItemInCartMerch = ((Integer) request.getAttribute("numberOfMerch")).intValue();%>
+<% String errMsg = (String) request.getAttribute("errMsg"); %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -33,9 +34,13 @@
         <%@ include file="./Components/navbar.jsp" %>
 
         <!--put error msg here to show the error msg-->
-        <span id="errorMsg" hidden></span>
+        <% if (errMsg == null) { %>
+            <span id="errorMsg" hidden></span>
+        <%} else {%>
+            <span id="errorMsg" hidden><%= errMsg %></span>
+        <%}%>
 
-        <form>
+        <form method="post" action="cart">
             <section class="section cart-section">
                 <div class="cart-div flex-row" id="cartContent">
                     <div class="cart-div-left flex-col">
@@ -57,7 +62,7 @@
                                 <%
                                     String catId = "";
                                     for(CartItems item: cartItems){
-                                        if(item.getProductId().getProdName().equals(course.getProductId().getProductId())){
+                                        if(item.getProductId().getProductId().equals(course.getProductId().getProductId())){
                                             catId = item.getCartitemId();
                                         }
                                     }

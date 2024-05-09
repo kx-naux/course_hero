@@ -34,6 +34,7 @@ public class Logout extends HttpServlet {
         Object userData = session.getAttribute("userData");
         if (userData != null) {
             session.removeAttribute("userData");
+            session.removeAttribute("checkingOutCartItemList");
             Login.removeRmbMeTokenInCookie(request, response);
         }
         session.setAttribute("loginStatus", "loggedOut");
