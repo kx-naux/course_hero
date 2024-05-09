@@ -233,11 +233,11 @@ document.getElementById("ccv").addEventListener("input", function (event) {
 });
 
 // bank listener
-document.getElementById("bankAccNo").addEventListener("input", function (event) {
-    const inputText = event.target.value;
-    const digitsOnlyText = inputText.replace(/\D/g, ''); // Replace any non-digit characters with an empty string
-    event.target.value = digitsOnlyText;
-});
+//document.getElementById("bankAccNo").addEventListener("input", function (event) {
+//    const inputText = event.target.value;
+//    const digitsOnlyText = inputText.replace(/\D/g, ''); // Replace any non-digit characters with an empty string
+//    event.target.value = digitsOnlyText;
+//});
 
 // tng e-wallet listener
 document.getElementById("tngPhoneNo").addEventListener("input", function (event) {
@@ -419,20 +419,20 @@ function submitCheckoutForm() {
             return;
         }
 
-        const bankAccNoInput = document.getElementById("bankAccNo");
-        const bankAccNoValue = bankAccNoInput.value;
-        if (bankAccNoValue === "") {
-            bankAccNoInput.focus();
-            payInvalidMsg.innerText = "Please enter account number";
-            bankAccNoInput.classList.add("invalid-input");
-            return;
-        }
-        if (!isValidBankAccountNumber(bankAccNoValue)) {
-            bankAccNoInput.focus();
-            payInvalidMsg.innerText = "Please enter a valid 12-digit bank account number.";
-            bankAccNoInput.classList.add("invalid-input");
-            return;
-        }
+//        const bankAccNoInput = document.getElementById("bankAccNo");
+//        const bankAccNoValue = bankAccNoInput.value;
+//        if (bankAccNoValue === "") {
+//            bankAccNoInput.focus();
+//            payInvalidMsg.innerText = "Please enter account number";
+//            bankAccNoInput.classList.add("invalid-input");
+//            return;
+//        }
+//        if (!isValidBankAccountNumber(bankAccNoValue)) {
+//            bankAccNoInput.focus();
+//            payInvalidMsg.innerText = "Please enter a valid 12-digit bank account number.";
+//            bankAccNoInput.classList.add("invalid-input");
+//            return;
+//        }
     }
 
     const payTngDiv = document.querySelector(".payment-div .payment-tng");

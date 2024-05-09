@@ -326,7 +326,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let cartlistItems = document.querySelectorAll("div#cartlistDiv div.course-item");
     
     // check list is empty before adding
-    if (cartlistItems.length < 1) {
+    if (cartlistDiv !== null && cartlistItems.length < 1) {
         cartlistDiv.classList.remove("active");
         cartlistLink.classList.remove("active");
         cartlistNumber.classList.remove("active");
@@ -339,7 +339,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let wishlistItems = document.querySelectorAll("div#wishlistDiv div.course-item");
 
     // check list is empty before adding
-    if (wishlistItems.length <= 1) {
+    if (wishlistDiv !== null && wishlistItems.length <= 1) {
         wishlistDiv.classList.remove("active");
         wishlistLink.classList.remove("active");
         wishEmptyDiv.classList.add("active");

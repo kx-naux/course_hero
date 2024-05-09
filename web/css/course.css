@@ -421,9 +421,11 @@
     max-width: 100%;
 }
 
-.course-div-right .course-sticky-div .sticky-div-video video {
+.course-div-right .course-sticky-div .sticky-div-video img {
     width: 100%;
     max-width: 100%;
+    border: 1px solid var(--color-light-grey-2);
+    object-fit: cover;
 }
 
 .course-div-right .course-sticky-div .sticky-div-bot {

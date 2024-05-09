@@ -79,7 +79,7 @@
                         <div class="merch-buy-div flex-col">
                             <!--merch qty-->
                             <div class="merch-qty flex-col">
-                                <label for="order_qty">Quantity: ${merchData.stockBalance}</label>
+                                <label for="order_qty">Quantity: <span id="stockLvl">${merchData.stockBalance}</span></label>
                                 <div class="flex-row">
                                     <button id="order_qty_substract" class="qty-btn substract"><i class="ri-subtract-fill"></i></button>
                                     <input type="text" id="order_qty" class="qty-input"  min="1" max="${merchData.stockBalance}" value="1" />
@@ -179,7 +179,7 @@
             </div>
 
             <!--user review-->
-            <div class="merch-review merch-bot-div flex-row">
+            <div class="merch-review merch-bot-div flex-row" size="<%= ratingList.size() %>">
                 <div class="merch-review-left flex-col">
 
                     <h1 class="merch-bot-div-title">User Review</h1>
@@ -299,7 +299,7 @@
                             <%}%>
 
                            
-
+                            
                         </div>
                              <!--pagination, 20 course per page-->
                             <%

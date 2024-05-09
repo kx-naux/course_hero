@@ -6,6 +6,32 @@ const reviewForm = document.querySelector("form#merchReview");
 const previousBtn = document.querySelector("p.page-previous-btn");
 const nextBtn = document.querySelector("p.page-next-btn");
 const pageInput = document.querySelector("input#current_page");
+const merchReviewDiv = document.querySelector(".merch-review");
+
+document.addEventListener("DOMContentLoaded", () => {
+    if (parseInt(merchReviewDiv.getAttribute("size")) > 0) {
+        merchReviewDiv.style.display = "flex";
+    } else {
+        merchReviewDiv.style.display = "none";
+    }
+
+    // check is item in cart
+    if (isLogin()) {
+        const merchID = document.querySelector(".merch-section").getAttribute("merchID");
+
+        // change button
+        if (document.querySelector(`.cart-list .course-item[productid='${merchID}']`) !== null) {
+            addToCartBtn.innerText = "Go to cart";
+            // go to cart
+            addToCartBtn.addEventListener('click', () => {
+                window.location.href = "/course_hero/cart";
+            });
+        } else {
+            // add to cart
+            addToCartBtn.addEventListener('click',addToCartListener);
+        }
+    }
+});
 
 // add button
 addQtyBtn.addEventListener('click', () => {
@@ -63,8 +89,7 @@ function isLogin() {
     return document.getElementById("isLogin") === null ? false : true;
 }
 
-// add to cart
-addToCartBtn.addEventListener('click', () => {
+function addToCartListener() {
     if (!isLogin()) {
         toast_msg(TOAST_WARNING, "Alert", "Login before add to cart");
         return;
@@ -93,6 +118,11 @@ addToCartBtn.addEventListener('click', () => {
         if (responseData.status === "success") {
             addCartItem(responseData);
             toast_msg(TOAST_SUCCESS, "Success", "Added to cart");
+            addToCartBtn.innerText = "Go to cart";
+             addToCartBtn.removeEventListener('click',addToCartListener);
+             addToCartBtn.addEventListener('click', () => {
+                window.location.href = "/course_hero/cart";
+            });
         } else {
             toast_msg(TOAST_ERROR, "Server Error", `Fail to add to cart`);
         }
@@ -101,7 +131,7 @@ addToCartBtn.addEventListener('click', () => {
     });
 
     console.log("Add to cart:" + merchId);
-});
+}
 
 // add item into cart list
 function addCartItem(data) {
@@ -152,6 +182,8 @@ function addCartItem(data) {
 
         // update price
         cartlistPrice.innerText = (parseFloat(cartlistPrice.innerText) + (data.productPrice * data.quantity)).toFixed(2);
+
+        document.getElementById("stockLvl").innerText = parseInt(document.getElementById("stockLvl").innerText) - data.quantity;
     }
 
     // check list is empty before adding

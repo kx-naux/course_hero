@@ -403,10 +403,9 @@
                     </div>
 
                     <div class="payment-method-input payment-bank flex-col">
-                        <!--<label class="storedDetailLabel"  for="storedBank">
-                            <input type="checkbox" id="storedBank" name="storedBank" value="storedBank">  Bank Name - Acc No.</label>-->
 
-                        <label class="storedDetailLabel"  for="storedBank"><input type="checkbox" id="storedBank" name="storedBank" value="storedBank"> <i class="ri-bank-line"></i> Bank Name - Acc No.</label>
+
+                        <!--<label class="storedDetailLabel"  for="storedBank"><input type="checkbox" id="storedBank" name="storedBank" value="storedBank"> <i class="ri-bank-line"></i> Bank Name - Acc No.</label>-->
 
 
                         <div class="payment-input-div text-input-div required-input-field  flex-col">
@@ -432,7 +431,7 @@
                             </select>
                         </div>
 
-                        <!--<div class="payment-input-div text-input-div  required-input-field flex-col">
+<!--               <div class="payment-input-div text-input-div  required-input-field flex-col">
                             <label for="bankAccNo">Account No.:</label>
 
                             <input type="text" id="bankAccNo" class="" name="bankAccNo" placeholder="Bank account no" maxlength="12" value=""/>
@@ -492,6 +491,7 @@
                             <h2 class="total-row-th">After Items Discount: </h2>
                             <h3 class="total-row-td">RM <%= itemsTotalAfterDiscount %></h3>
                         </div>
+                        <hr class="total-div-small-divider" />
                         <div class="total-row flex-row">
                             <h2 class="total-row-th">Promo Discount: </h2>
                             <h3 class="total-row-td">- RM <%= promoDiscount %></h3>

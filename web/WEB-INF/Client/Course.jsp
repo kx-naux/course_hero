@@ -26,7 +26,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>${companyName} | Course</title>
-        <link rel="icon" type="image/ico" href=${companyIcon}>
+        <link rel="icon" type="image/ico" href="${companyIcon}">
         <link type="text/css" href="./css/style.css" rel="stylesheet" >
         <link type="text/css" href="./css/course.css" rel="stylesheet" >
         <!--<link type="text/css" href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">-->
@@ -325,9 +325,10 @@
                                 base64StringVideoData = java.util.Base64.getEncoder().encodeToString((byte[])courseData.getVideoData());
                                 } 
                             %>
-                            <video controls>
+             <%--               <video controls>
                                 <source src="data:video/mp4;base64,<%= base64StringVideoData %>" onerror="this.src='./video/course/python_course.mp4';" type="video/mp4">
-                            </video>
+                            </video> --%>
+             <img src="./img/course/beginner_excel.jpg" alt="" />
                         </div>
 
                         <div class="sticky-div-bot flex-col">
@@ -338,8 +339,8 @@
 
                             <!--Course Price-->
                             <div class="sticky-div-price flex-row">
-                                <p class="course-price">RM <span><%= courseData.getProductId().getPrice() - courseData.getProductId().getDiscount()%></span></p>                                      
-                                <p class="course-normal-price">RM <span><%= courseData.getProductId().getPrice()%></span></p>
+                                <p class="course-price">RM <span><%= String.format("%.2f",courseData.getProductId().getPrice() - courseData.getProductId().getDiscount() ) %></span></p>                                      
+                                <p class="course-normal-price">RM <span><%= String.format("%.2f",courseData.getProductId().getPrice())%></span></p>
                                 <% double disPercent = (courseData.getProductId().getDiscount())/(courseData.getProductId().getPrice())*100;
                                     if(disPercent > 0){%>
                                     <p class="course-offer"><%= String.format("%.0f", disPercent) %>% off</p>

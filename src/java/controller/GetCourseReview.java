@@ -72,7 +72,6 @@ public class GetCourseReview extends HttpServlet {
         //List<Ratings> ratingsList = getRatings.getResultList();
         //JsonArray reviews = new JsonArray();
         
-        
         //String base64ImageData = "";
                                         
         
