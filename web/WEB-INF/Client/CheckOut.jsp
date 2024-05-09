@@ -274,7 +274,7 @@
                     <h1 class="div-title"><i class="ri-coupon-2-line"></i> Voucher / Promo Code</h1>
 
                     <div class="promo-input-div flex-row">
-                        <input type="text" id="promo" name="promo" placeholder="Enter promo code here" value="" maxlength="9" />
+                        <input type="text" id="promo" name="promo" class="" placeholder="Enter promo code here" value="" maxlength="9" />
                         <input type="button" id="promoApply" value="Apply" />
                     </div>
 
@@ -325,24 +325,24 @@
 
                         <div class="payment-input-div text-input-div required-input-field  flex-col">
                             <label for="cardHolder">Card Holder:</label>
-                            <input type="text"  id="cardHolder" name="cardHolder" placeholder="Holders name" maxlength="45" value=""/>
+                            <input type="text"  id="cardHolder" class="" name="cardHolder" placeholder="Holders name" maxlength="45" value=""/>
                         </div>
 
                         <div class="payment-input-div text-input-div required-input-field  flex-col">
                             <label for="cardNo">Card No.:</label>
-                            <input type="text" id="cardNo"  name="cardNo" placeholder="Enter card number (16 digits)" maxlength="16" value=""/>
+                            <input type="text" id="cardNo"  name="cardNo" class=""  placeholder="Enter card number (16 digits)" maxlength="16" value=""/>
                         </div>
 
                         <div class="payment-card-detail-row flex-row">
 
                             <div class="payment-input-div text-input-div  required-input-field flex-col">
                                 <label for="expDate">Exp Date:</label>
-                                <input type="text" id="expDate"  name="expDate" placeholder="MM/YY" maxlength="5" value=""/>
+                                <input type="text" id="expDate" class=""  name="expDate" placeholder="MM/YY" maxlength="5" value=""/>
                             </div>
 
                             <div class="payment-input-div text-input-div required-input-field  flex-col">
                                 <label for="ccv">CCV:</label>
-                                <input type="text" id="ccv"  name="ccv" placeholder="ccv" maxlength="3" value=""/>
+                                <input type="text" id="ccv" class=""  name="ccv" placeholder="ccv" maxlength="3" value=""/>
                             </div>
 
                         </div>
@@ -356,7 +356,7 @@
 
                         <div class="payment-input-div text-input-div required-input-field  flex-col">
                             <label for="bank">Bank:</label>
-                            <select id="bank" name="bank">
+                            <select id="bank" name="bank" class="" >
                                 <option selected hidden>Select a bank</option>
                                 <option value="mb">May Bank</option>
                                 <option value="hlb">Hong Leong Bank</option>
@@ -368,13 +368,13 @@
 
                         <div class="payment-input-div text-input-div  required-input-field flex-col">
                             <label for="bankAccNo">Account No.:</label>
-                            <input type="text" id="bankAccNo" name="bankAccNo" placeholder="Bank account no" maxlength="12" value=""/>
+                            <input type="text" id="bankAccNo" class=""  name="bankAccNo" placeholder="Bank account no" maxlength="12" value=""/>
                         </div>
 
 
                         <div class="payment-input-div text-input-div flex-col">
                             <label for="bankRemark">Remark:</label>
-                            <input type="text" id="bankRemark" name="bankRemark" placeholder="Enter remark here" maxlength="80" value=""/>
+                            <input type="text" id="bankRemark" class=""  name="bankRemark" placeholder="Enter remark here" maxlength="80" value=""/>
                         </div>
 
 
@@ -386,12 +386,12 @@
 
                         <div class="payment-input-div text-input-div required-input-field flex-col">
                             <label for="tngPhoneNo">Phone No.:</label>
-                            <input type="text" id="tngPhoneNo" name="tngPhoneNo" placeholder="Enter phone no." maxlength="15" value=""/>
+                            <input type="text" id="tngPhoneNo" class=""  name="tngPhoneNo" placeholder="Enter phone no." maxlength="15" value=""/>
                         </div>
 
                         <div class="payment-input-div text-input-div flex-col">
                             <label for="tngRemark">Remark:</label>
-                            <input type="text" id="tngRemark" name="tngRemark" placeholder="Enter remark here" maxlength="80" value=""/>
+                            <input type="text" id="tngRemark" class=""  name="tngRemark" placeholder="Enter remark here" maxlength="80" value=""/>
                         </div>
 
                     </div>

@@ -115,6 +115,11 @@ paymentRadios.forEach(paymentMethod => {
     });
 });
 
+
+document.addEventListener("DOMContentLoaded",()=>{
+    document.querySelector("div.payment-div div.confirma-store-div").style.display = "none";
+});
+
 function showPaymentInputDiv() {
     const paymentRadios = document.querySelectorAll('div.payment-method');
     const paymentInputDiv = document.querySelectorAll('div.payment-method-input');
@@ -282,7 +287,7 @@ function submitCheckoutForm() {
     const addressInvalidMsg = document.querySelector(".ship-div p.invalid-msg");
 
     if (addressRadio.checked) {
-
+        
     }
 
     // payment
@@ -291,7 +296,7 @@ function submitCheckoutForm() {
     form.submit();
 }
 
-// listener for remove invalid class 
+// listener for remove invalid class for address
 const addressDiv = document.querySelector(".check-address");
 if (addressDiv !== null) {
     const inputFields = addressDiv.querySelectorAll("input[type='text']");
@@ -302,3 +307,18 @@ if (addressDiv !== null) {
         });
     });
 }
+
+// listener remove invalid class for promo
+const promoInput = document.getElementById("promo");
+promoInput.addEventListener('blur', () => {
+    promoInput.classList.remove("invalid-input");
+    document.querySelector(".promo-div p.invalid-msg").innerText = "";
+});
+
+const paymentInputs = document.querySelectorAll(".payment-div input[type='text'], .payment-div select");
+paymentInputs.forEach(input => {
+    input.addEventListener('blur', () => {
+        input.classList.remove("invalid-input");
+        document.querySelector(".payment-div p.invalid-msg").innerText = "";
+    });
+});

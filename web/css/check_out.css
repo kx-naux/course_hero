@@ -109,6 +109,7 @@
     margin-bottom: 5px;
 }
 
+input#promo.invalid-input,
 .content-section .content-div .text-input-div input.invalid-input,
 .content-section .content-div .text-input-div select.invalid-input{
     background-color: var(--color-text-error-bg);
