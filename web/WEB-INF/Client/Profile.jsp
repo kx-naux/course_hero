@@ -77,7 +77,7 @@
 
                     <div class="profile-user-div flex-col">
                         <%String base64ImageData = "";
-                            if (userData.getImgData() != null) {
+                            if (userData.getDisplayName()!= null) {
                                 base64ImageData = Base64.getEncoder().encodeToString((byte[]) userData.getImgData());
                             }%>
                         <img src="data:image/jpeg;base64,<%= base64ImageData%>" onerror="this.src='./img/user/default.png';" alt=""  />

@@ -37,6 +37,12 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "OnlineBankingInfo.findByDateAdded", query = "SELECT o FROM OnlineBankingInfo o WHERE o.dateAdded = :dateAdded")})
 public class OnlineBankingInfo implements Serializable {
 
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 30)
+    @Column(name = "BANK_NAME")
+    private String bankName;
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -44,11 +50,6 @@ public class OnlineBankingInfo implements Serializable {
     @Size(min = 1, max = 9)
     @Column(name = "ONLINE_BANKING_ID")
     private String onlineBankingId;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 30)
-    @Column(name = "BANK_NAME")
-    private String bankName;
     @Column(name = "DATE_ADDED")
     @Temporal(TemporalType.DATE)
     private Date dateAdded;
@@ -124,5 +125,5 @@ public class OnlineBankingInfo implements Serializable {
     public String toString() {
         return "JPAEntity.OnlineBankingInfo[ onlineBankingId=" + onlineBankingId + " ]";
     }
-    
+
 }

@@ -1,8 +1,10 @@
 package controller;
 
+import JPAEntity.CartItems;
 import JPAEntity.Users;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.annotation.Resource;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -23,23 +25,43 @@ public class CheckOutReviewPage extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Users userData = Login.checkRmbMeToken(request, em);
-        if (userData != null) {
-            HttpSession session = request.getSession();
-            session.setAttribute("userData", userData);
-            Login.getUserWishlist(request, em, userData);
-            Login.getUserCart(request, em, userData);
-        } else {
-            //Statements
-        }
-        Users userDataSession = (Users) request.getSession().getAttribute("userData");
-        if (userDataSession != null) {
-            Login.getUserWishlist(request, em, userDataSession);
-            Login.getUserCart(request, em, userDataSession);
-        }
-
+        HttpSession session = request.getSession();
+        List<CartItems> checkingOutCartItemList = (List<CartItems>) session.getAttribute("checkingOutCartItemList");
+        if(checkingOutCartItemList == null){
+            ErrorPage.forwardToServerErrorPage(request, response, "Please proceed check out from cart page.");
+        }   
         // Forward the request to Merchandises.jsp
         request.getRequestDispatcher("/WEB-INF/Client/CheckOutReview.jsp").forward(request, response);
+    }
+    
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String formAction = request.getParameter("formAction");
+        HttpSession session = request.getSession();
+        if(formAction.equals("back")){
+            response.sendRedirect("check-out");
+            return;
+        }else if(formAction.equals("confirm")){
+            //get all data first 
+
+            //check which address is used
+            //if new create new billing address object
+            
+            //create shipping object
+            
+            //create new transaction
+            
+            //create new payment
+            
+            //create new order list
+            
+            //check need update payment on user onot
+            
+            //check need upadate billing onot
+            
+            
+            //proceed save to databases
+        }
     }
 
 }

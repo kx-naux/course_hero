@@ -1,8 +1,10 @@
 package controller;
 
+import JPAEntity.BillingAddress;
 import JPAEntity.CartItems;
 import JPAEntity.Courses;
 import JPAEntity.Merchandise;
+import JPAEntity.ShippingMethod;
 import JPAEntity.Users;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
@@ -106,6 +108,64 @@ public class CartPage extends HttpServlet {
                 cartItemList.add(item);
             }
             session.setAttribute("checkingOutCartItemList", cartItemList);
+            
+            //check need shipping onot
+            List<Merchandise> merchandiseList = new ArrayList<Merchandise>();
+            for(CartItems item:cartItemList){
+                Query qry = em.createNamedQuery("Merchandise.findByProductId");
+                qry.setParameter("productId", item.getProductId());
+                if(!qry.getResultList().isEmpty()){
+                    merchandiseList.addAll(qry.getResultList());
+                }
+            }
+            
+            if(!merchandiseList.isEmpty()){
+                //get all shipping method
+                Query query = em.createNamedQuery("ShippingMethod.findAll");
+                List<ShippingMethod> shipMethodList = query.getResultList();
+                session.setAttribute("shipMethodList", shipMethodList);
+                //set the default selected shipping method
+                session.setAttribute("selectedShipping",shipMethodList.get(0));
+            
+                //set default selected address
+                BillingAddress userAddress = ((Users)session.getAttribute("userData")).getAddressId();
+                if (!userAddress.getCity().isEmpty() && !userAddress.getCountry().isEmpty() && !userAddress.getLine1().isEmpty() && !userAddress.getPostalcode().isEmpty() && !userAddress.getStateResides().isEmpty()) {
+                    session.setAttribute("selectedBillingInfo","storedAddress");
+                }else{
+                    session.setAttribute("selectedBillingInfo","newAddress");
+                }
+                session.setAttribute("checkOutNeedShipping",true);
+            }else{
+                session.setAttribute("checkOutNeedShipping",false);
+            }
+            
+            //set default selectedpamentmethod
+            session.setAttribute("selectedPaymentMethod","");
+            
+            //set default checkboxes value
+            session.setAttribute("chooseToUpdateBillAddress",false);
+            session.setAttribute("chooseToUpdateStoredPayment",false);
+            
+            //initialize the session variable
+            double itemsSubtotal = 0;
+            double itemsTotalDiscount = 0;
+            double promoDiscount = 0;
+            double shippingDiscount = 0;
+            double shippingCharges = 0;
+            double paymentTotal = 0;
+            double itemsTotalAfterDiscount = 0;
+            
+            session.setAttribute("itemsSubtotal",itemsSubtotal);
+            session.setAttribute("itemsTotalDiscount",itemsTotalDiscount);
+            session.setAttribute("itemsTotalAfterDiscount",itemsTotalAfterDiscount);
+            session.setAttribute("promoDiscount",promoDiscount);
+            session.setAttribute("shippingDiscount",shippingDiscount);
+            session.setAttribute("shippingCharges",shippingCharges);
+            session.setAttribute("paymentTotal",paymentTotal);
+            
+            session.removeAttribute("errMsg");
+            session.removeAttribute("successMsg");
+            
             response.sendRedirect("check-out");
         }else{
             request.setAttribute("errMsg","No cart items were selected.");

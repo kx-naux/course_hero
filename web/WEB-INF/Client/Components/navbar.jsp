@@ -123,7 +123,7 @@
                         <!-- wish list without items-->
                         <div class="list-empty-div flex-col  <%= isWishlistEmpty ? "active" : ""%>" id="wishlistEmpty">
                             <p>Your wishlist is empty</p>
-                            <a href="<%= webpath.getPageUrl("produsts")%>">Explore courses</a>
+                            <a href="<%= webpath.getPageUrl("products")%>">Explore courses</a>
                         </div>
                     </div>
                 </div>

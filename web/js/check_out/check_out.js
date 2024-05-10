@@ -13,11 +13,12 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // submit form when need refresh
-function submitForm(action) {
+function submitForm(purpose,action) {
     const form = document.getElementById("checkOutForm");
     const formAction = document.getElementById("fromAction");
 
-    formAction.value = action;
+    formAction.value = purpose;
+    form.action = action;
     form.submit();
 }
 
@@ -30,7 +31,7 @@ shippingRadios.forEach(shippingMethod => {
         const radioButton = this.querySelector('input[type="radio"]');
         radioButton.checked = true;
 
-        submitForm("shipping method change");
+        submitForm("shipping method change","cout-ship-meth-chg");
 
     });
 });
@@ -232,11 +233,11 @@ document.getElementById("ccv").addEventListener("input", function (event) {
 });
 
 // bank listener
-document.getElementById("bankAccNo").addEventListener("input", function (event) {
-    const inputText = event.target.value;
-    const digitsOnlyText = inputText.replace(/\D/g, ''); // Replace any non-digit characters with an empty string
-    event.target.value = digitsOnlyText;
-});
+//document.getElementById("bankAccNo").addEventListener("input", function (event) {
+//    const inputText = event.target.value;
+//    const digitsOnlyText = inputText.replace(/\D/g, ''); // Replace any non-digit characters with an empty string
+//    event.target.value = digitsOnlyText;
+//});
 
 // tng e-wallet listener
 document.getElementById("tngPhoneNo").addEventListener("input", function (event) {
@@ -418,20 +419,20 @@ function submitCheckoutForm() {
             return;
         }
 
-        const bankAccNoInput = document.getElementById("bankAccNo");
-        const bankAccNoValue = bankAccNoInput.value;
-        if (bankAccNoValue === "") {
-            bankAccNoInput.focus();
-            payInvalidMsg.innerText = "Please enter account number";
-            bankAccNoInput.classList.add("invalid-input");
-            return;
-        }
-        if (!isValidBankAccountNumber(bankAccNoValue)) {
-            bankAccNoInput.focus();
-            payInvalidMsg.innerText = "Please enter a valid 12-digit bank account number.";
-            bankAccNoInput.classList.add("invalid-input");
-            return;
-        }
+//        const bankAccNoInput = document.getElementById("bankAccNo");
+//        const bankAccNoValue = bankAccNoInput.value;
+//        if (bankAccNoValue === "") {
+//            bankAccNoInput.focus();
+//            payInvalidMsg.innerText = "Please enter account number";
+//            bankAccNoInput.classList.add("invalid-input");
+//            return;
+//        }
+//        if (!isValidBankAccountNumber(bankAccNoValue)) {
+//            bankAccNoInput.focus();
+//            payInvalidMsg.innerText = "Please enter a valid 12-digit bank account number.";
+//            bankAccNoInput.classList.add("invalid-input");
+//            return;
+//        }
     }
 
     const payTngDiv = document.querySelector(".payment-div .payment-tng");
@@ -532,6 +533,20 @@ function isValidCCV(ccv) {
     return true;
 }
 
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Target the button by its ID
+    const button = document.getElementById('promoApply');
+
+    // Add a click event listener to the button
+    button.addEventListener('click', function() {
+        // Call the function when the button is clicked
+        submitForm("checkout-apply-promo","check-out-apply-promo");
+    });
+});
+
+
 function isValidBankAccountNumber(accountNo) {
     // Remove any whitespace from the account number
     accountNo = accountNo.replace(/\s/g, '');
@@ -582,3 +597,4 @@ paymentInputs.forEach(input => {
         document.querySelector(".payment-div p.invalid-msg").innerText = "";
     });
 });
+

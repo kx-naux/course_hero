@@ -138,6 +138,7 @@ public class MerchCategory implements Serializable {
 
 
 
+
     public String getDescription() {
         return description;
     }

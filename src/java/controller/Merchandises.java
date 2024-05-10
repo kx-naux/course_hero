@@ -1,6 +1,5 @@
 package controller;
 
-
 import JPAEntity.MerchCategory;
 import JPAEntity.Product;
 import JPAEntity.Merchandise;
@@ -22,28 +21,23 @@ import javax.servlet.http.HttpSession;
 
 @WebServlet(name = "Merchandises", urlPatterns = {"/merchandises"})
 public class Merchandises extends HttpServlet {
-    @PersistenceContext EntityManager em;
+
+    @PersistenceContext
+    private EntityManager em;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-                Users userDataSession = (Users) request.getSession().getAttribute("userData");
         Users userData = Login.checkRmbMeToken(request, em);
         if (userData != null) {
             HttpSession session = request.getSession();
             session.setAttribute("userData", userData);
-            Login.getUserWishlist(request, em, userData);
-            Login.getUserCart(request, em, userData);
-        }
-        if (userDataSession != null) {
-            Login.getUserWishlist(request, em, userDataSession);
-            Login.getUserCart(request, em, userDataSession);
         }
         
             // Retrieve all merchandise categories
             List<MerchCategory> merchCategories = em.createNamedQuery("MerchCategory.findAll").getResultList();
-
+            List<Merchandise> merchandiseList = em.createNamedQuery("Merchandise.findAll").getResultList();
             // Map to store merchandise items for each category
             Map<String, List<Merchandise>> merchItemsByCategory = new HashMap<>();
 
@@ -59,7 +53,9 @@ public class Merchandises extends HttpServlet {
 
             // Set the map as a request attribute to make it available in the JSP
             request.setAttribute("merchItemsByCategory", merchItemsByCategory);
-             
+            request.setAttribute("merchandiseList", merchandiseList);
+            request.setAttribute("merchCategories", merchCategories);
+
 //              List<String> merchCatIds = new ArrayList<>();
 //                merchCatIds.add("MC0000001");
 //                merchCatIds.add("MC0000002");
@@ -79,7 +75,6 @@ public class Merchandises extends HttpServlet {
                 
 
        
-
         request.getRequestDispatcher("/WEB-INF/Client/Merchandises.jsp").forward(request, response);
     }
 }

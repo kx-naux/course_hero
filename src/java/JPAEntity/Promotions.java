@@ -35,6 +35,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Promotions.findByPromotionId", query = "SELECT p FROM Promotions p WHERE p.promotionId = :promotionId"),
     @NamedQuery(name = "Promotions.findByStartTime", query = "SELECT p FROM Promotions p WHERE p.startTime = :startTime"),
     @NamedQuery(name = "Promotions.findByEndTime", query = "SELECT p FROM Promotions p WHERE p.endTime = :endTime"),
+    @NamedQuery(name = "Promotions.findByPromoCode", query = "SELECT p FROM Promotions p WHERE p.promoCode = :promoCode"),
     @NamedQuery(name = "Promotions.findByPromoType", query = "SELECT p FROM Promotions p WHERE p.promoType = :promoType"),
     @NamedQuery(name = "Promotions.findByAmount", query = "SELECT p FROM Promotions p WHERE p.amount = :amount"),
     @NamedQuery(name = "Promotions.findByMinReq", query = "SELECT p FROM Promotions p WHERE p.minReq = :minReq"),
@@ -43,7 +44,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Promotions.findByGeographicRestiriction", query = "SELECT p FROM Promotions p WHERE p.geographicRestiriction = :geographicRestiriction"),
     @NamedQuery(name = "Promotions.countAll", query = "SELECT COUNT(p) FROM Promotions p"),
     @NamedQuery(name = "Promotions.findAllByActive", query = "SELECT p FROM Promotions p WHERE p.status = :status"),
-    @NamedQuery(name = "Promotions.findAllSortByEndTimeAsc", query = "SELECT p FROM Promotions p ORDER BY p.endTime ASC")
+    @NamedQuery(name = "Promotions.findAllSortByEndTimeAsc", query = "SELECT p FROM Promotions p ORDER BY p.endTime ASC"),
+    @NamedQuery(name = "Promotions.findAllSortByEndTimeAscActive", query = "SELECT p FROM Promotions p WHERE p.status = :active ORDER BY p.endTime ASC"),
 })
 public class Promotions implements Serializable {
 
@@ -290,8 +292,15 @@ public class Promotions implements Serializable {
     public void setPromoDescription(String promoDescription) {
         this.promoDescription = promoDescription;
     }
+    public String getEndDateStr(){
+        String dateFormatPattern = "dd-MM-yyyy hh:mm a z";  // Pattern for date format "31-12-2023"
+        
+        // Create a SimpleDateFormat object with the specified pattern
+        SimpleDateFormat dateFormat = new SimpleDateFormat(dateFormatPattern);
+        return dateFormat.format(this.endTime);
+    }
 
-
+   
 
     public double getAmount() {
         return amount;
@@ -301,6 +310,7 @@ public class Promotions implements Serializable {
         this.amount = amount;
     }
 
+    
 
     public String getStatus() {
         return status;
@@ -309,6 +319,8 @@ public class Promotions implements Serializable {
     public void setStatus(String status) {
         this.status = status;
     }
+
+   
 
    
     

@@ -169,6 +169,14 @@
         <servlet-class>controller.CheckOutReviewPage</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>CheckOutApplyPromo</servlet-name>
+        <servlet-class>controller.CheckOutApplyPromo</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CheckoutShippingMethodChange</servlet-name>
+        <servlet-class>controller.CheckoutShippingMethodChange</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>AdminManageCustomerPage</servlet-name>
         <servlet-class>controller.AdminManageCustomerPage</servlet-class>
     </servlet>
@@ -328,6 +336,15 @@
         <servlet-name>CheckOutReviewPage</servlet-name>
         <url-pattern>/check-out-review</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+
+        <servlet-name>CheckOutApplyPromo</servlet-name>
+        <url-pattern>/check-out-apply-promo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CheckoutShippingMethodChange</servlet-name>
+        <url-pattern>/cout-ship-meth-chg</url-pattern>
+  </servlet-mapping>
     <servlet-mapping>
         <servlet-name>AdminManageCustomerPage</servlet-name>
         <url-pattern>/AdminManageCustomerPage</url-pattern>

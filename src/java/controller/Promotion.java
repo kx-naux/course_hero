@@ -55,7 +55,8 @@ public class Promotion extends HttpServlet {
 
         int offset = (reqPage - 1) * maxDataInPage;
 
-        Query query = em.createNamedQuery("Promotions.findAllSortByEndTimeAsc");
+        Query query = em.createNamedQuery("Promotions.findAllSortByEndTimeAscActive");
+        query.setParameter("active", "Active");
         query.setFirstResult(offset);
         query.setMaxResults(maxDataInPage);
         List<Promotions> promotions = query.getResultList();

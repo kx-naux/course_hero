@@ -186,4 +186,5 @@ public class Merchandise implements Serializable {
         return "JPAEntity.Merchandise[ merchId=" + merchId + " ]";
     }
 
+
 }

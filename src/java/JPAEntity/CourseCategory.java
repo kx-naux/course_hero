@@ -184,5 +184,6 @@ public class CourseCategory implements Serializable {
         this.description = description;
     }
 
+
     
 }
