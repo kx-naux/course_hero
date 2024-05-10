@@ -45,33 +45,49 @@ public class AdminAddStaffPage extends HttpServlet {
         HttpSession session = request.getSession();
 
         // validation check
-        validateData(request, response);
+        String username = request.getParameter("username");
+        String name = request.getParameter("name");
+        String email = request.getParameter("email");
+        String defaultPassword = "coursehero";
 
-        request.getRequestDispatcher("/WEB-INF/Admin/AdminAddStaff.jsp").forward(request, response);
-    }
-
-    private void validateData(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // get all of the data first
-        LoginFormData formData = getFormData(request, response);
-        
-        HttpSession session = request.getSession();
-
-        session.setAttribute("signUpFormDetails", formData);
-
-        boolean duplicatedUsername = checkForDuplicatedUsername(formData.getUsername());
-        boolean duplicatedEmail = checkForDuplicatedEmail(formData.getEmail());
-        if (duplicatedUsername && duplicatedEmail) {
-            request.setAttribute("signUpFormDetails", formData);
-            forwardAndShowErrorOnSignUpPage(request, response, "Email and Username already exists, please use another.");
-        } else if (duplicatedEmail) {
-            request.setAttribute("signUpFormDetails", formData);
-            forwardAndShowErrorOnSignUpPage(request, response, "Email already exists, please use another.");
-        } else if (duplicatedUsername) {
-            request.setAttribute("signUpFormDetails", formData);
-            forwardAndShowErrorOnSignUpPage(request, response, "Staff ID already exist, please use another username");
+        //create new 
+        Accounts newAcc = new Accounts(username, email);
+        try {
+            newAcc.setHashedPassword(defaultPassword);
+        } catch (NoSuchAlgorithmException ex) {
+            ErrorPage.forwardToServerErrorPage(request, response, "Server Passoword Hashing Error. Please Try Again Later");
         }
 
-        processDataForDatabaseAndSaveIt(request, response);
+        //create new billing address obj
+        BillingAddress newBillAddress = new BillingAddress("", "", "", "", "");
+        newBillAddress.setLine2("");
+
+        // create new user
+        Users newUser = new Users(name, new Date(), "Staff", new Date(), "-", newAcc, newBillAddress);
+
+        // set new id
+        TablesRecordCounter accountCounter = em.find(TablesRecordCounter.class, "ACCOUNTS");
+        TablesRecordCounter billAddCounter = em.find(TablesRecordCounter.class, "BILLING_ADDRESS");
+        TablesRecordCounter userCounter = em.find(TablesRecordCounter.class, "USERS");
+        //set id
+        newAcc.setAccountId(accountCounter.getCounter() + 1);
+        newBillAddress.setAddressId(billAddCounter.getCounter() + 1);
+        newUser.setUserId(userCounter.getCounter() + 1);
+        
+        accountCounter.counterIncrementByOne();
+        billAddCounter.counterIncrementByOne();
+        userCounter.counterIncrementByOne();
+
+        List<TablesRecordCounter> recordsCounterList = new ArrayList<TablesRecordCounter>();
+        recordsCounterList.add(accountCounter);
+        recordsCounterList.add(billAddCounter);
+        recordsCounterList.add(userCounter);
+
+        //persist the records
+        saveDataToDatabases(request, response, newAcc, newBillAddress, newUser, recordsCounterList);
+
+        request.setAttribute("successMsg", "Staff ID: " + newAcc.getUsername());
+        request.getRequestDispatcher("/WEB-INF/Admin/AdminAddStaff.jsp").forward(request, response);
     }
 
     private boolean checkForDuplicatedEmail(String email) {
@@ -92,94 +108,6 @@ public class AdminAddStaffPage extends HttpServlet {
         } else {
             return true;
         }
-    }
-
-    private void forwardAndShowErrorOnSignUpPage(HttpServletRequest request, HttpServletResponse response, String errMsg)
-            throws ServletException, IOException {
-        request.setAttribute("errorMsg", errMsg);
-
-        request.getRequestDispatcher("/WEB-INF/Client/AdminAddStaff.jsp").forward(request, response);
-    }
-
-    private LoginFormData getFormData(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        java.text.SimpleDateFormat dateFormat = new java.text.SimpleDateFormat("yyyy-MM-dd");
-
-        // get all of the data first
-        LoginFormData formData = new LoginFormData();
-
-        formData.setEmail(request.getParameter("email"));
-        formData.setUsername(request.getParameter("username"));
-        formData.setDisplayName(request.getParameter("name"));
-        formData.setGender("");
-        formData.setAddressLine1("");
-        formData.setAddressLine2("");
-        formData.setCity("");
-        formData.setPostalCode("");
-        formData.setState("");
-        formData.setCountry("");
-        formData.setPassword("coursehero");
-
-        String dobStr = "2000-01-01";
-        formData.setDobStr(dobStr);
-
-        //get Date
-        Date dob = null;
-        if (dobStr != null) {
-            try {
-                dob = dateFormat.parse(dobStr);
-            } catch (java.text.ParseException e) {
-                ErrorPage.forwardToServerErrorPage(request, response, "Server Error - Pass Date data type error. Please Try Again Later");
-            }
-        }
-        formData.setDob(dob);
-
-        return formData;
-    }
-
-    private void processDataForDatabaseAndSaveIt(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //create new accounts objct into databases
-        HttpSession session = request.getSession();
-        LoginFormData formData = (LoginFormData) session.getAttribute("signUpFormDetails");
-        String password = "coursehero";
-        session.removeAttribute("SignUpPassword");
-        Accounts newAcc = new Accounts();
-        try {
-            newAcc = new Accounts(formData.getUsername(), formData.getEmail());
-            newAcc.setHashedPassword(password);
-
-        } catch (NoSuchAlgorithmException ex) {
-            ErrorPage.forwardToServerErrorPage(request, response, "Server Passoword Hashing Error. Please Try Again Later");
-        }
-
-        //create new billing address obj
-        BillingAddress newBillAddress = new BillingAddress(formData.getAddressLine1(), formData.getCity(), formData.getState(), formData.getPostalCode(), formData.getCountry());
-        newBillAddress.setLine2(formData.getAddressLine2());
-
-        // create new user object
-        Users newUser = new Users(formData.getDisplayName(), formData.getDob(), "Customer", new Date(), formData.getGender(), newAcc, newBillAddress);
-
-        //set id for each of the entity so that they can be stored in databases
-        //get all of the current counts
-        TablesRecordCounter accountCounter = em.find(TablesRecordCounter.class, "ACCOUNTS");
-        TablesRecordCounter billAddCounter = em.find(TablesRecordCounter.class, "BILLING_ADDRESS");
-        TablesRecordCounter userCounter = em.find(TablesRecordCounter.class, "USERS");
-        //set id
-        newAcc.setAccountId(accountCounter.getCounter() + 1);
-        newBillAddress.setAddressId(billAddCounter.getCounter() + 1);
-        newUser.setUserId(userCounter.getCounter() + 1);
-
-        //add one to each counter
-        accountCounter.counterIncrementByOne();
-        billAddCounter.counterIncrementByOne();
-        userCounter.counterIncrementByOne();
-
-        List<TablesRecordCounter> recordsCounterList = new ArrayList<TablesRecordCounter>();
-        recordsCounterList.add(accountCounter);
-        recordsCounterList.add(billAddCounter);
-        recordsCounterList.add(userCounter);
-
-        //persist the records
-        saveDataToDatabases(request, response, newAcc, newBillAddress, newUser, recordsCounterList);
     }
 
     private void saveDataToDatabases(HttpServletRequest request, HttpServletResponse response, Accounts newAcc, BillingAddress newBillAddress, Users newUser, List<TablesRecordCounter> tablesRecordCounterList) throws ServletException, IOException {
@@ -208,4 +136,5 @@ public class AdminAddStaffPage extends HttpServlet {
             ErrorPage.forwardToServerErrorPage(request, response, "Database Server Error. Please Try Again Later");
         }
     }
+
 }
