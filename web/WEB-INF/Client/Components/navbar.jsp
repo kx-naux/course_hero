@@ -1,3 +1,4 @@
+<%@page import="JPAEntity.Users"%>
 <%@page import="JPAEntity.Keyword"%>
 <%@page import="JPAEntity.Merchandise"%>
 <%@page import="java.util.ArrayList"%>
@@ -211,6 +212,9 @@
                                 <li><a href="<%= webpath.getPageUrl("wishlist")%>"><i class="ri-heart-line"></i> Wishlist</a></li>
                                 <li><a href="<%= webpath.getPageUrl("purchanse history")%>"><i class="ri-shopping-bag-line"></i> Purchase history</a></li>
                                 <li><a href="<%= webpath.getPageUrl("help")%>"><i class="ri-question-line"></i> Help</a></li>
+                                    <% if (userData.getUsertype().equals("Manager") || userData.getUsertype().equals("Staff")) { %>
+                                <li><a href="<%= webpath.getPageUrl("dashboard")%>"><i class="ri-tools-line"></i> Admin</a></li>
+                                    <% } %>
                             </ul>
                         </div>
 
