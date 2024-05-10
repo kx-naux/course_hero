@@ -82,9 +82,9 @@
 
                                         <p class="course-author"><%= authorsStr%></p>
                                         <div class="course-review flex-row">
-                                            <p class="rating-digit"><%= course.getProductId().getAvgRating()%></p>
+                                            <p class="rating-digit"><%= String.format("%.2f", course.getProductId().getAvgRating())%></p>
                                             <i class="ri-star-fill"></i>
-                                            <p class="rating-number-field">(<span class="raing-number">2303</span>)</p>
+                                            <p class="rating-number-field">(<span class="raing-number"><%= course.getProductId().getRateWeightage() %></span>)</p>
                                         </div>
                                         <div class="course-label flex-row">
                                             <p><%= course.getLengthHour()%> Hour(s)</p>
