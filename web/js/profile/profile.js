@@ -43,6 +43,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if (successMsg !== null && successMsg !== "") {
         toast_msg(TOAST_SUCCESS, "Sucessful", successMsg);
     }
+    
+    // show corresponding page to user base on hidden value
+    var toastErrMsg = document.querySelector("input#toastErrMsg").value;
+    if (toastErrMsg !== null && toastErrMsg !== "") {
+        toast_msg(TOAST_ERROR, "Error", toastErrMsg);
+    }
 
     // show success msg base on the hidden value
     var n = document.querySelector("input#profilePage").value;

@@ -11,6 +11,7 @@
         pageNumber = "1";
     }%>
 <% String errMsg = (String) request.getAttribute("errMsg"); %>
+<% String toastErrMsg = (String) request.getAttribute("toastErrMsg"); %>
 <% String emailErrMsg = (String) request.getAttribute("emailErrMsg"); %>
 <% String deleteAccErrMsg = (String) request.getAttribute("deleteAccErrMsg"); %>
 <% String passErrMsg = (String) request.getAttribute("passErrMsg"); %>
@@ -66,7 +67,13 @@
         <% if (successMsg == null) { %>
         <input type="text" id="succssMsg" value="" hidden />
         <%} else {%>
-        <input type="text" id="succssMsg" value="<%= successMsg%>" hidden />
+        <input type="text" id="succssMsg" value="<%= successMsg %>" hidden />
+        <%}%>
+        
+        <% if (toastErrMsg == null) { %>
+        <input type="text" id="toastErrMsg" value="" hidden />
+        <%} else {%>
+        <input type="text" id="toastErrMsg" value="<%= toastErrMsg %>" hidden />
         <%}%>
 
 
@@ -77,7 +84,7 @@
 
                     <div class="profile-user-div flex-col">
                         <%String base64ImageData = "";
-                            if (userData.getDisplayName()!= null) {
+                            if (userData.getImgData()!= null) {
                                 base64ImageData = Base64.getEncoder().encodeToString((byte[]) userData.getImgData());
                             }%>
                         <img src="data:image/jpeg;base64,<%= base64ImageData%>" onerror="this.src='./img/user/default.png';" alt=""  />
@@ -89,7 +96,7 @@
                         <li><a href="<%= webpath.getPageUrl("profile address")%>">Address</a></li>
                         <li><a href="<%= webpath.getPageUrl("profile photo")%>">Profile Photo</a></li>
                         <li><a href="<%= webpath.getPageUrl("profile security")%>">Account Security</a></li>
-                        <li><a href="<%= webpath.getPageUrl("profile close")%>">Close Account</a></li>
+                        <li <%= userData.getUsertype().equals("Manager")||userData.getUsertype().equals("Staff")?"hidden":"" %> ><a href="<%= webpath.getPageUrl("profile close")%>">Close Account</a></li>
                     </ul>
 
                 </div>
