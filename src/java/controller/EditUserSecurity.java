@@ -159,9 +159,6 @@ public class EditUserSecurity extends HttpServlet {
             Date otpExpTime = (Date) session.getAttribute("changeUserDataOtpExpTime");
             String otpInput = request.getParameter("otp");
             boolean isOtpExpired = false;
-            if(otpExpTime.compareTo(new Date())<0){
-                isOtpExpired = true;
-            }
             
             if(otp.equals(otpInput) && !isOtpExpired){
                 if(otpForWhichForm.equals("ChangeEmail")){

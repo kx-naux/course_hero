@@ -1,4 +1,4 @@
-<%@page import="java.util.ArrayList"%>
+    <%@page import="java.util.ArrayList"%>
 <%@page import="JPAEntity.MerchCategory"%>
 <%@page import="JPAEntity.Merchandise"%>
 <%@ page contentType="text/html" pageEncoding="UTF-8"%>

@@ -96,7 +96,7 @@
                     <div class="forget-p forget-p5 flex-col">
                         <div class="forget-view-div  flex-col">
                             <h1 class="confirmation-title">OTP Verification</h1>
-                            <p class="confirmation-sub-title">Code is sent to example@email.com, input the code received, and verify to complete the process.</p>
+                            <p class="confirmation-sub-title">Code is sent to inputted email, input the code received, and verify to complete the process.</p>
                         </div>
 
                         <div class="otp-field-div flex-row">

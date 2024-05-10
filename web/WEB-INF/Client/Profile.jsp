@@ -266,8 +266,6 @@
                                     <label>Image Preview:</label>
                                     <div class="image-preview-div flex-col">
                                         <img id="profilePreview" src="data:image/jpeg;base64,<%= base64ImageData%>" alt=""  onerror="this.src='./img/user/default.png';"/>
-
-
                                     </div>
                                 </div>
 
@@ -372,7 +370,7 @@
                             <div class="profile-right-page-content flex-col">
                                 <div class="sign-up-view-div  flex-col">
                                     <h1 class="confirmation-title">OTP Verification</h1>
-                                    <p class="confirmation-sub-title">Code is sent to example@email.com, input the code received, and verify to complete the process.</p>
+                                    <p class="confirmation-sub-title">Code is sent to your email, input the code received, and verify to complete the process.</p>
                                 </div>
 
                                 <div class="otp-field-div flex-row">

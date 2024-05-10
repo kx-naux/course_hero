@@ -64,7 +64,7 @@
                             <div class="course-product" courseID="<%= course.getCourseId()%>" onclick="redirectToProductPage(this)">
                                 <div class="course-product-card">
                                     <div class="product-card-top">
-                                        <img src="./img/course/beginner_excel.jpg" alt="">
+                                        <img src="<%= course.getProductId().getImagePath() %>"  onerror="this.src='./img/course/beginner_excel.jpg'" alt="">
                                         <div class="action-btn-field flex-row">
                                             <button class="cart-Btn" status="0" onclick="cartButtonClick(event)"><i class="ri-shopping-cart-line"></i></button>
                                             <button class="wish-Btn" status="0" onclick="likeButtonClick(event)"><i class="ri-heart-line"></i></button>
