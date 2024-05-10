@@ -199,6 +199,8 @@
     <servlet>
         <servlet-name>SearchResultPage</servlet-name>
         <servlet-class>controller.SearchResultPage</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>AdminDashboardPage</servlet-name>
         <servlet-class>controller.AdminDashboardPage</servlet-class>
     </servlet>
@@ -362,6 +364,8 @@
     <servlet-mapping>
         <servlet-name>SearchResultPage</servlet-name>
         <url-pattern>/search</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>AdminDashboardPage</servlet-name>
         <url-pattern>/AdminDashboardPage</url-pattern>
     </servlet-mapping>
