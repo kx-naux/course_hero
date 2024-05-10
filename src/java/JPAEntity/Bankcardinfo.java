@@ -87,6 +87,16 @@ public class Bankcardinfo implements Serializable {
         this.expiryDate = expiryDate;
         this.cvv = cvv;
     }
+    
+    public Bankcardinfo(String cardtype, String cardHolderName, String cardNo, String expiryDate, String cvv, Users userId) {
+        this.cardinfoid = cardinfoid;
+        this.cardtype = cardtype;
+        this.cardHolderName = cardHolderName;
+        this.cardNo = cardNo;
+        this.expiryDate = expiryDate;
+        this.cvv = cvv;
+        this.userId = userId;
+    }
 
     public String getCardinfoid() {
         return cardinfoid;

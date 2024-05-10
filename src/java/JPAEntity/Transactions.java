@@ -119,6 +119,17 @@ public class Transactions implements Serializable {
         this.status = status;
         this.timeAdded = timeAdded;
     }
+    
+    public Transactions(double subtotal, double promoAmount, double tax, String transactionType, double transactionFee, double total, String status, Date timeAdded) {
+        this.subtotal = subtotal;
+        this.promoAmount = promoAmount;
+        this.tax = tax;
+        this.transactionType = transactionType;
+        this.transactionFee = transactionFee;
+        this.total = total;
+        this.status = status;
+        this.timeAdded = timeAdded;
+    }
 
     public String getTransactionId() {
         return transactionId;
@@ -128,7 +139,7 @@ public class Transactions implements Serializable {
         this.transactionId = transactionId;
     }
     
-    public void setRefundId(long count) {
+    public void setTransactionId(long count) {
         this.transactionId = String.format("TR%07d", count);
     }
 

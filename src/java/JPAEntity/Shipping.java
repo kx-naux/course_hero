@@ -99,6 +99,15 @@ public class Shipping implements Serializable {
         this.dimenstionCmHxwxl = dimenstionCmHxwxl;
         this.shippingNotes = shippingNotes;
     }
+    
+    public Shipping(Date shippingDate, Date expectedDeliveryDate, double shippingCost, double ttlWeightKg, String dimenstionCmHxwxl, String shippingNotes) {
+        this.shippingDate = shippingDate;
+        this.expectedDeliveryDate = expectedDeliveryDate;
+        this.shippingCost = shippingCost;
+        this.ttlWeightKg = ttlWeightKg;
+        this.dimenstionCmHxwxl = dimenstionCmHxwxl;
+        this.shippingNotes = shippingNotes;
+    }
 
     public String getShippingId() {
         return shippingId;

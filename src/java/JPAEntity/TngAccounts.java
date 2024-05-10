@@ -59,6 +59,11 @@ public class TngAccounts implements Serializable {
         this.tngId = tngId;
         this.phoneno = phoneno;
     }
+    
+    public TngAccounts(Users userId, String phoneno) {
+        this.userId = userId;
+        this.phoneno = phoneno;
+    }
 
     public String getTngId() {
         return tngId;
