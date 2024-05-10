@@ -329,7 +329,7 @@
                     </div>
 
                     <!--after promo apply show info here-->
-                    <div class="promo-detail flex-col">
+                    <div class="promo-detail flex-col" <%= promoApplied.getEndTime() == null ? "style='display: none;'":""%> >
                         <p class="promo-name"><%= promoApplied.getEndTime() == null ? "":promoApplied.getPromotionName()%></p>
                         <p class="promo-desc"><%= promoApplied.getEndTime() == null ? "":promoApplied.getPromoDescription()%></p>
                         <p class="promo-end"><i class="ri-timer-line"></i><%= promoApplied.getEndTime() == null ? "":"Ends at"+promoApplied.getEndDateStr()%></p>
