@@ -105,15 +105,15 @@
                         </div>
                     </div>
                     <div class="add-items select"> 
-                        <div class="update-container">
+                        <div class="update-container">  
                             <label>Publish Status</label>
                             <div class="input-container radio">
                                 <div class="input-radio">
-                                    <input type="radio" name="status" id="active" required checked/>
+                                    <input type="radio" name="status" id="active" value="active" required checked/>
                                     <label for="active">Active</label>
                                 </div>
                                 <div class="input-radio">
-                                    <input type="radio" name="status" id="inactive" required>
+                                    <input type="radio" name="status" id="inactive" value="inactive" required>
                                     <label for="inactive">Inactive</label>
                                 </div>
                             </div>
@@ -128,13 +128,13 @@
                             <label>Merch Category</label>
                             <div class="input-container">
                                 <select id="merchCategory" name="merchCategory">
-                                    <option value="-1">Merch Category</option>
+<!--                                    <option value="">Merch Category</option>-->
                                     <%
                                         // Iterate through each merchandise in the original list
                                         for (int i = 0; i < merchandiseCatList.size(); i++) {
                                             String merchCatName = merchandiseCatList.get(i).getCategoryName();
                                     %>
-                                    <option value="<%= merchCatName %>"><%= merchCatName %></option>
+                                    <option required value="<%= merchandiseCatList.get(i).getMerchcatId() %>"><%= merchCatName %></option>
                                     <%}%>
                                 </select>
                             </div>

@@ -39,24 +39,6 @@ checkedAllBoxHead.onclick = function () {
     }
 };
 
-//check all Boxes Foot
-/*checkedAllBoxFoot.onclick = function () {
-    if (checkedAllBoxFoot.checked) {
-        checkBoxes.forEach(checkBox => {
-            checkBox.checked = true;
-        });
-        addActiveClassToRow();
-        checkedAllBoxHead.checked = true;
-    } else {
-        checkBoxes.forEach(checkBox => {
-            checkBox.checked = false;
-        });
-        removeActiveClassToRow();
-        checkedAllBoxHead.checked = false;
-    }
-};*/
-
-
 
 for (let i = 0; i < checkBoxes.length; i++) {
   checkBoxes[i].onclick = function(){
@@ -94,15 +76,18 @@ for(var i = 0; i < editBtns.length; i++){
     };
 }
 
+const form = document.getElementById("deleteForm");
+
 for(var i = 0; i < editCancelBtns.length; i++){
     editCancelBtns[i].setAttribute("editIndex", i.toString());
     editCancelBtns[i].onclick = function (e) {
-        e.preventDefault();
+        if(form != null){form.submit();}
         let index = e.target.getAttribute("editIndex");
         tableRows[index].classList.toggle("edit-status");
     };
 }
 
+/*
 // Delete Btn Confirmation for Table
 let deleteBtns = document.querySelectorAll(".custom-table tbody tr .row-actions-delete");
 
@@ -127,4 +112,5 @@ for(var i = 0; i < deleteBtns.length; i++){
             }
         });
     };
-}
+}S
+ */

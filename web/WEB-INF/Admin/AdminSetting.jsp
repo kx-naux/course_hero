@@ -23,15 +23,8 @@
                     <div class="top">
                         <!-- include dark theme toggler -->
                         <%@ include file="./Components/dark-theme-toggler.jsp" %>
-                        <div class="profile">
-                            <div class="info">
-                                <p>Hey, <b>Snijders</b></p>
-                                <small>Admin</small>
-                            </div>
-                            <div class="profile-photo">
-                                <img src="../img/admin/default_profile.png" alt="alt"/>
-                            </div>
-                        </div>
+                        <!<!-- include profile  -->
+                        <%@ include file="./Components/global-profile.jsp" %>
                     </div>
                 </div>
                 <div class="horizontal-line"></div>
