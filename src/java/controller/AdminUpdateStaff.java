@@ -12,20 +12,22 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-@WebServlet(name = "Admin Manage Staff", urlPatterns = {"/admin/manage-staff"})
-public class AdminManageStaffPage extends HttpServlet {
+@WebServlet(name = "Admin Update Staff", urlPatterns = {"/admin/update-staff"})
+public class AdminUpdateStaff extends HttpServlet {
 
     @PersistenceContext
     EntityManager em;
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        String userId = request.getParameter("userId");
+        System.out.println(userId);
 
         List<Users> staffs;
         Query qry = em.createNamedQuery("Users.findAllStaff");
         staffs = qry.getResultList();
-        
+
         request.setAttribute("staffSize", staffs.size());
         request.setAttribute("staffs", staffs);
 
