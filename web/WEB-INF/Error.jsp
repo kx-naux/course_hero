@@ -15,7 +15,7 @@
     </head>
     <body>
         <!--logo-->
-        <a href="<%= webpath.getPageUrl("home")%>"><img class="nav-logo" src="./img/Logo.png"  alt="Course Hero" /></a>
+        <a href="<%= webpath.getPageUrl("home")%>"><img class="nav-logo" src="./img/Logo.png" onerror="" alt="Course Hero" /></a>
         <div class="error-content-div flex-row">
             <!--error message-->
             <div class="error-content-left flex-col">

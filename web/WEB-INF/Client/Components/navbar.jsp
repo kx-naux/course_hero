@@ -213,7 +213,7 @@
                                 <li><a href="<%= webpath.getPageUrl("purchanse history")%>"><i class="ri-shopping-bag-line"></i> Purchase history</a></li>
                                 <li><a href="<%= webpath.getPageUrl("help")%>"><i class="ri-question-line"></i> Help</a></li>
                                     <% if (userData.getUsertype().equals("Manager") || userData.getUsertype().equals("Staff")) { %>
-                                <li><a href="<%= webpath.getPageUrl("dashboard")%>"><i class="ri-tools-line"></i> Admin</a></li>
+                                <li><a href="<%= webpath.getPageUrl("manage-customer")%>"><i class="ri-tools-line"></i> Admin</a></li>
                                     <% } %>
                             </ul>
                         </div>

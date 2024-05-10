@@ -179,32 +179,32 @@
                                 </td>
                                 <!---------------------- Edit Item ----------------------------------->
                                 <td class="edit-items-container">
-                                    <form method="post" action="course_hero/admin/update-staff" />
+                                    <form method="post" action="/course_hero/admin/update-staff" />
                                     <h2>Edit Item</h2>
                                     <div class="edit-items"> 
                                         <input type="text" name="userId" value="<%= staff.getUserId()%>" hidden />
                                         <div class="update-container">
                                             <label>Username</label>
                                             <div class="input-container">
-                                                <input type="text" name="username" placeholder="username" value="<%= staff.getAccountId().getUsername()%>">
+                                                <input type="text" name="username" placeholder="username" value="<%= staff.getAccountId().getUsername()%>" required>
                                             </div>
                                         </div>
                                         <div class="update-container">
                                             <label>Name</label>
                                             <div class="input-container">
-                                                <input type="text" name="name" placeholder="name" value="<%= staff.getDisplayName()%>" >
+                                                <input type="text" name="name" placeholder="name" value="<%= staff.getDisplayName()%>" required>
                                             </div>
                                         </div>
                                         <div class="update-container">
                                             <label>Role</label>
                                             <div class="input-container">
-                                                <input type="text" name="role" placeholder="role" value="<%= staff.getUsertype()%>" >
+                                                <input type="text" name="role" placeholder="role" value="<%= staff.getUsertype()%>" required>
                                             </div>
                                         </div>
                                         <div class="update-container">
                                             <label>Email</label>
                                             <div class="input-container">
-                                                <input type="email" name="email" placeholder="email" value="<%= staff.getAccountId().getEmail()%>" >
+                                                <input type="email" name="email" placeholder="email" value="<%= staff.getAccountId().getEmail()%>" required>
                                             </div>
                                         </div>
                                     </div>

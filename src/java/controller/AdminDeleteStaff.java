@@ -28,9 +28,11 @@ public class AdminDeleteStaff extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String userId = request.getParameter("id");
-        System.out.println(userId);
-//        Users selectedUser = em.find(JPAEntity.Users, userId);
+        Users selectedUser = em.find(Users.class , userId);
         
+        deleteDataInDatabase(selectedUser,request,response);
+        
+        request.setAttribute("successMsg", "Record Deleted");
 
         List<Users> staffs;
         Query qry = em.createNamedQuery("Users.findAllStaff");
