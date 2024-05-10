@@ -39,6 +39,7 @@ public class CheckOutPage extends HttpServlet {
         if(checkingOutCartItemList == null){
             ErrorPage.forwardToServerErrorPage(request, response, "Please proceed check out from cart page.");
         }        
+        boolean checkOutNeedShipping = ((Boolean) session.getAttribute("checkOutNeedShipping")).booleanValue();
         
         //get all banking method
         Query query = em.createNamedQuery("OnlineBankingInfo.findAll");
@@ -63,7 +64,7 @@ public class CheckOutPage extends HttpServlet {
         itemsTotalAfterDiscount = itemsSubtotal - itemsTotalDiscount;
         
         //-shiping discount
-        if(itemsTotalAfterDiscount > 200){
+        if(itemsTotalAfterDiscount > 200 && checkOutNeedShipping){
             shippingDiscount = 25;
         }
         
@@ -85,7 +86,13 @@ public class CheckOutPage extends HttpServlet {
         if(selectedShipping!=null){
             shippingCharges = selectedShipping.getShippingRates();
         }
-        paymentTotal = itemsTotalAfterDiscount - shippingDiscount + shippingCharges - promoDiscount + paymentTax + 25;
+        
+        double basicShippingFee = 0;
+        if(checkOutNeedShipping){
+            basicShippingFee = 25;
+        }
+        
+        paymentTotal = itemsTotalAfterDiscount - shippingDiscount + shippingCharges - promoDiscount + paymentTax + basicShippingFee;
         
         
         // all attribute below are set in String

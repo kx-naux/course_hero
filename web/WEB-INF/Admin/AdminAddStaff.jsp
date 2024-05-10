@@ -21,6 +21,7 @@
 
         <% String successMsg = (String) request.getAttribute("successMsg");
             if (successMsg != null && successMsg.isEmpty()) { %>
+
         <span id="successMsg" hidden></span>
         <%} else {%>
         <span id="successMsg" hidden><%= successMsg == null ? "" : successMsg%></span>

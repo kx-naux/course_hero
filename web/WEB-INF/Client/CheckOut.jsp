@@ -506,7 +506,7 @@
                         </div>
                         <div class="total-row flex-row">
                             <h2 class="total-row-th">Shipping Fee: </h2>
-                            <h3 class="total-row-td">+ RM 25.00</h3>
+                            <h3 class="total-row-td">+ RM <%= checkOutNeedShipping?"25.00":"0.00" %></h3>
                         </div>
                         <div class="total-row flex-row">
                             <h2 class="total-row-th">Shipping Charges: </h2>
