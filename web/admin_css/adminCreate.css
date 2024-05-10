@@ -65,6 +65,15 @@
     gap: 20px;
 }
 
+.update-container > label:after{
+    content: "*";
+    color: red;
+}
+
+.update-container.image > label:after{
+    content: "";
+}
+
 .submit-container.update input{
     background: var(--color-primary);
     color: #FFF !important;

@@ -13,17 +13,18 @@
     <body> 
 
         <% String errMsg = (String) request.getAttribute("errorMsg");
-            if (errMsg != null &&  errMsg.isEmpty()) { %>
+            if (errMsg != null && errMsg.isEmpty()) { %>
         <span hidden id="errorMsg"></span>
         <%} else {%>
-        <span hidden id="errorMsg"><%= errMsg == null ? "" : errMsg %></span>
+        <span hidden id="errorMsg"><%= errMsg == null ? "" : errMsg%></span>
         <%}%>
 
         <% String successMsg = (String) request.getAttribute("successMsg");
             if (successMsg != null && successMsg.isEmpty()) { %>
-         <span id="successMsg" hidden></span>
+
+        <span id="successMsg" hidden></span>
         <%} else {%>
-         <span id="successMsg" hidden><%= successMsg == null ? "" : successMsg %></span>
+        <span id="successMsg" hidden><%= successMsg == null ? "" : successMsg%></span>
         <%}%>
 
         <div class="flex-container">
@@ -49,13 +50,25 @@
                             <div class="update-container">
                                 <label>Staff ID</label>
                                 <div class="input-container">
-                                    <input type="text" name="username" id="username" maxlength="25" required placeholder="Staff ID">
+                                    <%
+                                        String username = (String) request.getAttribute("username");
+                                        if (username == null) {
+                                            username = "";
+                                        }
+                                    %>
+                                    <input type="text" name="username" id="username" maxlength="25" required placeholder="Staff ID" value="${username}" />
                                 </div>
                             </div>
                             <div class="update-container">
                                 <label>Staff Name</label>
                                 <div class="input-container">
-                                    <input type="text" name="name" id="name" maxlength="30" required placeholder="Staff Name">
+                                    <%
+                                        String name = (String) request.getAttribute("name");
+                                        if (name == null) {
+                                            name = "";
+                                        }
+                                    %>
+                                    <input type="text" name="name" id="name" maxlength="30" required placeholder="Staff Name" value="${name}">
                                 </div>
                             </div>
                             <!--                        <div class="update-container">
@@ -67,7 +80,13 @@
                             <div class="update-container">
                                 <label>Email</label>
                                 <div class="input-container">
-                                    <input type="email" name="email" maxLength="50" required placeholder="Email">
+                                    <%
+                                        String email = (String) request.getAttribute("email");
+                                        if (email == null) {
+                                            email = "";
+                                        }
+                                    %>
+                                    <input type="email" name="email" maxLength="50" required placeholder="Email" value="${email}">
                                 </div>
                             </div>
                             <!--                        <div class="update-container">

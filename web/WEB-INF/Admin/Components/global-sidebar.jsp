@@ -123,15 +123,15 @@
                             </a>
                             <span class="tooltip">Report Generation</span>
                         </li>
-                        <li>
+                        <%--<li>
                             <a href="<%= webpath.getPageUrl("setting") %>">
                                 <i class="ri-settings-5-line"></i>
                                 <h3 class="nav-item">Setting</h3>
                             </a>
                             <span class="tooltip">Setting</span>
-                        </li>
+                        </li>--%>
                         <li class="logout">
-                            <a href="#">
+                            <a href="<%= webpath.getPageUrl("logout") %>">
                                 <i class="ri-logout-circle-line"></i>
                                 <h3 class="nav-item">Logout</h3>
                             </a>

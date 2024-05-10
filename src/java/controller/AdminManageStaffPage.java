@@ -1,5 +1,5 @@
 package controller;
-
+import JPAEntity.Accounts;
 import JPAEntity.Users;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,6 +8,8 @@ import javax.servlet.http.*;
 import java.io.IOException;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.List;
+import javax.persistence.Query;
 
 @WebServlet(name = "Admin Manage Staff", urlPatterns = {"/admin/manage-staff"})
 public class AdminManageStaffPage extends HttpServlet {
@@ -42,10 +44,17 @@ public class AdminManageStaffPage extends HttpServlet {
         if(!checkUserAccess.getUsertype().equals("Manager")){
             ErrorPage.forwardToServerErrorPage(request, response, "Authorized Access Only ! ! !");
         }
+      
+
+
+        List<Users> staffs;
+        Query qry = em.createNamedQuery("Users.findAllStaff");
+        staffs = qry.getResultList();
         
-        
+        request.setAttribute("staffSize", staffs.size());
+        request.setAttribute("staffs", staffs);
+
         // Forward the request to home.jsp
         request.getRequestDispatcher("/WEB-INF/Admin/AdminManageStaff.jsp").forward(request, response);
     }
 }
-

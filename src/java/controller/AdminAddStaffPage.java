@@ -91,6 +91,23 @@ public class AdminAddStaffPage extends HttpServlet {
         // create new user
         Users newUser = new Users(name, new Date(), "Staff", new Date(), "-", newAcc, newBillAddress);
 
+        // validation
+        if (checkForDuplicatedUsername(username)) {
+            request.setAttribute("username", username);
+            request.setAttribute("name", name);
+            request.setAttribute("email", email);
+            request.setAttribute("errorMsg", "Staff ID already exists, please use another.");
+            request.getRequestDispatcher("/WEB-INF/Admin/AdminAddStaff.jsp").forward(request, response);
+        }
+
+        if (checkForDuplicatedEmail(email)) {
+            request.setAttribute("username", username);
+            request.setAttribute("name", name);
+            request.setAttribute("email", email);
+            request.setAttribute("errorMsg", "Email already exists, please use another.");
+            request.getRequestDispatcher("/WEB-INF/Admin/AdminAddStaff.jsp").forward(request, response);
+        }
+
         // set new id
         TablesRecordCounter accountCounter = em.find(TablesRecordCounter.class, "ACCOUNTS");
         TablesRecordCounter billAddCounter = em.find(TablesRecordCounter.class, "BILLING_ADDRESS");
@@ -99,7 +116,7 @@ public class AdminAddStaffPage extends HttpServlet {
         newAcc.setAccountId(accountCounter.getCounter() + 1);
         newBillAddress.setAddressId(billAddCounter.getCounter() + 1);
         newUser.setUserId(userCounter.getCounter() + 1);
-        
+
         accountCounter.counterIncrementByOne();
         billAddCounter.counterIncrementByOne();
         userCounter.counterIncrementByOne();

@@ -110,13 +110,14 @@ public class SearchResultPage extends HttpServlet {
                     case "highest-rated":
                         filteredProduct = em.createNamedQuery("Product.findByProdNameFilterOrderByAvgRatingDesc").setParameter("prodName", query).getResultList();
                         break;
-                    case "reviewed":
+                    case "most-reviewed":
                         filteredProduct = em.createNamedQuery("Product.findByProdNameFilterOrderByRateWeightageDesc").setParameter("prodName", query).getResultList();
                         break;
                     case "price":
                         filteredProduct = em.createNamedQuery("Product.findByProdNameFilterOrderByPriceDesc").setParameter("prodName", query).getResultList();
                         break;
                     default:
+                        filteredProduct = em.createNamedQuery("Product.findByProdNameFilter").setParameter("prodName", query).getResultList();
                         break;
                 }
             } else {
@@ -128,7 +129,7 @@ public class SearchResultPage extends HttpServlet {
                     case "highest-rated":
                         filteredProduct = em.createNamedQuery("Product.findAllOrderByAvgRatingDesc").getResultList();
                         break;
-                    case "reviewed":
+                    case "most-reviewed":
                         filteredProduct = em.createNamedQuery("Product.findAllOrderByRateWeightageDesc").getResultList();
                         break;
                     case "price":

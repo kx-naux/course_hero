@@ -204,6 +204,10 @@
         <servlet-name>AdminDashboardPage</servlet-name>
         <servlet-class>controller.AdminDashboardPage</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AdminManageDeleteMerchPage</servlet-name>
+        <servlet-class>controller.AdminManageDeleteMerchPage</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -333,14 +337,13 @@
         <url-pattern>/check-out-review</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-
         <servlet-name>CheckOutApplyPromo</servlet-name>
         <url-pattern>/check-out-apply-promo</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CheckoutShippingMethodChange</servlet-name>
         <url-pattern>/cout-ship-meth-chg</url-pattern>
-  </servlet-mapping>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>AdminManageCustomerPage</servlet-name>
         <url-pattern>/AdminManageCustomerPage</url-pattern>
@@ -368,6 +371,10 @@
     <servlet-mapping>
         <servlet-name>AdminDashboardPage</servlet-name>
         <url-pattern>/AdminDashboardPage</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminManageDeleteMerchPage</servlet-name>
+        <url-pattern>/AdminManageDeleteMerchPage</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

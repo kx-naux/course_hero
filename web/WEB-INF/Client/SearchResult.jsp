@@ -40,7 +40,7 @@
             <section class="section search-result-section flex-col">
                 <div class="search-result-info-div flex-col">
                     <input type="text" name="query" value="${param.query}" hidden />
-                    <h1><span class="result-amount">10,000</span> results for “<span class="search-query">${param.query}</span>”</h1>
+                    <h1><span class="result-amount"><%=filteredCourses.size() %></span> results for “<span class="search-query">${param.query}</span>”</h1>
 
                     <div class="result-function flex-row">
                         <button type="button" class="filter-btn"><i class="ri-filter-3-fill"></i> Filter <span class="filter-count"></span></button>

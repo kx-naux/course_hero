@@ -1,10 +1,7 @@
 # Web Application Assignment
 
-### Port Occupied Error Solution
-```
-netstat -aon | findstr 8080
-taskkill /f /pid XXXX
-```
+### Requirement
+- python
 
 ### Accounts for login
 | Username  | Email                            | Password |
@@ -14,3 +11,9 @@ taskkill /f /pid XXXX
 | YuBeng    | wooyb-pm22@student.tarc.edu.my   | yb123    |
 | Snijders  | wangccs-pm22@student.tarc.edu.my | sni123   |
 | ZhanLiang | lauzl-pm22@student.tarc.edu.my   | zliang06 |
+
+### Port Occupied Error Solution
+```
+netstat -aon | findstr 8080
+taskkill /f /pid XXXX
+```
