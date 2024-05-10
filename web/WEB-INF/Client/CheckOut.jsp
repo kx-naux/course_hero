@@ -92,7 +92,7 @@
             </div>
         </section>
 
-        <form id="checkOutForm" method="post">
+        <form id="checkOutForm" method="post" action="check-out" >
             <input type="text" id="fromAction" name="formAction" hidden />
             <section class="section content-section flex-col">
 
@@ -424,7 +424,7 @@
                                     <option selected hidden>Select a bank</option>
                                     <% for(OnlineBankingInfo info : oBankNameList ){ 
                                         if(userOBankInfo.getOnlineBankingId().getOnlineBankingId().equals(info.getOnlineBankingId())){%>
-                                            <option value="<%= info.getOnlineBankingId() %>"><%= info.getBankName()%></option>
+                                            <option selected value="<%= info.getOnlineBankingId() %>"><%= info.getBankName()%></option>
                                         <%}else{%>
                                             <option value="<%= info.getOnlineBankingId() %>"><%= info.getBankName()%></option>
                                         <%}%>
@@ -465,7 +465,7 @@
 
                         <div class="payment-input-div text-input-div required-input-field flex-col">
                             <label for="tngPhoneNo">Phone No.:</label>
-                            <input type="text" id="tngPhoneNo" class="" name="tngPhoneNo" placeholder="Enter phone no." maxlength="<%= userTng == null ? "" : userTng.getPhoneno() %>" value=""/>
+                            <input type="text" id="tngPhoneNo" class="" name="tngPhoneNo" placeholder="Enter phone no." maxlength="15" value="<%= userTng == null ? "" : userTng.getPhoneno() %>"/>
 
                         </div>
 

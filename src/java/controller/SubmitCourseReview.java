@@ -81,8 +81,10 @@ public class SubmitCourseReview extends HttpServlet {
         //Update product table
 
         //update rating 
+
         prodEntity.updateAvgRating(score);
                 
+
         //save the rating data
         if(saveDataToDatabases(request,response,newRateData,prodEntity,ratingsCounter)){
             //success

@@ -3,6 +3,8 @@ package controller;
 import JPAEntity.Bankcardinfo;
 import JPAEntity.BillingAddress;
 import JPAEntity.CartItems;
+import JPAEntity.CourseSubscriptions;
+import JPAEntity.Merchandise;
 import JPAEntity.OnlineBankingInfo;
 import JPAEntity.Orders;
 import JPAEntity.OrdersPK;
@@ -16,6 +18,7 @@ import JPAEntity.TngAccounts;
 import JPAEntity.Transactions;
 import JPAEntity.UserOnlineBankingInfo;
 import JPAEntity.Users;
+import JPAEntity.Courses;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -24,6 +27,7 @@ import java.util.List;
 import javax.annotation.Resource;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -100,7 +104,7 @@ public class CheckOutReviewPage extends HttpServlet {
                 //create shipping object
                 TablesRecordCounter shippingCounter = em.find(TablesRecordCounter.class,"SHIPPING");
                 TablesRecordCounter billAddCounter = em.find(TablesRecordCounter.class,"BILLING_ADDRESS");
-                newShippingEntity = new Shipping(new Date(),new Date(),25+selectedShipping.getShippingRates(),0,"","");
+                newShippingEntity = new Shipping(new Date(),new Date(),25+selectedShipping.getShippingRates(),0,"0","");
                 newShippingEntity.setShippingId(shippingCounter.getCounter()+1);
                 shippingCounter.counterIncrementByOne();
                 recordsCounterList.add(shippingCounter);
@@ -117,6 +121,7 @@ public class CheckOutReviewPage extends HttpServlet {
             
             //create new transaction
             Transactions newTrans = new Transactions(itemsTotalAfterDiscount,promoDiscount,paymentTax,selectedPaymentMethod,0.0,paymentTotal,"Complete",new Date());
+            newTrans.setUserId(userData);
             TablesRecordCounter transCounter = em.find(TablesRecordCounter.class,"TRANSACTIONS");
             newTrans.setTransactionId(transCounter.getCounter()+1);
             transCounter.counterIncrementByOne();
@@ -208,15 +213,44 @@ public class CheckOutReviewPage extends HttpServlet {
             BillingAddress updatedBillingAddress = null;
             if(chooseToUpdateBillAddress){
                 if(selectedBillingInfo.equals("newAddress")){ //if new create new billing address object
-                    userData.setAddressId(newBillAddress);
-                    //updatedBillingAddress = userData.getAddressId();
-                    //updatedBillingAddress.setCity(userInputBillAddressCheckout.getCity());
-                    //updatedBillingAddress.setCountry(userInputBillAddressCheckout.getCountry());
-                    //updatedBillingAddress.setLine1(userInputBillAddressCheckout.getLine1());
-                    //updatedBillingAddress.setLine2(userInputBillAddressCheckout.getLine2());
-                    //updatedBillingAddress.setPostalcode(userInputBillAddressCheckout.getPostalcode());
-                    //updatedBillingAddress.setStateResides(userInputBillAddressCheckout.getStateResides());
+                    //userData.setAddressId(newBillAddress);
+                    updatedBillingAddress = userData.getAddressId();
+                    updatedBillingAddress.setCity(userInputBillAddressCheckout.getCity());
+                    updatedBillingAddress.setCountry(userInputBillAddressCheckout.getCountry());
+                    updatedBillingAddress.setLine1(userInputBillAddressCheckout.getLine1());
+                    updatedBillingAddress.setLine2(userInputBillAddressCheckout.getLine2());
+                    updatedBillingAddress.setPostalcode(userInputBillAddressCheckout.getPostalcode());
+                    updatedBillingAddress.setStateResides(userInputBillAddressCheckout.getStateResides());
                 }
+            }
+            List<CourseSubscriptions> newCourseSubList = new ArrayList<CourseSubscriptions>();
+            List<Merchandise> updatedMerchandiseList = new ArrayList<Merchandise>();
+            for(CartItems item:checkingOutCartItemList){
+               Query query = em.createNamedQuery("Courses.findByProductId").setParameter("productId", item.getProductId());
+               List<Courses> courseList = query.getResultList();
+               
+               query = em.createNamedQuery("Merchandise.findByProductId").setParameter("productId", item.getProductId());
+               List<Merchandise> merchandiseList = query.getResultList();
+               
+               //update courseSubcribtion table
+               if(!courseList.isEmpty()){
+                   Courses retrievedCourse = courseList.get(0);
+                   CourseSubscriptions newSub = new CourseSubscriptions(new Date(),new Date(),"Just Started",new Date());
+                   newSub.setCourseId(retrievedCourse);
+                   newSub.setUserId(userData);
+                   TablesRecordCounter courseSubsTableCounter = em.find(TablesRecordCounter.class,"COURSE_SUBSCRIPTIONS");
+                   newSub.setSubscriptionsId(courseSubsTableCounter.getCounter()+1);
+                   courseSubsTableCounter.counterIncrementByOne();
+                   recordsCounterList.add(courseSubsTableCounter);
+                   newCourseSubList.add(newSub);
+               }else if(!merchandiseList.isEmpty()){
+                   Merchandise retrievedMerch = merchandiseList.get(0);
+                   retrievedMerch.setStockBalance(retrievedMerch.getStockBalance()-item.getQuantity());
+                   updatedMerchandiseList.add(retrievedMerch);
+               }
+               
+               
+               
             }
            
             
@@ -263,13 +297,28 @@ public class CheckOutReviewPage extends HttpServlet {
                 
                 if(chooseToUpdateBillAddress){
                     if(selectedBillingInfo.equals("newAddress")){ //if new create new billing address object
+                        em.merge(updatedBillingAddress);
                         em.merge(userData);
                     }
                 }
                 //remove items from db
                 for(CartItems item:checkingOutCartItemList){
-                    em.remove(item);
+                    CartItems itemToRemoved = em.find(CartItems.class, item.getCartitemId());
+                    em.remove(itemToRemoved);
                 }
+                
+                for(CourseSubscriptions newSub : newCourseSubList){
+                    em.persist(newSub);
+                }
+                
+                for(Merchandise targetUpdateMerch : updatedMerchandiseList ){
+                    em.merge(targetUpdateMerch);
+                }
+                
+                for(TablesRecordCounter tableCounter : recordsCounterList){
+                    em.merge(tableCounter);
+                }
+                
                 em.merge(userData);
                 utx.commit();
             }catch(Exception ex){
@@ -278,18 +327,52 @@ public class CheckOutReviewPage extends HttpServlet {
                         try {
                             utx.rollback();
                         }catch (SystemException ex2) {
-                        //server error page
+                            //server error page
                             ErrorPage.forwardToServerErrorPage(request,response,"Database Server Error. Please Try Again Later");
                         }
                     }
                 }catch (SystemException ex2){
                 ErrorPage.forwardToServerErrorPage(request,response,"Database Server Error. Please Try Again Later");
-            }
+                }
             ErrorPage.forwardToServerErrorPage(request,response,"Database Server Error. Please Try Again Later");
-        }
+            }
             
-            
+            //update user session
+            session.setAttribute("userData",userData);
             //clear all session
+            session.removeAttribute("shipMethodList");
+            session.removeAttribute("totalItemsCheckout");
+            session.removeAttribute("errMsg");
+            session.removeAttribute("successMsg");
+            session.removeAttribute("promoApplied");
+            session.removeAttribute("checkOutNeedShipping");
+            session.removeAttribute("selectedShipping");
+            session.removeAttribute("selectedBillingInfo");
+            session.removeAttribute("userInputBillAddressCheckout");
+            session.removeAttribute("chooseToUpdateBillAddress");
+            session.removeAttribute("selectedPaymentMethod");
+            session.removeAttribute("selectedBankIdReq");
+            session.removeAttribute("cardHolderNameInput");
+            session.removeAttribute("cardNumberInput");
+            session.removeAttribute("expDateInput");
+            session.removeAttribute("ccvInput");
+            session.removeAttribute("selectedOnlineBankId");
+            session.removeAttribute("selectedOnlineBankRemark");
+            session.removeAttribute("tngNoInputUser");
+            session.removeAttribute("tngRemarkInput");
+            session.removeAttribute("chooseToUpdateStoredPayment");
+            session.removeAttribute("itemsSubtotal");
+            session.removeAttribute("itemsTotalDiscount");
+            session.removeAttribute("itemsTotalAfterDiscount");
+            session.removeAttribute("promoDiscount");
+            session.removeAttribute("shippingDiscount");
+            session.removeAttribute("shippingCharges");
+            session.removeAttribute("selectedBankIdReq");
+            session.removeAttribute("paymentTotal");
+            session.removeAttribute("paymentTotal");
+            
+            request.setAttribute("TransactionNumber",newTrans.getTransactionId());
+            request.getRequestDispatcher("/WEB-INF/Client/CheckOutSuccess.jsp").forward(request, response);
         }
     }
 

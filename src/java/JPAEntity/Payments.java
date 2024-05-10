@@ -39,7 +39,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Payments.findByDateIssued", query = "SELECT p FROM Payments p WHERE p.dateIssued = :dateIssued")})
 public class Payments implements Serializable {
 
-    @Size(max = 15)
+    @Size(max = 20)
     @Column(name = "ACCOUNT_NUMBER")
     private String accountNumber;
     @Basic(optional = false)

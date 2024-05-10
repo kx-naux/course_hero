@@ -51,7 +51,7 @@ public class CourseSubscriptions implements Serializable {
     private Date startTime;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 9)
+    @Size(min = 1, max = 30)
     @Column(name = "PROGRESS")
     private String progress;
     @Basic(optional = false)
@@ -83,6 +83,13 @@ public class CourseSubscriptions implements Serializable {
 
     public CourseSubscriptions(String subscriptionsId, Date subscribeTime, Date startTime, String progress, Date finishTime) {
         this.subscriptionsId = subscriptionsId;
+        this.subscribeTime = subscribeTime;
+        this.startTime = startTime;
+        this.progress = progress;
+        this.finishTime = finishTime;
+    }
+    
+    public CourseSubscriptions(Date subscribeTime, Date startTime, String progress, Date finishTime) {
         this.subscribeTime = subscribeTime;
         this.startTime = startTime;
         this.progress = progress;

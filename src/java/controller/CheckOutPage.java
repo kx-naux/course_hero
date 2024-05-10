@@ -81,7 +81,11 @@ public class CheckOutPage extends HttpServlet {
         paymentTax = roundUpToTwoDecimalPlaces(paymentTax);
         
         //cal payment total
-        paymentTotal = itemsTotalAfterDiscount - shippingDiscount + selectedShipping.getShippingRates() - promoDiscount + paymentTax + 25;
+        double shippingCharges = 0;
+        if(selectedShipping!=null){
+            shippingCharges = selectedShipping.getShippingRates();
+        }
+        paymentTotal = itemsTotalAfterDiscount - shippingDiscount + shippingCharges - promoDiscount + paymentTax + 25;
         
         
         // all attribute below are set in String

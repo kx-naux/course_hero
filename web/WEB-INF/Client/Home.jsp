@@ -6,7 +6,8 @@
 <%@ page import="module.CollaborateLogos, module.TestimonialData" %>
 <%@ page import="java.util.List, java.util.Map" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<jsp:useBean id="programmingCourse" class="List<JPAEntity.Courses>" scope="request" />
+<jsp:useBean id="userData" class="JPAEntity.Users" scope="session" />
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -20,10 +21,8 @@
         <!--<link type="text/css" href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">-->
         <script src="./js/components/section_products.js"></script> 
         <jsp:useBean id="webpath" class="module.WebPath" scope="application" />
-        <jsp:useBean id="userData" class="JPAEntity.Users" scope="session" />
         <jsp:useBean id="courseCategoryList" class="List<JPAEntity.CourseCategory>" scope="request" />
         <jsp:useBean id="eachCourseCatRegistered" class="List<Integer>" scope="request" />
-        <jsp:useBean id="programmingCourse" class="List<JPAEntity.Courses>" scope="request" />
         <jsp:useBean id="programmingAuthorContribution" class="Map<String, List<JPAEntity.Authors>>" scope="request" />
         <jsp:useBean id="programmingItemStatus" class="Map<String, List<Integer>>" scope="request" />
         <jsp:useBean id="designCourse" class="List<JPAEntity.Courses>" scope="request" />
