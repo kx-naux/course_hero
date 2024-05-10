@@ -113,7 +113,7 @@ public class GetCourseReview extends HttpServlet {
 
         //if end need put false
         int totalPageCount = (int) Math.ceil((double) ratingCount / maxDataInPage);
-        boolean thisIsLastPage = (submitCount >= totalPageCount);
+        boolean thisIsLastPage = (submitCount >= totalPageCount-1);
         if (thisIsLastPage) {
             responseObject.addProperty("isMore", false);
         } else {
