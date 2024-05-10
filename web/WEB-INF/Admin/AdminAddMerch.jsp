@@ -1,3 +1,4 @@
+<%@page import="JPAEntity.MerchCategory"%>
 <%@ page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import="java.util.List, java.util.Map" %>
 <!DOCTYPE html>
@@ -9,6 +10,7 @@
         <!--StyleSheet-->
         <link href="../admin_css/adminAddMerch.css" rel="stylesheet">
         <jsp:useBean id="webpath" class="module.WebPath" scope="application" />
+        <% List<MerchCategory> merchandiseCatList = (List<MerchCategory>) request.getAttribute("merchandiseCatList"); %>
     </head>
     <body> 
         <div class="flex-container">
@@ -23,93 +25,81 @@
                     <div class="top">
                         <!-- include dark theme toggler -->
                         <%@ include file="./Components/dark-theme-toggler.jsp" %>
-                        <div class="profile">
-                            <div class="info">
-                                <p>Hey, <b>Snijders</b></p>
-                                <small>Admin</small>
-                            </div>
-                            <div class="profile-photo">
-                                <img src="../img/admin/default_profile.png" alt="alt"/>
-                            </div>
-                        </div>
+                        <!<!-- include profile  -->
+                        <%@ include file="./Components/global-profile.jsp" %>
                     </div>
                 </div>
                 <div class="horizontal-line"></div>
                 <!----------  START OF ADDING TO CREATE NEW ITEMS ------------------->
-                <form>
+                <form method="post" action="add-merch" id="addMerchForm">
                 <div class="add-items-container">
+                    <input type="hidden" name="merchID" value=""/>
                     <div class="add-items"> 
                         <div class="update-container">
                             <label>Merch Name</label>
                              <div class="input-container">
-                                 <input type="text" name="name" placeholder="Course Name...">
+                                 <input type="text" name="productName" id="productName" required maxlength="50" placeholder="Merch Name">
                              </div>
                         </div>
                         <div class="update-container">
                         <label>Description</label>
                         <div class="input-container description">
-                            <textarea name="description" id="description" rows="4"></textarea>
+                            <textarea name="productDescription" id="productDescription" required rows="4" maxlength="1000" placeholder="Description"></textarea>
                         </div>
-                        </div>
-                        <div class="update-container">
-                            <label>Learning Objective</label>
-                            <div class="input-container description">
-                                <textarea name="description" id="description" rows="4"></textarea>
-                            </div>
                         </div>
                         <div class="update-container-number">
                             <div class="update-container">
                             <label>Price</label>
                             <div class="input-container">
-                                <input type="number" name="name" placeholder="Price..." >
+                                <input type="number" name="price" id="price" required placeholder="Price" >
                             </div>
                             </div>
                             <div class="update-container">
-                                 <label>Course Length Hours</label>
-                                 <div class="input-container">
-                                     <input type="number"  name="name" value="1">
-                                 </div>
+                                <label>Stock</label>
+                                <div class="input-container">
+                                    <input type="stockBalance"  name="stockBalance" required placeholder="Stock" >
+                                </div>
                             </div>
                             <div class="update-container">
                                 <label>Rate Weightage</label>
                                 <div class="input-container">
-                                    <input type="number"  name="name" placeholder="Rate Weightage" >
+                                    <input type="number"  name="rateWeightage" id="rateWeightage" placeholder="Rate Weightage" required >
                                 </div>
                             </div>
                             <div class="update-container" title="Minimum = 0 , Maximum = 1">
                                 <label>Discount (%)</label>
                                 <div class="input-container">
-                                    <input type="number" name="name" placeholder="Discount" value="0" min="0" max="1" step="0.1" >
+                                    <input type="number" name="discount" id="discount" placeholder="Discount" min="0" max="1" step="0.1" required >
                                 </div>
                             </div>
                         </div>
                         <div class="title">
-                            <h2>Merchandise Size & Stock</h2>
+                            <h2>Merchandise Size</h2>
                             <div class="horizontal-line"></div>
                         </div>
                         <div class="update-container-number">
                             <div class="update-container">
                                 <label>Dimension Height (CM)</label>
                                 <div class="input-container">
-                                    <input type="number"  name="name" placeholder="Dimension Height (CM)" >
+                                    <input type="number"  name="dimensionHeight" id="dimensionHeight" required placeholder="Dimension Height (CM)" >
                                 </div>
                             </div>
                             <div class="update-container">
                                 <label>Dimension Width (CM)</label>
                                 <div class="input-container">
-                                    <input type="number"  name="name" placeholder="Dimension Width (CM)" >
+                                    <input type="number"  name="dimensionWidth" id="dimensionWidth" required placeholder="Dimension Width (CM)" >
+                                </div>
+                            </div>
+                            <div class="update-container">
+                                <label>Dimension Length (CM)</label>
+                                <div class="input-container">
+                                    <input type="number"  name="dimensionLength" id="dimensionLength" required placeholder="Dimension Length (CM))" >
                                 </div>
                             </div>
                             <div class="update-container">
                                 <label>Weight (KG)</label>
                                 <div class="input-container">
-                                    <input type="number"  name="name" placeholder="Weight (KG)" >
-                                </div>
-                            </div>
-                            <div class="update-container">
-                                <label>Stock</label>
-                                <div class="input-container">
-                                    <input type="number"  name="name" placeholder="Stock" >
+                                    <input type="number"  name="weight" id="weight" required placeholder="Weight (KG)" >
                                 </div>
                             </div>
                         </div>
@@ -119,11 +109,11 @@
                             <label>Publish Status</label>
                             <div class="input-container radio">
                                 <div class="input-radio">
-                                    <input type="radio" name="status" id="active" checked/>
+                                    <input type="radio" name="status" id="active" required checked/>
                                     <label for="active">Active</label>
                                 </div>
                                 <div class="input-radio">
-                                    <input type="radio" name="status" id="inactive">
+                                    <input type="radio" name="status" id="inactive" required>
                                     <label for="inactive">Inactive</label>
                                 </div>
                             </div>
@@ -137,10 +127,15 @@
                         <div class="update-container select">
                             <label>Merch Category</label>
                             <div class="input-container">
-                                <select>
+                                <select id="merchCategory" name="merchCategory">
                                     <option value="-1">Merch Category</option>
-                                    <option value="edit">T-Shirts</option>
-                                    <option value="delete">Mugs</option>
+                                    <%
+                                        // Iterate through each merchandise in the original list
+                                        for (int i = 0; i < merchandiseCatList.size(); i++) {
+                                            String merchCatName = merchandiseCatList.get(i).getCategoryName();
+                                    %>
+                                    <option value="<%= merchCatName %>"><%= merchCatName %></option>
+                                    <%}%>
                                 </select>
                             </div>
                         </div>

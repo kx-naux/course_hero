@@ -116,10 +116,6 @@
         <servlet-class>controller.WishlistPage</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>AdminDashboardPage</servlet-name>
-        <servlet-class>controller.AdminDashboardPage</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>AdminManageCoursePage</servlet-name>
         <servlet-class>controller.AdminManageCoursePage</servlet-class>
     </servlet>
@@ -203,6 +199,10 @@
     <servlet>
         <servlet-name>SearchResultPage</servlet-name>
         <servlet-class>controller.SearchResultPage</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminDashboardPage</servlet-name>
+        <servlet-class>controller.AdminDashboardPage</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
@@ -289,10 +289,6 @@
         <url-pattern>/submit-course-review</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>AdminDashboardPage</servlet-name>
-        <url-pattern>/AdminDashboardPage</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>AdminManageCoursePage</servlet-name>
         <url-pattern>/AdminManageCoursePage</url-pattern>
     </servlet-mapping>
@@ -368,6 +364,10 @@
     <servlet-mapping>
         <servlet-name>SearchResultPage</servlet-name>
         <url-pattern>/search</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminDashboardPage</servlet-name>
+        <url-pattern>/AdminDashboardPage</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

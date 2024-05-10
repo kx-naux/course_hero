@@ -112,7 +112,21 @@ public class Product implements Serializable {
     public Product(String productId) {
         this.productId = productId;
     }
-
+    
+    //fully parameterized
+    public Product(String productId, ProductCategory prodcatId, String prodName,String description, double price, int rateWeightage, double avgRating, double discount, String imagePath, String status) {
+        this.productId = productId;
+        this.prodcatId = prodcatId;
+        this.prodName = prodName;
+        this.prodName = description;
+        this.price = price;
+        this.rateWeightage = rateWeightage;
+        this.avgRating = avgRating;
+        this.discount = discount;
+        this.imagePath = imagePath;
+        this.status = status;
+    }
+    
     public Product(String productId, String prodName, double price, int rateWeightage, double avgRating, double discount) {
         this.productId = productId;
         this.prodName = prodName;

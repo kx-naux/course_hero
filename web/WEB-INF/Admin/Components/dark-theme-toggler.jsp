@@ -4,6 +4,12 @@
   display: flex;
   justify-content: center;
   direction: rtl;
+  margin: auto 0;
+}
+
+.dashboard .theme-switch{
+    margin:0;
+    margin-top: auto;
 }
 
 #theme-checkbox {

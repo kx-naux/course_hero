@@ -8,7 +8,7 @@
         <link rel="icon" type="image/ico" href="../ico/Logo.ico">
         <!--StyleSheet-->
         <link rel="stylesheet" href="../admin_css/adminStyle.css">
-        <jsp:useBean id="webpath" class="module.WebPath" scope="application" />
+        <jsp:useBean id="webpath" class="module.WebPath" scope="application" />  
     </head>
     <body> 
         <div class="flex-container dashboard">
@@ -143,15 +143,9 @@
                 <div class="top">
                     <!-- include dark theme toggler -->
                     <%@ include file="./Components/dark-theme-toggler.jsp" %>
-                    <div class="profile">
-                        <div class="info">
-                            <p>Hey, <b>Snijders</b></p>
-                            <small>Admin</small>
-                        </div>
-                        <div class="profile-photo">
-                            <img src="../img/admin/default_profile.png" alt="alt"/>
-                        </div>
-                    </div>
+                    
+                    <!<!-- include profile  -->
+                    <%@ include file="./Components/global-profile.jsp" %>
                 </div>
                 <!----------  END OF TOP ------------------->
                 <div class="recent-updates">

@@ -40,34 +40,40 @@
                 <div class="add-items-container">
                     <div class="add-items">
                         <div class="update-container">
-                            <label>Staff Name</label>
+                            <label>Staff ID</label>
                              <div class="input-container">
-                                 <input type="text" name="name" placeholder="Staff Name">
+                                 <input type="text" name="username" id="username" maxlength="25" required placeholder="Staff ID">
                              </div>
                         </div>
                         <div class="update-container">
+                            <label>Staff Name</label>
+                             <div class="input-container">
+                                 <input type="text" name="name" id="name" maxlength="25" required placeholder="Staff Name">
+                             </div>
+                        </div>
+<!--                        <div class="update-container">
                             <label>Role</label>
                             <div class="input-container">
                                 <input type="text" name="name" placeholder="Role">
                             </div>
-                        </div>
+                        </div>-->
                         <div class="update-container">
                             <label>Email</label>
                             <div class="input-container">
-                                <input type="email" name="name" placeholder="Email">
+                                <input type="email" name="name" maxLength="25" required placeholder="Email">
                             </div>
                         </div>
-                        <div class="update-container">
+<!--                        <div class="update-container">
                             <label>Password</label>
                             <div class="input-container">
                                 <input type="password" name="name" placeholder="Password">
                             </div>
-                        </div>
-                        <div class="title">
+                        </div>-->
+<!--                        <div class="title">
                             <h2>Address</h2>
                             <div class="horizontal-line"></div>
-                        </div>
-                        <div class="update-container">
+                        </div>-->
+<!--                        <div class="update-container">
                             <label>Address Line 1</label>
                             <div class="input-container">
                                 <input type="text" name="name" placeholder="Address Line 1" >
@@ -102,9 +108,17 @@
                             <div class="input-container">
                                 <input type="text" name="name" placeholder="Address Line 2" >
                             </div>
+                        </div>-->
+                        <div class="update-container submit">
+                            <div class="submit-container update">
+                                <input type="submit" value="Create" class="submit-button">
+                            </div>
+                            <div class="submit-container cancel">
+                                <input type="reset" value="Reset" class="submit-button">
+                            </div>
                         </div>
                     </div>
-                    <div class="add-items select"> 
+<!--                    <div class="add-items select"> 
                         <div class="update-container image">
                             <label>Upload Image</label>
                             <div class="input-container">
@@ -134,10 +148,10 @@
                             <div class="submit-container cancel">
                                 <input type="reset" value="Reset" class="submit-button">
                             </div>
-                        </div>
+                        </div>-->
                     </div>
-                </div>
                 </form>
+                </div>
             </div>
             <!----------  END OF MAIN ------------------->
             </div>
