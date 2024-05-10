@@ -285,7 +285,7 @@
                     <div class="sign-up-p sign-up-p5 flex-col">
                         <div class="sign-up-view-div  flex-col">
                             <h1 class="confirmation-title">OTP Verification</h1>
-                            <p class="confirmation-sub-title">Code is sent to ${loginFormData.email}, input the code received, and verify to complete the process.</p>
+                            <p class="confirmation-sub-title">Code is sent to the inputted email, input the code received, and verify to complete the process.</p>
                         </div>
 
                         <div class="otp-field-div flex-row">
