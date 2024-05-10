@@ -35,6 +35,32 @@ public class AdminAddStaffPage extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        Users userDataSession = (Users) request.getSession().getAttribute("userData");
+        Users userData = Login.checkRmbMeToken(request, em);
+        //check has rmb token onot
+        if(userData != null){
+            HttpSession session = request.getSession();
+            session.setAttribute("userData",userData);
+            Login.getUserWishlist(request, em, userData);
+            Login.getUserCart(request, em, userData);
+        //check has user logged in
+        }else if(userDataSession.getUserId() == null){
+            HttpSession session = request.getSession();
+            session.setAttribute("pageToGoAfterLogin","admin/add-staff");
+            response.sendRedirect("../login");
+            return;
+        }
+        
+        if (userDataSession != null) {
+            Login.getUserWishlist(request, em, userDataSession);
+            Login.getUserCart(request, em, userDataSession);
+        }
+        
+        //get userData from session as the user can login thru the rmbMe
+        Users checkUserAccess = (Users) request.getSession().getAttribute("userData");
+        if(!checkUserAccess.getUsertype().equals("Manager")){
+            ErrorPage.forwardToServerErrorPage(request, response, "Authorized Access Only ! ! !");
+        }
         // Forward the request to home.jsp
         request.getRequestDispatcher("/WEB-INF/Admin/AdminAddStaff.jsp").forward(request, response);
     }

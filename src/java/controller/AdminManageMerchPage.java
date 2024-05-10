@@ -3,6 +3,7 @@ package controller;
 import JPAEntity.AuthorContribution;
 import JPAEntity.MerchCategory;
 import JPAEntity.Merchandise;
+import JPAEntity.Users;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,6 +22,34 @@ public class AdminManageMerchPage extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        Users userDataSession = (Users) request.getSession().getAttribute("userData");
+        Users userData = Login.checkRmbMeToken(request, em);
+        //check has rmb token onot
+        if(userData != null){
+            HttpSession session = request.getSession();
+            session.setAttribute("userData",userData);
+            Login.getUserWishlist(request, em, userData);
+            Login.getUserCart(request, em, userData);
+        //check has user logged in
+        }else if(userDataSession == null){
+            HttpSession session = request.getSession();
+            session.setAttribute("pageToGoAfterLogin","admin/manage-merch");
+            response.sendRedirect("../login");
+            return;
+        }
+        
+        if (userDataSession != null) {
+            Login.getUserWishlist(request, em, userDataSession);
+            Login.getUserCart(request, em, userDataSession);
+        }
+        
+        //get userData from session as the user can login thru the rmbMe
+        Users checkUserAccess = (Users) request.getSession().getAttribute("userData");
+        if(checkUserAccess.getUsertype().equals("Customer")){
+            ErrorPage.forwardToServerErrorPage(request, response, "Authorized Access Only ! ! !");
+        }
+        
+        
         //To get all Merchandise Record
         Query merchandiseListQry = em.createNamedQuery("Merchandise.findAll");
         List<Merchandise> merchandiseList = merchandiseListQry.getResultList();

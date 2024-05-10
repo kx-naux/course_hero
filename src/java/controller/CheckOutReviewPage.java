@@ -225,29 +225,28 @@ public class CheckOutReviewPage extends HttpServlet {
             }
             List<CourseSubscriptions> newCourseSubList = new ArrayList<CourseSubscriptions>();
             List<Merchandise> updatedMerchandiseList = new ArrayList<Merchandise>();
+            TablesRecordCounter courseSubsTableCounter = em.find(TablesRecordCounter.class,"COURSE_SUBSCRIPTIONS");
             for(CartItems item:checkingOutCartItemList){
                Query query = em.createNamedQuery("Courses.findByProductId").setParameter("productId", item.getProductId());
                List<Courses> courseList = query.getResultList();
                
                query = em.createNamedQuery("Merchandise.findByProductId").setParameter("productId", item.getProductId());
                List<Merchandise> merchandiseList = query.getResultList();
-               
                //update courseSubcribtion table
                if(!courseList.isEmpty()){
                    Courses retrievedCourse = courseList.get(0);
                    CourseSubscriptions newSub = new CourseSubscriptions(new Date(),new Date(),"Just Started",new Date());
                    newSub.setCourseId(retrievedCourse);
                    newSub.setUserId(userData);
-                   TablesRecordCounter courseSubsTableCounter = em.find(TablesRecordCounter.class,"COURSE_SUBSCRIPTIONS");
                    newSub.setSubscriptionsId(courseSubsTableCounter.getCounter()+1);
                    courseSubsTableCounter.counterIncrementByOne();
-                   recordsCounterList.add(courseSubsTableCounter);
                    newCourseSubList.add(newSub);
                }else if(!merchandiseList.isEmpty()){
                    Merchandise retrievedMerch = merchandiseList.get(0);
                    retrievedMerch.setStockBalance(retrievedMerch.getStockBalance()-item.getQuantity());
                    updatedMerchandiseList.add(retrievedMerch);
                }
+               recordsCounterList.add(courseSubsTableCounter);
                
                
                
