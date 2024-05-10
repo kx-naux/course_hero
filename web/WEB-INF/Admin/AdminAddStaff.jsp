@@ -12,8 +12,19 @@
     </head>
     <body> 
 
-        <span id="errorMsg" hidden></span>
-        <span id="successMsg" hidden></span>
+        <% String errMsg = (String) request.getAttribute("errorMsg");
+            if (errMsg != null &&  errMsg.isEmpty()) { %>
+        <span hidden id="errorMsg"></span>
+        <%} else {%>
+        <span hidden id="errorMsg"><%= errMsg == null ? "" : errMsg %></span>
+        <%}%>
+
+        <% String successMsg = (String) request.getAttribute("successMsg");
+            if (successMsg != null && errMsg.isEmpty()) { %>
+         <span id="successMsg" hidden></span>
+        <%} else {%>
+         <span id="successMsg" hidden><%= successMsg == null ? "" : successMsg %></span>
+        <%}%>
 
         <div class="flex-container">
             <!-------------------- START OF GLOBAL SIDEBAR ------------------->
@@ -32,7 +43,7 @@
                 </div>
                 <div class="horizontal-line"></div>
                 <!----------  START OF ADDING TO CREATE NEW ITEMS ------------------->
-                <form>
+                <form method="post">
                     <div class="add-items-container">
                         <div class="add-items">
                             <div class="update-container">
@@ -44,7 +55,7 @@
                             <div class="update-container">
                                 <label>Staff Name</label>
                                 <div class="input-container">
-                                    <input type="text" name="name" id="name" maxlength="25" required placeholder="Staff Name">
+                                    <input type="text" name="name" id="name" maxlength="30" required placeholder="Staff Name">
                                 </div>
                             </div>
                             <!--                        <div class="update-container">
@@ -56,7 +67,7 @@
                             <div class="update-container">
                                 <label>Email</label>
                                 <div class="input-container">
-                                    <input type="email" name="name" maxLength="25" required placeholder="Email">
+                                    <input type="email" name="email" maxLength="50" required placeholder="Email">
                                 </div>
                             </div>
                             <!--                        <div class="update-container">
