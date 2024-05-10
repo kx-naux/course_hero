@@ -17,7 +17,7 @@ public class WebPath {
         pageUrls.put("forget password", "/forget-pw");
         pageUrls.put("home", "/home");
         pageUrls.put("about us", "/about-us");
-        pageUrls.put("products", "/courses");
+        pageUrls.put("products", "/search?query=");
         pageUrls.put("author", "/author");
         pageUrls.put("learning", "/learning");
         pageUrls.put("cart", "/cart");
