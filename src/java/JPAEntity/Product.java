@@ -171,6 +171,12 @@ public class Product implements Serializable {
     public void setAvgRating(double avgRating) {
         this.avgRating = avgRating;
     }
+    
+    public void updateAvgRating(int newRating){
+        double oldTotalRating = this.rateWeightage * this.avgRating;
+        this.rateWeightage += 1;
+        this.avgRating = (oldTotalRating + newRating)/this.rateWeightage;
+    }
 
     public String getImagePath() {
         return imagePath;
