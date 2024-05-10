@@ -2,8 +2,8 @@
 <%@page import="java.util.Base64"%>                
 <div class="profile">
                         <div class="info">
-                            <p>Hey, <b>${userData.accountId.username}</b></p>
-                            <small>${userData.displayName   }</small>
+                            <p>Hey, <b>${userData.displayName}</b></p>
+                            <small>${userData.accountId.username}</small>
                         </div>
                         <div class="profile-photo">
                             <% String base64Image = "";
