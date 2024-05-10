@@ -15,12 +15,7 @@ public class AdminManageStaffPage extends HttpServlet {
     EntityManager em;
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException { 
-        
-//        List<
-        
-        
-        request.setAttribute("staffs", staffs);
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
         // Forward the request to home.jsp
         request.getRequestDispatcher("/WEB-INF/Admin/AdminManageStaff.jsp").forward(request, response);
