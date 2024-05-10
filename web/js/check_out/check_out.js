@@ -286,8 +286,10 @@ function submitCheckoutForm() {
 
     // address
     const addressDiv = document.querySelector(".check-address");
-    const addressRadio = addressDiv.querySelector("input[type='radio']");
-    const addressInvalidMsg = document.querySelector(".ship-div p.invalid-msg");
+    if(addressDiv !== null){
+        const addressRadio = addressDiv.querySelector("input[type='radio']");
+        const addressInvalidMsg = document.querySelector(".ship-div p.invalid-msg");
+
 
     if (addressRadio.checked) {
         const addressLine = addressDiv.querySelector(".address-1");
@@ -329,6 +331,7 @@ function submitCheckoutForm() {
             addressCountry.classList.add("invalid-input");
             return;
         }
+    }
     }
 
     // payment

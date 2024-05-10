@@ -63,7 +63,7 @@ public class Shipping implements Serializable {
     private double ttlWeightKg;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 20)
+    @Size(max = 20)
     @Column(name = "DIMENSTION_CM_HXWXL")
     private String dimenstionCmHxwxl;
     @Size(max = 200)

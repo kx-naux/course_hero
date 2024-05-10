@@ -1,5 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<jsp:useBean id="userData" class="JPAEntity.Users" scope="session" />
+<% String transId = (String) request.getAttribute("TransactionNumber"); %>
 <html lang="en">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -8,7 +10,7 @@
         <link type="text/css" href="./css/style.css" rel="stylesheet" >
         <link type="text/css" href="./css/check_out.css" rel="stylesheet" >
         <jsp:useBean id="webpath" class="module.WebPath" scope="application" />
-        <jsp:useBean id="userData" class="JPAEntity.Users" scope="session" />
+
     </head>
     <body>
         <!--Toast message-->
@@ -37,7 +39,10 @@
 
                 <div>
                     <h1>Payment successful. Your transaction is complete.</h1>
-                    <p>Transaction number: T0000120201</p>                    
+                    <% if(transId!=null){ %>
+                        <p>Transaction number: <%= transId %></p>     
+                    <%}else{%>
+                    <%}%>               
                 </div>
 
                 <a class="home-btn" href="<%= webpath.getPageUrl("home")%>">Back to home</a>
