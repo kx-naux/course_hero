@@ -1,8 +1,18 @@
+<%@page import="JPAEntity.CourseCategory"%>
+<%@page import="JPAEntity.Authors"%>
 <%@page import="java.time.Duration"%>
 <%@ page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import="java.util.List,java.util.Arrays;" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:useBean id="userData" class="JPAEntity.Users" scope="session" />
+<jsp:useBean id="filteredCourses" class="List<JPAEntity.Courses>" scope="request" />
+<jsp:useBean id="coursesToShow" class="List<JPAEntity.Courses>" scope="request" />
+<jsp:useBean id="filteredAuthors" class="Map<String, List<JPAEntity.Authors>>" scope="request" />
+<jsp:useBean id="allCategory" class="List<JPAEntity.CourseCategory>" scope="request" />
+<jsp:useBean id="ratingMap" class="Map<Double, Long>" scope="request" />
+<jsp:useBean id="durationMap" class="Map<Integer, Long>" scope="request" />
+<jsp:useBean id="levelMap" class="Map<String, Long>" scope="request" />
+<jsp:useBean id="categoryMap" class="Map<String, Long>" scope="request" />
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -40,7 +50,7 @@
                                     <option value="most-reviewed" ${param.sort == 'most-reviewed' ? 'selected' : ''}>Most Reviewed</option>
                                     <option value="highest-rated" ${param.sort == 'highest-rated' ? 'selected' : ''}>Highest Rated</option>
                                     <option value="relevance" ${param.sort == 'relevance' ? 'selected' : ''}>Most Relevant</option>
-                                    <option value="newest" ${param.sort == 'newest' ? 'selected' : ''}>Newest</option>
+                                    <option value="price" ${param.sort == 'price' ? 'selected' : ''}>Price</option>
                                 </select>
                                 <div class="sort-select-icon flex-col"><p><i class="ri-arrow-down-s-line"></i></p></div>
                             </div>
@@ -74,7 +84,8 @@
                                         <i class="ri-star-half-fill"></i>
                                     </span>
                                     <span class="filter-desc">4.5 & up</span>
-                                    <span class="result-count">(6000)</span>
+                                    <%Long currentTotal45 = ratingMap.get((Double) 4.5);%>
+                                    <span class="result-count">(<%=currentTotal45%>)</span>
                                 </label>
                                 <label for="filter-rating-2" class="rating-filter-option flex-row">
                                     <input name="ratings" id="filter-rating-2" type="radio" value="4.0" ${param.ratings == '4.0' ? 'checked' : ''} />
@@ -86,7 +97,8 @@
                                         <i class="ri-star-line"></i>
                                     </span>
                                     <span class="filter-desc">4.0 & up</span>
-                                    <span class="result-count">(1000)</span>
+                                    <%Long currentTotal40 = ratingMap.get((Double) 4.0);%>
+                                    <span class="result-count">(<%=currentTotal40%>)</span>
                                 </label>
                                 <label for="filter-rating-3" class="rating-filter-option flex-row">
                                     <input name="ratings" id="filter-rating-3" type="radio" value="3.5" ${param.ratings == '3.5' ? 'checked' : ''}/>
@@ -98,7 +110,8 @@
                                         <i class="ri-star-line"></i>
                                     </span>
                                     <span class="filter-desc">3.5 & up</span>
-                                    <span class="result-count">(1000)</span>
+                                    <%Long currentTotal35 = ratingMap.get((Double) 3.5);%>
+                                    <span class="result-count">(<%=currentTotal35%>)</span>
                                 </label>
                                 <label for="filter-rating-4" class="rating-filter-option flex-row">
                                     <input name="ratings" id="filter-rating-4" type="radio" value="3.0" ${param.ratings == '3.0' ? 'checked' : ''} />
@@ -110,7 +123,8 @@
                                         <i class="ri-star-line"></i>
                                     </span>
                                     <span class="filter-desc">3.0 & up</span>
-                                    <span class="result-count">(1000)</span>
+                                    <%Long currentTotal30 = ratingMap.get((Double) 3.0);%>
+                                    <span class="result-count">(<%=currentTotal30%>)</span>
                                 </label>
                             </div>
                         </div>
@@ -130,27 +144,32 @@
                                 <label for="filter-duration-1" class="check-filter-option flex-row">
                                     <input name="duration" id="filter-duration-1" type="checkbox" value="extrashort" <%= (durationList != null && durationList.contains("extrashort")) ? "checked" : ""%> />
                                     <span class="filter-desc">0-1 Hour</span>
-                                    <span class="result-count">(1000)</span>
+                                    <%Long currentDuration0 = durationMap.get(0);%>
+                                    <span class="result-count">(<%=currentDuration0%>)</span>
                                 </label>
                                 <label for="filter-duration-2" class="check-filter-option flex-row">
                                     <input name="duration" id="filter-duration-2" type="checkbox" value="short" <%= (durationList != null && durationList.contains("short")) ? "checked" : ""%> />
                                     <span class="filter-desc">1-3 Hours</span>
-                                    <span class="result-count">(1000)</span>
+                                    <%Long currentDuration1 = durationMap.get(1);%>
+                                    <span class="result-count">(<%=currentDuration1%>)</span>
                                 </label>
                                 <label for="filter-duration-3" class="check-filter-option flex-row">
                                     <input name="duration" id="filter-duration-3" type="checkbox" value="medium" <%= (durationList != null && durationList.contains("medium")) ? "checked" : ""%> />
                                     <span class="filter-desc">3-6 Hours</span>
-                                    <span class="result-count">(1000)</span>
+                                    <%Long currentDuration3 = durationMap.get(3);%>
+                                    <span class="result-count">(<%=currentDuration3%>)</span>
                                 </label>
                                 <label for="filter-duration-4" class="check-filter-option flex-row">
                                     <input name="duration" id="filter-duration-4" type="checkbox" value="long" <%= (durationList != null && durationList.contains("long")) ? "checked" : ""%> />
                                     <span class="filter-desc">6-17 Hours</span>
-                                    <span class="result-count">(1000)</span>
+                                    <%Long currentDuration6 = durationMap.get(6);%>
+                                    <span class="result-count">(<%=currentDuration6%>)</span>
                                 </label>
                                 <label for="filter-duration-5" class="check-filter-option flex-row">
                                     <input name="duration" id="filter-duration-5" type="checkbox" value="extralong" <%= (durationList != null && durationList.contains("extralong")) ? "checked" : ""%> />
                                     <span class="filter-desc">17+ Hours</span>
-                                    <span class="result-count">(1000)</span>
+                                    <%Long currentDuration17 = durationMap.get(17);%>
+                                    <span class="result-count">(<%=currentDuration17%>)</span>
                                 </label>
                             </div>
                         </div>
@@ -170,22 +189,26 @@
                                 <label for="filter-level-1" class="check-filter-option flex-row">
                                     <input name="level" id="filter-level-1" type="checkbox" value="all" <%= (levelList != null && levelList.contains("all")) ? "checked" : ""%> />
                                     <span class="filter-desc">All Levels</span>
-                                    <span class="result-count">(1000)</span>
+                                    <%Long currentLevel1 = levelMap.get("All Levels");%>
+                                    <span class="result-count">(<%=currentLevel1%>)</span>
                                 </label>
                                 <label for="filter-level-2" class="check-filter-option flex-row">
                                     <input name="level" id="filter-level-2" type="checkbox" value="beginner" <%= (levelList != null && levelList.contains("beginner")) ? "checked" : ""%> />
                                     <span class="filter-desc">Beginner</span>
-                                    <span class="result-count">(1000)</span>
+                                    <%Long currentLevel2 = levelMap.get("Beginner");%>
+                                    <span class="result-count">(<%=currentLevel2%>)</span>
                                 </label>
                                 <label for="filter-level-3" class="check-filter-option flex-row">
                                     <input name="level" id="filter-level-3" type="checkbox" value="intermediate" <%= (levelList != null && levelList.contains("intermediate")) ? "checked" : ""%> />
                                     <span class="filter-desc">Intermediate</span>
-                                    <span class="result-count">(1000)</span>
+                                    <%Long currentLevel3 = levelMap.get("Intermediate");%>
+                                    <span class="result-count">(<%=currentLevel3%>)</span>
                                 </label>
                                 <label for="filter-level-4" class="check-filter-option flex-row">
                                     <input name="level" id="filter-level-4" type="checkbox" value="expert" <%= (levelList != null && levelList.contains("expert")) ? "checked" : ""%> />
                                     <span class="filter-desc">Expert</span>
-                                    <span class="result-count">(1000)</span>
+                                    <%Long currentLevel4 = levelMap.get("Expert");%>
+                                    <span class="result-count">(<%=currentLevel4%>)</span>
                                 </label>
                             </div>
                         </div>
@@ -217,8 +240,8 @@
                         <!--course category-->   
                         <%
                             String[] categories = request.getParameterValues("category");
-                            List<String> categoryList = null;
-                            String categoryActive = "";
+                            List<String> categoryList = (categories != null) ? Arrays.asList(categories) : null;
+                            String categoryActive = (categoryList != null) ? "active" : "";
 
                             if (categories != null) {
                                 categoryList = Arrays.asList(categories);
@@ -231,16 +254,14 @@
                                 <p><i class="ri-arrow-down-s-line"></i></p>
                             </div>
                             <div class="filter-option-div cat-filter-div flex-col">
-                                <label for="filter-cat-1" class="check-filter-option flex-row">
-                                    <input name="category" id="filter-cat-1" type="checkbox" value="Data Science" />
-                                    <span class="filter-desc">Data Science</span>
-                                    <span class="result-count">(1000)</span>
+                                <%for (CourseCategory currentCategory : allCategory) {%>
+                                <label for=<%=currentCategory.getCoursecatId()%> class="check-filter-option flex-row">
+                                    <input name="category" id=<%=currentCategory.getCoursecatId()%> type="checkbox" value=<%=currentCategory.getCategoryName()%> <%= (categories != null && categoryList.contains(currentCategory.getCategoryName())) ? "checked" : ""%>/>
+                                    <span class="filter-desc"><%=currentCategory.getCategoryName()%></span>
+                                    <%Long currentCatCount = categoryMap.get(currentCategory.getCategoryName());%>
+                                    <span class="result-count">(<%=currentCatCount%>)</span>
                                 </label>
-                                <label for="filter-cat-2" class="check-filter-option flex-row">
-                                    <input name="category" id="filter-cat-2" type="checkbox" value="Software Engineer" />
-                                    <span class="filter-desc">Software Engineer</span>
-                                    <span class="result-count">(1000)</span>
-                                </label>
+                                <%}%>
                             </div>
                         </div>
 
@@ -249,105 +270,67 @@
                     <!--result course-->
                     <div class="result-course-div flex-col">
 
-                        <div class="result-course-div flex-row" courseID="12376213" onclick="redirectToProductPage(this)">
+                        <%for (Courses eachFiltered : coursesToShow) {%>
+                        <div class="result-course-div flex-row" courseID=<%=eachFiltered.getCourseId()%> onclick="redirectToProductPage(this)">
                             <div class="result-course-left flex-col">
-                                <img src="./img/course/beginner_excel.jpg" alt="">
+                                <img src="./img/course/beginner_excel.jpg" alt=""> <!-- eachFiltered.getProductId().getImagePath() -->
                             </div>
                             <div class="result-course-right flex-col">
-                                <h1 class="course-title">The Ultimate Excel Programming Course</h1>
-                                <h2 class="course-category">Microsoft Excel</h2>
-                                <h2 class="course-desc">This course will teach you the programming for Microsoft Excel</h2>
-                                <p class="course-author">Woo Yu Beng, Snijders Wang</p>
+                                <h1 class="course-title"><%=eachFiltered.getProductId().getProdName()%></h1>
+                                <h2 class="course-category"><%=eachFiltered.getCoursecatId().getCategoryName()%></h2>
+                                <h2 class="course-desc"><%=eachFiltered.getDetailedDesc()%></h2>
+
+                                <%
+                                    List<Authors> currentAuthors = filteredAuthors.get(eachFiltered.getCourseId());
+                                    String concatAuthors = "";
+                                    for (int i = 0; i < currentAuthors.size(); i++) {
+                                        concatAuthors += currentAuthors.get(i).getAuthorName();
+                                        if (i < currentAuthors.size() - 1) {
+                                            concatAuthors += ", ";
+                                        }
+                                    }
+                                %>
+
+                                <p class="course-author"><%=concatAuthors%></p>
                                 <div class="course-rating flex-row">
-                                    <p class="rating-digit">3.5</p>
+                                    <p class="rating-digit"><%=String.format("%.1f", eachFiltered.getProductId().getAvgRating())%></p>
                                     <i class="ri-star-fill"></i>
-                                    <p class="rating-number-field">(<span class="raing-number">2303</span>)</p>
+                                    <p class="rating-number-field">(<span class="raing-number"><%=eachFiltered.getProductId().getRateWeightage()%></span>)</p>
                                 </div>
                                 <div class="course-label flex-row">
-                                    <p>9.5 Hours</p>
-                                    <p>All Level</p>
-                                </div>
-                                <div class="course-tag-field flex-row">
-                                    <p class="course-tag tag-orange">Hot Sell</p>
-                                    <p class="course-tag tag-yellow">New Course</p>
+                                    <p><%=String.format("%.2f", eachFiltered.getLengthHour())%> Hours</p>
+                                    <p><%=eachFiltered.getCourseLevel()%></p>
                                 </div>
                                 <div class="course-price-field flex-col">
-                                    <p class="course-price">RM <span>449.90</span></p>                                      
-                                    <p class="course-normal-price">RM <span>650.00</span></p>
+                                    <%
+                                        double originalPrice = eachFiltered.getProductId().getPrice();
+                                        double discountedPrice = (100 - eachFiltered.getProductId().getDiscount()) / 100 * (eachFiltered.getProductId().getPrice());
+                                    %>
+                                    <p class="course-price">RM <span><%=String.format("%.2f", (originalPrice == discountedPrice) ? originalPrice : discountedPrice)%></span></p>                                      
+                                    <%if (originalPrice != discountedPrice) {%>
+                                    <p class="course-normal-price">RM <span><%=String.format("%.2f", originalPrice)%></span></p>
+                                    <%}%>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="result-course-div flex-row" courseID="12376213" onclick="redirectToProductPage(this)">
-                            <div class="result-course-left flex-col">
-                                <img src="./img/course/beginner_excel.jpg" alt="">
-                            </div>
-                            <div class="result-course-right flex-col">
-                                <h1 class="course-title">The Ultimate Excel Programming Course</h1>
-                                <h2 class="course-category">Microsoft Excel</h2>
-                                <h2 class="course-desc">This course will teach you the programming for Microsoft Excel</h2>
-                                <p class="course-author">Woo Yu Beng, Snijders Wang</p>
-                                <div class="course-rating flex-row">
-                                    <p class="rating-digit">3.5</p>
-                                    <i class="ri-star-fill"></i>
-                                    <p class="rating-number-field">(<span class="raing-number">2303</span>)</p>
-                                </div>
-                                <div class="course-label flex-row">
-                                    <p>9.5 Hours</p>
-                                    <p>All Level</p>
-                                </div>
-                                <div class="course-tag-field flex-row">
-                                    <p class="course-tag tag-orange">Hot Sell</p>
-                                    <p class="course-tag tag-yellow">New Course</p>
-                                </div>
-                                <div class="course-price-field flex-col">
-                                    <p class="course-price">RM <span>449.90</span></p>                                      
-                                    <p class="course-normal-price">RM <span>650.00</span></p>
-                                </div>
-                            </div>
-                        </div>
+                        <%}%>
 
-                        <div class="result-course-div flex-row" courseID="12376213" onclick="redirectToProductPage(this)">
-                            <div class="result-course-left flex-col">
-                                <img src="./img/course/beginner_excel.jpg" alt="">
-                            </div>
-                            <div class="result-course-right flex-col">
-                                <h1 class="course-title">The Ultimate Excel Programming Course</h1>
-                                <h2 class="course-category">Microsoft Excel</h2>
-                                <h2 class="course-desc">This course will teach you the programming for Microsoft Excel</h2>
-                                <p class="course-author">Woo Yu Beng, Snijders Wang</p>
-                                <div class="course-rating flex-row">
-                                    <p class="rating-digit">3.5</p>
-                                    <i class="ri-star-fill"></i>
-                                    <p class="rating-number-field">(<span class="raing-number">2303</span>)</p>
-                                </div>
-                                <div class="course-label flex-row">
-                                    <p>9.5 Hours</p>
-                                    <p>All Level</p>
-                                </div>
-                                <div class="course-tag-field flex-row">
-                                    <p class="course-tag tag-orange">Hot Sell</p>
-                                    <p class="course-tag tag-yellow">New Course</p>
-                                </div>
-                                <div class="course-price-field flex-col">
-                                    <p class="course-price">RM <span>449.90</span></p>                                      
-                                    <p class="course-normal-price">RM <span>650.00</span></p>
-                                </div>
-                            </div>
-                        </div>
 
                         <div class="no-found-div flex-col">
                             <img src="./img/search_result/search.png" alt="" />
                             <p>No results found for your search. <br>Please try again with different keywords.</p>
                         </div>
 
+
                     </div>
                 </div>
 
                 <!--pagination, 20 course per page-->
                 <%
-                    int currentPage = 1;
-                    int lastPage = 500;
+                    long currentPage = 1;
+                    long dataPerPage = 4;
+                    long lastPage = (filteredCourses.size() - 1) / dataPerPage + 1;
                     if (request.getParameter("p") != null) {
                         currentPage = Integer.parseInt(request.getParameter("p"));
                     }

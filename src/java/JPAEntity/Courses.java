@@ -35,6 +35,9 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Courses.findAll", query = "SELECT c FROM Courses c"),
+    @NamedQuery(name = "Courses.countByTwoLengthHour",query = "SELECT COUNT(c) FROM Courses c WHERE c.lengthHour >= :minLengthHour AND c.lengthHour <= :maxLengthHour"),
+    @NamedQuery(name = "Courses.countByCourseLevel",query = "SELECT COUNT(c) FROM Courses c WHERE c.courseLevel = :courseLevel"),
+    @NamedQuery(name = "Courses.countByCategoryId",query = "SELECT COUNT(c) FROM Courses c WHERE c.coursecatId = :coursecatId"),
     @NamedQuery(name = "Courses.findByCourseId", query = "SELECT c FROM Courses c WHERE c.courseId = :courseId"),
     @NamedQuery(name = "Courses.findBySyllabus", query = "SELECT c FROM Courses c WHERE c.syllabus = :syllabus"),
     @NamedQuery(name = "Courses.findByLearningObj", query = "SELECT c FROM Courses c WHERE c.learningObj = :learningObj"),
