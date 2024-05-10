@@ -12,6 +12,21 @@
         <jsp:useBean id="webpath" class="module.WebPath" scope="application" />
     </head>
     <body> 
+        
+         <% String errMsg = (String) request.getAttribute("errorMsg");
+            if (errMsg != null && errMsg.isEmpty()) { %>
+        <span hidden id="errorMsg"></span>
+        <%} else {%>
+        <span hidden id="errorMsg"><%= errMsg == null ? "" : errMsg%></span>
+        <%}%>
+
+        <% String successMsg = (String) request.getAttribute("successMsg");
+            if (successMsg != null && successMsg.isEmpty()) { %>
+        <span id="successMsg" hidden></span>
+        <%} else {%>
+        <span id="successMsg" hidden><%= successMsg == null ? "" : successMsg%></span>
+        <%}%>
+        
         <div class="flex-container">
             <!-------------------- START OF GLOBAL SIDEBAR ------------------->
             <%@ include file="./Components/global-sidebar.jsp" %>
@@ -30,19 +45,11 @@
                     <div class="top">
                         <!-- include dark theme toggler -->
                         <%@ include file="./Components/dark-theme-toggler.jsp" %>
-                        <div class="profile">
-                            <div class="info">
-                                <p>Hey, <b>Snijders</b></p>
-                                <small>Admin</small>
-                            </div>
-                            <div class="profile-photo">
-                                <img src="../img/admin/default_profile.png" alt="alt"/>
-                            </div>
-                        </div>
+                        <%@ include file="./Components/global-profile.jsp" %>
                     </div>
                 </div>
                 <div class="horizontal-line"></div>
-                <div class="filter-flex-container">
+<!--                <div class="filter-flex-container">
                 <div class="bulk-action-container">
                     <div class="input-container">
                         <select>
@@ -85,7 +92,7 @@
                         <input type="submit" value="Search for Clients" class="submit-button">
                     </div>
                 </div>
-                </div>
+                </div>-->
                 <!----------  START OF TABLE ------------------->
                 <div class="table-container">
                     <div class="tablenav-pages"> 
@@ -94,7 +101,7 @@
                         </div>
                         <div class="pagination-links-container">
                         <span class="pagination-links">
-                            <a class="first-page" href="#"><<</a>
+                            <a class="first-page" href="#"><</a>
                             <a class="prev-page" href="#"><</a>
                         </span>
                         <span class="pagination-input">

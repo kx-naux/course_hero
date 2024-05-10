@@ -1,3 +1,22 @@
+const errorMsg = document.getElementById("errorMsg");
+if (errorMsg !== null && errorMsg.innerText !== "") {
+    Swal.fire({
+        title: "Record Is Not Created",
+        text: errorMsg.innerText,
+        icon: "error"
+    });
+}
+
+
+const successMsg = document.getElementById("successMsg");
+if (successMsg !== null && successMsg.innerText !== "") {
+    Swal.fire({
+        title: "Record Created",
+        text: successMsg.innerText,
+        icon: "success"
+    });
+}
+
 let checkedAllBoxHead = document.querySelector("thead .js-check-all");
 let checkedAllBoxFoot = document.querySelector("tfoot .js-check-all");
 let checkBoxes = document.querySelectorAll('.custom-table tbody input[type=checkbox]');
