@@ -19,7 +19,7 @@
         <div class="error-content-div flex-row">
             <!--error message-->
             <div class="error-content-left flex-col">
-                <h1>Error - ${param.code}</h1>
+                <h1>Error ${param.code}</h1>
                 <h2>${sessionScope.errorDesc}</h2>
                 <p>${sessionScope.errorDetail}</p>  
                 <a href="<%= webpath.getPageUrl("home")%>">Back to home</a>
