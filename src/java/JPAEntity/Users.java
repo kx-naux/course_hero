@@ -43,8 +43,9 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Users.findByValidity", query = "SELECT u FROM Users u WHERE u.validity = :validity"),
     @NamedQuery(name = "Users.findByDateJoined", query = "SELECT u FROM Users u WHERE u.dateJoined = :dateJoined"),
     @NamedQuery(name = "Users.findByGender", query = "SELECT u FROM Users u WHERE u.gender = :gender"),
-    @NamedQuery(name = "Users.findByAccountId",query = "SELECT u FROM Users u WHERE u.accountId = :accountId"),
-    @NamedQuery(name = "Users.findAllStaff",query = "SELECT u FROM Users u WHERE (u.usertype LIKE 'Staff' or u.usertype LIKE 'Manager')")
+    @NamedQuery(name = "Users.findByAccountId", query = "SELECT u FROM Users u WHERE u.accountId = :accountId"),
+    @NamedQuery(name = "Users.findAllStaff", query = "SELECT u FROM Users u WHERE (u.usertype LIKE 'Staff' or u.usertype LIKE 'Manager')"),
+    @NamedQuery(name = "Users.findAllCustomer", query = "SELECT u FROM Users u WHERE u.usertype LIKE 'Customer'")
 })
 public class Users implements Serializable {
 
@@ -83,8 +84,6 @@ public class Users implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "users")
     private List<PreferredCourse> preferredCourseList;
 
-
-    
     @JoinTable(name = "PREFERRED_COURSE", joinColumns = {
         @JoinColumn(name = "USER_ID", referencedColumnName = "USER_ID")}, inverseJoinColumns = {
         @JoinColumn(name = "COURSECAT_ID", referencedColumnName = "COURSECAT_ID")})
@@ -142,8 +141,8 @@ public class Users implements Serializable {
         this.dateJoined = dateJoined;
         this.gender = gender;
     }
-    
-    public Users(String displayName ,Date dob, String usertype, Date dateJoined, String gender, Accounts account, BillingAddress billAddress) {
+
+    public Users(String displayName, Date dob, String usertype, Date dateJoined, String gender, Accounts account, BillingAddress billAddress) {
         this.displayName = displayName;
         this.dob = dob;
         this.usertype = usertype;
@@ -160,11 +159,10 @@ public class Users implements Serializable {
     public void setUserId(String userId) {
         this.userId = userId;
     }
-    
-    public void setUserId(long count){
+
+    public void setUserId(long count) {
         this.userId = String.format("U%08d", count);
     }
-
 
     public Date getValidity() {
         return validity;
@@ -181,7 +179,6 @@ public class Users implements Serializable {
     public void setDateJoined(Date dateJoined) {
         this.dateJoined = dateJoined;
     }
-
 
     public Accounts getAccountId() {
         return accountId;
@@ -224,7 +221,6 @@ public class Users implements Serializable {
         return "JPAEntity.Users[ userId=" + userId + " ]";
     }
 
-
     @XmlTransient
     public List<RememberMeToken> getRememberMeTokenList() {
         return rememberMeTokenList;
@@ -233,7 +229,6 @@ public class Users implements Serializable {
     public void setRememberMeTokenList(List<RememberMeToken> rememberMeTokenList) {
         this.rememberMeTokenList = rememberMeTokenList;
     }
-
 
     @XmlTransient
     public List<CourseCategory> getCourseCategoryList() {
@@ -331,13 +326,6 @@ public class Users implements Serializable {
         this.displayName = displayName;
     }
 
-
-
-
-
-   
-
-
     public Serializable getImgData() {
         return imgData;
     }
@@ -355,10 +343,6 @@ public class Users implements Serializable {
         this.preferredCourseList = preferredCourseList;
     }
 
-   
-
-
-
     @XmlTransient
     public List<Wishlist> getWishlistList() {
         return wishlistList;
@@ -367,11 +351,6 @@ public class Users implements Serializable {
     public void setWishlistList(List<Wishlist> wishlistList) {
         this.wishlistList = wishlistList;
     }
-
-
-
-   
-
 
     @XmlTransient
     public List<UserOnlineBankingInfo> getUserOnlineBankingInfoList() {
@@ -382,7 +361,6 @@ public class Users implements Serializable {
         this.userOnlineBankingInfoList = userOnlineBankingInfoList;
     }
 
-   
     public Date getDob() {
         return dob;
     }
@@ -398,8 +376,6 @@ public class Users implements Serializable {
     public void setUsertype(String usertype) {
         this.usertype = usertype;
     }
-
-    
 
     public String getGender() {
         return gender;
