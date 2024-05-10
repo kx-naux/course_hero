@@ -69,7 +69,7 @@
                             <div class="update-container" title="Minimum = 0 , Maximum = 1">
                                 <label>Discount (%)</label>
                                 <div class="input-container">
-                                    <input type="number" name="discount" id="discount" placeholder="Discount" min="0" max="1" step="0.1" required >
+                                    <input type="number" name="discount" id="discount" placeholder="Discount" min="1" step="0.1" required >
                                 </div>
                             </div>
                         </div>

@@ -11,7 +11,7 @@ if (errorMsg !== null && errorMsg.innerText !== "") {
 const successMsg = document.getElementById("successMsg");
 if (successMsg !== null && successMsg.innerText !== "") {
     Swal.fire({
-        title: "Record Created",
+        title: "Record Processed",
         text: successMsg.innerText,
         icon: "success"
     });
