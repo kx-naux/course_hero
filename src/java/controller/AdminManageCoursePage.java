@@ -46,8 +46,7 @@ public class AdminManageCoursePage extends HttpServlet {
         if(checkUserAccess.getUsertype().equals("Customer")){
             ErrorPage.forwardToServerErrorPage(request, response, "Authorized Access Only ! ! !");
         }
-        
-        
+
         // Forward the request to home.jsp
         request.getRequestDispatcher("/WEB-INF/Admin/AdminManageCourse.jsp").forward(request, response);
     }

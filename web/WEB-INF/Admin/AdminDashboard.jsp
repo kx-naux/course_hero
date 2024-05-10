@@ -1,3 +1,7 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
+<%@page import="JPAEntity.Product"%>
+<%@page import="JPAEntity.Transactions"%>
 <%@ page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import="java.util.List, java.util.Map" %>
 <!DOCTYPE html>
@@ -7,8 +11,12 @@
         <title>CourseHero Admin Dashboard</title>
         <link rel="icon" type="image/ico" href="../ico/Logo.ico">
         <!--StyleSheet-->
+        <link rel="stylesheet" href="../admin_css/adminTable.css">
         <link rel="stylesheet" href="../admin_css/adminStyle.css">
-        <jsp:useBean id="webpath" class="module.WebPath" scope="application" />  
+        <jsp:useBean id="webpath" class="module.WebPath" scope="application" />
+        <jsp:useBean id="allTransactions" class="List<JPAEntity.Transactions>" scope="request" />
+        <jsp:useBean id="relatedTransProd" class="Map<String, List<JPAEntity.Product>>" scope="request" />
+        <jsp:useBean id="relatedTransQty" class="Map<String, List<Integer>>" scope="request" />
     </head>
     <body> 
         <div class="flex-container dashboard">
@@ -89,52 +97,75 @@
                     <table>
                         <thead>
                             <tr>
-                                <th>Product Name</th>
-                                <th>Product Number</th>
-                                <th>Payment</th>
-                                <th>Status</th>
-                                <th>Details</th>
+                                <th scope="col">
+                                    Transaction 
+                                </th>
+                                <th scope="col">
+                                    User ID
+                                </th>
+                                <th scope="col">
+                                    Product
+                                </th>
+                                <th scope="col">
+                                    Status
+                                </th>
+                                <th scope="col">
+                                    Total
+                                </th>
+                                <th scope="col">
+                                    Transaction Type
+                                </th>
+                                <th scope="col">
+                                    Order Date
+                                </th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Foldable Mini Drone</td>
-                                <td>85631</td>
-                                <td class="danger">Due</td>
-                                <td class="warning">Pending</td>
-                                <td class="primary">Details</td>
+                            <%
+                                int x = 0;
+                                for (Transactions eachTransactions : allTransactions) {%>
+                                       <% x++; %>
+                            <tr scope="row">
+                                <td>
+                                    <%=eachTransactions.getTransactionId()%>
+                                </td>
+                                <td>
+                                    <%=eachTransactions.getUserId().getUserId()%>
+                                </td>
+                                <td>
+                                    <%
+                                        List<Product> currentProduct = relatedTransProd.get(eachTransactions.getTransactionId());
+                                        List<Integer> currentQty = relatedTransQty.get(eachTransactions.getTransactionId());
+                                        for (int i = 0; i < currentProduct.size(); i++) {
+                                    %>
+                                    <%=currentProduct.get(i).getProdName()%>
+                                    <%
+                                        double originalPrice = currentProduct.get(i).getPrice();
+                                        double discountedPrice = (100 - currentProduct.get(i).getDiscount()) / 100 * (currentProduct.get(i).getPrice());
+                                        double rightPrice = (originalPrice == discountedPrice) ? originalPrice : discountedPrice;
+
+                                    %>
+                                    <small class="d-block">x <%=currentQty.get(i)%> = RM <%=String.format("%.2f", rightPrice * currentQty.get(i))%></small>
+                                    <%}%>
+                                </td>
+                                <td><%=eachTransactions.getStatus()%></td>
+                                <td><%=String.format("RM %.2f", eachTransactions.getTotal())%></td>
+                                <td><%=eachTransactions.getTransactionType()%></td>
+                                <td><%
+                                    // Get the date object from eachTransactions.getTimeAdded()
+                                    Date date = eachTransactions.getTimeAdded();
+
+                                    // Create a SimpleDateFormat object with the desired date format
+                                    SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-yyyy HH:mm");
+
+                                    // Format the date to a string in the desired format
+                                    String formattedDate = sdf.format(date);
+                                    %><%= formattedDate%></td>
                             </tr>
-                            <tr>
-                                <td>Foldable Mini Drone</td>
-                                <td>85631</td>
-                                <td class="danger">Due</td>
-                                <td class="warning">Pending</td>
-                                <td class="primary">Details</td>
-                            </tr>
-                            <tr>
-                                <td>Foldable Mini Drone</td>
-                                <td>85631</td>
-                                <td class="danger">Due</td>
-                                <td class="warning">Pending</td>
-                                <td class="primary">Details</td>
-                            </tr>
-                            <tr>
-                                <td>Foldable Mini Drone</td>
-                                <td>85631</td>
-                                <td class="danger">Due</td>
-                                <td class="warning">Pending</td>
-                                <td class="primary">Details</td>
-                            </tr>
-                            <tr>
-                                <td>Foldable Mini Drone</td>
-                                <td>85631</td>
-                                <td class="danger">Due</td>
-                                <td class="warning">Pending</td>
-                                <td class="primary">Details</td>
-                            </tr>
+                            <% if(x == 5){break;}}%>
                         </tbody>
                     </table>
-                    <a class="show-all" href="#">Show All</a>
+                    <a class="show-all" href="<%= webpath.getPageUrl("manage-order") %>">Show All</a>
                 </div>
             </div>
             <!----------  END OF MAIN ------------------->

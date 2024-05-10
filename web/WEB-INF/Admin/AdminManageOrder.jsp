@@ -39,6 +39,30 @@
                 <div class="horizontal-line"></div>
                 <!----------  START OF TABLE ------------------->
                 <div class="table-container">
+                    <div class="tablenav-pages"> 
+                        <div class="display-total-item-container">
+                            <span class="display-total-item">Showing 7 items of <%=allTransactions.size()%> items</span>
+                        </div>
+<!--                        <div class="pagination-links-container">
+                            <span class="pagination-links">
+                                <a class="first-page" href="#"><<</a>
+                                <a class="prev-page" href="#"><</a>
+                            </span>
+                            <span class="pagination-input">
+                                <div class="input-container">
+                                    <input class="current-page" type="text" value="1" size="1"/>
+                                </div>
+                                <span class="tablenav-paging-text">
+                                    of
+                                    <span class="total-pages">2</span>
+                                </span>
+                            </span>
+                            <span class="pagination-links">
+                                <a class="next-page" href="#">></a>
+                                <a class="last-page" href="#">>></a>
+                            </span>
+                        </div>-->
+                    </div>
                     <table class="client-table custom-table">
                         <thead>
                             <tr>
@@ -107,7 +131,7 @@
                             <%}%>
                         </tbody>
                     </table>
-                    <div class="tablenav-pages"> 
+<!--                    <div class="tablenav-pages"> 
                         <div class="display-total-item-container">
                             <span class="display-total-item">Showing 7 items of <%=allTransactions.size()%> items</span>
                         </div>
@@ -130,7 +154,7 @@
                                 <a class="last-page" href="#">>></a>
                             </span>
                         </div>
-                    </div>
+                    </div>-->
                 </div>
             </div>
             <!----------  END OF MAIN ------------------->
