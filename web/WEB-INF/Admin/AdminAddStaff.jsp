@@ -11,6 +11,10 @@
         <jsp:useBean id="webpath" class="module.WebPath" scope="application" />
     </head>
     <body> 
+
+        <span id="errorMsg" hidden></span>
+        <span id="successMsg" hidden></span>
+
         <div class="flex-container">
             <!-------------------- START OF GLOBAL SIDEBAR ------------------->
             <%@ include file="./Components/global-sidebar.jsp" %>
@@ -23,154 +27,146 @@
                     <div class="top">
                         <!-- include dark theme toggler -->
                         <%@ include file="./Components/dark-theme-toggler.jsp" %>
-                        <div class="profile">
-                            <div class="info">
-                                <p>Hey, <b>Snijders</b></p>
-                                <small>Admin</small>
-                            </div>
-                            <div class="profile-photo">
-                                <img src="../img/admin/default_profile.png" alt="alt"/>
-                            </div>
-                        </div>
+                        <%@ include file="./Components/global-profile.jsp" %>
                     </div>
                 </div>
                 <div class="horizontal-line"></div>
                 <!----------  START OF ADDING TO CREATE NEW ITEMS ------------------->
                 <form>
-                <div class="add-items-container">
-                    <div class="add-items">
-                        <div class="update-container">
-                            <label>Staff ID</label>
-                             <div class="input-container">
-                                 <input type="text" name="username" id="username" maxlength="25" required placeholder="Staff ID">
-                             </div>
-                        </div>
-                        <div class="update-container">
-                            <label>Staff Name</label>
-                             <div class="input-container">
-                                 <input type="text" name="name" id="name" maxlength="25" required placeholder="Staff Name">
-                             </div>
-                        </div>
-<!--                        <div class="update-container">
-                            <label>Role</label>
-                            <div class="input-container">
-                                <input type="text" name="name" placeholder="Role">
+                    <div class="add-items-container">
+                        <div class="add-items">
+                            <div class="update-container">
+                                <label>Staff ID</label>
+                                <div class="input-container">
+                                    <input type="text" name="username" id="username" maxlength="25" required placeholder="Staff ID">
+                                </div>
                             </div>
-                        </div>-->
-                        <div class="update-container">
-                            <label>Email</label>
-                            <div class="input-container">
-                                <input type="email" name="name" maxLength="25" required placeholder="Email">
+                            <div class="update-container">
+                                <label>Staff Name</label>
+                                <div class="input-container">
+                                    <input type="text" name="name" id="name" maxlength="25" required placeholder="Staff Name">
+                                </div>
                             </div>
-                        </div>
-<!--                        <div class="update-container">
-                            <label>Password</label>
-                            <div class="input-container">
-                                <input type="password" name="name" placeholder="Password">
+                            <!--                        <div class="update-container">
+                                                        <label>Role</label>
+                                                        <div class="input-container">
+                                                            <input type="text" name="name" placeholder="Role">
+                                                        </div>
+                                                    </div>-->
+                            <div class="update-container">
+                                <label>Email</label>
+                                <div class="input-container">
+                                    <input type="email" name="name" maxLength="25" required placeholder="Email">
+                                </div>
                             </div>
-                        </div>-->
-<!--                        <div class="title">
-                            <h2>Address</h2>
-                            <div class="horizontal-line"></div>
-                        </div>-->
-<!--                        <div class="update-container">
-                            <label>Address Line 1</label>
-                            <div class="input-container">
-                                <input type="text" name="name" placeholder="Address Line 1" >
-                            </div>
-                        </div>
-                        <div class="update-container">
-                            <label>Address Line 2</label>
-                            <div class="input-container">
-                                <input type="text" name="name" placeholder="Address Line 2" >
-                            </div>
-                        </div>
-                        <div class="update-container">
-                            <label>City</label>
-                            <div class="input-container">
-                                <input type="text" name="name" placeholder="City" >
-                            </div>
-                        </div>
-                        <div class="update-container">
-                            <label>State</label>
-                            <div class="input-container">
-                                <input type="text" name="name" placeholder="State" >
-                            </div>
-                        </div>
-                        <div class="update-container">
-                            <label>Country</label>
-                            <div class="input-container">
-                                <input type="text" name="name" placeholder="Country" >
-                            </div>
-                        </div>
-                        <div class="update-container">
-                            <label>Address Line 2</label>
-                            <div class="input-container">
-                                <input type="text" name="name" placeholder="Address Line 2" >
-                            </div>
-                        </div>-->
-                        <div class="update-container submit">
-                            <div class="submit-container update">
-                                <input type="submit" value="Create" class="submit-button">
-                            </div>
-                            <div class="submit-container cancel">
-                                <input type="reset" value="Reset" class="submit-button">
-                            </div>
-                        </div>
-                    </div>
-<!--                    <div class="add-items select"> 
-                        <div class="update-container image">
-                            <label>Upload Image</label>
-                            <div class="input-container">
-                                <input type="file" name="image" id="image" accept="image/png, image/jpeg"/>
+                            <!--                        <div class="update-container">
+                                                        <label>Password</label>
+                                                        <div class="input-container">
+                                                            <input type="password" name="name" placeholder="Password">
+                                                        </div>
+                                                    </div>-->
+                            <!--                        <div class="title">
+                                                        <h2>Address</h2>
+                                                        <div class="horizontal-line"></div>
+                                                    </div>-->
+                            <!--                        <div class="update-container">
+                                                        <label>Address Line 1</label>
+                                                        <div class="input-container">
+                                                            <input type="text" name="name" placeholder="Address Line 1" >
+                                                        </div>
+                                                    </div>
+                                                    <div class="update-container">
+                                                        <label>Address Line 2</label>
+                                                        <div class="input-container">
+                                                            <input type="text" name="name" placeholder="Address Line 2" >
+                                                        </div>
+                                                    </div>
+                                                    <div class="update-container">
+                                                        <label>City</label>
+                                                        <div class="input-container">
+                                                            <input type="text" name="name" placeholder="City" >
+                                                        </div>
+                                                    </div>
+                                                    <div class="update-container">
+                                                        <label>State</label>
+                                                        <div class="input-container">
+                                                            <input type="text" name="name" placeholder="State" >
+                                                        </div>
+                                                    </div>
+                                                    <div class="update-container">
+                                                        <label>Country</label>
+                                                        <div class="input-container">
+                                                            <input type="text" name="name" placeholder="Country" >
+                                                        </div>
+                                                    </div>
+                                                    <div class="update-container">
+                                                        <label>Address Line 2</label>
+                                                        <div class="input-container">
+                                                            <input type="text" name="name" placeholder="Address Line 2" >
+                                                        </div>
+                                                    </div>-->
+                            <div class="update-container submit">
+                                <div class="submit-container update">
+                                    <input type="submit" value="Create" class="submit-button">
+                                </div>
+                                <div class="submit-container cancel">
+                                    <input type="reset" value="Reset" class="submit-button">
+                                </div>
                             </div>
                         </div>
-                        <div class="update-container select">
-                            <label>Gender</label>
-                            <div class="input-container">
-                                <select>
-                                    <option value="-1">Gender</option>
-                                    <option value="edit">Male</option>
-                                    <option value="delete">Female</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="update-container select">
-                            <label>Birth Date</label>
-                            <div class="input-container">
-                                <input type="date" name="name">
-                            </div>
-                        </div>
-                        <div class="update-container submit">
-                            <div class="submit-container update">
-                                <input type="submit" value="Create" class="submit-button">
-                            </div>
-                            <div class="submit-container cancel">
-                                <input type="reset" value="Reset" class="submit-button">
-                            </div>
-                        </div>-->
+                        <!--                    <div class="add-items select"> 
+                                                <div class="update-container image">
+                                                    <label>Upload Image</label>
+                                                    <div class="input-container">
+                                                        <input type="file" name="image" id="image" accept="image/png, image/jpeg"/>
+                                                    </div>
+                                                </div>
+                                                <div class="update-container select">
+                                                    <label>Gender</label>
+                                                    <div class="input-container">
+                                                        <select>
+                                                            <option value="-1">Gender</option>
+                                                            <option value="edit">Male</option>
+                                                            <option value="delete">Female</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="update-container select">
+                                                    <label>Birth Date</label>
+                                                    <div class="input-container">
+                                                        <input type="date" name="name">
+                                                    </div>
+                                                </div>
+                                                <div class="update-container submit">
+                                                    <div class="submit-container update">
+                                                        <input type="submit" value="Create" class="submit-button">
+                                                    </div>
+                                                    <div class="submit-container cancel">
+                                                        <input type="reset" value="Reset" class="submit-button">
+                                                    </div>
+                                                </div>-->
                     </div>
                 </form>
-                </div>
             </div>
-            <!----------  END OF MAIN ------------------->
-            </div>
-            <!-- Right after the browser renders the content -->
-            <script type="text/javascript">
-                // If localStorage is supported by the browser
-                if (typeof(Storage) !== "undefined") {
-                    // If we need to open the bar
-                    if(localStorage.getItem("theme") === "dark"){
+        </div>
+        <!----------  END OF MAIN ------------------->
+    </div>
+    <!-- Right after the browser renders the content -->
+    <script type="text/javascript">
+        // If localStorage is supported by the browser
+        if (typeof (Storage) !== "undefined") {
+            // If we need to open the bar
+            if (localStorage.getItem("theme") === "dark") {
 
-                        // check the dark theme button
-                        let inputContainers = document.querySelectorAll(".input-container");
-                        for (var i = 0; i < inputContainers.length; ++i) {
-                        inputContainers[i].classList.add("dark");
-                        }
-                    }
+                // check the dark theme button
+                let inputContainers = document.querySelectorAll(".input-container");
+                for (var i = 0; i < inputContainers.length; ++i) {
+                    inputContainers[i].classList.add("dark");
                 }
-            </script>
-            <script type="text/javascript" src="../admin_js/sweetalert2.all.js"></script>
-            <script type="text/javascript" src="../admin_js/adminAdd.js"></script>
-    </body>
+            }
+        }
+    </script>
+    <script type="text/javascript" src="../admin_js/sweetalert2.all.js"></script>
+    <script type="text/javascript" src="../admin_js/adminAdd.js"></script>
+</body>
 </html>
