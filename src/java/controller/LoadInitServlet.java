@@ -70,7 +70,7 @@ public class LoadInitServlet extends HttpServlet {
         context.setAttribute("contactNo", contactNo);
         context.setAttribute("contactEmail", contactEmail);
         context.setAttribute("companyLogo", companyLogo);
-        context.setAttribute("companyIcon", companyLogo);
+        context.setAttribute("companyIcon", companyIcon);
         context.setAttribute("allKeywords", allKeywords);
     }
 

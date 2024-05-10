@@ -12,7 +12,10 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.*;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -159,11 +162,41 @@ public class HomePage extends HttpServlet {
 
         // To get the all of courses 
         List<Courses> allCourses = em.createNamedQuery("Courses.findAll").getResultList();
-        request.setAttribute("allCourse", allCourses);
+        List<Courses> hotCourses = new ArrayList<>();
 
-        // To get all of the associated authors
+        // To get the hottest courses
+        // Get the date parameters
+        // Get the current date and time
+        LocalDateTime currentDate = LocalDateTime.now();
+
+        // Calculate the start date of the last month
+        LocalDateTime startDateOfLastMonth = currentDate.minusMonths(1).withDayOfMonth(1).withHour(0).withMinute(0).withSecond(0).withNano(0);
+
+        // Calculate the end date of the last month
+        LocalDateTime endDateOfLastMonth = currentDate.withDayOfMonth(1).minusDays(1).withHour(23).withMinute(59).withSecond(59).withNano(999);
+        
+        // Convert LocalDateTime to Date
+        Date startDate = Date.from(startDateOfLastMonth.atZone(ZoneId.systemDefault()).toInstant());
+        Date endDate = Date.from(endDateOfLastMonth.atZone(ZoneId.systemDefault()).toInstant());
+
+        int currentHottestCourse = 0;
+        for (Courses currentCourse : allCourses) {
+            long totalSubs = (long) em.createNamedQuery("CourseSubscriptions.countByCourseIdLastMonth").setParameter("courseId", currentCourse).setParameter("startDate", startDate).setParameter("endDate", endDate).getSingleResult();
+            
+            //If the totalSubs is more than 10 we consider that as hot
+            if (totalSubs >= 10){
+                hotCourses.add(currentCourse);
+                currentHottestCourse++;
+            }
+            
+            if (currentHottestCourse == 10){
+                break;
+            }
+        }
+
+        // To get hottest of the associated authors
         Map<String, List<Authors>> authorContribution3 = new HashMap<>();
-        for (Courses eachMainCourse : allCourses) {
+        for (Courses eachMainCourse : hotCourses) {
             List<AuthorContribution> rawAuthorContribution3 = em.createNamedQuery("AuthorContribution.findByCourseId").setParameter("courseId", eachMainCourse).getResultList();
             List<Authors> author = new ArrayList<>();
             for (AuthorContribution eachRawAuthorContribution3 : rawAuthorContribution3) {
@@ -172,7 +205,9 @@ public class HomePage extends HttpServlet {
             }
             authorContribution3.put(eachMainCourse.getCourseId(), author);
         }
-        request.setAttribute("allAuthorContribution", authorContribution3);
+
+        request.setAttribute("hotCourses", hotCourses);
+        request.setAttribute("hottestAuthorContribution", authorContribution3);
 
         // Forward the request to home.jsp
         request.getRequestDispatcher("/WEB-INF/Client/Home.jsp").forward(request, response);

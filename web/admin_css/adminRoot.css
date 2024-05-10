@@ -17,17 +17,56 @@
     --color-primary-variant: #111e88;
     --color-dark-variant:#677483;
     --color-background: #f6f6f9;
-    
+
     --card-border-radius: 8px;
     --border-radius-1: 0.25em;
     --border-radius-2: 0.8rem;
     --border-radius-3: 1.2rem;
-    
+
     --card-padding: 1.8rem;
     --padding-1: 1.2rem;
-    
+
     --box-shadow: 0rem 0.5rem 1rem var(--color-light);
     --filter: brightness(0.95);
+
+    /*kah xuan*/
+    --toast-color-error: #ff7782;
+    --toast-color-success: #64d640;
+    --toast-color-warning: #ffbb55;
+    --toast-color-default: #c2c2c2;
+
+    --toast-color-error-1: #eb3645;
+    --toast-color-success-1: #47b524;
+    --toast-color-warning-1: #e6a037;
+    --toast-color-default-1: #949494;
+
+    --color-text-light-1: #a0a0a0;
+    --color-text-light-2: #545454;
+    --color-text-light-3: #373737;
+
+    --color-light-grey-0: #f9f9f9;
+    --color-light-grey-1: #f5f5f5;
+    --color-light-grey-2: #e8e8e8;
+    --color-light-grey-3: #c4c4c4;
+
+    --box-shadow-0: 0 2px 4px rgba(0,0,0,.16), 0 4px 12px rgba(0,0,0,.16);
+    --box-shadow-1: 0 2px 4px rgba(0,0,0,.08), 0 4px 12px rgba(0,0,0,.08);
+    --box-shadow-2: 0 2px 4px rgba(0,0,0,.05), 0 4px 12px rgba(0,0,0,.05);
+
+    --font-size-8xl: 48px;
+    --font-size-7xl: 44px;
+    --font-size-6xl: 40px;
+    --font-size-5xl: 36px;
+    --font-size-7xl: 32px;
+    --font-size-xxxl: 28px;
+    --font-size-xxl: 24px;
+    --font-size-xl: 22px;
+    --font-size-l: 20px;
+    --font-size-m: 18px;
+    --font-size-xm: 16px;
+    --font-size-s: 14px;
+    --font-size-xs: 12px;
+    --font-size-xxs: 10px;
 }
 
 ::selection{
@@ -52,7 +91,7 @@ option {
 }
 
 html{
-  font-size: 14px;  
+    font-size: 14px;
 }
 
 body{

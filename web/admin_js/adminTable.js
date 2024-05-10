@@ -21,7 +21,7 @@ checkedAllBoxHead.onclick = function () {
 };
 
 //check all Boxes Foot
-checkedAllBoxFoot.onclick = function () {
+/*checkedAllBoxFoot.onclick = function () {
     if (checkedAllBoxFoot.checked) {
         checkBoxes.forEach(checkBox => {
             checkBox.checked = true;
@@ -35,7 +35,7 @@ checkedAllBoxFoot.onclick = function () {
         removeActiveClassToRow();
         checkedAllBoxHead.checked = false;
     }
-};
+};*/
 
 
 

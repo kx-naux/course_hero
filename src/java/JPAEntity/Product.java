@@ -31,6 +31,10 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Product.findAll", query = "SELECT p FROM Product p"),
+    @NamedQuery(name = "Product.findByAvgRatingMoreThan",query = "SELECT p FROM Product p WHERE p.avgRating >= :avgRating"),
+    @NamedQuery(name = "Product.findAllOrderByRateWeightageDesc", query = "SELECT p FROM Product p ORDER BY p.rateWeightage DESC"),
+    @NamedQuery(name = "Product.findAllOrderByAvgRatingDesc", query = "SELECT p FROM Product p ORDER BY p.avgRating DESC"),
+    @NamedQuery(name = "Product.findAllOrderByPriceDesc", query = "SELECT p FROM Product p ORDER BY p.price DESC"),
     @NamedQuery(name = "Product.findByProductId", query = "SELECT p FROM Product p WHERE p.productId = :productId"),
     @NamedQuery(name = "Product.findByProdName", query = "SELECT p FROM Product p WHERE p.prodName = :prodName"),
     @NamedQuery(name = "Product.findByPrice", query = "SELECT p FROM Product p WHERE p.price = :price"),
@@ -39,7 +43,10 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Product.findByDiscount", query = "SELECT p FROM Product p WHERE p.discount = :discount"),
     @NamedQuery(name = "Product.findByImagePath", query = "SELECT p FROM Product p WHERE p.imagePath = :imagePath"),
     @NamedQuery(name = "Product.findByStatus", query = "SELECT p FROM Product p WHERE p.status = :status"),
-    @NamedQuery(name = "Product.findByProdNameFilter", query = "SELECT p FROM Product p WHERE LOWER(p.prodName) LIKE LOWER(CONCAT('%',:prodName,'%'))")
+    @NamedQuery(name = "Product.findByProdNameFilter", query = "SELECT p FROM Product p WHERE LOWER(p.prodName) LIKE LOWER(CONCAT('%',:prodName,'%'))"),
+    @NamedQuery(name = "Product.findByProdNameFilterOrderByRateWeightageDesc", query = "SELECT p FROM Product p WHERE LOWER(p.prodName) LIKE LOWER(CONCAT('%',:prodName,'%')) ORDER BY p.rateWeightage DESC"),
+    @NamedQuery(name = "Product.findByProdNameFilterOrderByAvgRatingDesc", query = "SELECT p FROM Product p WHERE LOWER(p.prodName) LIKE LOWER(CONCAT('%',:prodName,'%')) ORDER BY p.avgRating DESC"),
+    @NamedQuery(name = "Product.findByProdNameFilterOrderByPriceDesc", query = "SELECT p FROM Product p WHERE LOWER(p.prodName) LIKE LOWER(CONCAT('%',:prodName,'%')) ORDER BY p.price DESC")
 })
 
 public class Product implements Serializable {
@@ -105,7 +112,21 @@ public class Product implements Serializable {
     public Product(String productId) {
         this.productId = productId;
     }
-
+    
+    //fully parameterized
+    public Product(String productId, ProductCategory prodcatId, String prodName,String description, double price, int rateWeightage, double avgRating, double discount, String imagePath, String status) {
+        this.productId = productId;
+        this.prodcatId = prodcatId;
+        this.prodName = prodName;
+        this.prodName = description;
+        this.price = price;
+        this.rateWeightage = rateWeightage;
+        this.avgRating = avgRating;
+        this.discount = discount;
+        this.imagePath = imagePath;
+        this.status = status;
+    }
+    
     public Product(String productId, String prodName, double price, int rateWeightage, double avgRating, double discount) {
         this.productId = productId;
         this.prodName = prodName;
@@ -149,6 +170,12 @@ public class Product implements Serializable {
 
     public void setAvgRating(double avgRating) {
         this.avgRating = avgRating;
+    }
+    
+    public void updateAvgRating(int newRating){
+        double oldTotalRating = this.rateWeightage * this.avgRating;
+        this.rateWeightage += 1;
+        this.avgRating = (oldTotalRating + newRating)/this.rateWeightage;
     }
 
     public String getImagePath() {

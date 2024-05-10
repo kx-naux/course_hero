@@ -20,7 +20,7 @@
         <jsp:useBean id="webpath" class="module.WebPath" scope="application" />
         <jsp:useBean id="merchItemsByCategory" class="Map<String, List<JPAEntity.Merchandise>>" scope="request" />
         <% List<MerchCategory> merchCategories = (List<MerchCategory>) request.getAttribute("merchCategories");
-        %>
+            %>
 
     </head>
     <body>
@@ -194,10 +194,10 @@
 
         <section class="section merch-list-section">
             <div class="merch-list-div flex-col">
-                <h1 class="merch-list-title" style="margin-top: 50px;">All merchandises</h1>
 
+                <div class="merch-list-div flex-col">
 
-                <div class="merch-list-div flex-col" style="margin-top: -30px;">
+                    <h1 class="merch-list-title">All merchandises</h1>
                     <%
                         for (MerchCategory eachCategory : merchCategories) {
                             List<Merchandise> merchandise = merchItemsByCategory.get(eachCategory.getMerchcatId());

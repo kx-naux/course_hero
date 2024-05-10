@@ -71,28 +71,20 @@ public class SubmitCourseReview extends HttpServlet {
         
         //increase the count of counter
         ratingsCounter.counterIncrementByOne();
-       
         
-        //get rating statistic
-        List<Long> starCountsAsc = new ArrayList<>();
-        Query getRatingStatsBasedOnStarQuery = em.createNamedQuery("Ratings.findRatingCountByProdIdAndScore");
-        getRatingStatsBasedOnStarQuery.setParameter("productId", prodEntity);
+        /*
+        Update TableCounter [done]
+        Update Product 
+        Add Ratings [done]
+        */
         
-        Long result = null;
-        for(int i = 1;i<6;i++){
-            getRatingStatsBasedOnStarQuery.setParameter("score", i);
-            getRatingStatsBasedOnStarQuery.getSingleResult();
-            result = new Long((long)getRatingStatsBasedOnStarQuery.getSingleResult());
-            starCountsAsc.add(result);
-        }  
-        
-        UserRatingStatistic rateStats = new UserRatingStatistic(starCountsAsc.get(4),starCountsAsc.get(3),starCountsAsc.get(2),starCountsAsc.get(1),starCountsAsc.get(0));
-        
+        //Update product table
+
         //update rating 
-        double test = (rateStats.getAvgRating()*5 + score)/(double)(rateStats.getAllStarCounts()+1);
-        prodEntity.setAvgRating((rateStats.getAvgRating()*5 + score)/(double)(rateStats.getAllStarCounts()+1));
-        
-        
+
+        prodEntity.updateAvgRating(score);
+                
+
         //save the rating data
         if(saveDataToDatabases(request,response,newRateData,prodEntity,ratingsCounter)){
             //success
@@ -100,6 +92,7 @@ public class SubmitCourseReview extends HttpServlet {
             response.sendRedirect("course?id=" + request.getParameter("courseIdToReview"));
         }else{
             request.setAttribute("reviewError","Server Error, Failed to submit review. Please Try again later");
+            response.sendRedirect("course?id=" + request.getParameter("courseIdToReview"));
         }
         
        

@@ -1,9 +1,18 @@
-let createBtn = document.querySelector('.submit-container.update .submit-button');
+const errorMsg = document.getElementById("errorMsg");
+if (errorMsg !== null && errorMsg.innerText !== "") {
+    Swal.fire({
+        title: "Record Is Not Created",
+        text: errorMsg.innerText,
+        icon: "error"
+    });
+}
 
-createBtn.onclick = function(e){
-  Swal.fire({
-  title: "Record Created",
-  text: "Your work has been saved!",
-  icon: "success"
-  });
-};
+
+const successMsg = document.getElementById("successMsg");
+if (successMsg !== null && successMsg.innerText !== "") {
+    Swal.fire({
+        title: "Record Created",
+        text: successMsg.innerText,
+        icon: "success"
+    });
+}

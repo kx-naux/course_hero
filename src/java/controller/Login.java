@@ -139,7 +139,12 @@ public class Login extends HttpServlet {
 
             if (pageToGo != null) {
                 response.sendRedirect(pageToGo);
-            } else {
+            }
+            else if(userData.getUsertype().equals("Staff") || userData.getUsertype().equals("Manager") ){
+                response.sendRedirect("admin/dashboard");
+                return;
+            }
+            else{
                 response.sendRedirect("home");
                 return;
             }

@@ -58,67 +58,69 @@ public class GetCourseReview extends HttpServlet {
         //set offset limit  
         int offset = submitCount * 5;
         int maxDataInPage = 5;
-        
+
         //get rating count
-        Query getRateCountQuery = em.createNamedQuery("Ratings.findRatingCountByProdId").setParameter("productId",courseRetrieved.getProductId());
-        long ratingCount = (long)getRateCountQuery.getSingleResult();
-        
+        Query getRateCountQuery = em.createNamedQuery("Ratings.findRatingCountByProdId");
+        getRateCountQuery.setParameter("productId", courseRetrieved.getProductId());
+        long ratingCount = (long) getRateCountQuery.getSingleResult();
+
         //find max submitCount
-        long lastPage = (ratingCount-1)/Long.parseLong(String.valueOf(maxDataInPage));
-        
-        //Query getRatings = em.createNamedQuery("Ratings.findRatingByCourseIdSortDescPriKey").setParameter("productId",courseRetrieved.getProductId());
-        //getRatings.setMaxResults(maxDataInPage);
-        //getRatings.setFirstResult(offset);
-        //List<Ratings> ratingsList = getRatings.getResultList();
-        //JsonArray reviews = new JsonArray();
-        
-        //String base64ImageData = "";
-                                        
-        
-        //String pattern = "yyyy-MM-dd HH:mm:ss";
-        //SimpleDateFormat dateFormatter = new SimpleDateFormat(pattern);
-        //for(Ratings rating: ratingsList){
-        //    JsonObject review = new JsonObject();
-        //    Users user = rating.getUserId();
-        //    review.addProperty("userName", user.getDisplayName());
-        //    review.addProperty("rating", rating.getScore());
-        //    review.addProperty("ratingDate", dateFormatter.format(rating.getTimeRated()));
-        //    review.addProperty("comments", rating.getComment());
-        //    if (user.getImgData() != null) {
-        //        base64ImageData = Base64.getEncoder().encodeToString((byte[])user.getImgData());
-        //    }else{
-        //        base64ImageData = "./img/user/default.png";
-        //    }
-        //    review.addProperty("userImgPath", base64ImageData);
-        //    reviews.add(review);
-        //}
-        
-        
+        long lastPage = (ratingCount - 1) / Long.parseLong(String.valueOf(maxDataInPage));
+
+//        Query getRatings = em.createNamedQuery("Ratings.findRatingByCourseIdSortDescPriKey");
+        Query getRatings = em.createNamedQuery("Ratings.findRatingByProdIdSortDescPriKey");
+        getRatings.setParameter("productId", courseRetrieved.getProductId());
+        getRatings.setMaxResults(maxDataInPage);
+        getRatings.setFirstResult(offset);
+        List<Ratings> ratingsList = getRatings.getResultList();
         JsonArray reviews = new JsonArray();
-        for (int i = 0; i < 3; i++) {
+
+        String base64ImageData = "";
+
+        String pattern = "yyyy-MM-dd HH:mm:ss";
+        SimpleDateFormat dateFormatter = new SimpleDateFormat(pattern);
+        for(Ratings rating: ratingsList){
             JsonObject review = new JsonObject();
-            review.addProperty("userName", "Woo Yu Beng");
-            review.addProperty("rating", 4);
-            review.addProperty("ratingDate", "29/4/2024");
-            review.addProperty("comments", "Yu Beng have a B.S. in Computer Programming. My curriculum did not include Python, so I decided to give this a try. This course is amazing! I do not normally leave reviews, but I am very happy with the purchase.");
-            review.addProperty("userImgPath", "./img/user/default.png");
+            Users user = rating.getUserId();
+            review.addProperty("userName", user.getDisplayName());
+            review.addProperty("rating", rating.getScore());
+            review.addProperty("ratingDate", dateFormatter.format(rating.getTimeRated()));
+            review.addProperty("comments", rating.getComment());
+            if (user.getImgData() != null) {
+                base64ImageData = Base64.getEncoder().encodeToString((byte[])user.getImgData());
+            }else{
+                base64ImageData = "./img/user/default.png";
+            }
+            review.addProperty("userImgPath", base64ImageData);
             reviews.add(review);
         }
+        
+//        JsonArray reviews = new JsonArray();
+//        for (int i = 0; i < 3; i++) {
+//            JsonObject review = new JsonObject();
+//            review.addProperty("userName", "Woo Yu Beng");
+//            review.addProperty("rating", 4);
+//            review.addProperty("ratingDate", "29/4/2024");
+//            review.addProperty("comments", "Yu Beng have a B.S. in Computer Programming. My curriculum did not include Python, so I decided to give this a try. This course is amazing! I do not normally leave reviews, but I am very happy with the purchase.");
+//            review.addProperty("userImgPath", "./img/user/default.png");
+//            reviews.add(review);
+//        }
 
         // response back to client
         JsonObject responseObject = new JsonObject();
         responseObject.addProperty("status", "success");
         responseObject.add("reviews", reviews);
-        
+
         //if end need put false
-        boolean thisIsLastPage = false;
-        if(thisIsLastPage){
+        int totalPageCount = (int) Math.ceil((double) ratingCount / maxDataInPage);
+        boolean thisIsLastPage = (submitCount >= totalPageCount-1);
+        if (thisIsLastPage) {
             responseObject.addProperty("isMore", false);
-        }else{
+        } else {
             responseObject.addProperty("isMore", true);
         }
-        responseObject.addProperty("submitCount",submitCount+1);
-        
+        responseObject.addProperty("submitCount", submitCount + 1);
+
         // Convert JSON object to string
         String responseJsonString = responseObject.toString();
 

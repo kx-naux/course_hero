@@ -30,6 +30,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "CourseSubscriptions.findAll", query = "SELECT c FROM CourseSubscriptions c"),
+    @NamedQuery(name = "CourseSubscriptions.countByCourseIdLastMonth", query = "SELECT COUNT(c) FROM CourseSubscriptions c WHERE c.courseId = :courseId AND c.subscribeTime >= :startDate AND c.subscribeTime < :endDate"),
     @NamedQuery(name = "CourseSubscriptions.findBySubscriptionsId", query = "SELECT c FROM CourseSubscriptions c WHERE c.subscriptionsId = :subscriptionsId"),
     @NamedQuery(name = "CourseSubscriptions.findBySubscribeTime", query = "SELECT c FROM CourseSubscriptions c WHERE c.subscribeTime = :subscribeTime"),
     @NamedQuery(name = "CourseSubscriptions.findByStartTime", query = "SELECT c FROM CourseSubscriptions c WHERE c.startTime = :startTime"),
@@ -102,10 +103,10 @@ public class CourseSubscriptions implements Serializable {
     public void setSubscriptionsId(String subscriptionsId) {
         this.subscriptionsId = subscriptionsId;
     }
-    
+
     public void setSubscriptionsId(long count) {
         this.subscriptionsId = String.format("SU%07d", count);
-    }   
+    }
 
     public Date getSubscribeTime() {
         return subscribeTime;
@@ -122,7 +123,6 @@ public class CourseSubscriptions implements Serializable {
     public void setStartTime(Date startTime) {
         this.startTime = startTime;
     }
-
 
     public Date getFinishTime() {
         return finishTime;
@@ -147,7 +147,6 @@ public class CourseSubscriptions implements Serializable {
     public void setUserId(Users userId) {
         this.userId = userId;
     }
-    
 
     @Override
     public int hashCode() {
@@ -174,9 +173,6 @@ public class CourseSubscriptions implements Serializable {
         return "JPAEntity.CourseSubscriptions[ subscriptionsId=" + subscriptionsId + " ]";
     }
 
-
-
-
     public String getProgress() {
         return progress;
     }
@@ -184,7 +180,5 @@ public class CourseSubscriptions implements Serializable {
     public void setProgress(String progress) {
         this.progress = progress;
     }
-
-
 
 }

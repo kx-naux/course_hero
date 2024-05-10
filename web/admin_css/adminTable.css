@@ -53,9 +53,14 @@
 .custom-table tbody td {
   color: var(--color-dark);
   font-weight: 400;
-  font-size: 16px;
+  font-size: 14px;
   padding-bottom: 20px;
   padding-top: 20px;
+}
+
+.custom-table tbody td.description{
+    font-size:12px;
+    width: 25%;
 }
 
 .custom-table tbody th small,

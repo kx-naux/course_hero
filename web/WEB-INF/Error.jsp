@@ -8,18 +8,20 @@
         <link rel="icon" type="image/ico" href=${companyLogo}>
         <link type="text/css" href="./css/style.css" rel="stylesheet" >
         <link type="text/css" href="./css/error.css" rel="stylesheet" >
+        <link type="text/css" href="../css/error.css" rel="stylesheet" >
+        <link type="text/css" href="../css/style.css" rel="stylesheet" >
         <title>Error ${param.code}</title>
         <jsp:useBean id="webpath" class="module.WebPath" scope="application" />
     </head>
     <body>
         <!--logo-->
-        <a href="<%= webpath.getPageUrl("home")%>"><img class="nav-logo" src="./img/Logo.png" alt="Course Hero" /></a>
+        <a href="<%= webpath.getPageUrl("home")%>"><img class="nav-logo" src="./img/Logo.png"  alt="Course Hero" /></a>
         <div class="error-content-div flex-row">
             <!--error message-->
             <div class="error-content-left flex-col">
                 <h1>Error - ${param.code}</h1>
                 <h2>${sessionScope.errorDesc}</h2>
-                <p>${sessionScope.errorDetail}</p>
+                <p>${sessionScope.errorDetail}</p>  
                 <a href="<%= webpath.getPageUrl("home")%>">Back to home</a>
             </div>
             <div class="error-content-right flex-col">
