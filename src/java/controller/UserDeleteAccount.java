@@ -46,7 +46,13 @@ public class UserDeleteAccount extends HttpServlet {
             session.setAttribute("pageToGoAfterLogin","user-delete-account");
             response.sendRedirect("login");
             return;
-
+        }
+        
+        if(userDataSession.getUsertype().equals("Manager")||userDataSession.getUsertype().equals("Staff")){
+            request.setAttribute("toastErrMsg", "Manager Unable to Perform Account Deletion");
+            request.setAttribute("profilePageNumber", "1");
+            request.getRequestDispatcher("/WEB-INF/Client/Profile.jsp").forward(request, response);
+            return;
         }
 
         if (userDataSession != null) {
