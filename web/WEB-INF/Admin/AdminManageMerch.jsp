@@ -10,7 +10,7 @@
         <title>Manage Merch</title>
         <link rel="icon" type="image/ico" href="../ico/Logo.ico">
         <!--StyleSheet-->
-        <link href="../admin_css/adminCourse.css" rel="stylesheet">
+        <link href="../admin_css/adminMerch.css" rel="stylesheet">
         <link href="../admin_css/adminTable.css" rel="stylesheet">
         <jsp:useBean id="webpath" class="module.WebPath" scope="application" />
         <% List<Merchandise> merchandiseList = (List<Merchandise>) request.getAttribute("merchandiseList"); %>
@@ -25,10 +25,12 @@
                 <div class="main-top">
                     <div class="main-top-left">
                         <h1>Manage Merch</h1>
+                        <a href="<%= webpath.getPageUrl("add-merch")%>">
                         <button type="button" class="add-button products">
                             <span class="add-button__text">Add Merch</span>
                             <span class="add-button__icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke="currentColor" height="24" fill="none" class="svg"><line y2="19" y1="5" x2="12" x1="12"></line><line y2="12" y1="12" x2="19" x1="5"></line></svg></span>
                         </button>
+                        </a>
                     </div>                    
                     <div class="top">
                         <!-- include dark theme toggler -->
@@ -39,115 +41,21 @@
                     </div>
                 </div>
                 <div class="horizontal-line"></div>
-                <div class="filter-flex-container">
-                <div class="bulk-action-container">
-                    <div class="input-container">
-                        <select>
-                            <option value="-1">Bulk Actions</option>
-                            <option value="edit">Edit</option>
-                            <option value="delete">Delete</option>
-                        </select>
-                    </div>
-                    <div class="submit-container">
-                        <input type="submit" value="Apply" class="submit-button">
-                    </div>
-                </div>
-                <div class="filter-container">
-                    <div class="input-container" title="Date added">
-                        <input type="date">
-                    </div>
-                    <div class="input-container">
-                        <select id="merchCategory" name="merchCategory">
-                            <option value="-1">Merch Category</option>
-                            <% 
-                                 
-                               // Iterate through each merchandise in the original list
-                                for (int i = 0; i < merchandiseCatList.size(); i++) {
-                                String merchCatName = merchandiseCatList.get(i).getCategoryName();
-                            %>
-                            <option value="<%= merchCatName %>"><%= merchCatName %></option>
-                            <%}%>
-                        </select>
-                    </div>
-                    <div class="submit-container">
-                        <input type="submit" value="Filter" class="submit-button">
-                    </div>
-                </div>
-                <div class="search-container">
-                    <div class="input-container">
-                        <input type="search" placeholder="Search..." >
-                    </div>
-                    <div class="submit-container">
-                        <input type="submit" value="Search for Clients" class="submit-button">
-                    </div>
-                </div>
-                </div>
                 <!----------  START OF TABLE ------------------->
-                <form id="manage-merch">
                 <div class="table-container">
-                    <div class="tablenav-pages"> 
+                    <div class="tablenav-pages">
                         <div class="display-total-item-container">
-                        <span class="display-total-item">Showing <%= merchandiseList.size() %>  items of <%= merchandiseList.size() %> items</span>
-                        </div>
-                        <div class="pagination-links-container">
-                            <!--pagination, 20 course per page-->
-                            <%--
-                                long currentPage = 1;
-                                long dataPerPage = 4;
-                                long lastPage = ((numOfCoursesRec - 1) / dataPerPage) + 1;
-                                if (request.getParameter("p") != null) {
-                                    currentPage = Integer.parseInt(request.getParameter("p"));
-                                }
-
-                                boolean previousAllow = currentPage > 1;
-                                boolean nextAllow = currentPage < lastPage;
-                            --%>
-                        <span class="pagination-links">
-                            <a class="first-page" href="#"><<</a>
-                            <a class="prev-page" href="#"><</a>
-                        </span>
-                        <span class="pagination-input">
-                            <div class="input-container">
-                                <input class="current-page" name="p" type="text" value="1" size="1"/>
-                            </div>
-                            <span class="tablenav-paging-text">
-                                of
-                                <span class="total-pages">2</span>
-                            </span>
-                        </span>
-                        <span class="pagination-links">
-                            <a class="next-page" href="#">></a>
-                            <a class="last-page" href="#">>></a>
-                        </span>
+                        <span class="display-total-item">Showing <%= merchandiseList.size() %>  items</span>
                         </div>
                     </div>
                     <table class="product-table custom-table">
                            <thead>
                                <tr>
                                    <th scope="col">
-                                       <label class="control control--checkbox">
-                                           <input type="checkbox" class="js-check-all" />
-                                           <div class="control__indicator">
-                                               <i class="ri-check-line"></i>
-                                           </div>
-                                       </label>
-                                   </th>
-                                   <th scope="col">
-                                       <i class="ri-image-line"></i>
-                                   </th>
-                                   <th scope="col">
                                        Merch ID
-                                       <div class="sort-by-container">
-                                           <i class="ri-arrow-drop-up-fill"></i>
-                                           <i class="ri-arrow-drop-down-fill"></i>
-                                       </div>
                                    </th>
                                    <th scope="col">
                                        Merch Name
-                                       <div class="sort-by-container">
-                                           <i class="ri-arrow-drop-up-fill"></i>
-                                           <i class="ri-arrow-drop-down-fill"></i>
-                                       </div>
                                    </th>
                                    <th scope="col">
                                        Merch Category
@@ -172,28 +80,13 @@
                                 
                                 for (int i = 0; i < merchandiseList.size(); i++) {
                                 Merchandise merchandise = merchandiseList.get(i);
-                                String merchImg = merchandise.getProductId().getImagePath();
-                                String test = merchImg.replace("image", "");
                             %>
                                <tr scope="row">
-                                   <th scope="row">
-                                       <label class="control control--checkbox">
-                                           <input type="checkbox" />
-                                           <div class="control__indicator">
-                                               <i class="ri-check-line"></i>
-                                           </div>
-                                       </label>
-                                   </th>
-                                   <td>
-                                       <img src="../img<%= test %>" />
-                                       <div class="row-actions">
-                                           <a class="row-actions-edit">Edit</a>
-                                           |
-                                           <a class="row-actions-delete">Delete</a>
-                                       </div>
-                                   </td>
                                    <td>
                                        <%= merchandise.getMerchId() %>
+                                       <div class="row-actions">
+                                           <a class="row-actions-edit">Edit</a>
+                                       </form>
                                    </td>
                                    <td>
                                        <%= merchandise.getProductId().getProdName() %>
@@ -205,38 +98,55 @@
                                    <td><%= merchandise.getProductId().getStatus() %></td>
                                    <!---------------------- Edit Item ----------------------------------->
                                    <td class="edit-items-container">
-                                       <form>
+                                       <form method="post" action="manage-merch" id="form-<%= merchandise.getMerchId() %>">
+                                           <input type="text"  name="merchId" id="merchId" value="<%= merchandise.getMerchId() %>" hidden/>
                                            <h2>Edit Item</h2>
                                             <div class="edit-items"> 
                                           
                                                <div class="update-container">
                                                    <label>Merch Name</label>
-                                                    <div class="input-container">
-                                                        <input type="text" name="name" placeholder="Merch Name" >
-                                                    </div>
+                                                   <div class="input-container">
+                                                       <input type="text" name="productName" id="productName" required maxlength="50" placeholder="Merch Name">
+                                                   </div>
                                                </div>
-                                               <div class="update-container">
+                                               <div class="update-container select">
                                                <label>Merch Category</label>
                                                <div class="input-container">
-                                                   <select>
-                                                       <option value="-1">Merch Category</option>
-                                                       <option value="web">T-Shirts</option>
-                                                       <option value="graphic">Mugs</option>
+                                                   <select id="merchCategory" name="merchCategory">
+                                                       <%
+                                                           // Iterate through each merchandise in the original list
+                                                           for (int a = 0; a < merchandiseCatList.size(); a++) {
+                                                       %>
+                                                       <option value="<%= merchandiseCatList.get(a).getMerchcatId() %>"><%= merchandiseCatList.get(a).getCategoryName() %></option>
+                                                       <%}%>
                                                    </select>
                                                </div>
                                                </div>
                                                <div class="update-container">
-                                               <label>Price</label>
-                                               <div class="input-container">
-                                                   <input type="number" name="name" placeholder="Price" >
+                                                   <label>Price</label>
+                                                   <div class="input-container">
+                                                       <input type="number" name="price" id="price" required placeholder="Price" >
+                                                   </div>
                                                </div>
-                                               </div>
-                                               <div class="update-container">
-                                               <label>Stock</label>
-                                               <div class="input-container">
-                                                   <input type="number" name="name" placeholder="Stock" >
-                                               </div>
-                                               </div>
+                                                   <div class="update-container">
+                                                       <label>Stock</label>
+                                                       <div class="input-container">
+                                                           <input type="stockBalance"  name="stockBalance" required placeholder="Stock" >
+                                                       </div>
+                                                   </div>
+                                                   <div class="update-container">  
+                                                       <label>Status</label>
+                                                       <div class="input-container radio">
+                                                           <div class="input-radio">
+                                                               <input type="radio" name="status" id="active" value="Active" required checked/>
+                                                               <label for="active">Active</label>
+                                                           </div>
+                                                           <div class="input-radio">
+                                                               <input type="radio" name="status" id="inactive" value="Inactive" required>
+                                                               <label for="inactive">Inactive</label>
+                                                           </div>
+                                                       </div>
+                                                   </div>
                                             </div>
                                            <div class="update-container submit">
                                                <div class="submit-container update">
@@ -246,14 +156,13 @@
                                                    <input type="button" value="Cancel" class="submit-button">
                                                </div>
                                            </div>
-                                        </form>
+                                       </form>
                                    </td>
                                </tr>
                                <%}%>
                            </tbody>
                        </table>
                 </div>
-                </form>
             </div>
             <!----------  END OF MAIN ------------------->
             </div>

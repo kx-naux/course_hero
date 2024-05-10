@@ -50,3 +50,9 @@
 .edit-items-container .edit-items {
     grid-template-columns: auto auto auto auto auto !important; 
 }
+
+
+
+.input-container.radio{
+    white-space: nowrap;
+}

@@ -21,7 +21,7 @@ public class Courses extends HttpServlet {
             throws ServletException, IOException {
                 Users userData = Login.checkRmbMeToken(request, em);
         if(userData != null){
-            HttpSession session = request.getSession();
+            HttpSession session = request.getSession(); 
             session.setAttribute("userData",userData);
             
             String optionName = request.getParameter("sort");

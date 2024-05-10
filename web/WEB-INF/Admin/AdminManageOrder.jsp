@@ -37,29 +37,6 @@
                     </div>
                 </div>
                 <div class="horizontal-line"></div>
-                <div class="filter-flex-container">
-                    <div class="filter-container">
-                        <div class="input-container">
-                            <select>
-                                <option value="-1">Status</option>
-                                <option value="web">Shipping</option>
-                                <option value="graphic">Completed</option>
-                                <option value="graphic">Cancelled</option>
-                            </select>
-                        </div>
-                        <div class="input-container" title="Order Date">
-                            <input type="date">
-                        </div>
-                    </div>
-                    <div class="search-container">
-                        <div class="input-container">
-                            <input type="search" placeholder="Search..." >
-                        </div>
-                        <div class="submit-container">
-                            <input type="submit" value="Search for Clients" class="submit-button">
-                        </div>
-                    </div>
-                </div>
                 <!----------  START OF TABLE ------------------->
                 <div class="table-container">
                     <table class="client-table custom-table">
