@@ -208,6 +208,10 @@
         <servlet-name>AdminManageDeleteMerchPage</servlet-name>
         <servlet-class>controller.AdminManageDeleteMerchPage</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Courses</servlet-name>
+        <servlet-class>controller.Courses</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -375,6 +379,10 @@
     <servlet-mapping>
         <servlet-name>AdminManageDeleteMerchPage</servlet-name>
         <url-pattern>/AdminManageDeleteMerchPage</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Courses</servlet-name>
+        <url-pattern>/courses</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
