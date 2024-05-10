@@ -336,7 +336,7 @@
                             <%--               <video controls>
                                                <source src="data:video/mp4;base64,<%= base64StringVideoData %>" onerror="this.src='./video/course/python_course.mp4';" type="video/mp4">
                                            </video> --%>
-                            <img src="./img/course/beginner_excel.jpg" alt="" />
+                            <img src="${courseData.productId.imagePath}" alt="" />
                         </div>
 
                         <div class="sticky-div-bot flex-col">
@@ -528,9 +528,11 @@
 
                         <% } %>
 
-
-
+                        <%
+                            if (allRatingList.size() > ratingCount) {
+                        %> 
                         <button class="show-more-btn" id="showMoreReviewBtn">Show more reviews</button>
+                        <% } %>
                     </div>
                 </div>
 
