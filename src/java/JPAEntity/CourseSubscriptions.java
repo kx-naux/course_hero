@@ -88,7 +88,7 @@ public class CourseSubscriptions implements Serializable {
         this.progress = progress;
         this.finishTime = finishTime;
     }
-    
+
     public CourseSubscriptions(Date subscribeTime, Date startTime, String progress, Date finishTime) {
         this.subscribeTime = subscribeTime;
         this.startTime = startTime;

@@ -1,16 +1,22 @@
 package controller;
 
+import JPAEntity.CourseSubscriptions;
 import JPAEntity.Users;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.*;
 import java.io.IOException;
+import java.util.List;
+import java.util.Map;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
+import model.ReportDA;
 
 @WebServlet(name = "Admin Report", urlPatterns = {"/admin/report"})
 public class AdminReportPage extends HttpServlet {
+
     @PersistenceContext
     EntityManager em;
 
@@ -19,31 +25,32 @@ public class AdminReportPage extends HttpServlet {
         Users userDataSession = (Users) request.getSession().getAttribute("userData");
         Users userData = Login.checkRmbMeToken(request, em);
         //check has rmb token onot
-        if(userData != null){
+        if (userData != null) {
             HttpSession session = request.getSession();
-            session.setAttribute("userData",userData);
+            session.setAttribute("userData", userData);
             Login.getUserWishlist(request, em, userData);
             Login.getUserCart(request, em, userData);
-        //check has user logged in
-        }else if(userDataSession == null){
+            //check has user logged in
+        } else if (userDataSession == null) {
             HttpSession session = request.getSession();
-            session.setAttribute("pageToGoAfterLogin","admin/report");
+            session.setAttribute("pageToGoAfterLogin", "admin/report");
             response.sendRedirect("../login");
             return;
         }
-        
+
         if (userDataSession != null) {
             Login.getUserWishlist(request, em, userDataSession);
             Login.getUserCart(request, em, userDataSession);
         }
-        
+
         //get userData from session as the user can login thru the rmbMe
         Users checkUserAccess = (Users) request.getSession().getAttribute("userData");
-        if(!checkUserAccess.getUsertype().equals("Manager")){
+        if (!checkUserAccess.getUsertype().equals("Manager")) {
             ErrorPage.forwardToServerErrorPage(request, response, "Authorized Access Only ! ! !");
         }
+
+
         // Forward the request to home.jsp
         request.getRequestDispatcher("/WEB-INF/Admin/AdminReport.jsp").forward(request, response);
     }
 }
-
