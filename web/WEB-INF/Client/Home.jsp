@@ -29,8 +29,8 @@
         <jsp:useBean id="designCourse" class="List<JPAEntity.Courses>" scope="request" />
         <jsp:useBean id="designAuthorContribution" class="Map<String, List<JPAEntity.Authors>>" scope="request" />
         <jsp:useBean id="designItemStatus" class="Map<String, List<Integer>>" scope="request" />
-        <jsp:useBean id="allCourse" class="List<JPAEntity.Courses>" scope="request" />
-        <jsp:useBean id="allAuthorContribution" class="Map<String, List<JPAEntity.Authors>>" scope="request" />
+        <jsp:useBean id="hotCourses" class="List<JPAEntity.Courses>" scope="request" />
+        <jsp:useBean id="hottestAuthorContribution" class="Map<String, List<JPAEntity.Authors>>" scope="request" />
     </head>
     <body>
         <!--Toast message-->
@@ -96,13 +96,12 @@
             <div class="course-section-div">
                 <div class="course-section-title flex-row">
                     <h1>Hottest Courses in 2024</h1>
-                    <a href="#"><p>View More</p></a>
                 </div>
                 <div class="courses flex-row">
 
                     <%
                         int allCounter = 0;
-                        for (Courses eachAllCourse : allCourse) {
+                        for (Courses eachAllCourse : hotCourses) {
                             if ("Active".equals(eachAllCourse.getProductId().getStatus())) {
                     %>
 
@@ -119,7 +118,7 @@
                                 <h1 class="course-title"><%=eachAllCourse.getProductId().getProdName()%></h1>
                                 <p class="course-category"><%=eachAllCourse.getCoursecatId().getCategoryName()%></p>
                                 <%
-                                    List<Authors> currentAuthors = allAuthorContribution.get(eachAllCourse.getCourseId());
+                                    List<Authors> currentAuthors = hottestAuthorContribution.get(eachAllCourse.getCourseId());
                                     String concatAuthors = "";
                                     for (int i = 0; i < currentAuthors.size(); i++) {
                                         concatAuthors += currentAuthors.get(i).getAuthorName();
@@ -215,7 +214,6 @@
             <div class="course-section-div">
                 <div class="course-section-title flex-row">
                     <h1>Top courses in Design</h1>
-                    <a href="#"><p>View More</p></a>
                 </div>
                 <div class="courses flex-row">
 
@@ -271,8 +269,15 @@
                                     <%}%>
                                 </div>
                                 <div class="course-tag-field flex-row">
+                                    <%
+                                        for (Courses eachHotCourse : hotCourses) {
+                                            if (eachHotCourse.equals(design)) {
+                                    %>
                                     <p class="course-tag tag-orange">Hot Sell</p>
                                     <%
+                                                break;
+                                            }
+                                        }
                                         long difference = new Date().getTime() - design.getDateAdded().getTime();
                                         long millisecondsInMonth = 30L * 24 * 60 * 60 * 1000;
                                         if (difference < millisecondsInMonth) {
@@ -315,7 +320,6 @@
             <div class="course-section-div">
                 <div class="course-section-title flex-row">
                     <h1>Top courses in Programming</h1>
-                    <a href="#"><p>View More</p></a>
                 </div>
                 <div class="courses flex-row">
 
@@ -371,8 +375,15 @@
                                     <%}%>
                                 </div>
                                 <div class="course-tag-field flex-row">
+                                    <%
+                                        for (Courses eachHotCourse : hotCourses) {
+                                            if (eachHotCourse.equals(programming)) {
+                                    %>
                                     <p class="course-tag tag-orange">Hot Sell</p>
                                     <%
+                                                break;
+                                            }
+                                        }
                                         long difference = new Date().getTime() - programming.getDateAdded().getTime();
                                         long millisecondsInMonth = 30L * 24 * 60 * 60 * 1000;
                                         if (difference < millisecondsInMonth) {
