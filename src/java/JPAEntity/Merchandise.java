@@ -83,7 +83,19 @@ public class Merchandise implements Serializable {
     public Merchandise(String merchId) {
         this.merchId = merchId;
     }
-
+    
+    //fully parameterized
+    public Merchandise(String merchId, Product productId, MerchCategory merchcatId, double dimensionHCm, double dimensionWCm, double dimensionLCm, double weightKg, int stockBalance) {
+        this.merchId = merchId;
+        this.productId = productId;
+        this.merchcatId = merchcatId;
+        this.dimensionHCm = dimensionHCm;
+        this.dimensionWCm = dimensionWCm;
+        this.dimensionLCm = dimensionLCm;
+        this.weightKg = weightKg;
+        this.stockBalance = stockBalance;
+    }
+    
     public Merchandise(String merchId, double dimensionHCm, double dimensionWCm, double dimensionLCm, double weightKg, int stockBalance) {
         this.merchId = merchId;
         this.dimensionHCm = dimensionHCm;

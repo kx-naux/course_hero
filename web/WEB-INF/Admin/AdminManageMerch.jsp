@@ -1,3 +1,6 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="JPAEntity.MerchCategory"%>
+<%@page import="JPAEntity.Merchandise"%>
 <%@ page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import="java.util.List, java.util.Map" %>
 <!DOCTYPE html>
@@ -10,6 +13,8 @@
         <link href="../admin_css/adminCourse.css" rel="stylesheet">
         <link href="../admin_css/adminTable.css" rel="stylesheet">
         <jsp:useBean id="webpath" class="module.WebPath" scope="application" />
+        <% List<Merchandise> merchandiseList = (List<Merchandise>) request.getAttribute("merchandiseList"); %>
+        <% List<MerchCategory> merchandiseCatList = (List<MerchCategory>) request.getAttribute("merchandiseCatList"); %>
     </head>
     <body> 
         <div class="flex-container">
@@ -28,15 +33,9 @@
                     <div class="top">
                         <!-- include dark theme toggler -->
                         <%@ include file="./Components/dark-theme-toggler.jsp" %>
-                        <div class="profile">
-                            <div class="info">
-                                <p>Hey, <b>Snijders</b></p>
-                                <small>Admin</small>
-                            </div>
-                            <div class="profile-photo">
-                                <img src="../img/admin/default_profile.png" alt="alt"/>
-                            </div>
-                        </div>
+                        
+                        <!-- include profile  -->
+                        <%@ include file="./Components/global-profile.jsp" %>
                     </div>
                 </div>
                 <div class="horizontal-line"></div>
@@ -58,10 +57,16 @@
                         <input type="date">
                     </div>
                     <div class="input-container">
-                        <select>
+                        <select id="merchCategory" name="merchCategory">
                             <option value="-1">Merch Category</option>
-                            <option value="web">T-Shirts</option>
-                            <option value="graphic">Mugs</option>
+                            <% 
+                                 
+                               // Iterate through each merchandise in the original list
+                                for (int i = 0; i < merchandiseCatList.size(); i++) {
+                                String merchCatName = merchandiseCatList.get(i).getCategoryName();
+                            %>
+                            <option value="<%= merchCatName %>"><%= merchCatName %></option>
+                            <%}%>
                         </select>
                     </div>
                     <div class="submit-container">
@@ -78,19 +83,32 @@
                 </div>
                 </div>
                 <!----------  START OF TABLE ------------------->
+                <form id="manage-merch">
                 <div class="table-container">
                     <div class="tablenav-pages"> 
                         <div class="display-total-item-container">
-                        <span class="display-total-item">Showing 7 items of 120 items</span>
+                        <span class="display-total-item">Showing <%= merchandiseList.size() %>  items of <%= merchandiseList.size() %> items</span>
                         </div>
                         <div class="pagination-links-container">
+                            <!--pagination, 20 course per page-->
+                            <%--
+                                long currentPage = 1;
+                                long dataPerPage = 4;
+                                long lastPage = ((numOfCoursesRec - 1) / dataPerPage) + 1;
+                                if (request.getParameter("p") != null) {
+                                    currentPage = Integer.parseInt(request.getParameter("p"));
+                                }
+
+                                boolean previousAllow = currentPage > 1;
+                                boolean nextAllow = currentPage < lastPage;
+                            --%>
                         <span class="pagination-links">
                             <a class="first-page" href="#"><<</a>
                             <a class="prev-page" href="#"><</a>
                         </span>
                         <span class="pagination-input">
                             <div class="input-container">
-                                <input class="current-page" type="text" value="1" size="1"/>
+                                <input class="current-page" name="p" type="text" value="1" size="1"/>
                             </div>
                             <span class="tablenav-paging-text">
                                 of
@@ -138,17 +156,25 @@
                                        Description
                                    </th>
                                    <th scope="col">
-                                       Price
+                                       Price (RM)
                                    </th>
                                    <th scope="col">
                                        Stock
                                    </th>
                                    <th scope="col">
-                                       Date Added
+                                       Status   
                                    </th>
                                </tr>
                            </thead>
                            <tbody>
+<!--                               This is the row for every record -->
+                            <% 
+                                
+                                for (int i = 0; i < merchandiseList.size(); i++) {
+                                Merchandise merchandise = merchandiseList.get(i);
+                                String merchImg = merchandise.getProductId().getImagePath();
+                                String test = merchImg.replace("image", "");
+                            %>
                                <tr scope="row">
                                    <th scope="row">
                                        <label class="control control--checkbox">
@@ -159,7 +185,7 @@
                                        </label>
                                    </th>
                                    <td>
-                                       1392
+                                       <img src="../img<%= test %>" />
                                        <div class="row-actions">
                                            <a class="row-actions-edit">Edit</a>
                                            |
@@ -167,14 +193,16 @@
                                        </div>
                                    </td>
                                    <td>
-                                       James Yates
+                                       <%= merchandise.getMerchId() %>
                                    </td>
                                    <td>
-                                       Web Designer
-                                       <small class="d-block">Far far away, behind the word mountains</small>
+                                       <%= merchandise.getProductId().getProdName() %>
                                    </td>
-                                   <td>+63 983 0962 971</td>
-                                   <td>NY University</td>
+                                   <td><%= merchandise.getMerchcatId().getCategoryName() %></td>
+                                   <td class="description"><%= merchandise.getProductId().getDescription() %></td>
+                                   <td><%= merchandise.getProductId().getPrice() %></td>
+                                   <td><%= merchandise.getStockBalance() %></td>
+                                   <td><%= merchandise.getProductId().getStatus() %></td>
                                    <!---------------------- Edit Item ----------------------------------->
                                    <td class="edit-items-container">
                                        <form>
@@ -221,213 +249,11 @@
                                         </form>
                                    </td>
                                </tr>
-                               
-                               <tr>
-                                   <th scope="row">
-                                       <label class="control control--checkbox">
-                                           <input type="checkbox" />
-                                           <div class="control__indicator">
-                                               <i class="ri-check-line"></i>
-                                           </div>
-                                       </label>
-                                   </th>
-                                   <td>
-                                       4616
-                                       <div class="row-actions">
-                                           <a class="row-actions-edit">Edit</a>
-                                           |
-                                           <a class="row-actions-delete">Delete</a>
-                                       </div>
-                                   </td>
-                                   <td>Matthew Wasil</td>
-                                   <td>
-                                       Graphic Designer
-                                       <small class="d-block">Far far away, behind the word mountains</small>
-                                   </td>
-                                   <td>+02 020 3994 929</td>
-                                   <td>London College</td>
-                               </tr>
-                               <tr>
-                                   <th scope="row">
-                                       <label class="control control--checkbox">
-                                           <input type="checkbox" />
-                                           <div class="control__indicator">
-                                               <i class="ri-check-line"></i>
-                                           </div>
-                                       </label>
-                                   </th>
-                                   <td>
-                                       9841
-                                       <div class="row-actions">
-                                           <a class="row-actions-edit">Edit</a>
-                                           |
-                                           <a class="row-actions-delete">Delete</a>
-                                       </div>
-                                   </td>
-                                   <td>Sampson Murphy</td>
-                                   <td>
-                                       Mobile Dev
-                                       <small class="d-block">Far far away, behind the word mountains</small>
-                                   </td>
-                                   <td>+01 352 1125 0192</td>
-                                   <td>Senior High</td>
-                               </tr>
-                               <tr>
-                                   <th scope="row">
-                                       <label class="control control--checkbox">
-                                           <input type="checkbox" />
-                                           <div class="control__indicator">
-                                               <i class="ri-check-line"></i>
-                                           </div>
-                                       </label>
-                                   </th>
-                                   <td>
-                                       9548
-                                       <div class="row-actions">
-                                           <a class="row-actions-edit">Edit</a>
-                                           |
-                                           <a class="row-actions-delete">Delete</a>
-                                       </div>
-                                   </td>
-                                   <td>Gaspar Semenov</td>
-                                   <td>
-                                       Illustrator
-                                       <small class="d-block">Far far away, behind the word mountains</small>
-                                   </td>
-                                   <td>+92 020 3994 929</td>
-                                   <td>College</td>
-                               </tr>
-                               <tr>
-                                   <th scope="row">
-                                       <label class="control control--checkbox">
-                                           <input type="checkbox" />
-                                           <div class="control__indicator">
-                                               <i class="ri-check-line"></i>
-                                           </div>
-                                       </label>
-                                   </th>
-                                   <td>
-                                       4616
-                                       <div class="row-actions">
-                                           <a class="row-actions-edit">Edit</a>
-                                           |
-                                           <a class="row-actions-delete">Delete</a>
-                                       </div>
-                                   </td>
-                                   <td>Matthew Wasil</td>
-                                   <td>
-                                       Graphic Designer
-                                       <small class="d-block">Far far away, behind the word mountains</small>
-                                   </td>
-                                   <td>+02 020 3994 929</td>
-                                   <td>London College</td>
-                               </tr>
-                               <tr>
-                                   <th scope="row">
-                                       <label class="control control--checkbox">
-                                           <input type="checkbox" />
-                                           <div class="control__indicator">
-                                               <i class="ri-check-line"></i>
-                                           </div>
-                                       </label>
-                                   </th>
-                                   <td>
-                                       9841
-                                       <div class="row-actions">
-                                           <a class="row-actions-edit">Edit</a>
-                                           |
-                                           <a class="row-actions-delete">Delete</a>
-                                       </div>
-                                   </td>
-                                   <td>Sampson Murphy</td>
-                                   <td>
-                                       Mobile Dev
-                                       <small class="d-block">Far far away, behind the word mountains</small>
-                                   </td>
-                                   <td>+01 352 1125 0192</td>
-                                   <td>Senior High</td>
-                               </tr>
-                               <tr>
-                                   <th scope="row">
-                                       <label class="control control--checkbox">
-                                           <input type="checkbox" />
-                                           <div class="control__indicator">
-                                               <i class="ri-check-line"></i>
-                                           </div>
-                                       </label>
-                                   </th>
-                                   <td>
-                                       9548
-                                       <div class="row-actions">
-                                           <a class="row-actions-edit">Edit</a>
-                                           |
-                                           <a class="row-actions-delete">Delete</a>
-                                       </div>
-                                   </td>
-                                   <td>Gaspar Semenov</td>
-                                   <td>
-                                       Illustrator
-                                       <small class="d-block">Far far away, behind the word mountains</small>
-                                   </td>
-                                   <td>+92 020 3994 929</td>
-                                   <td>College</td>
-                               </tr>
+                               <%}%>
                            </tbody>
-                           <tfoot>
-                               <tr>
-                                   <th scope="col">
-                                       <label class="control control--checkbox">
-                                           <input type="checkbox" class="js-check-all" />
-                                           <div class="control__indicator">
-                                               <i class="ri-check-line"></i>
-                                           </div>
-                                       </label>
-                                   </th>
-                                   <th scope="col">
-                                       Client ID
-                                       <div class="sort-by-container">
-                                           <i class="ri-arrow-drop-up-fill"></i>
-                                           <i class="ri-arrow-drop-down-fill"></i>
-                                       </div>
-                                   </th>
-                                   <th scope="col">
-                                       Name
-                                       <div class="sort-by-container">
-                                           <i class="ri-arrow-drop-up-fill"></i>
-                                           <i class="ri-arrow-drop-down-fill"></i>
-                                       </div>
-                                   </th>
-                                   <th scope="col">Occupation</th>
-                                   <th scope="col">Contact</th>
-                                   <th scope="col">Education</th>
-                               </tr>
-                           </tfoot>
                        </table>
-                    <div class="tablenav-pages"> 
-                        <div class="display-total-item-container">
-                        <span class="display-total-item">Showing 7 items of 120 items</span>
-                        </div>
-                        <div class="pagination-links-container">
-                        <span class="pagination-links">
-                            <a class="first-page" href="#"><<</a>
-                            <a class="prev-page" href="#"><</a>
-                        </span>
-                        <span class="pagination-input">
-                            <div class="input-container">
-                                <input class="current-page" type="text" value="1" size="1"/>
-                            </div>
-                            <span class="tablenav-paging-text">
-                                of
-                                <span class="total-pages">2</span>
-                            </span>
-                        </span>
-                        <span class="pagination-links">
-                            <a class="next-page" href="#">></a>
-                            <a class="last-page" href="#">>></a>
-                        </span>
-                        </div>
-                    </div>
                 </div>
+                </form>
             </div>
             <!----------  END OF MAIN ------------------->
             </div>
