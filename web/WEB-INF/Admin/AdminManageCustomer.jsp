@@ -94,7 +94,7 @@
                                     <div class="row-actions">
                                         <!--                                        <a class="row-actions-edit">Edit</a>
                                                                                 |-->
-                                        <a class="row-actions-delete">Delete</a>
+                                        <a class="row-actions-delete" id="<%= customer.getUserId() %>" >Delete</a>
                                     </div>
                                 </td>
                                 <td>
