@@ -336,7 +336,7 @@
                             <%--               <video controls>
                                                <source src="data:video/mp4;base64,<%= base64StringVideoData %>" onerror="this.src='./video/course/python_course.mp4';" type="video/mp4">
                                            </video> --%>
-                            <img src="${courseData.productId.imagePath}" alt="" />
+                            <img src="${courseData.productId.imagePath}" onerror="this.src='./img/course/beginner_excel.jpg'" alt="" />
                         </div>
 
                         <div class="sticky-div-bot flex-col">

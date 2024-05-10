@@ -48,7 +48,7 @@
                     <%for (Courses eachCourse : allCourseWishlist) {%>
                     <div class="course-item flex-row" courseID=<%=eachCourse.getCourseId()%>>
                         <div class="course-img flex-col">
-                            <img src="./img/course/beginner_excel.jpg" alt="" />
+                            <img src="<%= eachCourse.getProductId().getImagePath() %>" onerror="this.src='./img/course/beginner_excel.jpg'" alt="" />
                         </div>
                         <div class="course-detail flex-col">
                             <h3 class="course-title"><%=eachCourse.getProductId().getProdName()%></h3>
