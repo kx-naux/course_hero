@@ -31,6 +31,10 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Product.findAll", query = "SELECT p FROM Product p"),
+    @NamedQuery(name = "Product.findByAvgRatingMoreThan",query = "SELECT p FROM Product p WHERE p.avgRating >= :avgRating"),
+    @NamedQuery(name = "Product.findAllOrderByRateWeightageDesc", query = "SELECT p FROM Product p ORDER BY p.rateWeightage DESC"),
+    @NamedQuery(name = "Product.findAllOrderByAvgRatingDesc", query = "SELECT p FROM Product p ORDER BY p.avgRating DESC"),
+    @NamedQuery(name = "Product.findAllOrderByPriceDesc", query = "SELECT p FROM Product p ORDER BY p.price DESC"),
     @NamedQuery(name = "Product.findByProductId", query = "SELECT p FROM Product p WHERE p.productId = :productId"),
     @NamedQuery(name = "Product.findByProdName", query = "SELECT p FROM Product p WHERE p.prodName = :prodName"),
     @NamedQuery(name = "Product.findByPrice", query = "SELECT p FROM Product p WHERE p.price = :price"),
@@ -39,7 +43,10 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Product.findByDiscount", query = "SELECT p FROM Product p WHERE p.discount = :discount"),
     @NamedQuery(name = "Product.findByImagePath", query = "SELECT p FROM Product p WHERE p.imagePath = :imagePath"),
     @NamedQuery(name = "Product.findByStatus", query = "SELECT p FROM Product p WHERE p.status = :status"),
-    @NamedQuery(name = "Product.findByProdNameFilter", query = "SELECT p FROM Product p WHERE LOWER(p.prodName) LIKE LOWER(CONCAT('%',:prodName,'%'))")
+    @NamedQuery(name = "Product.findByProdNameFilter", query = "SELECT p FROM Product p WHERE LOWER(p.prodName) LIKE LOWER(CONCAT('%',:prodName,'%'))"),
+    @NamedQuery(name = "Product.findByProdNameFilterOrderByRateWeightageDesc", query = "SELECT p FROM Product p WHERE LOWER(p.prodName) LIKE LOWER(CONCAT('%',:prodName,'%')) ORDER BY p.rateWeightage DESC"),
+    @NamedQuery(name = "Product.findByProdNameFilterOrderByAvgRatingDesc", query = "SELECT p FROM Product p WHERE LOWER(p.prodName) LIKE LOWER(CONCAT('%',:prodName,'%')) ORDER BY p.avgRating DESC"),
+    @NamedQuery(name = "Product.findByProdNameFilterOrderByPriceDesc", query = "SELECT p FROM Product p WHERE LOWER(p.prodName) LIKE LOWER(CONCAT('%',:prodName,'%')) ORDER BY p.price DESC")
 })
 
 public class Product implements Serializable {

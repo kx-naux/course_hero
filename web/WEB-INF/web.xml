@@ -200,6 +200,10 @@
         <servlet-name>AdminSettingPage</servlet-name>
         <servlet-class>controller.AdminSettingPage</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SearchResultPage</servlet-name>
+        <servlet-class>controller.SearchResultPage</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -360,6 +364,10 @@
     <servlet-mapping>
         <servlet-name>AdminSettingPage</servlet-name>
         <url-pattern>/AdminSettingPage</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SearchResultPage</servlet-name>
+        <url-pattern>/search</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
