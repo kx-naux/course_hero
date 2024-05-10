@@ -95,7 +95,7 @@ public class AdminManageCoursePage extends HttpServlet {
         updateDataInDatabase(updateCourse, updateProduct, request, response);
 
         //request.getRequestDispatcher("/WEB-INF/Admin/AdminManageMerch.jsp").forward(request, response);
-        response.sendRedirect("manage-merch");
+        response.sendRedirect("manage-course");
     }
 
     private void updateDataInDatabase(Courses updateCourse, Product updateProduct, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
