@@ -65,6 +65,10 @@ public class UserOnlineBankingInfo implements Serializable {
     public void setUserOnlineBankingInfoId(String userOnlineBankingInfoId) {
         this.userOnlineBankingInfoId = userOnlineBankingInfoId;
     }
+    
+    public void setUserOnlineBankingInfoId(long count) {
+        this.userOnlineBankingInfoId = String.format("UBNK%05d", count);
+    }
 
     public Date getDateAdded() {
         return dateAdded;

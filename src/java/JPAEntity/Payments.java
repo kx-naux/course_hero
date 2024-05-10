@@ -91,6 +91,15 @@ public class Payments implements Serializable {
         this.status = status;
         this.dateIssued = dateIssued;
     }
+    
+    public Payments(String accountNumber, String paymentGateway, double amount, String status, Date dateIssued, PaymentMethod paymentMethodId) {
+        this.accountNumber = accountNumber;
+        this.paymentGateway = paymentGateway;
+        this.amount = amount;
+        this.status = status;
+        this.dateIssued = dateIssued;
+        this.paymentMethodId = paymentMethodId;
+    }
 
     public String getPaymentId() {
         return paymentId;

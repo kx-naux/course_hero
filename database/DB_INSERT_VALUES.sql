@@ -77,11 +77,11 @@ VALUES
 
 INSERT INTO USERS (USER_ID, ACCOUNT_ID, DISPLAY_NAME, DOB, ADDRESS_ID, USERTYPE, VALIDITY, DATE_JOINED, GENDER, IMG_DATA)
 VALUES 
-    ('U00000001', 'AC0000001', 'Jackson Wang', '1990-05-15', 'BA0000001', 'Customer', '2024-12-31', '2024-04-15 08:30:00', 'Male',null),
-    ('U00000002', 'AC0000002', 'Pentamaster Manager', '1985-09-20', 'BA0000002', 'Admin', '2025-12-31', '2024-04-15 09:15:00', 'Female',null),
-    ('U00000003', 'AC0000003', 'Mooiko Starbucks', '1998-03-10', 'BA0000003', 'Customer', '2023-12-31', '2024-04-15 10:00:00', 'Male',NULL),
+    ('U00000001', 'AC0000001', 'Jackson Wang', '1990-05-15', 'BA0000001', 'Staff', '2024-12-31', '2024-04-15 08:30:00', 'Male',null),
+    ('U00000002', 'AC0000002', 'Pentamaster Manager', '1985-09-20', 'BA0000002', 'Staff', '2025-12-31', '2024-04-15 09:15:00', 'Female',null),
+    ('U00000003', 'AC0000003', 'Mooiko Starbucks', '1998-03-10', 'BA0000003', 'Manager', '2023-12-31', '2024-04-15 10:00:00', 'Male',NULL),
     ('U00000004', 'AC0000004', 'MySoft bae', '1976-11-28', 'BA0000004', 'Customer', '2024-12-31', '2024-04-15 10:45:00', 'Female',null),
-    ('U00000005', 'AC0000005', 'SEN Tenz', '1995-07-02', 'BA0000005', 'Admin', '2025-12-31', '2024-04-15 11:30:00', 'Male',null);
+    ('U00000005', 'AC0000005', 'SEN Tenz', '1995-07-02', 'BA0000005', 'Customer', '2025-12-31', '2024-04-15 11:30:00', 'Male',null);
 
 INSERT INTO BANKCARDINFO (CARDINFOID, USER_ID, CARDTYPE, CARD_HOLDER_NAME, CARD_NO, EXPIRY_DATE, CVV)
 VALUES 
