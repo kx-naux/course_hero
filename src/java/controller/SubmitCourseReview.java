@@ -99,6 +99,7 @@ public class SubmitCourseReview extends HttpServlet {
             response.sendRedirect("course?id=" + request.getParameter("courseIdToReview"));
         }else{
             request.setAttribute("reviewError","Server Error, Failed to submit review. Please Try again later");
+            response.sendRedirect("course?id=" + request.getParameter("courseIdToReview"));
         }
         
        

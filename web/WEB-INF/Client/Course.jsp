@@ -277,7 +277,7 @@
 
                         <!--add review form-->
                         <div class="flex-col add-review-div" id="addReviewDiv">
-                            <form id="addReviewForm" class="flex-col" method="post" action="submit-course-review">
+                            <form id="addReviewForm" class="flex-col" method="post" action="/course_hero/submit-course-review">
                                 <div class="add-review-title">
                                     <h1>Write a review</h1>
                                 </div>

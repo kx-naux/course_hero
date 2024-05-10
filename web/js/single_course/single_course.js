@@ -248,17 +248,19 @@ if (document.querySelector("span.close-btn") !== null) {
 }
 
 // add review form validation check
-document.getElementById("addReviewBtn").addEventListener("click", () => {
-    const rating = document.querySelector('div.review-rating input[name="rate"]:checked');
+if (document.getElementById("addReviewBtn") !== null) {
+    document.getElementById("addReviewBtn").addEventListener("click", () => {
+        const rating = document.querySelector('div.review-rating input[name="rate"]:checked');
 
-    if (rating === null) {
-        document.getElementById("reviewInvalidMsg").innerText = "Please select rate";
-        return;
-    }
+        if (rating === null) {
+            document.getElementById("reviewInvalidMsg").innerText = "Please select rate";
+            return;
+        }
 
-    const addReviewForm = document.getElementById("addReviewForm");
-    addReviewForm.submit();
-});
+        const addReviewForm = document.getElementById("addReviewForm");
+        addReviewForm.submit();
+    });
+}
 
 // show / hide add review section
 document.addEventListener("DOMContentLoaded", (event) => {
