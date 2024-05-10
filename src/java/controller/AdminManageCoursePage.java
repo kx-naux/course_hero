@@ -1,14 +1,23 @@
 package controller;
 
+import JPAEntity.CourseCategory;
+import JPAEntity.MerchCategory;
+import JPAEntity.Merchandise;
+import JPAEntity.Product;
 import JPAEntity.Users;
+import JPAEntity.Courses;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.*;
 import java.io.IOException;
+import java.util.List;
 import javax.annotation.Resource;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+import javax.transaction.Status;
+import javax.transaction.SystemException;
 import javax.transaction.UserTransaction;
 
 @WebServlet(name = "Admin Manage Course", urlPatterns = {"/admin/manage-course"})
@@ -46,9 +55,69 @@ public class AdminManageCoursePage extends HttpServlet {
         if(checkUserAccess.getUsertype().equals("Customer")){
             ErrorPage.forwardToServerErrorPage(request, response, "Authorized Access Only ! ! !");
         }
+        
+        //To get all Courses Record
+        Query coursesListQry = em.createNamedQuery("Courses.findAll");
+        List<Courses> merchandiseList = coursesListQry.getResultList();
+        request.setAttribute("coursesList", merchandiseList);
+
+        //To get all Merchandise Category
+        Query courseCatListQry = em.createNamedQuery("CourseCategory.findAll");
+        List<CourseCategory> coursesCatList = courseCatListQry.getResultList();
+        request.setAttribute("courseCatList", coursesCatList);
 
         // Forward the request to home.jsp
         request.getRequestDispatcher("/WEB-INF/Admin/AdminManageCourse.jsp").forward(request, response);
     }
-}
+    
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
 
+        String targetCourseId = (String) request.getParameter("courseId");
+        String newProductName = (String) request.getParameter("productName");
+        double newPrice = Double.parseDouble(request.getParameter("price"));
+        String newStatus = (String) request.getParameter("status");
+
+        //get user object
+        HttpSession session = request.getSession();
+        Courses updateCourse = em.find(Courses.class, targetCourseId);
+        Product updateProduct = updateCourse.getProductId();
+        CourseCategory updateCourseCategory = updateCourse.getCoursecatId();
+
+        //set data product
+        updateProduct.setProdName(newProductName);
+        updateProduct.setPrice(newPrice);
+        updateProduct.setStatus(newStatus);
+
+        //set data merch
+        updateCourse.setCoursecatId(updateCourseCategory);
+        updateDataInDatabase(updateCourse, updateProduct, request, response);
+
+        //request.getRequestDispatcher("/WEB-INF/Admin/AdminManageMerch.jsp").forward(request, response);
+        response.sendRedirect("manage-merch");
+    }
+
+    private void updateDataInDatabase(Courses updateCourse, Product updateProduct, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        try {
+            utx.begin();
+            em.merge(updateCourse);
+            em.merge(updateProduct);
+            utx.commit();
+        } catch (Exception ex) {
+            try {
+                if (utx.getStatus() == Status.STATUS_ACTIVE) {
+                    try {
+                        utx.rollback();
+                    } catch (SystemException ex2) {
+                        //server error page
+                        ErrorPage.forwardToServerErrorPage(request, response, "Database Server Error. Please Try Again Later");
+                    }
+                }
+            } catch (SystemException ex2) {
+                ErrorPage.forwardToServerErrorPage(request, response, "Database Server Error. Please Try Again Later");
+            }
+            ErrorPage.forwardToServerErrorPage(request, response, "Database Server Error. Please Try Again Later");
+        }
+    }
+}

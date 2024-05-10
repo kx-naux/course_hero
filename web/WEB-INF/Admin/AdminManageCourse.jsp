@@ -1,3 +1,6 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="JPAEntity.CourseCategory"%>
+<%@page import="JPAEntity.Courses"%>
 <%@ page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import="java.util.List, java.util.Map" %>
 <!DOCTYPE html>
@@ -10,6 +13,8 @@
         <link href="../admin_css/adminCourse.css" rel="stylesheet">
         <link href="../admin_css/adminTable.css" rel="stylesheet">
         <jsp:useBean id="webpath" class="module.WebPath" scope="application" />
+        <% List<Courses> coursesList = (List<Courses>) request.getAttribute("coursesList"); %>
+        <% List<CourseCategory> courseCatList = (List<CourseCategory>) request.getAttribute("courseCatList");%>
     </head>
     <body> 
         <div class="flex-container">
@@ -39,7 +44,7 @@
                 <div class="table-container">
                     <div class="tablenav-pages"> 
                         <div class="display-total-item-container">
-                        <span class="display-total-item">Showing 7 items</span>
+                        <span class="display-total-item">Showing <%= coursesList.size() %>  items</span>
                         </div>
                     </div>
                     <table class="product-table custom-table">
@@ -58,7 +63,7 @@
                                        Description
                                    </th>
                                    <th scope="col">
-                                       Price
+                                       Price (RM)
                                    </th>
                                    <th scope="col">
                                        Status
@@ -66,49 +71,73 @@
                                </tr>
                            </thead>
                            <tbody>
+                               <!--                               This is the row for every record -->
+                               <%
+
+                                   for (int i = 0; i < coursesList.size(); i++) {
+                                       Courses course = coursesList.get(i);
+                               %>
                                <tr scope="row">
                                    <td>
-                                       1392
+                                       <%= course.getCourseId() %>
+                                       <div class="row-actions">
+                                           <a class="row-actions-edit">Edit</a>
+                                       </div>
                                    </td>
                                    <td>
-                                       James Yates
+                                       <%= course.getProductId().getProdName() %>
                                    </td>
+                                   <td class="description"><%= course.getProductId().getDescription()%></td>
                                    <td>
-                                       Web Designer
-                                       <small class="d-block">Far far away, behind the word mountains</small>
+                                       <%= course.getCoursecatId().getCategoryName() %>
                                    </td>
-                                   <td>+63 983 0962 971</td>
-                                   <td>NY University</td>
+                                   <td><%= course.getProductId().getPrice() %></td>
+                                   <td><%= course.getProductId().getStatus() %></td>
                                    <!---------------------- Edit Item ----------------------------------->
                                    <td class="edit-items-container">
-                                       <form>
+                                       <form method="post" action="manage-course" id="form-<%= course.getCourseId() %>">
+                                           <input type="text"  name="courseId" id="courseId" value="<%= course.getCourseId() %>" hidden/>
                                            <h2>Edit Item</h2>
                                             <div class="edit-items"> 
                                           
                                                <div class="update-container">
-                                                   <label>Name</label>
+                                                   <label>Course Name</label>
                                                     <div class="input-container">
-                                                        <input type="text" name="name" placeholder="Name..." >
+                                                        <input type="text" name="productName" id="productName" required maxlength="50" placeholder="Course Name" >
                                                     </div>
                                                </div>
                                                <div class="update-container">
-                                               <label>Occupation</label>
+                                               <label>Course Category</label>
                                                <div class="input-container">
-                                                   <input type="text" name="occupation" placeholder="Occupation..." >
+                                                   <select id="courseCategory" name="courseCategory">
+                                                       <%
+                                                           // Iterate through each merchandise in the original list
+                                                           for (int a = 0; a < courseCatList.size(); a++) {
+                                                       %>
+                                                       <option value="<%= courseCatList.get(a).getCoursecatId()%>"><%= courseCatList.get(a).getCategoryName()%></option>
+                                                       <%}%>
+                                                   </select>
                                                </div>
                                                </div>
                                                <div class="update-container">
-                                               <label>Contact</label>
-                                               <div class="input-container">
-                                                   <input type="text" name="name" placeholder="Contact..." >
+                                                   <label>Price</label>
+                                                   <div class="input-container">
+                                                       <input type="number" name="price" id="price" required placeholder="Price" >
+                                                   </div>
                                                </div>
-                                               </div>
-                                               <div class="update-container">
-                                               <label>Education</label>
-                                               <div class="input-container">
-                                                   <input type="text" name="name" placeholder="Education..." >
-                                               </div>
-                                               </div>
+                                                   <div class="update-container">  
+                                                       <label>Status</label>
+                                                       <div class="input-container radio">
+                                                           <div class="input-radio">
+                                                               <input type="radio" name="status" id="active" value="Active" required checked/>
+                                                               <label for="active">Active</label>
+                                                           </div>
+                                                           <div class="input-radio">
+                                                               <input type="radio" name="status" id="inactive" value="Inactive" required>
+                                                               <label for="inactive">Inactive</label>
+                                                           </div>
+                                                       </div>
+                                                   </div>
                                             </div>
                                            <div class="update-container submit">
                                                <div class="submit-container update">
@@ -121,6 +150,7 @@
                                         </form>
                                    </td>
                                </tr>
+                               <%}%>
                            </tbody>
                        </table>
                 </div>

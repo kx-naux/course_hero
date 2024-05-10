@@ -28,34 +28,6 @@ public class AdminAddMerchPage extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {  
-        Users userDataSession = (Users) request.getSession().getAttribute("userData");
-        Users userData = Login.checkRmbMeToken(request, em);
-        //check has rmb token onot
-        if(userData != null){
-            HttpSession session = request.getSession();
-            session.setAttribute("userData",userData);
-            Login.getUserWishlist(request, em, userData);
-            Login.getUserCart(request, em, userData);
-        //check has user logged in
-        }else if(userDataSession == null){
-            HttpSession session = request.getSession();
-            session.setAttribute("pageToGoAfterLogin","admin/add-merch");
-            response.sendRedirect("../login");
-            return;
-        }
-        
-        if (userDataSession != null) {
-            Login.getUserWishlist(request, em, userDataSession);
-            Login.getUserCart(request, em, userDataSession);
-        }
-        
-        //get userData from session as the user can login thru the rmbMe
-        Users checkUserAccess = (Users) request.getSession().getAttribute("userData");
-        if(checkUserAccess.getUsertype().equals("Customer")){
-            ErrorPage.forwardToServerErrorPage(request, response, "Authorized Access Only ! ! !");
-        }
-
-
         //To get all Merchandise Category
         Query merchandiseCatListQry = em.createNamedQuery("MerchCategory.findAll");
         List<MerchCategory> merchandiseCatList = merchandiseCatListQry.getResultList();
@@ -66,61 +38,109 @@ public class AdminAddMerchPage extends HttpServlet {
     }
     
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void doPost (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+        
+        Users userDataSession = (Users) request.getSession().getAttribute("userData");
+        Users userData = Login.checkRmbMeToken(request, em);
+        //check has rmb token onot
+        if (userData != null) {
+            HttpSession session = request.getSession();
+            session.setAttribute("userData", userData);
+            Login.getUserWishlist(request, em, userData);
+            Login.getUserCart(request, em, userData);
+            //check has user logged in
+        } else if (userDataSession == null) {
+            HttpSession session = request.getSession();
+            session.setAttribute("pageToGoAfterLogin", "admin/add-merch");
+            response.sendRedirect("../login");
+            return;
+        }
 
-        String targetMerchId = (String) request.getParameter("merchId");
-        String newProductName = (String) request.getParameter("productName");
-        String newMerchCategory = (String) request.getParameter("merchCategory");
-        double newPrice = Double.parseDouble(request.getParameter("price"));
-        int newStockBalance = Integer.parseInt(request.getParameter("stockBalance"));
-        String newStatus = (String)request.getParameter("status");
+        if (userDataSession != null) {
+            Login.getUserWishlist(request, em, userDataSession);
+            Login.getUserCart(request, em, userDataSession);
+        }
+
+        //get userData from session as the user can login thru the rmbMe
+        Users checkUserAccess = (Users) request.getSession().getAttribute("userData");
+        if (checkUserAccess.getUsertype().equals("Customer")) {
+            ErrorPage.forwardToServerErrorPage(request, response, "Authorized Access Only ! ! !");
+        }
+
+        
+        //Retrieve form data from request parameters
+        String productName = request.getParameter("productName");
+        String productDescription = request.getParameter("productDescription");
+        double price = Double.parseDouble(request.getParameter("price"));
+        int stockBalance = Integer.parseInt(request.getParameter("stockBalance"));
+        int rateWeightage = Integer.parseInt(request.getParameter("rateWeightage"));
+        double discount = Double.parseDouble(request.getParameter("discount"));
+        double dimensionHeight = Double.parseDouble(request.getParameter("dimensionHeight"));
+        double dimensionWidth = Double.parseDouble(request.getParameter("dimensionWidth"));
+        double dimensionLength = Double.parseDouble(request.getParameter("dimensionLength"));
+        double weight = Double.parseDouble(request.getParameter("weight"));
+        
+        String status = request.getParameter("status");
+        String merchCategory = request.getParameter("merchCategory");
+
+        
+        //set id for each of the entity so that they can be stored in databases
+        //get all of the current counts
+        TablesRecordCounter merchCounter = em.find(TablesRecordCounter.class, "MERCHANDISE");
+        TablesRecordCounter productCounter = em.find(TablesRecordCounter.class, "PRODUCT");
         
         
-        //get user object
-        HttpSession session = request.getSession();
-        Merchandise updateMerchandise = em.find(Merchandise.class, targetMerchId);
-        Product updateProduct = updateMerchandise.getProductId();
-        MerchCategory updateMerchCategory = updateMerchandise.getMerchcatId();
+        //create new product obj
+        ProductCategory merch = em.find(ProductCategory.class, "PC0000002");
+        Product newProduct = new Product(merch,productName, productDescription, price, rateWeightage, 0, discount, "", status);
         
+        //set id
+        newProduct.setProductId(productCounter.getCounter() + 1);
         
-        //set data product
-        updateProduct.setProdName(newProductName);
-        updateProduct.setPrice(newPrice);
-        updateProduct.setStatus(newStatus);
+        //create new merchandise obj
+        MerchCategory merchCat = em.find(MerchCategory.class, merchCategory);
+        Merchandise newMerch = new Merchandise(newProduct, merchCat, dimensionHeight, dimensionWidth, dimensionLength, weight, stockBalance);
         
-        //set data merch
-        updateMerchandise.setMerchcatId(updateMerchCategory);
-        updateMerchandise.setStockBalance(newStockBalance);
+        //set id
+        newMerch.setMerchId(merchCounter.getCounter() + 1);
         
+        //add one to each counter
+        merchCounter.counterIncrementByOne();
+        productCounter.counterIncrementByOne();
+
+        List<TablesRecordCounter> recordsCounterList = new ArrayList<TablesRecordCounter>();
+        recordsCounterList.add(merchCounter);
+        recordsCounterList.add(productCounter);
+
+        //persist the records
+        saveDataToDatabases(request, response, newProduct, newMerch, recordsCounterList);
         
-        updateDataInDatabase(updateMerchandise, updateProduct, request, response);
-        
-        //request.getRequestDispatcher("/WEB-INF/Admin/AdminManageMerch.jsp").forward(request, response);
-        response.sendRedirect("manage-merch");
+        response.sendRedirect("add-merch");
     }
     
-    private void updateDataInDatabase(Merchandise updateMerchandise, Product updateProduct, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-        try{
+    private void saveDataToDatabases(HttpServletRequest request, HttpServletResponse response, Product newProduct, Merchandise newMerch, List<TablesRecordCounter> tablesRecordCounterList) throws ServletException, IOException {
+        try {
             utx.begin();
-            em.merge(updateMerchandise);
-            em.merge(updateProduct);
+            em.persist(newProduct);
+            em.persist(newMerch);
+            for (TablesRecordCounter data : tablesRecordCounterList) {
+                em.merge(data);
+            }
             utx.commit();
-        }catch(Exception ex){
-            try{
-            if (utx.getStatus() == Status.STATUS_ACTIVE) {
-                try {
-                    utx.rollback();
-                }catch (SystemException ex2) {
-                    //server error page
-                    ErrorPage.forwardToServerErrorPage(request,response,"Database Server Error. Please Try Again Later");
+        } catch (Exception ex) {
+            try {
+                if (utx.getStatus() == Status.STATUS_ACTIVE) {
+                    try {
+                        utx.rollback();
+                    } catch (SystemException ex2) {
+                        //server error page
+                        ErrorPage.forwardToServerErrorPage(request, response, "Database Server Error. Please Try Again Later");
+                    }
                 }
+            } catch (SystemException ex2) {
+                ErrorPage.forwardToServerErrorPage(request, response, "Database Server Error. Please Try Again Later");
             }
-            }catch (SystemException ex2){
-                ErrorPage.forwardToServerErrorPage(request,response,"Database Server Error. Please Try Again Later");
-            }
-            ErrorPage.forwardToServerErrorPage(request,response,"Database Server Error. Please Try Again Later");
+            ErrorPage.forwardToServerErrorPage(request, response, "Database Server Error. Please Try Again Later");
         }
     }
 }
-
