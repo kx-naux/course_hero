@@ -40,7 +40,10 @@ public class Promotion extends HttpServlet {
             Login.getUserCart(request, em, userDataSession);
         }
 
-        Long count = em.createNamedQuery("Promotions.countAll", Long.class).getSingleResult();
+        
+        Query query = em.createNamedQuery("Promotions.countAllActive", Long.class);
+        query.setParameter("active", "Active");
+        Long count = (long) query.getSingleResult();
         request.setAttribute("numberOfPromotions", count);
 
         int reqPage = 1;
@@ -55,7 +58,7 @@ public class Promotion extends HttpServlet {
 
         int offset = (reqPage - 1) * maxDataInPage;
 
-        Query query = em.createNamedQuery("Promotions.findAllSortByEndTimeAscActive");
+        query = em.createNamedQuery("Promotions.findAllSortByEndTimeAscActive");
         query.setParameter("active", "Active");
         query.setFirstResult(offset);
         query.setMaxResults(maxDataInPage);
