@@ -269,8 +269,8 @@
 
                     <!--result course-->
                     <div class="result-course-div flex-col">
-
-                        <%for (Courses eachFiltered : coursesToShow) {%>
+                        <%if (filteredCourses.size() != 0) {
+                                for (Courses eachFiltered : coursesToShow) {%>
                         <div class="result-course-div flex-row" courseID=<%=eachFiltered.getCourseId()%> onclick="redirectToProductPage(this)">
                             <div class="result-course-left flex-col">
                                 <img src="./img/course/beginner_excel.jpg" alt=""> <!-- eachFiltered.getProductId().getImagePath() -->
@@ -314,14 +314,14 @@
                             </div>
                         </div>
 
-                        <%}%>
-
+                        <%}
+                        } else {%>
 
                         <div class="no-found-div flex-col">
                             <img src="./img/search_result/search.png" alt="" />
                             <p>No results found for your search. <br>Please try again with different keywords.</p>
                         </div>
-
+                        <%}%>
 
                     </div>
                 </div>
