@@ -13,13 +13,14 @@
 <% List<Authors> authorList = (List<Authors>) request.getAttribute("authorList"); %>
 <% long ratingCount = ((Long) request.getAttribute("ratingCount")).longValue(); %>
 <% List<Ratings> ratingList = (List<Ratings>) request.getAttribute("ratingList"); %>
+<% List<Ratings> allRatingList = (List<Ratings>) request.getAttribute("allRatingList"); %>
 <% int totalLearners = ((Integer) request.getAttribute("totalLearners")).intValue();%>
 <% boolean isOwn = ((Boolean) request.getAttribute("isOwn")).booleanValue();%>
 <% boolean inCart = ((Boolean) request.getAttribute("inCart")).booleanValue();%>
 <% boolean isReviewed = ((Boolean) request.getAttribute("isReviewed")).booleanValue();%>
 <% boolean inWishlist = ((Boolean) request.getAttribute("inWishlist")).booleanValue();%>
 <% String reviewError = (String) request.getAttribute("reviewError");
-    %>
+%>
 
 
 <!DOCTYPE html>
@@ -77,7 +78,7 @@
                                 <%
                                     double score = courseData.getProductId().getAvgRating();
                                     for (int i = 0; i < 5; i++) {
-                                       if (score >= i + 1) { %>
+                                        if (score >= i + 1) { %>
                                 <i class="ri-star-fill"></i>
                                 <% } else if (score > i) { %>
                                 <i class="ri-star-half-fill"></i>
@@ -237,11 +238,16 @@
                                         <p class="user-name"><%= rating.getUserId().getDisplayName()%></p>
                                         <div class="review-top-bot flex-row">
                                             <div class="rating-stars flex-row">
-                                                <% for (int z = rating.getScore(); z > 0; z--) { %>
+                                                <% for (double z = rating.getScore(); z > 0; z--) { %>
                                                 <%      if (z == 0.5) { %>
                                                 <i class="ri-star-half-fill"></i>
                                                 <%      } else {%>
                                                 <i class="ri-star-fill"></i>
+                                                <%      }%>
+                                                <%}%>
+                                                <% for (double z = 5 - rating.getScore(); z > 0; z--) { %>
+                                                <%      if (z != 0.5) { %>
+                                                <i class="ri-star-line"></i>
                                                 <%      }%>
                                                 <%}%>
                                             </div>
@@ -470,144 +476,59 @@
                         <% //review counts %>
                         <input type="text" id="lastRatingId" value="R00000008" hidden />
                         <input type="text" id="submitCount" value="1" hidden />
+
+                        <% for (int i = 0; i < 4 && i < allRatingList.size(); i++) {
+                            Ratings rating = allRatingList.get(i);
+                        %>
+
                         <div class="user-review flex-col">
                             <div class="user-review-top flex-row">
                                 <div class="user-img">
-                                    <img src="./img/user/default.png" alt="" />
+                                    <%String base64ImageData = "";
+                                        if (rating.getUserId().getImgData() != null) {
+                                            base64ImageData = Base64.getEncoder().encodeToString((byte[]) rating.getUserId().getImgData());
+                                        }%>
+                                    <img src="data:image/jpeg;base64,<%= base64ImageData%>" onerror="this.src='./img/user/default.png';" alt="" />
                                 </div>
                                 <div class="flex-col">
-                                    <p class="user-name">Woo Yu Beng</p>
+                                    <p class="user-name"><%= rating.getUserId().getDisplayName()%></p>
                                     <div class="review-top-bot flex-row">
                                         <div class="rating-stars flex-row">
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
+                                            <% for (double z = rating.getScore(); z > 0; z--) { %>
+                                            <%      if (z == 0.5) { %>
                                             <i class="ri-star-half-fill"></i>
+                                            <%      } else {%>
+                                            <i class="ri-star-fill"></i>
+                                            <%      }%>
+                                            <%}%>
+                                            <% for (double z = 5 - rating.getScore(); z > 0; z--) { %>
+                                            <%      if (z != 0.5) { %>
+                                            <i class="ri-star-line"></i>
+                                            <%      }%>
+                                            <%}%>
                                         </div>
-                                        <p class="review-date">29/4/2024</p>
+                                        <%String pattern = "yyyy-MM-dd HH:mm:ss";
+                                            SimpleDateFormat dateFormatter = new SimpleDateFormat(pattern);
+                                            String formattedDate = dateFormatter.format(rating.getTimeRated());%>
+                                        <p class="review-date"><%=formattedDate%></p>
                                     </div>
                                 </div>
                             </div>
                             <div class="user-review-bot flex-col">
-                                <p>I have a B.S. in Computer Programming. My curriculum did not include Python, so I decided to give this a try. This course is amazing! I do not normally leave reviews, but I am very happy with the purchase.</p>
+                                <%String rateContent = rating.getComment();
+                                    String modifiedrateContent = rateContent.replaceAll("\\\\n", "\n");
+                                    String[] rateContentParagraphs = modifiedrateContent.split("\\r?\\n"); // Splitting based on newline character
+                                    // Display paragraphs in HTML
+                                    for (String paragraph : rateContentParagraphs) {
+                                %>
+                                <p><%= paragraph%></p>
+                                <%}%>
                             </div>
                         </div>
-                        <div class="user-review flex-col">
-                            <div class="user-review-top flex-row">
-                                <div class="user-img">
-                                    <img src="./img/user/default.png" alt="" />
-                                </div>
-                                <div class="flex-col">
-                                    <p class="user-name">Woo Yu Beng</p>
-                                    <div class="review-top-bot flex-row">
-                                        <div class="rating-stars flex-row">
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-half-fill"></i>
-                                        </div>
-                                        <p class="review-date">29/4/2024</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="user-review-bot flex-col">
-                                <p>I have a B.S. in Computer Programming. My curriculum did not include Python, so I decided to give this a try. This course is amazing! I do not normally leave reviews, but I am very happy with the purchase.</p>
-                            </div>
-                        </div>
-                        <div class="user-review flex-col">
-                            <div class="user-review-top flex-row">
-                                <div class="user-img">
-                                    <img src="./img/user/default.png" alt="" />
-                                </div>
-                                <div class="flex-col">
-                                    <p class="user-name">Woo Yu Beng</p>
-                                    <div class="review-top-bot flex-row">
-                                        <div class="rating-stars flex-row">
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-half-fill"></i>
-                                        </div>
-                                        <p class="review-date">29/4/2024</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="user-review-bot flex-col">
-                                <p>I have a B.S. in Computer Programming. My curriculum did not include Python, so I decided to give this a try. This course is amazing! I do not normally leave reviews, but I am very happy with the purchase.</p>
-                            </div>
-                        </div>
-                        <div class="user-review flex-col">
-                            <div class="user-review-top flex-row">
-                                <div class="user-img">
-                                    <img src="./img/user/default.png" alt="" />
-                                </div>
-                                <div class="flex-col">
-                                    <p class="user-name">Woo Yu Beng</p>
-                                    <div class="review-top-bot flex-row">
-                                        <div class="rating-stars flex-row">
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-half-fill"></i>
-                                        </div>
-                                        <p class="review-date">29/4/2024</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="user-review-bot flex-col">
-                                <p>I have a B.S. in Computer Programming. My curriculum did not include Python, so I decided to give this a try. This course is amazing! I do not normally leave reviews, but I am very happy with the purchase.</p>
-                            </div>
-                        </div>
-                        <div class="user-review flex-col">
-                            <div class="user-review-top flex-row">
-                                <div class="user-img">
-                                    <img src="./img/user/default.png" alt="" />
-                                </div>
-                                <div class="flex-col">
-                                    <p class="user-name">Woo Yu Beng</p>
-                                    <div class="review-top-bot flex-row">
-                                        <div class="rating-stars flex-row">
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-half-fill"></i>
-                                        </div>
-                                        <p class="review-date">29/4/2024</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="user-review-bot flex-col">
-                                <p>I have a B.S. in Computer Programming. My curriculum did not include Python, so I decided to give this a try. This course is amazing! I do not normally leave reviews, but I am very happy with the purchase.</p>
-                            </div>
-                        </div>
-                        <div class="user-review flex-col">
-                            <div class="user-review-top flex-row">
-                                <div class="user-img">
-                                    <img src="./img/user/default.png" alt="" />
-                                </div>
-                                <div class="flex-col">
-                                    <p class="user-name">Woo Yu Beng</p>
-                                    <div class="review-top-bot flex-row">
-                                        <div class="rating-stars flex-row">
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-half-fill"></i>
-                                        </div>
-                                        <p class="review-date">29/4/2024</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="user-review-bot flex-col">
-                                <p>I have a B.S. in Computer Programming. My curriculum did not include Python, so I decided to give this a try. This course is amazing! I do not normally leave reviews, but I am very happy with the purchase.</p>
-                            </div>
-                        </div>
+
+                        <% } %>
+
+
 
                         <button class="show-more-btn" id="showMoreReviewBtn">Show more reviews</button>
                     </div>

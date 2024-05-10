@@ -90,6 +90,11 @@ public class SingleCoursePage extends HttpServlet {
         getRatings.setMaxResults(4);
         List<Ratings> ratingsList = getRatings.getResultList();
         request.setAttribute("ratingList", ratingsList);
+        
+        Query getAllRatings = em.createNamedQuery("Ratings.findRatingByProdIdSortDescPriKey").setParameter("productId", courseRetrieved.getProductId());
+        getRatings.setMaxResults(5);
+        List<Ratings> allRatingsList = getAllRatings.getResultList();
+        request.setAttribute("allRatingList", allRatingsList);
 
         //get total learners
         request.setAttribute("totalLearners", courseRetrieved.getCourseSubscriptionsList().size());
